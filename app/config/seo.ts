@@ -38,7 +38,7 @@ export const seoConfig = {
       description:
         "Photoreka is a Photo Management and Curation Lab. See how your images relate to each other, search in natural language, create meaningful sequences, rank your photos by aesthetic scores and navigate your catalog in 3D.",
       keywords:
-        "photography, photo curation, photo organization, photography portfolio, image cataloging, AI photography, photo management, visual archive, photography workflow, image search, culling, sequence creation",
+        "photography, photo framer, photo curation, photo organization, photography portfolio, image cataloging, AI photography, photo management, visual archive, photography workflow, image search, culling, sequence creation",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -67,6 +67,9 @@ export const seoConfig = {
           "AI-powered curation",
           "Sequence creation",
           "Visual similarity detection",
+          "Free Photo Framer tool",
+          "Free Canvas Photo Tool",
+          "Frame photos in batches",
         ],
       },
     },
