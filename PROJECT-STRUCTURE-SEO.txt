@@ -1,0 +1,87 @@
+📦 landing_page/
+│
+├── 📄 README.md (actualizado con info SEO)
+├── 📄 SEO-IMPLEMENTATION-SUMMARY.md ⭐ (EMPIEZA AQUÍ)
+├── 📄 README-SEO.md (guía completa)
+├── 📄 SEO-CHECKLIST.md (tareas pendientes)
+├── 📄 .env.example (con VITE_SITE_URL)
+│
+├── 📁 app/
+│   ├── app.vue (title template SEO)
+│   │
+│   ├── 📁 config/
+│   │   ├── seo.ts ⭐ (EDITA AQUÍ - configuración SEO centralizada)
+│   │   └── theme.js
+│   │
+│   ├── 📁 composables/
+│   │   ├── useSEO.ts (composable automático)
+│   │   └── useTheme.js
+│   │
+│   └── 📁 pages/
+│       ├── index.vue ✅ (SEO implementado)
+│       └── terms.vue ✅ (SEO implementado)
+│
+├── 📁 public/
+│   ├── robots.txt ✅
+│   ├── sitemap.xml ✅ (con www.photoreka.com)
+│   ├── IMAGES-GUIDE.md 🎨 (cómo crear imágenes)
+│   │
+│   └── 🖼️ IMÁGENES PENDIENTES:
+│       ├── og-image.jpg (1200x630px) ⚠️
+│       ├── og-home.jpg (1200x630px) ⚠️
+│       ├── og-terms.jpg (1200x630px) ⚠️
+│       ├── twitter-card.jpg (1200x675px) ⚠️
+│       ├── favicon.ico (32x32px) ⚠️
+│       └── apple-touch-icon.png (180x180px) ⚠️
+│
+└── 📁 nuxt.config.ts ✅ (SSR + optimizaciones)
+
+═══════════════════════════════════════════════════════════
+
+🎯 CONFIGURACIÓN CENTRALIZADA:
+
+   app/config/seo.ts
+   └── Edita aquí para cambiar:
+       • Títulos de páginas
+       • Descripciones
+       • Keywords
+       • Open Graph images
+       • Twitter Cards
+       • JSON-LD
+       • Redes sociales
+
+═══════════════════════════════════════════════════════════
+
+🚀 USO EN PÁGINAS:
+
+   <script setup>
+   useSEO("home");  // Usa configuración de seo.ts
+   </script>
+
+   ¡Eso es todo! El composable hace el resto.
+
+═══════════════════════════════════════════════════════════
+
+⭐ EMPIEZA POR:
+
+1. Lee: SEO-IMPLEMENTATION-SUMMARY.md
+2. Crea las imágenes: public/IMAGES-GUIDE.md
+3. Edita contenido SEO: app/config/seo.ts
+4. Valida: Facebook Debugger + Twitter Cards
+
+═══════════════════════════════════════════════════════════
+
+✅ CARACTERÍSTICAS:
+• SSR habilitado (Nuxt 4)
+• Meta tags completos
+• Open Graph (Facebook, LinkedIn, WhatsApp)
+• Twitter Cards
+• JSON-LD (Schema.org)
+• Sitemap.xml
+• URLs canónicas con www.photoreka.com
+• Performance optimizations
+
+═══════════════════════════════════════════════════════════
+
+⚠️ IMPORTANTE:
+Todas las URLs usan: https://www.photoreka.com (con www)

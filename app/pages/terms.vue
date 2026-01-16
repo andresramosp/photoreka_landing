@@ -173,6 +173,9 @@
 import { NButton } from "naive-ui";
 import AppLogo from "@/components/AppLogo.vue";
 
+// SEO Configuration
+useSEO("terms");
+
 const goHome = () => {
   navigateTo("/");
 };

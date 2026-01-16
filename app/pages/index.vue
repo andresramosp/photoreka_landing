@@ -316,10 +316,7 @@
                 </div>
                 <div class="tool-card-content">
                   <div class="tool-header">
-                    <div
-                      class="tool-icon tool-icon-framer"
-                      style="background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);"
-                    >
+                    <div class="tool-icon tool-icon-framer gradient-framer">
                       <n-icon size="28"><StopOutline /></n-icon>
                     </div>
                     <div class="tool-meta">
@@ -364,10 +361,7 @@
               <div class="tool-card tool-card-large">
                 <div class="tool-card-content">
                   <div class="tool-header">
-                    <div
-                      class="tool-icon"
-                      style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);"
-                    >
+                    <div class="tool-icon gradient-canvas">
                       <n-icon size="32"><Workspace /></n-icon>
                     </div>
                     <div class="tool-meta">
@@ -508,6 +502,9 @@ import { Workspace } from "@vicons/carbon";
 import { BookOpen16Regular, Trophy20Regular } from "@vicons/fluent";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
+
+// SEO Configuration
+useSEO("home");
 
 // Inyectar script inline para prevenir FOUC
 useHead({
@@ -925,7 +922,7 @@ const setupIntersectionObserver = () => {
     {
       threshold: 1.0,
       rootMargin: "0px",
-    }
+    },
   );
 
   observer.value.observe(videoPlayer.value);
@@ -1051,4 +1048,12 @@ if (typeof window !== "undefined") {
   window.__goToEarlyAccess = () => goToAuth("signup");
 }
 </script>
-<style scoped></style>
+<style scoped>
+.gradient-framer {
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+}
+
+.gradient-canvas {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+}
+</style>

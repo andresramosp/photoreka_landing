@@ -8,6 +8,18 @@
 </template>
 
 <script setup>
+// SEO Base - se sobrescribe en cada página
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk
+      ? `${titleChunk}`
+      : "Photoreka - Curation Lab for Photographers";
+  },
+  htmlAttrs: {
+    lang: "en",
+  },
+});
+
 // Inyectar script inline para prevenir FOUC
 useHead({
   script: [

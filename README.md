@@ -1,6 +1,30 @@
-# Nuxt Minimal Starter
+# Photoreka Landing Page
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Landing page oficial de Photoreka construida con Nuxt 4 + SSR, optimizada para SEO.
+
+## 🚀 Features
+
+- ✅ **Nuxt 4** con SSR habilitado
+- ✅ **SEO Optimizado** - Meta tags, Open Graph, Twitter Cards
+- ✅ **JSON-LD** - Datos estructurados para Google
+- ✅ **Sitemap.xml** - Indexación automática
+- ✅ **Robots.txt** - Control de crawlers
+- ✅ **Naive UI** - Componentes UI modernos
+- ✅ **Theme Switching** - Dark/Light mode
+- ✅ **Analytics** - Google Analytics integrado
+- ✅ **Performance** - Prerendering y optimización de assets
+
+## 📝 Documentación SEO
+
+**👉 Ver [README-SEO.md](./README-SEO.md) para la guía completa de SEO**
+
+Incluye:
+
+- Cómo editar meta tags y descripciones
+- Agregar nuevas páginas con SEO
+- Validación de Open Graph y Twitter Cards
+- Imágenes para redes sociales
+- Tips y mejores prácticas
 
 ## Setup
 

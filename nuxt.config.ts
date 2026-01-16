@@ -9,6 +9,9 @@ export default defineNuxtConfig({
   modules: ["nuxtjs-naive-ui", "@nuxtjs/color-mode"],
   css: ["~/assets/global.scss"],
 
+  // Configuración SSR para SEO óptimo
+  ssr: true,
+
   runtimeConfig: {
     public: {
       mainApiBaseUrl:
@@ -16,6 +19,7 @@ export default defineNuxtConfig({
         "https://curatorlabapi-production.up.railway.app",
       gaMeasurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || "G-WK7N5SVNVD",
       appUrl: import.meta.env.VITE_APP_URL || "https://app.photoreka.com",
+      siteUrl: import.meta.env.VITE_SITE_URL || "https://www.photoreka.com",
     },
   },
 
@@ -31,11 +35,25 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: {
         lang: "en",
+        prefix: "og: https://ogp.me/ns#",
       },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "color-scheme", content: "dark light" },
+        {
+          name: "format-detection",
+          content: "telephone=no, date=no, email=no, address=no",
+        },
+        // Meta tags base - se sobrescriben por página
+        {
+          name: "mobile-web-app-capable",
+          content: "yes",
+        },
+        {
+          name: "apple-mobile-web-app-status-bar-style",
+          content: "black-translucent",
+        },
       ],
       link: [
         {
@@ -51,6 +69,13 @@ export default defineNuxtConfig({
           rel: "preload",
           href: "https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap",
           as: "style",
+        },
+        // Favicon
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
         },
       ],
     },
@@ -69,8 +94,18 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
 
+  // Configuración de generación para SEO
+  routeRules: {
+    "/": { prerender: true },
+    "/terms": { prerender: true },
+  },
+
   nitro: {
     compressPublicAssets: true,
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/terms"],
+    },
   },
 
   vite: {
