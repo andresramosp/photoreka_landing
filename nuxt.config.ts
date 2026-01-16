@@ -9,6 +9,16 @@ export default defineNuxtConfig({
   modules: ["nuxtjs-naive-ui", "@nuxtjs/color-mode"],
   css: ["~/assets/global.scss"],
 
+  runtimeConfig: {
+    public: {
+      mainApiBaseUrl:
+        import.meta.env.VITE_MAIN_API_BASE_URL ||
+        "https://curatorlabapi-production.up.railway.app",
+      gaMeasurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || "G-WK7N5SVNVD",
+      appUrl: import.meta.env.VITE_APP_URL || "https://app.photoreka.com",
+    },
+  },
+
   colorMode: {
     preference: "dark",
     fallback: "dark",
