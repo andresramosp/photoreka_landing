@@ -12,8 +12,9 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "dark",
     fallback: "dark",
-    dataValue: "theme", // Esto genera data-theme="dark" o data-theme="light"
+    dataValue: "theme",
     storageKey: "photoreka-theme-mode",
+    classSuffix: "",
   },
 
   app: {
@@ -24,6 +25,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "color-scheme", content: "dark light" },
       ],
       link: [
         {
@@ -45,7 +47,20 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ["vueuc", "naive-ui"],
+    transpile: [
+      "vueuc",
+      "naive-ui",
+      "@css-render/vue3-ssr",
+      "@juggle/resize-observer",
+    ],
+  },
+
+  experimental: {
+    payloadExtraction: false,
+  },
+
+  nitro: {
+    compressPublicAssets: true,
   },
 
   vite: {

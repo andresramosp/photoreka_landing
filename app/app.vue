@@ -479,13 +479,57 @@
             </div>
           </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="premium-footer">
+          <div class="footer-container">
+            <div class="footer-content">
+              <div class="footer-column">
+                <AppLogo layout="horizontal" :with-claim="true" size="small" />
+              </div>
+
+              <div class="footer-column">
+                <h4 class="footer-title">LEGAL</h4>
+                <a @click="goToTerms" class="footer-link">
+                  Terms and Image Policy
+                </a>
+              </div>
+
+              <div class="footer-column">
+                <h4 class="footer-title">CONTACT</h4>
+                <a
+                  href="https://www.instagram.com/photoreka_curation_lab/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer-link footer-social"
+                >
+                  <n-icon size="18"><LogoInstagram /></n-icon>
+                  <span>@photoreka_curation_lab</span>
+                </a>
+                <a
+                  href="mailto:hello@photoreka.com"
+                  class="footer-link footer-social"
+                >
+                  <n-icon size="18"><MailOutline /></n-icon>
+                  <span>hello@photoreka.com</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <p class="footer-copyright">
+                © {{ new Date().getFullYear() }} Photoreka. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     </n-message-provider>
   </n-config-provider>
 </template>
 
 <script setup>
-import { markRaw } from 'vue';
+import { markRaw } from "vue";
 import {
   RocketOutline,
   SearchOutline,
@@ -506,9 +550,22 @@ import {
   StopOutline,
   PlayCircleOutline,
   ChevronDownOutline,
+  LogoInstagram,
+  MailOutline,
 } from "@vicons/ionicons5";
 import { Workspace } from "@vicons/carbon";
 import { BookOpen16Regular, Trophy20Regular } from "@vicons/fluent";
+
+// Inyectar script inline para prevenir FOUC
+useHead({
+  script: [
+    {
+      children: `(function(){try{const t=localStorage.getItem('photoreka-theme-mode')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,
+      tagPosition: "head",
+      type: "text/javascript",
+    },
+  ],
+});
 
 const {
   naiveTheme: currentTheme,
@@ -997,7 +1054,7 @@ const setupScrollAnimations = () => {
 onMounted(() => {
   // Inicializar tema completo (el plugin ya aplicó las variables básicas)
   initTheme();
-  
+
   // Hero is immediately visible
   heroVisible.value = true;
 
