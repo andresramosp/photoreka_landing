@@ -1,0 +1,19 @@
+{
+  "name": "landing_page",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "naive-ui": "^2.43.2",
+    "nuxt": "^4.2.2",
+    "nuxtjs-naive-ui": "^1.0.2",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
+  }
+}
