@@ -42,7 +42,7 @@
           </div>
         </nav>
         <!-- Hero Section -->
-        <section class="hero-section" ref="heroSection">
+        <section id="hero" class="hero-section" ref="heroSection">
           <div class="hero-background">
             <div class="gradient-orb orb-1"></div>
             <div class="gradient-orb orb-2"></div>
@@ -150,7 +150,11 @@
         </section>
 
         <!-- Lightroom Integration Section -->
-        <section class="integration-section" ref="integrationSection">
+        <section
+          id="lightroom_plugin"
+          class="integration-section"
+          ref="integrationSection"
+        >
           <div class="section-container">
             <div class="integration-layout">
               <div
@@ -209,7 +213,7 @@
                     <div class="feature-icon-wrapper" style="color: #f59e0b">
                       <n-icon size="18"><ShareSocialOutline /></n-icon>
                     </div>
-                    <span>One-click photo transfer to Photoreka tools</span>
+                    <span>One-click photo transfer to Photoreka</span>
                   </li>
                   <li>
                     <div class="feature-icon-wrapper" style="color: #22c55e">
@@ -238,7 +242,7 @@
         </section>
 
         <!-- Data Sources Section -->
-        <section class="sources-section" ref="sourcesSection">
+        <section id="sources" class="sources-section" ref="sourcesSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: sourcesVisible }">
               <h2 class="section-title">Connect your photos from anywhere</h2>
@@ -288,7 +292,7 @@
         </section>
 
         <!-- Free Tools Section -->
-        <section class="free-tools-section" ref="freeToolsSection">
+        <section id="tools" class="free-tools-section" ref="freeToolsSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: freeToolsVisible }">
               <div class="tools-badge">
@@ -418,7 +422,7 @@
         </section>
 
         <!-- FAQs Section -->
-        <section class="faqs-section" ref="faqsSection">
+        <section id="faq" class="faqs-section" ref="faqsSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: faqsVisible }">
               <h2 class="section-title">Frequently asked questions</h2>
@@ -721,7 +725,7 @@ const goToAuth = (mode = "login") => {
     showRequestDialog.value = true;
   } else {
     const authUrl = `${config.public.appUrl}/auth?mode=${mode}`;
-    window.open(authUrl, "_blank");
+    window.location.assign(authUrl);
   }
 };
 
