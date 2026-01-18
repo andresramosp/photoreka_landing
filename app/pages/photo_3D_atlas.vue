@@ -46,6 +46,7 @@
               <div class="hero-visual" :class="{ visible: atlasVisible }">
                 <div class="video-frame">
                   <video
+                    ref="atlasVideoRef"
                     class="hero-video"
                     src="/videos/atlas_1.mp4"
                     poster="/home/video_poster.png"
@@ -303,6 +304,7 @@ const featuresSection = ref(null);
 const atlasSection = ref(null);
 const faqSection = ref(null);
 const ctaSection = ref(null);
+const atlasVideoRef = ref(null);
 
 const heroVisible = ref(false);
 const featuresVisible = ref(false);
@@ -468,6 +470,11 @@ onMounted(() => {
   initTheme();
   heroVisible.value = true;
   setupScrollAnimations();
+
+  // Set video playback rate to 1.5x
+  if (atlasVideoRef.value) {
+    atlasVideoRef.value.playbackRate = 1;
+  }
 
   trackEvent("page_view", {
     page: "photo_3d_atlas",

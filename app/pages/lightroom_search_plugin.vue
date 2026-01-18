@@ -91,6 +91,7 @@
                     class="hero-video"
                     src="/videos/lr_plugin.mp4"
                     poster="/home/video_lr_poster.png"
+                    ref="videoRef"
                     autoplay
                     muted
                     loop
@@ -365,6 +366,8 @@ const atlasSection = ref(null);
 const faqSection = ref(null);
 const ctaSection = ref(null);
 
+const videoRef = ref(null);
+
 const heroVisible = ref(false);
 const featuresVisible = ref(false);
 const atlasVisible = ref(false);
@@ -528,6 +531,11 @@ onMounted(() => {
   initTheme();
   heroVisible.value = true;
   setupScrollAnimations();
+
+  // Set video playback rate to 1.5x
+  if (videoRef.value) {
+    videoRef.value.playbackRate = 1.8;
+  }
 
   trackEvent("page_view", {
     page: "lightroom_plugin",
