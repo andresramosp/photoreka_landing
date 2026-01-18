@@ -137,11 +137,12 @@ export const seoConfig = {
     },
 
     lightroom_plugin: {
-      title: "Lightroom Classic Plugin - AI Search & Catalog Sync | Photoreka",
+      title:
+        "Lightroom Classic Plugin - AI Search, 3D Catalog & Sync | Photoreka",
       description:
-        "Transform your Lightroom Classic workflow with Photoreka's official plugin. Search your catalog in natural language, analyze photos with AI, and sync seamlessly. Free with Photoreka account.",
+        "Transform your Lightroom Classic workflow with Photoreka's official plugin. Search your catalog in natural language, explore your photos in 3D space, analyze with AI, and sync seamlessly. See your entire catalog as a navigable universe. Free with Photoreka account.",
       keywords:
-        "lightroom plugin, lightroom classic plugin, AI photo search, semantic photo search, lightroom catalog sync, natural language photo search, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, photo metadata analysis",
+        "lightroom plugin, lightroom classic plugin, AI photo search, 3D photo navigation, 3D catalog view, semantic photo search, lightroom catalog sync, natural language photo search, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, photo metadata analysis, navigate photos in 3D, view catalog as whole, photo clustering, visual similarity, 3D photo atlas",
       ogImage: "/home/video_lr_poster.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -168,16 +169,65 @@ export const seoConfig = {
         },
         featureList: [
           "Natural language search",
+          "3D catalog exploration and navigation",
+          "View entire catalog as navigable 3D universe",
+          "Visual similarity clustering in 3D space",
           "Culling photos with AI",
           "Direct catalog sync",
           "AI-powered photo analysis",
           "One-click photo transfer",
+          "Launch 3D Atlas from Lightroom",
           "Seamless Lightroom integration",
           "Privacy-first design",
           "Local photo processing",
           "Automatic metadata sync",
           "Compatible with Photoreka web platform",
           "Works with existing Lightroom structure",
+        ],
+      },
+    },
+
+    photo_3d_atlas: {
+      title: "3D Photo Atlas - Navigate Your Catalog as a Universe | Photoreka",
+      description:
+        "Experience your photographic body of work in stunning 3D space. Photoreka's 3D Atlas automatically clusters photos by visual similarity, revealing patterns and connections. Navigate contextually, narratively, or aesthetically to see your catalog as a cohesive whole.",
+      keywords:
+        "3D photo atlas, 3D catalog navigation, photo visualization, 3D photo gallery, visual similarity clustering, photo archive navigation, immersive photo exploration, 3D photo space, catalog clustering, photographic patterns, photo relationships, navigate photos 3D, photo body of work, visual archive 3D, photo universe, AI photo clustering, contextual photo navigation, narrative photo view, aesthetic photo grouping, photo sequence building",
+      ogImage: "/home/video_lr_poster.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka 3D Atlas",
+        description:
+          "Revolutionary 3D visualization tool that displays your entire photo catalog in immersive 3D space, automatically clustered by visual similarity.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Included with Photoreka",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Immersive 3D navigation",
+          "Automatic visual similarity clustering",
+          "Multi-dimensional navigation modes",
+          "Contextual, narrative, and aesthetic views",
+          "Pattern and relationship discovery",
+          "Sequence building in 3D space",
+          "Real-time performance with large catalogs",
+          "Export and share discoveries",
+          "Navigate thousands of photos smoothly",
+          "Reveal hidden photographic patterns",
+          "Understand catalog as cohesive whole",
         ],
       },
     },

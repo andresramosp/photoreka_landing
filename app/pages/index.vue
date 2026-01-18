@@ -575,7 +575,7 @@ const videoTabs = ref([
     icon: markRaw(CubeOutline),
     videoUrl: "/videos/atlas_1.mp4",
     speed: 1.5,
-    delaySeconds: 2.2,
+    delaySeconds: 0,
     endSeconds: 39, // Puedes poner un número aquí si quieres cortar antes
   },
   // {
@@ -794,7 +794,7 @@ const setActiveTab = (index, isAutoSwitch = false) => {
             if (!autoPlayTriggered.value) {
               startVideoPlayback();
             }
-          }, 3500);
+          }, 1000);
         }, 100);
       });
     }
@@ -1031,7 +1031,7 @@ onMounted(() => {
       if (!autoPlayTriggered.value) {
         startVideoPlayback();
       }
-    }, 10000);
+    }, 7000);
   });
 
   // Setup scroll animations

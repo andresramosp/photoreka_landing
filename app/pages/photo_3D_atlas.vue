@@ -34,108 +34,6 @@
           </div>
         </nav>
 
-        <!-- Hero Section -->
-        <section class="framer-hero" ref="heroSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout">
-              <!-- Left: Content -->
-              <div class="hero-content">
-                <div class="hero-badge" :class="{ visible: heroVisible }">
-                  <span class="badge-content">
-                    <img
-                      src="/logos/lightroom_logo.png"
-                      alt="Adobe Lightroom"
-                      style="height: 20px; width: 20px; object-fit: contain"
-                    />
-                    Official Plugin
-                  </span>
-                </div>
-                <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Bring Photoreka's
-                  <span class="gradient-text"> intelligent curation </span>
-                  directly to Lightroom Classic
-                </h1>
-                <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Search your catalog in natural language, analyze your photos
-                  with AI, and sync seamlessly with Photoreka—all without
-                  leaving Lightroom Classic. Our official plugin transforms your
-                  workflow with powerful semantic search and intelligent
-                  organization.
-                </p>
-
-                <div class="hero-actions" :class="{ visible: heroVisible }">
-                  <n-button
-                    type="warning"
-                    size="large"
-                    strong
-                    @click="goToPlugin"
-                  >
-                    <template #icon>
-                      <n-icon><DownloadOutline /></n-icon>
-                    </template>
-                    Get the Plugin
-                  </n-button>
-                  <span class="cta-note">Free with Photoreka account</span>
-                </div>
-              </div>
-
-              <!-- Right: Video -->
-              <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    src="/videos/lr_plugin.mp4"
-                    poster="/home/video_lr_poster.png"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features-section" ref="featuresSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">
-                Your Lightroom workflow, supercharged
-              </h2>
-              <p class="section-subtitle">
-                Work faster and smarter with AI-powered search and analysis
-                built right into Lightroom Classic. Plus full 3D Atlas and
-                Canvas through web.
-              </p>
-            </div>
-
-            <div class="features-grid">
-              <div
-                v-for="(feature, index) in features"
-                :key="index"
-                class="feature-card"
-                :class="{ visible: featuresVisible }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
-              >
-                <div class="feature-icon" :style="{ color: feature.color }">
-                  <n-icon size="32">
-                    <component :is="feature.icon" />
-                  </n-icon>
-                </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-description">{{ feature.description }}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <!-- 3D Atlas Section -->
         <section class="atlas-section" ref="atlasSection">
           <div class="hero-background">
@@ -177,20 +75,20 @@
                   class="hero-title atlas-title"
                   :class="{ visible: atlasVisible }"
                 >
-                  From Lightroom to
-                  <span class="gradient-text"> 3D exploration</span>
+                  Navigate your entire catalog as a
+                  <span class="gradient-text"> 3D universe</span>
                 </h2>
                 <p class="hero-subtitle" :class="{ visible: atlasVisible }">
-                  Launch the 3D Atlas directly from Lightroom Classic to see
-                  your entire catalog as a stunning navigable universe. Your
-                  photos are automatically positioned in 3D space based on
-                  visual similarity, creating clusters that reveal hidden
-                  patterns and connections you never knew existed. Navigate your
-                  work contextually, narratively, or aesthetically to understand
-                  your photographic body of work as a cohesive whole.
+                  Photoreka's 3D Atlas is a revolutionary way to explore your
+                  photographic body of work. Your photos are automatically
+                  positioned in an immersive 3D space based on visual
+                  similarity, creating dynamic clusters that reveal hidden
+                  patterns, stylistic evolution, and thematic connections you
+                  never knew existed. Experience your catalog as a cohesive
+                  whole, not just as individual images.
                 </p>
 
-                <ul class="atlas-features" :class="{ visible: atlasVisible }">
+                <!-- <ul class="atlas-features" :class="{ visible: atlasVisible }">
                   <li>
                     <div class="feature-icon-wrapper" style="color: #2563eb">
                       <n-icon size="20"><GridOutline /></n-icon>
@@ -209,7 +107,7 @@
                     </div>
                     <span>Discover hidden patterns in your work</span>
                   </li>
-                </ul>
+                </ul> -->
 
                 <div class="hero-actions" :class="{ visible: atlasVisible }">
                   <n-button
@@ -221,10 +119,42 @@
                     <template #icon>
                       <n-icon><CubeOutline /></n-icon>
                     </template>
-                    Open 3D Atlas
+                    Access 3D Atlas
                   </n-button>
-                  <span class="cta-note">Launch in Photoreka web platform</span>
+                  <!-- <span class="cta-note">Launch in Photoreka web platform</span> -->
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" ref="featuresSection">
+          <div class="section-container">
+            <div class="section-header" :class="{ visible: featuresVisible }">
+              <h2 class="section-title">See your work like never before</h2>
+              <p class="section-subtitle">
+                The 3D Atlas transforms how you understand and curate your
+                photographic archive. Explore relationships, discover patterns,
+                and gain insights impossible in traditional grid views.
+              </p>
+            </div>
+
+            <div class="features-grid">
+              <div
+                v-for="(feature, index) in features"
+                :key="index"
+                class="feature-card"
+                :class="{ visible: featuresVisible }"
+                :style="{ transitionDelay: `${index * 100}ms` }"
+              >
+                <div class="feature-icon" :style="{ color: feature.color }">
+                  <n-icon size="32">
+                    <component :is="feature.icon" />
+                  </n-icon>
+                </div>
+                <h3 class="feature-title">{{ feature.title }}</h3>
+                <p class="feature-description">{{ feature.description }}</p>
               </div>
             </div>
           </div>
@@ -236,7 +166,7 @@
             <div class="section-header" :class="{ visible: faqVisible }">
               <h2 class="section-title">Frequently Asked Questions</h2>
               <p class="section-subtitle">
-                Everything you need to know about the Lightroom plugin
+                Everything you need to know about the 3D Atlas
               </p>
             </div>
 
@@ -269,23 +199,26 @@
         <section class="cta-section" ref="ctaSection">
           <div class="section-container">
             <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Transform your Lightroom workflow today</h2>
+              <h2 class="cta-title">
+                Experience your catalog in a new dimension
+              </h2>
               <p class="cta-description">
-                Stop manually tagging and organizing. Let AI understand your
-                photos and help you find exactly what you need in seconds.
-                Download the plugin and start searching smarter, not harder.
+                Stop viewing your photos one at a time in endless grids. Explore
+                your entire photographic body of work as a cohesive universe.
+                Discover patterns, build sequences, and understand your
+                evolution as a photographer. The 3D Atlas changes everything.
               </p>
-              <n-button type="warning" size="large" strong @click="goToPlugin">
+              <n-button type="warning" size="large" strong @click="goToAtlas">
                 <template #icon>
-                  <n-icon><DownloadOutline /></n-icon>
+                  <n-icon><CubeOutline /></n-icon>
                 </template>
-                Download Plugin Now
+                Access 3D Atlas Now
               </n-button>
               <div class="cta-extra">
                 <p>
-                  New to Photoreka?
+                  Want to learn more?
                   <a @click="goToHome" class="cta-link"
-                    >Explore the full platform</a
+                    >Explore all Photoreka features</a
                   >
                 </p>
               </div>
@@ -293,6 +226,11 @@
           </div>
         </section>
       </div>
+      <!-- Request Access Dialog -->
+      <RequestAccessDialog
+        v-model:show="showRequestDialog"
+        @success="onRequestSuccess"
+      />
     </n-message-provider>
   </n-config-provider>
 </template>
@@ -329,9 +267,10 @@ import {
 } from "@vicons/ionicons5";
 import { Workspace } from "@vicons/carbon";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
+import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 
 // SEO Configuration
-useSEO("lightroom_plugin");
+useSEO("photo_3d_atlas");
 
 // Inject inline script to prevent FOUC
 useHead({
@@ -376,45 +315,45 @@ const activeFAQ = ref(null);
 // Features data
 const features = ref([
   {
-    icon: markRaw(ChatbubblesOutline),
-    title: "Natural Language Search",
+    icon: markRaw(CubeOutline),
+    title: "Immersive 3D Navigation",
     description:
-      "Search your entire Lightroom catalog using everyday language. Find 'photos of sunset over water' or 'portraits with warm lighting' instantly. No more endless scrolling or complex keyword tagging.",
-    color: "#8b5cf6",
-  },
-  {
-    icon: markRaw(SyncOutline),
-    title: "Direct Catalog Sync",
-    description:
-      "Connect directly to your Lightroom Classic catalog. The plugin reads your existing library structure, respecting your collections, folders, and metadata without modifying anything.",
+      "Fly through your catalog in real-time 3D space. Zoom, rotate, and explore your photos from any angle. The intuitive controls make navigating thousands of images feel natural and effortless.",
     color: "#2563eb",
   },
   {
-    icon: markRaw(SpeedometerOutline),
-    title: "AI-Powered Analysis",
+    icon: markRaw(GridOutline),
+    title: "Intelligent Clustering",
     description:
-      "Automatically analyze your photos to understand content, composition, mood, and style. The AI learns your photographic patterns and helps you discover hidden gems in your archive.",
+      "Photos are automatically grouped by visual similarity using advanced AI. Similar compositions, colors, subjects, and moods naturally cluster together, revealing your photographic patterns and evolution.",
+    color: "#8b5cf6",
+  },
+  {
+    icon: markRaw(NavigateOutline),
+    title: "Multi-Dimensional Views",
+    description:
+      "Switch between contextual, narrative, and aesthetic navigation modes. See your work organized by time, by story, or by visual characteristics. Each view offers unique insights into your archive.",
     color: "#22c55e",
   },
   {
-    icon: markRaw(ShareSocialOutline),
-    title: "One-Click Transfer",
+    icon: markRaw(EyeOutline),
+    title: "Pattern Discovery",
     description:
-      "Send photos from Lightroom to Photoreka with a single click. Create sequences, explore in 3D, or use advanced curation tools without re-importing your images.",
+      "Uncover hidden relationships in your work. Find recurring themes, color palettes, and compositional styles you didn't realize defined your photography. See your evolution as a photographer over time.",
     color: "#f59e0b",
   },
   {
-    icon: markRaw(LinkOutline),
-    title: "Seamless Integration",
+    icon: markRaw(ShareSocialOutline),
+    title: "Sequence Building",
     description:
-      "Works within your existing Lightroom workflow. Access Photoreka's features through familiar Lightroom panels and menus. No learning curve, no workflow disruption.",
+      "Create meaningful photo sequences by exploring spatial relationships. Build stories, portfolios, and exhibitions by discovering which images naturally belong together in 3D space.",
     color: "#ec4899",
   },
   {
-    icon: markRaw(LockClosedOutline),
-    title: "Privacy First",
+    icon: markRaw(SpeedometerOutline),
+    title: "Real-Time Performance",
     description:
-      "Your photos stay on your computer. The plugin only analyzes locally and sends minimal metadata to Photoreka. You maintain complete control over your catalog and files.",
+      "Navigate thousands of photos smoothly with optimized rendering. The 3D Atlas handles large catalogs effortlessly, providing instant feedback as you explore your archive.",
     color: "#06b6d4",
   },
 ]);
@@ -422,69 +361,62 @@ const features = ref([
 // FAQs data
 const faqs = ref([
   {
-    question: "Is the plugin really free?",
+    question: "What is the 3D Atlas?",
     answer:
-      "Yes, the Lightroom plugin is completely free with any Photoreka account. No additional costs beyond your Photoreka subscription.",
+      "The 3D Atlas is an immersive visualization tool that displays your entire photo catalog in a navigable 3D space. Photos are positioned based on visual similarity, creating clusters that reveal patterns and relationships in your work that traditional grid views can't show.",
   },
   {
-    question: "Which version of Lightroom is supported?",
+    question: "How does the clustering work?",
     answer:
-      "The plugin works with Adobe Lightroom Classic (desktop version). It's not compatible with the cloud-based Lightroom CC at this time.",
+      "Our AI analyzes the visual content of each photo—composition, colors, subjects, mood, lighting. Photos with similar characteristics are automatically positioned close to each other in 3D space, creating natural clusters. This reveals your photographic patterns and evolution over time.",
   },
   {
-    question: "Will the plugin modify my catalog or photos?",
+    question: "Can I navigate large catalogs smoothly?",
     answer:
-      "No. The plugin only reads your catalog and metadata. It never modifies your original files, catalog structure, or existing metadata. Your Lightroom library remains completely intact.",
+      "Yes. The 3D Atlas is optimized to handle catalogs with thousands of photos. We use progressive loading and level-of-detail techniques to ensure smooth navigation even with very large archives. The experience remains fluid regardless of catalog size.",
   },
   {
-    question: "How does the natural language search work?",
+    question: "What are the different navigation modes?",
     answer:
-      "The plugin uses AI to analyze your photos' visual content. You can search using everyday language like 'sunset photos with mountains' or 'black and white portraits' and it will find relevant images based on their actual content, not just keywords.",
+      "The Atlas offers three modes: Contextual (organized by content and subject matter), Narrative (arranged by time and story), Visual Accents (highlighting key visual elements) and Overall Style. Each mode offers unique insights into your photographic body of work.",
   },
   {
-    question: "Do my photos get uploaded to the cloud?",
+    question: "Can I use this for sequence building?",
     answer:
-      "Your full-resolution photos stay on your computer. The plugin only sends small previews and metadata to Photoreka for analysis. You maintain complete control over your original files.",
+      "Absolutely. The 3D Atlas is perfect for discovering which photos naturally belong together. You can select photos in 3D space to create sequences, portfolios, or exhibitions based on their visual relationships and spatial proximity.",
   },
   {
-    question: "Can I use the plugin offline?",
+    question: "Is this included with Photoreka?",
     answer:
-      "Initial analysis and search require an internet connection. However, once your photos are analyzed, you can browse previously analyzed content offline within Lightroom.",
+      "Yes, the 3D Atlas is a core feature of Photoreka. It's available to all users as part of the platform. You can access it directly through the web interface after uploading or syncing your catalog.",
   },
   {
-    question: "How long does the initial analysis take?",
+    question: "Do I need special hardware to run it?",
     answer:
-      "Analysis speed depends on your catalog size and internet connection. Typically, the plugin processes around 1000 photos in one hour. You can continue working in Lightroom while analysis runs in the background.",
+      "The 3D Atlas runs in modern web browsers using WebGL. Any computer with a decent graphics card (even integrated graphics from the last 5 years) can run it smoothly. No special hardware or installation required.",
   },
   {
-    question: "What happens if I move or rename photos in Lightroom?",
+    question: "Can I export or share what I discover?",
     answer:
-      "The synchronization works on your unique identifiers, which means changes in file names or locations are tracked and updated automatically.",
+      "Yes. You can save specific views, export sequences you've created, and share links to particular clusters or arrangements. This makes it easy to show others the patterns and relationships you've discovered in your work.",
   },
 ]);
 
 // Runtime config
 const config = useRuntimeConfig();
 
+// Dialog states
+const showRequestDialog = ref(false);
+
 // Navigation methods
 const goToHome = () => {
-  trackUserAction("navigate_to_home", "lightroom_plugin_page");
+  trackUserAction("navigate_to_home", "photo_3d_atlas_page");
   navigateTo("/");
 };
 
-const goToPlugin = () => {
-  trackUserAction("download_plugin", "lightroom_plugin_page");
-  // Download the plugin zip file
-  const link = document.createElement("a");
-  link.href = "/Photoreka.lrplugin.zip";
-  link.download = "Photoreka.lrplugin.zip";
-  link.click();
-};
-
 const goToAtlas = () => {
-  trackUserAction("navigate_to_atlas", "lightroom_plugin_page");
-  const atlasUrl = `${config.public.appUrl}/atlas`;
-  window.open(atlasUrl, "_blank");
+  trackUserAction("launch_atlas", "photo_3d_atlas_page");
+  showRequestDialog.value = true;
 };
 
 // FAQ methods
@@ -492,10 +424,18 @@ const toggleFAQ = (index) => {
   const wasOpen = activeFAQ.value === index;
   activeFAQ.value = activeFAQ.value === index ? null : index;
   trackEvent("faq_toggle", {
-    page: "framer",
+    page: "photo_3d_atlas",
     faq_index: index,
     action: wasOpen ? "close" : "open",
   });
+};
+
+// Request success callback
+const onRequestSuccess = () => {
+  trackEvent("access_request_submitted", {
+    page: "photo_3d_atlas",
+  });
+  showRequestDialog.value = false;
 };
 
 // Scroll-based animations
@@ -530,8 +470,8 @@ onMounted(() => {
   setupScrollAnimations();
 
   trackEvent("page_view", {
-    page: "lightroom_plugin",
-    page_title: "Lightroom Classic Plugin - Photoreka",
+    page: "photo_3d_atlas",
+    page_title: "3D Atlas - Navigate Your Catalog in 3D | Photoreka",
   });
 });
 </script>
@@ -623,7 +563,7 @@ onMounted(() => {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 4rem;
   align-items: center;
 }
@@ -681,7 +621,7 @@ onMounted(() => {
 .hero-subtitle {
   max-width: 600px;
   margin: 0;
-  font-size: 17px;
+  font-size: 16px;
   color: var(--premium-text-secondary);
   line-height: 1.7;
   opacity: 0;
