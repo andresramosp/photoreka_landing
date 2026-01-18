@@ -135,6 +135,52 @@ export const seoConfig = {
         ],
       },
     },
+
+    lightroom_plugin: {
+      title: "Lightroom Classic Plugin - AI Search & Catalog Sync | Photoreka",
+      description:
+        "Transform your Lightroom Classic workflow with Photoreka's official plugin. Search your catalog in natural language, analyze photos with AI, and sync seamlessly. Free with Photoreka account.",
+      keywords:
+        "lightroom plugin, lightroom classic plugin, AI photo search, semantic photo search, lightroom catalog sync, natural language photo search, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, photo metadata analysis",
+      ogImage: "/home/video_lr_poster.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Photoreka Lightroom Classic Plugin",
+        description:
+          "Official Lightroom Classic plugin that brings AI-powered semantic search and intelligent photo analysis directly to your workflow.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Windows, macOS",
+        softwareRequirements: "Adobe Lightroom Classic",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Free with Photoreka account",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Natural language search",
+          "Culling photos with AI",
+          "Direct catalog sync",
+          "AI-powered photo analysis",
+          "One-click photo transfer",
+          "Seamless Lightroom integration",
+          "Privacy-first design",
+          "Local photo processing",
+          "Automatic metadata sync",
+          "Compatible with Photoreka web platform",
+          "Works with existing Lightroom structure",
+        ],
+      },
+    },
   },
 };
 
