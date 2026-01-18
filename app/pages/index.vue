@@ -794,7 +794,7 @@ const setActiveTab = (index, isAutoSwitch = false) => {
             if (!autoPlayTriggered.value) {
               startVideoPlayback();
             }
-          }, 1500);
+          }, 3500);
         }, 100);
       });
     }
