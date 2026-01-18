@@ -124,6 +124,7 @@
                   <video
                     ref="videoPlayer"
                     class="demo-video"
+                    poster="/home/video_poster.png"
                     :src="videoTabs[activeTab].videoUrl"
                     @timeupdate="updateProgress"
                     @ended="onVideoEnded"
@@ -792,7 +793,7 @@ const setActiveTab = (index, isAutoSwitch = false) => {
             if (!autoPlayTriggered.value) {
               startVideoPlayback();
             }
-          }, 3500);
+          }, 1500);
         }, 100);
       });
     }
