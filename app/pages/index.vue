@@ -95,7 +95,7 @@
                   <n-icon><KeyOutline /></n-icon>
                 </template>
                 <!-- Join the Waiting List -->
-                Request Early Access
+                Join the Waiting List
               </n-button>
               <!-- Video Demo Section -->
               <div class="hero-demo" :class="{ visible: heroVisible }">

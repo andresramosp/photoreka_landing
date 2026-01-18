@@ -15,8 +15,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       mainApiBaseUrl:
-        import.meta.env.VITE_MAIN_API_BASE_URL ||
-        "https://curatorlabapi-production.up.railway.app",
+        import.meta.env.VITE_MAIN_API_BASE_URL || "http://localhost:3333",
       gaMeasurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || "G-WK7N5SVNVD",
       appUrl: import.meta.env.VITE_APP_URL || "https://app.photoreka.com",
       siteUrl: import.meta.env.VITE_SITE_URL || "https://www.photoreka.com",
