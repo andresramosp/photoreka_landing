@@ -90,6 +90,51 @@ export const seoConfig = {
         description: "Terms of Use and Image Policy for Photoreka",
       },
     },
+
+    framer: {
+      title:
+        "Free Batch Photo Framer - Frame Hundreds of Photos Instantly | Photoreka",
+      description:
+        "Tired of framing photos one by one? Free Framer lets you add professional borders to unlimited photos at once. Batch processing with no limits, no watermarks, no account needed. The only free tool that truly handles bulk photo framing.",
+      keywords:
+        "batch photo framer, bulk photo framing, frame multiple photos, photo borders batch, frame photos in bulk, unlimited photo framing, batch photo borders, free bulk photo tool, frame hundreds of photos, batch photography tools, mass photo framing, photo frame online free unlimited, batch image frames, bulk photo processing free",
+      ogImage: "/home/free_framer.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Free Framer",
+        description:
+          "Add professional frames and borders to your photos instantly. Free tool to create stunning framed photos for social media, portfolios, and presentations.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Unlimited batch processing",
+          "Frame hundreds of photos at once",
+          "No limits on quantity",
+          "Multiple frame styles",
+          "Custom colors",
+          "High quality export",
+          "No account required",
+          "No watermarks",
+          "Completely free",
+          "Instant preview",
+          "JPEG and PNG support",
+        ],
+      },
+    },
   },
 };
 
