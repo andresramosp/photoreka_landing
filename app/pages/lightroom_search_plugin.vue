@@ -90,7 +90,7 @@
                   <video
                     class="hero-video"
                     src="/videos/lr_plugin.mp4"
-                    poster="/home/video_lr_poster.png"
+                    poster="/home/video_lr_poster.jpg"
                     ref="videoRef"
                     autoplay
                     muted
@@ -151,7 +151,7 @@
                   <video
                     class="hero-video"
                     src="/videos/atlas_1.mp4"
-                    poster="/home/video_lr_poster.png"
+                    poster="/home/video_lr_poster.jpg"
                     autoplay
                     muted
                     loop

@@ -143,7 +143,7 @@ export const seoConfig = {
         "Transform your Lightroom Classic workflow with Photoreka's official plugin. Search your catalog in natural language, explore your photos in 3D space, analyze with AI, and sync seamlessly. See your entire catalog as a navigable universe. Free with Photoreka account.",
       keywords:
         "lightroom plugin, lightroom classic plugin, AI photo search, 3D photo navigation, 3D catalog view, semantic photo search, lightroom catalog sync, natural language photo search, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, photo metadata analysis, navigate photos in 3D, view catalog as whole, photo clustering, visual similarity, 3D photo atlas",
-      ogImage: "/home/video_lr_poster.png",
+      ogImage: "/home/video_lr_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: {
@@ -193,7 +193,7 @@ export const seoConfig = {
         "Experience your photographic body of work in stunning 3D space. Photoreka's 3D Atlas automatically clusters photos by visual similarity, revealing patterns and connections. Navigate contextually, narratively, or aesthetically to see your catalog as a cohesive whole.",
       keywords:
         "3D photo atlas, 3D catalog navigation, photo visualization, 3D photo gallery, visual similarity clustering, photo archive navigation, immersive photo exploration, 3D photo space, catalog clustering, photographic patterns, photo relationships, navigate photos 3D, photo body of work, visual archive 3D, photo universe, AI photo clustering, contextual photo navigation, narrative photo view, aesthetic photo grouping, photo sequence building",
-      ogImage: "/home/video_lr_poster.png",
+      ogImage: "/home/video_lr_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: {

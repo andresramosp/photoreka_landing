@@ -124,7 +124,7 @@
                   <video
                     ref="videoPlayer"
                     class="demo-video"
-                    poster="/home/video_poster.png"
+                    poster="/home/video_poster.jpg"
                     :src="videoTabs[activeTab].videoUrl"
                     @timeupdate="updateProgress"
                     @ended="onVideoEnded"
@@ -166,7 +166,7 @@
                   <video
                     class="integration-video"
                     :src="lightroomVideoUrl"
-                    poster="/home/video_lr_poster.png"
+                    poster="/home/video_lr_poster.jpg"
                     @loadeddata="onLightroomVideoLoaded"
                     autoplay
                     muted

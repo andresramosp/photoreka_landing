@@ -49,7 +49,7 @@
                     ref="atlasVideoRef"
                     class="hero-video"
                     src="/videos/atlas_1.mp4"
-                    poster="/home/video_poster.png"
+                    poster="/home/video_poster.jpg"
                     autoplay
                     muted
                     loop
