@@ -166,6 +166,7 @@
                   <video
                     class="integration-video"
                     :src="lightroomVideoUrl"
+                    poster="/home/video_lr_poster.png"
                     @loadeddata="onLightroomVideoLoaded"
                     autoplay
                     muted
