@@ -1062,4 +1062,29 @@ if (typeof window !== "undefined") {
 .gradient-canvas {
   background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
 }
+
+.premium-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--premium-bg-nav);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--premium-border);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
 </style>
