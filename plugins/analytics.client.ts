@@ -2,7 +2,7 @@
 // This plugin runs only on the client side and initializes GA when the app starts
 
 import { defineNuxtPlugin } from "nuxt/app";
-import { initGA } from "../app/utils/analytics";
+import { initGA } from "../utils/analytics";
 
 export default defineNuxtPlugin(() => {
   // Initialize Google Analytics on client side
