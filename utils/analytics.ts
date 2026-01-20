@@ -13,7 +13,7 @@ declare global {
 const isBrowser = typeof window !== "undefined";
 
 // Check if we're in development (using Vite's import.meta.env)
-const isDevelopment = false; //import.meta.env.DEV ?? false;
+const isDevelopment = import.meta.env.DEV ?? false;
 
 // Get GA4 Measurement ID from Nuxt runtime config or fallback
 let GA_MEASUREMENT_ID = "G-WK7N5SVNVD";
