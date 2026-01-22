@@ -295,6 +295,10 @@
         </section>
       </div>
     </n-message-provider>
+    <RequestAccessDialog
+      :show="showRequestAccessDialog"
+      @update:show="showRequestAccessDialog = $event"
+    />
   </n-config-provider>
 </template>
 
@@ -330,6 +334,7 @@ import {
 } from "@vicons/ionicons5";
 import { Workspace } from "@vicons/carbon";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
+import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 
 // SEO Configuration
 useSEO("lightroom_plugin");
@@ -367,6 +372,7 @@ const faqSection = ref(null);
 const ctaSection = ref(null);
 
 const videoRef = ref(null);
+const showRequestAccessDialog = ref(false);
 
 const heroVisible = ref(false);
 const featuresVisible = ref(false);
@@ -476,12 +482,8 @@ const goToHome = () => {
 };
 
 const goToPlugin = () => {
-  trackUserAction("download_plugin", "lightroom_plugin_page");
-  // Download the plugin zip file
-  const link = document.createElement("a");
-  link.href = "/Photoreka.lrplugin.zip";
-  link.download = "Photoreka.lrplugin.zip";
-  link.click();
+  trackUserAction("request_plugin_access", "lightroom_plugin_page");
+  showRequestAccessDialog.value = true;
 };
 
 const goToAtlas = () => {

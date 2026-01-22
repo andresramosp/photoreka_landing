@@ -6,7 +6,6 @@ import { initGA } from "../../utils/analytics";
 
 export default defineNuxtPlugin(() => {
   console.log("🚀 PLUGIN ANALYTICS LOADED!!!");
-  debugger;
 
   // Initialize Google Analytics on client side
   // Wait for the page to be fully loaded
