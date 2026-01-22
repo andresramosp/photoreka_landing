@@ -8,7 +8,7 @@
             <div class="nav-brand">
               <AppLogo
                 :layout="isMobileDevice() ? 'horizontal' : 'horizontal'"
-                size="small"
+                height="45"
               />
             </div>
             <div class="nav-actions">
