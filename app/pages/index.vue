@@ -6,10 +6,7 @@
         <nav class="premium-nav">
           <div class="nav-container">
             <div class="nav-brand">
-              <AppLogo
-                :layout="isMobileDevice() ? 'horizontal' : 'horizontal'"
-                :height="isMobileDevice() ? 35 : 45"
-              />
+              <AppLogo layout="horizontal" :height="45" />
             </div>
             <div class="nav-actions">
               <button
@@ -28,7 +25,7 @@
                 >Sign in
               </n-button>
               <!-- <n-button
-                v-if="!isMobileDevice()"
+                v-if="!isMobile"
                 type="info"
                 size="large"
                 @click="goToAuth('signup')"
@@ -50,11 +47,7 @@
           </div>
           <div class="hero-container">
             <div class="hero-content">
-              <div
-                v-if="true"
-                class="hero-badge"
-                :class="{ visible: heroVisible }"
-              >
+              <div class="hero-badge" :class="{ visible: heroVisible }">
                 <span class="badge-content">
                   <n-icon size="16"><WalkOutline /></n-icon>Street
                   <n-icon size="16"><BookOpen16Regular /></n-icon>Documentary
@@ -511,6 +504,8 @@ import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO Configuration
 useSEO("home");
+
+const { isMobile } = useMobileDevice();
 
 // Inyectar script inline para prevenir FOUC
 useHead({

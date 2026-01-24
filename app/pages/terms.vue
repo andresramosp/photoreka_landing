@@ -5,7 +5,7 @@
       <div class="nav-container">
         <div class="nav-brand">
           <div class="logo">
-            <AppLogo layout="horizontal" :height="isMobileDevice() ? 35 : 45" />
+            <AppLogo layout="horizontal" :height="45" />
           </div>
         </div>
         <div class="nav-actions">

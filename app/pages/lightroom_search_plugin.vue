@@ -6,10 +6,7 @@
         <nav class="premium-nav">
           <div class="nav-container">
             <div class="nav-brand">
-              <AppLogo
-                :layout="isMobileDevice() ? 'horizontal' : 'horizontal'"
-                :height="isMobileDevice() ? 35 : 45"
-              />
+              <AppLogo layout="horizontal" :height="45" />
             </div>
             <div class="nav-actions">
               <button

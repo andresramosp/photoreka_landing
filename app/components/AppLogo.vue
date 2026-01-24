@@ -5,7 +5,7 @@
       alt="Photoreka"
       class="logo-image"
       :class="[`logo-size-${size}`, `logo-layout-${layout}`]"
-      :style="props.height ? { height: props.height + 'px !important' } : {}"
+      :style="logoStyle"
     />
   </div>
 </template>
@@ -31,6 +31,16 @@ const props = withDefaults(defineProps<Props>(), {
 
 // Obtener el tema internamente
 const { themeMode } = useTheme();
+
+// Computed style que incluye CSS custom property para media queries
+const logoStyle = computed(() => {
+  if (props.height) {
+    return {
+      "--logo-height-desktop": `${props.height}px`,
+    };
+  }
+  return {};
+});
 
 // Mapa de logos según layout y themeMode (usando rutas públicas)
 const logoMap = {
@@ -61,7 +71,7 @@ const logoMap = {
 };
 
 const logoSrc = computed(() => {
-  const variant = themeMode.value;
+  const variant = themeMode.value as "dark" | "light";
 
   if (props.layout === "icon") {
     return logoMap.icon[variant];
@@ -91,6 +101,8 @@ export default {
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
+  /* Usar CSS custom property que se ajusta automáticamente en mobile */
+  height: var(--logo-height-desktop, auto);
   /* transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.3)); */
 }
@@ -101,18 +113,15 @@ export default {
    ============================ */
 
 /* Vertical layout: uses size as-is (no override) */
-.logo-layout-vertical {
-  /* Size classes apply directly */
-}
 
 /* Horizontal layout: tamaño por defecto para navbars */
 .logo-layout-horizontal:not([class*="logo-size-"]) {
-  height: 45px;
+  --logo-height-desktop: 45px;
 }
 
 /* Icon only: tamaño por defecto para iconos */
 .logo-layout-icon:not([class*="logo-size-"]) {
-  height: 50px;
+  --logo-height-desktop: 50px;
 }
 
 /* ============================
@@ -121,35 +130,31 @@ export default {
    ============================ */
 
 .logo-size-tiny {
-  height: 30px !important;
+  --logo-height-desktop: 30px;
 }
 
 .logo-size-small {
-  height: 55px !important;
+  --logo-height-desktop: 55px;
 }
 
 .logo-size-normal {
-  height: 130px !important;
+  --logo-height-desktop: 130px;
 }
 
 .logo-size-large {
-  height: 180px !important;
+  --logo-height-desktop: 180px;
 }
 
 /* ============================
    MOBILE RESPONSIVE
-   All sizes capped on mobile
+   All sizes capped on mobile - usando CSS, no JavaScript
    ============================ */
 @media (max-width: 768px) {
-  .logo-size-normal,
-  .logo-size-large,
-  .logo-size-small,
-  .logo-layout-horizontal,
-  .logo-layout-icon {
+  .logo-image {
     height: 35px !important;
   }
 
-  .logo-size-tiny {
+  .logo-size-tiny .logo-image {
     height: 25px !important;
   }
 }
