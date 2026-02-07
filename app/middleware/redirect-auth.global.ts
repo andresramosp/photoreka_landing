@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware((to, from) => {
   // Rutas que requieren redirección
-  const redirectPaths = ["/auth", "/workspace", "/dashboard"];
+  const redirectPaths = ["/auth", "/workspace", "/dashboard", "/demo"];
   if (redirectPaths.includes(to.path)) {
     // Detecta el host actual
     const host = import.meta.server
