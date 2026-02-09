@@ -83,13 +83,28 @@
                   <n-icon size="16"><ImageOutline /></n-icon>Landscape
                 </span>
               </div>
-              <n-button type="info" size="large" @click="goToAuth('signup')">
-                <template #icon>
-                  <n-icon><KeyOutline /></n-icon>
-                </template>
-                <!-- Join the Waiting List -->
-                Join the Waiting List
-              </n-button>
+              <div style="display: inline-flex; gap: 1rem">
+                <n-button type="info" size="large" @click="goToDemo">
+                  <template #icon>
+                    <n-icon><PlayCircleOutline /></n-icon>
+                  </template>
+                  <!-- Explore Demo -->
+                  Try the Demo
+                </n-button>
+                <n-button
+                  strong
+                  secondary
+                  type="info"
+                  size="large"
+                  @click="goToAuth('signup')"
+                >
+                  <template #icon>
+                    <n-icon><KeyOutline /></n-icon>
+                  </template>
+                  <!-- Join the Waiting List -->
+                  Waiting List
+                </n-button>
+              </div>
               <!-- Video Demo Section -->
               <div class="hero-demo" :class="{ visible: heroVisible }">
                 <div v-if="videoTabs.length > 1" class="demo-tabs">
@@ -741,6 +756,11 @@ const goToFreeFramer = () => {
   trackUserAction("navigate_to_playground", "landing_page_premium", "framer");
   const playgroundUrl = `${config.public.appUrl}/free-framer`;
   window.open(playgroundUrl, "_blank");
+};
+
+const goToDemo = () => {
+  trackUserAction("navigate_to_demo", "landing_page_premium");
+  window.open("https://app.photoreka.com/demo", "_blank");
 };
 
 const onRequestSuccess = () => {};
