@@ -77,13 +77,13 @@
                   <span class="gradient-text"> 3D universe</span>
                 </h2>
                 <p class="hero-subtitle" :class="{ visible: atlasVisible }">
-                  Photoreka's 3D Atlas is a revolutionary way to explore your
-                  photographic body of work. Your photos are automatically
-                  positioned in an immersive 3D space based on visual
-                  similarity, creating dynamic clusters that reveal hidden
+                  Traditional grid views show 50 photos at a time. You have
+                  thousands. The 3D Atlas uses AI and dimensionality reduction
+                  to position your entire catalog in navigable 3D space based on
+                  visual similarity—creating clusters that reveal hidden
                   patterns, stylistic evolution, and thematic connections you
-                  never knew existed. Experience your catalog as a cohesive
-                  whole, not just as individual images.
+                  never knew existed. See your archive as a cohesive whole, not
+                  an endless scroll.
                 </p>
 
                 <!-- <ul class="atlas-features" :class="{ visible: atlasVisible }">
@@ -367,7 +367,7 @@ const faqs = ref([
   {
     question: "How does the clustering work?",
     answer:
-      "Our AI analyzes the visual content of each photo—composition, colors, subjects, mood, lighting. Photos with similar characteristics are automatically positioned close to each other in 3D space, creating natural clusters. This reveals your photographic patterns and evolution over time.",
+      "Our AI extracts high-dimensional visual embeddings from each photo—capturing composition, colors, subjects, mood, and lighting as numerical vectors. These are then projected into 3D space using UMAP (Uniform Manifold Approximation and Projection), a dimensionality reduction technique that preserves the relationships between images. Photos with similar visual characteristics end up close to each other, forming natural clusters that reveal your photographic patterns and evolution over time.",
   },
   {
     question: "Can I navigate large catalogs smoothly?",

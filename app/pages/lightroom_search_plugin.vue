@@ -53,16 +53,17 @@
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Bring Photoreka's
-                  <span class="gradient-text"> intelligent curation </span>
-                  directly to Lightroom Classic
+                  Natural language search
+                  <span class="gradient-text"> for Lightroom Classic</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Search your catalog in natural language, analyze your photos
-                  with AI, and sync seamlessly with Photoreka—all without
-                  leaving Lightroom Classic. Our official plugin transforms your
-                  workflow with powerful semantic search and intelligent
-                  organization.
+                  Find any photo by describing it—without manual tagging. Our
+                  official plugin brings AI-powered
+                  <strong>semantic search</strong> directly into Lightroom
+                  Classic: type what you remember and get instant results based
+                  on actual visual content, not just keywords.<br /><br />
+                  Compatible with Lightroom Classic 13.0+ · RAW, CR2, NEF, ARW,
+                  JPEG, PNG, TIFF · All AI processing runs locally.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -435,7 +436,12 @@ const faqs = ref([
   {
     question: "Which version of Lightroom is supported?",
     answer:
-      "The plugin works with Adobe Lightroom Classic (desktop version). It's not compatible with the cloud-based Lightroom CC at this time.",
+      "The plugin works with Adobe Lightroom Classic 13.0 and above (desktop version). It's not compatible with the cloud-based Lightroom CC at this time.",
+  },
+  {
+    question: "How is this different from Lightroom's built-in search?",
+    answer:
+      "Lightroom's native search relies on manually entered keywords, star ratings, and metadata. Photoreka's plugin uses computer vision AI to understand the actual visual content of your photos—you can search for 'golden hour portrait with shallow depth of field' even if you never tagged a single image. It's the difference between searching a filing cabinet by label and describing a memory.",
   },
   {
     question: "Will the plugin modify my catalog or photos?",

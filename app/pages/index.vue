@@ -158,6 +158,53 @@
           </div>
         </section>
 
+        <!-- Features Grid Section -->
+        <section
+          id="features"
+          class="index-features-section"
+          ref="featuresSection"
+        >
+          <div class="section-container">
+            <div class="section-header" :class="{ visible: featuresVisible }">
+              <h2 class="section-title">Everything your archive deserves</h2>
+              <p class="section-subtitle">
+                A full curation lab built for photographers who take their work
+                seriously. Explore, understand, sequence, rank, and report on
+                your photographic body of work.
+              </p>
+            </div>
+
+            <div class="index-features-grid">
+              <div
+                v-for="(feature, index) in features"
+                :key="index"
+                class="index-feature-card"
+                :class="{ visible: featuresVisible }"
+                :style="{ transitionDelay: `${index * 100}ms` }"
+              >
+                <div
+                  class="index-feature-bg-icon"
+                  :style="{ color: feature.color }"
+                >
+                  <n-icon size="90">
+                    <component :is="feature.icon" />
+                  </n-icon>
+                </div>
+                <div class="index-feature-content">
+                  <div
+                    class="index-feature-accent"
+                    :style="{ background: feature.color }"
+                  ></div>
+                  <h3 class="index-feature-title">{{ feature.title }}</h3>
+                  <p class="index-feature-description">
+                    {{ feature.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Lightroom Integration Section -->
         <section
           id="lightroom_plugin"
@@ -230,6 +277,12 @@
                       <n-icon size="18"><LinkOutline /></n-icon>
                     </div>
                     <span>Compatible with Photoreka web workflow</span>
+                  </li>
+                  <li>
+                    <div class="feature-icon-wrapper" style="color: #6b7280">
+                      <n-icon size="18"><InformationCircleOutline /></n-icon>
+                    </div>
+                    <span>Lightroom Classic 13.0+ · RAW, JPEG, PNG, TIFF </span>
                   </li>
                 </ul>
 
@@ -511,6 +564,13 @@ import {
   PlayCircleOutline,
   ChevronDownOutline,
   KeyOutline,
+  InformationCircleOutline,
+  GridOutline,
+  BarChartOutline,
+  LayersOutline,
+  SpeedometerOutline,
+  EyeOutline,
+  GitNetworkOutline,
 } from "@vicons/ionicons5";
 import { Workspace } from "@vicons/carbon";
 import { BookOpen16Regular, Trophy20Regular } from "@vicons/fluent";
@@ -627,32 +687,46 @@ const lightroomVideoUrl = "/videos/lr_plugin.mp4";
 // Features data
 const features = ref([
   {
-    icon: markRaw(SearchOutline),
-    title: "Semantic Search",
+    icon: markRaw(CubeOutline),
+    title: "2D / 3D Atlas",
     description:
-      'Find photos instantly using natural language. Look for exact matches ("children playing"), or figurative ones ("Blade Runner-style photos").',
+      "Explore your entire archive as an universe of images mapped in semantic space. Navigate in 2D or immersive 3D to discover visual clusters, stylistic threads, and unexpected connections across your catalog.",
+    color: "#06b6d4",
+  },
+  {
+    icon: markRaw(SearchOutline),
+    title: "Natural Language Search",
+    description:
+      "Find any photo by describing it. Search for moods, scenes, lighting conditions, cinematic references, or abstract feelings. No keywords, no tagging—just describe what you remember and Photoreka finds it.",
     color: "#2563eb",
   },
   {
     icon: markRaw(Workspace),
-    title: "Canvas",
+    title: "Interactive Canvas",
     description:
-      "Create stunning photo layouts and compositions with our intuitive canvas tool. Drag, drop, resize, and arrange your photos to tell your story.",
+      "Drag, arrange, and compose your photos freely on an infinite canvas. Drop any image and Photoreka surfaces visually or narratively similar photos from your archive to help you find the perfect pairing.",
     color: "#8b5cf6",
   },
   {
-    icon: markRaw(Trophy20Regular),
-    title: "Score Rankings",
+    icon: markRaw(LayersOutline),
+    title: "Series & Sequencing",
     description:
-      "Get automatic ratings of your photos and classify them according to different aesthetic criteria (composition, mood, originality, etc.)",
+      "Build cohesive sequences and storyboards from your catalog. Organize images into narrative arcs, editorial spreads, or visual series—and let the AI suggest continuations based on compositional and tonal flow.",
+    color: "#22c55e",
+  },
+  {
+    icon: markRaw(BarChartOutline),
+    title: "Reports & Patterns",
+    description:
+      "Understand how you shoot. Photoreka surfaces recurring stylistic patterns, narrative tendencies, cultural references, and compositional habits across your archive—helping you see your work from the outside.",
     color: "#f59e0b",
   },
   {
-    icon: markRaw(ImagesOutline),
-    title: "Smart Curation",
+    icon: markRaw(Trophy20Regular),
+    title: "Rankings & Scores",
     description:
-      "Compile photos of specific themes or styles with the help of our smart curator. Get feedback on each photo and discover hidden insights and connections.",
-    color: "#22c55e",
+      "Score your photos across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, humor, and more. Rank your catalog and surface your strongest work automatically.",
+    color: "#ec4899",
   },
 ]);
 
@@ -1070,6 +1144,76 @@ if (typeof window !== "undefined") {
 }
 </script>
 <style scoped>
+/* ── Index Features Section ────────────────────────────────── */
+.index-features-section {
+  padding: 6rem 2rem;
+  background: var(--premium-bg-primary);
+}
+
+.index-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.index-feature-card {
+  position: relative;
+  background: var(--premium-bg-card);
+  border: 1px solid var(--premium-border);
+  border-radius: 20px;
+  padding: 2rem;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.index-feature-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.index-feature-bg-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  opacity: 0.35;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.index-feature-content {
+  position: relative;
+  z-index: 1;
+}
+
+.index-feature-accent {
+  width: 32px;
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 0.85rem;
+  opacity: 0.85;
+}
+
+.index-feature-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--premium-text-primary);
+}
+
+.index-feature-description {
+  color: var(--premium-text-secondary);
+  line-height: 1.65;
+  font-size: 0.93rem;
+}
+
 .gradient-framer {
   background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
 }

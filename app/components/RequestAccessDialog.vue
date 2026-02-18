@@ -10,7 +10,7 @@
     style="width: 740px; max-width: 90vw"
   >
     <template #icon>
-      <n-icon size="24" color="#2563eb">
+      <n-icon size="24">
         <KeyOutline />
       </n-icon>
     </template>

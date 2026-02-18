@@ -13,7 +13,7 @@ useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk
       ? `${titleChunk}`
-      : "Photoreka - Curation Lab for Photographers";
+      : "Photoreka | AI Photo Search & Curation Lab for Photographers";
   },
   htmlAttrs: {
     lang: "en",

@@ -34,9 +34,9 @@ export const seoConfig = {
   // Configuración por página
   pages: {
     home: {
-      title: "Photoreka - Curation Lab for Photographers",
+      title: "Photoreka | AI Photo Search & Curation Lab for Photographers",
       description:
-        "Photoreka is the ultimate photo curation app and photo management system. Organize, curate, and explore your photographic body of work with AI-powered photo curation platform. Search in natural language, create meaningful sequences, rank photos by aesthetic scores, and navigate your catalog in 3D with our professional photography DAM software.",
+        "Search your entire photo library in natural language—no tagging needed. Photoreka is an AI-powered photo curation platform: find any photo by describing it, explore your archive in interactive 3D, rank images by aesthetic scores, and create meaningful sequences. Works with Lightroom Classic, Google Photos, and local files.",
       keywords:
         "photo curation app, photo curation platform, photo management system, photography DAM, image curation software, AI photo organizer, photo management, photo organization, photography portfolio, image cataloging, AI photography, visual archive, photography workflow, image search, culling, sequence creation, professional photo organizer, photo workflow automation, online photo organizer, smart photo tagging",
       ogImage: "/logos/marca/vertical-claim-light.png",
@@ -136,11 +136,52 @@ export const seoConfig = {
       },
     },
 
+    ai_photo_search: {
+      title: "AI Photo Search - Find Any Photo by Describing It | Photoreka",
+      description:
+        "Stop scrolling through thousands of photos. Photoreka's AI understands natural language: search for 'rainy street at night with reflections' or 'melancholic portrait in window light' and get instant results—no tagging required. Powered by semantic image embeddings and vector similarity search.",
+      keywords:
+        "AI photo search, natural language photo search, find photos by description, semantic image search, no tagging photo search, photo search AI, computer vision photo organizer, visual similarity search, search photos without keywords, intelligent photo finder, photo archive search, image semantic search",
+      ogImage: "/home/video_poster.jpg",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka AI Photo Search",
+        description:
+          "Find any photo by describing it in natural language. No tagging required. Powered by computer vision AI and semantic image embeddings.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Natural language photo search",
+          "No manual tagging required",
+          "Semantic image understanding",
+          "Search by mood, style, and emotion",
+          "Vector similarity search",
+          "Works with 100,000+ photos",
+          "Cross-source search",
+          "Figurative and artistic query support",
+        ],
+      },
+    },
+
     lightroom_plugin: {
       title:
-        "Lightroom Classic Plugin - AI Search, 3D Catalog & Sync | Photoreka Curation Lab",
+        "Natural Language AI Photo Search Plugin for Lightroom Classic | Photoreka",
       description:
-        "Transform your Lightroom Classic workflow with Photoreka's AI photo organizer and photo curation platform plugin. Advanced photo management system with natural language search, 3D catalog navigation, and intelligent photo clustering. Perfect for professional photographers using Lightroom as their digital asset management (DAM) system. Analyze, curate, and organize your photo library seamlessly.",
+        "Search your Lightroom Classic catalog by describing what you remember—no manual tagging required. Photoreka's official plugin uses computer vision AI and semantic search to find any photo instantly. Supports RAW, JPEG, PNG, TIFF. Compatible with Lightroom Classic 13.0+. All AI processing runs locally—your originals never leave your computer.",
       keywords:
         "lightroom plugin, lightroom classic plugin, AI photo search, 3D photo navigation, 3D catalog view, semantic photo search, lightroom catalog sync, natural language photo search, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, photo metadata analysis, navigate photos in 3D, view catalog as whole, photo clustering, visual similarity, 3D photo atlas, AI photo organizer, photo curation platform, photography DAM, digital asset management, professional photo organizer",
       ogImage: "/home/video_lr_poster.jpg",
@@ -189,9 +230,9 @@ export const seoConfig = {
 
     photo_3d_atlas: {
       title:
-        "3D Photo Atlas - Navigate Your Catalog as a Universe | Photoreka Curation App",
+        "3D Photo Atlas - Visualize Your Entire Photo Catalog in 3D Space | Photoreka",
       description:
-        "Explore your photographic catalog with Photoreka's 3D Photo Atlas - the ultimate AI photo organizer for photo curation and management. Visualize thousands of photos in immersive 3D space with intelligent clustering by visual similarity. Perfect photo management system for professional photographers to discover patterns, organize sequences, and explore your photo library like never before.",
+        "Stop scrolling grids endlessly. Photoreka's 3D Photo Atlas uses AI and dimensionality reduction (UMAP) to place your entire catalog in navigable 3D space—automatically clustered by visual similarity. Discover hidden patterns, stylistic evolution, and thematic connections across thousands of photos. Runs in browser via WebGL, no installation required.",
       keywords:
         "3D photo atlas, 3D catalog navigation, photo visualization, 3D photo gallery, visual similarity clustering, photo archive navigation, immersive photo exploration, 3D photo space, catalog clustering, photographic patterns, photo relationships, navigate photos 3D, photo body of work, visual archive 3D, photo universe, AI photo clustering, contextual photo navigation, narrative photo view, aesthetic photo grouping, photo sequence building, AI photo organizer, photo curation platform, photo management system, professional photo organizer, photography DAM, image visualization, photo library management",
       ogImage: "/home/video_lr_poster.jpg",

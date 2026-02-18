@@ -1691,18 +1691,18 @@ section {
   background:
     radial-gradient(
       circle at 20% 30%,
-      var(--premium-gradient-2) 0%,
-      transparent 25%
+      rgba(0, 0, 200, 0.25) 0%,
+      transparent 18%
     ),
     radial-gradient(
       circle at 95% 60%,
-      var(--premium-gradient-3) 0%,
-      transparent 25%
+      rgba(0, 200, 220, 0.12) 0%,
+      transparent 18%
     ),
     radial-gradient(
       circle at 5% 90%,
-      var(--premium-gradient-2) 0%,
-      transparent 20%
+      rgba(0, 0, 200, 0.2) 0%,
+      transparent 14%
     ),
     var(--premium-bg) !important;
 }
@@ -1786,7 +1786,7 @@ section {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  opacity: 0.4;
+  opacity: 0.25;
 }
 
 [data-theme="light"] .hero-background {
@@ -1798,7 +1798,7 @@ section {
   border-radius: 50%;
   filter: blur(100px);
   animation: float 20s ease-in-out infinite;
-  opacity: 0.6;
+  opacity: 0.35;
 }
 
 .orb-1 {
