@@ -137,11 +137,12 @@ export const seoConfig = {
     },
 
     ai_photo_search: {
-      title: "AI Photo Search - Find Any Photo by Describing It | Photoreka",
+      title:
+        "AI Photo Search App - Find Photos in Your Catalog by Natural Language | Photoreka",
       description:
-        "Stop scrolling through thousands of photos. Photoreka's AI understands natural language: search for 'rainy street at night with reflections' or 'melancholic portrait in window light' and get instant results—no tagging required. Powered by semantic image embeddings and vector similarity search.",
+        "Find any photo in your catalog just by describing it. Type 'rainy street at night with reflections' or 'melancholic portrait in window light' and Photoreka instantly searches your entire photo library—no tagging, no manual keywords. The AI photo search app that understands natural language. Powered by semantic image embeddings and vector similarity search.",
       keywords:
-        "AI photo search, natural language photo search, find photos by description, semantic image search, no tagging photo search, photo search AI, computer vision photo organizer, visual similarity search, search photos without keywords, intelligent photo finder, photo archive search, image semantic search",
+        "AI photo search, natural language photo search, find photos in catalog, search photo catalog, find photos by description, search my photo library, photo catalog search app, semantic image search, no tagging photo search, search photos without keywords, find photos by describing them, photo library search, photo archive search, intelligent photo finder, AI photo organizer, computer vision photo search",
       ogImage: "/home/video_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -150,7 +151,7 @@ export const seoConfig = {
         "@type": "WebApplication",
         name: "Photoreka AI Photo Search",
         description:
-          "Find any photo by describing it in natural language. No tagging required. Powered by computer vision AI and semantic image embeddings.",
+          "Find any photo in your catalog by describing it in natural language. No tagging required. Search your entire photo library instantly with computer vision AI and semantic image embeddings.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
         offers: {
