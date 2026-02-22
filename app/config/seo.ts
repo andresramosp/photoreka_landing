@@ -229,6 +229,54 @@ export const seoConfig = {
       },
     },
 
+    photo_chat: {
+      title:
+        "AI Photo Assistant & Catalog Intelligence – Talk to Your Photo Library | Photoreka",
+      description:
+        "Your archive has more to say than you think. Photoreka's AI photo assistant delivers deep photography analysis beyond search: honest portfolio critiques, AI artistic analysis, style pattern detection, and photographic evolution insights—all through plain conversation. The conversational DAM built for photographers who want catalog intelligence, not just a file browser.",
+      keywords:
+        "AI photo assistant, photo catalog chatbot, talk to your photos, AI portfolio critique, photo library assistant, natural language photo search, AI photo curation, photo archive insights, photography AI coach, intelligent photo search, photo catalog analysis, AI photography feedback, portfolio analysis AI, photo evolution tracking, AI photo organizer, smart photo assistant, photo curation AI, photography assistant, photo catalog chat, AI photo insights, AI photography analysis, creative AI for photographers, AI artistic analysis, AI style analysis photography, photography pattern analysis, visual pattern detection in photos, photographic evolution analysis, AI artistic critique tool, photo intelligence platform, AI catalog intelligence, intelligent photo archive, AI-powered photo analytics, photography insights dashboard, AI visual archive analysis, smart photo catalog analysis, conversational photo management, AI digital asset management for photographers, AI DAM for photography, smart photo asset manager, AI portfolio optimizer, intelligent photo sequencing, AI photo series builder, AI exhibition selection tool, AI competition submission assistant, visual similarity search, AI photo clustering, style clustering photography",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka AI Photo Assistant",
+        description:
+          "Conversational catalog intelligence for photographers. Ask questions, get deep AI artistic analysis, portfolio critiques, style pattern insights, and curated sequences—just by talking to your photo library.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Natural language conversation with your photo catalog",
+          "AI-powered portfolio critique and artistic analysis",
+          "Artistic and stylistic evolution tracking over time",
+          "Intelligent curation and sequence building",
+          "AI photo series and exhibition selection",
+          "Personalized photography advice",
+          "Catalog intelligence: statistics, scores, and visual pattern discovery",
+          "AI style analysis and photography pattern analysis",
+          "Visual similarity search within your catalog",
+          "AI photo clustering and style clustering",
+          "Competition and exhibition submission assistance",
+          "Conversational digital asset management",
+          "Multilingual support",
+          "Context-aware follow-up questions",
+        ],
+      },
+    },
+
     photo_3d_atlas: {
       title:
         "3D Photo Atlas - Visualize Your Entire Photo Catalog in 3D Space | Photoreka",
