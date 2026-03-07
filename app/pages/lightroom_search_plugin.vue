@@ -478,6 +478,8 @@ const faqs = ref([
 // Runtime config
 const config = useRuntimeConfig();
 
+const { isOpenMode } = useRegistrationMode();
+
 // Navigation methods
 const goToHome = () => {
   trackUserAction("navigate_to_home", "lightroom_plugin_page");
@@ -486,7 +488,11 @@ const goToHome = () => {
 
 const goToPlugin = () => {
   trackUserAction("request_plugin_access", "lightroom_plugin_page");
-  showRequestAccessDialog.value = true;
+  if (isOpenMode.value) {
+    window.open(`${config.public.appUrl}/auth`, "_blank");
+  } else {
+    showRequestAccessDialog.value = true;
+  }
 };
 
 const goToAtlas = () => {

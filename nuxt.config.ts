@@ -19,6 +19,9 @@ export default defineNuxtConfig({
       gaMeasurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || "G-WK7N5SVNVD",
       appUrl: import.meta.env.VITE_APP_URL || "https://app.photoreka.com",
       siteUrl: import.meta.env.VITE_SITE_URL || "https://www.photoreka.com",
+      // Env.schema.enum.optional(['open', 'waiting_list'] as const)
+      registrationMode: (process.env.NUXT_PUBLIC_REGISTRATION_MODE ||
+        "waiting_list") as "open" | "waiting_list",
     },
   },
 

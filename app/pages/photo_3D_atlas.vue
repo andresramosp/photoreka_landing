@@ -404,6 +404,8 @@ const faqs = ref([
 // Runtime config
 const config = useRuntimeConfig();
 
+const { isOpenMode } = useRegistrationMode();
+
 // Dialog states
 const showRequestDialog = ref(false);
 
@@ -415,7 +417,11 @@ const goToHome = () => {
 
 const goToAtlas = () => {
   trackUserAction("launch_atlas", "photo_3d_atlas_page");
-  showRequestDialog.value = true;
+  if (isOpenMode.value) {
+    window.open(`${config.public.appUrl}/auth`, "_blank");
+  } else {
+    showRequestDialog.value = true;
+  }
 };
 
 // FAQ methods

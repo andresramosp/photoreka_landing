@@ -81,7 +81,7 @@
                     <template #icon>
                       <n-icon><KeyOutline /></n-icon>
                     </template>
-                    Join Waiting List
+                    {{ joinButtonLabel }}
                   </n-button>
                 </div>
               </div>
@@ -362,7 +362,7 @@
                   <template #icon>
                     <n-icon><KeyOutline /></n-icon>
                   </template>
-                  Join Waiting List
+                  {{ joinButtonLabel }}
                 </n-button>
               </div>
               <div class="cta-extra">
@@ -633,6 +633,8 @@ const faqs = ref([
 // Runtime config
 const config = useRuntimeConfig();
 
+const { isOpenMode, joinButtonLabel } = useRegistrationMode();
+
 // Navigation
 const goToHome = () => {
   trackUserAction("navigate_to_home", "ai_photo_search_page");
@@ -646,7 +648,11 @@ const goToDemo = () => {
 
 const goToSignup = () => {
   trackUserAction("open_signup", "ai_photo_search_page");
-  showRequestDialog.value = true;
+  if (isOpenMode.value) {
+    window.open(`${config.public.appUrl}/auth`, "_blank");
+  } else {
+    showRequestDialog.value = true;
+  }
 };
 
 const goToAtlas = () => {

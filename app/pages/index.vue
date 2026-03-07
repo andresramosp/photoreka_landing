@@ -101,8 +101,7 @@
                   <template #icon>
                     <n-icon><KeyOutline /></n-icon>
                   </template>
-                  <!-- Join the Waiting List -->
-                  Waiting List
+                  {{ signupButtonLabel }}
                 </n-button>
               </div>
               <!-- Video Demo Section -->
@@ -804,11 +803,17 @@ const faqs = ref([
 // Get runtime config
 const config = useRuntimeConfig();
 
+const { isOpenMode, signupButtonLabel } = useRegistrationMode();
+
 // Navigation methods
 const goToAuth = (mode = "login") => {
   trackUserAction("navigate_to_auth", "landing_page_premium", mode);
   if (mode === "signup") {
-    showRequestDialog.value = true;
+    if (isOpenMode.value) {
+      window.open(`${config.public.appUrl}/auth`, "_blank");
+    } else {
+      showRequestDialog.value = true;
+    }
   } else {
     const authUrl = `${config.public.appUrl}/auth?mode=${mode}`;
     window.location.assign(authUrl);

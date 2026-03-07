@@ -86,7 +86,7 @@
                     <template #icon>
                       <n-icon><KeyOutline /></n-icon>
                     </template>
-                    Join Waiting List
+                    {{ joinButtonLabel }}
                   </n-button>
                 </div>
                 <p class="cta-note">No credit card required · Free to start</p>
@@ -306,7 +306,7 @@
                   <template #icon>
                     <n-icon><KeyOutline /></n-icon>
                   </template>
-                  Join Waiting List
+                  {{ joinButtonLabel }}
                 </n-button>
               </div>
               <div class="cta-extra">
@@ -614,9 +614,15 @@ const goToApp = () => {
   window.open(`${appUrl}/demo`, "_blank");
 };
 
+const { isOpenMode, joinButtonLabel } = useRegistrationMode();
+
 const goToSignup = () => {
   trackUserAction("open_signup", "photo_chat_page");
-  showRequestDialog.value = true;
+  if (isOpenMode.value) {
+    window.open(`${config.public.appUrl}/auth`, "_blank");
+  } else {
+    showRequestDialog.value = true;
+  }
 };
 
 const goToAtlas = () => {
