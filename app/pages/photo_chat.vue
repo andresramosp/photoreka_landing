@@ -45,22 +45,23 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><ChatbubblesOutline /></n-icon>
-                    Photoreka's ChatLab Assistant
+                    AI Photo Assistant for Photographers
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Your photo library,<br />
-                  <span class="gradient-text">finally intelligent</span>
+                  Chat with your<br />
+                  <span class="gradient-text">photo library</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Ask anything about your catalog in plain language.
+                  Use an AI photo assistant to search, analyze, and curate your
+                  catalog in plain language.
                   <em>"What are my weakest photos?"</em>,
                   <em>"Build a sequence of my 5 best portraits"</em>,
                   <em>"Have I improved in the last 6 months?"</em>—and get a
                   real answer backed by your actual work.<br /><br />
-                  Photoreka's AI assistant knows every photo you've taken,
-                  understands your style, and turns your archive into a
-                  <strong>conversation</strong>.
+                  Photoreka combines <strong>photo library search</strong>,
+                  portfolio critique, and catalog intelligence in one
+                  conversational interface built for photographers.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -134,12 +135,12 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: examplesVisible }">
               <h2 class="section-title">
-                Ask questions no search bar can answer
+                Ask questions a normal photo search cannot answer
               </h2>
               <p class="section-subtitle">
-                The assistant understands your entire catalog and responds with
-                insights, curated selections, and honest feedback—in whatever
-                language you write in.
+                This is more than AI photo search. The assistant understands
+                your full catalog and responds with insights, curated
+                selections, and honest feedback in whatever language you write.
               </p>
             </div>
 
@@ -180,8 +181,8 @@
             <div class="section-header" :class="{ visible: howVisible }">
               <h2 class="section-title">How it works</h2>
               <p class="section-subtitle">
-                Two AIs working together to give you the most useful answer for
-                each question.
+                An AI photo assistant and photo catalog search engine working
+                together on the same query.
               </p>
             </div>
 
@@ -209,11 +210,12 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
               <h2 class="section-title">
-                Everything your archive has been trying to tell you
+                Everything an AI photo assistant should do for your archive
               </h2>
               <p class="section-subtitle">
-                The assistant doesn't just search—it reasons, curates, and
-                reflects on your photographic practice.
+                It does not stop at finding images. It reasons across your photo
+                library, curates selections, and explains what is happening in
+                your work.
               </p>
             </div>
 
@@ -243,7 +245,8 @@
             <div class="section-header" :class="{ visible: faqVisible }">
               <h2 class="section-title">Frequently Asked Questions</h2>
               <p class="section-subtitle">
-                Everything you need to know about the AI assistant
+                What photographers usually want to know about AI photo chat and
+                photo library search
               </p>
             </div>
 
@@ -276,12 +279,10 @@
         <section class="cta-section" ref="ctaSection">
           <div class="section-container">
             <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">
-                Start the conversation with your archive
-              </h2>
+              <h2 class="cta-title">Start chatting with your photo catalog</h2>
               <p class="cta-description">
-                Your photos have always been trying to tell you something about
-                your style, your progress, your voice. Now you can finally ask.
+                Search your photo library, ask for critique, and build curated
+                selections from the same AI assistant.
               </p>
               <div class="cta-buttons">
                 <n-button
@@ -363,7 +364,76 @@ import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO
-useSEO("photo_chat");
+useSEO("photo_chat", {
+  jsonLd: [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: "Photoreka AI Photo Assistant",
+      description:
+        "AI photo assistant for photographers. Chat with your photo library to search your catalog, get portfolio critique, discover patterns, and build curated photo selections.",
+      applicationCategory: "PhotographyApplication",
+      operatingSystem: "Web",
+      url: "https://www.photoreka.com/photo_chat",
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/PreOrder",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      creator: {
+        "@type": "Organization",
+        name: "Photoreka",
+        url: "https://www.photoreka.com",
+      },
+      featureList: [
+        "Chat with your photo library in natural language",
+        "AI photo catalog search assistant",
+        "Portfolio critique for photographers",
+        "Catalog insights and pattern detection",
+        "Curated photo selections and sequencing",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How is this different from just searching my photos?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Search finds photos that match a description. The assistant reasons about your catalog as a whole: it can evaluate your work, spot patterns across thousands of images, build curated sequences, and give you personalized feedback.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does it actually look at my photos, or just the metadata?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Both. For most questions it combines metadata with visual embeddings. When you ask about specific images, it can also process the actual photos directly for visual understanding of composition, mood, and lighting.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can it really critique my photography objectively?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "It gives evidence-based feedback grounded in your actual catalog, including composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is designed to be useful rather than flattering.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I use it to prepare for a competition or exhibition?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. You can ask for a ranked selection of your best work, a coherent sequence, or a specific number of images that tell a story, and the assistant will select and order them with curatorial intent.",
+          },
+        },
+      ],
+    },
+  ],
+});
 
 useHead({
   script: [
@@ -410,19 +480,19 @@ const showRequestDialog = ref(false);
 const demoMessages = ref([
   {
     role: "user",
-    text: "What's my weakest area as a photographer?",
+    text: "Search my photo library for my strongest portraits from last year",
   },
   {
     role: "assistant",
-    text: "Looking at your 2,847 photos… Your composition is strong across the board, but artificial lighting is your main gap—71% of those shots score below average. Portraits under natural light are consistently your best work.",
+    text: "I found 46 portrait candidates from last year and ranked the strongest 8 by expression, composition, and technical quality. Your best results cluster around natural window light and tighter framing.",
   },
   {
     role: "user",
-    text: "Show me my top 5 portraits for a competition",
+    text: "What is my weakest area as a photographer?",
   },
   {
     role: "assistant",
-    text: "I've selected and ranked 5 portraits based on emotional impact, technical quality, and compositional strength. Sorted with the strongest opening image first.",
+    text: "Across 2,847 analyzed photos, artificial lighting is your main weakness: consistency drops sharply compared with your natural-light portraits. Composition is strong overall, but flash portraits score below your catalog average.",
   },
 ]);
 
