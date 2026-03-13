@@ -794,6 +794,11 @@ const faqs = ref([
     hasLink: true,
   },
   {
+    question: "What kind of photo catalog is Photoreka designed for?",
+    answer:
+      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 5,000 photos; up to 10,000 is workable but we recommend keeping it focused. Because analysis runs in the cloud and the tools are built around curation—sequences, semantic search, visual clusters, scores—they work best when your archive already has a baseline of intentionality: duplicates removed, clearly failed shots discarded. There is duplicate detection built in, but the value of every feature increases the more curated your starting point is.",
+  },
+  {
     question: "Can I try Photoreka for free?",
     answer: `Analyzing your photos requires a single batch payment. Afterward, you can use most tools for free, with some daily/total limits, or purchase credits to work unlimitedly. <span style='color:var(--premium-primary);font-weight:600;'>During the <a href='#' style='color:var(--premium-primary);text-decoration:underline;' onclick='event.preventDefault();window.__goToEarlyAccess && window.__goToEarlyAccess()'>early access</a> phase, a free photo package and usage credits will be offered.</span>`,
     hasHtml: true,
