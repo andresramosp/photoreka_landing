@@ -325,6 +325,223 @@ export const seoConfig = {
         ],
       },
     },
+
+    ai_photo_culling: {
+      title:
+        "AI Photo Culling Tool - Auto-Select Your Best Photos Instantly | Photoreka",
+      description:
+        "Stop spending hours culling photos manually. Photoreka's AI photo culling ranks every image by aesthetics, composition, sharpness, and narrative strength—so you instantly see your strongest shots. Works with Lightroom Classic, Google Photos, and local files. Not binary keep/reject: multi-dimensional scoring that respects your style.",
+      keywords:
+        "AI photo culling, photo culling software, best photo culling tool, AI cull photos, fast photo culling, auto select best photos, aftershoot alternative, narrative select alternative, photo culling app, smart photo selection, automated photo editing, AI photo selector, batch photo culling, photography culling workflow, lightroom culling plugin, professional photo culling",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka AI Photo Culling",
+        description:
+          "AI-powered photo culling tool that ranks your images across multiple quality dimensions instead of binary keep/reject. Find your best photos instantly.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Multi-dimensional photo scoring",
+          "Aesthetic quality ranking",
+          "Composition analysis",
+          "Sharpness and technical evaluation",
+          "Narrative strength scoring",
+          "Batch processing of thousands of photos",
+          "Works with Lightroom Classic",
+          "Natural language search to filter results",
+          "No manual tagging required",
+        ],
+      },
+    },
+
+    photo_scoring: {
+      title:
+        "AI Photo Scoring & Aesthetic Ranking - Rate Your Photos Automatically | Photoreka",
+      description:
+        "Score every photo in your catalog across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, and more. Photoreka's AI photo scoring uses computer vision to rank your best work automatically—no subjective guesswork, no manual curation. Surface your strongest images instantly from thousands.",
+      keywords:
+        "AI photo scoring, aesthetic photo score, rate my photos AI, photography quality score, image aesthetic assessment, photo composition analyzer, best photo selector AI, photo rating tool, image quality scoring, AI photography ranking, photo aesthetic analysis, automated photo rating, visual quality assessment, photography scoring app, photo quality checker AI",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka AI Photo Scoring",
+        description:
+          "AI-powered photo scoring tool that rates your photos across multiple quality dimensions: aesthetics, composition, narrative strength, originality, and more.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Multi-dimensional photo scoring",
+          "Aesthetic quality assessment",
+          "Composition analysis",
+          "Narrative strength rating",
+          "Originality scoring",
+          "Visual wit and humor detection",
+          "Batch scoring of entire catalogs",
+          "Automatic best photo surfacing",
+          "Ranking across custom criteria",
+        ],
+      },
+    },
+
+    photography_portfolio_builder: {
+      title:
+        "AI Photography Portfolio Builder - Auto-Curate Your Best Work | Photoreka",
+      description:
+        "Let AI select and sequence your strongest photos into a cohesive portfolio. Photoreka combines aesthetic scoring, narrative sequencing, and conversational curation to help you build a photography portfolio that tells your story. Prepare for exhibitions, competitions, and client presentations in minutes instead of days.",
+      keywords:
+        "AI photography portfolio builder, best photos for portfolio AI, photography portfolio selector, build photography portfolio automatically, AI portfolio curation, photography website portfolio tool, auto curate portfolio, portfolio photo selection AI, photography exhibition preparation, competition photo selection, photo portfolio generator, AI photo curation tool, photography portfolio creator",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka Portfolio Builder",
+        description:
+          "AI-powered photography portfolio builder that automatically selects, ranks, and sequences your strongest work into cohesive portfolios for exhibitions, competitions, and presentations.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "AI-powered best photo selection",
+          "Automatic narrative sequencing",
+          "Multi-dimensional quality scoring",
+          "Exhibition-ready portfolio curation",
+          "Competition submission preparation",
+          "Conversational curation assistant",
+          "Thematic coherence analysis",
+          "Style consistency evaluation",
+          "Portfolio gap analysis",
+        ],
+      },
+    },
+
+    google_photos_alternative: {
+      title:
+        "Google Photos Alternative for Photographers - AI Photo Organizer | Photoreka",
+      description:
+        "Looking for a Google Photos alternative built for serious photographers? Photoreka offers AI-powered semantic search, 3D catalog visualization, aesthetic scoring, narrative sequencing, and portfolio curation—tools that consumer apps can't match. Full privacy, no ads, and you keep 100% ownership of your images.",
+      keywords:
+        "google photos alternative for photographers, google photos alternative privacy, better than google photos, photo organizer for professionals, google photos alternative AI search, professional photo management, apple photos alternative, photo management for photographers, AI photo organizer, advanced photo search, photography DAM alternative, photo library management, private photo organizer, photographer photo management, photo curation platform",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka - Google Photos Alternative",
+        description:
+          "Professional photo management platform for photographers. AI-powered alternative to Google Photos with semantic search, 3D visualization, aesthetic scoring, and portfolio curation.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Natural language photo search",
+          "3D catalog visualization",
+          "Multi-dimensional aesthetic scoring",
+          "AI-powered photo curation",
+          "Narrative sequencing tools",
+          "Lightroom Classic integration",
+          "Privacy-first design",
+          "100% image ownership",
+          "No ads or data mining",
+          "Professional-grade organization",
+        ],
+      },
+    },
+
+    photo_reports: {
+      title:
+        "Photography Style Analysis & Pattern Reports - AI Insights | Photoreka",
+      description:
+        "Understand how you shoot. Photoreka's AI analyzes your entire catalog to surface recurring patterns, stylistic tendencies, compositional habits, color palettes, and thematic preferences. Get detailed reports on your photographic evolution, strengths, blind spots, and unique visual signature. See your work from the outside for the first time.",
+      keywords:
+        "photography style analysis AI, photo pattern report, photography portfolio analysis, AI photography critique, visual style analysis tool, understand my photography style, photography insights, photo catalog analysis, photographer style report, visual pattern detection, photography evolution tracker, photo habit analysis, compositional style analysis, photography strengths analysis, photographic body of work analysis",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka Photography Reports",
+        description:
+          "AI-powered photography style analysis and pattern reports. Discover your visual signature, track stylistic evolution, and understand your photographic habits across your entire archive.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Stylistic pattern detection",
+          "Compositional habit analysis",
+          "Color palette evolution tracking",
+          "Thematic preference reports",
+          "Strengths and blind spots analysis",
+          "Photography evolution timeline",
+          "Visual signature identification",
+          "Subject frequency analysis",
+          "Lighting style breakdown",
+          "Cross-catalog pattern comparison",
+        ],
+      },
+    },
   },
 };
 

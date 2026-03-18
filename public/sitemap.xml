@@ -42,6 +42,36 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.photoreka.com/ai_photo_culling</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/photo_scoring</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/photography_portfolio_builder</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/google_photos_alternative</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/photo_reports</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.photoreka.com/terms</loc>
         <lastmod>2026-01-16</lastmod>
         <changefreq>monthly</changefreq>

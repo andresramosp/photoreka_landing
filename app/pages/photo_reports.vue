@@ -42,28 +42,27 @@
           </div>
           <div class="hero-container">
             <div class="hero-layout">
-              <!-- Left: Content -->
               <div class="hero-content">
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
-                    <n-icon size="16"><SearchOutline /></n-icon>
-                    AI Search
+                    <n-icon size="16"><AnalyticsOutline /></n-icon>
+                    Photography Reports
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Find any photo by
-                  <span class="gradient-text">describing it</span>
+                  See your photography
+                  <span class="gradient-text">from the outside</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Stop scrolling through thousands of photos trying to remember
-                  where something is. Just type what you remember—
-                  <em>"rainy street at night with reflections"</em>,
-                  <em>"smiling kid, warm light, shallow focus"</em>,
-                  <em>"Blade Runner-style atmosphere"</em>—and Photoreka finds
-                  it instantly.<br /><br />
-                  No tagging. No folders. No metadata editing. Pure
-                  <strong>semantic search</strong> powered by computer vision AI
-                  that understands your photos the way you do.
+                  You know how your photos <em>feel</em>—but do you know what
+                  the data says? Photoreka generates
+                  <strong
+                    >detailed reports on your style, patterns, strengths, and
+                    evolution</strong
+                  >
+                  by analyzing your entire catalog with AI.<br /><br />
+                  Discover what you're great at, where you're growing, and what
+                  to shoot next—backed by multi-dimensional analysis, not vibes.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -88,12 +87,11 @@
                 </div>
               </div>
 
-              <!-- Right: Video -->
               <div class="hero-visual" :class="{ visible: heroVisible }">
                 <div class="video-frame">
                   <video
                     class="hero-video"
-                    src="/videos/explorer_1.mp4"
+                    src="/videos/atlas_1.mp4"
                     poster="/home/video_poster.jpg"
                     ref="videoRef"
                     autoplay
@@ -107,40 +105,37 @@
           </div>
         </section>
 
-        <!-- Search Examples Section -->
-        <section class="examples-section" ref="examplesSection">
+        <!-- Report Types Section -->
+        <section class="reports-section" ref="reportsSection">
           <div class="section-container">
-            <div class="section-header" :class="{ visible: examplesVisible }">
-              <h2 class="section-title">Search the way you think</h2>
+            <div class="section-header" :class="{ visible: reportsVisible }">
+              <h2 class="section-title">Reports that reveal your work</h2>
               <p class="section-subtitle">
-                Photoreka understands natural language, visual descriptions,
-                emotions, styles, and even references to other photographers or
-                films. If you can describe it, you can find it.
+                Every report is generated from real AI analysis of your photos—
+                not metadata alone. Understand patterns, track growth, and make
+                informed creative decisions.
               </p>
             </div>
 
-            <div class="examples-grid" :class="{ visible: examplesVisible }">
+            <div class="reports-grid" :class="{ visible: reportsVisible }">
               <div
-                v-for="(group, i) in searchExamples"
+                v-for="(report, i) in reportTypes"
                 :key="i"
-                class="example-group"
-                :style="{ transitionDelay: `${i * 80}ms` }"
+                class="report-card"
+                :style="{ transitionDelay: `${i * 100}ms` }"
               >
-                <div class="example-group-label">
-                  <n-icon size="16">
-                    <component :is="group.icon" />
+                <div class="report-icon" :style="{ color: report.color }">
+                  <n-icon size="28">
+                    <component :is="report.icon" />
                   </n-icon>
-                  <span>{{ group.label }}</span>
                 </div>
-                <div class="example-queries">
-                  <span
-                    v-for="(q, j) in group.queries"
-                    :key="j"
-                    class="query-chip"
-                  >
-                    "{{ q }}"
-                  </span>
-                </div>
+                <h3 class="report-title">{{ report.title }}</h3>
+                <p class="report-description">{{ report.description }}</p>
+                <ul class="report-insights">
+                  <li v-for="(insight, j) in report.insights" :key="j">
+                    {{ insight }}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -154,9 +149,9 @@
           </div>
           <div class="section-container" style="position: relative; z-index: 1">
             <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">How it works</h2>
+              <h2 class="section-title">How photo reports work</h2>
               <p class="section-subtitle">
-                No black box. Here's exactly what happens when you type a query.
+                From raw analysis to actionable insights—all automatic.
               </p>
             </div>
 
@@ -183,10 +178,13 @@
         <section class="features-section" ref="featuresSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">More than keyword search</h2>
+              <h2 class="section-title">
+                More than numbers—real creative intelligence
+              </h2>
               <p class="section-subtitle">
-                Photoreka's search understands context, mood, composition, and
-                intent—not just the words in your metadata.
+                Photo reports go beyond basic stats. They combine AI vision,
+                scoring data, and temporal analysis to give you a complete
+                picture of your practice.
               </p>
             </div>
 
@@ -210,105 +208,13 @@
           </div>
         </section>
 
-        <!-- Lightroom Section (secondary) -->
-        <section class="lr-section" ref="lrSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1" style="animation-delay: -8s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -3s"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout lr-layout" :class="{ visible: lrVisible }">
-              <!-- Left: Video -->
-              <div class="hero-visual" :class="{ visible: lrVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    src="/videos/lr_plugin.mp4"
-                    poster="/home/video_lr_poster.jpg"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
-
-              <!-- Right: Content -->
-              <div class="hero-content" :class="{ visible: lrVisible }">
-                <div class="hero-badge lr-badge">
-                  <span class="badge-content">
-                    <img
-                      src="/logos/lightroom_logo.png"
-                      alt="Adobe Lightroom"
-                      style="height: 18px; width: 18px; object-fit: contain"
-                    />
-                    Also available in Lightroom Classic
-                  </span>
-                </div>
-                <h2 class="hero-title lr-title">
-                  Search directly from
-                  <span class="gradient-text">Lightroom Classic</span>
-                </h2>
-                <p class="hero-subtitle">
-                  Already using Lightroom? Our official plugin brings the same
-                  AI-powered natural language search directly into your existing
-                  workflow—without leaving Lightroom or migrating your catalog.
-                  Install it, analyze your library once, and start searching
-                  naturally from within Lightroom's own panels.
-                </p>
-
-                <ul class="lr-features">
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #2563eb">
-                      <n-icon size="18"><SyncOutline /></n-icon>
-                    </div>
-                    <span>Reads your existing catalog—nothing changes</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #8b5cf6">
-                      <n-icon size="18"><ChatbubblesOutline /></n-icon>
-                    </div>
-                    <span>Search panel integrated inside Lightroom</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #22c55e">
-                      <n-icon size="18"><LockClosedOutline /></n-icon>
-                    </div>
-                    <span>All processing runs locally on your machine</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #f59e0b">
-                      <n-icon size="18"><LinkOutline /></n-icon>
-                    </div>
-                    <span>Compatible with Lightroom Classic 13.0+</span>
-                  </li>
-                </ul>
-
-                <div class="hero-actions">
-                  <n-button
-                    type="warning"
-                    size="large"
-                    strong
-                    @click="goToLightroomPlugin"
-                  >
-                    <template #icon>
-                      <n-icon><DownloadOutline /></n-icon>
-                    </template>
-                    See the Plugin
-                  </n-button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <!-- FAQ Section -->
         <section class="faq-section" ref="faqSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: faqVisible }">
               <h2 class="section-title">Frequently Asked Questions</h2>
               <p class="section-subtitle">
-                Everything you need to know about AI photo search
+                Everything you need to know about AI-powered photo reports
               </p>
             </div>
 
@@ -341,11 +247,11 @@
         <section class="cta-section" ref="ctaSection">
           <div class="section-container">
             <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Stop searching. Start finding.</h2>
+              <h2 class="cta-title">What story does your photography tell?</h2>
               <p class="cta-description">
-                Your archive has been waiting to be understood. Try the demo and
-                search your photos the way you've always wanted—by describing
-                what you see, feel, and remember.
+                Let the data reveal patterns you can't see by scrolling through
+                a grid. Photoreka reports give you a photographer's mirror—
+                objective, detailed, and built to help you grow.
               </p>
               <div class="cta-buttons">
                 <n-button type="info" size="large" strong @click="goToDemo">
@@ -369,9 +275,11 @@
               </div>
               <div class="cta-extra">
                 <p>
-                  Want to see how photos are organized in space?
-                  <a @click="goToAtlas" class="cta-link"
-                    >Explore the 3D Atlas</a
+                  See how scoring powers your reports:
+                  <a @click="goToScoring" class="cta-link">Photo Scoring</a>
+                  &middot;
+                  <a @click="goToChat" class="cta-link"
+                    >Chat with Your Photos</a
                   >
                 </p>
               </div>
@@ -395,28 +303,26 @@ import {
   MoonOutline,
   ArrowBackOutline,
   PlayCircleOutline,
-  SearchOutline,
   KeyOutline,
   ChevronDownOutline,
-  ChatbubblesOutline,
-  SpeedometerOutline,
-  LockClosedOutline,
-  LinkOutline,
-  SyncOutline,
-  DownloadOutline,
+  AnalyticsOutline,
+  BarChartOutline,
+  TrendingUpOutline,
   ColorPaletteOutline,
-  ImagesOutline,
   EyeOutline,
   FlashOutline,
-  HappyOutline,
-  FilmOutline,
-  GridOutline,
+  GitNetworkOutline,
+  SpeedometerOutline,
+  TimeOutline,
+  LayersOutline,
+  StatsChartOutline,
+  PulseOutline,
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO
-useSEO("ai_photo_search");
+useSEO("photo_reports");
 
 useHead({
   script: [
@@ -441,107 +347,123 @@ const toggleTheme = () => baseToggleTheme();
 
 // Refs
 const heroSection = ref(null);
-const examplesSection = ref(null);
+const reportsSection = ref(null);
 const howSection = ref(null);
 const featuresSection = ref(null);
-const lrSection = ref(null);
 const faqSection = ref(null);
 const ctaSection = ref(null);
 const videoRef = ref(null);
 
 const heroVisible = ref(false);
-const examplesVisible = ref(false);
+const reportsVisible = ref(false);
 const howVisible = ref(false);
 const featuresVisible = ref(false);
-const lrVisible = ref(false);
 const faqVisible = ref(false);
 const ctaVisible = ref(false);
 
 const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
 
-// Search example groups
-const searchExamples = ref([
+// Report types
+const reportTypes = ref([
   {
-    label: "By subject & scene",
-    icon: markRaw(ImagesOutline),
-    queries: [
-      "street scene at dusk with neon signs",
-      "child laughing on the beach",
-      "empty road through a forest in autumn",
+    icon: markRaw(BarChartOutline),
+    title: "Quality Distribution Report",
+    description:
+      "Understand the quality landscape of your entire catalog at a glance.",
+    insights: [
+      "Score distribution across all photos",
+      "Top percentile breakdown",
+      "Quality vs. volume by time period",
     ],
+    color: "#f59e0b",
   },
   {
-    label: "By mood & emotion",
-    icon: markRaw(HappyOutline),
-    queries: [
-      "melancholic portrait in window light",
-      "joyful chaos at a family gathering",
-      "quiet solitude, minimalist composition",
+    icon: markRaw(TrendingUpOutline),
+    title: "Evolution & Growth Report",
+    description:
+      "Track how your photography has changed month-over-month and year-over-year.",
+    insights: [
+      "Average score trends over time",
+      "Dimension-specific improvements",
+      "Shooting frequency patterns",
     ],
+    color: "#22c55e",
   },
   {
-    label: "By light & color",
     icon: markRaw(ColorPaletteOutline),
-    queries: [
-      "warm golden hour backlight",
-      "high contrast black and white, deep shadows",
-      "pastel tones, soft diffused light",
+    title: "Style & Aesthetics Report",
+    description:
+      "Discover the visual DNA of your photography—color palettes, moods, and recurring motifs.",
+    insights: [
+      "Dominant color profiles",
+      "Mood and tone analysis",
+      "Subject and theme clusters",
     ],
+    color: "#8b5cf6",
   },
   {
-    label: "By style & reference",
-    icon: markRaw(FilmOutline),
-    queries: [
-      "Blade Runner-style atmosphere",
-      "Vivian Maier street photography feel",
-      "cinematic wide angle, desaturated",
+    icon: markRaw(LayersOutline),
+    title: "Strengths & Gaps Report",
+    description:
+      "See where you excel across scoring dimensions and where there's room to grow.",
+    insights: [
+      "Strongest scoring dimensions",
+      "Weakest scoring dimensions",
+      "Personalized improvement suggestions",
     ],
+    color: "#2563eb",
   },
   {
-    label: "Super precise & logical",
-    icon: markRaw(GridOutline),
-    queries: [
-      "silhouette with sun behind",
-      "three people looking at the camera",
-      "car speeding through rain at night",
+    icon: markRaw(GitNetworkOutline),
+    title: "Pattern & Cluster Report",
+    description:
+      "Visualize how your photos naturally group by style, subject, and quality.",
+    insights: [
+      "Automatic theme detection",
+      "Cluster quality comparison",
+      "Outlier and standout identification",
     ],
+    color: "#06b6d4",
   },
   {
-    label: "Nuanced & broad",
-    icon: markRaw(EyeOutline),
-    queries: [
-      "tension and release",
-      "nostalgia mixed with hope",
-      "abandoned but not desolate",
+    icon: markRaw(PulseOutline),
+    title: "Shooting Session Analysis",
+    description:
+      "Break down individual sessions to understand your hit rate and workflow efficiency.",
+    insights: [
+      "Keeper rate per session",
+      "Best time of day / conditions",
+      "Session-to-session comparison",
     ],
+    color: "#ec4899",
   },
 ]);
 
 // How it works steps
 const steps = ref([
   {
-    title: "Your photos are analyzed once",
+    title: "Your photos are scored across multiple dimensions",
     description:
-      "When you upload or sync your library, Photoreka's computer vision model processes each photo and extracts a high-dimensional visual embedding—a numerical representation that captures content, mood, composition, colors, and style.",
-    color: "linear-gradient(135deg, #2563eb, #06b6d4)",
-  },
-  {
-    title: "Your query becomes a vector too",
-    description:
-      "When you type a search, Photoreka converts your text into a vector in the same semantic space as your photo embeddings using a multimodal AI model trained to align language and images.",
+      "Photoreka's AI evaluates every image for aesthetics, composition, narrative strength, originality, technical quality, and more. This scoring data is the foundation of all reports.",
     color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
-    title: "Similarity search returns results instantly",
+    title: "Patterns are detected across your catalog",
     description:
-      "A fast vector similarity search (cosine distance) finds the photos whose embeddings are closest to your query vector. Results are ranked by semantic relevance—not by filename, date, or metadata.",
+      "The system identifies trends over time, recurring subjects, stylistic clusters, and quality distributions. It finds the patterns you can't see by scrolling a grid.",
+    color: "linear-gradient(135deg, #2563eb, #06b6d4)",
+  },
+  {
+    title: "Reports are generated with visual summaries",
+    description:
+      "Each report combines charts, example photos, and natural-language insights. You see both the data and the 'so what'—clear takeaways you can act on.",
     color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
-    title: "Results improve as you refine",
+    title: "Track progress and set creative goals",
     description:
-      "You can combine queries, filter by date or source, and use figurative or emotional language. The more specific your description, the more precise the results—even across 100,000+ photos.",
+      "Use reports to benchmark your evolution, celebrate improvements, and identify the next area to focus on. The reports update as your catalog grows.",
     color: "linear-gradient(135deg, #f59e0b, #f97316)",
   },
 ]);
@@ -549,91 +471,80 @@ const steps = ref([
 // Features
 const features = ref([
   {
-    icon: markRaw(ChatbubblesOutline),
-    title: "Natural Language",
+    icon: markRaw(StatsChartOutline),
+    title: "Data-Driven Insights",
     description:
-      "Use everyday language—not boolean operators or keyword combinations. Describe a feeling, a scene, a lighting situation, or even a cinematic reference.",
-    color: "#8b5cf6",
-  },
-  {
-    icon: markRaw(EyeOutline),
-    title: "Visual Content Understanding",
-    description:
-      "The AI reads the actual content of each image: subjects, objects, actions, colors, lighting, composition, depth of field, and mood—without any manual input from you.",
-    color: "#2563eb",
-  },
-  {
-    icon: markRaw(FlashOutline),
-    title: "Instant Results",
-    description:
-      "Once your library is analyzed, searches are near-instantaneous regardless of catalog size. Vector similarity search is orders of magnitude faster than scanning metadata records.",
+      "Every insight is backed by AI analysis of your actual photos—not metadata guesses. Understand your strengths with the same rigor a coach would bring.",
     color: "#f59e0b",
   },
   {
-    icon: markRaw(ImagesOutline),
-    title: "Exact & Figurative Matches",
+    icon: markRaw(TrendingUpOutline),
+    title: "Temporal Evolution",
     description:
-      'Search for literal content ("red umbrella in the rain") or figurative associations ("solitude", "tension before a decision", "euphoria"). Both work equally well.',
+      "See how your scores evolve over time. Identify when you had creative breakthroughs and which periods produced your best work.",
     color: "#22c55e",
   },
   {
-    icon: markRaw(GridOutline),
-    title: "Search by Visual Similarity",
+    icon: markRaw(EyeOutline),
+    title: "Visual Examples",
     description:
-      "Found a photo you love? Use it as a query. Photoreka will surface visually similar images from your archive based on embedding proximity—not just similar colors, but similar intent.",
-    color: "#ec4899",
+      "Reports include your actual photos as examples—top scorers, best compositions, most original shots. It's a best-of archive generated automatically.",
+    color: "#8b5cf6",
+  },
+  {
+    icon: markRaw(FlashOutline),
+    title: "Actionable Recommendations",
+    description:
+      "Each report includes personalized suggestions: what to shoot more of, what technical skills to develop, and what subjects to explore.",
+    color: "#2563eb",
+  },
+  {
+    icon: markRaw(TimeOutline),
+    title: "Auto-Updating",
+    description:
+      "Reports refresh as you add new photos. Track your growth continuously without manually running analyses or exporting data.",
+    color: "#06b6d4",
   },
   {
     icon: markRaw(SpeedometerOutline),
-    title: "Scales to Any Archive",
+    title: "Instant Generation",
     description:
-      "Whether you have 100 or 5000 photos, search performance stays consistent. The more you have, the more powerful the discovery.",
-    color: "#06b6d4",
+      "Reports are computed from pre-analyzed scoring data—no waiting for hours of processing. Your insights are ready when you are.",
+    color: "#ec4899",
   },
 ]);
 
 // FAQs
 const faqs = ref([
   {
-    question: "Do I need to tag or keyword my photos first?",
+    question: "What data do the reports use?",
     answer:
-      "No. That's the whole point. Photoreka analyzes the visual content of your photos automatically when you upload or sync your library. You never need to add a single keyword or tag to search effectively.",
+      "Reports are built from AI-generated scores across multiple dimensions (aesthetics, composition, narrative, originality, technical quality), plus metadata like date, camera settings, and detected subjects. The scoring is done once per photo and the reports aggregate the results.",
   },
   {
-    question:
-      "How is this different from searching in Google Photos or Apple Photos?",
+    question: "How many photos do I need for useful reports?",
     answer:
-      "Google Photos and Apple Photos also use AI search, but they're optimized for consumer snapshots and basic object detection. Photoreka is built for photographers: it understands compositional intent, lighting mood, stylistic references, and figurative language—not just 'dog' or 'beach'. It also gives you full control over your archive without locking you into a proprietary cloud.",
+      "You'll get basic insights with as few as 50 photos. For evolution tracking and meaningful trend analysis, 200+ photos spread over time gives the best results. The more photos you have, the richer the patterns.",
   },
   {
-    question: "Can it understand artistic or emotional descriptions?",
+    question: "Can I compare different time periods?",
     answer:
-      "Yes. You can search for 'melancholic portrait', 'chaotic energy', 'Hopper-esque loneliness', or 'cinematic tension' and get meaningful results. The underlying model was trained on a vast corpus of image-text pairs including photography criticism, captions, and art descriptions.",
+      "Yes. The evolution report lets you compare quality metrics across months, quarters, or years. You can see exactly when your photography improved and in which specific dimensions.",
   },
   {
-    question: "How long does the initial analysis take?",
+    question: "Are the reports automated or manual?",
     answer:
-      "Analysis runs in the background and typically processes around 1,000 photos per hour depending on your connection. You don't need to wait for it to finish—you can start searching as soon as a batch is ready.",
+      "Fully automated. Once your photos are scored, reports are generated without any manual input. They update continuously as new photos are added to your catalog.",
   },
   {
-    question: "Are my photos sent to a server or processed locally?",
+    question: "Can I share reports with a mentor or community?",
     answer:
-      "Photoreka sends compressed previews (not your originals) to our servers for analysis. Your full-resolution files never leave your machine. The search index is stored on your account and no one else can access your library.",
+      "Reports are designed to be shareable. They're a great tool for getting feedback from mentors, peers, or photography communities—backed by data rather than subjective impressions alone.",
   },
   {
-    question: "Can I search across multiple sources at once?",
+    question: "Do reports tell me what to shoot?",
     answer:
-      "Yes. If you have photos from Lightroom Classic, Google Photos, and local uploads all synced to Photoreka, a single search will return results across all of them simultaneously.",
-  },
-  {
-    question: "What if the results aren't what I expected?",
-    answer:
-      "Try rephrasing your query. More descriptive language usually yields better results. You can also narrow down by date range, source, or combine the search with the 3D Atlas to visually explore adjacent clusters of similar photos.",
-  },
-  {
-    question: "What kind of photo catalog is Photoreka designed for?",
-    answer:
-      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 5,000 photos; up to 10,000 is workable but we recommend keeping it focused. Because analysis runs in the cloud and the tools are built around curation—sequences, semantic search, visual clusters, scores—they work best when your archive already has a baseline of intentionality: duplicates removed, clearly failed shots discarded. There is duplicate detection built in, but the value of every feature increases the more curated your starting point is.",
+      "They suggest areas for growth based on your data. For example, if your composition scores are consistently lower than aesthetics, the report may suggest focusing on compositional exercises. It's guidance, not a prescription.",
   },
 ]);
 
@@ -644,17 +555,17 @@ const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 
 // Navigation
 const goToHome = () => {
-  trackUserAction("navigate_to_home", "ai_photo_search_page");
+  trackUserAction("navigate_to_home", "photo_reports_page");
   navigateTo("/");
 };
 
 const goToDemo = () => {
-  trackUserAction("navigate_to_demo", "ai_photo_search_page");
+  trackUserAction("navigate_to_demo", "photo_reports_page");
   window.open("https://app.photoreka.com/demo", "_blank");
 };
 
 const goToSignup = () => {
-  trackUserAction("open_signup", "ai_photo_search_page");
+  trackUserAction("open_signup", "photo_reports_page");
   if (isOpenMode.value) {
     window.open(`${config.public.appUrl}/auth`, "_blank");
   } else {
@@ -662,14 +573,14 @@ const goToSignup = () => {
   }
 };
 
-const goToAtlas = () => {
-  trackUserAction("navigate_to_atlas", "ai_photo_search_page");
-  navigateTo("/photo_3D_atlas");
+const goToScoring = () => {
+  trackUserAction("navigate_to_scoring", "photo_reports_page");
+  navigateTo("/photo_scoring");
 };
 
-const goToLightroomPlugin = () => {
-  trackUserAction("navigate_to_lr_plugin", "ai_photo_search_page");
-  navigateTo("/lightroom_search_plugin");
+const goToChat = () => {
+  trackUserAction("navigate_to_chat", "photo_reports_page");
+  navigateTo("/photo_chat");
 };
 
 const onRequestSuccess = () => {
@@ -680,7 +591,7 @@ const toggleFAQ = (index) => {
   const wasOpen = activeFAQ.value === index;
   activeFAQ.value = wasOpen ? null : index;
   trackEvent("faq_toggle", {
-    page: "ai_photo_search",
+    page: "photo_reports",
     faq_index: index,
     action: wasOpen ? "close" : "open",
   });
@@ -698,10 +609,9 @@ const setupScrollAnimations = () => {
     }, opts).observe(section.value);
   };
   watch(heroSection, heroVisible);
-  watch(examplesSection, examplesVisible);
+  watch(reportsSection, reportsVisible);
   watch(howSection, howVisible);
   watch(featuresSection, featuresVisible);
-  watch(lrSection, lrVisible);
   watch(faqSection, faqVisible);
   watch(ctaSection, ctaVisible);
 };
@@ -710,11 +620,7 @@ onMounted(() => {
   initTheme();
   heroVisible.value = true;
   setupScrollAnimations();
-  if (videoRef.value) videoRef.value.playbackRate = 1.5;
-  trackEvent("page_view", {
-    page: "ai_photo_search",
-    page_title: "AI Photo Search - Find Any Photo by Describing It | Photoreka",
-  });
+  trackEvent("page_view", { page: "photo_reports" });
 });
 </script>
 
@@ -811,8 +717,6 @@ onMounted(() => {
   flex-direction: column;
   gap: 2rem;
 }
-
-/* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -838,17 +742,6 @@ onMounted(() => {
   align-items: center;
   gap: 0.5rem;
 }
-
-/* LR Badge variant */
-.lr-badge {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #f59e0b;
-  opacity: 1;
-  transform: none;
-}
-
-/* Title */
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 900;
@@ -863,15 +756,6 @@ onMounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* LR title variant */
-.lr-title {
-  font-size: clamp(2rem, 5vw, 3rem) !important;
-  opacity: 1;
-  transform: none;
-}
-
-/* Subtitle */
 .hero-subtitle {
   max-width: 580px;
   margin: 0;
@@ -886,8 +770,6 @@ onMounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Actions */
 .hero-actions {
   display: flex;
   flex-direction: row;
@@ -901,12 +783,6 @@ onMounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
-.cta-note {
-  font-size: 0.9rem;
-  color: var(--premium-text-secondary);
-}
-
-/* Video visual */
 .hero-visual {
   opacity: 0;
   transform: translateY(40px) scale(0.95);
@@ -923,9 +799,6 @@ onMounted(() => {
 }
 .hero-visual:hover {
   transform: translateY(-8px) scale(1);
-  box-shadow:
-    0 35px 70px -15px rgba(0, 0, 0, 0.5),
-    0 0 0 1px var(--premium-border);
 }
 .video-frame {
   position: relative;
@@ -939,8 +812,6 @@ onMounted(() => {
   height: auto;
   display: block;
 }
-
-/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
   -webkit-background-clip: text;
@@ -948,8 +819,6 @@ onMounted(() => {
   background-clip: text;
   display: inline;
 }
-
-/* Orbs */
 .gradient-orb {
   position: absolute;
   border-radius: 50%;
@@ -1025,14 +894,14 @@ onMounted(() => {
   line-height: 1.7;
 }
 
-/* ── Examples Section ──────────────────────────────────────── */
-.examples-section {
+/* ── Reports Grid Section ──────────────────────────────────── */
+.reports-section {
   padding: 6rem 2rem;
   background: var(--premium-bg-secondary);
 }
-.examples-grid {
+.reports-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1040,49 +909,53 @@ onMounted(() => {
   transform: translateY(24px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.examples-grid.visible {
+.reports-grid.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.example-group {
+.report-card {
   background: var(--premium-bg-card);
   border: 1px solid var(--premium-border);
   border-radius: 16px;
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem;
+  transition: all 0.4s ease;
 }
-.example-group:hover {
+.report-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
-.example-group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+.report-icon {
+  margin-bottom: 1rem;
+}
+.report-title {
+  font-size: 1.15rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #06b6d4;
+  margin-bottom: 0.5rem;
 }
-.example-queries {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.query-chip {
-  display: block;
-  font-size: 0.92rem;
+.report-description {
   color: var(--premium-text-secondary);
-  font-style: italic;
-  line-height: 1.5;
-  padding: 0.4rem 0.75rem;
-  background: rgba(6, 182, 212, 0.05);
-  border-radius: 8px;
-  border-left: 2px solid rgba(6, 182, 212, 0.3);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.report-insights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.report-insights li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--premium-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+.report-insights li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--premium-primary);
+  font-weight: 600;
 }
 
 /* ── How It Works Section ──────────────────────────────────── */
@@ -1188,50 +1061,9 @@ onMounted(() => {
   font-size: 0.97rem;
 }
 
-/* ── LR Section ────────────────────────────────────────────── */
-.lr-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-.lr-layout {
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.lr-layout.visible {
-  opacity: 1;
-}
-.lr-features {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-.lr-features li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--premium-text-primary);
-}
-.feature-icon-wrapper {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 8px;
-}
-
 /* ── FAQ Section ───────────────────────────────────────────── */
 .faq-section {
   padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
 }
 .faqs-container {
   max-width: 800px;
@@ -1300,6 +1132,7 @@ onMounted(() => {
 /* ── CTA Section ───────────────────────────────────────────── */
 .cta-section {
   padding: 6rem 2rem;
+  background: var(--premium-bg-secondary);
 }
 .cta-content {
   max-width: 700px;
@@ -1365,9 +1198,6 @@ onMounted(() => {
   .hero-actions {
     justify-content: center;
   }
-  .lr-layout {
-    grid-template-columns: 1fr !important;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1384,7 +1214,7 @@ onMounted(() => {
   .section-title {
     font-size: 1.8rem;
   }
-  .examples-grid,
+  .reports-grid,
   .features-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -1395,11 +1225,10 @@ onMounted(() => {
   .step-number {
     margin: 0 auto;
   }
-  .how-section,
-  .lr-section {
+  .how-section {
     padding: 4rem 1rem;
   }
-  .examples-section,
+  .reports-section,
   .features-section,
   .faq-section,
   .cta-section {

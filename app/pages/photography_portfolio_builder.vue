@@ -42,28 +42,32 @@
           </div>
           <div class="hero-container">
             <div class="hero-layout">
-              <!-- Left: Content -->
               <div class="hero-content">
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
-                    <n-icon size="16"><SearchOutline /></n-icon>
-                    AI Search
+                    <n-icon size="16"><LayersOutline /></n-icon>
+                    AI Portfolio Builder
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Find any photo by
-                  <span class="gradient-text">describing it</span>
+                  Build your best portfolio
+                  <span class="gradient-text">in minutes</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Stop scrolling through thousands of photos trying to remember
-                  where something is. Just type what you remember—
-                  <em>"rainy street at night with reflections"</em>,
-                  <em>"smiling kid, warm light, shallow focus"</em>,
-                  <em>"Blade Runner-style atmosphere"</em>—and Photoreka finds
-                  it instantly.<br /><br />
-                  No tagging. No folders. No metadata editing. Pure
-                  <strong>semantic search</strong> powered by computer vision AI
-                  that understands your photos the way you do.
+                  Selecting and sequencing photos for a portfolio, exhibition,
+                  or competition takes days of agonizing decisions. Photoreka
+                  combines
+                  <strong
+                    >AI scoring, narrative sequencing, and conversational
+                    curation</strong
+                  >
+                  to surface your strongest work and arrange it with intent.<br /><br />
+                  Tell the assistant what you need—
+                  <em
+                    >"pick my 10 best street photos for a gallery
+                    submission"</em
+                  >
+                  —and get a curated, ordered selection backed by data.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -88,12 +92,11 @@
                 </div>
               </div>
 
-              <!-- Right: Video -->
               <div class="hero-visual" :class="{ visible: heroVisible }">
                 <div class="video-frame">
                   <video
                     class="hero-video"
-                    src="/videos/explorer_1.mp4"
+                    src="/videos/atlas_1.mp4"
                     poster="/home/video_poster.jpg"
                     ref="videoRef"
                     autoplay
@@ -107,40 +110,32 @@
           </div>
         </section>
 
-        <!-- Search Examples Section -->
-        <section class="examples-section" ref="examplesSection">
+        <!-- Use Cases Section -->
+        <section class="examples-section" ref="usecasesSection">
           <div class="section-container">
-            <div class="section-header" :class="{ visible: examplesVisible }">
-              <h2 class="section-title">Search the way you think</h2>
+            <div class="section-header" :class="{ visible: usecasesVisible }">
+              <h2 class="section-title">One workflow, many outputs</h2>
               <p class="section-subtitle">
-                Photoreka understands natural language, visual descriptions,
-                emotions, styles, and even references to other photographers or
-                films. If you can describe it, you can find it.
+                Whether you're preparing for a gallery, a competition, a client
+                delivery, or a photobook—the same intelligent pipeline adapts to
+                your goal.
               </p>
             </div>
 
-            <div class="examples-grid" :class="{ visible: examplesVisible }">
+            <div class="usecases-grid" :class="{ visible: usecasesVisible }">
               <div
-                v-for="(group, i) in searchExamples"
+                v-for="(uc, i) in usecases"
                 :key="i"
-                class="example-group"
-                :style="{ transitionDelay: `${i * 80}ms` }"
+                class="usecase-card"
+                :style="{ transitionDelay: `${i * 100}ms` }"
               >
-                <div class="example-group-label">
-                  <n-icon size="16">
-                    <component :is="group.icon" />
+                <div class="usecase-icon" :style="{ color: uc.color }">
+                  <n-icon size="28">
+                    <component :is="uc.icon" />
                   </n-icon>
-                  <span>{{ group.label }}</span>
                 </div>
-                <div class="example-queries">
-                  <span
-                    v-for="(q, j) in group.queries"
-                    :key="j"
-                    class="query-chip"
-                  >
-                    "{{ q }}"
-                  </span>
-                </div>
+                <h3 class="usecase-title">{{ uc.title }}</h3>
+                <p class="usecase-description">{{ uc.description }}</p>
               </div>
             </div>
           </div>
@@ -154,9 +149,10 @@
           </div>
           <div class="section-container" style="position: relative; z-index: 1">
             <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">How it works</h2>
+              <h2 class="section-title">How portfolio building works</h2>
               <p class="section-subtitle">
-                No black box. Here's exactly what happens when you type a query.
+                Three Photoreka features combine into a single seamless
+                workflow.
               </p>
             </div>
 
@@ -183,10 +179,12 @@
         <section class="features-section" ref="featuresSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">More than keyword search</h2>
+              <h2 class="section-title">
+                A portfolio builder for photographers
+              </h2>
               <p class="section-subtitle">
-                Photoreka's search understands context, mood, composition, and
-                intent—not just the words in your metadata.
+                Not a generic website template. An intelligent system that
+                understands your work and helps you present it at its best.
               </p>
             </div>
 
@@ -210,105 +208,13 @@
           </div>
         </section>
 
-        <!-- Lightroom Section (secondary) -->
-        <section class="lr-section" ref="lrSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1" style="animation-delay: -8s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -3s"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout lr-layout" :class="{ visible: lrVisible }">
-              <!-- Left: Video -->
-              <div class="hero-visual" :class="{ visible: lrVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    src="/videos/lr_plugin.mp4"
-                    poster="/home/video_lr_poster.jpg"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
-
-              <!-- Right: Content -->
-              <div class="hero-content" :class="{ visible: lrVisible }">
-                <div class="hero-badge lr-badge">
-                  <span class="badge-content">
-                    <img
-                      src="/logos/lightroom_logo.png"
-                      alt="Adobe Lightroom"
-                      style="height: 18px; width: 18px; object-fit: contain"
-                    />
-                    Also available in Lightroom Classic
-                  </span>
-                </div>
-                <h2 class="hero-title lr-title">
-                  Search directly from
-                  <span class="gradient-text">Lightroom Classic</span>
-                </h2>
-                <p class="hero-subtitle">
-                  Already using Lightroom? Our official plugin brings the same
-                  AI-powered natural language search directly into your existing
-                  workflow—without leaving Lightroom or migrating your catalog.
-                  Install it, analyze your library once, and start searching
-                  naturally from within Lightroom's own panels.
-                </p>
-
-                <ul class="lr-features">
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #2563eb">
-                      <n-icon size="18"><SyncOutline /></n-icon>
-                    </div>
-                    <span>Reads your existing catalog—nothing changes</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #8b5cf6">
-                      <n-icon size="18"><ChatbubblesOutline /></n-icon>
-                    </div>
-                    <span>Search panel integrated inside Lightroom</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #22c55e">
-                      <n-icon size="18"><LockClosedOutline /></n-icon>
-                    </div>
-                    <span>All processing runs locally on your machine</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #f59e0b">
-                      <n-icon size="18"><LinkOutline /></n-icon>
-                    </div>
-                    <span>Compatible with Lightroom Classic 13.0+</span>
-                  </li>
-                </ul>
-
-                <div class="hero-actions">
-                  <n-button
-                    type="warning"
-                    size="large"
-                    strong
-                    @click="goToLightroomPlugin"
-                  >
-                    <template #icon>
-                      <n-icon><DownloadOutline /></n-icon>
-                    </template>
-                    See the Plugin
-                  </n-button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <!-- FAQ Section -->
         <section class="faq-section" ref="faqSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: faqVisible }">
               <h2 class="section-title">Frequently Asked Questions</h2>
               <p class="section-subtitle">
-                Everything you need to know about AI photo search
+                Everything you need to know about AI portfolio building
               </p>
             </div>
 
@@ -341,11 +247,13 @@
         <section class="cta-section" ref="ctaSection">
           <div class="section-container">
             <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Stop searching. Start finding.</h2>
+              <h2 class="cta-title">
+                Your next portfolio is already in your archive.
+              </h2>
               <p class="cta-description">
-                Your archive has been waiting to be understood. Try the demo and
-                search your photos the way you've always wanted—by describing
-                what you see, feel, and remember.
+                Stop second-guessing which photos belong. Let Photoreka score,
+                select, and sequence your strongest work into a portfolio you're
+                proud of.
               </p>
               <div class="cta-buttons">
                 <n-button type="info" size="large" strong @click="goToDemo">
@@ -369,10 +277,10 @@
               </div>
               <div class="cta-extra">
                 <p>
-                  Want to see how photos are organized in space?
-                  <a @click="goToAtlas" class="cta-link"
-                    >Explore the 3D Atlas</a
-                  >
+                  Want to understand your scoring in detail?
+                  <a @click="goToScoring" class="cta-link">See Photo Scoring</a>
+                  &middot;
+                  <a @click="goToChat" class="cta-link">Try the AI Assistant</a>
                 </p>
               </div>
             </div>
@@ -395,28 +303,25 @@ import {
   MoonOutline,
   ArrowBackOutline,
   PlayCircleOutline,
-  SearchOutline,
   KeyOutline,
   ChevronDownOutline,
-  ChatbubblesOutline,
-  SpeedometerOutline,
-  LockClosedOutline,
-  LinkOutline,
-  SyncOutline,
-  DownloadOutline,
-  ColorPaletteOutline,
+  LayersOutline,
   ImagesOutline,
+  BarChartOutline,
+  ChatbubblesOutline,
+  SearchOutline,
   EyeOutline,
-  FlashOutline,
-  HappyOutline,
-  FilmOutline,
-  GridOutline,
+  BookOutline,
+  RibbonOutline,
+  BriefcaseOutline,
+  CubeOutline,
 } from "@vicons/ionicons5";
+import { Trophy20Regular } from "@vicons/fluent";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO
-useSEO("ai_photo_search");
+useSEO("photography_portfolio_builder");
 
 useHead({
   script: [
@@ -441,107 +346,79 @@ const toggleTheme = () => baseToggleTheme();
 
 // Refs
 const heroSection = ref(null);
-const examplesSection = ref(null);
+const usecasesSection = ref(null);
 const howSection = ref(null);
 const featuresSection = ref(null);
-const lrSection = ref(null);
 const faqSection = ref(null);
 const ctaSection = ref(null);
 const videoRef = ref(null);
 
 const heroVisible = ref(false);
-const examplesVisible = ref(false);
+const usecasesVisible = ref(false);
 const howVisible = ref(false);
 const featuresVisible = ref(false);
-const lrVisible = ref(false);
 const faqVisible = ref(false);
 const ctaVisible = ref(false);
 
 const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
 
-// Search example groups
-const searchExamples = ref([
+// Use cases
+const usecases = ref([
   {
-    label: "By subject & scene",
     icon: markRaw(ImagesOutline),
-    queries: [
-      "street scene at dusk with neon signs",
-      "child laughing on the beach",
-      "empty road through a forest in autumn",
-    ],
+    title: "Gallery Exhibition",
+    description:
+      "Select and sequence 15-30 photos that tell a cohesive visual story for a gallery wall. The AI ensures thematic coherence and visual flow.",
+    color: "#8b5cf6",
   },
   {
-    label: "By mood & emotion",
-    icon: markRaw(HappyOutline),
-    queries: [
-      "melancholic portrait in window light",
-      "joyful chaos at a family gathering",
-      "quiet solitude, minimalist composition",
-    ],
+    icon: markRaw(RibbonOutline),
+    title: "Competition Submission",
+    description:
+      "Surface your strongest 3-10 images ranked by quality, originality, and impact. Maximize your chances with data-driven selection.",
+    color: "#f59e0b",
   },
   {
-    label: "By light & color",
-    icon: markRaw(ColorPaletteOutline),
-    queries: [
-      "warm golden hour backlight",
-      "high contrast black and white, deep shadows",
-      "pastel tones, soft diffused light",
-    ],
+    icon: markRaw(BriefcaseOutline),
+    title: "Client Delivery",
+    description:
+      "Quickly identify the best shots from a session and present them in a polished sequence. From thousands of captures to a tight edit in minutes.",
+    color: "#2563eb",
   },
   {
-    label: "By style & reference",
-    icon: markRaw(FilmOutline),
-    queries: [
-      "Blade Runner-style atmosphere",
-      "Vivian Maier street photography feel",
-      "cinematic wide angle, desaturated",
-    ],
-  },
-  {
-    label: "Super precise & logical",
-    icon: markRaw(GridOutline),
-    queries: [
-      "silhouette with sun behind",
-      "three people looking at the camera",
-      "car speeding through rain at night",
-    ],
-  },
-  {
-    label: "Nuanced & broad",
-    icon: markRaw(EyeOutline),
-    queries: [
-      "tension and release",
-      "nostalgia mixed with hope",
-      "abandoned but not desolate",
-    ],
+    icon: markRaw(BookOutline),
+    title: "Photobook Layout",
+    description:
+      "Build narrative sequences for print publication. The AI considers pacing, visual variety, and tonal progression across spreads.",
+    color: "#22c55e",
   },
 ]);
 
 // How it works steps
 const steps = ref([
   {
-    title: "Your photos are analyzed once",
+    title: "Scoring identifies your strongest photos",
     description:
-      "When you upload or sync your library, Photoreka's computer vision model processes each photo and extracts a high-dimensional visual embedding—a numerical representation that captures content, mood, composition, colors, and style.",
-    color: "linear-gradient(135deg, #2563eb, #06b6d4)",
-  },
-  {
-    title: "Your query becomes a vector too",
-    description:
-      "When you type a search, Photoreka converts your text into a vector in the same semantic space as your photo embeddings using a multimodal AI model trained to align language and images.",
+      "Photoreka's AI scores every image across aesthetics, composition, narrative, originality, and more. Your top-quality work is surfaced automatically from thousands of photos.",
     color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
-    title: "Similarity search returns results instantly",
+    title: "The AI assistant curates with intent",
     description:
-      "A fast vector similarity search (cosine distance) finds the photos whose embeddings are closest to your query vector. Results are ranked by semantic relevance—not by filename, date, or metadata.",
+      "Tell the assistant what you need: 'pick my 12 best street photos for a gallery' or 'create a narrative sequence from my Italy trip'. It selects and orders photos with curatorial reasoning.",
+    color: "linear-gradient(135deg, #2563eb, #06b6d4)",
+  },
+  {
+    title: "Sequencing creates a visual narrative",
+    description:
+      "Photos aren't just ranked—they're arranged into meaningful sequences. The AI considers compositional flow, tonal transitions, color progression, and narrative arc.",
     color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
-    title: "Results improve as you refine",
+    title: "Review, refine, and export",
     description:
-      "You can combine queries, filter by date or source, and use figurative or emotional language. The more specific your description, the more precise the results—even across 100,000+ photos.",
+      "You're always in control. Swap photos, reorder the sequence, ask for alternatives, or change the brief entirely. Export your final portfolio when ready.",
     color: "linear-gradient(135deg, #f59e0b, #f97316)",
   },
 ]);
@@ -549,91 +426,80 @@ const steps = ref([
 // Features
 const features = ref([
   {
-    icon: markRaw(ChatbubblesOutline),
-    title: "Natural Language",
+    icon: markRaw(Trophy20Regular),
+    title: "Quality-First Selection",
     description:
-      "Use everyday language—not boolean operators or keyword combinations. Describe a feeling, a scene, a lighting situation, or even a cinematic reference.",
-    color: "#8b5cf6",
-  },
-  {
-    icon: markRaw(EyeOutline),
-    title: "Visual Content Understanding",
-    description:
-      "The AI reads the actual content of each image: subjects, objects, actions, colors, lighting, composition, depth of field, and mood—without any manual input from you.",
-    color: "#2563eb",
-  },
-  {
-    icon: markRaw(FlashOutline),
-    title: "Instant Results",
-    description:
-      "Once your library is analyzed, searches are near-instantaneous regardless of catalog size. Vector similarity search is orders of magnitude faster than scanning metadata records.",
+      "Portfolio selections start from your highest-scored work—not random browsing. The AI considers multiple quality dimensions to surface photos worthy of presentation.",
     color: "#f59e0b",
   },
   {
-    icon: markRaw(ImagesOutline),
-    title: "Exact & Figurative Matches",
+    icon: markRaw(ChatbubblesOutline),
+    title: "Conversational Curation",
     description:
-      'Search for literal content ("red umbrella in the rain") or figurative associations ("solitude", "tension before a decision", "euphoria"). Both work equally well.',
+      "Describe your goal in plain language and the assistant builds your portfolio. Refine with follow-ups: 'swap #3 for something warmer' or 'add more variety in framing'.",
+    color: "#8b5cf6",
+  },
+  {
+    icon: markRaw(LayersOutline),
+    title: "Intentional Sequencing",
+    description:
+      "Photos are ordered for visual impact—not alphabetically or by date. The AI evaluates compositional flow, tonal rhythm, and narrative pacing.",
+    color: "#2563eb",
+  },
+  {
+    icon: markRaw(EyeOutline),
+    title: "Thematic Coherence",
+    description:
+      "The assistant ensures your selection tells a unified story. It detects when a photo breaks the visual thread and suggests better alternatives.",
     color: "#22c55e",
   },
   {
-    icon: markRaw(GridOutline),
-    title: "Search by Visual Similarity",
+    icon: markRaw(CubeOutline),
+    title: "3D Atlas Integration",
     description:
-      "Found a photo you love? Use it as a query. Photoreka will surface visually similar images from your archive based on embedding proximity—not just similar colors, but similar intent.",
-    color: "#ec4899",
+      "Explore portfolio candidates in 3D space. See how selected photos cluster together and discover nearby images that strengthen the set.",
+    color: "#06b6d4",
   },
   {
-    icon: markRaw(SpeedometerOutline),
-    title: "Scales to Any Archive",
+    icon: markRaw(SearchOutline),
+    title: "Search to Fill Gaps",
     description:
-      "Whether you have 100 or 5000 photos, search performance stays consistent. The more you have, the more powerful the discovery.",
-    color: "#06b6d4",
+      "Need a specific type of shot to complete the portfolio? Search your archive by description and the AI will find candidates that fit the sequence.",
+    color: "#ec4899",
   },
 ]);
 
 // FAQs
 const faqs = ref([
   {
-    question: "Do I need to tag or keyword my photos first?",
+    question: "Does the AI actually build my portfolio for me?",
     answer:
-      "No. That's the whole point. Photoreka analyzes the visual content of your photos automatically when you upload or sync your library. You never need to add a single keyword or tag to search effectively.",
+      "It gives you an intelligent starting point: a curated, scored, and sequenced selection based on your instructions. You review, adjust, and make the final decisions. Think of it as having a knowledgeable curator suggest a first draft.",
   },
   {
-    question:
-      "How is this different from searching in Google Photos or Apple Photos?",
+    question: "Can I prepare for a specific competition or gallery?",
     answer:
-      "Google Photos and Apple Photos also use AI search, but they're optimized for consumer snapshots and basic object detection. Photoreka is built for photographers: it understands compositional intent, lighting mood, stylistic references, and figurative language—not just 'dog' or 'beach'. It also gives you full control over your archive without locking you into a proprietary cloud.",
+      "Yes. You can specify the number of images, the theme, and any constraints ('only black and white', 'from 2025', 'street photography only'). The assistant will select and sequence accordingly.",
   },
   {
-    question: "Can it understand artistic or emotional descriptions?",
+    question: "How does it decide the order of photos?",
     answer:
-      "Yes. You can search for 'melancholic portrait', 'chaotic energy', 'Hopper-esque loneliness', or 'cinematic tension' and get meaningful results. The underlying model was trained on a vast corpus of image-text pairs including photography criticism, captions, and art descriptions.",
+      "Sequencing considers visual flow (composition rhythm), tonal progression (light/dark alternation), color harmony between adjacent images, and narrative arc. The goal is a portfolio that reads as a coherent whole, not just a list of good photos.",
   },
   {
-    question: "How long does the initial analysis take?",
+    question: "Can I use it with only 50 photos?",
     answer:
-      "Analysis runs in the background and typically processes around 1,000 photos per hour depending on your connection. You don't need to wait for it to finish—you can start searching as soon as a batch is ready.",
+      "Yes. The tools work with any catalog size, though the selection becomes more powerful as your archive grows. Even with a small catalog, the scoring and sequencing add significant value.",
   },
   {
-    question: "Are my photos sent to a server or processed locally?",
+    question: "What if I disagree with the selection?",
     answer:
-      "Photoreka sends compressed previews (not your originals) to our servers for analysis. Your full-resolution files never leave your machine. The search index is stored on your account and no one else can access your library.",
+      "You're always in control. Swap individual photos, ask for alternatives ('show me 3 options to replace #5'), reorder the sequence, or change the entire brief. The assistant adapts to your feedback in real-time.",
   },
   {
-    question: "Can I search across multiple sources at once?",
+    question: "Is this a portfolio website builder?",
     answer:
-      "Yes. If you have photos from Lightroom Classic, Google Photos, and local uploads all synced to Photoreka, a single search will return results across all of them simultaneously.",
-  },
-  {
-    question: "What if the results aren't what I expected?",
-    answer:
-      "Try rephrasing your query. More descriptive language usually yields better results. You can also narrow down by date range, source, or combine the search with the 3D Atlas to visually explore adjacent clusters of similar photos.",
-  },
-  {
-    question: "What kind of photo catalog is Photoreka designed for?",
-    answer:
-      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 5,000 photos; up to 10,000 is workable but we recommend keeping it focused. Because analysis runs in the cloud and the tools are built around curation—sequences, semantic search, visual clusters, scores—they work best when your archive already has a baseline of intentionality: duplicates removed, clearly failed shots discarded. There is duplicate detection built in, but the value of every feature increases the more curated your starting point is.",
+      "No—Photoreka is the curation engine behind your portfolio, not the website. It selects and sequences your photos intelligently. You can then use the results in any portfolio platform, print service, or gallery submission.",
   },
 ]);
 
@@ -644,17 +510,17 @@ const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 
 // Navigation
 const goToHome = () => {
-  trackUserAction("navigate_to_home", "ai_photo_search_page");
+  trackUserAction("navigate_to_home", "portfolio_builder_page");
   navigateTo("/");
 };
 
 const goToDemo = () => {
-  trackUserAction("navigate_to_demo", "ai_photo_search_page");
+  trackUserAction("navigate_to_demo", "portfolio_builder_page");
   window.open("https://app.photoreka.com/demo", "_blank");
 };
 
 const goToSignup = () => {
-  trackUserAction("open_signup", "ai_photo_search_page");
+  trackUserAction("open_signup", "portfolio_builder_page");
   if (isOpenMode.value) {
     window.open(`${config.public.appUrl}/auth`, "_blank");
   } else {
@@ -662,14 +528,14 @@ const goToSignup = () => {
   }
 };
 
-const goToAtlas = () => {
-  trackUserAction("navigate_to_atlas", "ai_photo_search_page");
-  navigateTo("/photo_3D_atlas");
+const goToScoring = () => {
+  trackUserAction("navigate_to_scoring", "portfolio_builder_page");
+  navigateTo("/photo_scoring");
 };
 
-const goToLightroomPlugin = () => {
-  trackUserAction("navigate_to_lr_plugin", "ai_photo_search_page");
-  navigateTo("/lightroom_search_plugin");
+const goToChat = () => {
+  trackUserAction("navigate_to_chat", "portfolio_builder_page");
+  navigateTo("/photo_chat");
 };
 
 const onRequestSuccess = () => {
@@ -680,7 +546,7 @@ const toggleFAQ = (index) => {
   const wasOpen = activeFAQ.value === index;
   activeFAQ.value = wasOpen ? null : index;
   trackEvent("faq_toggle", {
-    page: "ai_photo_search",
+    page: "photography_portfolio_builder",
     faq_index: index,
     action: wasOpen ? "close" : "open",
   });
@@ -698,10 +564,9 @@ const setupScrollAnimations = () => {
     }, opts).observe(section.value);
   };
   watch(heroSection, heroVisible);
-  watch(examplesSection, examplesVisible);
+  watch(usecasesSection, usecasesVisible);
   watch(howSection, howVisible);
   watch(featuresSection, featuresVisible);
-  watch(lrSection, lrVisible);
   watch(faqSection, faqVisible);
   watch(ctaSection, ctaVisible);
 };
@@ -710,11 +575,7 @@ onMounted(() => {
   initTheme();
   heroVisible.value = true;
   setupScrollAnimations();
-  if (videoRef.value) videoRef.value.playbackRate = 1.5;
-  trackEvent("page_view", {
-    page: "ai_photo_search",
-    page_title: "AI Photo Search - Find Any Photo by Describing It | Photoreka",
-  });
+  trackEvent("page_view", { page: "photography_portfolio_builder" });
 });
 </script>
 
@@ -811,8 +672,6 @@ onMounted(() => {
   flex-direction: column;
   gap: 2rem;
 }
-
-/* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -838,17 +697,6 @@ onMounted(() => {
   align-items: center;
   gap: 0.5rem;
 }
-
-/* LR Badge variant */
-.lr-badge {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #f59e0b;
-  opacity: 1;
-  transform: none;
-}
-
-/* Title */
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 900;
@@ -863,15 +711,6 @@ onMounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* LR title variant */
-.lr-title {
-  font-size: clamp(2rem, 5vw, 3rem) !important;
-  opacity: 1;
-  transform: none;
-}
-
-/* Subtitle */
 .hero-subtitle {
   max-width: 580px;
   margin: 0;
@@ -886,8 +725,6 @@ onMounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Actions */
 .hero-actions {
   display: flex;
   flex-direction: row;
@@ -901,12 +738,6 @@ onMounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
-.cta-note {
-  font-size: 0.9rem;
-  color: var(--premium-text-secondary);
-}
-
-/* Video visual */
 .hero-visual {
   opacity: 0;
   transform: translateY(40px) scale(0.95);
@@ -923,9 +754,6 @@ onMounted(() => {
 }
 .hero-visual:hover {
   transform: translateY(-8px) scale(1);
-  box-shadow:
-    0 35px 70px -15px rgba(0, 0, 0, 0.5),
-    0 0 0 1px var(--premium-border);
 }
 .video-frame {
   position: relative;
@@ -939,8 +767,6 @@ onMounted(() => {
   height: auto;
   display: block;
 }
-
-/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
   -webkit-background-clip: text;
@@ -948,8 +774,6 @@ onMounted(() => {
   background-clip: text;
   display: inline;
 }
-
-/* Orbs */
 .gradient-orb {
   position: absolute;
   border-radius: 50%;
@@ -1025,14 +849,14 @@ onMounted(() => {
   line-height: 1.7;
 }
 
-/* ── Examples Section ──────────────────────────────────────── */
+/* ── Use Cases Section ─────────────────────────────────────── */
 .examples-section {
   padding: 6rem 2rem;
   background: var(--premium-bg-secondary);
 }
-.examples-grid {
+.usecases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1040,49 +864,33 @@ onMounted(() => {
   transform: translateY(24px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.examples-grid.visible {
+.usecases-grid.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.example-group {
+.usecase-card {
   background: var(--premium-bg-card);
   border: 1px solid var(--premium-border);
   border-radius: 16px;
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem;
+  transition: all 0.4s ease;
 }
-.example-group:hover {
+.usecase-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
-.example-group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+.usecase-icon {
+  margin-bottom: 1rem;
+}
+.usecase-title {
+  font-size: 1.15rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #06b6d4;
+  margin-bottom: 0.5rem;
 }
-.example-queries {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.query-chip {
-  display: block;
-  font-size: 0.92rem;
+.usecase-description {
   color: var(--premium-text-secondary);
-  font-style: italic;
-  line-height: 1.5;
-  padding: 0.4rem 0.75rem;
-  background: rgba(6, 182, 212, 0.05);
-  border-radius: 8px;
-  border-left: 2px solid rgba(6, 182, 212, 0.3);
+  line-height: 1.7;
+  font-size: 0.95rem;
 }
 
 /* ── How It Works Section ──────────────────────────────────── */
@@ -1188,50 +996,9 @@ onMounted(() => {
   font-size: 0.97rem;
 }
 
-/* ── LR Section ────────────────────────────────────────────── */
-.lr-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-.lr-layout {
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.lr-layout.visible {
-  opacity: 1;
-}
-.lr-features {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-.lr-features li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--premium-text-primary);
-}
-.feature-icon-wrapper {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 8px;
-}
-
 /* ── FAQ Section ───────────────────────────────────────────── */
 .faq-section {
   padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
 }
 .faqs-container {
   max-width: 800px;
@@ -1300,6 +1067,7 @@ onMounted(() => {
 /* ── CTA Section ───────────────────────────────────────────── */
 .cta-section {
   padding: 6rem 2rem;
+  background: var(--premium-bg-secondary);
 }
 .cta-content {
   max-width: 700px;
@@ -1365,9 +1133,6 @@ onMounted(() => {
   .hero-actions {
     justify-content: center;
   }
-  .lr-layout {
-    grid-template-columns: 1fr !important;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1384,7 +1149,7 @@ onMounted(() => {
   .section-title {
     font-size: 1.8rem;
   }
-  .examples-grid,
+  .usecases-grid,
   .features-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -1395,8 +1160,7 @@ onMounted(() => {
   .step-number {
     margin: 0 auto;
   }
-  .how-section,
-  .lr-section {
+  .how-section {
     padding: 4rem 1rem;
   }
   .examples-section,

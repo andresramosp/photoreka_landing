@@ -5,7 +5,9 @@
       <div class="nav-container">
         <div class="nav-brand">
           <div class="logo">
-            <AppLogo layout="horizontal" :height="45" />
+            <NuxtLink to="/">
+              <AppLogo layout="horizontal" :height="45" />
+            </NuxtLink>
           </div>
         </div>
         <div class="nav-actions">
@@ -218,6 +220,11 @@ const goHome = () => {
   gap: 12px;
   min-width: 0;
   flex-shrink: 0;
+}
+.nav-brand .logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .logo-image {

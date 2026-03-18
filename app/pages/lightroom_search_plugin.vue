@@ -6,7 +6,9 @@
         <nav class="premium-nav">
           <div class="nav-container">
             <div class="nav-brand">
-              <AppLogo layout="horizontal" :height="45" />
+              <NuxtLink to="/">
+                <AppLogo layout="horizontal" :height="45" />
+              </NuxtLink>
             </div>
             <div class="nav-actions">
               <button
@@ -592,6 +594,11 @@ onMounted(() => {
 .nav-brand {
   display: flex;
   align-items: center;
+}
+.nav-brand a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .nav-actions {
