@@ -526,7 +526,7 @@ const goToHome = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "photo_scoring_page");
-  window.open("https://app.photoreka.com/demo", "_blank");
+  window.open("https://app.photoreka.com/demo/report", "_blank");
 };
 
 const goToSignup = () => {

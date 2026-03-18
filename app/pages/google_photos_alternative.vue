@@ -573,7 +573,7 @@ const goToHome = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "google_photos_alternative_page");
-  window.open("https://app.photoreka.com/demo", "_blank");
+  window.open("https://app.photoreka.com/demo/search", "_blank");
 };
 
 const goToSignup = () => {

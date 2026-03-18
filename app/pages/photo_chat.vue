@@ -683,7 +683,7 @@ const goToHome = () => {
 const goToApp = () => {
   trackUserAction("navigate_to_app", "photo_chat_page");
   const appUrl = config.public.appUrl || "https://app.photoreka.com";
-  window.open(`${appUrl}/demo`, "_blank");
+  window.open(`${appUrl}/demo/chat-lab`, "_blank");
 };
 
 const { isOpenMode, joinButtonLabel } = useRegistrationMode();

@@ -516,7 +516,7 @@ const goToHome = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "portfolio_builder_page");
-  window.open("https://app.photoreka.com/demo", "_blank");
+  window.open("https://app.photoreka.com/demo/chat-lab", "_blank");
 };
 
 const goToSignup = () => {

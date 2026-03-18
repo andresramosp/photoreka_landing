@@ -504,7 +504,7 @@ const goToPlugin = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "lightroom_plugin_page");
-  const atlasUrl = `${config.public.appUrl}/atlas`;
+  const atlasUrl = `${config.public.appUrl}/demo/2d-view`;
   window.open(atlasUrl, "_blank");
 };
 
@@ -513,7 +513,7 @@ const toggleFAQ = (index) => {
   const wasOpen = activeFAQ.value === index;
   activeFAQ.value = activeFAQ.value === index ? null : index;
   trackEvent("faq_toggle", {
-    page: "framer",
+    page: "lightroom_plugin_page",
     faq_index: index,
     action: wasOpen ? "close" : "open",
   });
