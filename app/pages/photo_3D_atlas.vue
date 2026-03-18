@@ -419,7 +419,7 @@ const goToHome = () => {
 
 const goToAtlas = () => {
   trackUserAction("launch_atlas", "photo_3d_atlas_page");
-  window.open(`${config.public.appUrl}/demo/3d-view`, "_blank");
+  window.open(`${config.public.appUrl}/demo/atlas`, "_blank");
 };
 
 // FAQ methods
