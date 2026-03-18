@@ -119,7 +119,7 @@
                     <template #icon>
                       <n-icon><CubeOutline /></n-icon>
                     </template>
-                    Access 3D Atlas
+                    Access 3D Atlas Demo
                   </n-button>
                   <!-- <span class="cta-note">Launch in Photoreka web platform</span> -->
                 </div>
@@ -212,7 +212,7 @@
                 <template #icon>
                   <n-icon><CubeOutline /></n-icon>
                 </template>
-                Access 3D Atlas Now
+                Access 3D Atlas Demo
               </n-button>
               <div class="cta-extra">
                 <p>
