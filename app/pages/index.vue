@@ -549,6 +549,7 @@ import {
   CloudUploadOutline,
   CubeOutline,
   LinkOutline,
+  LogoDropbox,
   SunnyOutline,
   MoonOutline,
   WalkOutline,
@@ -754,12 +755,12 @@ const dataSources = ref([
     comingSoon: false,
   },
   {
-    icon: markRaw(LinkOutline),
-    name: "More Integrations",
+    icon: markRaw(LogoDropbox),
+    name: "Dropbox",
     description:
-      "iCloud Photos, Dropbox, OneDrive, and more cloud storage providers coming soon.",
-    color: "#6b7280",
-    comingSoon: true,
+      "Sync your Dropbox photo folders directly with Photoreka. Works with any folder structure you already have.",
+    color: "#0061FF",
+    comingSoon: false,
   },
 ]);
 

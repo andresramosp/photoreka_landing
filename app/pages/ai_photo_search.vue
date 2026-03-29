@@ -623,7 +623,7 @@ const faqs = ref([
   {
     question: "Can I search across multiple sources at once?",
     answer:
-      "Yes. If you have photos from Lightroom Classic, Google Photos, and local uploads all synced to Photoreka, a single search will return results across all of them simultaneously.",
+      "Yes. If you have photos from Lightroom Classic, Google Photos, Dropbox, and local uploads all synced to Photoreka, a single search will return results across all of them simultaneously.",
   },
   {
     question: "What if the results aren't what I expected?",

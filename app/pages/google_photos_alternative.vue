@@ -457,7 +457,7 @@ const steps = ref([
   {
     title: "Connect your photo library",
     description:
-      "Import from Lightroom, a local folder, or cloud storage. Photoreka works with your existing workflow—no lock-in, no forced migration.",
+      "Import from Lightroom, Dropbox, a local folder, or other cloud storage. Photoreka works with your existing workflow—no lock-in, no forced migration.",
     color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
@@ -546,12 +546,12 @@ const faqs = ref([
   {
     question: "Do I need to migrate all my photos?",
     answer:
-      "No migration required. Import from Lightroom, point to a local folder, or connect cloud storage. Photoreka works with your existing library and workflow.",
+      "No migration required. Import from Lightroom, connect Dropbox, point to a local folder, or use other cloud storage. Photoreka works with your existing library and workflow.",
   },
   {
     question: "What about free storage?",
     answer:
-      "Photoreka isn't a storage service—it's an intelligence layer for your photos. Your files stay where they are (Lightroom, local drive, cloud). Photoreka adds scoring, search, and AI tools on top without duplicating your library.",
+      "Photoreka isn't a storage service—it's an intelligence layer for your photos. Your files stay where they are (Lightroom, Dropbox, local drive, or any other cloud). Photoreka adds scoring, search, and AI tools on top without duplicating your library.",
   },
   {
     question: "Is it only for professional photographers?",
