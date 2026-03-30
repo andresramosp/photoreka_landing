@@ -8,7 +8,10 @@
 
         <div class="footer-column">
           <h4 class="footer-title">LEGAL</h4>
-          <a @click="goToTerms" class="footer-link"> Terms and Image Policy </a>
+          <a @click="goToTerms" class="footer-link"> Terms of Service </a>
+          <a @click="goToPrivacy" class="footer-link">
+            Privacy &amp; Image Policy
+          </a>
         </div>
 
         <div class="footer-column">
@@ -47,6 +50,10 @@ import AppLogo from "~/components/AppLogo.vue";
 
 const goToTerms = () => {
   navigateTo("/terms");
+};
+
+const goToPrivacy = () => {
+  navigateTo("/privacy");
 };
 </script>
 

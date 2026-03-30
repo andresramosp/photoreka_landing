@@ -75,19 +75,38 @@ export const seoConfig = {
     },
 
     terms: {
-      title: "Terms of Use and Image Policy - Photoreka",
+      title: "Terms of Service - Photoreka",
       description:
-        "Read Photoreka's Terms of Use and Image Policy. We respect your copyright - you retain 100% ownership of all uploaded images. Learn about our commitment to privacy and security.",
+        "Read Photoreka's Terms of Service. Understand your rights and responsibilities when using our AI-powered photo curation platform, including intellectual property, prohibited content, and liability.",
       keywords:
-        "terms of use, privacy policy, image rights, copyright, user agreement, terms and conditions",
+        "terms of service, user agreement, terms and conditions, legal, photo platform terms",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary",
       jsonLd: {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        name: "Terms of Use - Photoreka",
-        description: "Terms of Use and Image Policy for Photoreka",
+        name: "Terms of Service - Photoreka",
+        description:
+          "Terms of Service for the Photoreka photo curation platform.",
+      },
+    },
+
+    privacy: {
+      title: "Privacy & Image Policy - Photoreka",
+      description:
+        "Learn how Photoreka handles your data and images. You retain 100% ownership of your photos. We only store medium-quality copies for analysis — Photoreka is not a storage service. Read about AI processing, data rights (GDPR/CCPA), security, and deletion.",
+      keywords:
+        "privacy policy, image policy, data protection, GDPR, CCPA, image rights, copyright, photo privacy, AI image processing, data security, image ownership",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "Privacy & Image Policy - Photoreka",
+        description:
+          "Privacy and Image Policy for the Photoreka photo curation platform.",
       },
     },
 
