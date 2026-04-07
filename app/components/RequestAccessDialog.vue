@@ -2,7 +2,7 @@
   <n-modal
     v-model:show="visible"
     preset="dialog"
-    title="Join the Waiting List"
+    title="Join Photoreka Community"
     :mask-closable="true"
     :closable="true"
     :auto-focus="false"
@@ -96,7 +96,7 @@
           <template #icon>
             <n-icon><SendOutline /></n-icon>
           </template>
-          Join Waiting List
+          Create Account
         </n-button>
       </div>
     </template>
