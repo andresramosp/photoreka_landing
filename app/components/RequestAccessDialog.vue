@@ -17,7 +17,7 @@
 
     <template #header>
       <div class="dialog-header">
-        <span class="dialog-title">Join the Waiting List</span>
+        <span class="dialog-title">Join Photoreka Community</span>
       </div>
     </template>
 

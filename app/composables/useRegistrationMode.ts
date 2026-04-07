@@ -13,14 +13,10 @@ export const useRegistrationMode = () => {
   );
 
   /** Label for short CTA buttons (e.g. hero "Waiting List" → "Create Account") */
-  const signupButtonLabel = computed(() =>
-    isOpenMode.value ? "Create Account" : "Waiting List",
-  );
+  const signupButtonLabel = computed(() => "Create Account");
 
   /** Label for long CTA buttons (e.g. "Join Waiting List" → "Create Account") */
-  const joinButtonLabel = computed(() =>
-    isOpenMode.value ? "Create Account" : "Join Waiting List",
-  );
+  const joinButtonLabel = computed(() => "Create Account");
 
   /** Call this instead of showing the RequestAccessDialog. */
   const openSignup = () => {
