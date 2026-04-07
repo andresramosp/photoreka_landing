@@ -34,11 +34,11 @@ export const seoConfig = {
   // Configuración por página
   pages: {
     home: {
-      title: "Photoreka | AI Photo Search & Curation Lab for Photographers",
+      title: "Photoreka | Smart Tools to Curate Your Photographic Body of Work",
       description:
-        "Search your entire photo library in natural language—no tagging needed. Photoreka is an AI-powered photo curation platform: find any photo by describing it, explore your archive in interactive 3D, rank images by aesthetic scores, and create meaningful sequences. Works with Lightroom Classic, Google Photos, and local files.",
+        "Photoreka is a suite of smart tools to help you curate your photographic body of work. Upload a specific project, a curated selection, or a significant portion of your archive. Search in natural language, find patterns across your work, and explore your catalog in interactive 3D. Works with Lightroom Classic, Google Photos, and local files.",
       keywords:
-        "photo curation app, photo curation platform, photo management system, photography DAM, image curation software, AI photo organizer, photo management, photo organization, photography portfolio, image cataloging, AI photography, visual archive, photography workflow, image search, culling, sequence creation, professional photo organizer, photo workflow automation, online photo organizer, smart photo tagging",
+        "photo curation tools, curate your photos, photographic body of work, photo curation app, photo management system, photography DAM, image curation software, AI photo organizer, photo archive curation, photo management, photo organization, photography portfolio, image cataloging, AI photography, visual archive, photography workflow, image search, culling, sequence creation, professional photo organizer, smart photo tagging",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -47,7 +47,7 @@ export const seoConfig = {
         "@type": "WebApplication",
         name: "Photoreka",
         description:
-          "A Curation Lab for photographers to organize, curate, and explore their photographic body of work with AI-powered tools.",
+          "A suite of smart tools to help photographers curate their photographic body of work. Upload a specific project, curated selection, or your full archive—then search in natural language, find patterns, and explore your catalog in 3D.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
         offers: {

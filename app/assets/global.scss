@@ -1929,7 +1929,7 @@ section {
   font-size: 18px;
   line-height: 1.7;
   color: var(--premium-text-secondary);
-  max-width: 800px;
+  max-width: 850px;
   margin: 0;
   opacity: 0;
   transform: translateY(20px);
@@ -1939,6 +1939,11 @@ section {
 .hero-description.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.hero-description strong {
+  color: var(--hero-strong-text-color);
+  font-weight: 600;
 }
 
 .emoji-bullet {

@@ -62,13 +62,14 @@
               </h1>
 
               <p class="hero-description" :class="{ visible: heroVisible }">
-                <strong>Photoreka</strong> is a
-                <strong>Curation Lab</strong> for photographers who care about
-                their archive.<br />
-                See how your images relate to each other and understand your
-                work as a whole.
-                <br />Search in natural language, create meaningful sequences,
-                and explore your catalog in 3D.
+                <strong>Photoreka</strong> is a suite of
+                <strong> smart tools</strong> to help you curate your work.<br />
+                Upload a <strong>specific project</strong>, a
+                <strong>curated selection</strong> or a significant portion of
+                your <strong>archive</strong>. <br />Search in
+                <strong>natural language</strong>, find
+                <strong>patterns</strong> across your work, and explore your
+                catalog in <strong>3D</strong>.
               </p>
               <div
                 v-if="false"
@@ -167,9 +168,9 @@
             <div class="section-header" :class="{ visible: featuresVisible }">
               <h2 class="section-title">Everything your archive deserves</h2>
               <p class="section-subtitle">
-                A full curation lab built for photographers who take their work
-                seriously. Explore, understand, sequence, rank, and report on
-                your photographic body of work.
+                A suite of smart tools built for photographers who take their
+                work seriously. Explore, understand, sequence, rank, and report
+                on your photographic body of work.
               </p>
             </div>
 
@@ -769,7 +770,7 @@ const faqs = ref([
   {
     question: "What is Photoreka and who is it for?",
     answer:
-      "Photoreka is a smart photo curation lab to help street, documentary, and artistic photographers organize, analyze, and understand their photographic body of work. It's ideal for professional and amateur photographers managing large volumes of images.",
+      "Photoreka is a suite of smart tools to help you make full sense of your photographic body of work. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, and artistic photographers who take their work seriously.",
   },
   {
     question: "How does Photoreka work?",

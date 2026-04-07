@@ -199,6 +199,9 @@ export const darkTheme = {
     accent: colors.purple[600],
     gradient2: colors.blue[800],
     gradient3: colors.cyan[400],
+    // Hero Strong text styling
+    heroStrongTextColor: "rgba(255, 255, 255, 0.8)",
+    heroStrongGlowColor: "rgba(99, 179, 255, 0.3)",
   },
 };
 
@@ -281,6 +284,9 @@ export const lightTheme = {
     accent: colors.purple[700],
     gradient2: colors.blue[800],
     gradient3: colors.cyan[400],
+    // Hero Strong text styling
+    heroStrongTextColor: "#1e293b",
+    heroStrongGlowColor: "rgba(37, 99, 235, 0.25)",
   },
 };
 
@@ -481,6 +487,10 @@ export function getThemeCSSVariables(isDark = true) {
     "--premium-gradient-1": theme.premium.gradient1,
     "--premium-gradient-2": theme.premium.gradient2,
     "--premium-gradient-3": theme.premium.gradient3,
+
+    // Hero Strong styling
+    "--hero-strong-text-color": theme.premium.heroStrongTextColor,
+    "--hero-strong-glow-color": theme.premium.heroStrongGlowColor,
   };
 }
 
