@@ -63,13 +63,14 @@
 
               <p class="hero-description" :class="{ visible: heroVisible }">
                 <strong>Photoreka</strong> is a suite of
-                <strong> smart tools</strong> to help you curate your work.<br />
+                <strong> smart tools</strong> to help you
+                <strong> curate your photos</strong>.<br />
                 Upload a <strong>specific project</strong>, a
-                <strong>curated selection</strong> or a significant portion of
-                your <strong>archive</strong>. <br />Search in
-                <strong>natural language</strong>, find
-                <strong>patterns</strong> across your work, and explore your
-                catalog in <strong>3D</strong>.
+                <strong>curated selection</strong> or your whole
+                <strong>photo library</strong>. <br />Search in
+                <strong>natural language</strong>, rank your photos by
+                <strong>aesthetics</strong> and explore your catalog in
+                <strong>3D</strong>.
               </p>
               <div
                 v-if="false"
@@ -166,18 +167,22 @@
         >
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">Everything your archive deserves</h2>
+              <h2 class="section-title">
+                AI tools to organize, search, and curate your photos
+              </h2>
               <p class="section-subtitle">
-                A suite of smart tools built for photographers who take their
-                work seriously. Explore, understand, sequence, rank, and report
-                on your photographic body of work.
+                A smart photo organizer built for photographers who take their
+                work seriously. Search with AI, score and rank, explore in 3D,
+                and build portfolios from your photo library.
               </p>
             </div>
 
             <div class="index-features-grid">
-              <div
+              <component
+                :is="feature.link ? 'NuxtLink' : 'div'"
                 v-for="(feature, index) in features"
                 :key="index"
+                :to="feature.link || undefined"
                 class="index-feature-card"
                 :class="{ visible: featuresVisible }"
                 :style="{ transitionDelay: `${index * 100}ms` }"
@@ -200,7 +205,7 @@
                     {{ feature.description }}
                   </p>
                 </div>
-              </div>
+              </component>
             </div>
           </div>
         </section>
@@ -308,11 +313,13 @@
         <section id="sources" class="sources-section" ref="sourcesSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: sourcesVisible }">
-              <h2 class="section-title">Connect your photos from anywhere</h2>
+              <h2 class="section-title">
+                Import and organize photos from anywhere
+              </h2>
               <p class="section-subtitle">
-                Photoreka works seamlessly with multiple photo sources. Import
-                your images from wherever they live and start curating
-                immediately.
+                Photoreka works with your existing photo sources. Import your
+                images from Lightroom, Google Photos, Dropbox, or local files
+                and start curating with AI immediately.
               </p>
             </div>
 
@@ -488,9 +495,12 @@
         <section id="faq" class="faqs-section" ref="faqsSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: faqsVisible }">
-              <h2 class="section-title">Frequently asked questions</h2>
+              <h2 class="section-title">
+                Frequently asked questions about Photoreka
+              </h2>
               <p class="section-subtitle">
-                Find answers to the most common questions about Photoreka
+                Everything you need to know about using AI to curate and
+                organize your photos
               </p>
             </div>
 
@@ -693,6 +703,7 @@ const features = ref([
     description:
       "Explore your entire archive as an universe of images mapped in semantic space. Navigate in 2D or immersive 3D to discover visual clusters, stylistic threads, and unexpected connections across your catalog.",
     color: "#06b6d4",
+    link: "/photo_3D_atlas",
   },
   {
     icon: markRaw(SearchOutline),
@@ -700,6 +711,7 @@ const features = ref([
     description:
       "Find any photo by describing it. Search for moods, scenes, lighting conditions, cinematic references, or abstract feelings. No keywords, no tagging—just describe what you remember and Photoreka finds it.",
     color: "#2563eb",
+    link: "/ai_photo_search",
   },
   {
     icon: markRaw(Workspace),
@@ -707,6 +719,7 @@ const features = ref([
     description:
       "Drag, arrange, and compose your photos freely on an infinite canvas. Drop any image and Photoreka surfaces visually or narratively similar photos from your archive to help you find the perfect pairing.",
     color: "#8b5cf6",
+    link: null,
   },
   {
     icon: markRaw(LayersOutline),
@@ -714,6 +727,7 @@ const features = ref([
     description:
       "Build cohesive sequences and storyboards from your catalog. Organize images into narrative arcs, editorial spreads, or visual series—and let the AI suggest continuations based on compositional and tonal flow.",
     color: "#22c55e",
+    link: "/photography_portfolio_builder",
   },
   {
     icon: markRaw(BarChartOutline),
@@ -721,6 +735,7 @@ const features = ref([
     description:
       "Understand how you shoot. Photoreka surfaces recurring stylistic patterns, narrative tendencies, cultural references, and compositional habits across your archive—helping you see your work from the outside.",
     color: "#f59e0b",
+    link: "/photo_reports",
   },
   {
     icon: markRaw(Trophy20Regular),
@@ -728,6 +743,7 @@ const features = ref([
     description:
       "Score your photos across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, humor, and more. Rank your catalog and surface your strongest work automatically.",
     color: "#ec4899",
+    link: "/photo_scoring",
   },
 ]);
 
@@ -770,24 +786,24 @@ const faqs = ref([
   {
     question: "What is Photoreka and who is it for?",
     answer:
-      "Photoreka is a suite of smart tools to help you make full sense of your photographic body of work. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, and artistic photographers who take their work seriously.",
+      "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, and landscape photographers who take their work seriously.",
   },
   {
-    question: "How does Photoreka work?",
+    question: "How does Photoreka organize and curate photos with AI?",
     answer:
-      "Our pipeline of computer vision algorithms analyzes your photographs, identifying narrative and stylistic elements. This enables intelligent organization, advanced semantic searches, and the creation of visual connections between your images to facilitate the selection of your work. For detailed information on our image processing policies, please see our Terms and Image Policy.",
+      "Photoreka uses computer vision AI to analyze your photographs, identifying narrative and stylistic elements. This enables intelligent organization, advanced semantic search by natural language, automatic photo scoring and ranking, 3D catalog visualization, and AI-assisted portfolio curation—all without manual tagging. For detailed information on our image processing policies, please see our Terms and Image Policy.",
     hasLink: true,
   },
   {
     question: "Is Photoreka a storage platform?",
     answer:
-      "Photoreka is currently in a testing phase and focuses mainly on playful interaction and exploration with your photos. At this stage, it is not a full storage service. However, a centralized storage feature may be included in the future to help photographers fully manage and centralize their body of work. For details about how we handle your images, see our Terms and Image Policy.",
+      "Photoreka is an AI photo curation and organization tool, not a storage service. It focuses on helping you understand, search, score, and curate your photo library. It works alongside your existing storage—Lightroom Classic, Google Photos, Dropbox, or local files. For details about how we handle your images, see our Terms and Image Policy.",
     hasLink: true,
   },
   {
     question: "Does Photoreka create or transform images?",
     answer:
-      "No. Photoreka is dedicated exclusively to the analysis and organization of photographic images. The platform does not generate synthetic images, alter, or transform your photos in any way. We do not support or endorse the creation or use of synthetic or manipulated images within Photoreka.",
+      "No. Photoreka is dedicated exclusively to the analysis, organization, and curation of your photographic images. The platform does not generate synthetic images, alter, or transform your photos in any way. We do not support or endorse the creation or use of synthetic or manipulated images within Photoreka.",
   },
   {
     question: "What happens to my photos and who can see them?",
@@ -796,9 +812,9 @@ const faqs = ref([
     hasLink: true,
   },
   {
-    question: "What kind of photo catalog is Photoreka designed for?",
+    question: "What kind of photo catalog works best with Photoreka?",
     answer:
-      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 5,000 photos; up to 10,000 is workable but we recommend keeping it focused. Because analysis runs in the cloud and the tools are built around curation—sequences, semantic search, visual clusters, scores—they work best when your archive already has a baseline of intentionality: duplicates removed, clearly failed shots discarded. There is duplicate detection built in, but the value of every feature increases the more curated your starting point is.",
+      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 5,000 photos; up to 10,000 is workable but we recommend keeping it focused. Because the AI tools are built around curation—semantic search, visual clusters, scoring, sequencing—they work best when your archive already has a baseline of intentionality.",
   },
   {
     question: "Can I try Photoreka for free?",
@@ -1181,6 +1197,9 @@ if (typeof window !== "undefined") {
   transform: translateY(30px);
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 200px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

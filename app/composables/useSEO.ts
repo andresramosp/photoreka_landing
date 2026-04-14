@@ -143,12 +143,13 @@ export function useSEO(pageKey?: SEOPageKey, customConfig?: Partial<SEOPage>) {
 
   // Agregar JSON-LD si existe
   if (config.jsonLd) {
-    headConfig.script = [
-      {
-        type: "application/ld+json",
-        innerHTML: JSON.stringify(config.jsonLd),
-      },
-    ];
+    const jsonLdItems = Array.isArray(config.jsonLd)
+      ? config.jsonLd
+      : [config.jsonLd];
+    headConfig.script = jsonLdItems.map((item: any) => ({
+      type: "application/ld+json",
+      innerHTML: JSON.stringify(item),
+    }));
   }
 
   useHead(headConfig);

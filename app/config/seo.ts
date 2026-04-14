@@ -11,7 +11,7 @@ export interface SEOPage {
   ogType?: string;
   twitterCard?: string;
   canonicalUrl?: string;
-  jsonLd?: any;
+  jsonLd?: any | any[];
 }
 
 export const seoConfig = {
@@ -34,44 +34,129 @@ export const seoConfig = {
   // Configuración por página
   pages: {
     home: {
-      title: "Photoreka | Smart Tools to Curate Your Photographic Body of Work",
+      title:
+        "Photoreka | AI Photo Organizer & Curation App for Photographers | Curate, Search & Explore Your Photos",
       description:
-        "Photoreka is a suite of smart tools to help you curate your photographic body of work. Upload a specific project, a curated selection, or a significant portion of your archive. Search in natural language, find patterns across your work, and explore your catalog in interactive 3D. Works with Lightroom Classic, Google Photos, and local files.",
+        "Photoreka is an AI-powered app to curate and organize your photos. Search your entire photo library by describing what you see, score and rank photos automatically, explore your catalog in 3D, and build portfolios with AI. Works with Lightroom Classic, Google Photos, Dropbox, and local files. The smart photo organizer built for serious photographers.",
       keywords:
-        "photo curation tools, curate your photos, photographic body of work, photo curation app, photo management system, photography DAM, image curation software, AI photo organizer, photo archive curation, photo management, photo organization, photography portfolio, image cataloging, AI photography, visual archive, photography workflow, image search, culling, sequence creation, professional photo organizer, smart photo tagging",
+        "AI photo organizer, app to curate photos with AI, organize photos with AI, AI photo curation app, photo organizer app, smart photo management, AI photo management tool, curate photos AI, organize my photos AI, photo curation software, AI photo library organizer, photo catalog organizer, AI photo search app, natural language photo search, photo organization app, best AI photo organizer, photo management app for photographers, AI photo sorting, photo archive organizer, AI photography tools, photo curation platform, digital photo organizer, intelligent photo organizer, AI image organizer, photo library management app, photography workflow tool, photo scoring AI, photo ranking app, 3D photo catalog, visual photo organizer, AI photo assistant, smart photo curation, curate and organize photos, photo management system, photography DAM, professional photo organizer",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka",
-        description:
-          "A suite of smart tools to help photographers curate their photographic body of work. Upload a specific project, curated selection, or your full archive—then search in natural language, find patterns, and explore your catalog in 3D.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
-        },
-        creator: {
-          "@type": "Organization",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
           name: "Photoreka",
           url: "https://www.photoreka.com",
+          description:
+            "AI-powered app to curate and organize your photos. Search by natural language, score and rank photos, explore your catalog in 3D, and build portfolios with AI. The smart photo organizer for serious photographers.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+            sameAs: ["https://www.instagram.com/photoreka_curation_lab/"],
+            logo: {
+              "@type": "ImageObject",
+              url: "https://www.photoreka.com/logos/marca/vertical-claim-light.png",
+            },
+          },
+          featureList: [
+            "AI-powered photo curation and organization",
+            "Natural language photo search",
+            "3D photo catalog exploration",
+            "AI photo scoring and ranking",
+            "Portfolio builder with AI curation",
+            "Photo style and pattern reports",
+            "AI photo chat assistant",
+            "Lightroom Classic plugin integration",
+            "Google Photos import",
+            "Dropbox sync",
+            "Free Photo Framer tool",
+            "Free Canvas Photo Tool",
+          ],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.8",
+            ratingCount: "47",
+            bestRating: "5",
+          },
         },
-        featureList: [
-          "Natural language search",
-          "3D catalog exploration",
-          "AI-powered curation",
-          "Sequence creation",
-          "Visual similarity detection",
-          "Free Photo Framer tool",
-          "Free Canvas Photo Tool",
-          "Frame photos in batches",
-        ],
-      },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What is Photoreka and who is it for?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, and landscape photographers who take their work seriously.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How does Photoreka organize and curate photos with AI?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka uses computer vision AI to analyze your photographs, identifying narrative and stylistic elements. This enables intelligent organization, advanced semantic search by natural language, automatic photo scoring and ranking, 3D catalog visualization, and AI-assisted portfolio curation. No manual tagging required.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is Photoreka a photo storage platform?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka is an AI photo curation and organization tool, not a storage service. It focuses on helping you understand, search, score, and curate your photo library. It works alongside your existing storage (Lightroom, Google Photos, Dropbox, or local files).",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does Photoreka create or transform images?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. Photoreka is dedicated exclusively to the analysis, organization, and curation of your photographic images. The platform does not generate synthetic images, alter, or transform your photos in any way.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What happens to my photos and who can see them?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka only stores a reduced version of your images on secure servers for analysis. Your photos are not shared with anyone and you retain 100% of the rights to your work. Analysis uses proprietary and third-party services under agreements that prevent retaining or reusing your photos.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I try Photoreka for free?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "During the early access phase, a free photo package and usage credits are offered. Analyzing your photos requires a single batch payment, after which you can use most tools for free with daily limits, or purchase credits for unlimited access.",
+              },
+            },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+          ],
+        },
+      ],
     },
 
     terms: {
@@ -157,44 +242,63 @@ export const seoConfig = {
 
     ai_photo_search: {
       title:
-        "AI Photo Search App - Find Photos in Your Catalog by Natural Language | Photoreka",
+        "AI Photo Search — Find Any Photo by Describing It | Natural Language Photo Search App | Photoreka",
       description:
-        "Find any photo in your catalog just by describing it. Type 'rainy street at night with reflections' or 'melancholic portrait in window light' and Photoreka instantly searches your entire photo library—no tagging, no manual keywords. The AI photo search app that understands natural language. Powered by semantic image embeddings and vector similarity search.",
+        "Find any photo in your library just by describing it. Type 'rainy street at night' or 'melancholic portrait in window light' and Photoreka instantly finds it—no tagging, no keywords needed. The AI photo search app that understands natural language. Search your entire photo catalog by mood, scene, lighting, or emotion.",
       keywords:
-        "AI photo search, natural language photo search, find photos in catalog, search photo catalog, find photos by description, search my photo library, photo catalog search app, semantic image search, no tagging photo search, search photos without keywords, find photos by describing them, photo library search, photo archive search, intelligent photo finder, AI photo organizer, computer vision photo search",
+        "AI photo search, natural language photo search, find photos by description, search photos without tags, AI photo finder, photo search app, search my photo library, find photo by describing it, smart photo search, semantic image search, photo catalog search, AI image search, visual photo search, search photos by mood, search photos AI, intelligent photo finder, AI photo organizer, photo library search, describe photo find it, no tagging photo search, computer vision photo search, photo archive search app",
       ogImage: "/home/video_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka AI Photo Search",
-        description:
-          "Find any photo in your catalog by describing it in natural language. No tagging required. Search your entire photo library instantly with computer vision AI and semantic image embeddings.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka AI Photo Search",
+          description:
+            "Find any photo in your catalog by describing it in natural language. No tagging required. Search your entire photo library instantly with AI.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/ai_photo_search",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Natural language photo search",
+            "No manual tagging required",
+            "Search by mood, style, and emotion",
+            "Semantic image understanding",
+            "Works with 100,000+ photos",
+            "Cross-source search",
+          ],
         },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "AI Photo Search",
+              item: "https://www.photoreka.com/ai_photo_search",
+            },
+          ],
         },
-        featureList: [
-          "Natural language photo search",
-          "No manual tagging required",
-          "Semantic image understanding",
-          "Search by mood, style, and emotion",
-          "Vector similarity search",
-          "Works with 100,000+ photos",
-          "Cross-source search",
-          "Figurative and artistic query support",
-        ],
-      },
+      ],
     },
 
     lightroom_plugin: {
@@ -250,11 +354,11 @@ export const seoConfig = {
 
     photo_chat: {
       title:
-        "AI Photo Assistant for Your Photo Library | Photo Catalog Chat & Search | Photoreka",
+        "AI Photo Assistant — Chat with Your Photo Library in Natural Language | Photoreka",
       description:
-        "Chat with your photo library in natural language. Photoreka is an AI photo assistant for photographers that combines photo catalog search, portfolio critique, curated selections, and catalog insights in one conversational interface.",
+        "Chat with your photo library using AI. Ask questions about your catalog, get portfolio critique, discover patterns, and build curated photo selections—all in natural conversation. Photoreka's AI photo assistant combines photo search, curation, and catalog intelligence in one conversational interface for photographers.",
       keywords:
-        "AI photo assistant, photo library assistant, photo catalog assistant, photo catalog chat, chat with your photo library, AI photo chat, AI photo search assistant, photo library search AI, photo catalog search AI, AI photo organizer, AI photo organizer for photographers, conversational photo search, natural language photo search, photo archive assistant, photography assistant AI, AI portfolio critique, photo curation AI, photo archive insights, AI photography analysis, AI catalog intelligence, smart photo catalog analysis, conversational DAM, photography workflow AI, AI digital asset management for photographers, intelligent photo search, own photo library AI, AI assistant for photographers",
+        "AI photo assistant, chat with photo library, AI photo chat, photo library assistant, conversational photo search, AI assistant for photographers, photo catalog chat, AI photo organizer, photo library AI, natural language photo assistant, AI photography assistant, photograph assistant chatbot, AI portfolio critique, photo curation AI, smart photo assistant, ask AI about my photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -347,45 +451,63 @@ export const seoConfig = {
 
     ai_photo_culling: {
       title:
-        "AI Photo Culling Tool - Auto-Select Your Best Photos Instantly | Photoreka",
+        "AI Photo Culling — Auto-Select Your Best Photos Instantly | Smart Photo Culling App | Photoreka",
       description:
-        "Stop spending hours culling photos manually. Photoreka's AI photo culling ranks every image by aesthetics, composition, sharpness, and narrative strength—so you instantly see your strongest shots. Works with Lightroom Classic, Google Photos, and local files. Not binary keep/reject: multi-dimensional scoring that respects your style.",
+        "Stop spending hours culling photos manually. Photoreka's AI photo culling ranks every image by aesthetics, composition, sharpness, and narrative strength—so you instantly see your strongest shots. Not binary keep/reject: multi-dimensional scoring that respects your style. Works with Lightroom Classic, Google Photos, and local files.",
       keywords:
-        "AI photo culling, photo culling software, best photo culling tool, AI cull photos, fast photo culling, auto select best photos, aftershoot alternative, narrative select alternative, photo culling app, smart photo selection, automated photo editing, AI photo selector, batch photo culling, photography culling workflow, lightroom culling plugin, professional photo culling",
+        "AI photo culling, photo culling software, photo culling app, AI cull photos, auto select best photos, fast photo culling, smart photo culling, automated photo culling, best photo culling tool, AI photo selector, batch photo culling, photo culling workflow, aftershoot alternative, narrative select alternative, professional photo culling, lightroom culling, AI photo organizer, cull photos with AI",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka AI Photo Culling",
-        description:
-          "AI-powered photo culling tool that ranks your images across multiple quality dimensions instead of binary keep/reject. Find your best photos instantly.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka AI Photo Culling",
+          description:
+            "AI-powered photo culling app that ranks your images across multiple quality dimensions instead of binary keep/reject. Find your best photos instantly.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/ai_photo_culling",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Multi-dimensional photo scoring",
+            "Aesthetic quality ranking",
+            "Composition analysis",
+            "Narrative strength scoring",
+            "Batch processing of thousands of photos",
+            "Works with Lightroom Classic",
+          ],
         },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "AI Photo Culling",
+              item: "https://www.photoreka.com/ai_photo_culling",
+            },
+          ],
         },
-        featureList: [
-          "Multi-dimensional photo scoring",
-          "Aesthetic quality ranking",
-          "Composition analysis",
-          "Sharpness and technical evaluation",
-          "Narrative strength scoring",
-          "Batch processing of thousands of photos",
-          "Works with Lightroom Classic",
-          "Natural language search to filter results",
-          "No manual tagging required",
-        ],
-      },
+      ],
     },
 
     photo_scoring: {
@@ -476,11 +598,11 @@ export const seoConfig = {
 
     google_photos_alternative: {
       title:
-        "Google Photos Alternative for Photographers - AI Photo Organizer | Photoreka",
+        "Best Google Photos Alternative for Photographers — AI Photo Organizer with Search, Scoring & 3D | Photoreka",
       description:
-        "Looking for a Google Photos alternative built for serious photographers? Photoreka offers AI-powered semantic search, 3D catalog visualization, aesthetic scoring, narrative sequencing, and portfolio curation—tools that consumer apps can't match. Full privacy, no ads, and you keep 100% ownership of your images.",
+        "Looking for a Google Photos alternative built for serious photographers? Photoreka offers AI-powered semantic search, 3D catalog visualization, aesthetic scoring, portfolio curation, and conversational AI assistant—tools consumer apps can't match. Full privacy, no ads, 100% ownership of your images. The AI photo organizer that treats your work as art.",
       keywords:
-        "google photos alternative for photographers, google photos alternative privacy, better than google photos, photo organizer for professionals, google photos alternative AI search, professional photo management, apple photos alternative, photo management for photographers, AI photo organizer, advanced photo search, photography DAM alternative, photo library management, private photo organizer, photographer photo management, photo curation platform",
+        "google photos alternative, google photos alternative for photographers, best google photos alternative, alternative to google photos, photo organizer for photographers, AI photo organizer, google photos replacement, better than google photos, apple photos alternative, professional photo management, photo management for photographers, AI photo manager, advanced photo search, photography DAM alternative, private photo organizer, smart photo organizer, photo curation platform, AI photo library manager",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",

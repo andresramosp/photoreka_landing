@@ -4,14 +4,56 @@
       <div class="footer-content">
         <div class="footer-column">
           <AppLogo layout="horizontal" :with-claim="true" size="small" />
+          <p class="footer-description">
+            AI-powered app to curate and organize your photos. Search, score,
+            explore in 3D, and build portfolios with AI.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-title">AI TOOLS</h4>
+          <NuxtLink to="/ai_photo_search" class="footer-link"
+            >AI Photo Search</NuxtLink
+          >
+          <NuxtLink to="/ai_photo_culling" class="footer-link"
+            >AI Photo Culling</NuxtLink
+          >
+          <NuxtLink to="/photo_scoring" class="footer-link"
+            >Photo Scoring &amp; Ranking</NuxtLink
+          >
+          <NuxtLink to="/photo_chat" class="footer-link"
+            >AI Photo Assistant</NuxtLink
+          >
+          <NuxtLink to="/photo_reports" class="footer-link"
+            >Style Analysis Reports</NuxtLink
+          >
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-title">EXPLORE</h4>
+          <NuxtLink to="/photo_3D_atlas" class="footer-link"
+            >3D Photo Atlas</NuxtLink
+          >
+          <NuxtLink to="/photography_portfolio_builder" class="footer-link"
+            >Portfolio Builder</NuxtLink
+          >
+          <NuxtLink to="/lightroom_search_plugin" class="footer-link"
+            >Lightroom Plugin</NuxtLink
+          >
+          <NuxtLink to="/google_photos_alternative" class="footer-link"
+            >Google Photos Alternative</NuxtLink
+          >
+          <NuxtLink to="/framer" class="footer-link"
+            >Free Photo Framer</NuxtLink
+          >
         </div>
 
         <div class="footer-column">
           <h4 class="footer-title">LEGAL</h4>
-          <a @click="goToTerms" class="footer-link"> Terms of Service </a>
-          <a @click="goToPrivacy" class="footer-link">
-            Privacy &amp; Image Policy
-          </a>
+          <NuxtLink to="/terms" class="footer-link">Terms of Service</NuxtLink>
+          <NuxtLink to="/privacy" class="footer-link"
+            >Privacy &amp; Image Policy</NuxtLink
+          >
         </div>
 
         <div class="footer-column">
@@ -47,14 +89,6 @@
 <script setup>
 import { LogoInstagram, MailOutline } from "@vicons/ionicons5";
 import AppLogo from "~/components/AppLogo.vue";
-
-const goToTerms = () => {
-  navigateTo("/terms");
-};
-
-const goToPrivacy = () => {
-  navigateTo("/privacy");
-};
 </script>
 
 <style scoped>
@@ -73,8 +107,8 @@ const goToPrivacy = () => {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 32px;
   margin-bottom: 32px;
 }
 
@@ -141,6 +175,13 @@ const goToPrivacy = () => {
 }
 
 /* Mobile Responsive */
+@media (max-width: 968px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
