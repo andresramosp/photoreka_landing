@@ -596,50 +596,6 @@ export const seoConfig = {
       },
     },
 
-    google_photos_alternative: {
-      title:
-        "Best Google Photos Alternative for Photographers — AI Photo Organizer with Search, Scoring & 3D | Photoreka",
-      description:
-        "Looking for a Google Photos alternative built for serious photographers? Photoreka offers AI-powered semantic search, 3D catalog visualization, aesthetic scoring, portfolio curation, and conversational AI assistant—tools consumer apps can't match. Full privacy, no ads, 100% ownership of your images. The AI photo organizer that treats your work as art.",
-      keywords:
-        "google photos alternative, google photos alternative for photographers, best google photos alternative, alternative to google photos, photo organizer for photographers, AI photo organizer, google photos replacement, better than google photos, apple photos alternative, professional photo management, photo management for photographers, AI photo manager, advanced photo search, photography DAM alternative, private photo organizer, smart photo organizer, photo curation platform, AI photo library manager",
-      ogImage: "/logos/marca/vertical-claim-light.png",
-      ogType: "website",
-      twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka - Google Photos Alternative",
-        description:
-          "Professional photo management platform for photographers. AI-powered alternative to Google Photos with semantic search, 3D visualization, aesthetic scoring, and portfolio curation.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
-        },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
-        },
-        featureList: [
-          "Natural language photo search",
-          "3D catalog visualization",
-          "Multi-dimensional aesthetic scoring",
-          "AI-powered photo curation",
-          "Narrative sequencing tools",
-          "Lightroom Classic integration",
-          "Privacy-first design",
-          "100% image ownership",
-          "No ads or data mining",
-          "Professional-grade organization",
-        ],
-      },
-    },
-
     photo_reports: {
       title:
         "Photography Style Analysis & Pattern Reports - AI Insights | Photoreka",
