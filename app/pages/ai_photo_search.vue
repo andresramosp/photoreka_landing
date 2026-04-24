@@ -93,7 +93,7 @@
                 <div class="video-frame">
                   <video
                     class="hero-video"
-                    src="/videos/explorer_1.mp4"
+                    src="/videos/search.mov"
                     poster="/home/video_poster.jpg"
                     ref="videoRef"
                     autoplay
@@ -710,7 +710,7 @@ onMounted(() => {
   initTheme();
   heroVisible.value = true;
   setupScrollAnimations();
-  if (videoRef.value) videoRef.value.playbackRate = 1.5;
+  if (videoRef.value) videoRef.value.playbackRate = 0.8;
   trackEvent("page_view", {
     page: "ai_photo_search",
     page_title: "AI Photo Search - Find Any Photo by Describing It | Photoreka",
@@ -802,7 +802,7 @@ onMounted(() => {
 }
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 4rem;
   align-items: center;
 }

@@ -50,24 +50,22 @@
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Build your best portfolio
-                  <span class="gradient-text">in minutes</span>
+                  Your best portfolio,
+                  <span class="gradient-text">curated by AI</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Selecting and sequencing photos for a portfolio, exhibition,
-                  or competition takes days of agonizing decisions. Photoreka
+                  Choosing 20 photos out of thousands for a gallery,
+                  competition, or book takes days. Photoreka's portfolio builder
                   combines
                   <strong
-                    >AI scoring, narrative sequencing, and conversational
-                    curation</strong
+                    >8-dimension artistic scoring, five coherence modes, and
+                    intelligent sequencing</strong
                   >
-                  to surface your strongest work and arrange it with intent.<br /><br />
-                  Tell the assistant what you need—
-                  <em
-                    >"pick my 10 best street photos for a gallery
-                    submission"</em
-                  >
-                  —and get a curated, ordered selection backed by data.
+                  to deliver a curated, ordered selection you can actually
+                  present.<br /><br />
+                  Set a target size (10–40 photos), describe the vibe you're
+                  after, pick a coherence mode, and let the builder score,
+                  select, and arrange your strongest work.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -93,6 +91,14 @@
               </div>
 
               <div class="hero-visual" :class="{ visible: heroVisible }">
+                <!--
+                  Temporary placeholder slideshow.
+                  TODO: replace with the definitive product video.
+                  Images auto-rotate with fade + soft Ken Burns zoom.
+                  Replace the URLs in `slideshowImages` with real product
+                  screenshots when ready.
+                -->
+                <!--
                 <div class="video-frame">
                   <video
                     class="hero-video"
@@ -104,6 +110,22 @@
                     loop
                     playsinline
                   ></video>
+                </div>
+                -->
+                <div class="video-frame hero-slideshow">
+                  <div
+                    v-for="(img, i) in slideshowImages"
+                    :key="i"
+                    class="hero-slide"
+                    :class="{ active: currentSlide === i }"
+                    :style="{
+                      backgroundImage: `url(${img.src})`,
+                      transform: slideTransforms[i],
+                    }"
+                    role="img"
+                    :aria-label="img.alt"
+                  ></div>
+                  <div class="hero-slideshow-overlay"></div>
                 </div>
               </div>
             </div>
@@ -151,8 +173,8 @@
             <div class="section-header" :class="{ visible: howVisible }">
               <h2 class="section-title">How portfolio building works</h2>
               <p class="section-subtitle">
-                Three Photoreka features combine into a single seamless
-                workflow.
+                A guided wizard turns a scored catalog into a curated, sequenced
+                portfolio in five short steps.
               </p>
             </div>
 
@@ -180,11 +202,11 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
               <h2 class="section-title">
-                A portfolio builder for photographers
+                Built for serious photographic curation
               </h2>
               <p class="section-subtitle">
-                Not a generic website template. An intelligent system that
-                understands your work and helps you present it at its best.
+                Not a template gallery. A curation engine that understands
+                quality, coherence and narrative — and lets you stay in control.
               </p>
             </div>
 
@@ -203,6 +225,120 @@
                 </div>
                 <h3 class="feature-title">{{ feature.title }}</h3>
                 <p class="feature-description">{{ feature.description }}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Export Section -->
+        <!-- <section class="export-section">
+          <div class="section-container">
+            <div class="export-inner">
+              <div class="export-headline">
+                <h2 class="section-title" style="text-align: left">
+                  Export in the format you need
+                </h2>
+                <p class="section-subtitle" style="text-align: left; margin: 0">
+                  Once your portfolio is curated, take it anywhere. Three export
+                  modes cover every destination — from print-ready PDFs to
+                  original-resolution archives.
+                </p>
+              </div>
+              <div class="export-cards">
+                <div
+                  v-for="(mode, i) in exportModes"
+                  :key="i"
+                  class="export-card"
+                >
+                  <div
+                    class="export-card-icon"
+                    :style="{ background: mode.bg }"
+                  >
+                    <n-icon size="22" color="#fff">
+                      <component :is="mode.icon" />
+                    </n-icon>
+                  </div>
+                  <div class="export-card-body">
+                    <h3 class="export-card-title">{{ mode.title }}</h3>
+                    <p class="export-card-description">
+                      {{ mode.description }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+
+        <!-- 3D Atlas Section -->
+        <section class="atlas-section" ref="atlasSection">
+          <div class="hero-background">
+            <div class="gradient-orb orb-1" style="animation-delay: -5s"></div>
+            <div class="gradient-orb orb-2" style="animation-delay: -12s"></div>
+          </div>
+          <div class="hero-container">
+            <div class="hero-layout">
+              <!-- Left: Video -->
+              <div class="hero-visual" :class="{ visible: atlasVisible }">
+                <div class="video-frame">
+                  <video
+                    class="hero-video"
+                    src="/videos/atlas_1.mp4"
+                    poster="/home/video_lr_poster.jpg"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
+                </div>
+              </div>
+
+              <!-- Right: Content -->
+              <div
+                class="hero-content atlas-content"
+                :class="{ visible: atlasVisible }"
+              >
+                <div
+                  class="hero-badge atlas-badge"
+                  :class="{ visible: atlasVisible }"
+                >
+                  <span class="badge-content">
+                    <n-icon size="18"><CubeOutline /></n-icon>
+                    3D Atlas
+                  </span>
+                </div>
+                <h2
+                  class="hero-title atlas-title"
+                  :class="{ visible: atlasVisible }"
+                >
+                  From portfolio curation to
+                  <span class="gradient-text"> 3D exploration</span>
+                </h2>
+                <p class="hero-subtitle" :class="{ visible: atlasVisible }">
+                  Once your portfolio starts taking shape, step into the 3D
+                  Atlas to zoom out and understand the larger body of work it
+                  comes from. Photoreka arranges your images in space by visual
+                  similarity, revealing clusters, repetitions, transitions, and
+                  unexpected relationships across your archive. It is the ideal
+                  companion for refining selections, discovering adjacent
+                  images, and seeing your photography with more clarity,
+                  coherence, and perspective.
+                </p>
+
+                <div class="hero-actions" :class="{ visible: atlasVisible }">
+                  <n-button
+                    type="primary"
+                    size="large"
+                    strong
+                    @click="goToAtlas"
+                  >
+                    <template #icon>
+                      <n-icon><CubeOutline /></n-icon>
+                    </template>
+                    Open 3D Atlas
+                  </n-button>
+                  <span class="cta-note">Launch in Photoreka web platform</span>
+                </div>
               </div>
             </div>
           </div>
@@ -297,7 +433,7 @@
 </template>
 
 <script setup>
-import { markRaw } from "vue";
+import { markRaw, nextTick } from "vue";
 import {
   SunnyOutline,
   MoonOutline,
@@ -314,7 +450,9 @@ import {
   BookOutline,
   RibbonOutline,
   BriefcaseOutline,
-  CubeOutline,
+  DocumentTextOutline,
+  ImageOutline,
+  DownloadOutline,
 } from "@vicons/ionicons5";
 import { Trophy20Regular } from "@vicons/fluent";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
@@ -344,6 +482,8 @@ const {
 
 const toggleTheme = () => baseToggleTheme();
 
+const atlasVisible = ref(true);
+
 // Refs
 const heroSection = ref(null);
 const usecasesSection = ref(null);
@@ -363,143 +503,232 @@ const ctaVisible = ref(false);
 const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
 
+// Hero slideshow with portfolio builder product screenshots.
+// Images crossfade with a fade + soft Ken Burns zoom.
+const slideshowImages = [
+  {
+    src: "/portfolio_builder/0.png",
+    alt: "Portfolio builder interface - step 0",
+  },
+  {
+    src: "/portfolio_builder/1.png",
+    alt: "Portfolio builder interface - step 1",
+  },
+  {
+    src: "/portfolio_builder/2.png",
+    alt: "Portfolio builder interface - step 2",
+  },
+  {
+    src: "/portfolio_builder/3.png",
+    alt: "Portfolio builder interface - step 3",
+  },
+  {
+    src: "/portfolio_builder/4.png",
+    alt: "Portfolio builder interface - step 4",
+  },
+  {
+    src: "/portfolio_builder/5.png",
+    alt: "Portfolio builder interface - step 5",
+  },
+  {
+    src: "/portfolio_builder/6.png",
+    alt: "Portfolio builder interface - step 6",
+  },
+];
+const currentSlide = ref(0);
+// JS-driven Ken Burns: transform controlled here to avoid CSS animation snap artifacts.
+const slideTransforms = ref(slideshowImages.map(() => "scale(1.0)"));
+let slideshowTimer = null;
+
+const activateSlide = (idx) => {
+  // Ensure we start from base scale (no transition fires since value is unchanged)
+  slideTransforms.value[idx] = "scale(1.0)";
+  // After Vue commits the reset to the DOM, start the slow zoom (triggers CSS transition)
+  nextTick(() => {
+    slideTransforms.value[idx] = "scale(1.1)";
+  });
+};
+
+const deactivateSlide = (idx) => {
+  // Reset transform after the opacity fade-out (0.93s) is done, while the slide is invisible
+  setTimeout(() => {
+    slideTransforms.value[idx] = "scale(1.0)";
+  }, 1100);
+};
+
 // Use cases
 const usecases = ref([
   {
     icon: markRaw(ImagesOutline),
     title: "Gallery Exhibition",
     description:
-      "Select and sequence 15-30 photos that tell a cohesive visual story for a gallery wall. The AI ensures thematic coherence and visual flow.",
+      "Curate 20–40 photos that share a visual language. Use the Visual or Chromatic coherence mode to ensure the selection hangs together on a wall.",
     color: "#8b5cf6",
   },
   {
     icon: markRaw(RibbonOutline),
     title: "Competition Submission",
     description:
-      "Surface your strongest 3-10 images ranked by quality, originality, and impact. Maximize your chances with data-driven selection.",
+      "Surface your strongest 10–15 images ranked across aesthetics, composition, originality and message. Tune the weights to match the judging criteria.",
     color: "#f59e0b",
   },
   {
     icon: markRaw(BriefcaseOutline),
     title: "Client Delivery",
     description:
-      "Quickly identify the best shots from a session and present them in a polished sequence. From thousands of captures to a tight edit in minutes.",
+      "Distill a shoot into a tight edit. Filter by date range or collection, score across quality dimensions, and deliver a sequenced selection — not a raw dump.",
     color: "#2563eb",
   },
   {
     icon: markRaw(BookOutline),
     title: "Photobook Layout",
     description:
-      "Build narrative sequences for print publication. The AI considers pacing, visual variety, and tonal progression across spreads.",
+      "Use Narrative coherence and AI sequencing to build arcs with pacing, tonal transitions, and balanced orientations across spreads.",
     color: "#22c55e",
   },
 ]);
 
-// How it works steps
+// How it works steps — mirrors the real 6-step wizard, condensed for the landing
 const steps = ref([
   {
-    title: "Scoring identifies your strongest photos",
+    title: "Name it and describe the vibe",
     description:
-      "Photoreka's AI scores every image across aesthetics, composition, narrative, originality, and more. Your top-quality work is surfaced automatically from thousands of photos.",
+      'Give your portfolio a name and, optionally, a theme in plain language — e.g. "European cities at night, moody urban vibes". The theme acts as a soft bias during curation, not a hard filter.',
     color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
-    title: "The AI assistant curates with intent",
+    title: "Pick a size and your artistic priorities",
     description:
-      "Tell the assistant what you need: 'pick my 12 best street photos for a gallery' or 'create a narrative sequence from my Italy trip'. It selects and orders photos with curatorial reasoning.",
+      'Choose a target between 10 and 40 photos. Then either describe your style ("strong storytelling and humor, cinematic light") and let the AI parse it into weights, or tune the 8 artistic dimensions manually with genre presets (Street, Documentary, Artistic…).',
     color: "linear-gradient(135deg, #2563eb, #06b6d4)",
   },
   {
-    title: "Sequencing creates a visual narrative",
+    title: "Filter and choose a coherence mode",
     description:
-      "Photos aren't just ranked—they're arranged into meaningful sequences. The AI considers compositional flow, tonal transitions, color progression, and narrative arc.",
+      "Narrow the candidate pool by visual aspects (genre, framing, depth of field, lighting…), date range or collection. Then select how the portfolio should hold together: Visual, Chromatic, Narrative, Heterogeneous or Free.",
     color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
-    title: "Review, refine, and export",
+    title: "Let the AI score, select and sequence",
     description:
-      "You're always in control. Swap photos, reorder the sequence, ask for alternatives, or change the brief entirely. Export your final portfolio when ready.",
+      "The engine builds a ranked candidate pool, evaluates photos in context with a vision LLM, refines the set to remove redundancies, and — if enabled — arranges the final sequence with attention to visual flow and orientation balance.",
     color: "linear-gradient(135deg, #f59e0b, #f97316)",
+  },
+  {
+    title: "Review, reorder, refine",
+    description:
+      "Drag photos to reorder, remove the ones that don't belong (with undo), or pull in additional shots from your catalog. Adjust columns and gap, save the layout, or start a manual portfolio from scratch at any time.",
+    color: "linear-gradient(135deg, #ec4899, #8b5cf6)",
   },
 ]);
 
-// Features
+// Features — reflect actual unique capabilities of the builder
 const features = ref([
   {
     icon: markRaw(Trophy20Regular),
-    title: "Quality-First Selection",
+    title: "8-Dimension Artistic Scoring",
     description:
-      "Portfolio selections start from your highest-scored work—not random browsing. The AI considers multiple quality dimensions to surface photos worthy of presentation.",
+      "Every analyzed photo is scored across aesthetic quality, composition, storytelling, originality, message, humor, visual games and candidness. Emphasize the axes that matter for this portfolio.",
     color: "#f59e0b",
   },
   {
-    icon: markRaw(ChatbubblesOutline),
-    title: "Conversational Curation",
+    icon: markRaw(LayersOutline),
+    title: "Five Coherence Modes",
     description:
-      "Describe your goal in plain language and the assistant builds your portfolio. Refine with follow-ups: 'swap #3 for something warmer' or 'add more variety in framing'.",
+      "Visual (similar style), Chromatic (shared palette), Narrative (related situations and emotional tone), Heterogeneous (maximize diversity) or Free (pure quality). Same catalog, five very different portfolios.",
     color: "#8b5cf6",
   },
   {
-    icon: markRaw(LayersOutline),
-    title: "Intentional Sequencing",
+    icon: markRaw(ChatbubblesOutline),
+    title: "Describe Your Style in Plain Language",
     description:
-      "Photos are ordered for visual impact—not alphabetically or by date. The AI evaluates compositional flow, tonal rhythm, and narrative pacing.",
+      "Skip the sliders if you want. Describe the mood and intent — the builder parses your text into emphasize/deemphasize sets and shows a live preview of the resulting weight vector before you commit.",
     color: "#2563eb",
   },
   {
-    icon: markRaw(EyeOutline),
-    title: "Thematic Coherence",
+    icon: markRaw(BarChartOutline),
+    title: "Intelligent Sequencing",
     description:
-      "The assistant ensures your selection tells a unified story. It detects when a photo breaks the visual thread and suggests better alternatives.",
+      "Photos aren't listed by date. A greedy algorithm orders them maximizing embedding dissimilarity between neighbours, spreading orientations so verticals and horizontals alternate naturally across the sequence.",
     color: "#22c55e",
   },
   {
-    icon: markRaw(CubeOutline),
-    title: "3D Atlas Integration",
+    icon: markRaw(SearchOutline),
+    title: "Precise Visual Filters",
     description:
-      "Explore portfolio candidates in 3D space. See how selected photos cluster together and discover nearby images that strengthen the set.",
+      "Narrow the candidate pool by genre, framing, depth of field, lighting scheme, perspective, stylistic traits, date range or collection. Fully optional — combine any subset of filters.",
     color: "#06b6d4",
   },
   {
-    icon: markRaw(SearchOutline),
-    title: "Search to Fill Gaps",
+    icon: markRaw(EyeOutline),
+    title: "Similarity Gating & Refinement",
     description:
-      "Need a specific type of shot to complete the portfolio? Search your archive by description and the AI will find candidates that fit the sequence.",
+      "The engine rejects near-duplicates using perceptual hashing and CLIP similarity, then iteratively refines the pre-selection with the vision LLM to trim the weakest or most redundant shots before sequencing.",
     color: "#ec4899",
   },
 ]);
 
-// FAQs
+// Export modes
+const exportModes = [
+  {
+    icon: markRaw(DocumentTextOutline),
+    title: "PDF — print-ready layout",
+    description:
+      "Generates a paginated PDF with your photos arranged in the current grid layout (1–6 columns, custom gap). Each page preserves your column configuration, ready to hand to a printer or gallery.",
+    bg: "linear-gradient(135deg, #2563eb, #06b6d4)",
+  },
+  {
+    icon: markRaw(ImageOutline),
+    title: "JPEG — single composite image",
+    description:
+      "Renders the entire grid as a single high-quality JPEG. Useful for quick previews, social sharing, or embedding your portfolio layout in a presentation or submission form.",
+    bg: "linear-gradient(135deg, #8b5cf6, #6366f1)",
+  },
+  {
+    icon: markRaw(DownloadOutline),
+    title: "ZIP — original files",
+    description:
+      "Packages the full-resolution originals of every photo in the portfolio into a ZIP archive. Ideal for submitting to a competition, sending files to a retoucher, or handing a curated selection to a client.",
+    bg: "linear-gradient(135deg, #22c55e, #16a34a)",
+  },
+];
+
+// FAQs — updated to match real behaviour and constraints
 const faqs = ref([
   {
-    question: "Does the AI actually build my portfolio for me?",
+    question: "How many photos can a portfolio have?",
     answer:
-      "It gives you an intelligent starting point: a curated, scored, and sequenced selection based on your instructions. You review, adjust, and make the final decisions. Think of it as having a knowledgeable curator suggest a first draft.",
+      "Between 10 and 40 photos, in increments of 5. The builder over-generates by ~35% during evaluation, then trims the set down to the exact target size you chose.",
   },
   {
-    question: "Can I prepare for a specific competition or gallery?",
+    question: "What do the five coherence modes actually do?",
     answer:
-      "Yes. You can specify the number of images, the theme, and any constraints ('only black and white', 'from 2025', 'street photography only'). The assistant will select and sequence accordingly.",
+      "Visual favours photos with similar style and composition using CLIP embeddings. Chromatic groups by color palette and temperature. Narrative looks for related situations and emotional tone. Heterogeneous intentionally maximizes diversity. Free applies no coherence constraint and selects purely on quality.",
   },
   {
-    question: "How does it decide the order of photos?",
+    question: "Do I need to analyze my catalog first?",
     answer:
-      "Sequencing considers visual flow (composition rhythm), tonal progression (light/dark alternation), color harmony between adjacent images, and narrative arc. The goal is a portfolio that reads as a coherent whole, not just a list of good photos.",
+      "Yes. The builder only considers photos that have been processed by Photoreka's analyzer (artistic scores, embeddings and perceptual hashes). At least ~80% of the pool used must be analyzed for a build to be eligible.",
   },
   {
-    question: "Can I use it with only 50 photos?",
+    question: "Can I control the ordering of photos?",
     answer:
-      "Yes. The tools work with any catalog size, though the selection becomes more powerful as your archive grows. Even with a small catalog, the scoring and sequencing add significant value.",
+      "Sequencing is optional. You can leave the AI-generated order, disable sequencing entirely, or — after the build completes — drag-and-drop photos to reorder them, remove any that don't belong (with undo) and save the final layout.",
   },
   {
-    question: "What if I disagree with the selection?",
+    question: "Can I build a portfolio manually?",
     answer:
-      "You're always in control. Swap individual photos, ask for alternatives ('show me 3 options to replace #5'), reorder the sequence, or change the entire brief. The assistant adapts to your feedback in real-time.",
+      "Yes. Alongside the AI-driven flow there is a Manual mode: create an empty portfolio, then add or remove photos from your catalog by hand. No scoring, no credits — just a curated bucket you control end to end.",
+  },
+  {
+    question: "Does it cost credits?",
+    answer:
+      "Yes. Cost scales with target size, coherence mode and whether LLM-based sequencing is used. The wizard shows a live, backend-authoritative credit estimate before you start the build. Manual portfolios are free.",
   },
   {
     question: "Is this a portfolio website builder?",
     answer:
-      "No—Photoreka is the curation engine behind your portfolio, not the website. It selects and sequences your photos intelligently. You can then use the results in any portfolio platform, print service, or gallery submission.",
+      "No — Photoreka is the curation engine, not the website. It selects and sequences your photos. You can then take the resulting set to any portfolio platform, print service, competition submission or photobook layout tool.",
   },
 ]);
 
@@ -516,7 +745,7 @@ const goToHome = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "portfolio_builder_page");
-  window.open("https://app.photoreka.com/demo/chat-lab", "_blank");
+  window.open("https://app.photoreka.com/demo/portfolios", "_blank");
 };
 
 const goToSignup = () => {
@@ -576,6 +805,24 @@ onMounted(() => {
   heroVisible.value = true;
   setupScrollAnimations();
   trackEvent("page_view", { page: "photography_portfolio_builder" });
+
+  // Kick off Ken Burns zoom on the first slide
+  activateSlide(0);
+
+  slideshowTimer = setInterval(() => {
+    const prev = currentSlide.value;
+    const next = (prev + 1) % slideshowImages.length;
+    deactivateSlide(prev);
+    currentSlide.value = next;
+    activateSlide(next);
+  }, 3333);
+});
+
+onUnmounted(() => {
+  if (slideshowTimer) {
+    clearInterval(slideshowTimer);
+    slideshowTimer = null;
+  }
 });
 </script>
 
@@ -766,6 +1013,50 @@ onMounted(() => {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* ── Hero slideshow (temporary placeholder) ─────────────────── */
+.hero-slideshow {
+  position: relative;
+  width: 100%;
+  /* Match a typical 16:10 product screenshot so layout doesn't jump
+     when the real video/screenshots replace this. */
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--premium-bg-card);
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1);
+  /* opacity fades in/out; transform is driven by JS (activateSlide/deactivateSlide)
+     so it always transitions smoothly from its current value — no snap. */
+  transition:
+    opacity 0.93s ease-in-out,
+    transform 4s ease-out;
+  will-change: opacity, transform;
+}
+.hero-slide.active {
+  opacity: 1;
+}
+.hero-slideshow-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: opacity 0.4s ease !important;
+  }
 }
 .gradient-text {
   background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
@@ -1064,6 +1355,69 @@ onMounted(() => {
   }
 }
 
+/* ── Export Section ────────────────────────────────────────── */
+.export-section {
+  padding: 5rem 2rem;
+  background: var(--premium-bg-primary);
+}
+.export-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.export-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 6rem;
+}
+.export-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.export-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  background: var(--premium-bg-card);
+  border: 1px solid var(--premium-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+.export-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.export-card-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.export-card-body {
+  flex: 1;
+}
+.export-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+}
+.export-card-description {
+  font-size: 0.95rem;
+  color: var(--premium-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
 /* ── CTA Section ───────────────────────────────────────────── */
 .cta-section {
   padding: 6rem 2rem;
@@ -1119,6 +1473,13 @@ onMounted(() => {
 
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 968px) {
+  .export-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .export-headline {
+    position: static;
+  }
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 3rem;

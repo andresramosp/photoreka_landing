@@ -40,9 +40,7 @@
           <NuxtLink to="/lightroom_search_plugin" class="footer-link"
             >Lightroom Plugin</NuxtLink
           >
-          <NuxtLink to="/google_photos_alternative" class="footer-link"
-            >Google Photos Alternative</NuxtLink
-          >
+
           <NuxtLink to="/framer" class="footer-link"
             >Free Photo Framer</NuxtLink
           >

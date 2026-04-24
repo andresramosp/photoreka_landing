@@ -555,11 +555,11 @@ export const seoConfig = {
 
     photography_portfolio_builder: {
       title:
-        "AI Photography Portfolio Builder - Auto-Curate Your Best Work | Photoreka",
+        "AI Photography Portfolio Builder — Curate & Sequence Your Best Photos | Photoreka",
       description:
-        "Let AI select and sequence your strongest photos into a cohesive portfolio. Photoreka combines aesthetic scoring, narrative sequencing, and conversational curation to help you build a photography portfolio that tells your story. Prepare for exhibitions, competitions, and client presentations in minutes instead of days.",
+        "Turn thousands of photos into a curated 10–40 image portfolio. Photoreka's AI portfolio builder scores every photo across 8 artistic dimensions (aesthetics, composition, storytelling, originality, message, humor, visual games, candidness), applies one of five coherence modes (visual, chromatic, narrative, heterogeneous or free), and intelligently sequences the final selection. Prepare gallery exhibitions, competition submissions, client edits and photobooks in minutes instead of days.",
       keywords:
-        "AI photography portfolio builder, best photos for portfolio AI, photography portfolio selector, build photography portfolio automatically, AI portfolio curation, photography website portfolio tool, auto curate portfolio, portfolio photo selection AI, photography exhibition preparation, competition photo selection, photo portfolio generator, AI photo curation tool, photography portfolio creator",
+        "AI photography portfolio builder, AI photo curation tool, automatic photo selection, portfolio photo selection AI, photography portfolio selector, AI portfolio curation, photo sequencing tool, narrative photo sequencing, coherent photo portfolio, photography exhibition preparation, competition photo selection, photobook layout AI, photography portfolio creator, best photos for portfolio AI, visual coherence portfolio, chromatic photo curation",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -568,7 +568,7 @@ export const seoConfig = {
         "@type": "WebApplication",
         name: "Photoreka Portfolio Builder",
         description:
-          "AI-powered photography portfolio builder that automatically selects, ranks, and sequences your strongest work into cohesive portfolios for exhibitions, competitions, and presentations.",
+          "AI-powered photography portfolio builder that scores photos across 8 artistic dimensions, curates them under five coherence modes (visual, chromatic, narrative, heterogeneous, free), and intelligently sequences the final 10–40 image selection for exhibitions, competitions and photobooks.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
         offers: {
@@ -583,15 +583,15 @@ export const seoConfig = {
           url: "https://www.photoreka.com",
         },
         featureList: [
-          "AI-powered best photo selection",
-          "Automatic narrative sequencing",
-          "Multi-dimensional quality scoring",
-          "Exhibition-ready portfolio curation",
-          "Competition submission preparation",
-          "Conversational curation assistant",
-          "Thematic coherence analysis",
-          "Style consistency evaluation",
-          "Portfolio gap analysis",
+          "8-dimension artistic scoring (aesthetics, composition, storytelling, originality, message, humor, visual games, candidness)",
+          "Five coherence modes: visual, chromatic, narrative, heterogeneous, free",
+          "Configurable portfolio size from 10 to 40 photos",
+          "Natural-language style description parsed into weight vectors",
+          "Visual filters by genre, framing, depth of field, lighting and perspective",
+          "Intelligent photo sequencing with orientation balancing",
+          "Similarity gating to avoid near-duplicates",
+          "Iterative LLM-based refinement of the selection",
+          "Drag-and-drop reordering and manual portfolio mode",
         ],
       },
     },
