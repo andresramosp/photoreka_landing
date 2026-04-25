@@ -63,7 +63,7 @@
                   it instantly.<br /><br />
                   No tagging. No folders. No metadata editing. Pure
                   <strong>semantic search</strong> powered by computer vision AI
-                  that understands your photos the way you do.
+                  that understands your photos the way you do
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
