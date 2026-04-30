@@ -596,6 +596,72 @@ export const seoConfig = {
       },
     },
 
+    photo_tag_cloud: {
+      title:
+        "Photo Tag Cloud — Explore Your Entire Photo Vocabulary in 2D Semantic Space | Photoreka",
+      description:
+        "See every tag AI extracted from your photos arranged in an interactive 2D semantic map. Similar tags cluster together—mood next to atmosphere, rain next to fog, city next to urban. Navigate the map to search your catalog: zoom into a cluster and instantly surface the photos that live there. No tagging needed, no lists to scroll.",
+      keywords:
+        "photo tag cloud, semantic tag map, photo vocabulary visualization, interactive tag map, photo tags 2D, visual tag browser, AI photo tags, semantic photo search, tag-based photo search, photo catalog tags, tag cloud photographer, interactive photo tags, AI photo tagging, photo tag visualization, semantic photo organization, photo tag explorer, UMAP tag map, photo tag clustering, visual photo exploration, tag-based image search, photo tag atlas, photo semantic map",
+      ogImage: "/home/tag_cloud_poster.jpg",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka Photo Tag Cloud",
+          description:
+            "Interactive 2D semantic map of every tag extracted from your photos. Navigate by meaning—similar tags cluster together. Zoom in to search, drag to multi-select, enable dynamic search for real-time photo discovery.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/photo_tag_cloud",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Semantic 2D tag placement using UMAP dimensionality reduction",
+            "10 color-coded tag groups (mood, environment, objects, people, weather, animals, place, symbols, abstract, misc)",
+            "Collision-aware progressive label rendering",
+            "Balloon expansion for dense clusters",
+            "Click-to-search any tag",
+            "Rectangle multi-select (Ctrl/Cmd + drag)",
+            "Dynamic search mode: navigate = search",
+            "Group filter panel",
+            "Touch-native (pinch zoom, pan, tap)",
+            "Keyboard navigation (WASD / arrows)",
+            "Handles 10,000+ tags in real time via WebGL",
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Photo Tag Cloud",
+              item: "https://www.photoreka.com/photo_tag_cloud",
+            },
+          ],
+        },
+      ],
+    },
+
     photo_reports: {
       title:
         "Photography Style Analysis & Pattern Reports - AI Insights | Photoreka",

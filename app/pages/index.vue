@@ -722,6 +722,14 @@ const features = ref([
     link: null,
   },
   {
+    icon: markRaw(GitNetworkOutline),
+    title: "Tag Cloud",
+    description:
+      "Every AI-extracted tag from your photos mapped in 2D semantic space. Similar concepts cluster together. Navigate the map to browse, select a region to search, or enable dynamic mode for real-time photo discovery.",
+    color: "#a78bfa",
+    link: "/photo_tag_cloud",
+  },
+  {
     icon: markRaw(LayersOutline),
     title: "Series & Sequencing",
     description:
