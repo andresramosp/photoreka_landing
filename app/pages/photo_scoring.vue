@@ -60,9 +60,10 @@
                     >aesthetics, composition, narrative strength, originality,
                     visual wit</strong
                   >, and more—giving you an objective lens on your own work.<br /><br />
-                  Not a single number. A <strong>full quality profile</strong>
-                  for each image, so you can rank by what matters for each
-                  project.
+                  For commercial work—product, stock, or fashion—two extra
+                  dimensions activate:
+                  <strong>subject clarity</strong> and
+                  <strong>commercial intent</strong>.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -109,11 +110,12 @@
         <section class="examples-section" ref="dimensionsSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: dimensionsVisible }">
-              <h2 class="section-title">6+ scoring dimensions</h2>
+              <h2 class="section-title">9+ scoring dimensions</h2>
               <p class="section-subtitle">
                 Each photo receives a detailed quality profile across multiple
                 independent criteria. Sort by any dimension to surface exactly
-                what you need.
+                what you need. Commercial mode activates two additional
+                product-, stock-, and fashion-specific scores.
               </p>
             </div>
 
@@ -302,7 +304,6 @@ import {
   KeyOutline,
   ChevronDownOutline,
   BarChartOutline,
-  SpeedometerOutline,
   EyeOutline,
   FlashOutline,
   ImagesOutline,
@@ -311,6 +312,10 @@ import {
   LayersOutline,
   SearchOutline,
   GitNetworkOutline,
+  BriefcaseOutline,
+  ScanOutline,
+  ExtensionPuzzleOutline,
+  PersonOutline,
 } from "@vicons/ionicons5";
 import { Trophy20Regular } from "@vicons/fluent";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
@@ -390,18 +395,39 @@ const dimensions = ref([
     color: "#f59e0b",
   },
   {
-    icon: markRaw(HappyOutline),
-    title: "Visual Wit & Humor",
+    icon: markRaw(ExtensionPuzzleOutline),
+    title: "Visual Games",
     description:
-      "Cleverness, irony, visual puns, unexpected juxtapositions. Does this image make you smile or think twice?",
+      "Reflections, optical illusions, visual paradoxes, and perceptual tricks. Images that play with the viewer's perception and reward a second look.",
     color: "#ec4899",
   },
   {
-    icon: markRaw(SpeedometerOutline),
-    title: "Technical Quality",
+    icon: markRaw(HappyOutline),
+    title: "Humor",
     description:
-      "Sharpness, noise levels, exposure accuracy, dynamic range. The baseline technical execution of the capture.",
+      "Comic timing, irony, absurdity, and wit captured in a single frame. Does this image make you laugh or smile at the world?",
     color: "#06b6d4",
+  },
+  {
+    icon: markRaw(ScanOutline),
+    title: "Subject Clarity",
+    description:
+      "How clearly and unambiguously the main subject stands out from the background. Especially relevant for product, stock, and fashion photography where instant subject identification is critical.",
+    color: "#f97316",
+  },
+  {
+    icon: markRaw(BriefcaseOutline),
+    title: "Commercial Intent",
+    description:
+      "Suitability for commercial applications: product advertising, stock libraries, fashion editorials. Evaluates background cleanliness, subject isolation, lighting quality for commercial use, and overall production value.",
+    color: "#a78bfa",
+  },
+  {
+    icon: markRaw(PersonOutline),
+    title: "Candidness",
+    description:
+      "Authenticity and spontaneity of the moment. Unposed, genuine expressions and interactions that feel true to life—the opposite of staged or constructed imagery.",
+    color: "#34d399",
   },
 ]);
 
@@ -510,6 +536,11 @@ const faqs = ref([
     question: "Is this included with Photoreka?",
     answer:
       "Yes. Aesthetic scoring is a core feature available to all Photoreka users. Every photo in your catalog receives a full quality profile as part of the standard analysis pipeline.",
+  },
+  {
+    question: "How does commercial scoring work?",
+    answer:
+      "When Photoreka detects commercial photography (product, stock, fashion) in your catalog—or when you flag it manually—two additional dimensions are activated: Subject Clarity, which measures how cleanly the main subject stands out from its environment, and Commercial Intent, which evaluates overall production value and suitability for advertising, stock libraries, or editorial use. These scores help you quickly identify your most licensable or pitch-ready images.",
   },
 ]);
 

@@ -210,6 +210,114 @@
           </div>
         </section>
 
+        <!-- Search Modes / Alternatives Section -->
+        <section class="modes-section" ref="modesSection">
+          <div class="hero-background">
+            <div class="gradient-orb orb-2" style="animation-delay: -8s"></div>
+          </div>
+          <div class="section-container" style="position: relative; z-index: 1">
+            <div class="section-header" :class="{ visible: modesVisible }">
+              <h2 class="section-title">
+                Three search modes, honest about precision
+              </h2>
+              <p class="section-subtitle">
+                Most AI photo search tools use a single embedding model. When
+                results drift, they call it "associative" or "metaphorical"—but
+                that's just imprecision with better branding. Photoreka gives
+                you three distinct modes and tells you exactly what each one
+                does.
+              </p>
+            </div>
+
+            <div class="modes-grid" :class="{ visible: modesVisible }">
+              <div
+                v-for="(mode, i) in searchModes"
+                :key="i"
+                class="mode-card"
+                :style="{ transitionDelay: `${i * 110}ms` }"
+              >
+                <div class="mode-header">
+                  <span
+                    class="mode-tag"
+                    :style="{
+                      color: mode.color,
+                      borderColor: mode.color + '55',
+                      background: mode.color + '18',
+                    }"
+                    >{{ mode.tag }}</span
+                  >
+                  <h3 class="mode-title">{{ mode.title }}</h3>
+                </div>
+                <p class="mode-description">{{ mode.description }}</p>
+                <div class="mode-example">
+                  <span class="mode-example-label">Example:</span>
+                  <em>"{{ mode.example }}"</em>
+                </div>
+              </div>
+            </div>
+
+            <!-- Excire/alternatives callout -->
+            <div class="alt-callout" :class="{ visible: modesVisible }">
+              <div class="alt-callout-inner">
+                <h3 class="alt-callout-title">
+                  A real Excire Search alternative
+                </h3>
+                <p class="alt-callout-text">
+                  Excire Search and similar tools (Mylio Photos, DigiKam, even
+                  Google Photos) use CLIP-based embeddings—effective for short
+                  phrases, but the underlying model has a hard context limit of
+                  ~77 tokens (roughly 50 words). Long or complex queries get
+                  silently truncated without warning, and the single-mode
+                  architecture means results are inherently associative—no way
+                  to ask for something genuinely specific. Photoreka has no
+                  query length limit: write as much context as you need. And
+                  when you need real precision, Precise mode adds a logical
+                  inference layer that
+                  <em>verifies</em> candidates against your exact conditions
+                  rather than just ranking them by vector proximity.
+                </p>
+                <div class="alt-features">
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      >Unlimited query length — no silent truncation of complex
+                      descriptions</span
+                    >
+                  </div>
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      >Three honest modes instead of one broad model rebranded
+                      as "intelligent"</span
+                    >
+                  </div>
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      >Enriched result insights — understand <em>why</em> each
+                      photo surfaced</span
+                    >
+                  </div>
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      >ChatLab: an LLM vision layer for conversational,
+                      iterative refinement</span
+                    >
+                  </div>
+                </div>
+                <p class="alt-note">
+                  Also relevant if you're looking for an alternative to
+                  <strong>Google Photos</strong> (avoid cloud lock-in),
+                  <strong>Mylio Photos</strong>, or
+                  <strong>DigiKam</strong>—none of which offer the search depth
+                  or curation tools of Photoreka.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Lightroom Section (secondary) -->
         <section class="lr-section" ref="lrSection">
           <div class="hero-background">
@@ -444,6 +552,7 @@ const heroSection = ref(null);
 const examplesSection = ref(null);
 const howSection = ref(null);
 const featuresSection = ref(null);
+const modesSection = ref(null);
 const lrSection = ref(null);
 const faqSection = ref(null);
 const ctaSection = ref(null);
@@ -453,6 +562,7 @@ const heroVisible = ref(false);
 const examplesVisible = ref(false);
 const howVisible = ref(false);
 const featuresVisible = ref(false);
+const modesVisible = ref(false);
 const lrVisible = ref(false);
 const faqVisible = ref(false);
 const ctaVisible = ref(false);
@@ -592,6 +702,35 @@ const features = ref([
   },
 ]);
 
+// Search modes (Broad / Adaptive / Precise)
+const searchModes = ref([
+  {
+    tag: "Broad",
+    title: "Broad search",
+    description:
+      "Pure embedding similarity — your query and every photo coexist in the same semantic space. Fast, associative, and ideal when you're exploring or describing mood, style, and feeling rather than specific facts.",
+    example: "abandoned but not desolate",
+    color: "#8b5cf6",
+  },
+  {
+    tag: "Adaptive",
+    title: "Adaptive search",
+    description:
+      "Designed for cultural references and stylistic shorthand. When you type 'Blade Runner-inspired photos', Photoreka automatically unpacks what that means — neon reflections, wet asphalt, dystopian atmosphere, high contrast — and adds those nuances under the hood. It uses Broad's recall strength and enriches it with the implicit vocabulary your reference carries.",
+    example: "Blade Runner-inspired photos",
+    color: "#2563eb",
+  },
+  {
+    tag: "Precise",
+    title: "Precise search",
+    description:
+      "Adds a logical inference layer on top of embeddings. The model doesn't just rank candidates by vector proximity — it reasons through your description and actively verifies that each result meets your specific conditions. Real precision, not rebranded association.",
+    example:
+      "exactly three people, at least one looking away from camera, outdoor setting",
+    color: "#22c55e",
+  },
+]);
+
 // FAQs
 const faqs = ref([
   {
@@ -604,6 +743,17 @@ const faqs = ref([
       "How is this different from searching in Google Photos or Apple Photos?",
     answer:
       "Google Photos and Apple Photos also use AI search, but they're optimized for consumer snapshots and basic object detection. Photoreka is built for photographers: it understands compositional intent, lighting mood, stylistic references, and figurative language—not just 'dog' or 'beach'. It also gives you full control over your archive without locking you into a proprietary cloud.",
+  },
+  {
+    question: "How does Photoreka compare to Excire Search?",
+    answer:
+      "Excire Search is a solid Lightroom Classic plugin for short keyword prompts. Its main technical constraint is the CLIP model it's built on: a hard context window of ~77 tokens (~50 words), meaning long or nuanced queries get silently truncated. Beyond length, Excire offers a single search mode—all results are associative by embedding proximity with no way to ask for something genuinely specific. Photoreka has no query length limit, offers three distinct modes (Broad for direct similarity, Adaptive for cultural and stylistic references that auto-expands your query with the right nuances, and Precise which adds logical inference to actually verify conditions), enriches results with insights, and lets you continue refining through ChatLab's LLM vision layer. It also works across sources beyond Lightroom: Google Photos, Dropbox, and local files in a single search.",
+  },
+  {
+    question:
+      "What's the difference between Broad, Adaptive, and Precise search?",
+    answer:
+      "Broad search uses pure embedding similarity—fast, associative, best for mood, style, and figurative queries. Adaptive is designed for cultural references and stylistic shorthand: when you type 'Blade Runner-inspired' or 'Hopper-esque loneliness', it automatically expands your query with the implicit visual vocabulary that reference carries (neon reflections, wet asphalt, isolation, side-lit interiors…), using Broad's recall and enriching it with nuances you didn't have to spell out. Precise adds a logical inference step: a reasoning model reads your description and actively verifies each candidate result against the specific conditions you set—it doesn't just pick the nearest vectors, it checks whether the answer is actually correct. Broad is great for exploration; Adaptive for cultural or stylistic references; Precise for when you know exactly what you're looking for.",
   },
   {
     question: "Can it understand artistic or emotional descriptions?",
@@ -701,6 +851,7 @@ const setupScrollAnimations = () => {
   watch(examplesSection, examplesVisible);
   watch(howSection, howVisible);
   watch(featuresSection, featuresVisible);
+  watch(modesSection, modesVisible);
   watch(lrSection, lrVisible);
   watch(faqSection, faqVisible);
   watch(ctaSection, ctaVisible);
@@ -1405,5 +1556,137 @@ onMounted(() => {
   .cta-section {
     padding: 4rem 1rem;
   }
+  .modes-grid {
+    grid-template-columns: 1fr;
+  }
+  .alt-callout {
+    padding: 1.75rem;
+  }
+}
+
+/* ── Search Modes Section ──────────────────────────────────── */
+.modes-section {
+  position: relative;
+  padding: 6rem 2rem;
+  overflow: hidden;
+  background: var(--premium-bg-secondary);
+}
+.modes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modes-grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mode-card {
+  background: var(--premium-bg-card);
+  border: 1px solid var(--premium-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+}
+.mode-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+.mode-header {
+  margin-bottom: 1rem;
+}
+.mode-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid;
+  margin-bottom: 0.75rem;
+}
+.mode-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.mode-description {
+  color: var(--premium-text-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.mode-example {
+  font-size: 0.88rem;
+  color: var(--premium-text-secondary);
+  padding: 0.6rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  border-left: 2px solid rgba(255, 255, 255, 0.12);
+}
+.mode-example-label {
+  font-weight: 600;
+  font-style: normal;
+  margin-right: 0.3rem;
+}
+
+/* ── Alternatives Callout ──────────────────────────────────── */
+.alt-callout {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--premium-bg-card);
+  border: 1px solid var(--premium-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+}
+.alt-callout.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.alt-callout-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.alt-callout-text {
+  color: var(--premium-text-secondary);
+  line-height: 1.75;
+  font-size: 0.97rem;
+  margin-bottom: 1.5rem;
+}
+.alt-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+.alt-feature {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  color: var(--premium-text-primary);
+  line-height: 1.5;
+}
+.alt-check {
+  color: #22c55e;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.alt-note {
+  font-size: 0.9rem;
+  color: var(--premium-text-secondary);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--premium-border);
+  line-height: 1.65;
 }
 </style>

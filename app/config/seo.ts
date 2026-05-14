@@ -242,11 +242,11 @@ export const seoConfig = {
 
     ai_photo_search: {
       title:
-        "AI Photo Search — Find Any Photo by Describing It | Natural Language Photo Search App | Photoreka",
+        "AI Photo Search — Find Any Photo by Describing It | Excire Alternative | Photoreka",
       description:
-        "Find any photo in your library just by describing it. Type 'rainy street at night' or 'melancholic portrait in window light' and Photoreka instantly finds it—no tagging, no keywords needed. The AI photo search app that understands natural language. Search your entire photo catalog by mood, scene, lighting, or emotion.",
+        "Find any photo by describing it in natural language — no tagging needed. Three honest search modes: Broad (embedding similarity), Adaptive (re-ranked), and Precise (logical inference that verifies conditions, not just ranks them). No query length limit — unlike CLIP-based tools like Excire Search (~77-token cap). Enriched results with AI insights. ChatLab for iterative LLM refinement. The AI photo search app that tells you exactly how precise it's being.",
       keywords:
-        "AI photo search, natural language photo search, find photos by description, search photos without tags, AI photo finder, photo search app, search my photo library, find photo by describing it, smart photo search, semantic image search, photo catalog search, AI image search, visual photo search, search photos by mood, search photos AI, intelligent photo finder, AI photo organizer, photo library search, describe photo find it, no tagging photo search, computer vision photo search, photo archive search app",
+        "AI photo search, natural language photo search, Excire Search alternative, Excire alternative, Mylio Photos alternative, semantic photo search alternative, find photos by description, search photos without tags, AI photo finder, photo search app, search my photo library, find photo by describing it, smart photo search, semantic image search, photo catalog search, AI image search, visual photo search, search photos by mood, search photos AI, intelligent photo finder, AI photo organizer, photo library search, describe photo find it, no tagging photo search, computer vision photo search, photo archive search app, precise AI photo search, broad adaptive precise photo search, ChatLab photo search, AI photo search no character limit",
       ogImage: "/home/video_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -274,10 +274,15 @@ export const seoConfig = {
           featureList: [
             "Natural language photo search",
             "No manual tagging required",
+            "Three search modes: Broad, Adaptive, and Precise",
+            "Precise mode uses logical inference to verify conditions (not just embedding proximity)",
+            "No query length limit — works with long, complex descriptions",
+            "Enriched result insights (why each photo surfaced)",
+            "ChatLab: LLM vision layer for iterative conversational refinement",
             "Search by mood, style, and emotion",
             "Semantic image understanding",
             "Works with 100,000+ photos",
-            "Cross-source search",
+            "Cross-source search (Lightroom, Google Photos, Dropbox)",
           ],
         },
         {
@@ -303,11 +308,11 @@ export const seoConfig = {
 
     lightroom_plugin: {
       title:
-        "Natural Language AI Photo Search Plugin for Lightroom Classic | Photoreka",
+        "Natural Language AI Photo Search Plugin for Lightroom Classic | Excire Alternative | Photoreka",
       description:
-        "Search your Lightroom Classic catalog by describing what you remember—no manual tagging required. Photoreka's official plugin uses computer vision AI and semantic search to find any photo instantly. Supports RAW, JPEG, PNG, TIFF. Compatible with Lightroom Classic 13.0+. All AI processing runs locally—your originals never leave your computer.",
+        "Search your Lightroom Classic catalog by describing what you remember — no manual tagging. Unlike CLIP-based plugins like Excire Search (limited to ~77-token queries), Photoreka has no length cap and offers three search modes: Broad, Adaptive, and Precise (logical inference). All AI processing runs locally. Compatible with Lightroom Classic 13.0+. RAW, CR2, NEF, ARW, JPEG, PNG, TIFF.",
       keywords:
-        "lightroom plugin, lightroom classic plugin, AI photo search, 3D photo navigation, 3D catalog view, semantic photo search, lightroom catalog sync, natural language photo search, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, photo metadata analysis, navigate photos in 3D, view catalog as whole, photo clustering, visual similarity, 3D photo atlas, AI photo organizer, photo curation platform, photography DAM, digital asset management, professional photo organizer",
+        "lightroom plugin, lightroom classic plugin, AI photo search, Excire Search alternative, Excire plugin alternative, lightroom AI search plugin, semantic photo search lightroom, 3D photo navigation, 3D catalog view, natural language photo search, lightroom catalog sync, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, navigate photos in 3D, AI photo organizer, photo curation platform, photography DAM, digital asset management, professional photo organizer, precise photo search, broad adaptive precise search, no character limit photo search",
       ogImage: "/home/video_lr_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",

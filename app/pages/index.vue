@@ -52,8 +52,9 @@
                   <n-icon size="16"><WalkOutline /></n-icon>Street
                   <n-icon size="16"><BookOpen16Regular /></n-icon>Documentary
                   <n-icon size="16"><ColorPaletteOutline /></n-icon>Artistic
-                  <n-icon size="16"><PersonOutline /></n-icon>Portrait
-                  <n-icon size="16"><ImageOutline /></n-icon>Landscape
+                  <!-- <n-icon size="16"><PersonOutline /></n-icon>Portrait -->
+                  <n-icon size="16"><ImageOutline /></n-icon>Travel
+                  <n-icon size="16"><BriefcaseOutline /></n-icon>Commercial
                 </span>
               </div>
               <h1 class="hero-title" :class="{ visible: heroVisible }">
@@ -62,15 +63,12 @@
               </h1>
 
               <p class="hero-description" :class="{ visible: heroVisible }">
-                <strong>Photoreka</strong> is a suite of
-                <strong> smart tools</strong> to help you
-                <strong> curate your photos</strong>.<br />
-                Upload a <strong>specific project</strong>, a
-                <strong>curated selection</strong> or your whole
-                <strong>photo library</strong>. <br />Search in
-                <strong>natural language</strong>, rank your photos by
-                <strong>aesthetics</strong> and explore your catalog in
-                <strong>3D</strong>.
+                <strong>Photoreka</strong> is a suite of intelligent tools to
+                help you organize and curate your photo library.<br />
+                You can search by <strong>natural language</strong>, rank your
+                photos or explore your catalog in <strong>3D</strong>.<br />
+                Upload a specific project, a refined selection or your whole
+                <strong>body of work</strong>.
               </p>
               <div
                 v-if="false"
@@ -210,6 +208,129 @@
           </div>
         </section>
 
+        <!-- Search Promo Section -->
+        <section
+          id="ai_search"
+          class="search-promo-section"
+          ref="searchPromoSection"
+        >
+          <div class="search-promo-bg">
+            <div class="gradient-orb orb-1" style="animation-delay: -5s"></div>
+            <div class="gradient-orb orb-2" style="animation-delay: -12s"></div>
+          </div>
+          <div class="section-container" style="position: relative; z-index: 1">
+            <div
+              class="search-promo-layout"
+              :class="{ visible: searchPromoVisible }"
+            >
+              <!-- Left: content -->
+              <div class="search-promo-content">
+                <div class="search-promo-badge">
+                  <n-icon size="15"><SearchOutline /></n-icon>
+                  AI Photo Search
+                </div>
+                <h2 class="search-promo-title">
+                  Find any photo by
+                  <span class="gradient-text">describing it</span>
+                </h2>
+                <p class="search-promo-description">
+                  Type what you remember and Photoreka finds it — no tagging, no
+                  folders. Three modes: <strong>Broad</strong> for open
+                  exploration, <strong>Adaptive</strong> for metaphorical and
+                  cultural references, <strong>Precise</strong> for conditions
+                  that need to be verified, not just approximated.
+                </p>
+                <div class="search-promo-actions">
+                  <n-button
+                    type="info"
+                    size="large"
+                    strong
+                    @click="goToSearchDemo"
+                  >
+                    <template #icon>
+                      <n-icon><PlayCircleOutline /></n-icon>
+                    </template>
+                    Try the Demo
+                  </n-button>
+                  <n-button
+                    text
+                    type="info"
+                    size="large"
+                    tag="a"
+                    href="/ai_photo_search"
+                  >
+                    Learn more →
+                  </n-button>
+                </div>
+              </div>
+              <!-- Right: video -->
+              <div class="search-promo-visual">
+                <div class="video-frame">
+                  <video
+                    class="search-promo-video"
+                    src="/videos/Search.mp4"
+                    poster="/home/video_poster.jpg"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Data Sources Section -->
+        <section id="sources" class="sources-section" ref="sourcesSection">
+          <div class="section-container">
+            <div class="section-header" :class="{ visible: sourcesVisible }">
+              <h2 class="section-title">
+                Import and organize photos from anywhere
+              </h2>
+              <p class="section-subtitle">
+                Photoreka works with your existing photo sources. Import your
+                images from Lightroom, Google Photos, Dropbox, or local files
+                and start curating with AI immediately.
+              </p>
+            </div>
+
+            <div class="sources-grid">
+              <div
+                v-for="(source, index) in dataSources"
+                :key="index"
+                class="source-card"
+                :class="{
+                  visible: sourcesVisible,
+                  'coming-soon': source.comingSoon,
+                }"
+                :style="{ transitionDelay: `${index * 100}ms` }"
+              >
+                <div class="source-icon">
+                  <n-icon v-if="!source.logo" size="40" :color="source.color">
+                    <component :is="source.icon" />
+                  </n-icon>
+                  <img
+                    v-else
+                    :src="source.logo"
+                    :alt="source.name"
+                    class="source-logo-img"
+                  />
+                </div>
+                <h3 class="source-name">{{ source.name }}</h3>
+                <p class="source-description">{{ source.description }}</p>
+                <div
+                  class="source-badge"
+                  :class="{
+                    available: !source.comingSoon,
+                    soon: source.comingSoon,
+                  }"
+                >
+                  {{ source.comingSoon ? "Coming Soon" : "Available Now" }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- Lightroom Integration Section -->
         <section
           id="lightroom_plugin"
@@ -309,188 +430,6 @@
           </div>
         </section>
 
-        <!-- Data Sources Section -->
-        <section id="sources" class="sources-section" ref="sourcesSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: sourcesVisible }">
-              <h2 class="section-title">
-                Import and organize photos from anywhere
-              </h2>
-              <p class="section-subtitle">
-                Photoreka works with your existing photo sources. Import your
-                images from Lightroom, Google Photos, Dropbox, or local files
-                and start curating with AI immediately.
-              </p>
-            </div>
-
-            <div class="sources-grid">
-              <div
-                v-for="(source, index) in dataSources"
-                :key="index"
-                class="source-card"
-                :class="{
-                  visible: sourcesVisible,
-                  'coming-soon': source.comingSoon,
-                }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
-              >
-                <div class="source-icon">
-                  <n-icon v-if="!source.logo" size="40" :color="source.color">
-                    <component :is="source.icon" />
-                  </n-icon>
-                  <img
-                    v-else
-                    :src="source.logo"
-                    :alt="source.name"
-                    class="source-logo-img"
-                  />
-                </div>
-                <h3 class="source-name">{{ source.name }}</h3>
-                <p class="source-description">{{ source.description }}</p>
-                <div
-                  class="source-badge"
-                  :class="{
-                    available: !source.comingSoon,
-                    soon: source.comingSoon,
-                  }"
-                >
-                  {{ source.comingSoon ? "Coming Soon" : "Available Now" }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Free Tools Section -->
-        <section id="tools" class="free-tools-section" ref="freeToolsSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: freeToolsVisible }">
-              <div class="tools-badge">
-                <n-icon size="16"><Workspace /></n-icon>
-                <span>Free Forever</span>
-              </div>
-              <h2 class="section-title">Try our free tools</h2>
-              <p class="section-subtitle">
-                No account needed. Start creating and experimenting right now
-                with our professional-grade tools.
-              </p>
-            </div>
-
-            <div class="tools-showcase" :class="{ visible: freeToolsVisible }">
-              <!-- Free Framer Card -->
-              <div class="tool-card tool-card-large tool-card-framer">
-                <div class="tool-visual framer-visual">
-                  <div class="tool-screenshot-wrapper">
-                    <img
-                      src="/home/free_framer.png"
-                      alt="Free Framer Screenshot"
-                      class="tool-screenshot"
-                    />
-                  </div>
-                </div>
-                <div class="tool-card-content">
-                  <div class="tool-header">
-                    <div class="tool-icon tool-icon-framer gradient-framer">
-                      <n-icon size="28"><StopOutline /></n-icon>
-                    </div>
-                    <div class="tool-meta">
-                      <h3 class="tool-title">Free Framer</h3>
-                      <span class="tool-tag">Photo Framing Tool</span>
-                    </div>
-                  </div>
-                  <p class="tool-description">
-                    Add professional frames and borders to your photos
-                    instantly. Perfect for presentations, portfolios, and social
-                    media. Choose from multiple styles and customize colors to
-                    match your vision.
-                  </p>
-                  <ul class="tool-features">
-                    <li>
-                      <n-icon size="16"><ColorPaletteOutline /></n-icon>
-                      <span>Multiple frame styles and borders</span>
-                    </li>
-                    <li>
-                      <n-icon size="16"><ImagesOutline /></n-icon>
-                      <span>Customizable colors and sizes</span>
-                    </li>
-                    <li>
-                      <n-icon size="16"><DownloadOutline /></n-icon>
-                      <span>Batch export photos without limits</span>
-                    </li>
-                  </ul>
-                  <n-button
-                    type="warning"
-                    size="large"
-                    @click="goToFreeFramer"
-                    class="tool-cta"
-                  >
-                    <template #icon>
-                      <n-icon><PlayCircleOutline /></n-icon>
-                    </template>
-                    Try Framer
-                  </n-button>
-                </div>
-              </div>
-              <!-- Canvas Playground Card -->
-              <div class="tool-card tool-card-large">
-                <div class="tool-card-content">
-                  <div class="tool-header">
-                    <div class="tool-icon gradient-canvas">
-                      <n-icon size="32"><Workspace /></n-icon>
-                    </div>
-                    <div class="tool-meta">
-                      <h3 class="tool-title">Canvas Playground</h3>
-                      <span class="tool-tag">Interactive Design Tool</span>
-                    </div>
-                  </div>
-                  <p class="tool-description">
-                    Create stunning photo layouts and compositions with complete
-                    creative freedom. Drag, drop, and arrange your photos to
-                    tell your visual story. With a Photoreka account, find
-                    related images from your collection.
-                  </p>
-                  <ul class="tool-features">
-                    <li>
-                      <n-icon size="16"><ColorPaletteOutline /></n-icon>
-                      <span>Drop unlimited images</span>
-                    </li>
-                    <li>
-                      <n-icon size="16"><ImagesOutline /></n-icon>
-                      <span
-                        >Find images by narrative or chromatic similarity</span
-                      >
-                    </li>
-                    <li>
-                      <n-icon size="16"><DownloadOutline /></n-icon>
-                      <span>Intuitive drag and drop interface</span>
-                    </li>
-                  </ul>
-                  <n-button
-                    type="primary"
-                    size="large"
-                    @click="goToPlayground"
-                    class="tool-cta"
-                  >
-                    <template #icon>
-                      <n-icon><PlayCircleOutline /></n-icon>
-                    </template>
-                    Launch Canvas
-                  </n-button>
-                </div>
-                <div class="tool-visual canvas-visual">
-                  <div class="tool-screenshot-wrapper">
-                    <img
-                      src="/home/canvas_playground.png"
-                      alt="Canvas Playground Screenshot"
-                      class="tool-screenshot"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <!-- FAQs Section -->
         <section id="faq" class="faqs-section" ref="faqsSection">
           <div class="section-container">
@@ -567,6 +506,7 @@ import {
   PersonOutline,
   ImageOutline,
   ColorPaletteOutline,
+  BriefcaseOutline,
   SyncOutline,
   ChatbubblesOutline,
   ShareSocialOutline,
@@ -637,6 +577,7 @@ const activeFAQ = ref(null);
 // Intersection observers for animations
 const heroSection = ref(null);
 const featuresSection = ref(null);
+const searchPromoSection = ref(null);
 const integrationSection = ref(null);
 const sourcesSection = ref(null);
 const freeToolsSection = ref(null);
@@ -644,6 +585,7 @@ const faqsSection = ref(null);
 
 const heroVisible = ref(false);
 const featuresVisible = ref(false);
+const searchPromoVisible = ref(false);
 const integrationVisible = ref(false);
 const sourcesVisible = ref(false);
 const freeToolsVisible = ref(false);
@@ -721,14 +663,14 @@ const features = ref([
     color: "#8b5cf6",
     link: null,
   },
-  {
-    icon: markRaw(GitNetworkOutline),
-    title: "Tag Cloud",
-    description:
-      "Every AI-extracted tag from your photos mapped in 2D semantic space. Similar concepts cluster together. Navigate the map to browse, select a region to search, or enable dynamic mode for real-time photo discovery.",
-    color: "#a78bfa",
-    link: "/photo_tag_cloud",
-  },
+  // {
+  //   icon: markRaw(GitNetworkOutline),
+  //   title: "Tag Cloud",
+  //   description:
+  //     "Every AI-extracted tag from your photos mapped in 2D semantic space. Similar concepts cluster together. Navigate the map to browse, select a region to search, or enable dynamic mode for real-time photo discovery.",
+  //   color: "#a78bfa",
+  //   link: "/photo_tag_cloud",
+  // },
   {
     icon: markRaw(LayersOutline),
     title: "Series & Sequencing",
@@ -749,7 +691,7 @@ const features = ref([
     icon: markRaw(Trophy20Regular),
     title: "Rankings & Scores",
     description:
-      "Score your photos across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, humor, and more. Rank your catalog and surface your strongest work automatically.",
+      "Score your photos across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, humor, and more. Commercial mode adds product-specific scores like subject clarity and commercial intent. Rank your catalog and surface your strongest work automatically.",
     color: "#ec4899",
     link: "/photo_scoring",
   },
@@ -794,7 +736,7 @@ const faqs = ref([
   {
     question: "What is Photoreka and who is it for?",
     answer:
-      "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, and landscape photographers who take their work seriously.",
+      "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
   },
   {
     question: "How does Photoreka organize and curate photos with AI?",
@@ -871,6 +813,11 @@ const goToFreeFramer = () => {
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "landing_page_premium");
   window.open("https://app.photoreka.com/demo/workspace", "_blank");
+};
+
+const goToSearchDemo = () => {
+  trackUserAction("navigate_to_search_demo", "landing_page_premium");
+  window.open("https://app.photoreka.com/demo/search", "_blank");
 };
 
 const onRequestSuccess = () => {};
@@ -1126,8 +1073,18 @@ const setupScrollAnimations = () => {
     });
   }, observerOptions);
 
+  const searchPromoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        searchPromoVisible.value = true;
+      }
+    });
+  }, observerOptions);
+
   if (heroSection.value) heroObserver.observe(heroSection.value);
   if (featuresSection.value) featuresObserver.observe(featuresSection.value);
+  if (searchPromoSection.value)
+    searchPromoObserver.observe(searchPromoSection.value);
   if (integrationSection.value)
     integrationObserver.observe(integrationSection.value);
   if (sourcesSection.value) sourcesObserver.observe(sourcesSection.value);
@@ -1259,6 +1216,105 @@ if (typeof window !== "undefined") {
 
 .gradient-canvas {
   background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+}
+
+/* ── Search Promo Section ──────────────────────────────────── */
+.search-promo-section {
+  position: relative;
+  padding: 6rem 2rem;
+  overflow: hidden;
+  background: var(--premium-bg-secondary);
+}
+.search-promo-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.search-promo-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.search-promo-layout.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.search-promo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+.search-promo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #60a5fa;
+  width: fit-content;
+  letter-spacing: 0.02em;
+}
+.search-promo-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.gradient-text {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.search-promo-description {
+  font-size: 1rem;
+  color: var(--premium-text-secondary);
+  line-height: 1.75;
+  margin: 0;
+  max-width: 540px;
+}
+.search-promo-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.search-promo-visual {
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease;
+}
+.search-promo-visual:hover {
+  transform: translateY(-6px);
+}
+.search-promo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 968px) {
+  .search-promo-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .search-promo-description {
+    max-width: 100%;
+  }
+  .search-promo-section {
+    padding: 4rem 1rem;
+  }
 }
 
 .premium-nav {

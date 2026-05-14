@@ -2303,7 +2303,7 @@ section {
 
 .integration-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 80px;
   align-items: center;
 }
@@ -2321,7 +2321,7 @@ section {
 
 .video-frame {
   position: relative;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.2),

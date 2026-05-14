@@ -446,6 +446,11 @@ const faqs = ref([
       "Lightroom's native search relies on manually entered keywords, star ratings, and metadata. Photoreka's plugin uses computer vision AI to understand the actual visual content of your photos—you can search for 'golden hour portrait with shallow depth of field' even if you never tagged a single image. It's the difference between searching a filing cabinet by label and describing a memory.",
   },
   {
+    question: "How does Photoreka compare to the Excire Search plugin?",
+    answer:
+      "Excire Search is a well-known Lightroom plugin built on CLIP-based embeddings, which works well for short keyword prompts. Its main constraint is the model's context window (~77 tokens, roughly 50 words): long or detailed descriptions get silently truncated, and there's only one search mode — so all results are associative by proximity, with no way to enforce genuinely specific conditions. Photoreka's plugin connects to the full Photoreka platform, giving you three search modes — Broad (direct embedding similarity), Adaptive (for cultural and stylistic references: automatically expands your query with the right visual nuances), and Precise (logical inference that actually verifies conditions) — with no query length limit. Results can be enriched with AI insights, and you can continue refining through ChatLab's LLM vision layer. The plugin also unlocks the 3D Atlas and full curation toolset.",
+  },
+  {
     question: "Will the plugin modify my catalog or photos?",
     answer:
       "No. The plugin only reads your catalog and metadata. It never modifies your original files, catalog structure, or existing metadata. Your Lightroom library remains completely intact.",
