@@ -263,18 +263,12 @@
                   A real Excire Search alternative
                 </h3>
                 <p class="alt-callout-text">
-                  Excire Search and similar tools (Mylio Photos, DigiKam, even
-                  Google Photos) use CLIP-based embeddings—effective for short
-                  phrases, but the underlying model has a hard context limit of
-                  ~77 tokens (roughly 50 words). Long or complex queries get
-                  silently truncated without warning, and the single-mode
-                  architecture means results are inherently associative—no way
-                  to ask for something genuinely specific. Photoreka has no
-                  query length limit: write as much context as you need. And
-                  when you need real precision, Precise mode adds a logical
-                  inference layer that
-                  <em>verifies</em> candidates against your exact conditions
-                  rather than just ranking them by vector proximity.
+                  Excire Search, Mylio Photos, and DigiKam use CLIP-based
+                  embeddings with a hard ~77-token limit—long queries get
+                  silently truncated, and a single mode means results are always
+                  associative. Photoreka has no query length limit and adds a
+                  Precise mode that <em>verifies</em> candidates against your
+                  exact conditions rather than just ranking by vector proximity.
                 </p>
                 <div class="alt-features">
                   <div class="alt-feature">
@@ -357,13 +351,13 @@
                   Search directly from
                   <span class="gradient-text">Lightroom Classic</span>
                 </h2>
-                <p class="hero-subtitle">
+                <!-- <p class="hero-subtitle">
                   Already using Lightroom? Our official plugin brings the same
                   AI-powered natural language search directly into your existing
                   workflow—without leaving Lightroom or migrating your catalog.
                   Install it, analyze your library once, and start searching
                   naturally from within Lightroom's own panels.
-                </p>
+                </p> -->
 
                 <ul class="lr-features">
                   <li>
@@ -838,7 +832,7 @@ const toggleFAQ = (index) => {
 
 // Scroll animations
 const setupScrollAnimations = () => {
-  const opts = { threshold: 0.2, rootMargin: "0px 0px -100px 0px" };
+  const opts = { threshold: 0, rootMargin: "0px 0px -50px 0px" };
   const watch = (section, flag) => {
     if (!section.value) return;
     new IntersectionObserver((entries) => {
@@ -1547,20 +1541,21 @@ onMounted(() => {
     margin: 0 auto;
   }
   .how-section,
-  .lr-section {
-    padding: 4rem 1rem;
+  .lr-section,
+  .modes-section {
+    padding: 3.5rem 0.75rem;
   }
   .examples-section,
   .features-section,
   .faq-section,
   .cta-section {
-    padding: 4rem 1rem;
+    padding: 3.5rem 0.75rem;
   }
   .modes-grid {
     grid-template-columns: 1fr;
   }
   .alt-callout {
-    padding: 1.75rem;
+    padding: 1.25rem;
   }
 }
 
@@ -1642,7 +1637,7 @@ onMounted(() => {
   background: var(--premium-bg-card);
   border: 1px solid var(--premium-border);
   border-radius: 20px;
-  padding: 2.5rem;
+  /* padding: 2.5rem; */
   opacity: 0;
   transform: translateY(24px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
