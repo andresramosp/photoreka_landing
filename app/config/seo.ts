@@ -558,6 +558,48 @@ export const seoConfig = {
       },
     },
 
+    ai_geo_inference: {
+      title:
+        "AI Geo-Inference — Place Your Photos on the Map with AI | Photoreka",
+      description:
+        "Photoreka's AI geo-inference engine analyzes photos without GPS metadata, reads visual context (architecture, signage, landscapes, lighting), and places them on your world map at city or district level. A geolocatability forecast scores every photo before you spend a single credit — so you know what to expect. Only confident matches land on the map.",
+      keywords:
+        "AI photo geolocation, photo location inference, GPS metadata recovery, AI photo mapping, photo location AI, geolocate photos without GPS, AI map photos, photo location finder, visual geolocation, photography world map, photo archive mapping, AI location inference, photo GPS recovery, photo location analysis, travel photo mapping, photo geographic tagging",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka AI Geo-Inference",
+        description:
+          "AI-powered geo-inference engine that analyzes photos without GPS metadata, infers city or region from visual context (landmarks, architecture, signage, landscapes), and places only confident matches on an interactive world map.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        url: "https://www.photoreka.com/ai_geo_inference",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/PreOrder",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Geolocatability forecast with three tiers (Good / Possible / Unlikely) before spending credits",
+          "City or district-level location inference from visual context",
+          "Confidence gating — only reliable matches placed on the map",
+          "Background processing with email notification on completion",
+          "Manual correction via map marker edit button",
+          "Rich map filtering by GPS source, confidence, granularity and visual aspects",
+          "Compatible with Lightroom Plugin and web-uploaded photos",
+        ],
+      },
+    },
+
     photography_portfolio_builder: {
       title:
         "AI Photography Portfolio Builder — Curate & Sequence Your Best Photos | Photoreka",

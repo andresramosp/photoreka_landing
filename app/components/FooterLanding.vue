@@ -27,6 +27,9 @@
           <NuxtLink to="/photo_reports" class="footer-link"
             >Style Analysis Reports</NuxtLink
           >
+          <NuxtLink to="/ai_geo_inference" class="footer-link"
+            >AI Geo-Inference</NuxtLink
+          >
         </div>
 
         <div class="footer-column">
