@@ -558,6 +558,48 @@ export const seoConfig = {
       },
     },
 
+    ai_geo_recovery: {
+      title:
+        "Geo Recovery — Geolocate Thousands of Photos & Download with GPS Embedded | Photoreka",
+      description:
+        "Upload your photos, let AI recover the location from visual context, review every marker on the interactive map, and download your originals with GPS coordinates injected directly into the EXIF data. No Photoreka account needed — one flat payment for the entire batch. Your originals never leave your browser.",
+      keywords:
+        "geolocate photos without GPS, GPS EXIF recovery, batch photo geolocation, add GPS to photos, photo location recovery, EXIF GPS injection, AI photo geolocation, recover GPS metadata, bulk photo geolocate, photo location finder, add coordinates to photos, photo GPS recovery tool, anonymous photo geolocation, no account photo GPS, travel photo GPS recovery, photo metadata GPS",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Photoreka Geo Recovery",
+        description:
+          "Upload photos, let AI geolocate them from visual context, review markers on an interactive map, and download originals with GPS coordinates embedded in the EXIF. No account required — one flat payment per batch.",
+        applicationCategory: "PhotographyApplication",
+        operatingSystem: "Web",
+        url: "https://www.photoreka.com/ai_geo_recovery",
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          priceCurrency: "EUR",
+        },
+        creator: {
+          "@type": "Organization",
+          name: "Photoreka",
+          url: "https://www.photoreka.com",
+        },
+        featureList: [
+          "Originals stored only in the browser — never transmitted to servers",
+          "Bulk-scale AI geolocation — thousands of photos in one batch",
+          "GPS coordinates injected directly into EXIF metadata",
+          "Full-screen interactive map review with manual correction",
+          "Drag-to-correct or search-by-name for any marker",
+          "No Photoreka account required",
+          "One-time flat payment per batch, no subscription",
+          "Download originals with GPS data, pixel-perfect and unchanged otherwise",
+        ],
+      },
+    },
+
     ai_geo_inference: {
       title:
         "AI Geo-Inference — Place Your Photos on the Map with AI | Photoreka",

@@ -177,6 +177,71 @@
           </div>
         </section>
 
+        <!-- Geo Recovery Alternative Section -->
+        <section class="geo-recovery-section" ref="geoRecoverySection">
+          <div class="section-container">
+            <div
+              class="geo-recovery-content"
+              :class="{ visible: geoRecoveryVisible }"
+            >
+              <div class="geo-recovery-badge">
+                <n-icon size="18"><DownloadOutline /></n-icon>
+                <span>Alternative Option</span>
+              </div>
+              <h2 class="geo-recovery-title">
+                No Photoreka account?
+                <span class="gradient-text-green">Try Geo Recovery</span>
+              </h2>
+              <p class="geo-recovery-description">
+                If you just need a one-time geolocation service without a full
+                Photoreka account,
+                <strong>Geo Recovery</strong> is the perfect solution. Upload
+                any batch of photos, pay once, and download your originals with
+                GPS coordinates embedded directly in the EXIF. No sign-up
+                required, no subscription, no strings attached.
+              </p>
+              <div class="geo-recovery-features">
+                <div class="geo-recovery-feature">
+                  <n-icon size="24" color="#22c55e"
+                    ><CheckmarkCircleOutline
+                  /></n-icon>
+                  <span>One-time payment per batch</span>
+                </div>
+                <div class="geo-recovery-feature">
+                  <n-icon size="24" color="#22c55e"
+                    ><CheckmarkCircleOutline
+                  /></n-icon>
+                  <span>No account or subscription needed</span>
+                </div>
+                <div class="geo-recovery-feature">
+                  <n-icon size="24" color="#22c55e"
+                    ><CheckmarkCircleOutline
+                  /></n-icon>
+                  <span>GPS embedded in original files</span>
+                </div>
+                <!-- <div class="geo-recovery-feature">
+                  <n-icon size="24" color="#22c55e"><CheckmarkCircleOutline /></n-icon>
+                  <span>Download and keep forever</span>
+                </div> -->
+              </div>
+              <div class="geo-recovery-actions">
+                <n-button
+                  type="success"
+                  size="large"
+                  strong
+                  @click="goToGeoRecovery"
+                >
+                  <template #icon>
+                    <n-icon><DownloadOutline /></n-icon>
+                  </template>
+                  Try Geo Recovery Free
+                </n-button>
+                <span class="geo-recovery-note">No registration required</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Features Grid Section -->
         <section class="features-section" ref="featuresSection">
           <div class="section-container">
@@ -390,6 +455,7 @@ import {
   TrendingUpOutline,
   InformationCircleOutline,
   FilterOutline,
+  DownloadOutline,
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
@@ -422,6 +488,7 @@ const toggleTheme = () => baseToggleTheme();
 const heroSection = ref(null);
 const usecasesSection = ref(null);
 const howSection = ref(null);
+const geoRecoverySection = ref(null);
 const featuresSection = ref(null);
 const mapSection = ref(null);
 const faqSection = ref(null);
@@ -431,6 +498,7 @@ const ctaSection = ref(null);
 const heroVisible = ref(false);
 const usecasesVisible = ref(false);
 const howVisible = ref(false);
+const geoRecoveryVisible = ref(false);
 const featuresVisible = ref(false);
 const mapVisible = ref(true);
 const faqVisible = ref(false);
@@ -643,6 +711,11 @@ const goToPortfolio = () => {
   navigateTo("/photography_portfolio_builder");
 };
 
+const goToGeoRecovery = () => {
+  trackUserAction("navigate_to_geo_recovery", "ai_geo_inference_page");
+  navigateTo("/ai_geo_recovery");
+};
+
 const onRequestSuccess = () => {
   showRequestDialog.value = false;
 };
@@ -671,6 +744,7 @@ const setupScrollAnimations = () => {
   watch(heroSection, heroVisible);
   watch(usecasesSection, usecasesVisible);
   watch(howSection, howVisible);
+  watch(geoRecoverySection, geoRecoveryVisible);
   watch(featuresSection, featuresVisible);
   watch(mapSection, mapVisible);
   watch(faqSection, faqVisible);
@@ -944,6 +1018,12 @@ onUnmounted(() => {
 /* ── Gradient text & orbs ─────────────────────────────────── */
 .gradient-text {
   background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-green {
+  background: linear-gradient(135deg, #22c55e, #10b981);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1317,6 +1397,100 @@ onUnmounted(() => {
 .cta-link:hover {
   opacity: 0.8;
 }
+.cta-link--accent {
+  color: #22c55e;
+}
+
+/* ── Geo Recovery Section ──────────────────────────────────── */
+.geo-recovery-section {
+  background: var(--premium-bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+.geo-recovery-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 50%,
+    rgba(34, 197, 94, 0.08),
+    transparent
+  );
+  pointer-events: none;
+}
+.geo-recovery-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem;
+  background: var(--premium-bg-card);
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(34, 197, 94, 0.1),
+    0 20px 40px -10px rgba(34, 197, 94, 0.15);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.geo-recovery-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.geo-recovery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #22c55e;
+  margin-bottom: 1.5rem;
+}
+.geo-recovery-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.geo-recovery-description {
+  font-size: 1.05rem;
+  color: var(--premium-text-secondary);
+  line-height: 1.7;
+  margin: 0 0 2rem;
+}
+.geo-recovery-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.geo-recovery-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(34, 197, 94, 0.05);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.geo-recovery-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.geo-recovery-note {
+  font-size: 0.88rem;
+  color: var(--premium-text-secondary);
+  font-style: italic;
+}
 
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 968px) {
@@ -1364,6 +1538,12 @@ onUnmounted(() => {
   }
   .hero-actions {
     flex-direction: column;
+  }
+  .geo-recovery-content {
+    padding: 2rem 1.5rem;
+  }
+  .geo-recovery-features {
+    grid-template-columns: 1fr;
   }
 }
 </style>
