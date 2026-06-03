@@ -559,12 +559,11 @@ export const seoConfig = {
     },
 
     ai_geo_recovery: {
-      title:
-        "Geo Recovery — Geolocate Thousands of Photos & Download with GPS Embedded | Photoreka",
+      title: "Geo Recovery — Bulk Photo Geotagging & EXIF GPS | Photoreka",
       description:
-        "Upload your photos, let AI recover the location from visual context, review every marker on the interactive map, and download your originals with GPS coordinates injected directly into the EXIF data. No Photoreka account needed — one flat payment for the entire batch. Your originals never leave your browser.",
+        "Bulk photo geotagging for missing GPS metadata: upload your photos, let AI recover the location from visual context, review every marker on the interactive map, and download your originals with GPS coordinates injected directly into the EXIF data. No Photoreka account needed — one flat payment for the entire batch. Your originals never leave your browser.",
       keywords:
-        "geolocate photos without GPS, GPS EXIF recovery, batch photo geolocation, add GPS to photos, photo location recovery, EXIF GPS injection, AI photo geolocation, recover GPS metadata, bulk photo geolocate, photo location finder, add coordinates to photos, photo GPS recovery tool, anonymous photo geolocation, no account photo GPS, travel photo GPS recovery, photo metadata GPS",
+        "photo geotagging, bulk photo geotagging, geotag photos, geotagging tool, geotagging app, GPS EXIF, EXIF geotagging, geolocate photos without GPS, GPS EXIF recovery, batch photo geolocation, add GPS to photos, photo location recovery, EXIF GPS injection, AI photo geolocation, recover GPS metadata, bulk photo geolocate, photo location finder, add coordinates to photos, photo GPS recovery tool, anonymous photo geolocation, no account photo GPS, travel photo GPS recovery, photo metadata GPS",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -604,9 +603,9 @@ export const seoConfig = {
       title:
         "AI Geo-Inference — Place Your Photos on the Map with AI | Photoreka",
       description:
-        "Photoreka's AI geo-inference engine analyzes photos without GPS metadata, reads visual context (architecture, signage, landscapes, lighting), and places them on your world map at city or district level. A geolocatability forecast scores every photo before you spend a single credit — so you know what to expect. Only confident matches land on the map.",
+        "Photoreka's AI geo-inference engine analyzes photos without GPS metadata, reads visual context (architecture, signage, landscapes, lighting), and geotags them on your world map at city or district level. A geolocatability forecast scores every photo before you spend a single credit — so you know what to expect. Only confident matches land on the map.",
       keywords:
-        "AI photo geolocation, photo location inference, GPS metadata recovery, AI photo mapping, photo location AI, geolocate photos without GPS, AI map photos, photo location finder, visual geolocation, photography world map, photo archive mapping, AI location inference, photo GPS recovery, photo location analysis, travel photo mapping, photo geographic tagging",
+        "photo geotagging, AI geotagging, geotag photos, geotagging tool, photo geolocation, AI photo geolocation, photo location inference, GPS metadata recovery, AI photo mapping, photo location AI, geolocate photos without GPS, AI map photos, photo location finder, visual geolocation, photography world map, photo archive mapping, AI location inference, photo location analysis, travel photo mapping, photo geographic tagging",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",

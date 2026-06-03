@@ -59,7 +59,9 @@
                   inspects your untagged photos, reads the visual context
                   (architecture, signage, landscapes, lighting), and
                   <strong>places them on the map</strong> with city or
-                  district-level precision.<br /><br />
+                  district-level precision. It is AI photo geotagging for
+                  archives missing GPS metadata, so you can geo-tag your library
+                  and explore it by place.<br /><br />
                   A geolocatability forecast shows you the expected success rate
                   before you spend a single credit. Only confident matches land
                   on your map.
@@ -153,7 +155,7 @@
             <div class="section-header" :class="{ visible: howVisible }">
               <h2 class="section-title">How geo-inference works</h2>
               <p class="section-subtitle">
-                From opening the map to having your photos placed — four steps
+                From opening the map to AI geotagging your photos — four steps
                 and you're done, even if it takes a while to process.
               </p>
             </div>
@@ -250,8 +252,8 @@
                 Built for accuracy, designed for trust
               </h2>
               <p class="section-subtitle">
-                Not every photo can be geolocated — and we tell you that
-                upfront. Every design decision prioritises reliability over
+                Not every photo can be geolocated or geotagged — and we tell you
+                that upfront. Every design decision prioritises reliability over
                 recall.
               </p>
             </div>
@@ -317,12 +319,12 @@
                   <span class="gradient-text">One map.</span>
                 </h2>
                 <p class="hero-subtitle" :class="{ visible: mapVisible }">
-                  Once geo-inference completes, your photos appear as clustered
-                  markers on a full-screen interactive map. Click any cluster to
-                  explore what was shot there. Filter by GPS confidence, AI
-                  inference quality, or granularity (city, region, country).
-                  Correct any misplaced photo directly from its marker — manual
-                  precision always wins over AI.
+                  Once geo-inference completes, your photos appear as clustered,
+                  geotagged markers on a full-screen interactive map. Click any
+                  cluster to explore what was shot there. Filter by GPS
+                  confidence, AI inference quality, or granularity (city,
+                  region, country). Correct any misplaced photo directly from
+                  its marker — manual precision always wins over AI.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: mapVisible }">
@@ -598,7 +600,7 @@ const features = ref([
     icon: markRaw(TrendingUpOutline),
     title: "Geolocatability Forecast",
     description:
-      "Before you spend any credits, a heuristic scoring algorithm evaluates each photo's genre, lighting, framing, palette and focus. The three-tier forecast (Good / Possible / Unlikely) sets honest expectations and warns you if your batch has low success potential.",
+      "Before you spend any credits, a heuristic scoring algorithm evaluates each photo's genre, lighting, framing, palette and focus. The three-tier forecast (Good / Possible / Unlikely) sets honest expectations and warns you if your batch has low success potential. Ideal before you start geotagging a large archive.",
     color: "#06b6d4",
   },
   {
@@ -644,6 +646,11 @@ const faqs = ref([
     question: "What kinds of photos work best?",
     answer:
       "Outdoor photos in natural light with wide or medium framing yield the highest success rates. Architectural details, street signage, distinctive landscapes, and recognizable landmarks are the strongest cues. Studio, portrait, abstract, and macro shots score poorly because they carry little geographic information.",
+  },
+  {
+    question: "Is this photo geotagging or EXIF GPS writing?",
+    answer:
+      "It is AI photo geotagging on the Photoreka world map, so you can organize your library by place. If you need GPS written into EXIF metadata for download, use Geo Recovery.",
   },
   {
     question: "What does the geolocatability forecast actually measure?",

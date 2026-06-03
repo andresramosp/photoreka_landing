@@ -46,11 +46,11 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><LocationOutline /></n-icon>
-                    Geo Recovery · No account needed
+                    Geo Recovery - Photo geotagging without account
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Geolocate thousands of photos.
+                  Geotag thousands of photos.
                   <span class="gradient-text"
                     >Download them with GPS inside.</span
                   >
@@ -58,7 +58,8 @@
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
                   Drop your photos, let the AI find where they were taken,
                   review each marker on the map, and download your originals
-                  with GPS coordinates embedded directly in the EXIF data.<br /><br />
+                  with GPS coordinates embedded directly in the EXIF data. This
+                  is bulk photo geotagging for missing GPS metadata.<br /><br />
                   <strong>Your originals never leave your browser.</strong> Only
                   lightweight thumbnails are sent for analysis. No Photoreka
                   account required — one flat payment for the entire batch.
@@ -276,7 +277,9 @@
                   Once the AI has processed your batch, every located photo
                   appears as a clustered marker on a full-screen interactive
                   map. Explore by cluster, zoom in, click any marker to see the
-                  photo thumbnail and the inferred address.<br /><br />
+                  photo thumbnail and the inferred address. This is practical
+                  photo geotagging with a visual review step before EXIF write
+                  back.<br /><br />
                   Not happy with a placement? Click the edit button, search for
                   the correct location by name or drag the pin on the map. Your
                   correction is what gets written into the EXIF on download —
@@ -562,7 +565,7 @@ const steps = ref([
   {
     title: "AI geolocates at scale",
     description:
-      "The same engine that powers the Photoreka platform analyzes every photo in parallel, reading architecture, landscapes, signage, and lighting conditions. Only confident matches are placed on the map — uncertain photos are flagged as unknown, never guessed.",
+      "The same engine that powers the Photoreka platform handles bulk photo geotagging, analyzing every photo in parallel by reading architecture, landscapes, signage, and lighting conditions. Only confident matches are placed on the map — uncertain photos are flagged as unknown, never guessed.",
     color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
@@ -593,7 +596,7 @@ const features = ref([
     icon: markRaw(DocumentTextOutline),
     title: "GPS injected into EXIF",
     description:
-      "The output is your exact original file with GPS coordinates written directly into the metadata. Open it in Lightroom, Finder, Capture One, or any EXIF-aware tool and the location is there.",
+      "The output is your exact original file with GPS coordinates written directly into the EXIF metadata. Open it in Lightroom, Finder, Capture One, or any EXIF-aware tool and the location is there.",
     color: "#8b5cf6",
   },
   {
@@ -625,6 +628,11 @@ const faqs = ref([
     question: "Are my original photos uploaded to a server?",
     answer:
       "No. Your original files are stored only in your browser (IndexedDB). Only thumbnail-sized versions are sent to the AI for visual analysis — just enough for it to read architectural details, landscapes, and visual context. Your originals are never transmitted to Photoreka's servers.",
+  },
+  {
+    question: "What is photo geotagging?",
+    answer:
+      "Photo geotagging means adding GPS coordinates to a photo's EXIF metadata so the location shows up in photo apps and catalogs. Geo Recovery does this in bulk and lets you review every pin before the EXIF GPS is written.",
   },
   {
     question: "What file formats are supported?",
