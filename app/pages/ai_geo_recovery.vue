@@ -50,16 +50,17 @@
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Geotag thousands of photos.
+                  Geotag photos with AI.
                   <span class="gradient-text"
                     >Download them with GPS inside.</span
                   >
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Drop your photos, let the AI find where they were taken,
-                  review each marker on the map, and download your originals
-                  with GPS coordinates embedded directly in the EXIF data. This
-                  is bulk photo geotagging for missing GPS metadata.<br /><br />
+                  AI photo geotagging that writes GPS directly into EXIF. Drop
+                  your photos, let the AI find where they were taken, review
+                  each marker on the map, and download your originals with GPS
+                  coordinates embedded in the metadata. This is bulk photo
+                  geotagging for missing GPS metadata.<br /><br />
                   <strong>Your originals never leave your browser.</strong> Only
                   lightweight thumbnails are sent for analysis. No Photoreka
                   account required — one flat payment for the entire batch.
@@ -173,7 +174,9 @@
           </div>
           <div class="section-container" style="position: relative; z-index: 1">
             <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">Four steps. That's it.</h2>
+              <h2 class="section-title">
+                How to geotag photos with AI (4 steps)
+              </h2>
               <p class="section-subtitle">
                 No onboarding, no catalog setup, no credits to buy. Upload, pay,
                 review, download.
@@ -624,6 +627,11 @@ const features = ref([
 
 // FAQs
 const faqs = ref([
+  {
+    question: "How do I geotag photos with AI?",
+    answer:
+      "Upload your photos to Geo Recovery, pay once for the batch, and let the AI analyze each image to infer the location from visual context (architecture, landmarks, signage). Review the interactive map, correct any pins if needed, then download your originals with GPS coordinates written into the EXIF metadata.",
+  },
   {
     question: "Are my original photos uploaded to a server?",
     answer:

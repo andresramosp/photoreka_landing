@@ -418,6 +418,10 @@
                   <a @click="goToPortfolio" class="cta-link"
                     >Build a Portfolio</a
                   >
+                  &middot;
+                  <a @click="goToGeoRecovery" class="cta-link"
+                    >Geotag photos with AI</a
+                  >
                 </p>
               </div>
             </div>

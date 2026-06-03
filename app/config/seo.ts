@@ -559,11 +559,12 @@ export const seoConfig = {
     },
 
     ai_geo_recovery: {
-      title: "Geo Recovery — Bulk Photo Geotagging & EXIF GPS | Photoreka",
+      title:
+        "Geotag Photos with AI — Bulk Photo Geotagging & EXIF GPS Recovery | Photoreka",
       description:
-        "Bulk photo geotagging for missing GPS metadata: upload your photos, let AI recover the location from visual context, review every marker on the interactive map, and download your originals with GPS coordinates injected directly into the EXIF data. No Photoreka account needed — one flat payment for the entire batch. Your originals never leave your browser.",
+        "Geotag photos with AI in bulk: upload your photos, let AI photo geotagging recover the location from visual context, review every marker on the interactive map, and download your originals with GPS coordinates injected directly into the EXIF data. No Photoreka account needed — one flat payment for the entire batch. Your originals never leave your browser.",
       keywords:
-        "photo geotagging, bulk photo geotagging, geotag photos, geotagging tool, geotagging app, GPS EXIF, EXIF geotagging, geolocate photos without GPS, GPS EXIF recovery, batch photo geolocation, add GPS to photos, photo location recovery, EXIF GPS injection, AI photo geolocation, recover GPS metadata, bulk photo geolocate, photo location finder, add coordinates to photos, photo GPS recovery tool, anonymous photo geolocation, no account photo GPS, travel photo GPS recovery, photo metadata GPS",
+        "geotag photos with AI, AI geotag photos, geotag photos AI, AI photo geotagging, photo geotagging, bulk photo geotagging, geotag photos, geotagging tool, geotagging app, GPS EXIF, EXIF geotagging, geolocate photos without GPS, GPS EXIF recovery, batch photo geolocation, add GPS to photos, photo location recovery, EXIF GPS injection, AI photo geolocation, recover GPS metadata, bulk photo geolocate, photo location finder, add coordinates to photos, photo GPS recovery tool, anonymous photo geolocation, no account photo GPS, travel photo GPS recovery, photo metadata GPS, how to geotag photos with AI, AI geotagging tool",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -572,7 +573,7 @@ export const seoConfig = {
         "@type": "WebApplication",
         name: "Photoreka Geo Recovery",
         description:
-          "Upload photos, let AI geolocate them from visual context, review markers on an interactive map, and download originals with GPS coordinates embedded in the EXIF. No account required — one flat payment per batch.",
+          "Geotag photos with AI: upload photos, let AI photo geotagging recover location from visual context, review markers on an interactive map, and download originals with GPS coordinates embedded in the EXIF. No account required — one flat payment per batch.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
         url: "https://www.photoreka.com/ai_geo_recovery",
@@ -587,6 +588,7 @@ export const seoConfig = {
           url: "https://www.photoreka.com",
         },
         featureList: [
+          "Geotag photos with AI — bulk photo geotagging for missing GPS metadata",
           "Originals stored only in the browser — never transmitted to servers",
           "Bulk-scale AI geolocation — thousands of photos in one batch",
           "GPS coordinates injected directly into EXIF metadata",
