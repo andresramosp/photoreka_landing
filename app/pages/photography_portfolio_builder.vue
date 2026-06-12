@@ -46,12 +46,12 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><LayersOutline /></n-icon>
-                    AI Portfolio Builder
+                    AI Photography Portfolio Builder
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
                   Your best portfolio,
-                  <span class="gradient-text">curated by AI</span>
+                  <span class="gradient-text">picked by AI</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
                   Choosing 20 photos out of thousands for a gallery,
@@ -136,11 +136,13 @@
         <section class="examples-section" ref="usecasesSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: usecasesVisible }">
-              <h2 class="section-title">One workflow, many outputs</h2>
+              <h2 class="section-title">
+                One AI portfolio generator, many outputs
+              </h2>
               <p class="section-subtitle">
                 Whether you're preparing for a gallery, a competition, a client
                 delivery, or a photobook—the same intelligent pipeline adapts to
-                your goal.
+                your goal and automatically selects your strongest photos.
               </p>
             </div>
 
@@ -202,11 +204,12 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
               <h2 class="section-title">
-                Built for serious photographic curation
+                Built for serious photographic curation &amp; selection
               </h2>
               <p class="section-subtitle">
-                Not a template gallery. A curation engine that understands
-                quality, coherence and narrative — and lets you stay in control.
+                Not a template gallery. An AI photo selection engine that
+                understands quality, coherence, and narrative—and lets you stay
+                in control.
               </p>
             </div>
 

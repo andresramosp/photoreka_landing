@@ -46,12 +46,12 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><BarChartOutline /></n-icon>
-                    AI Photo Scoring
+                    AI Photo Scoring &amp; Quality Ranking
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Know which photos are your
-                  <span class="gradient-text">strongest work</span>
+                  Find your best photos with
+                  <span class="gradient-text">AI scoring</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
                   Every photographer has thousands of images but struggles to
@@ -110,12 +110,12 @@
         <section class="examples-section" ref="dimensionsSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: dimensionsVisible }">
-              <h2 class="section-title">9+ scoring dimensions</h2>
+              <h2 class="section-title">9+ AI photo scoring dimensions</h2>
               <p class="section-subtitle">
                 Each photo receives a detailed quality profile across multiple
-                independent criteria. Sort by any dimension to surface exactly
-                what you need. Commercial mode activates two additional
-                product-, stock-, and fashion-specific scores.
+                independent criteria—so you can rank and filter by exactly what
+                matters for your project. Commercial mode activates two
+                additional product-, stock-, and fashion-specific scores.
               </p>
             </div>
 
@@ -180,11 +180,11 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
               <h2 class="section-title">
-                Scoring that respects your photography
+                The photo quality checker built for photographers
               </h2>
               <p class="section-subtitle">
-                Built for photographers who care about nuance—not just
-                pixel-level sharpness metrics.
+                A multi-dimensional photo rating tool for photographers who care
+                about nuance—not just pixel-level sharpness metrics.
               </p>
             </div>
 

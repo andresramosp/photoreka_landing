@@ -47,12 +47,12 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><ChatbubblesOutline /></n-icon>
-                    AI Photo Assistant for Photographers
+                    AI Photo Assistant &amp; Catalog Analyzer
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Chat with your<br />
-                  <span class="gradient-text">photo library</span>
+                  Analyze your photos with
+                  <span class="gradient-text">AI chat</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
                   Use an AI photo assistant to search, analyze, and curate your
@@ -137,12 +137,13 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: examplesVisible }">
               <h2 class="section-title">
-                Ask questions a normal photo search cannot answer
+                Ask your AI photo assistant anything about your archive
               </h2>
               <p class="section-subtitle">
-                This is more than AI photo search. The assistant understands
-                your full catalog and responds with insights, curated
-                selections, and honest feedback in whatever language you write.
+                This is more than AI photo search. The assistant analyzes your
+                full catalog and responds with insights, curated selections,
+                honest photography critique, and tracking of your improvement
+                over time—in whatever language you write.
               </p>
             </div>
 
@@ -373,7 +374,7 @@ useSEO("photo_chat", {
       "@type": "WebApplication",
       name: "Photoreka AI Photo Assistant",
       description:
-        "AI photo assistant for photographers. Chat with your photo library to search your catalog, get portfolio critique, discover patterns, and build curated photo selections.",
+        "AI photo assistant for photographers. Ask anything about your photo library—search your catalog, get honest portfolio critique, analyze your photography improvement over time, discover patterns, and build curated selections in natural language.",
       applicationCategory: "PhotographyApplication",
       operatingSystem: "Web",
       url: "https://www.photoreka.com/photo_chat",
@@ -389,11 +390,14 @@ useSEO("photo_chat", {
         url: "https://www.photoreka.com",
       },
       featureList: [
-        "Chat with your photo library in natural language",
-        "AI photo catalog search assistant",
-        "Portfolio critique for photographers",
-        "Catalog insights and pattern detection",
-        "Curated photo selections and sequencing",
+        "Natural language search across your entire photo library",
+        "AI-powered portfolio critique and photography analysis",
+        "Photography improvement and progression tracking over time",
+        "Intelligent photo curation and sequence building",
+        "Photo catalog statistics: subjects, lighting, color patterns",
+        "AI-generated curated selections for exhibitions and competitions",
+        "Personalized photography advice based on your actual archive",
+        "Multilingual support",
       ],
     },
     {

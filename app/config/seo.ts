@@ -359,11 +359,11 @@ export const seoConfig = {
 
     photo_chat: {
       title:
-        "AI Photo Assistant — Chat with Your Photo Library in Natural Language | Photoreka",
+        "AI Photo Assistant — Search, Critique & Analyze Your Photo Library | Photoreka",
       description:
-        "Chat with your photo library using AI. Ask questions about your catalog, get portfolio critique, discover patterns, and build curated photo selections—all in natural conversation. Photoreka's AI photo assistant combines photo search, curation, and catalog intelligence in one conversational interface for photographers.",
+        "Ask anything about your photo library and get a real answer. Photoreka's AI photo assistant lets you search your catalog by describing what you want, get honest portfolio critique, track how your photography has improved over time, and build curated selections—all in natural conversation. Think of it as an AI analyst for your photos: find your best work, discover patterns across your archive, and get personalized advice grounded in your actual catalog. Works in any language.",
       keywords:
-        "AI photo assistant, chat with photo library, AI photo chat, photo library assistant, conversational photo search, AI assistant for photographers, photo catalog chat, AI photo organizer, photo library AI, natural language photo assistant, AI photography assistant, photograph assistant chatbot, AI portfolio critique, photo curation AI, smart photo assistant, ask AI about my photos",
+        "AI photo assistant, ask AI about my photos, analyze my photos AI, AI photo analyzer, find my best photos AI, photography improvement tracker AI, AI photography critique, photo library AI search, find photos by describing, photo collection analysis AI, AI photo catalog search, photo library chatbot, understand my photo library AI, AI photo insights, photography AI analyzer, best photos AI finder, photo archive AI assistant, AI photography analysis, ChatGPT for photos, photo library AI, conversational photo search, photo collection AI, natural language photo search AI, AI photography advisor, discover photo patterns AI, AI photo portfolio critique, search photo library AI, photo analytics AI, photo history AI, AI photo curator",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -372,7 +372,7 @@ export const seoConfig = {
         "@type": "WebApplication",
         name: "Photoreka AI Photo Assistant",
         description:
-          "AI photo assistant for photographers. Chat with your photo library to search your catalog, get portfolio critique, discover patterns, and build curated photo selections.",
+          "AI photo assistant for photographers. Ask anything about your photo library—search your catalog, get portfolio critique, discover patterns, track artistic improvement, and build curated selections in natural language.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
         url: "https://www.photoreka.com/photo_chat",
@@ -389,21 +389,16 @@ export const seoConfig = {
         },
         mainEntityOfPage: "https://www.photoreka.com/photo_chat",
         featureList: [
-          "Chat with your photo library in natural language",
-          "AI photo catalog search assistant",
+          "Natural language search across your entire photo library",
           "AI-powered portfolio critique and artistic analysis",
-          "Artistic and stylistic evolution tracking over time",
-          "Intelligent curation and sequence building",
-          "AI photo series and exhibition selection",
-          "Personalized photography advice",
-          "Catalog intelligence: statistics, scores, and visual pattern discovery",
-          "AI style analysis and photography pattern analysis",
-          "Visual similarity search within your catalog",
-          "AI photo clustering and style clustering",
-          "Competition and exhibition submission assistance",
-          "Conversational digital asset management",
+          "Photography improvement and progression tracking over time",
+          "Intelligent photo curation and sequence building",
+          "Photo catalog statistics: subjects, lighting, color patterns",
+          "AI-generated curated selections for exhibitions and competitions",
+          "Personalized photography advice based on your actual archive",
+          "Pattern and style discovery across thousands of images",
+          "Conversational follow-up questions with session memory",
           "Multilingual support",
-          "Context-aware follow-up questions",
         ],
       },
     },
@@ -517,11 +512,11 @@ export const seoConfig = {
 
     photo_scoring: {
       title:
-        "AI Photo Scoring & Aesthetic Ranking - Rate Your Photos Automatically | Photoreka",
+        "AI Photo Scoring — Rate, Rank & Find Your Best Photos Automatically | Photoreka",
       description:
-        "Score every photo in your catalog across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, and more. Photoreka's AI photo scoring uses computer vision to rank your best work automatically—no subjective guesswork, no manual curation. Surface your strongest images instantly from thousands.",
+        "Automatically score and rank every photo in your catalog across 9+ quality dimensions: aesthetics, composition, narrative strength, originality, humor, visual wit, candidness, and more. Photoreka's AI photo rating finds your best photos instantly—no manual selection, no guesswork. Surface hidden gems from thousands of images, track your artistic progress over time, and separate your strongest work from the noise. The photo quality checker and best-photo picker built for serious photographers.",
       keywords:
-        "AI photo scoring, aesthetic photo score, rate my photos AI, photography quality score, image aesthetic assessment, photo composition analyzer, best photo selector AI, photo rating tool, image quality scoring, AI photography ranking, photo aesthetic analysis, automated photo rating, visual quality assessment, photography scoring app, photo quality checker AI",
+        "AI photo scoring, rate my photos AI, find best photos AI, photo quality checker AI, best photo picker AI, photo rating app, AI photo ranking, photo quality assessment, photo aesthetic score, photography scoring app, AI photo culling alternative, photo quality grader, image quality rating, photo composition analyzer, photo selection AI, automatically find best photos, best photo selector AI, photo ranking software, photo aesthetic analysis, AI photography ranking, score photos automatically, AI photography critique tool, photo quality metrics, rate photos automatically, photo aesthetic rating, select best photos AI, AI photo filter, photo quality comparison tool, photography quality score, auto select best photos, image aesthetic assessment, AI photo assessment tool",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -530,9 +525,10 @@ export const seoConfig = {
         "@type": "WebApplication",
         name: "Photoreka AI Photo Scoring",
         description:
-          "AI-powered photo scoring tool that rates your photos across multiple quality dimensions: aesthetics, composition, narrative strength, originality, and more.",
+          "AI photo scoring and ranking tool for photographers. Rates every photo across 9+ quality dimensions—aesthetics, composition, narrative, originality, and more—to automatically surface your best work from thousands of images.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
+        url: "https://www.photoreka.com/photo_scoring",
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/PreOrder",
@@ -545,122 +541,196 @@ export const seoConfig = {
           url: "https://www.photoreka.com",
         },
         featureList: [
-          "Multi-dimensional photo scoring",
-          "Aesthetic quality assessment",
+          "9+ dimensional AI photo scoring",
+          "Aesthetic quality assessment and ranking",
           "Composition analysis",
           "Narrative strength rating",
           "Originality scoring",
-          "Visual wit and humor detection",
-          "Batch scoring of entire catalogs",
-          "Automatic best photo surfacing",
-          "Ranking across custom criteria",
+          "Visual wit, humor, and candidness detection",
+          "Commercial subject clarity and intent scoring",
+          "Batch scoring of entire photo catalogs",
+          "Automatic best photo surfacing from thousands",
+          "Sort and filter by any individual quality dimension",
+          "Track artistic progress over time with score history",
+          "Works with Lightroom Classic, Google Photos, and local libraries",
         ],
       },
     },
 
     ai_geo_recovery: {
       title:
-        "Geotag Photos with AI — Bulk Photo Geotagging & EXIF GPS Recovery | Photoreka",
+        "Bulk Geotag Photos Online - Add GPS to Photos & EXIF in One Batch | Photoreka Geo Recovery",
       description:
-        "Geotag photos with AI in bulk: upload your photos, let AI photo geotagging recover the location from visual context, review every marker on the interactive map, and download your originals with GPS coordinates injected directly into the EXIF data. No Photoreka account needed — one flat payment for the entire batch. Your originals never leave your browser.",
+        "Need to add GPS data to photos in bulk? Geo Recovery is an online bulk photo geotagging tool that finds location with AI, lets you review every pin, and writes GPS directly into EXIF metadata on download. Ideal for DSLR archives with missing GPS metadata. No account required.",
       keywords:
-        "geotag photos with AI, AI geotag photos, geotag photos AI, AI photo geotagging, photo geotagging, bulk photo geotagging, geotag photos, geotagging tool, geotagging app, GPS EXIF, EXIF geotagging, geolocate photos without GPS, GPS EXIF recovery, batch photo geolocation, add GPS to photos, photo location recovery, EXIF GPS injection, AI photo geolocation, recover GPS metadata, bulk photo geolocate, photo location finder, add coordinates to photos, photo GPS recovery tool, anonymous photo geolocation, no account photo GPS, travel photo GPS recovery, photo metadata GPS, how to geotag photos with AI, AI geotagging tool",
+        "add gps data to photos, add gps to photos, add gps coordinates to photos, bulk photo geotagging, batch geotag photos, geotag photos online, geotag photos online free alternative, photo geotagging tool, exif gps editor, bulk exif gps editor online, fix missing gps metadata photos, dslr photos without gps, add geotag to photos online, ai photo geotagging, geotag photos with ai, photo location recovery, gps metadata recovery, lightroom geotag photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka Geo Recovery",
-        description:
-          "Geotag photos with AI: upload photos, let AI photo geotagging recover location from visual context, review markers on an interactive map, and download originals with GPS coordinates embedded in the EXIF. No account required — one flat payment per batch.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        url: "https://www.photoreka.com/ai_geo_recovery",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/InStock",
-          priceCurrency: "EUR",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka Geo Recovery",
+          description:
+            "Online bulk photo geotagging tool to add GPS data to photos and write coordinates into EXIF. Upload once, review on map, correct pins, and download originals with GPS metadata.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/ai_geo_recovery",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            priceCurrency: "EUR",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Add GPS data to photos in bulk",
+            "Bulk EXIF GPS writeback on original files",
+            "AI location recovery for DSLR photos without GPS",
+            "Interactive map review before EXIF injection",
+            "Manual pin correction and search-by-place",
+            "No account required, one-time payment per batch",
+            "Original files stay in browser storage",
+          ],
         },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "How can I add GPS data to photos in bulk?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Upload your batch, let AI infer locations, review markers on the map, correct any pin, and download originals with GPS written into EXIF metadata.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I geotag DSLR photos that were shot without GPS?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Geo Recovery is designed for DSLR and archive photos with missing GPS metadata and can process large batches in one run.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is this an EXIF GPS editor or only a map viewer?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "It is both. You review inferred locations on the map, then download the original files with GPS coordinates embedded in standard EXIF fields.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Will geotagged files work in Lightroom and other EXIF-aware apps?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. GPS is written into standard EXIF metadata that is readable by Lightroom, Capture One, Finder, and similar tools.",
+              },
+            },
+          ],
         },
-        featureList: [
-          "Geotag photos with AI — bulk photo geotagging for missing GPS metadata",
-          "Originals stored only in the browser — never transmitted to servers",
-          "Bulk-scale AI geolocation — thousands of photos in one batch",
-          "GPS coordinates injected directly into EXIF metadata",
-          "Full-screen interactive map review with manual correction",
-          "Drag-to-correct or search-by-name for any marker",
-          "No Photoreka account required",
-          "One-time flat payment per batch, no subscription",
-          "Download originals with GPS data, pixel-perfect and unchanged otherwise",
-        ],
-      },
+      ],
     },
 
     ai_geo_inference: {
       title:
-        "AI Geo-Inference — Place Your Photos on the Map with AI | Photoreka",
+        "AI Geo-Inference for Existing Photo Libraries | Fix Missing GPS Metadata | Photoreka",
       description:
-        "Photoreka's AI geo-inference engine analyzes photos without GPS metadata, reads visual context (architecture, signage, landscapes, lighting), and geotags them on your world map at city or district level. A geolocatability forecast scores every photo before you spend a single credit — so you know what to expect. Only confident matches land on the map.",
+        "Fix missing GPS metadata in your existing Photoreka library. AI Geo-Inference analyzes your own photos, predicts location from visual context, and places confident results on your world map with city/district precision. Includes a geolocatability forecast before credit spend.",
       keywords:
-        "photo geotagging, AI geotagging, geotag photos, geotagging tool, photo geolocation, AI photo geolocation, photo location inference, GPS metadata recovery, AI photo mapping, photo location AI, geolocate photos without GPS, AI map photos, photo location finder, visual geolocation, photography world map, photo archive mapping, AI location inference, photo location analysis, travel photo mapping, photo geographic tagging",
+        "fix missing gps metadata photos, photo geotagging for photographers, geotag dslr photos, ai geo inference, ai photo geolocation, geolocate photos without gps, map my photo archive, photo location inference, add location to existing photo library, lightroom classic geotagging workflow, world map photo catalog, city level photo geotagging, visual geolocation for own photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka AI Geo-Inference",
-        description:
-          "AI-powered geo-inference engine that analyzes photos without GPS metadata, infers city or region from visual context (landmarks, architecture, signage, landscapes), and places only confident matches on an interactive world map.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        url: "https://www.photoreka.com/ai_geo_inference",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka AI Geo-Inference",
+          description:
+            "AI geo-inference for registered Photoreka users. Recover missing photo locations in your own library, review confidence, and manage map corrections at scale.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/ai_geo_inference",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Fix missing GPS metadata in existing Photoreka libraries",
+            "Geolocatability forecast (Good, Possible, Unlikely)",
+            "City or district-level location inference",
+            "Confidence gating for reliable map placement",
+            "Manual correction workflow for map markers",
+            "Map filters by source, confidence, and granularity",
+            "Lightroom Plugin and web upload compatibility",
+          ],
         },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What is the difference between AI Geo-Inference and Geo Recovery?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "AI Geo-Inference is for registered Photoreka users who want to recover missing locations inside their existing catalog and world map workflow. Geo Recovery is the one-time, no-account option for standalone batches.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can AI Geo-Inference help fix missing GPS metadata in bulk?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. It analyzes photos without GPS in your library, estimates location confidence, and places reliable matches on the map for review and correction.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does AI Geo-Inference guess locations for random internet photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. It is designed for your own photo archive inside Photoreka, not for OSINT-style investigation of third-party images.",
+              },
+            },
+          ],
         },
-        featureList: [
-          "Geolocatability forecast with three tiers (Good / Possible / Unlikely) before spending credits",
-          "City or district-level location inference from visual context",
-          "Confidence gating — only reliable matches placed on the map",
-          "Background processing with email notification on completion",
-          "Manual correction via map marker edit button",
-          "Rich map filtering by GPS source, confidence, granularity and visual aspects",
-          "Compatible with Lightroom Plugin and web-uploaded photos",
-        ],
-      },
+      ],
     },
 
     photography_portfolio_builder: {
       title:
-        "AI Photography Portfolio Builder — Curate & Sequence Your Best Photos | Photoreka",
+        "AI Photography Portfolio Builder & Generator — Pick & Sequence Your Best Photos | Photoreka",
       description:
-        "Turn thousands of photos into a curated 10–40 image portfolio. Photoreka's AI portfolio builder scores every photo across 8 artistic dimensions (aesthetics, composition, storytelling, originality, message, humor, visual games, candidness), applies one of five coherence modes (visual, chromatic, narrative, heterogeneous or free), and intelligently sequences the final selection. Prepare gallery exhibitions, competition submissions, client edits and photobooks in minutes instead of days.",
+        "Automatically build a curated, sequenced portfolio from your photo archive. Photoreka's AI photography portfolio builder and generator scores every image across 8 artistic dimensions, selects the strongest 10–40 photos under five coherence modes (visual, chromatic, narrative, heterogeneous, free), and intelligently sequences the final set. Stop spending days second-guessing which photos belong. Prepare gallery exhibitions, competition submissions, client deliveries, and photobooks in minutes. The AI portfolio generator built for serious photographers.",
       keywords:
-        "AI photography portfolio builder, AI photo curation tool, automatic photo selection, portfolio photo selection AI, photography portfolio selector, AI portfolio curation, photo sequencing tool, narrative photo sequencing, coherent photo portfolio, photography exhibition preparation, competition photo selection, photobook layout AI, photography portfolio creator, best photos for portfolio AI, visual coherence portfolio, chromatic photo curation",
+        "AI photography portfolio builder, AI portfolio generator photographer, photography portfolio generator, AI portfolio maker photographer, photo portfolio AI generator, automatically select best photos for portfolio, best photos for portfolio AI, AI photo curation portfolio, photography portfolio creator AI, photo selection for gallery exhibition, competition photo selection AI, photography competition submission tool, photobook AI curation, photo portfolio sequencing AI, curate photography portfolio AI, gallery exhibition photo picker, AI photo selection tool, best photography portfolio curator, photo book curation AI, portfolio photo picker AI, AI curation tool photographer, select photos for exhibition AI, photography portfolio selector AI, AI portfolio curation, coherent photo portfolio AI, photo sequencing tool, narrative photo sequencing, photography exhibition preparation",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        name: "Photoreka Portfolio Builder",
+        name: "Photoreka AI Photography Portfolio Builder",
         description:
-          "AI-powered photography portfolio builder that scores photos across 8 artistic dimensions, curates them under five coherence modes (visual, chromatic, narrative, heterogeneous, free), and intelligently sequences the final 10–40 image selection for exhibitions, competitions and photobooks.",
+          "AI photography portfolio builder and generator. Scores photos across 8 artistic dimensions, curates the strongest 10–40 images under five coherence modes, and intelligently sequences the final selection for exhibitions, competitions, client deliveries and photobooks.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
+        url: "https://www.photoreka.com/photography_portfolio_builder",
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/PreOrder",
@@ -678,10 +748,11 @@ export const seoConfig = {
           "Configurable portfolio size from 10 to 40 photos",
           "Natural-language style description parsed into weight vectors",
           "Visual filters by genre, framing, depth of field, lighting and perspective",
-          "Intelligent photo sequencing with orientation balancing",
-          "Similarity gating to avoid near-duplicates",
-          "Iterative LLM-based refinement of the selection",
-          "Drag-and-drop reordering and manual portfolio mode",
+          "AI-powered intelligent photo sequencing",
+          "Similarity gating to remove near-duplicates",
+          "Manual portfolio mode with full drag-and-drop control",
+          "Photo selection for gallery exhibitions and competition submissions",
+          "Photobook and client delivery curation",
         ],
       },
     },

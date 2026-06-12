@@ -46,7 +46,7 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><GlobeOutline /></n-icon>
-                    AI Geo-Inference
+                    AI Geo-Inference for existing libraries
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
@@ -54,14 +54,17 @@
                   <span class="gradient-text">Let AI find out.</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Most travel and documentary shots lack GPS data — but they
-                  carry the answer in every pixel. Photoreka's AI engine
-                  inspects your untagged photos, reads the visual context
+                  Trying to fix missing GPS metadata in your existing photo
+                  library? Most travel and documentary shots lack coordinates
+                  but still carry location cues in every pixel. Photoreka's AI
+                  engine inspects your untagged photos, reads visual context
                   (architecture, signage, landscapes, lighting), and
                   <strong>places them on the map</strong> with city or
-                  district-level precision. It is AI photo geotagging for
-                  archives missing GPS metadata, so you can geo-tag your library
-                  and explore it by place.<br /><br />
+                  district-level precision. It is AI geotagging for DSLR and
+                  archive libraries that were shot without GPS.<br /><br />
+                  This workflow is built for your own catalog inside Photoreka,
+                  not for OSINT-style investigation of third-party photos.
+                  <br /><br />
                   A geolocatability forecast shows you the expected success rate
                   before you spend a single credit. Only confident matches land
                   on your map.
@@ -118,7 +121,9 @@
         <section class="examples-section" ref="usecasesSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: usecasesVisible }">
-              <h2 class="section-title">Who benefits most</h2>
+              <h2 class="section-title">
+                Who needs to recover missing GPS metadata
+              </h2>
               <p class="section-subtitle">
                 Whether you've been shooting for years without GPS or just want
                 to fill in the blanks in your archive — geo-inference puts your
@@ -649,7 +654,7 @@ const faqs = ref([
   {
     question: "What kinds of photos work best?",
     answer:
-      "Outdoor photos in natural light with wide or medium framing yield the highest success rates. Architectural details, street signage, distinctive landscapes, and recognizable landmarks are the strongest cues. Studio, portrait, abstract, and macro shots score poorly because they carry little geographic information.",
+      "Outdoor photos in natural light with wide or medium framing yield the highest success rates. Architectural details, street signage, distinctive landscapes, and recognizable landmarks are the strongest cues. Studio, portrait, abstract, and macro shots score poorly because they carry little geographic information. If your DSLR archive has many outdoor travel frames, geo-inference usually performs best.",
   },
   {
     question: "Is this photo geotagging or EXIF GPS writing?",

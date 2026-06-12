@@ -56,11 +56,11 @@
                   >
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  AI photo geotagging that writes GPS directly into EXIF. Drop
-                  your photos, let the AI find where they were taken, review
-                  each marker on the map, and download your originals with GPS
-                  coordinates embedded in the metadata. This is bulk photo
-                  geotagging for missing GPS metadata.<br /><br />
+                  Need to add GPS data to photos in bulk? Geo Recovery uses AI
+                  photo geotagging to find where your shots were taken, lets you
+                  review each marker on the map, and downloads your originals
+                  with GPS coordinates embedded in EXIF metadata. This is built
+                  for DSLR and archive photos with missing GPS metadata.<br /><br />
                   <strong>Your originals never leave your browser.</strong> Only
                   lightweight thumbnails are sent for analysis. No Photoreka
                   account required — one flat payment for the entire batch.
@@ -139,7 +139,7 @@
         <section class="examples-section" ref="usecasesSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: usecasesVisible }">
-              <h2 class="section-title">Who is it for</h2>
+              <h2 class="section-title">Who needs bulk EXIF GPS recovery</h2>
               <p class="section-subtitle">
                 If you have photos without GPS and want them back with
                 coordinates embedded — without setting up an account or learning
@@ -207,7 +207,7 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
               <h2 class="section-title">
-                Built around one promise: your files come back richer
+                Built for bulk geotagging and EXIF GPS writeback
               </h2>
               <p class="section-subtitle">
                 Everything in Geo Recovery is designed so you spend less time
@@ -628,7 +628,7 @@ const features = ref([
 // FAQs
 const faqs = ref([
   {
-    question: "How do I geotag photos with AI?",
+    question: "How do I add GPS data to photos in bulk with AI?",
     answer:
       "Upload your photos to Geo Recovery, pay once for the batch, and let the AI analyze each image to infer the location from visual context (architecture, landmarks, signage). Review the interactive map, correct any pins if needed, then download your originals with GPS coordinates written into the EXIF metadata.",
   },
