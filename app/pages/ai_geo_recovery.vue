@@ -60,7 +60,10 @@
                   photo geotagging to find where your shots were taken, lets you
                   review each marker on the map, and downloads your originals
                   with GPS coordinates embedded in EXIF metadata. This is built
-                  for DSLR and archive photos with missing GPS metadata.<br /><br />
+                  for DSLR and archive photos with missing GPS metadata. If
+                  you're searching for
+                  <strong>how to geotag photos already taken online</strong>,
+                  this workflow is exactly that.<br /><br />
                   <strong>Your originals never leave your browser.</strong> Only
                   lightweight thumbnails are sent for analysis. No Photoreka
                   account required — one flat payment for the entire batch.
@@ -175,7 +178,7 @@
           <div class="section-container" style="position: relative; z-index: 1">
             <div class="section-header" :class="{ visible: howVisible }">
               <h2 class="section-title">
-                How to geotag photos with AI (4 steps)
+                How to geotag photos already taken online (4 steps)
               </h2>
               <p class="section-subtitle">
                 No onboarding, no catalog setup, no credits to buy. Upload, pay,
@@ -627,6 +630,11 @@ const features = ref([
 
 // FAQs
 const faqs = ref([
+  {
+    question: "How to geotag photos already taken online?",
+    answer:
+      "Upload the photos you already took, let Geo Recovery analyze lightweight thumbnails with AI, review each inferred pin on the map, correct anything you want, and then download your original files with GPS coordinates written into EXIF metadata.",
+  },
   {
     question: "How do I add GPS data to photos in bulk with AI?",
     answer:

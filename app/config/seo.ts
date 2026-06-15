@@ -559,11 +559,11 @@ export const seoConfig = {
 
     ai_geo_recovery: {
       title:
-        "Bulk Geotag Photos Online - Add GPS to Photos & EXIF in One Batch | Photoreka Geo Recovery",
+        "How to Geotag Photos Already Taken Online | Add GPS to EXIF in Bulk | Photoreka Geo Recovery",
       description:
-        "Need to add GPS data to photos in bulk? Geo Recovery is an online bulk photo geotagging tool that finds location with AI, lets you review every pin, and writes GPS directly into EXIF metadata on download. Ideal for DSLR archives with missing GPS metadata. No account required.",
+        "Learn how to geotag photos already taken online. Geo Recovery is an AI bulk photo geotagging tool that finds locations, lets you review every pin on a map, and writes GPS directly into EXIF metadata on download. Built for DSLR and archive photos with missing GPS metadata. No account required.",
       keywords:
-        "add gps data to photos, add gps to photos, add gps coordinates to photos, bulk photo geotagging, batch geotag photos, geotag photos online, geotag photos online free alternative, photo geotagging tool, exif gps editor, bulk exif gps editor online, fix missing gps metadata photos, dslr photos without gps, add geotag to photos online, ai photo geotagging, geotag photos with ai, photo location recovery, gps metadata recovery, lightroom geotag photos",
+        "how to geotag photos already taken online, geotag photos already taken, add gps data to photos, add gps to photos, add gps coordinates to photos, bulk photo geotagging, batch geotag photos, geotag photos online, geotag photos online free alternative, photo geotagging tool, exif gps editor, bulk exif gps editor online, fix missing gps metadata photos, dslr photos without gps, add geotag to photos online, ai photo geotagging, geotag photos with ai, photo location recovery, gps metadata recovery, lightroom geotag photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -603,6 +603,14 @@ export const seoConfig = {
           mainEntity: [
             {
               "@type": "Question",
+              name: "How to geotag photos already taken online?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Upload the photos you already took, let AI infer likely locations, review and correct each map pin, then download your original files with GPS coordinates written into EXIF metadata.",
+              },
+            },
+            {
+              "@type": "Question",
               name: "How can I add GPS data to photos in bulk?",
               acceptedAnswer: {
                 "@type": "Answer",
@@ -640,11 +648,11 @@ export const seoConfig = {
 
     ai_geo_inference: {
       title:
-        "AI Geo-Inference for Existing Photo Libraries | Fix Missing GPS Metadata | Photoreka",
+        "How to Geotag Photos Already Taken in Your Library | AI Geo-Inference | Photoreka",
       description:
-        "Fix missing GPS metadata in your existing Photoreka library. AI Geo-Inference analyzes your own photos, predicts location from visual context, and places confident results on your world map with city/district precision. Includes a geolocatability forecast before credit spend.",
+        "Need to geotag photos already taken in your existing library? AI Geo-Inference analyzes your own photos, predicts location from visual context, and places confident results on your world map with city or district precision. Includes a geolocatability forecast before credit spend.",
       keywords:
-        "fix missing gps metadata photos, photo geotagging for photographers, geotag dslr photos, ai geo inference, ai photo geolocation, geolocate photos without gps, map my photo archive, photo location inference, add location to existing photo library, lightroom classic geotagging workflow, world map photo catalog, city level photo geotagging, visual geolocation for own photos",
+        "how to geotag photos already taken, geotag photos already taken in library, fix missing gps metadata photos, photo geotagging for photographers, geotag dslr photos, ai geo inference, ai photo geolocation, geolocate photos without gps, map my photo archive, photo location inference, add location to existing photo library, lightroom classic geotagging workflow, world map photo catalog, city level photo geotagging, visual geolocation for own photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -683,6 +691,14 @@ export const seoConfig = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: [
+            {
+              "@type": "Question",
+              name: "How to geotag photos already taken in an existing library?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Open your existing catalog map, run AI geo-inference on photos that lack GPS metadata, review confidence-based results, and manually correct markers where needed.",
+              },
+            },
             {
               "@type": "Question",
               name: "What is the difference between AI Geo-Inference and Geo Recovery?",

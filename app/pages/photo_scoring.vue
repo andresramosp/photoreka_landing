@@ -493,7 +493,7 @@ const features = ref([
     icon: markRaw(ImagesOutline),
     title: "Batch Any Catalog Size",
     description:
-      "From 100 photos to 10,000+. Scoring runs in the background and results persist—sort and filter anytime without reprocessing.",
+      "From 100 photos to 20,000+. Scoring runs in the background and results persist—sort and filter anytime without reprocessing.",
     color: "#ec4899",
   },
   {
