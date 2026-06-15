@@ -9,8 +9,8 @@ export default defineNuxtConfig({
   modules: ["nuxtjs-naive-ui", "@nuxtjs/color-mode"],
   css: ["~/assets/global.scss"],
 
-  // Static generation mode to reduce runtime memory usage
-  ssr: false,
+  // SSR needed at build time for proper static prerendering; no server runs at deploy time
+  ssr: true,
 
   runtimeConfig: {
     public: {
