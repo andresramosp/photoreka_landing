@@ -62,6 +62,18 @@
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
+      <url>
+        <loc>https://www.photoreka.com/ai_geo_inference</loc>
+        <lastmod>2026-04-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+          <url>
+        <loc>https://www.photoreka.com/ai_geo_recovery</loc>
+        <lastmod>2026-04-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <url>
         <loc>https://www.photoreka.com/terms</loc>
         <lastmod>2026-04-14</lastmod>
