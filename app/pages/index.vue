@@ -173,13 +173,6 @@
                 work seriously. Search with AI, score and rank, explore in 3D,
                 and build portfolios from your photo library.
               </p>
-              <p class="seo-anchor-links">
-                <NuxtLink to="/ai_geo_recovery">AI Bulk Geotagging</NuxtLink>
-                ·
-                <NuxtLink to="/ai_geo_recovery"
-                  >Recuperar EXIF GPS en masa con IA</NuxtLink
-                >
-              </p>
             </div>
 
             <div class="index-features-grid">
@@ -1215,22 +1208,6 @@ if (typeof window !== "undefined") {
   color: var(--premium-text-secondary);
   line-height: 1.65;
   font-size: 0.93rem;
-}
-
-.seo-anchor-links {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--premium-text-secondary);
-}
-
-.seo-anchor-links a {
-  color: var(--premium-primary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.seo-anchor-links a:hover {
-  color: var(--premium-primary-hover);
 }
 
 .gradient-framer {

@@ -30,6 +30,9 @@
           <NuxtLink to="/ai_geo_inference" class="footer-link"
             >AI Geo-Inference</NuxtLink
           >
+          <NuxtLink to="/ai_geo_recovery" class="footer-link"
+            >AI Bulk Geotagging</NuxtLink
+          >
         </div>
 
         <div class="footer-column">
