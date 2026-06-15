@@ -9,8 +9,8 @@ export default defineNuxtConfig({
   modules: ["nuxtjs-naive-ui", "@nuxtjs/color-mode"],
   css: ["~/assets/global.scss"],
 
-  // Configuración SSR para SEO óptimo
-  ssr: true,
+  // Static generation mode to reduce runtime memory usage
+  ssr: false,
 
   runtimeConfig: {
     public: {
