@@ -7,7 +7,7 @@
 - ✅ Todas las URLs canónicas apuntan a www.photoreka.com
 - ✅ Open Graph y Twitter Cards usan www.photoreka.com
 - ✅ El sitemap.xml usa www.photoreka.com
-- ℹ️ La versión sin www (photoreka.com) redirige automáticamente
+- ℹ️ La versión sin www (photoreka.com) redirige automáticamente.
 
 Esto es importante para SEO - Google indexará la versión con www como canónica.
 
