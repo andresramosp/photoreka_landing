@@ -6,7 +6,7 @@
     "build": "nuxt generate",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "start": "serve -s .output/public -l ${PORT:-3000}",
+    "start": "serve .output/public -l ${PORT:-3000}",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
