@@ -559,9 +559,9 @@ export const seoConfig = {
 
     ai_geo_recovery: {
       title:
-        "How to Geotag Photos Already Taken Online | Add GPS to EXIF in Bulk | Photoreka Geo Recovery",
+        "Geo Recovery — Bulk Photo Geotagging & EXIF GPS Writeback Online | Photoreka",
       description:
-        "Learn how to geotag photos already taken online. Geo Recovery is an AI bulk photo geotagging tool that finds locations, lets you review every pin on a map, and writes GPS directly into EXIF metadata on download. Built for DSLR and archive photos with missing GPS metadata. No account required.",
+        "Need to geotag photos already taken without an account? Geo Recovery uses AI to find where your shots were taken, lets you review every pin on a map, and writes GPS coordinates directly into EXIF on download. Built for DSLR and archive photos with missing GPS metadata. One flat payment, no subscription.",
       keywords:
         "how to geotag photos already taken online, geotag photos already taken, add gps data to photos, add gps to photos, add gps coordinates to photos, bulk photo geotagging, batch geotag photos, geotag photos online, geotag photos online free alternative, photo geotagging tool, exif gps editor, bulk exif gps editor online, fix missing gps metadata photos, dslr photos without gps, add geotag to photos online, ai photo geotagging, geotag photos with ai, photo location recovery, gps metadata recovery, lightroom geotag photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
@@ -648,9 +648,9 @@ export const seoConfig = {
 
     ai_geo_inference: {
       title:
-        "How to Geotag Photos Already Taken in Your Library | AI Geo-Inference | Photoreka",
+        "AI Geo-Inference — Recover Missing GPS Metadata in Your Photo Library | Photoreka",
       description:
-        "Need to geotag photos already taken in your existing library? AI Geo-Inference analyzes your own photos, predicts location from visual context, and places confident results on your world map with city or district precision. Includes a geolocatability forecast before credit spend.",
+        "Fix missing GPS metadata in your existing Photoreka library. AI Geo-Inference analyzes your own photos, predicts location from visual context, and places confident results on your world map with city or district precision. Includes a geolocatability forecast before credit spend.",
       keywords:
         "how to geotag photos already taken, geotag photos already taken in library, fix missing gps metadata photos, photo geotagging for photographers, geotag dslr photos, ai geo inference, ai photo geolocation, geolocate photos without gps, map my photo archive, photo location inference, add location to existing photo library, lightroom classic geotagging workflow, world map photo catalog, city level photo geotagging, visual geolocation for own photos",
       ogImage: "/logos/marca/vertical-claim-light.png",

@@ -61,9 +61,7 @@
                   (architecture, signage, landscapes, lighting), and
                   <strong>places them on the map</strong> with city or
                   district-level precision. It is AI geotagging for DSLR and
-                  archive libraries that were shot without GPS. If your goal is
-                  <strong>how to geotag photos already taken</strong> in your
-                  catalog, this is the workflow designed for that.<br /><br />
+                  archive libraries that were shot without GPS.<br /><br />
                   This workflow is built for your own catalog inside Photoreka,
                   not for OSINT-style investigation of third-party photos.
                   <br /><br />
