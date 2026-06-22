@@ -89,17 +89,20 @@
               </div>
 
               <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    src="/videos/atlas_1.mp4"
-                    poster="/home/video_poster.jpg"
-                    ref="videoRef"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
+                <div class="video-frame hero-slideshow">
+                  <div
+                    v-for="(img, i) in slideshowImages"
+                    :key="i"
+                    class="hero-slide"
+                    :class="{ active: currentSlide === i }"
+                    :style="{
+                      backgroundImage: `url(${img.src})`,
+                      transform: slideTransforms[i],
+                    }"
+                    role="img"
+                    :aria-label="img.alt"
+                  ></div>
+                  <div class="hero-slideshow-overlay"></div>
                 </div>
               </div>
             </div>
@@ -208,6 +211,9 @@
           </div>
         </section>
 
+        <!-- Geo Recovery Promo Section -->
+        <GeoRecoveryPromo />
+
         <!-- FAQ Section -->
         <section class="faq-section" ref="faqSection">
           <div class="section-container">
@@ -295,7 +301,7 @@
 </template>
 
 <script setup>
-import { markRaw } from "vue";
+import { markRaw, nextTick } from "vue";
 import {
   SunnyOutline,
   MoonOutline,
@@ -352,7 +358,6 @@ const howSection = ref(null);
 const featuresSection = ref(null);
 const faqSection = ref(null);
 const ctaSection = ref(null);
-const videoRef = ref(null);
 
 const heroVisible = ref(false);
 const dimensionsVisible = ref(false);
@@ -363,6 +368,30 @@ const ctaVisible = ref(false);
 
 const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
+
+const slideshowImages = [
+  { src: "/ai_photo_scoring/1.png", alt: "Photo scoring hero slide 1" },
+  { src: "/ai_photo_scoring/2.png", alt: "Photo scoring hero slide 2" },
+  { src: "/ai_photo_scoring/3.png", alt: "Photo scoring hero slide 3" },
+  { src: "/ai_photo_scoring/4.png", alt: "Photo scoring hero slide 4" },
+  { src: "/ai_photo_scoring/5.png", alt: "Photo scoring hero slide 5" },
+];
+const currentSlide = ref(0);
+const slideTransforms = ref(slideshowImages.map(() => "scale(1.0)"));
+let slideshowTimer = null;
+
+const activateSlide = (idx) => {
+  slideTransforms.value[idx] = "scale(1.0)";
+  nextTick(() => {
+    slideTransforms.value[idx] = "scale(1.1)";
+  });
+};
+
+const deactivateSlide = (idx) => {
+  setTimeout(() => {
+    slideTransforms.value[idx] = "scale(1.0)";
+  }, 1100);
+};
 
 // Scoring dimensions
 const dimensions = ref([
@@ -612,6 +641,23 @@ onMounted(() => {
   heroVisible.value = true;
   setupScrollAnimations();
   trackEvent("page_view", { page: "photo_scoring" });
+
+  activateSlide(0);
+
+  slideshowTimer = setInterval(() => {
+    const prev = currentSlide.value;
+    const next = (prev + 1) % slideshowImages.length;
+    deactivateSlide(prev);
+    currentSlide.value = next;
+    activateSlide(next);
+  }, 3333);
+});
+
+onUnmounted(() => {
+  if (slideshowTimer) {
+    clearInterval(slideshowTimer);
+    slideshowTimer = null;
+  }
 });
 </script>
 
@@ -797,6 +843,41 @@ onMounted(() => {
   border-radius: 20px;
   overflow: hidden;
   background: var(--premium-bg-card);
+}
+
+/* ── Hero slideshow ─────────────────────────────────────────── */
+.hero-slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--premium-bg-card);
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1);
+  transition:
+    opacity 0.93s ease,
+    transform 3.5s ease;
+}
+.hero-slide.active {
+  opacity: 1;
+}
+.hero-slideshow-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  border-radius: 20px;
+  pointer-events: none;
 }
 .hero-video {
   width: 100%;

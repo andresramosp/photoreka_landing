@@ -404,6 +404,9 @@
           </div>
         </section>
 
+        <!-- Geo Recovery Promo Section -->
+        <GeoRecoveryPromo />
+
         <!-- FAQ Section -->
         <section class="faq-section" ref="faqSection">
           <div class="section-container">
