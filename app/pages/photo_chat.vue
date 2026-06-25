@@ -47,23 +47,26 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><ChatbubblesOutline /></n-icon>
-                    AI Photo Assistant &amp; Catalog Analyzer
+                    AI Photo Assistant · Find · Organize · Critique
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Analyze your photos with
-                  <span class="gradient-text">AI chat</span>
+                  Find your best photos by
+                  <span class="gradient-text">chatting with your library</span>
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Use an AI photo assistant to search, analyze, and curate your
-                  catalog in plain language.
-                  <em>"What are my weakest photos?"</em>,
-                  <em>"Build a sequence of my 5 best portraits"</em>,
+                  Photoreka is like
+                  <strong>ChatGPT for your photo library</strong>—ask it to find
+                  your best photos, organize your catalog, critique your
+                  portfolio, or rate your shots, all in plain language.
+                  <em>"Which are my strongest photos?"</em>,
+                  <em>"Rate my last shoot"</em>,
                   <em>"Have I improved in the last 6 months?"</em>—and get a
                   real answer backed by your actual work.<br /><br />
-                  Photoreka combines <strong>photo library search</strong>,
-                  portfolio critique, and catalog intelligence in one
-                  conversational interface built for photographers.
+                  One conversational interface that combines
+                  <strong>AI photo organization</strong>, library search,
+                  portfolio critique, and catalog intelligence for
+                  photographers.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -137,13 +140,13 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: examplesVisible }">
               <h2 class="section-title">
-                Ask your AI photo assistant anything about your archive
+                Ask AI to find, organize, rate or critique your photos
               </h2>
               <p class="section-subtitle">
-                This is more than AI photo search. The assistant analyzes your
-                full catalog and responds with insights, curated selections,
-                honest photography critique, and tracking of your improvement
-                over time—in whatever language you write.
+                This is more than AI photo search. The assistant uses AI to
+                organize your full catalog and responds with your best photos,
+                curated selections, honest photography critique, and tracking of
+                your improvement over time—in whatever language you write.
               </p>
             </div>
 
@@ -373,8 +376,9 @@ useSEO("photo_chat", {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       name: "Photoreka AI Photo Assistant",
+      alternateName: "ChatGPT for your photo library",
       description:
-        "AI photo assistant for photographers. Ask anything about your photo library—search your catalog, get honest portfolio critique, analyze your photography improvement over time, discover patterns, and build curated selections in natural language.",
+        "AI photo assistant for photographers. Chat with your photo library to find your best photos, organize your catalog, get an honest portfolio critique, rate your shots, track your photography improvement over time, discover patterns, and build curated selections in natural language.",
       applicationCategory: "PhotographyApplication",
       operatingSystem: "Web",
       url: "https://www.photoreka.com/photo_chat",
@@ -404,6 +408,22 @@ useSEO("photo_chat", {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       mainEntity: [
+        {
+          "@type": "Question",
+          name: "Can the AI find my best photos automatically?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Ask it to find your best photos and it ranks your strongest shots across your whole library by composition, expression, and technical quality—then explains why each one stands out.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can it rate or critique my photography?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. You can ask it to rate a shoot or critique your portfolio, and it gives evidence-based feedback grounded in your actual catalog: composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is designed to be useful rather than flattering.",
+          },
+        },
         {
           "@type": "Question",
           name: "How is this different from just searching my photos?",
@@ -633,6 +653,21 @@ const features = ref([
 
 // FAQs
 const faqs = ref([
+  {
+    question: "Can the AI find my best photos automatically?",
+    answer:
+      "Yes. Just ask it to find your best photos and it ranks your strongest shots across your entire library—by composition, expression, and technical quality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+  },
+  {
+    question: "Can it rate or critique my photography?",
+    answer:
+      "Yes. Ask it to rate a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
+  },
+  {
+    question: "Can it help me organize my photo library with AI?",
+    answer:
+      "Absolutely. Beyond chat, Photoreka uses AI to understand and organize your catalog so you can group, filter, and curate by subject, style, lighting, or quality—without manual tagging. The assistant works on top of that organized library to answer your questions.",
+  },
   {
     question: "How is this different from just searching my photos?",
     answer:

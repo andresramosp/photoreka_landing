@@ -359,11 +359,11 @@ export const seoConfig = {
 
     photo_chat: {
       title:
-        "AI Photo Assistant — Search, Critique & Analyze Your Photo Library | Photoreka",
+        "Find Your Best Photos with AI — Critique, Organize & Chat With Your Library | Photoreka",
       description:
-        "Ask anything about your photo library and get a real answer. Photoreka's AI photo assistant lets you search your catalog by describing what you want, get honest portfolio critique, track how your photography has improved over time, and build curated selections—all in natural conversation. Think of it as an AI analyst for your photos: find your best work, discover patterns across your archive, and get personalized advice grounded in your actual catalog. Works in any language.",
+        "Find your best photos, organize your catalog, and get an honest AI critique of your work—just by chatting. Photoreka is like ChatGPT for your photo library: ask it to rank your strongest shots, rate your photos, see if you've improved, or build a curated selection, and it answers using your actual archive. Search thousands of images by describing them—no tagging required. An AI photo assistant that organizes, curates, and critiques. Works in any language.",
       keywords:
-        "AI photo assistant, ask AI about my photos, analyze my photos AI, AI photo analyzer, find my best photos AI, photography improvement tracker AI, AI photography critique, photo library AI search, find photos by describing, photo collection analysis AI, AI photo catalog search, photo library chatbot, understand my photo library AI, AI photo insights, photography AI analyzer, best photos AI finder, photo archive AI assistant, AI photography analysis, ChatGPT for photos, photo library AI, conversational photo search, photo collection AI, natural language photo search AI, AI photography advisor, discover photo patterns AI, AI photo portfolio critique, search photo library AI, photo analytics AI, photo history AI, AI photo curator",
+        "find my best photos, app to find my best photos, organize photos with AI, AI to organize photos, best AI to organize photos, AI app to organize photos, AI photo critique, best AI for photo critique, rate my photos AI, chatgpt for my photos, AI to cull photos, find photos by describing them, how to choose best photos, am I a good photographer AI, AI photography feedback, AI photo curation, photo portfolio critique AI, AI photo assistant, ask AI about my photos, analyze my photos AI, photo library AI chat, conversational photo search, search my photo library AI, AI photo analyzer, AI photo organizer, photography improvement tracker AI, discover photo patterns AI, AI photo curator",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
