@@ -132,7 +132,10 @@
             <li>
               Images may be temporarily transmitted to these providers solely
               for the requested functionality and under confidentiality
-              agreements. They are not stored by these providers.
+              agreements. According to the providers' enterprise data processing
+              policies, uploaded images are not used for model training and are
+              not retained beyond what is necessary to provide the requested
+              service.
             </li>
             <li>
               <strong>Consent Regarding AI Processing:</strong> By using
@@ -140,6 +143,17 @@
               processed using AI models as described above. If you do not agree
               to such processing, you should refrain from uploading images or
               using the Platform.
+            </li>
+            <li>
+              <strong>AI Provider Restrictions:</strong> Some third-party AI
+              providers apply their own automated safety and content policies.
+              As a result, certain images may be rejected or only partially
+              processed, even when they are lawful or intended for legitimate
+              artistic, documentary, journalistic, or educational purposes. In
+              such cases, some Photoreka analysis features may be unavailable or
+              produce incomplete results. These determinations are made
+              automatically by the third-party providers and do not necessarily
+              reflect Photoreka's own assessment of the content.
             </li>
           </ul>
         </section>
@@ -232,6 +246,13 @@
             disclosures of such content. By using Photoreka, you acknowledge
             that the Platform is not liable for any consequences arising from
             the upload of sensitive or personal images.
+          </p>
+          <p>
+            Users are responsible for ensuring that uploaded images comply with
+            applicable laws and that they have the necessary rights and
+            permissions to process such content through the Platform. Users
+            should refrain from uploading content that is illegal or otherwise
+            prohibited under applicable law.
           </p>
         </section>
 
