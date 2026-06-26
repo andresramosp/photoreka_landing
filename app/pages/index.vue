@@ -52,8 +52,8 @@
                   <n-icon size="16"><WalkOutline /></n-icon>Street
                   <n-icon size="16"><BookOpen16Regular /></n-icon>Documentary
                   <n-icon size="16"><ColorPaletteOutline /></n-icon>Artistic
-                  <!-- <n-icon size="16"><PersonOutline /></n-icon>Portrait -->
-                  <n-icon size="16"><ImageOutline /></n-icon>Travel
+                  <n-icon size="16"><PersonOutline /></n-icon>Portrait
+                  <!-- <n-icon size="16"><ImageOutline /></n-icon>Travel -->
                   <n-icon size="16"><BriefcaseOutline /></n-icon>Commercial
                 </span>
               </div>
