@@ -42,10 +42,12 @@
       <!-- ── Variant 2: Alternating showcase rows ─────────────── -->
       <div v-else class="fs-rows">
         <component
-          :is="feature.link ? 'NuxtLink' : 'div'"
+          :is="feature.link ? 'a' : 'div'"
           v-for="(feature, index) in features"
           :key="index"
-          :to="feature.link || undefined"
+          :href="feature.link || undefined"
+          :target="feature.link ? '_blank' : undefined"
+          :rel="feature.link ? 'noopener noreferrer' : undefined"
           class="fs-row"
           :class="{ visible, 'fs-row--reversed': index % 2 === 1 }"
           :style="{ transitionDelay: `${index * 80}ms` }"
@@ -91,11 +93,9 @@
               aria-hidden="true"
             ></div>
             <div class="fs-row-frame">
-              <img
-                :src="feature.image"
+              <FeatureCarousel
+                :images="featureImages(feature)"
                 :alt="feature.title"
-                class="fs-row-image"
-                loading="lazy"
               />
             </div>
           </div>
@@ -120,6 +120,16 @@ const props = defineProps({
   sectionId: { type: String, default: "features" },
   features: { type: Array, required: true },
 });
+
+// Normalize a feature's imagery into an array for FeatureCarousel.
+// Accepts `images` (array of srcs / { src, alt }) or a single `image` string.
+// One entry → static image; more than one → auto-rotating carousel.
+const featureImages = (feature) => {
+  if (Array.isArray(feature.images) && feature.images.length) {
+    return feature.images;
+  }
+  return feature.image ? [feature.image] : [];
+};
 
 // Build bullet list for the showcase variant. Prefer explicit `bullets`,
 // otherwise fall back to splitting the description into sentences.
@@ -420,14 +430,6 @@ a.fs-card:hover {
 a.fs-row:hover .fs-row-frame {
   transform: translateY(-6px);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.34);
-}
-
-.fs-row-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 11;
-  object-fit: cover;
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */

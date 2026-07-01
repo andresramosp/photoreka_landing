@@ -715,7 +715,16 @@ const features = ref([
       "Compose visual series with ease",
       "Let AI suggest continuations by composition and tone",
     ],
-    image: "/portfolio_builder/1.png",
+    // Multiple images → rendered as an auto-rotating carousel.
+    // Single-image features just use `image` below.
+    images: [
+      "/portfolio_builder/0.png",
+      "/portfolio_builder/1.png",
+      "/portfolio_builder/2.png",
+      "/portfolio_builder/3.png",
+      "/portfolio_builder/4.png",
+      "/portfolio_builder/5.png",
+    ],
     color: "#22c55e",
     link: "/photography_portfolio_builder",
   },
