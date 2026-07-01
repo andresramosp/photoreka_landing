@@ -239,7 +239,7 @@
         </section>
 
         <!-- 3d video section -->
-        <section class="reports-hero" ref="reportsHeroSection">
+        <!-- <section class="reports-hero" ref="reportsHeroSection">
           <div class="reports-hero-background">
             <div class="reports-gradient-orb reports-orb-1"></div>
             <div class="reports-gradient-orb reports-orb-2"></div>
@@ -322,7 +322,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> -->
 
         <!-- Data Sources Section -->
         <section id="sources" class="sources-section" ref="sourcesSection">
