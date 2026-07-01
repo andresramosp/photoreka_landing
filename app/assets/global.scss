@@ -116,6 +116,11 @@ body {
   --premium-accent: #9333ea;
   --premium-gradient-2: #0000ff;
   --premium-gradient-3: #00ffff;
+
+  /* Screenshots (landing captures): subtle border + soft light halo
+     that creates a lighter zone in the dark background behind each capture */
+  --premium-shot-border: rgba(255, 255, 255, 0.16);
+  --premium-shot-glow: rgba(150, 180, 255, 0.14);
 }
 
 /* Light theme */
@@ -189,6 +194,10 @@ body {
   --premium-accent: #7e22ce;
   --premium-gradient-2: #0000ff;
   --premium-gradient-3: #00ffff;
+
+  /* Screenshots (landing captures) */
+  --premium-shot-border: rgba(0, 0, 0, 0.12);
+  --premium-shot-glow: rgba(37, 99, 235, 0.08);
 }
 
 body {
@@ -1749,6 +1758,37 @@ section {
       transparent 18%
     ),
     radial-gradient(circle at 5% 90%, rgba(0, 0, 200, 0.2) 0%, transparent 14%),
+    /* Neutral lighter zones to lift the dark canvas behind the app captures */
+      radial-gradient(
+        ellipse 60% 40% at 50% 12%,
+        rgba(255, 255, 255, 0.05) 0%,
+        transparent 60%
+      ),
+    radial-gradient(
+      ellipse 55% 30% at 15% 45%,
+      rgba(255, 255, 255, 0.035) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 55% 30% at 85% 72%,
+      rgba(255, 255, 255, 0.035) 0%,
+      transparent 55%
+    ),
+    var(--premium-bg) !important;
+}
+
+[data-theme="light"] .premium-landing {
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(0, 0, 200, 0.06) 0%,
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 95% 60%,
+      rgba(0, 200, 220, 0.05) 0%,
+      transparent 18%
+    ),
     var(--premium-bg) !important;
 }
 
@@ -2374,8 +2414,8 @@ section {
   overflow: hidden;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(0, 0, 0, 0.1);
-  border: none;
+    0 0 120px 8px var(--premium-shot-glow);
+  border: 1px solid var(--premium-shot-border);
   background: #000;
 }
 
@@ -2383,7 +2423,7 @@ section {
   background: #f8f9fa;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(0, 0, 0, 0.1);
+    0 0 120px 8px var(--premium-shot-glow);
 }
 
 .integration-video {

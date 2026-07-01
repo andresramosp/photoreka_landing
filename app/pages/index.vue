@@ -269,15 +269,13 @@
                   :class="{ visible: reportsHeroVisible }"
                 >
                   Folders and grids flatten your work. The
-                  <strong>3D Atlas</strong> maps every photo into an
-                  interactive space where
-                  <strong>
-                    visually similar images cluster together
-                  </strong>
+                  <strong>3D Atlas</strong> maps every photo into an interactive
+                  space where
+                  <strong> visually similar images cluster together </strong>
                   automatically, powered by AI embeddings.<br /><br />
                   Fly through your collection, spot themes and patterns you
-                  never noticed, and rediscover forgotten shots by exploring
-                  the connections between them, not scrolling endless lists.
+                  never noticed, and rediscover forgotten shots by exploring the
+                  connections between them, not scrolling endless lists.
                 </p>
 
                 <div
@@ -620,8 +618,8 @@ const heroAnnouncement = ref({
 });
 
 const heroSideImages = {
-  left: "/home/canvas_playground.png",
-  right: "/portfolio_builder/1.png",
+  left: "/ai_photo_scoring/1.png",
+  right: "/home/tag_cloud_poster_detailed.png",
 };
 
 // Intersection observers for animations
@@ -652,6 +650,21 @@ const featuresVariant = ref("showcase");
 // If `bullets` is omitted the showcase falls back to splitting `description`.
 const features = ref([
   {
+    icon: markRaw(SearchOutline),
+    title: "Natural Language Search",
+    description:
+      "Find any photo by describing it. Search for moods, scenes, lighting conditions, cinematic references, or abstract feelings. No keywords, no tagging—just describe what you remember and Photoreka finds it.",
+    lead: "Find any photo just by describing it — no keywords, no tagging.",
+    bullets: [
+      "Search moods, scenes, lighting and cinematic references",
+      "Broad, Adaptive and Precise search modes",
+      "Just describe what you remember and Photoreka finds it",
+    ],
+    image: "/ai_photo_scoring/2.png",
+    color: "#2563eb",
+    link: "/ai_photo_search",
+  },
+  {
     icon: markRaw(CubeOutline),
     title: "2D / 3D Atlas",
     description:
@@ -665,21 +678,6 @@ const features = ref([
     image: "/home/tag_cloud_poster.png",
     color: "#06b6d4",
     link: "/photo_3D_atlas",
-  },
-  {
-    icon: markRaw(SearchOutline),
-    title: "Natural Language Search",
-    description:
-      "Find any photo by describing it. Search for moods, scenes, lighting conditions, cinematic references, or abstract feelings. No keywords, no tagging—just describe what you remember and Photoreka finds it.",
-    lead: "Find any photo just by describing it — no keywords, no tagging.",
-    bullets: [
-      "Search moods, scenes, lighting and cinematic references",
-      "Broad, Adaptive and Precise search modes",
-      "Just describe what you remember and Photoreka finds it",
-    ],
-    image: "/ai_geoinference/1.png",
-    color: "#2563eb",
-    link: "/ai_photo_search",
   },
   {
     icon: markRaw(Workspace),
@@ -706,14 +704,14 @@ const features = ref([
   // },
   {
     icon: markRaw(LayersOutline),
-    title: "Series & Sequencing",
+    title: "AI Portfolio Builder",
     description:
-      "Build cohesive sequences and storyboards from your catalog. Organize images into narrative arcs, editorial spreads, or visual series—and let the AI suggest continuations based on compositional and tonal flow.",
-    lead: "Build cohesive sequences and storyboards from your catalog.",
+      "Turn thousands of photos into a curated, ordered portfolio in minutes. Photoreka scores your catalog across 8 artistic dimensions, selects your strongest work under one of five coherence modes, and sequences the final set for visual flow.",
+    lead: "Turn thousands of photos into a curated, ordered portfolio in minutes.",
     bullets: [
-      "Organize images into narrative arcs and editorial spreads",
-      "Compose visual series with ease",
-      "Let AI suggest continuations by composition and tone",
+      "Score photos across 8 artistic dimensions",
+      "Choose from five coherence modes: Visual, Chromatic, Narrative, Heterogeneous, Free",
+      "Let AI sequence the final selection for visual flow",
     ],
     // Multiple images → rendered as an auto-rotating carousel.
     // Single-image features just use `image` below.
@@ -739,7 +737,7 @@ const features = ref([
       "Reveal cultural references and compositional habits",
       "Analyze your whole archive with AI, not vibes",
     ],
-    image: "/ai_photo_scoring/2.png",
+    image: "/ai_photo_scoring/5.png",
     color: "#f59e0b",
     link: "/photo_reports",
   },
@@ -1190,9 +1188,11 @@ if (typeof window !== "undefined") {
   width: 100%;
   max-height: 520px;
   object-fit: cover;
-  border: 1px solid var(--premium-border);
+  border: 1px solid var(--premium-shot-border);
   border-radius: 24px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.22),
+    0 0 120px 8px var(--premium-shot-glow);
 }
 
 .hero-side-image-left {
@@ -1314,7 +1314,6 @@ if (typeof window !== "undefined") {
 }
 .search-promo-visual {
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   transition: transform 0.4s ease;
 }
 .search-promo-visual:hover {
@@ -1440,9 +1439,10 @@ if (typeof window !== "undefined") {
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
   border-radius: 20px;
   overflow: hidden;
+  border: 1px solid var(--premium-shot-border);
   box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--premium-border);
+    0 0 120px 8px var(--premium-shot-glow);
 }
 
 .reports-hero-visual.visible {

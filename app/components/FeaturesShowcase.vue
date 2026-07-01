@@ -420,8 +420,10 @@ a.fs-card:hover {
   border-radius: var(--fs-card-radius);
   overflow: hidden;
   background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--premium-shot-border);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.28),
+    0 0 120px 8px var(--premium-shot-glow);
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
@@ -429,7 +431,9 @@ a.fs-card:hover {
 
 a.fs-row:hover .fs-row-frame {
   transform: translateY(-6px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.34);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.34),
+    0 0 130px 10px var(--premium-shot-glow);
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
