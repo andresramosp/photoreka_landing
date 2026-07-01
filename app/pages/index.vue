@@ -81,6 +81,15 @@
                 :src="heroSideImages.left"
                 alt="Photoreka archive preview"
               />
+              <img
+                v-if="
+                  heroPhoneOverlay.enabled && heroPhoneOverlay.side === 'left'
+                "
+                class="hero-phone-overlay"
+                :src="heroPhoneOverlay.image"
+                :style="phoneOverlayStyle"
+                alt="Photoreka mobile app"
+              />
             </div>
             <div class="hero-content">
               <h1 class="hero-title" :class="{ visible: heroVisible }">
@@ -153,6 +162,15 @@
                 class="hero-side-image hero-side-image-right"
                 :src="heroSideImages.right"
                 alt="Photoreka workflow preview"
+              />
+              <img
+                v-if="
+                  heroPhoneOverlay.enabled && heroPhoneOverlay.side === 'right'
+                "
+                class="hero-phone-overlay"
+                :src="heroPhoneOverlay.image"
+                :style="phoneOverlayStyle"
+                alt="Photoreka mobile app"
               />
             </div>
             <div
@@ -637,6 +655,44 @@ const heroSideImages = {
   right: "/home/tag_cloud_poster_detailed.png",
   mobile: "/home/dashboard.png",
 };
+
+// ── Phone mockup overlay (the "movil con halo" image) ──────────
+// Se superpone sobre una de las imágenes laterales del hero.
+// Ajusta aquí posición/tamaño sin tocar el CSS:
+//   side     → "left" | "right": sobre qué imagen lateral se superpone
+//   width    → ancho del móvil en px
+//   offsetX  → desplazamiento horizontal en px (+ derecha / - izquierda)
+//   offsetY  → desplazamiento vertical en px (+ abajo / - arriba)
+//   rotation → giro en grados
+//   anchor   → "bottom" | "center" | "top": punto de anclaje vertical
+const heroPhoneOverlay = ref({
+  enabled: true,
+  side: "right",
+  image: "/home/Photoreka_movil(con halo).png",
+  width: 240,
+  offsetX: -260,
+  offsetY: 40,
+  rotation: 0,
+  anchor: "bottom",
+});
+
+const phoneOverlayStyle = computed(() => {
+  const o = heroPhoneOverlay.value;
+  const style = {
+    width: `${o.width}px`,
+  };
+  if (o.anchor === "top") {
+    style.top = "0";
+    style.transform = `translate(calc(-50% + ${o.offsetX}px), ${o.offsetY}px) rotate(${o.rotation}deg)`;
+  } else if (o.anchor === "center") {
+    style.top = "50%";
+    style.transform = `translate(calc(-50% + ${o.offsetX}px), calc(-50% + ${o.offsetY}px)) rotate(${o.rotation}deg)`;
+  } else {
+    style.bottom = "0";
+    style.transform = `translate(calc(-50% + ${o.offsetX}px), ${o.offsetY}px) rotate(${o.rotation}deg)`;
+  }
+  return style;
+});
 
 // Intersection observers for animations
 const heroSection = ref(null);
@@ -1243,6 +1299,17 @@ if (typeof window !== "undefined") {
 
 .hero-side-image-right {
   aspect-ratio: 0.85 / 1;
+}
+
+/* Móvil superpuesto sobre una imagen lateral. Posición/tamaño se
+   controlan desde `heroPhoneOverlay` en el script (phoneOverlayStyle). */
+.hero-phone-overlay {
+  position: absolute;
+  left: 50%;
+  z-index: 5;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.45));
 }
 
 .hero-side-mobile {
