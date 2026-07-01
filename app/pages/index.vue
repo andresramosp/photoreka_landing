@@ -153,6 +153,16 @@
                 alt="Photoreka workflow preview"
               />
             </div>
+            <div
+              class="hero-side hero-side-mobile"
+              :class="{ visible: heroVisible }"
+            >
+              <img
+                class="hero-side-image hero-side-image-mobile"
+                :src="heroSideImages.mobile"
+                alt="Photoreka preview"
+              />
+            </div>
           </div>
         </section>
 
@@ -620,6 +630,7 @@ const heroAnnouncement = ref({
 const heroSideImages = {
   left: "/ai_photo_scoring/1.png",
   right: "/home/tag_cloud_poster_detailed.png",
+  mobile: "/home/dashboard.png",
 };
 
 // Intersection observers for animations
@@ -909,8 +920,8 @@ const toggleFAQ = (index) => {
 // Scroll-based animations
 const setupScrollAnimations = () => {
   const observerOptions = {
-    threshold: 0.2,
-    rootMargin: "0px 0px -100px 0px",
+    threshold: 0.1,
+    rootMargin: "0px 0px 100px 0px",
   };
 
   const heroObserver = new IntersectionObserver((entries) => {
@@ -1201,6 +1212,19 @@ if (typeof window !== "undefined") {
 
 .hero-side-image-right {
   aspect-ratio: 0.85 / 1;
+}
+
+.hero-side-mobile {
+  display: none;
+  justify-content: center;
+}
+
+.hero-side-image-mobile {
+  aspect-ratio: auto;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
 .hero-trust {
@@ -1539,19 +1563,17 @@ if (typeof window !== "undefined") {
 
   .hero-side-left,
   .hero-side-right {
-    margin: 0;
+    display: none;
   }
 
-  .hero-side-left {
+  .hero-side-mobile {
+    display: flex;
     order: 2;
+    margin: 0;
   }
 
   .hero-content {
     order: 1;
-  }
-
-  .hero-side-right {
-    order: 3;
   }
 
   .hero-title {
@@ -1598,13 +1620,12 @@ if (typeof window !== "undefined") {
 }
 
 @media (max-width: 640px) {
-  .premium-landing {
-    --announcement-height: 72px;
+  .premium-landing.has-announcement {
+    --announcement-height: 0px;
   }
 
   .announcement-bar {
-    padding: 0.65rem 2.7rem 0.65rem 1rem;
-    font-size: var(--landing-fs-caption);
+    display: none;
   }
 
   .hero-section {

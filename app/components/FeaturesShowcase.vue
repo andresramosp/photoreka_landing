@@ -472,5 +472,9 @@ a.fs-row:hover .fs-row-frame {
   .fs-row-title {
     font-size: var(--fs-2xl);
   }
+
+  .fs-section-title {
+    font-size: var(--landing-fs-title-promo-mobile, var(--fs-3xl));
+  }
 }
 </style>
