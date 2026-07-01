@@ -156,56 +156,14 @@
           </div>
         </section>
 
-        <!-- Features Grid Section -->
-        <section
-          id="features"
-          class="index-features-section"
-          ref="featuresSection"
-        >
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">
-                AI tools to organize, search, and curate your photos
-              </h2>
-              <p class="section-subtitle">
-                A smart photo organizer built for photographers who take their
-                work seriously. Search with AI, score and rank, explore in 3D,
-                and build portfolios from your photo library.
-              </p>
-            </div>
-
-            <div class="index-features-grid">
-              <component
-                :is="feature.link ? 'NuxtLink' : 'div'"
-                v-for="(feature, index) in features"
-                :key="index"
-                :to="feature.link || undefined"
-                class="index-feature-card"
-                :class="{ visible: featuresVisible }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
-              >
-                <div
-                  class="index-feature-bg-icon"
-                  :style="{ color: feature.color }"
-                >
-                  <n-icon size="90">
-                    <component :is="feature.icon" />
-                  </n-icon>
-                </div>
-                <div class="index-feature-content">
-                  <div
-                    class="index-feature-accent"
-                    :style="{ background: feature.color }"
-                  ></div>
-                  <h3 class="index-feature-title">{{ feature.title }}</h3>
-                  <p class="index-feature-description">
-                    {{ feature.description }}
-                  </p>
-                </div>
-              </component>
-            </div>
-          </div>
-        </section>
+        <!-- Features Section (componentized, variant-driven) -->
+        <FeaturesShowcase
+          :variant="featuresVariant"
+          section-id="features"
+          title="AI tools to organize, search, and curate your photos"
+          subtitle="A smart photo organizer built for photographers who take their work seriously. Search with AI, score and rank, explore in 3D, and build portfolios from your photo library."
+          :features="features"
+        />
 
         <!-- Search Promo Section -->
         <section
@@ -669,7 +627,6 @@ const heroSideImages = {
 // Intersection observers for animations
 const heroSection = ref(null);
 const reportsHeroSection = ref(null);
-const featuresSection = ref(null);
 const searchPromoSection = ref(null);
 const integrationSection = ref(null);
 const sourcesSection = ref(null);
@@ -679,20 +636,33 @@ const reportsHeroVideoRef = ref(null);
 
 const heroVisible = ref(false);
 const reportsHeroVisible = ref(false);
-const featuresVisible = ref(false);
 const searchPromoVisible = ref(false);
 const integrationVisible = ref(false);
 const sourcesVisible = ref(false);
 const freeToolsVisible = ref(false);
 const faqsVisible = ref(false);
 
+// Which layout to render for the features section:
+//   "grid"     → original card grid
+//   "showcase" → alternating image + copy rows (see reference mockup)
+const featuresVariant = ref("showcase");
+
 // Features data
+// `lead` + `bullets` + `image` are used by the "showcase" variant.
+// If `bullets` is omitted the showcase falls back to splitting `description`.
 const features = ref([
   {
     icon: markRaw(CubeOutline),
     title: "2D / 3D Atlas",
     description:
       "Explore your entire archive as an universe of images mapped in semantic space. Navigate in 2D or immersive 3D to discover visual clusters, stylistic threads, and unexpected connections across your catalog.",
+    lead: "Explore your entire archive as a universe of images mapped in semantic space.",
+    bullets: [
+      "Navigate your catalog in 2D or immersive 3D",
+      "Discover visual clusters and stylistic threads",
+      "Surface unexpected connections across your work",
+    ],
+    image: "/home/tag_cloud_poster.png",
     color: "#06b6d4",
     link: "/photo_3D_atlas",
   },
@@ -701,6 +671,13 @@ const features = ref([
     title: "Natural Language Search",
     description:
       "Find any photo by describing it. Search for moods, scenes, lighting conditions, cinematic references, or abstract feelings. No keywords, no tagging—just describe what you remember and Photoreka finds it.",
+    lead: "Find any photo just by describing it — no keywords, no tagging.",
+    bullets: [
+      "Search moods, scenes, lighting and cinematic references",
+      "Broad, Adaptive and Precise search modes",
+      "Just describe what you remember and Photoreka finds it",
+    ],
+    image: "/ai_geoinference/1.png",
     color: "#2563eb",
     link: "/ai_photo_search",
   },
@@ -709,6 +686,13 @@ const features = ref([
     title: "Interactive Canvas",
     description:
       "Drag, arrange, and compose your photos freely on an infinite canvas. Drop any image and Photoreka surfaces visually or narratively similar photos from your archive to help you find the perfect pairing.",
+    lead: "Drag, arrange and compose your photos freely on an infinite canvas.",
+    bullets: [
+      "Compose freely on an infinite canvas",
+      "Drop an image to surface visually similar photos",
+      "Find the perfect pairing from your archive",
+    ],
+    image: "/home/canvas_playground.png",
     color: "#8b5cf6",
     link: null,
   },
@@ -725,6 +709,13 @@ const features = ref([
     title: "Series & Sequencing",
     description:
       "Build cohesive sequences and storyboards from your catalog. Organize images into narrative arcs, editorial spreads, or visual series—and let the AI suggest continuations based on compositional and tonal flow.",
+    lead: "Build cohesive sequences and storyboards from your catalog.",
+    bullets: [
+      "Organize images into narrative arcs and editorial spreads",
+      "Compose visual series with ease",
+      "Let AI suggest continuations by composition and tone",
+    ],
+    image: "/portfolio_builder/1.png",
     color: "#22c55e",
     link: "/photography_portfolio_builder",
   },
@@ -733,6 +724,13 @@ const features = ref([
     title: "Reports & Patterns",
     description:
       "Understand how you shoot. Photoreka surfaces recurring stylistic patterns, narrative tendencies, cultural references, and compositional habits across your archive—helping you see your work from the outside.",
+    lead: "Understand how you shoot — see your work from the outside.",
+    bullets: [
+      "Surface recurring stylistic and narrative patterns",
+      "Reveal cultural references and compositional habits",
+      "Analyze your whole archive with AI, not vibes",
+    ],
+    image: "/ai_photo_scoring/2.png",
     color: "#f59e0b",
     link: "/photo_reports",
   },
@@ -741,6 +739,13 @@ const features = ref([
     title: "Rankings & Scores",
     description:
       "Score your photos across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, humor, and more. Commercial mode adds product-specific scores like subject clarity and commercial intent. Rank your catalog and surface your strongest work automatically.",
+    lead: "Score your photos across multiple dimensions and rank your catalog.",
+    bullets: [
+      "Score aesthetics, composition, narrative and originality",
+      "Commercial mode adds product-specific scores",
+      "Surface your strongest work automatically",
+    ],
+    image: "/ai_photo_scoring/1.png",
     color: "#ec4899",
     link: "/photo_scoring",
   },
@@ -909,14 +914,6 @@ const setupScrollAnimations = () => {
     });
   }, observerOptions);
 
-  const featuresObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        featuresVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
   const integrationObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -968,7 +965,6 @@ const setupScrollAnimations = () => {
   if (heroSection.value) heroObserver.observe(heroSection.value);
   if (reportsHeroSection.value)
     reportsHeroObserver.observe(reportsHeroSection.value);
-  if (featuresSection.value) featuresObserver.observe(featuresSection.value);
   if (searchPromoSection.value)
     searchPromoObserver.observe(searchPromoSection.value);
   if (integrationSection.value)
@@ -1214,80 +1210,6 @@ if (typeof window !== "undefined") {
 .hero-rating {
   color: #f59e0b;
   /* letter-spacing: 0.08em; */
-}
-
-/* ── Index Features Section ────────────────────────────────── */
-.index-features-section {
-  padding: 2rem 2rem;
-  background: var(--premium-bg-primary);
-}
-
-.index-features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.index-feature-card {
-  position: relative;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 20px;
-  padding: 2rem;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 200px;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.index-feature-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.index-feature-bg-icon {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  opacity: 0.35;
-  pointer-events: none;
-  line-height: var(--line-height-tight);
-}
-
-.index-feature-content {
-  position: relative;
-  z-index: 1;
-}
-
-.index-feature-accent {
-  width: 32px;
-  height: 3px;
-  border-radius: 2px;
-  margin-bottom: 0.85rem;
-  opacity: 0.85;
-}
-
-.index-feature-title {
-  font-size: var(--landing-fs-title-card);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-normal);
-  margin-bottom: 0.6rem;
-  color: var(--premium-text-primary);
-}
-
-.index-feature-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--landing-lh-body);
-  font-size: var(--landing-fs-sm);
 }
 
 .gradient-framer {
