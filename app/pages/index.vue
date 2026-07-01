@@ -6,9 +6,11 @@
         :class="{
           'has-announcement': heroAnnouncement.enabled && showAnnouncement,
         }"
+        :style="{ '--announcement-height': announcementHeight + 'px' }"
       >
         <div
           v-if="heroAnnouncement.enabled && showAnnouncement"
+          ref="announcementBarRef"
           class="announcement-bar"
         >
           <div class="announcement-content">
@@ -617,6 +619,9 @@ const toggleTheme = () => {
 const showRequestDialog = ref(false);
 const activeFAQ = ref(null);
 const showAnnouncement = ref(true);
+const announcementBarRef = ref(null);
+const announcementHeight = ref(0);
+let announcementResizeObserver = null;
 
 const heroAnnouncement = ref({
   enabled: true,
@@ -628,7 +633,7 @@ const heroAnnouncement = ref({
 });
 
 const heroSideImages = {
-  left: "/ai_photo_scoring/1.png",
+  left: "/ai_photo_scoring/2.png",
   right: "/home/tag_cloud_poster_detailed.png",
   mobile: "/home/dashboard.png",
 };
@@ -996,6 +1001,36 @@ const setupScrollAnimations = () => {
   if (faqsSection.value) faqsObserver.observe(faqsSection.value);
 };
 
+// Mantiene --announcement-height sincronizado con el alto real de la barra
+// (padding/line-wrap deciden su alto, no un valor fijo), para que el nav y
+// el hero no queden desalineados respecto a ella.
+const syncAnnouncementHeight = () => {
+  announcementHeight.value = announcementBarRef.value?.offsetHeight ?? 0;
+};
+
+watch(
+  () => heroAnnouncement.value.enabled && showAnnouncement.value,
+  (isVisible) => {
+    if (!isVisible) {
+      announcementHeight.value = 0;
+      return;
+    }
+    nextTick(() => {
+      syncAnnouncementHeight();
+      if (announcementBarRef.value) {
+        announcementResizeObserver?.disconnect();
+        announcementResizeObserver = new ResizeObserver(syncAnnouncementHeight);
+        announcementResizeObserver.observe(announcementBarRef.value);
+      }
+    });
+  },
+  { immediate: true },
+);
+
+onBeforeUnmount(() => {
+  announcementResizeObserver?.disconnect();
+});
+
 onMounted(() => {
   // Inicializar tema completo (el plugin ya aplicó las variables básicas)
   initTheme();
@@ -1018,10 +1053,6 @@ if (typeof window !== "undefined") {
   --announcement-height: 0px;
 }
 
-.premium-landing.has-announcement {
-  --announcement-height: 50px;
-}
-
 .announcement-bar {
   position: fixed;
   top: 0;
@@ -1029,7 +1060,7 @@ if (typeof window !== "undefined") {
   right: 0;
   z-index: 1100;
   min-height: var(--announcement-height);
-  padding: 0.65rem 3.25rem;
+  padding: 0.35rem 3.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1620,10 +1651,6 @@ if (typeof window !== "undefined") {
 }
 
 @media (max-width: 640px) {
-  .premium-landing.has-announcement {
-    --announcement-height: 0px;
-  }
-
   .announcement-bar {
     display: none;
   }
