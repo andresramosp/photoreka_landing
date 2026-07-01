@@ -154,10 +154,17 @@ onMounted(() => {
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) visible.value = true;
+        if (entry.isIntersecting) {
+          visible.value = true;
+          // La sección es muy alta en móvil (6 filas apiladas): un threshold
+          // alto nunca se alcanzaría porque su 15% supera el viewport y las
+          // filas se quedarían invisibles. Con threshold 0 basta con que
+          // cualquier parte entre; desconectamos tras revelar.
+          observer?.disconnect();
+        }
       });
     },
-    { threshold: 0.15, rootMargin: "0px 0px -100px 0px" },
+    { threshold: 0, rootMargin: "0px 0px -100px 0px" },
   );
   observer.observe(sectionRef.value);
 });
