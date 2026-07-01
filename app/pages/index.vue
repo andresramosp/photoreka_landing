@@ -239,7 +239,7 @@
         </section>
 
         <!-- 3d video section -->
-        <!-- <section class="reports-hero" ref="reportsHeroSection">
+        <section class="reports-hero" ref="reportsHeroSection">
           <div class="reports-hero-background">
             <div class="reports-gradient-orb reports-orb-1"></div>
             <div class="reports-gradient-orb reports-orb-2"></div>
@@ -253,31 +253,31 @@
                   :class="{ visible: reportsHeroVisible }"
                 >
                   <span class="badge-content">
-                    <n-icon size="16"><AnalyticsOutline /></n-icon>
-                    Photography Reports
+                    <n-icon size="16"><GitNetworkOutline /></n-icon>
+                    3D Atlas
                   </span>
                 </div>
                 <h2
                   class="reports-hero-title"
                   :class="{ visible: reportsHeroVisible }"
                 >
-                  See your photography
-                  <span class="reports-gradient-text">from the outside</span>
+                  Explore your entire catalog
+                  <span class="reports-gradient-text">in 3D space</span>
                 </h2>
                 <p
                   class="reports-hero-subtitle"
                   :class="{ visible: reportsHeroVisible }"
                 >
-                  You know how your photos <em>feel</em> but do you know what
-                  the data says? Photoreka generates
+                  Folders and grids flatten your work. The
+                  <strong>3D Atlas</strong> maps every photo into an
+                  interactive space where
                   <strong>
-                    detailed reports on your style, patterns, strengths, and
-                    evolution
+                    visually similar images cluster together
                   </strong>
-                  by analyzing your entire catalog with AI.<br /><br />
-                  Discover what you are great at, where you are growing, and
-                  what to shoot next, backed by multi-dimensional analysis, not
-                  vibes.
+                  automatically, powered by AI embeddings.<br /><br />
+                  Fly through your collection, spot themes and patterns you
+                  never noticed, and rediscover forgotten shots by exploring
+                  the connections between them, not scrolling endless lists.
                 </p>
 
                 <div
@@ -324,7 +324,7 @@
               </div>
             </div>
           </div>
-        </section> -->
+        </section>
 
         <!-- Data Sources Section -->
         <section id="sources" class="sources-section" ref="sourcesSection">
@@ -967,6 +967,10 @@ const setupScrollAnimations = () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         reportsHeroVisible.value = true;
+        // El video está fuera de pantalla con opacity:0 al cargar, por lo que
+        // el autoplay muteado no dispara solo. Lo iniciamos explícitamente
+        // cuando la sección entra al viewport.
+        reportsHeroVideoRef.value?.play?.().catch(() => {});
       }
     });
   }, observerOptions);
