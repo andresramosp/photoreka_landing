@@ -665,6 +665,13 @@ const heroSideImages = {
 //   offsetY  → desplazamiento vertical en px (+ abajo / - arriba)
 //   rotation → giro en grados
 //   anchor   → "bottom" | "center" | "top": punto de anclaje vertical
+//
+// responsive → overrides por breakpoint. Cada clave es un ANCHO MÁXIMO de
+//   viewport (px); cuando la ventana es <= esa clave se fusionan sus valores
+//   sobre la config base. Se aplica el breakpoint más ajustado (el menor que
+//   siga siendo >= al ancho actual), así el móvil se va encogiendo y
+//   arrimándose al lado a medida que la pantalla se estrecha, igual que las
+//   fotos laterales.
 const heroPhoneOverlay = ref({
   enabled: true,
   side: "right",
@@ -674,10 +681,33 @@ const heroPhoneOverlay = ref({
   offsetY: 40,
   rotation: 0,
   anchor: "bottom",
+  responsive: {
+    1400: { width: 210, offsetX: -190 },
+    1200: { width: 180, offsetX: -110 },
+    1024: { width: 150, offsetX: -40 },
+  },
+});
+
+// Ancho de viewport reactivo (SSR-safe: arranca con un valor de escritorio
+// y se sincroniza en cliente al montar / al redimensionar).
+const viewportWidth = ref(1920);
+const syncViewportWidth = () => {
+  viewportWidth.value = window.innerWidth;
+};
+
+// Config efectiva del móvil = base + override del breakpoint activo.
+const activePhoneConfig = computed(() => {
+  const base = heroPhoneOverlay.value;
+  const bps = base.responsive || {};
+  const match = Object.keys(bps)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .find((bp) => viewportWidth.value <= bp);
+  return match ? { ...base, ...bps[match] } : base;
 });
 
 const phoneOverlayStyle = computed(() => {
-  const o = heroPhoneOverlay.value;
+  const o = activePhoneConfig.value;
   const style = {
     width: `${o.width}px`,
   };
@@ -1085,6 +1115,7 @@ watch(
 
 onBeforeUnmount(() => {
   announcementResizeObserver?.disconnect();
+  window.removeEventListener("resize", syncViewportWidth);
 });
 
 onMounted(() => {
@@ -1093,6 +1124,10 @@ onMounted(() => {
 
   // Hero is immediately visible
   heroVisible.value = true;
+
+  // Sincroniza el ancho de viewport para el responsive del móvil superpuesto
+  syncViewportWidth();
+  window.addEventListener("resize", syncViewportWidth);
 
   // Setup scroll animations
   setupScrollAnimations();
