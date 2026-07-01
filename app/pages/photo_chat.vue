@@ -855,7 +855,7 @@ onMounted(() => {
 }
 
 .back-link {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 /* ─── Hero ───────────────────────────────────────────────── */
@@ -905,8 +905,8 @@ onMounted(() => {
   background: rgba(139, 92, 246, 0.1);
   border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
   color: #8b5cf6;
   width: fit-content;
   opacity: 0;
@@ -927,11 +927,11 @@ onMounted(() => {
 
 /* ─── Hero Title / Subtitle ──────────────────────────────── */
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 900;
+  font-size: var(--fs-hero);
+  font-weight: var(--font-weight-black);
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: var(--line-height-none);
+  letter-spacing: var(--letter-spacing-tighter);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -945,9 +945,9 @@ onMounted(() => {
 .hero-subtitle {
   max-width: 600px;
   margin: 0;
-  font-size: 17px;
+  font-size: var(--fs-lead);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
@@ -973,7 +973,7 @@ onMounted(() => {
 }
 
 .cta-note {
-  font-size: 0.85rem;
+  font-size: var(--fs-xs);
   color: var(--premium-text-secondary);
   margin-top: -0.5rem;
   opacity: 0;
@@ -1043,8 +1043,8 @@ onMounted(() => {
 
 .chat-header-title {
   margin-left: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--font-weight-semibold);
   color: var(--premium-text-secondary);
 }
 
@@ -1090,8 +1090,8 @@ onMounted(() => {
   max-width: 78%;
   padding: 0.75rem 1rem;
   border-radius: 16px;
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: var(--fs-sm);
+  line-height: var(--line-height-relaxed);
 }
 
 .chat-msg.user .msg-bubble {
@@ -1118,7 +1118,7 @@ onMounted(() => {
 }
 
 .chat-input-placeholder {
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: var(--premium-text-secondary);
   opacity: 0.6;
 }
@@ -1213,20 +1213,20 @@ onMounted(() => {
 }
 
 .section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-bold);
   text-align: center;
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .section-subtitle {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: var(--fs-subheading);
   color: var(--premium-text-secondary);
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* ─── Examples Section ───────────────────────────────────── */
@@ -1266,10 +1266,10 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: var(--fs-xs);
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-spacing-wider);
   color: #8b5cf6;
   margin-bottom: 1rem;
 }
@@ -1282,9 +1282,9 @@ onMounted(() => {
 
 .query-chip {
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: var(--premium-text-secondary);
-  line-height: 1.5;
+  line-height: var(--line-height-relaxed);
   font-style: italic;
 }
 
@@ -1335,8 +1335,8 @@ onMounted(() => {
   justify-content: center;
   color: white;
   border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--fs-3xl);
+  font-weight: var(--font-weight-bold);
 }
 
 .step-content {
@@ -1344,14 +1344,14 @@ onMounted(() => {
 }
 
 .step-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 0.5rem;
 }
 
 .step-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* ─── Features Grid ──────────────────────────────────────── */
@@ -1393,15 +1393,15 @@ onMounted(() => {
 }
 
 .feature-title {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 0.6rem;
 }
 
 .feature-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
 }
 
 /* ─── Cross-promo Section ────────────────────────────────── */
@@ -1418,7 +1418,7 @@ onMounted(() => {
 }
 
 .cross-title {
-  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-size: var(--fs-h1) !important;
 }
 
 .cross-features {
@@ -1435,7 +1435,7 @@ onMounted(() => {
   align-items: center;
   gap: 0.75rem;
   color: var(--premium-text-primary);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 .feature-icon-wrapper {
@@ -1510,8 +1510,8 @@ onMounted(() => {
   align-items: center;
   cursor: pointer;
   color: var(--premium-text-primary);
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-semibold);
   text-align: left;
   gap: 1rem;
 }
@@ -1529,7 +1529,7 @@ onMounted(() => {
 .faq-answer {
   padding: 0 1.5rem 1.5rem;
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   animation: fadeIn 0.3s ease;
 }
 
@@ -1564,17 +1564,17 @@ onMounted(() => {
 }
 
 .cta-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .cta-description {
-  font-size: 1.2rem;
+  font-size: var(--fs-xl);
   color: var(--premium-text-secondary);
   margin-bottom: 2rem;
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 .cta-buttons {
@@ -1588,13 +1588,13 @@ onMounted(() => {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--premium-border);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
 }
 
 .cta-link {
   color: #8b5cf6;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -1636,7 +1636,7 @@ onMounted(() => {
   }
 
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: var(--fs-h1);
   }
 
   .features-grid,
@@ -1652,7 +1652,7 @@ onMounted(() => {
   }
 
   .cross-features li {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
 }
 </style>

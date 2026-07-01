@@ -455,18 +455,18 @@ const goHome = () => {
 }
 
 .terms-title {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: var(--fs-4xl);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 12px;
   color: var(--text-primary);
   text-align: center;
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
 }
 
 .terms-effective {
   text-align: center;
   color: var(--text-tertiary);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   margin-bottom: 40px;
 }
 
@@ -475,8 +475,8 @@ const goHome = () => {
 }
 
 .terms-section h2 {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 16px;
   color: var(--text-primary);
   border-bottom: 2px solid var(--primary-color);
@@ -485,7 +485,7 @@ const goHome = () => {
 
 .terms-section p {
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: var(--line-height-loose);
   margin-bottom: 16px;
 }
 
@@ -502,7 +502,7 @@ const goHome = () => {
 
 .terms-section li {
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: var(--line-height-loose);
   margin-bottom: 8px;
 }
 
@@ -518,11 +518,11 @@ const goHome = () => {
   }
 
   .terms-title {
-    font-size: 24px;
+    font-size: var(--fs-3xl);
   }
 
   .terms-section h2 {
-    font-size: 18px;
+    font-size: var(--fs-lg);
   }
 
   .nav-container {
@@ -541,11 +541,11 @@ const goHome = () => {
   }
 
   .terms-title {
-    font-size: 20px;
+    font-size: var(--fs-xl);
   }
 
   .terms-section h2 {
-    font-size: 16px;
+    font-size: var(--fs-md);
   }
 
   .nav-container {

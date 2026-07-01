@@ -630,7 +630,7 @@ onMounted(() => {
 }
 
 .back-link {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 .framer-hero {
@@ -678,8 +678,8 @@ onMounted(() => {
   background: rgba(139, 92, 246, 0.1);
   border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
   color: #8b5cf6;
   width: fit-content;
   opacity: 0;
@@ -699,11 +699,11 @@ onMounted(() => {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 900;
+  font-size: var(--fs-hero);
+  font-weight: var(--font-weight-black);
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: var(--line-height-none);
+  letter-spacing: var(--letter-spacing-tighter);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -717,9 +717,9 @@ onMounted(() => {
 .hero-subtitle {
   max-width: 600px;
   margin: 0;
-  font-size: 17px;
+  font-size: var(--fs-lead);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
@@ -745,7 +745,7 @@ onMounted(() => {
 }
 
 .cta-note {
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: var(--premium-text-secondary);
 }
 
@@ -819,7 +819,7 @@ onMounted(() => {
   }
 
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: var(--fs-h1);
   }
 }
 
@@ -915,19 +915,19 @@ onMounted(() => {
 }
 
 .benefit-text strong {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-semibold);
   color: var(--premium-text-primary);
 }
 
 .benefit-text span {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
-  line-height: 1.5;
+  line-height: var(--line-height-relaxed);
 }
 
 .cta-note {
-  font-size: 0.85rem;
+  font-size: var(--fs-xs);
   color: var(--premium-text-secondary);
 
   gap: 0.5rem;
@@ -969,8 +969,8 @@ onMounted(() => {
   background: var(--premium-bg-card);
   border: 1px solid var(--premium-border);
   border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--font-weight-semibold);
   color: var(--premium-text-primary);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -1033,15 +1033,15 @@ onMounted(() => {
 }
 
 .section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-bold);
   text-align: center;
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .section-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: var(--fs-subheading);
   color: var(--premium-text-secondary);
   text-align: center;
   margin-bottom: 3rem;
@@ -1115,14 +1115,14 @@ onMounted(() => {
 }
 
 .feature-title {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: var(--fs-2xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 0.75rem;
 }
 
 .feature-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* 3D Atlas Section */
@@ -1139,7 +1139,7 @@ onMounted(() => {
 }
 
 .atlas-title {
-  font-size: clamp(2rem, 5vw, 3rem) !important;
+  font-size: var(--fs-h1) !important;
 }
 
 .atlas-badge {
@@ -1169,7 +1169,7 @@ onMounted(() => {
   align-items: center;
   gap: 0.75rem;
   color: var(--premium-text-primary);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 .feature-icon-wrapper {
@@ -1240,8 +1240,8 @@ onMounted(() => {
   background: linear-gradient(135deg, #f59e0b, #f97316);
   color: white;
   border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--fs-3xl);
+  font-weight: var(--font-weight-bold);
 }
 
 .step-content {
@@ -1249,14 +1249,14 @@ onMounted(() => {
 }
 
 .step-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: var(--fs-3xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 0.5rem;
 }
 
 .step-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* Use Cases Section */
@@ -1304,14 +1304,14 @@ onMounted(() => {
 }
 
 .usecase-title {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: var(--fs-2xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 0.75rem;
 }
 
 .usecase-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* Gallery Section */
@@ -1376,8 +1376,8 @@ onMounted(() => {
 
 .gallery-label {
   color: white;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--fs-lg);
 }
 
 /* FAQ Section */
@@ -1422,8 +1422,8 @@ onMounted(() => {
   align-items: center;
   cursor: pointer;
   color: var(--premium-text-primary);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-semibold);
   text-align: left;
   gap: 1rem;
 }
@@ -1441,7 +1441,7 @@ onMounted(() => {
 .faq-answer {
   padding: 0 1.5rem 1.5rem;
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   animation: fadeIn 0.3s ease;
 }
 
@@ -1477,16 +1477,16 @@ onMounted(() => {
 }
 
 .cta-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 1rem;
 }
 
 .cta-description {
-  font-size: 1.2rem;
+  font-size: var(--fs-xl);
   color: var(--premium-text-secondary);
   margin-bottom: 2rem;
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 .cta-extra {
@@ -1497,7 +1497,7 @@ onMounted(() => {
 
 .cta-link {
   color: var(--premium-primary);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -1514,7 +1514,7 @@ onMounted(() => {
   }
 
   .visual-badge {
-    font-size: 0.75rem;
+    font-size: var(--fs-2xs);
     padding: 0.5rem 0.9rem;
   }
 
@@ -1550,7 +1550,7 @@ onMounted(() => {
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: var(--fs-4xl);
   }
 
   .features-grid,

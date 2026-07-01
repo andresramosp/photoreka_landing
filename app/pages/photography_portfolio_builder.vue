@@ -886,7 +886,7 @@ onUnmounted(() => {
   background: var(--premium-bg-hover);
 }
 .back-link {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 /* ── Hero ──────────────────────────────────────────────────── */
@@ -930,8 +930,8 @@ onUnmounted(() => {
   background: rgba(6, 182, 212, 0.1);
   border: 1px solid rgba(6, 182, 212, 0.3);
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
   color: #06b6d4;
   width: fit-content;
   opacity: 0;
@@ -948,11 +948,11 @@ onUnmounted(() => {
   gap: 0.5rem;
 }
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 900;
+  font-size: var(--fs-hero);
+  font-weight: var(--font-weight-black);
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: var(--line-height-none);
+  letter-spacing: var(--letter-spacing-tighter);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -964,9 +964,9 @@ onUnmounted(() => {
 .hero-subtitle {
   max-width: 580px;
   margin: 0;
-  font-size: 17px;
+  font-size: var(--fs-lead);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
@@ -1130,17 +1130,17 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 .section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 .section-subtitle {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: var(--fs-subheading);
   color: var(--premium-text-secondary);
   max-width: 680px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* ── Use Cases Section ─────────────────────────────────────── */
@@ -1177,14 +1177,14 @@ onUnmounted(() => {
   margin-bottom: 1rem;
 }
 .usecase-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 0.5rem;
 }
 .usecase-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
 }
 
 /* ── How It Works Section ──────────────────────────────────── */
@@ -1229,22 +1229,22 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: var(--fs-2xl);
+  font-weight: var(--font-weight-bold);
   color: white;
 }
 .step-content {
   flex: 1;
 }
 .step-title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 0.5rem;
 }
 .step-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
-  font-size: 0.97rem;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
 }
 
 /* ── Features Section ──────────────────────────────────────── */
@@ -1280,14 +1280,14 @@ onUnmounted(() => {
   margin-bottom: 1.5rem;
 }
 .feature-title {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 0.75rem;
 }
 .feature-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
-  font-size: 0.97rem;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
 }
 
 /* ── FAQ Section ───────────────────────────────────────────── */
@@ -1327,8 +1327,8 @@ onUnmounted(() => {
   align-items: center;
   cursor: pointer;
   color: var(--premium-text-primary);
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-semibold);
   text-align: left;
   gap: 1rem;
 }
@@ -1343,9 +1343,9 @@ onUnmounted(() => {
 .faq-answer {
   padding: 0 1.5rem 1.5rem;
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   animation: fadeIn 0.3s ease;
-  font-size: 0.97rem;
+  font-size: var(--fs-base);
 }
 @keyframes fadeIn {
   from {
@@ -1410,14 +1410,14 @@ onUnmounted(() => {
   flex: 1;
 }
 .export-card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-bold);
   margin: 0 0 0.4rem;
 }
 .export-card-description {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   margin: 0;
 }
 
@@ -1439,16 +1439,16 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 .cta-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 .cta-description {
-  font-size: 1.15rem;
+  font-size: var(--fs-xl);
   color: var(--premium-text-secondary);
   margin-bottom: 2rem;
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 .cta-buttons {
   display: flex;
@@ -1460,12 +1460,12 @@ onUnmounted(() => {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--premium-border);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
 }
 .cta-link {
   color: var(--premium-primary);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -1508,10 +1508,10 @@ onUnmounted(() => {
     min-height: auto;
   }
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: var(--fs-h1);
   }
   .section-title {
-    font-size: 1.8rem;
+    font-size: var(--fs-4xl);
   }
   .usecases-grid,
   .features-grid {

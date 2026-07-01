@@ -231,8 +231,8 @@ watch(visible, (newValue) => {
 }
 
 .dialog-title {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 .dialog-content {
@@ -240,8 +240,8 @@ watch(visible, (newValue) => {
 }
 
 .intro-text {
-  line-height: 1.6;
-  font-size: 14px;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-sm);
 }
 
 .dialog-actions {
@@ -251,12 +251,12 @@ watch(visible, (newValue) => {
 }
 
 .optional-text {
-  font-size: 12px;
+  font-size: var(--fs-2xs);
   font-style: italic;
 }
 
 .info-message {
-  font-size: 12px;
+  font-size: var(--fs-2xs);
   font-style: italic;
 }
 
@@ -273,8 +273,8 @@ watch(visible, (newValue) => {
 
 .switch-label {
   flex: 1;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 @media (max-width: 600px) {
@@ -283,7 +283,7 @@ watch(visible, (newValue) => {
   }
 
   .intro-text {
-    font-size: 13px;
+    font-size: var(--fs-xs);
   }
 }
 </style>

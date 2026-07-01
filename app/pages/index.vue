@@ -1,7 +1,32 @@
 <template>
   <n-config-provider :theme="currentTheme" :theme-overrides="themeOverrides">
     <n-message-provider>
-      <div class="premium-landing">
+      <div
+        class="premium-landing"
+        :class="{
+          'has-announcement': heroAnnouncement.enabled && showAnnouncement,
+        }"
+      >
+        <div
+          v-if="heroAnnouncement.enabled && showAnnouncement"
+          class="announcement-bar"
+        >
+          <div class="announcement-content">
+            <strong>{{ heroAnnouncement.label }}</strong>
+            <span>{{ heroAnnouncement.message }}</span>
+            <button class="announcement-link" @click="goToAuth('signup')">
+              {{ heroAnnouncement.cta }}
+            </button>
+          </div>
+          <button
+            v-if="heroAnnouncement.dismissible"
+            class="announcement-close"
+            aria-label="Close announcement"
+            @click="showAnnouncement = false"
+          >
+            ×
+          </button>
+        </div>
         <!-- Navigation Header -->
         <nav class="premium-nav">
           <div class="nav-container">
@@ -41,34 +66,31 @@
         <!-- Hero Section -->
         <section id="hero" class="hero-section" ref="heroSection">
           <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
+            <div class="hero-line line-1"></div>
+            <div class="hero-line line-2"></div>
           </div>
           <div class="hero-container">
+            <div
+              class="hero-side hero-side-left"
+              :class="{ visible: heroVisible }"
+            >
+              <img
+                class="hero-side-image hero-side-image-left"
+                :src="heroSideImages.left"
+                alt="Photoreka archive preview"
+              />
+            </div>
             <div class="hero-content">
-              <div class="hero-badge" :class="{ visible: heroVisible }">
-                <span class="badge-content">
-                  <n-icon size="16"><WalkOutline /></n-icon>Street
-                  <n-icon size="16"><BookOpen16Regular /></n-icon>Documentary
-                  <n-icon size="16"><ColorPaletteOutline /></n-icon>Artistic
-                  <n-icon size="16"><PersonOutline /></n-icon>Portrait
-                  <!-- <n-icon size="16"><ImageOutline /></n-icon>Travel -->
-                  <n-icon size="16"><BriefcaseOutline /></n-icon>Commercial
-                </span>
-              </div>
               <h1 class="hero-title" :class="{ visible: heroVisible }">
-                Make full sense of your
-                <span class="gradient-text"> photographic body of work</span>
+                Make full sense of
+                <span class="gradient-text">
+                  your photographic body of work</span
+                >
               </h1>
 
               <p class="hero-description" :class="{ visible: heroVisible }">
-                <strong>Photoreka</strong> is a suite of intelligent tools to
-                help you organize and curate your photo library.<br />
-                You can search by <strong>natural language</strong>, rank your
-                photos or explore your catalog in <strong>3D</strong>.<br />
-                Upload a specific project, a refined selection or your whole
-                <strong>body of work</strong>.
+                Organize, curate and discover patterns in your work with a range
+                of <strong>smart tools built for photographers</strong>
               </p>
               <div
                 v-if="false"
@@ -104,55 +126,32 @@
                   {{ signupButtonLabel }}
                 </n-button>
               </div>
-              <!-- Video Demo Section -->
-              <div class="hero-demo" :class="{ visible: heroVisible }">
-                <div v-if="videoTabs.length > 1" class="demo-tabs">
-                  <button
-                    v-for="(tab, index) in videoTabs"
-                    :key="index"
-                    class="demo-tab"
-                    :class="{ active: activeTab === index }"
-                    @click="setActiveTab(index, false)"
-                  >
-                    <n-icon size="18">
-                      <component :is="tab.icon" />
-                    </n-icon>
-                    <span>{{ tab.title }}</span>
-                    <div class="tab-indicator" v-if="activeTab === index">
-                      <div
-                        class="progress"
-                        :style="{ width: `${videoProgress}%` }"
-                      ></div>
-                    </div>
-                  </button>
-                </div>
-
-                <div class="demo-video-container" ref="videoContainer">
-                  <video
-                    ref="videoPlayer"
-                    class="demo-video"
-                    poster="/home/video_poster.jpg"
-                    :src="videoTabs[activeTab].videoUrl"
-                    @timeupdate="updateProgress"
-                    @ended="onVideoEnded"
-                    @play="onVideoPlay"
-                    @loadeddata="onVideoLoaded"
-                    muted
-                    preload="metadata"
-                  ></video>
-                  <!-- <div
-                    class="video-play-overlay"
-                    v-if="!videoPlaying && autoPlayTriggered"
-                    @click="playVideo"
-                  >
-                    <div class="play-button">
-                      <n-icon size="48" color="white">
-                        <PlayCircleOutline />
-                      </n-icon>
-                    </div>
-                  </div> -->
-                </div>
+              <div class="hero-trust" :class="{ visible: heroVisible }">
+                <span class="hero-trust-label"
+                  >Built for serious photo libraries</span
+                >
+                <span class="hero-rating">★★★★★</span>
               </div>
+              <div class="hero-badge" :class="{ visible: heroVisible }">
+                <span class="badge-content">
+                  <n-icon size="16"><WalkOutline /></n-icon>Street
+                  <n-icon size="16"><BookOpen16Regular /></n-icon>Documentary
+                  <n-icon size="16"><ColorPaletteOutline /></n-icon>Artistic
+                  <n-icon size="16"><PersonOutline /></n-icon>Lifestyle
+                  <!-- <n-icon size="16"><ImageOutline /></n-icon>Travel -->
+                  <n-icon size="16"><BriefcaseOutline /></n-icon>Commercial
+                </span>
+              </div>
+            </div>
+            <div
+              class="hero-side hero-side-right"
+              :class="{ visible: heroVisible }"
+            >
+              <img
+                class="hero-side-image hero-side-image-right"
+                :src="heroSideImages.right"
+                alt="Photoreka workflow preview"
+              />
             </div>
           </div>
         </section>
@@ -280,6 +279,95 @@
             </div>
           </div>
         </section>
+
+        <!-- 3d video section -->
+        <!-- <section class="reports-hero" ref="reportsHeroSection">
+          <div class="reports-hero-background">
+            <div class="reports-gradient-orb reports-orb-1"></div>
+            <div class="reports-gradient-orb reports-orb-2"></div>
+            <div class="reports-gradient-orb reports-orb-3"></div>
+          </div>
+          <div class="reports-hero-container">
+            <div class="reports-hero-layout">
+              <div class="reports-hero-content">
+                <div
+                  class="reports-hero-badge"
+                  :class="{ visible: reportsHeroVisible }"
+                >
+                  <span class="badge-content">
+                    <n-icon size="16"><AnalyticsOutline /></n-icon>
+                    Photography Reports
+                  </span>
+                </div>
+                <h2
+                  class="reports-hero-title"
+                  :class="{ visible: reportsHeroVisible }"
+                >
+                  See your photography
+                  <span class="reports-gradient-text">from the outside</span>
+                </h2>
+                <p
+                  class="reports-hero-subtitle"
+                  :class="{ visible: reportsHeroVisible }"
+                >
+                  You know how your photos <em>feel</em> but do you know what
+                  the data says? Photoreka generates
+                  <strong>
+                    detailed reports on your style, patterns, strengths, and
+                    evolution
+                  </strong>
+                  by analyzing your entire catalog with AI.<br /><br />
+                  Discover what you are great at, where you are growing, and
+                  what to shoot next, backed by multi-dimensional analysis, not
+                  vibes.
+                </p>
+
+                <div
+                  class="reports-hero-actions"
+                  :class="{ visible: reportsHeroVisible }"
+                >
+                  <n-button type="info" size="large" strong @click="goToDemo">
+                    <template #icon>
+                      <n-icon><PlayCircleOutline /></n-icon>
+                    </template>
+                    Try the Demo
+                  </n-button>
+                  <n-button
+                    strong
+                    secondary
+                    type="info"
+                    size="large"
+                    @click="goToSignup"
+                  >
+                    <template #icon>
+                      <n-icon><KeyOutline /></n-icon>
+                    </template>
+                    {{ signupButtonLabel }}
+                  </n-button>
+                </div>
+              </div>
+
+              <div
+                class="reports-hero-visual"
+                :class="{ visible: reportsHeroVisible }"
+              >
+                <div class="reports-video-frame">
+                  <video
+                    class="reports-hero-video"
+                    src="/videos/atlas_1.mp4"
+                    poster="/home/video_poster.jpg"
+                    ref="reportsHeroVideoRef"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+
         <!-- Data Sources Section -->
         <section id="sources" class="sources-section" ref="sourcesSection">
           <div class="section-container">
@@ -522,6 +610,7 @@ import {
   SpeedometerOutline,
   EyeOutline,
   GitNetworkOutline,
+  AnalyticsOutline,
 } from "@vicons/ionicons5";
 import { Workspace } from "@vicons/carbon";
 import { BookOpen16Regular, Trophy20Regular } from "@vicons/fluent";
@@ -532,7 +621,6 @@ import { trackEvent, trackUserAction } from "~/utils/analytics";
 useSEO("home");
 
 const { isMobile } = useMobileDevice();
-
 // Inyectar script inline para prevenir FOUC
 useHead({
   script: [
@@ -559,83 +647,44 @@ const toggleTheme = () => {
   // trackEvent("theme_toggle", { mode: themeMode.value });
 };
 
-// Video demo management
-const videoPlayer = ref(null);
-const videoContainer = ref(null);
-const videoPlaying = ref(false);
-const activeTab = ref(0);
-const videoProgress = ref(0);
-const autoPlayTriggered = ref(false);
-const isAutoSwitching = ref(false);
-const observer = ref(null);
-const fallbackTimeout = ref(null);
-
 // Dialog states
 const showRequestDialog = ref(false);
 const activeFAQ = ref(null);
+const showAnnouncement = ref(true);
+
+const heroAnnouncement = ref({
+  enabled: true,
+  dismissible: true,
+  label: "EARLY ACCESS",
+  message:
+    "Free starter photo package and usage credits are available for new photographers.",
+  cta: "Try for Free",
+});
+
+const heroSideImages = {
+  left: "/home/canvas_playground.png",
+  right: "/portfolio_builder/1.png",
+};
 
 // Intersection observers for animations
 const heroSection = ref(null);
+const reportsHeroSection = ref(null);
 const featuresSection = ref(null);
 const searchPromoSection = ref(null);
 const integrationSection = ref(null);
 const sourcesSection = ref(null);
 const freeToolsSection = ref(null);
 const faqsSection = ref(null);
+const reportsHeroVideoRef = ref(null);
 
 const heroVisible = ref(false);
+const reportsHeroVisible = ref(false);
 const featuresVisible = ref(false);
 const searchPromoVisible = ref(false);
 const integrationVisible = ref(false);
 const sourcesVisible = ref(false);
 const freeToolsVisible = ref(false);
 const faqsVisible = ref(false);
-
-// Video tabs data
-const videoTabs = ref([
-  {
-    title: "3D Atlas",
-    icon: markRaw(CubeOutline),
-    videoUrl: "/videos/atlas_1.mp4",
-    speed: 1.5,
-    delaySeconds: 0,
-    endSeconds: 39, // Puedes poner un número aquí si quieres cortar antes
-  },
-  // {
-  //   title: "Canvas",
-  //   icon: ColorPaletteOutline,
-  //   videoUrl: new URL("@/assets/videos/canvas_1.mp4", import.meta.url).href,
-  //   speed: 1.2,
-  //   delaySeconds: 0,
-  //   endSeconds: undefined, // Puedes poner un número aquí si quieres cortar antes
-  // },
-  // {
-  //   title: "Search",
-  //   icon: SearchOutline,
-  //   videoUrl: new URL("@/assets/videos/explorer_1.mp4", import.meta.url).href,
-  //   speed: 1.5,
-  //   delaySeconds: 0,
-  // },
-  // {
-  //   title: "Project Builder",
-  //   icon: ImagesOutline,
-  //   videoUrl: new URL("@/assets/videos/project_builder_1.mp4", import.meta.url)
-  //     .href,
-  //   speed: 2.8,
-  //   delaySeconds: 0,
-  // },
-  // {
-  //   title: "Score Ranking",
-  //   icon: Trophy20Regular,
-  //   videoUrl: new URL("@/assets/videos/visual_scores_1.mp4", import.meta.url)
-  //     .href,
-  //   speed: 2,
-  //   delaySeconds: 0,
-  // },
-]);
-
-// Lightroom video
-const lightroomVideoUrl = "/videos/lr_plugin.mp4";
 
 // Features data
 const features = ref([
@@ -768,7 +817,7 @@ const faqs = ref([
   },
   {
     question: "Can I try Photoreka for free?",
-    answer: `Analyzing your photos requires a single batch payment. Afterward, you can use most tools for free, with some daily/total limits, or purchase credits to work unlimitedly. <span style='color:var(--premium-primary);font-weight:600;'>During the <a href='#' style='color:var(--premium-primary);text-decoration:underline;' onclick='event.preventDefault();window.__goToEarlyAccess && window.__goToEarlyAccess()'>early access</a> phase, a free photo package and usage credits will be offered.</span>`,
+    answer: `Analyzing your photos requires a single batch payment. Afterward, you can use most tools for free, with some daily/total limits, or purchase credits to work unlimitedly. <span style='color:var(--premium-primary);font-weight:var(--font-weight-semibold);'>During the <a href='#' style='color:var(--premium-primary);text-decoration:underline;' onclick='event.preventDefault();window.__goToEarlyAccess && window.__goToEarlyAccess()'>early access</a> phase, a free photo package and usage credits will be offered.</span>`,
     hasHtml: true,
   },
 ]);
@@ -820,190 +869,17 @@ const goToSearchDemo = () => {
   window.open("https://app.photoreka.com/demo/search", "_blank");
 };
 
+const goToSignup = () => {
+  goToAuth("signup");
+};
+
 const onRequestSuccess = () => {};
-
-// Video methods
-const setActiveTab = (index, isAutoSwitch = false) => {
-  if (!isAutoSwitch) {
-    const tabName = videoTabs.value[index]?.title || `tab_${index}`;
-    trackEvent("video_tab_change", {
-      tab_name: tabName.toLowerCase().replace(" ", "_"),
-      tab_index: index,
-      previous_tab: activeTab.value,
-      is_manual: true,
-    });
-  }
-
-  activeTab.value = index;
-  videoProgress.value = 0;
-  videoPlaying.value = false;
-  autoPlayTriggered.value = false;
-  isAutoSwitching.value = isAutoSwitch;
-
-  if (fallbackTimeout.value) {
-    clearTimeout(fallbackTimeout.value);
-    fallbackTimeout.value = null;
-  }
-
-  if (observer.value) {
-    observer.value.disconnect();
-    observer.value = null;
-  }
-
-  if (videoPlayer.value) {
-    videoPlayer.value.currentTime = 0;
-    videoPlayer.value.load();
-
-    if (isAutoSwitch) {
-      setTimeout(() => {
-        startVideoPlayback();
-      }, 200);
-    } else {
-      nextTick(() => {
-        setTimeout(() => {
-          setupIntersectionObserver();
-          fallbackTimeout.value = setTimeout(() => {
-            if (!autoPlayTriggered.value) {
-              startVideoPlayback();
-            }
-          }, 1000);
-        }, 100);
-      });
-    }
-  }
-};
-
-const playVideo = () => {
-  if (videoPlayer.value) {
-    videoPlayer.value
-      .play()
-      .then(() => {
-        videoPlaying.value = true;
-      })
-      .catch(console.log);
-  }
-};
-
-const onVideoPlay = () => {
-  videoPlaying.value = true;
-};
-
-const onVideoLoaded = () => {
-  if (videoPlayer.value) {
-    const currentTab = videoTabs.value[activeTab.value];
-    videoPlayer.value.playbackRate = currentTab.speed || 1.0;
-    // Empieza el video en el segundo indicado por delaySeconds (default 0)
-    const delay =
-      typeof currentTab.delaySeconds === "number" ? currentTab.delaySeconds : 0;
-    videoPlayer.value.currentTime = delay;
-  }
-};
 
 const onLightroomVideoLoaded = () => {
   const lightroomVideoElement = document.querySelector(".integration-video");
   if (lightroomVideoElement) {
     lightroomVideoElement.playbackRate = 2;
   }
-};
-
-const updateProgress = () => {
-  if (videoPlayer.value) {
-    const currentTab = videoTabs.value[activeTab.value];
-    let end = videoPlayer.value.duration;
-    if (
-      typeof currentTab.endSeconds === "number" &&
-      currentTab.endSeconds > 0 &&
-      currentTab.endSeconds < end
-    ) {
-      end = currentTab.endSeconds;
-    }
-    const progress =
-      ((videoPlayer.value.currentTime - (currentTab.delaySeconds || 0)) /
-        (end - (currentTab.delaySeconds || 0))) *
-      100;
-    videoProgress.value = Math.max(0, Math.min(progress, 100)) || 0;
-    // Si llegó al final deseado, disparar onVideoEnded
-    if (
-      typeof currentTab.endSeconds === "number" &&
-      videoPlayer.value.currentTime >= currentTab.endSeconds
-    ) {
-      videoPlayer.value.pause();
-      videoPlayer.value.currentTime = end;
-      onVideoEnded();
-    }
-  }
-};
-
-const onVideoEnded = () => {
-  videoProgress.value = 100;
-  videoPlaying.value = false;
-  const nextTab = (activeTab.value + 1) % videoTabs.value.length;
-  setTimeout(() => {
-    setActiveTab(nextTab, true);
-  }, 300);
-};
-
-const startVideoPlayback = () => {
-  if (autoPlayTriggered.value) return;
-  autoPlayTriggered.value = true;
-
-  if (fallbackTimeout.value) {
-    clearTimeout(fallbackTimeout.value);
-    fallbackTimeout.value = null;
-  }
-
-  if (videoPlayer.value) {
-    const playPromise = videoPlayer.value.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          videoPlaying.value = true;
-        })
-        .catch((error) => {
-          console.log("Error playing video:", error);
-          autoPlayTriggered.value = false;
-        });
-    }
-  }
-};
-
-const setupIntersectionObserver = () => {
-  if (!videoPlayer.value) return;
-
-  if (observer.value) {
-    observer.value.disconnect();
-    observer.value = null;
-  }
-
-  observer.value = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const isFullyVisible = entry.intersectionRatio === 1.0;
-        const boundingRect = entry.boundingClientRect;
-        const rootBounds = entry.rootBounds;
-
-        const isCompletelyInView =
-          boundingRect.top >= (rootBounds?.top || 0) &&
-          boundingRect.left >= (rootBounds?.left || 0) &&
-          boundingRect.bottom <= (rootBounds?.bottom || window.innerHeight) &&
-          boundingRect.right <= (rootBounds?.right || window.innerWidth);
-
-        const finallyVisible = isFullyVisible && isCompletelyInView;
-
-        if (finallyVisible && !autoPlayTriggered.value) {
-          setTimeout(() => {
-            startVideoPlayback();
-          }, 750);
-        }
-      });
-    },
-    {
-      threshold: 1.0,
-      rootMargin: "0px",
-    },
-  );
-
-  observer.value.observe(videoPlayer.value);
 };
 
 // FAQ methods
@@ -1081,7 +957,17 @@ const setupScrollAnimations = () => {
     });
   }, observerOptions);
 
+  const reportsHeroObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        reportsHeroVisible.value = true;
+      }
+    });
+  }, observerOptions);
+
   if (heroSection.value) heroObserver.observe(heroSection.value);
+  if (reportsHeroSection.value)
+    reportsHeroObserver.observe(reportsHeroSection.value);
   if (featuresSection.value) featuresObserver.observe(featuresSection.value);
   if (searchPromoSection.value)
     searchPromoObserver.observe(searchPromoSection.value);
@@ -1099,36 +985,8 @@ onMounted(() => {
   // Hero is immediately visible
   heroVisible.value = true;
 
-  // Load video
-  if (videoPlayer.value) {
-    videoPlayer.value.load();
-  }
-
-  nextTick(() => {
-    setTimeout(() => {
-      setupIntersectionObserver();
-    }, 100);
-
-    fallbackTimeout.value = setTimeout(() => {
-      if (!autoPlayTriggered.value) {
-        startVideoPlayback();
-      }
-    }, 7000);
-  });
-
   // Setup scroll animations
   setupScrollAnimations();
-});
-
-onUnmounted(() => {
-  if (observer.value) {
-    observer.value.disconnect();
-    observer.value = null;
-  }
-  if (fallbackTimeout.value) {
-    clearTimeout(fallbackTimeout.value);
-    fallbackTimeout.value = null;
-  }
 });
 
 // Attach goToAuth('signup') to window for FAQ HTML link
@@ -1137,9 +995,230 @@ if (typeof window !== "undefined") {
 }
 </script>
 <style scoped>
+/* ── Home Hero Redesign ────────────────────────────────────── */
+.premium-landing {
+  --announcement-height: 0px;
+}
+
+.premium-landing.has-announcement {
+  --announcement-height: 50px;
+}
+
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  min-height: var(--announcement-height);
+  padding: 0.65rem 3.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8dedb;
+  color: #111827;
+  font-size: var(--landing-fs-sm);
+  line-height: var(--line-height-normal);
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.announcement-content strong {
+  color: #ff2f55;
+  font-weight: var(--landing-fw-strong);
+}
+
+.announcement-link,
+.announcement-close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.announcement-link {
+  color: #ff2f55;
+  font-weight: var(--landing-fw-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.announcement-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #111827;
+  font-size: var(--fs-xl);
+  font-weight: var(--landing-fw-strong);
+  line-height: var(--line-height-tight);
+}
+
+.premium-nav {
+  top: var(--announcement-height);
+}
+
+.hero-section {
+  min-height: 100vh;
+  padding: calc(var(--announcement-height) + 72px) 0 0;
+  align-items: stretch;
+  overflow: hidden;
+  background:
+    linear-gradient(115deg, rgba(37, 99, 235, 0.1), transparent 22%),
+    linear-gradient(245deg, rgba(6, 182, 212, 0.12), transparent 20%),
+    var(--premium-bg);
+}
+
+.hero-background {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.hero-line {
+  position: absolute;
+  width: 520px;
+  height: 1px;
+  background: var(--premium-border);
+  transform-origin: left center;
+}
+
+.line-1 {
+  left: -5rem;
+  top: 12rem;
+  transform: rotate(24deg);
+}
+
+.line-2 {
+  right: -8rem;
+  top: 6rem;
+  transform: rotate(90deg);
+}
+
+.hero-container {
+  width: 100%;
+  max-width: none;
+  min-height: calc(100vh - var(--announcement-height) - 72px - 4.5rem);
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(270px, 0.9fr) minmax(620px, 1fr) minmax(
+      270px,
+      0.9fr
+    );
+  align-items: center;
+  /* gap: 3.5rem; */
+}
+
+.hero-content {
+  gap: 1.45rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-badge,
+.hero-title,
+.hero-description,
+.hero-trust,
+.hero-side {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-title {
+  max-width: 680px;
+  font-size: var(--landing-fs-title-hero);
+  font-weight: var(--landing-fw-display);
+  line-height: var(--landing-lh-title);
+  letter-spacing: var(--landing-ls-heading);
+  color: var(--premium-text-primary);
+}
+
+.hero-description {
+  max-width: 620px;
+  font-size: var(--landing-fs-body-lg);
+  line-height: var(--landing-lh-body);
+}
+
+.hero-side {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  transition: all 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
+}
+
+.hero-side.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.hero-side-left {
+  transform: translateX(-15%);
+}
+
+.hero-side-right {
+  transform: translateX(20%);
+}
+
+.hero-side-left.visible {
+  opacity: 1;
+  transform: translateX(-15%);
+}
+
+.hero-side-right.visible {
+  opacity: 1;
+  transform: translateX(15%);
+}
+
+.hero-side-image {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border: 1px solid var(--premium-border);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
+}
+
+.hero-side-image-left {
+  aspect-ratio: 0.9 / 1;
+}
+
+.hero-side-image-right {
+  aspect-ratio: 0.85 / 1;
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--premium-text-secondary);
+  font-size: var(--landing-fs-sm);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.hero-trust.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-rating {
+  color: #f59e0b;
+  /* letter-spacing: 0.08em; */
+}
+
 /* ── Index Features Section ────────────────────────────────── */
 .index-features-section {
-  padding: 6rem 2rem;
+  padding: 2rem 2rem;
   background: var(--premium-bg-primary);
 }
 
@@ -1181,7 +1260,7 @@ if (typeof window !== "undefined") {
   right: 0px;
   opacity: 0.35;
   pointer-events: none;
-  line-height: 1;
+  line-height: var(--line-height-tight);
 }
 
 .index-feature-content {
@@ -1198,16 +1277,17 @@ if (typeof window !== "undefined") {
 }
 
 .index-feature-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: var(--landing-fs-title-card);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
   margin-bottom: 0.6rem;
   color: var(--premium-text-primary);
 }
 
 .index-feature-description {
   color: var(--premium-text-secondary);
-  line-height: 1.65;
-  font-size: 0.93rem;
+  line-height: var(--landing-lh-body);
+  font-size: var(--landing-fs-sm);
 }
 
 .gradient-framer {
@@ -1259,29 +1339,35 @@ if (typeof window !== "undefined") {
   background: rgba(37, 99, 235, 0.12);
   border: 1px solid rgba(37, 99, 235, 0.35);
   border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: var(--landing-fs-caption);
+  font-weight: var(--font-weight-bold);
   color: #60a5fa;
   width: fit-content;
-  letter-spacing: 0.02em;
 }
 .search-promo-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-size: var(--landing-fs-title-promo);
+  font-weight: var(--landing-fw-strong);
+  line-height: var(--landing-lh-title);
+  letter-spacing: var(--landing-ls-heading);
   margin: 0;
 }
 .gradient-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="light"] .gradient-text {
+  background: linear-gradient(135deg, #1e40af 0%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .search-promo-description {
-  font-size: 1rem;
+  font-size: var(--landing-fs-body);
   color: var(--premium-text-secondary);
-  line-height: 1.75;
+  line-height: var(--landing-lh-body);
   margin: 0;
   max-width: 540px;
 }
@@ -1304,7 +1390,243 @@ if (typeof window !== "undefined") {
   height: auto;
   display: block;
 }
+
+/* ── Reports Hero Section ──────────────────────────────────── */
+.reports-hero {
+  position: relative;
+  padding: 6rem 2rem;
+  overflow: hidden;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: var(--premium-bg-primary);
+}
+
+.reports-hero-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.reports-hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.reports-hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.reports-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.reports-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 50px;
+  font-size: var(--landing-fs-sm);
+  font-weight: var(--font-weight-semibold);
+  color: #06b6d4;
+  width: fit-content;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reports-hero-badge.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reports-hero-title {
+  font-size: var(--landing-fs-title-reports);
+  font-weight: var(--landing-fw-strong);
+  margin: 0;
+  line-height: var(--landing-lh-title);
+  letter-spacing: var(--landing-ls-heading);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reports-hero-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reports-hero-subtitle {
+  max-width: 580px;
+  margin: 0;
+  font-size: var(--landing-fs-body-lg);
+  color: var(--premium-text-secondary);
+  line-height: var(--landing-lh-body);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.reports-hero-subtitle.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reports-hero-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.reports-hero-actions.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reports-hero-visual {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--premium-border);
+}
+
+.reports-hero-visual.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reports-hero-visual:hover {
+  transform: translateY(-8px) scale(1);
+}
+
+.reports-video-frame {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--premium-bg-card);
+}
+
+.reports-hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.reports-gradient-text {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.reports-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.18;
+  animation: reports-float 25s infinite ease-in-out;
+  will-change: transform;
+}
+
+.reports-orb-1 {
+  width: 700px;
+  height: 700px;
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  top: -300px;
+  right: -200px;
+}
+
+.reports-orb-2 {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  bottom: -200px;
+  left: -250px;
+  animation-delay: -10s;
+}
+
+.reports-orb-3 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -15s;
+}
+
+@keyframes reports-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-50px, 50px) scale(0.9);
+  }
+}
+
 @media (max-width: 968px) {
+  .hero-container {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    padding: 0 1.25rem;
+  }
+
+  .hero-section {
+    padding-bottom: 3rem;
+  }
+
+  .hero-side-left,
+  .hero-side-right {
+    margin: 0;
+  }
+
+  .hero-side-left {
+    order: 2;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .hero-side-right {
+    order: 3;
+  }
+
+  .hero-title {
+    font-size: 3.6rem;
+  }
+
+  .search-promo-title {
+    font-size: 2.5rem;
+  }
+
   .search-promo-layout {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1315,11 +1637,70 @@ if (typeof window !== "undefined") {
   .search-promo-section {
     padding: 4rem 1rem;
   }
+
+  .reports-hero {
+    padding: 4rem 1rem;
+    min-height: auto;
+  }
+
+  .reports-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .reports-hero-content {
+    text-align: center;
+    align-items: center;
+  }
+
+  .reports-hero-subtitle {
+    max-width: 100%;
+  }
+
+  .reports-hero-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .premium-landing {
+    --announcement-height: 72px;
+  }
+
+  .announcement-bar {
+    padding: 0.65rem 2.7rem 0.65rem 1rem;
+    font-size: var(--landing-fs-caption);
+  }
+
+  .hero-section {
+    padding-top: calc(var(--announcement-height) + 64px + 2rem);
+  }
+
+  .hero-title {
+    font-size: var(--landing-fs-title-hero-mobile);
+  }
+
+  .search-promo-title {
+    font-size: var(--landing-fs-title-promo-mobile);
+  }
+
+  .hero-description {
+    font-size: var(--fs-base);
+  }
+
+  .hero-trust {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .hero-side-image {
+    max-height: 360px;
+  }
 }
 
 .premium-nav {
   position: fixed;
-  top: 0;
+  top: var(--announcement-height);
   left: 0;
   right: 0;
   z-index: 1000;

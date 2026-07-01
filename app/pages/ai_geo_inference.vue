@@ -861,7 +861,7 @@ onUnmounted(() => {
   background: var(--premium-bg-hover);
 }
 .back-link {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 /* ── Hero ──────────────────────────────────────────────────── */
@@ -905,8 +905,8 @@ onUnmounted(() => {
   background: rgba(6, 182, 212, 0.1);
   border: 1px solid rgba(6, 182, 212, 0.3);
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
   color: #06b6d4;
   width: fit-content;
   opacity: 0;
@@ -923,11 +923,11 @@ onUnmounted(() => {
   gap: 0.5rem;
 }
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 900;
+  font-size: var(--fs-hero);
+  font-weight: var(--font-weight-black);
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: var(--line-height-none);
+  letter-spacing: var(--letter-spacing-tighter);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -939,9 +939,9 @@ onUnmounted(() => {
 .hero-subtitle {
   max-width: 580px;
   margin: 0;
-  font-size: 17px;
+  font-size: var(--fs-lead);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
@@ -1110,17 +1110,17 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800;
+  font-size: var(--fs-hero-sm);
+  font-weight: var(--font-weight-extrabold);
   margin: 0 0 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 .section-subtitle {
-  font-size: 1.1rem;
+  font-size: var(--fs-lg);
   color: var(--premium-text-secondary);
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* ── Use Cases Section ─────────────────────────────────────── */
@@ -1154,14 +1154,14 @@ onUnmounted(() => {
   margin-bottom: 1rem;
 }
 .usecase-title {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-bold);
   margin: 0 0 0.5rem;
 }
 .usecase-description {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
-  line-height: 1.6;
+  line-height: var(--line-height-loose);
   margin: 0;
 }
 
@@ -1204,22 +1204,22 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  font-weight: 800;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-extrabold);
   color: white;
 }
 .step-content {
   flex: 1;
 }
 .step-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-bold);
   margin: 0 0 0.4rem;
 }
 .step-description {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
-  line-height: 1.65;
+  line-height: var(--line-height-loose);
   margin: 0;
 }
 
@@ -1253,14 +1253,14 @@ onUnmounted(() => {
   margin-bottom: 1rem;
 }
 .feature-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-bold);
   margin: 0 0 0.5rem;
 }
 .feature-description {
-  font-size: 0.92rem;
+  font-size: var(--fs-sm);
   color: var(--premium-text-secondary);
-  line-height: 1.65;
+  line-height: var(--line-height-loose);
   margin: 0;
 }
 
@@ -1280,7 +1280,7 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 .atlas-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+  font-size: var(--fs-hero-sm) !important;
 }
 .atlas-badge {
   opacity: 0;
@@ -1292,7 +1292,7 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 .cta-note {
-  font-size: 0.88rem;
+  font-size: var(--fs-xs);
   color: var(--premium-text-secondary);
   align-self: center;
 }
@@ -1336,8 +1336,8 @@ onUnmounted(() => {
   border: none;
   cursor: pointer;
   text-align: left;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--fs-md);
+  font-weight: var(--font-weight-semibold);
   color: var(--premium-text-primary);
   gap: 1rem;
 }
@@ -1351,9 +1351,9 @@ onUnmounted(() => {
 }
 .faq-answer {
   padding: 0 1.5rem 1.2rem;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   animation: fadeIn 0.25s ease both;
 }
 @keyframes fadeIn {
@@ -1384,15 +1384,15 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 .cta-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800;
+  font-size: var(--fs-hero-sm);
+  font-weight: var(--font-weight-extrabold);
   margin: 0 0 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 .cta-description {
-  font-size: 1.1rem;
+  font-size: var(--fs-lg);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   margin: 0 0 2rem;
 }
 .cta-buttons {
@@ -1403,7 +1403,7 @@ onUnmounted(() => {
   margin-bottom: 1.5rem;
 }
 .cta-extra {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
 }
 .cta-extra p {
@@ -1466,22 +1466,22 @@ onUnmounted(() => {
   background: rgba(34, 197, 94, 0.1);
   border: 1px solid rgba(34, 197, 94, 0.3);
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
   color: #22c55e;
   margin-bottom: 1.5rem;
 }
 .geo-recovery-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 800;
+  font-size: var(--fs-hero-sm);
+  font-weight: var(--font-weight-extrabold);
   margin: 0 0 1rem;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
 }
 .geo-recovery-description {
-  font-size: 1.05rem;
+  font-size: var(--fs-lg);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   margin: 0 0 2rem;
 }
 .geo-recovery-features {
@@ -1498,8 +1498,8 @@ onUnmounted(() => {
   padding: 0.75rem;
   background: rgba(34, 197, 94, 0.05);
   border-radius: 10px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: var(--fs-base);
+  font-weight: var(--font-weight-medium);
 }
 .geo-recovery-actions {
   display: flex;
@@ -1508,7 +1508,7 @@ onUnmounted(() => {
   gap: 0.75rem;
 }
 .geo-recovery-note {
-  font-size: 0.88rem;
+  font-size: var(--fs-xs);
   color: var(--premium-text-secondary);
   font-style: italic;
 }
@@ -1523,7 +1523,7 @@ onUnmounted(() => {
     order: -1;
   }
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: var(--fs-h1);
   }
   .atlas-section .hero-layout {
     grid-template-columns: 1fr;

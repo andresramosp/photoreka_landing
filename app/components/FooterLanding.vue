@@ -133,12 +133,12 @@ import AppLogo from "~/components/AppLogo.vue";
 
 .footer-description {
   color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 14px;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-sm);
 }
 
 .footer-title {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 16px;
   color: var(--text-primary);
   margin: 0;
@@ -153,7 +153,7 @@ import AppLogo from "~/components/AppLogo.vue";
   margin-bottom: 8px;
   transition: color 0.2s ease;
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--fs-sm);
 }
 
 .footer-link:hover {
@@ -174,7 +174,7 @@ import AppLogo from "~/components/AppLogo.vue";
 
 .footer-copyright {
   color: var(--text-tertiary);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   margin: 0;
 }
 

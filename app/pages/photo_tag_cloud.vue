@@ -221,7 +221,7 @@
                 <h2
                   class="hero-title"
                   style="
-                    font-size: clamp(1.8rem, 4vw, 2.8rem);
+                    font-size: var(--fs-hero-sm);
                     opacity: 1;
                     transform: none;
                   "
@@ -787,7 +787,7 @@ onMounted(() => {
   background: var(--premium-bg-hover);
 }
 .back-link {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 /* ── Hero ──────────────────────────────────────────────────── */
@@ -833,8 +833,8 @@ onMounted(() => {
   background: rgba(167, 139, 250, 0.1);
   border: 1px solid rgba(167, 139, 250, 0.3);
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
   color: #a78bfa;
   width: fit-content;
   opacity: 0;
@@ -853,11 +853,11 @@ onMounted(() => {
 
 /* Title */
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 900;
+  font-size: var(--fs-hero);
+  font-weight: var(--font-weight-black);
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: var(--line-height-none);
+  letter-spacing: var(--letter-spacing-tighter);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -871,9 +871,9 @@ onMounted(() => {
 .hero-subtitle {
   max-width: 580px;
   margin: 0;
-  font-size: 17px;
+  font-size: var(--fs-lead);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
@@ -1007,17 +1007,17 @@ onMounted(() => {
   transform: translateY(0);
 }
 .section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 .section-subtitle {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: var(--fs-subheading);
   color: var(--premium-text-secondary);
   max-width: 680px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
 }
 
 /* ── Tag Groups Section ────────────────────────────────────── */
@@ -1067,14 +1067,14 @@ onMounted(() => {
   gap: 0.3rem;
 }
 .group-name {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: var(--fs-base);
+  font-weight: var(--font-weight-bold);
 }
 .group-examples {
-  font-size: 0.82rem;
+  font-size: var(--fs-xs);
   color: var(--premium-text-secondary);
   font-style: italic;
-  line-height: 1.5;
+  line-height: var(--line-height-relaxed);
 }
 
 /* ── How It Works Section ──────────────────────────────────── */
@@ -1119,22 +1119,22 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: var(--fs-2xl);
+  font-weight: var(--font-weight-bold);
   color: white;
 }
 .step-content {
   flex: 1;
 }
 .step-title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 0.5rem;
 }
 .step-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
-  font-size: 0.97rem;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
 }
 
 /* ── Features Section ──────────────────────────────────────── */
@@ -1170,14 +1170,14 @@ onMounted(() => {
   margin-bottom: 1rem;
 }
 .feature-title {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: var(--font-weight-bold);
   margin-bottom: 0.5rem;
 }
 .feature-description {
   color: var(--premium-text-secondary);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
 }
 
 /* ── Bridge (Search) Section ───────────────────────────────── */
@@ -1208,7 +1208,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.97rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
 }
 .feature-icon-wrapper {
@@ -1263,8 +1263,8 @@ onMounted(() => {
   gap: 1rem;
   cursor: pointer;
   color: var(--premium-text-primary);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--fs-md);
+  font-weight: var(--font-weight-semibold);
   text-align: left;
   transition: all 0.3s ease;
 }
@@ -1278,8 +1278,8 @@ onMounted(() => {
 .faq-answer {
   padding: 0 1.5rem 1.25rem;
   color: var(--premium-text-secondary);
-  line-height: 1.7;
-  font-size: 0.97rem;
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
   animation: fadeIn 0.3s ease;
 }
 @keyframes fadeIn {
@@ -1310,15 +1310,15 @@ onMounted(() => {
   transform: translateY(0);
 }
 .cta-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 900;
+  font-size: var(--fs-h1);
+  font-weight: var(--font-weight-black);
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 .cta-description {
-  font-size: 1.1rem;
+  font-size: var(--fs-lg);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   margin-bottom: 2.5rem;
 }
 .cta-buttons {
@@ -1329,7 +1329,7 @@ onMounted(() => {
   margin-bottom: 2rem;
 }
 .cta-extra {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
 }
 .cta-link {
@@ -1368,7 +1368,7 @@ onMounted(() => {
     padding: 4rem 1.25rem;
   }
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: var(--fs-h1);
   }
   .groups-grid {
     grid-template-columns: 1fr 1fr;

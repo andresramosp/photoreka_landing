@@ -301,18 +301,18 @@ onUnmounted(() => {
   background: rgba(34, 197, 94, 0.1);
   border: 1px solid rgba(34, 197, 94, 0.3);
   border-radius: 50px;
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: var(--fs-xs);
+  font-weight: var(--font-weight-semibold);
   color: #22c55e;
   width: fit-content;
 }
 
 .grp-title {
-  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
-  font-weight: 800;
+  font-size: var(--fs-h2);
+  font-weight: var(--font-weight-extrabold);
   margin: 0;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: var(--line-height-none);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .grp-gradient {
@@ -323,9 +323,9 @@ onUnmounted(() => {
 }
 
 .grp-desc {
-  font-size: 1rem;
+  font-size: var(--fs-md);
   color: var(--premium-text-secondary);
-  line-height: 1.7;
+  line-height: var(--line-height-loose);
   margin: 0;
 }
 
@@ -339,8 +339,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: var(--fs-base);
+  font-weight: var(--font-weight-medium);
 }
 
 .grp-actions {
@@ -352,7 +352,7 @@ onUnmounted(() => {
 }
 
 .grp-note {
-  font-size: 0.85rem;
+  font-size: var(--fs-xs);
   color: var(--premium-text-secondary);
   font-style: italic;
 }
@@ -468,16 +468,16 @@ onUnmounted(() => {
 }
 
 .grp-mini-text strong {
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-bold);
   display: block;
   margin-bottom: 0.2rem;
 }
 
 .grp-mini-text p {
-  font-size: 0.83rem;
+  font-size: var(--fs-xs);
   color: var(--premium-text-secondary);
-  line-height: 1.55;
+  line-height: var(--line-height-relaxed);
   margin: 0;
 }
 
@@ -501,7 +501,7 @@ onUnmounted(() => {
   }
 
   .grp-title {
-    font-size: 1.6rem;
+    font-size: var(--fs-3xl);
   }
 
   .grp-actions {

@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       siteUrl: import.meta.env.VITE_SITE_URL || "https://www.photoreka.com",
       // Env.schema.enum.optional(['open', 'waiting_list'] as const)
       registrationMode: (process.env.NUXT_PUBLIC_REGISTRATION_MODE ||
-        "waiting_list") as "open" | "waiting_list",
+        "open") as "open" | "waiting_list",
     },
   },
 
