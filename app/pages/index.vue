@@ -102,8 +102,12 @@
               </h1>
 
               <p class="hero-description" :class="{ visible: heroVisible }">
-                Organize, curate and discover patterns in your work with a range
-                of <strong>smart tools built for photographers</strong>
+                <strong>Photoreka</strong> is a suite of smart tools to help you
+                curate your photos.<br />
+                Upload a project, a curated selection or your entire
+                <strong>catalog</strong>.<br />
+                Search in <strong>natural language</strong>, rank your photos
+                and <strong>understand</strong> your library.
               </p>
               <div
                 v-if="false"
@@ -141,7 +145,7 @@
               </div>
               <div class="hero-trust" :class="{ visible: heroVisible }">
                 <span class="hero-trust-label"
-                  >Built for serious photo libraries</span
+                  >AI-powered photography curation</span
                 >
                 <span class="hero-rating">★★★★★</span>
               </div>
