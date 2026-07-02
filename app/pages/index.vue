@@ -79,7 +79,7 @@
               <img
                 class="hero-side-image hero-side-image-left"
                 :src="heroSideImages.left"
-                alt="Photoreka archive preview"
+                alt="AI photo scoring and ranking view in Photoreka"
               />
               <img
                 v-if="
@@ -93,7 +93,7 @@
             </div>
             <div class="hero-content">
               <h1 class="hero-title" :class="{ visible: heroVisible }">
-                Make full sense of
+                Curate and make full sense of
                 <span class="gradient-text">
                   your photographic body of work</span
                 >
@@ -161,7 +161,7 @@
               <img
                 class="hero-side-image hero-side-image-right"
                 :src="heroSideImages.right"
-                alt="Photoreka workflow preview"
+                alt="AI-generated photo tag cloud in 2D semantic space"
               />
               <img
                 v-if="
@@ -180,7 +180,7 @@
               <img
                 class="hero-side-image hero-side-image-mobile"
                 :src="heroSideImages.mobile"
-                alt="Photoreka preview"
+                alt="Photoreka AI photo curation and organizer dashboard"
               />
             </div>
           </div>

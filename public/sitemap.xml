@@ -44,6 +44,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.photoreka.com/photo_tag_cloud</loc>
+        <lastmod>2026-07-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.photoreka.com/photography_portfolio_builder</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>

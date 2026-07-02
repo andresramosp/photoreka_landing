@@ -79,16 +79,8 @@ export function useSEO(pageKey?: SEOPageKey, customConfig?: Partial<SEOPage>) {
         content: ogImage,
       },
       {
-        property: "og:image:width",
-        content: "1200",
-      },
-      {
-        property: "og:image:height",
-        content: "630",
-      },
-      {
         property: "og:locale",
-        content: seoConfig.defaultLocale,
+        content: "en_US",
       },
 
       // Twitter Card

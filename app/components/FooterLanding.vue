@@ -40,6 +40,9 @@
           <NuxtLink to="/photo_3D_atlas" class="footer-link"
             >3D Photo Atlas</NuxtLink
           >
+          <NuxtLink to="/photo_tag_cloud" class="footer-link"
+            >Photo Tag Cloud</NuxtLink
+          >
           <NuxtLink to="/photography_portfolio_builder" class="footer-link"
             >Portfolio Builder</NuxtLink
           >

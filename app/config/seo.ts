@@ -34,13 +34,12 @@ export const seoConfig = {
   // Configuración por página
   pages: {
     home: {
-      title:
-        "Photoreka | AI Photo Organizer & Curation App for Photographers | Curate, Search & Explore Your Photos",
+      title: "Photoreka | AI Photo Curation & Organizer for Photographers",
       description:
-        "Photoreka is an AI-powered app to curate and organize your photos. Search your entire photo library by describing what you see, score and rank photos automatically, explore your catalog in 3D, and build portfolios with AI. Works with Lightroom Classic, Google Photos, Dropbox, and local files. The smart photo organizer built for serious photographers.",
+        "AI photo curation and organizer for photographers. Search your library by description, score and rank your best shots, and explore your catalog in 3D.",
       keywords:
-        "AI photo organizer, app to curate photos with AI, organize photos with AI, AI photo curation app, photo organizer app, smart photo management, AI photo management tool, curate photos AI, organize my photos AI, photo curation software, AI photo library organizer, photo catalog organizer, AI photo search app, natural language photo search, photo organization app, best AI photo organizer, photo management app for photographers, AI photo sorting, photo archive organizer, AI photography tools, photo curation platform, digital photo organizer, intelligent photo organizer, AI image organizer, photo library management app, photography workflow tool, photo scoring AI, photo ranking app, 3D photo catalog, visual photo organizer, AI photo assistant, smart photo curation, curate and organize photos, photo management system, photography DAM, professional photo organizer",
-      ogImage: "/logos/marca/vertical-claim-light.png",
+        "AI photo curation app, curate photos with AI, AI photo organizer, organize photos with AI, find my best photos, AI photo culling, photo scoring and ranking app, AI photography portfolio builder, photography style analysis, understand my photography style, curate photography portfolio, AI photo search app, natural language photo search, find any photo by describing it, semantic photo search, Excire alternative, photo organizer app for photographers, photo library organizer, photo catalog organizer, smart photo organizer, photo curation software, photo curation platform, 3D photo catalog, AI photography tools, AI photo assistant, photography workflow tool, curate and organize photos, photo management app for photographers",
+      ogImage: "/home/dashboard.png",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: [
@@ -50,7 +49,7 @@ export const seoConfig = {
           name: "Photoreka",
           url: "https://www.photoreka.com",
           description:
-            "AI-powered app to curate and organize your photos. Search by natural language, score and rank photos, explore your catalog in 3D, and build portfolios with AI. The smart photo organizer for serious photographers.",
+            "AI-powered photo curation and organizer app. Search your library by natural language, score and rank your best shots, discover patterns across your archive, explore your catalog in 3D, and build portfolios with AI.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
           offers: {
@@ -83,12 +82,6 @@ export const seoConfig = {
             "Free Photo Framer tool",
             "Free Canvas Photo Tool",
           ],
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.8",
-            ratingCount: "47",
-            bestRating: "5",
-          },
         },
         {
           "@context": "https://schema.org",
@@ -132,6 +125,14 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Photoreka only stores a reduced version of your images on secure servers for analysis. Your photos are not shared with anyone and you retain 100% of the rights to your work. Analysis uses proprietary and third-party services under agreements that prevent retaining or reusing your photos.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What kind of photo catalog works best with Photoreka?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka is built for photographers who want to work with a curated body of work, not a raw dump of every file ever captured. The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Because the AI tools are built around curation, they work best when your archive already has a baseline of intentionality.",
               },
             },
             {
@@ -287,6 +288,76 @@ export const seoConfig = {
         },
         {
           "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Do I need to tag or keyword my photos first?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. That's the whole point. Photoreka analyzes the visual content of your photos automatically when you upload or sync your library. You never need to add a single keyword or tag to search effectively.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How is this different from searching in Google Photos or Apple Photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Google Photos and Apple Photos also use AI search, but they're optimized for consumer snapshots and basic object detection. Photoreka is built for photographers: it understands compositional intent, lighting mood, stylistic references, and figurative language—not just 'dog' or 'beach'. It also gives you full control over your archive without locking you into a proprietary cloud.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How does Photoreka compare to Excire Search?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Excire Search is a solid Lightroom Classic plugin for short keyword prompts, but its CLIP model has a hard context window of ~77 tokens, meaning long or nuanced queries get silently truncated, and it offers a single associative search mode. Photoreka has no query length limit, offers three distinct modes (Broad, Adaptive, and Precise), enriches results with insights, and lets you keep refining through ChatLab's LLM vision layer. It also searches across Google Photos, Dropbox, and local files in addition to Lightroom.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What's the difference between Broad, Adaptive, and Precise search?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Broad search uses pure embedding similarity—fast and associative, best for mood, style, and figurative queries. Adaptive automatically expands cultural or stylistic references (like 'Blade Runner-inspired') with the implicit visual vocabulary they carry. Precise adds a logical inference step that actively verifies each candidate against your specific conditions instead of just ranking by vector proximity.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can it understand artistic or emotional descriptions?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. You can search for 'melancholic portrait', 'chaotic energy', or 'cinematic tension' and get meaningful results, thanks to a model trained on a vast corpus of image-text pairs including photography criticism and art descriptions.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Are my photos sent to a server or processed locally?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka sends compressed previews (not your originals) to our servers for analysis. Your full-resolution files never leave your machine, and the search index is stored on your account only.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I search across multiple sources at once?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. If you have photos from Lightroom Classic, Google Photos, Dropbox, and local uploads all synced to Photoreka, a single search returns results across all of them simultaneously.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What kind of photo catalog is Photoreka designed for?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka is built for photographers who want to work with a curated body of work, not a raw dump of every file ever captured. The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Duplicate detection is built in, but the value of every feature increases the more curated your starting point is.",
+              },
+            },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
             {
@@ -312,7 +383,7 @@ export const seoConfig = {
       description:
         "Search your Lightroom Classic catalog by describing what you remember — no manual tagging. Unlike CLIP-based plugins like Excire Search (limited to ~77-token queries), Photoreka has no length cap and offers three search modes: Broad, Adaptive, and Precise (logical inference). All AI processing runs locally. Compatible with Lightroom Classic 13.0+. RAW, CR2, NEF, ARW, JPEG, PNG, TIFF.",
       keywords:
-        "lightroom plugin, lightroom classic plugin, AI photo search, Excire Search alternative, Excire plugin alternative, lightroom AI search plugin, semantic photo search lightroom, 3D photo navigation, 3D catalog view, natural language photo search, lightroom catalog sync, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, navigate photos in 3D, AI photo organizer, photo curation platform, photography DAM, digital asset management, professional photo organizer, precise photo search, broad adaptive precise search, no character limit photo search",
+        "lightroom plugin, lightroom classic plugin, AI photo search, Excire Search alternative, Excire plugin alternative, lightroom AI search plugin, semantic photo search lightroom, 3D photo navigation, 3D catalog view, natural language photo search, lightroom catalog sync, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, navigate photos in 3D, AI photo organizer, photo curation platform, photo library organizer, professional photo organizer, precise photo search, broad adaptive precise search, no character limit photo search",
       ogImage: "/home/video_lr_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -358,49 +429,146 @@ export const seoConfig = {
     },
 
     photo_chat: {
-      title:
-        "Find Your Best Photos with AI — Critique, Organize & Chat With Your Library | Photoreka",
+      title: "Photoreka AI Photo Assistant — Chat With Your Library",
       description:
-        "Find your best photos, organize your catalog, and get an honest AI critique of your work—just by chatting. Photoreka is like ChatGPT for your photo library: ask it to rank your strongest shots, rate your photos, see if you've improved, or build a curated selection, and it answers using your actual archive. Search thousands of images by describing them—no tagging required. An AI photo assistant that organizes, curates, and critiques. Works in any language.",
+        "Chat with your photo library to find your best shots, get an honest AI critique, and track your progress. Like ChatGPT for your photos.",
       keywords:
-        "find my best photos, app to find my best photos, organize photos with AI, AI to organize photos, best AI to organize photos, AI app to organize photos, AI photo critique, best AI for photo critique, rate my photos AI, chatgpt for my photos, AI to cull photos, find photos by describing them, how to choose best photos, am I a good photographer AI, AI photography feedback, AI photo curation, photo portfolio critique AI, AI photo assistant, ask AI about my photos, analyze my photos AI, photo library AI chat, conversational photo search, search my photo library AI, AI photo analyzer, AI photo organizer, photography improvement tracker AI, discover photo patterns AI, AI photo curator",
-      ogImage: "/logos/marca/vertical-claim-light.png",
+        "find my best photos, organize photos with AI, AI photo critique, rate my photos AI, chatgpt for my photos, find photos by describing them, how to choose best photos, AI photography feedback, AI photo curation, photo portfolio critique AI, AI photo assistant, ask AI about my photos, photo library AI chat, conversational photo search, AI photo organizer, photography improvement tracker AI, discover photo patterns AI, AI photo curator",
+      ogImage: "/home/dashboard.png",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka AI Photo Assistant",
-        description:
-          "AI photo assistant for photographers. Ask anything about your photo library—search your catalog, get portfolio critique, discover patterns, track artistic improvement, and build curated selections in natural language.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        url: "https://www.photoreka.com/photo_chat",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka AI Photo Assistant",
+          description:
+            "AI photo assistant for photographers. Ask anything about your photo library—search your catalog, get portfolio critique, discover patterns, track artistic improvement, and build curated selections in natural language.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/photo_chat",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          mainEntityOfPage: "https://www.photoreka.com/photo_chat",
+          featureList: [
+            "Natural language search across your entire photo library",
+            "AI-powered portfolio critique and artistic analysis",
+            "Photography improvement and progression tracking over time",
+            "Intelligent photo curation and sequence building",
+            "Photo catalog statistics: subjects, lighting, color patterns",
+            "AI-generated curated selections for exhibitions and competitions",
+            "Personalized photography advice based on your actual archive",
+            "Pattern and style discovery across thousands of images",
+            "Conversational follow-up questions with session memory",
+            "Multilingual support",
+          ],
         },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Can the AI find my best photos automatically?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Just ask it to find your best photos and it ranks your strongest shots across your entire library—by composition, expression, and technical quality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can it rate or critique my photography?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Ask it to rate a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can it help me organize my photo library with AI?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Absolutely. Beyond chat, Photoreka uses AI to understand and organize your catalog so you can group, filter, and curate by subject, style, lighting, or quality—without manual tagging. The assistant works on top of that organized library to answer your questions.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How is this different from just searching my photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Search finds photos that match a description. The assistant reasons about your catalog as a whole: it can evaluate your work, spot patterns across thousands of images, build curated sequences, and give you personalized feedback—answers that no search bar can provide.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does it actually look at my photos, or just the metadata?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Both. For most questions it combines metadata with visual embeddings (AI representations of each photo's content and style). When you ask about specific images, it also processes the actual photos directly, enabling true visual understanding of composition, mood, and lighting.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What languages does it support?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "The assistant responds in the language you write in. Spanish, English, French, Portuguese, German, Italian, and most major languages are fully supported. Just write naturally.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How many photos does it need to give useful answers?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio critique) become richer as your archive grows. There's no upper limit—it works well with 10,000+ images.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I use it to prepare for a competition or exhibition?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, that's one of its strongest use cases. You can ask for a ranked selection of your best work, a thematically coherent sequence, or a specific number of images that tell a story—the assistant will select and order them with curatorial intent.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is my photo data private?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. The assistant only accesses your own catalog—it has no visibility into other users' libraries. Your photos are processed under Photoreka's privacy policy, and your full-resolution originals are never uploaded unless you explicitly share them.",
+              },
+            },
+          ],
         },
-        mainEntityOfPage: "https://www.photoreka.com/photo_chat",
-        featureList: [
-          "Natural language search across your entire photo library",
-          "AI-powered portfolio critique and artistic analysis",
-          "Photography improvement and progression tracking over time",
-          "Intelligent photo curation and sequence building",
-          "Photo catalog statistics: subjects, lighting, color patterns",
-          "AI-generated curated selections for exhibitions and competitions",
-          "Personalized photography advice based on your actual archive",
-          "Pattern and style discovery across thousands of images",
-          "Conversational follow-up questions with session memory",
-          "Multilingual support",
-        ],
-      },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "AI Photo Assistant",
+              item: "https://www.photoreka.com/photo_chat",
+            },
+          ],
+        },
+      ],
     },
 
     photo_3d_atlas: {
@@ -409,7 +577,7 @@ export const seoConfig = {
       description:
         "Stop scrolling grids endlessly. Photoreka's 3D Photo Atlas uses AI and dimensionality reduction (UMAP) to place your entire catalog in navigable 3D space—automatically clustered by visual similarity. Discover hidden patterns, stylistic evolution, and thematic connections across thousands of photos. Runs in browser via WebGL, no installation required.",
       keywords:
-        "3D photo atlas, 3D catalog navigation, photo visualization, 3D photo gallery, visual similarity clustering, photo archive navigation, immersive photo exploration, 3D photo space, catalog clustering, photographic patterns, photo relationships, navigate photos 3D, photo body of work, visual archive 3D, photo universe, AI photo clustering, contextual photo navigation, narrative photo view, aesthetic photo grouping, photo sequence building, AI photo organizer, photo curation platform, photo management system, professional photo organizer, photography DAM, image visualization, photo library management",
+        "3D photo atlas, 3D catalog navigation, photo visualization, 3D photo gallery, visual similarity clustering, photo archive navigation, immersive photo exploration, 3D photo space, catalog clustering, photographic patterns, photo relationships, navigate photos 3D, photo body of work, visual archive 3D, photo universe, AI photo clustering, contextual photo navigation, narrative photo view, aesthetic photo grouping, photo sequence building, AI photo organizer, photo curation platform, photo library organizer, professional photo organizer, image visualization, photo library management",
       ogImage: "/home/video_lr_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -421,6 +589,7 @@ export const seoConfig = {
           "Revolutionary 3D visualization tool that displays your entire photo catalog in immersive 3D space, automatically clustered by visual similarity.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
+        url: "https://www.photoreka.com/photo_3D_atlas",
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
@@ -729,48 +898,129 @@ export const seoConfig = {
     },
 
     photography_portfolio_builder: {
-      title:
-        "AI Photography Portfolio Builder & Generator — Pick & Sequence Your Best Photos | Photoreka",
+      title: "AI Photography Portfolio Builder | Photoreka",
       description:
-        "Automatically build a curated, sequenced portfolio from your photo archive. Photoreka's AI photography portfolio builder and generator scores every image across 8 artistic dimensions, selects the strongest 10–40 photos under five coherence modes (visual, chromatic, narrative, heterogeneous, free), and intelligently sequences the final set. Stop spending days second-guessing which photos belong. Prepare gallery exhibitions, competition submissions, client deliveries, and photobooks in minutes. The AI portfolio generator built for serious photographers.",
+        "Automatically score, select, and sequence your strongest photos into a curated portfolio for exhibitions, competitions, and client delivery.",
       keywords:
-        "AI photography portfolio builder, AI portfolio generator photographer, photography portfolio generator, AI portfolio maker photographer, photo portfolio AI generator, automatically select best photos for portfolio, best photos for portfolio AI, AI photo curation portfolio, photography portfolio creator AI, photo selection for gallery exhibition, competition photo selection AI, photography competition submission tool, photobook AI curation, photo portfolio sequencing AI, curate photography portfolio AI, gallery exhibition photo picker, AI photo selection tool, best photography portfolio curator, photo book curation AI, portfolio photo picker AI, AI curation tool photographer, select photos for exhibition AI, photography portfolio selector AI, AI portfolio curation, coherent photo portfolio AI, photo sequencing tool, narrative photo sequencing, photography exhibition preparation",
-      ogImage: "/logos/marca/vertical-claim-light.png",
+        "AI photography portfolio builder, AI portfolio generator photographer, automatically select best photos for portfolio, AI photo curation portfolio, photo selection for gallery exhibition, competition photo selection AI, photobook AI curation, photo portfolio sequencing AI, curate photography portfolio AI, gallery exhibition photo picker, portfolio photo picker AI, select photos for exhibition AI, coherent photo portfolio AI, narrative photo sequencing, photography exhibition preparation, find my best photos",
+      ogImage: "/portfolio_builder/0.png",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka AI Photography Portfolio Builder",
-        description:
-          "AI photography portfolio builder and generator. Scores photos across 8 artistic dimensions, curates the strongest 10–40 images under five coherence modes, and intelligently sequences the final selection for exhibitions, competitions, client deliveries and photobooks.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        url: "https://www.photoreka.com/photography_portfolio_builder",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka AI Photography Portfolio Builder",
+          description:
+            "AI photography portfolio builder and generator. Scores photos across 8 artistic dimensions, curates the strongest 10–40 images under five coherence modes, and intelligently sequences the final selection for exhibitions, competitions, client deliveries and photobooks.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/photography_portfolio_builder",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "8-dimension artistic scoring (aesthetics, composition, storytelling, originality, message, humor, visual games, candidness)",
+            "Five coherence modes: visual, chromatic, narrative, heterogeneous, free",
+            "Configurable portfolio size from 10 to 40 photos",
+            "Natural-language style description parsed into weight vectors",
+            "Visual filters by genre, framing, depth of field, lighting and perspective",
+            "AI-powered intelligent photo sequencing",
+            "Similarity gating to remove near-duplicates",
+            "Manual portfolio mode with full drag-and-drop control",
+            "Photo selection for gallery exhibitions and competition submissions",
+            "Photobook and client delivery curation",
+          ],
         },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "How many photos can a portfolio have?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Between 10 and 40 photos, in increments of 5. The builder over-generates by ~35% during evaluation, then trims the set down to the exact target size you chose.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What do the five coherence modes actually do?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Visual favours photos with similar style and composition using CLIP embeddings. Chromatic groups by color palette and temperature. Narrative looks for related situations and emotional tone. Heterogeneous intentionally maximizes diversity. Free applies no coherence constraint and selects purely on quality.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do I need to analyze my catalog first?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. The builder only considers photos that have been processed by Photoreka's analyzer (artistic scores, embeddings and perceptual hashes). At least ~80% of the pool used must be analyzed for a build to be eligible.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I control the ordering of photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Sequencing is optional. You can leave the AI-generated order, disable sequencing entirely, or—after the build completes—drag-and-drop photos to reorder them, remove any that don't belong (with undo) and save the final layout.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I build a portfolio manually?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Alongside the AI-driven flow there is a Manual mode: create an empty portfolio, then add or remove photos from your catalog by hand. No scoring, no credits—just a curated bucket you control end to end.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does it cost credits?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Cost scales with target size, coherence mode and whether LLM-based sequencing is used. The wizard shows a live, backend-authoritative credit estimate before you start the build. Manual portfolios are free.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is this a portfolio website builder?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No—Photoreka is the curation engine, not the website. It selects and sequences your photos. You can then take the resulting set to any portfolio platform, print service, competition submission or photobook layout tool.",
+              },
+            },
+          ],
         },
-        featureList: [
-          "8-dimension artistic scoring (aesthetics, composition, storytelling, originality, message, humor, visual games, candidness)",
-          "Five coherence modes: visual, chromatic, narrative, heterogeneous, free",
-          "Configurable portfolio size from 10 to 40 photos",
-          "Natural-language style description parsed into weight vectors",
-          "Visual filters by genre, framing, depth of field, lighting and perspective",
-          "AI-powered intelligent photo sequencing",
-          "Similarity gating to remove near-duplicates",
-          "Manual portfolio mode with full drag-and-drop control",
-          "Photo selection for gallery exhibitions and competition submissions",
-          "Photobook and client delivery curation",
-        ],
-      },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "AI Photography Portfolio Builder",
+              item: "https://www.photoreka.com/photography_portfolio_builder",
+            },
+          ],
+        },
+      ],
     },
 
     photo_tag_cloud: {
@@ -780,7 +1030,7 @@ export const seoConfig = {
         "See every tag AI extracted from your photos arranged in an interactive 2D semantic map. Similar tags cluster together—mood next to atmosphere, rain next to fog, city next to urban. Navigate the map to search your catalog: zoom into a cluster and instantly surface the photos that live there. No tagging needed, no lists to scroll.",
       keywords:
         "photo tag cloud, semantic tag map, photo vocabulary visualization, interactive tag map, photo tags 2D, visual tag browser, AI photo tags, semantic photo search, tag-based photo search, photo catalog tags, tag cloud photographer, interactive photo tags, AI photo tagging, photo tag visualization, semantic photo organization, photo tag explorer, UMAP tag map, photo tag clustering, visual photo exploration, tag-based image search, photo tag atlas, photo semantic map",
-      ogImage: "/home/tag_cloud_poster.jpg",
+      ogImage: "/home/tag_cloud_poster_detailed.png",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: [
