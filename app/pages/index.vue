@@ -192,15 +192,6 @@
           </div>
         </section>
 
-        <!-- Features Section (componentized, variant-driven) -->
-        <FeaturesShowcase
-          :variant="featuresVariant"
-          section-id="features"
-          title="AI tools to organize, search, and curate your photos"
-          subtitle="A smart photo organizer built for photographers who take their work seriously. Search with AI, score and rank, explore in 3D, and build portfolios from your photo library."
-          :features="features"
-        />
-
         <!-- Search Promo Section -->
         <section
           id="ai_search"
@@ -273,6 +264,14 @@
             </div>
           </div>
         </section>
+        <!-- Features Section (componentized, variant-driven) -->
+        <FeaturesShowcase
+          :variant="featuresVariant"
+          section-id="features"
+          title="AI tools to organize, search, and curate your photos"
+          subtitle="A smart photo organizer built for photographers who take their work seriously. Search with AI, score and rank, explore in 3D, and build portfolios from your photo library."
+          :features="features"
+        />
 
         <!-- 3d video section -->
         <!-- <section class="reports-hero" ref="reportsHeroSection">
@@ -760,21 +759,21 @@ const featuresVariant = ref("showcase");
 // `lead` + `bullets` + `image` are used by the "showcase" variant.
 // If `bullets` is omitted the showcase falls back to splitting `description`.
 const features = ref([
-  {
-    icon: markRaw(SearchOutline),
-    title: "Natural Language Search",
-    description:
-      "Find any photo by describing it. Search for moods, scenes, lighting conditions, cinematic references, or abstract feelings. No keywords, no tagging—just describe what you remember and Photoreka finds it.",
-    lead: "Find any photo just by describing it — no keywords, no tagging.",
-    bullets: [
-      "Search moods, scenes, lighting and cinematic references",
-      "Broad, Adaptive and Precise search modes",
-      "Just describe what you remember and Photoreka finds it",
-    ],
-    image: "/ai_photo_scoring/2.png",
-    color: "#2563eb",
-    link: "/ai_photo_search",
-  },
+  // {
+  //   icon: markRaw(SearchOutline),
+  //   title: "Natural Language Search",
+  //   description:
+  //     "Find any photo by describing it. Search for moods, scenes, lighting conditions, cinematic references, or abstract feelings. No keywords, no tagging—just describe what you remember and Photoreka finds it.",
+  //   lead: "Find any photo just by describing it — no keywords, no tagging.",
+  //   bullets: [
+  //     "Search moods, scenes, lighting and cinematic references",
+  //     "Broad, Adaptive and Precise search modes",
+  //     "Just describe what you remember and Photoreka finds it",
+  //   ],
+  //   image: "/ai_photo_scoring/2.png",
+  //   color: "#2563eb",
+  //   link: "/ai_photo_search",
+  // },
   {
     icon: markRaw(CubeOutline),
     title: "2D / 3D Atlas",
@@ -786,7 +785,7 @@ const features = ref([
       "Discover visual clusters and stylistic threads",
       "Surface unexpected connections across your work",
     ],
-    image: "/home/tag_cloud_poster.png",
+    image: "/atlas/2d.png",
     color: "#06b6d4",
     link: "/photo_3D_atlas",
   },

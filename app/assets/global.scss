@@ -1,4 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+/* ==========================================================================
+   TWO-FONT SYSTEM
+   - Headings (h1-h6): warm editorial serif — Fraunces
+   - Body/UI text: warm humanist sans — Plus Jakarta Sans
+   Plus Jakarta Sans has softer, slightly rounded terminals than a neutral
+   grotesque (Inter/Helvetica), so it echoes Fraunces' warmth instead of
+   clashing with it, while staying clean and highly legible for UI copy.
+   See --font-family-heading / --font-family-base further below.
+   ==========================================================================
+
+   ALTERNATIVE HEADING SERIFS (swap Fraunces for one of these, keep
+   Plus Jakarta Sans as the body font in all cases):
+
+   1) Lora — classic contemporary serif, slightly softer curves
+      @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+      --font-family-heading: "Lora", Georgia, serif;
+
+   2) Domine — sturdy, bold display serif built for headlines
+      @import url("https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+      --font-family-heading: "Domine", Georgia, serif;
+
+   3) Petrona — warm, slightly quirky serif with a modern editorial feel
+      @import url("https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+      --font-family-heading: "Petrona", Georgia, serif;
+   ========================================================================== */
 
 /* ==========================================================================
    CRITICAL STYLES - Prevent FOUC
@@ -210,6 +235,15 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
 }
 
 section {
@@ -760,8 +794,13 @@ section {
    ========================================================================== */
 
 :root {
-  /* Single source of truth for global typography */
-  --font-family-base: "Work Sans", "Helvetica Neue", Helvetica, sans-serif;
+  /* Single source of truth for global typography.
+     Two-font system: --font-family-heading is used for h1-h6 (see the
+     `body`/heading rule below), --font-family-base is used everywhere else. */
+  --font-family-heading: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --font-family-base:
+    "Plus Jakarta Sans", "Helvetica Neue", Helvetica, sans-serif;
 
   /* ===== SHADOWS ===== */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1743,6 +1782,15 @@ section {
 
 .premium-landing * {
   font-family: inherit;
+}
+
+.premium-landing h1,
+.premium-landing h2,
+.premium-landing h3,
+.premium-landing h4,
+.premium-landing h5,
+.premium-landing h6 {
+  font-family: var(--font-family-heading);
 }
 
 .premium-landing {
