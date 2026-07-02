@@ -6,12 +6,14 @@
         :class="{
           'has-announcement': heroAnnouncement.enabled && showAnnouncement,
         }"
-        :style="{ '--announcement-height': announcementHeight + 'px' }"
+        :style="{ '--announcement-height': announcementLayoutHeight + 'px' }"
       >
         <div
           v-if="heroAnnouncement.enabled && showAnnouncement"
           ref="announcementBarRef"
           class="announcement-bar"
+          :class="{ 'announcement-bar--hidden': announcementHiddenByScroll }"
+          :aria-hidden="announcementHiddenByScroll"
         >
           <div class="announcement-content">
             <strong>{{ heroAnnouncement.label }}</strong>
@@ -93,7 +95,7 @@
             </div>
             <div class="hero-content">
               <h1 class="hero-title" :class="{ visible: heroVisible }">
-                Curate and make full sense of
+                Make full sense of
                 <span class="gradient-text">
                   your photographic body of work</span
                 >
@@ -639,7 +641,10 @@ const activeFAQ = ref(null);
 const showAnnouncement = ref(true);
 const announcementBarRef = ref(null);
 const announcementHeight = ref(0);
+const announcementHiddenByScroll = ref(false);
 let announcementResizeObserver = null;
+let lastScrollY = 0;
+let scrollTicking = false;
 
 const heroAnnouncement = ref({
   enabled: true,
@@ -1094,6 +1099,38 @@ const syncAnnouncementHeight = () => {
   announcementHeight.value = announcementBarRef.value?.offsetHeight ?? 0;
 };
 
+// Alto efectivo que reservan el nav y el hero: 0 cuando el anuncio está
+// oculto por scroll, para que suban y ocupen el espacio con transición.
+const announcementLayoutHeight = computed(() =>
+  announcementHiddenByScroll.value ? 0 : announcementHeight.value,
+);
+
+// Oculta el anuncio al bajar y lo reaparece al subir (o cerca del top),
+// con un pequeño umbral para evitar parpadeos por scroll mínimo.
+const ANNOUNCEMENT_SCROLL_DELTA = 8;
+
+const updateAnnouncementVisibility = () => {
+  const currentY = window.scrollY;
+  const delta = currentY - lastScrollY;
+
+  if (currentY <= announcementHeight.value) {
+    announcementHiddenByScroll.value = false;
+  } else if (delta > ANNOUNCEMENT_SCROLL_DELTA) {
+    announcementHiddenByScroll.value = true;
+  } else if (delta < -ANNOUNCEMENT_SCROLL_DELTA) {
+    announcementHiddenByScroll.value = false;
+  }
+
+  lastScrollY = currentY;
+  scrollTicking = false;
+};
+
+const onAnnouncementScroll = () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(updateAnnouncementVisibility);
+};
+
 watch(
   () => heroAnnouncement.value.enabled && showAnnouncement.value,
   (isVisible) => {
@@ -1116,6 +1153,7 @@ watch(
 onBeforeUnmount(() => {
   announcementResizeObserver?.disconnect();
   window.removeEventListener("resize", syncViewportWidth);
+  window.removeEventListener("scroll", onAnnouncementScroll);
 });
 
 onMounted(() => {
@@ -1128,6 +1166,10 @@ onMounted(() => {
   // Sincroniza el ancho de viewport para el responsive del móvil superpuesto
   syncViewportWidth();
   window.addEventListener("resize", syncViewportWidth);
+
+  // Muestra/oculta el anuncio del top según la dirección del scroll
+  lastScrollY = window.scrollY;
+  window.addEventListener("scroll", onAnnouncementScroll, { passive: true });
 
   // Setup scroll animations
   setupScrollAnimations();
@@ -1155,10 +1197,21 @@ if (typeof window !== "undefined") {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8dedb;
+  background: #fde9c8;
   color: #111827;
   font-size: var(--landing-fs-sm);
   line-height: var(--line-height-normal);
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.announcement-bar--hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .announcement-content {
@@ -1171,7 +1224,7 @@ if (typeof window !== "undefined") {
 }
 
 .announcement-content strong {
-  color: #ff2f55;
+  color: #b45309;
   font-weight: var(--landing-fw-strong);
 }
 
@@ -1185,7 +1238,7 @@ if (typeof window !== "undefined") {
 }
 
 .announcement-link {
-  color: #ff2f55;
+  color: #b45309;
   font-weight: var(--landing-fw-strong);
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -1204,11 +1257,13 @@ if (typeof window !== "undefined") {
 
 .premium-nav {
   top: var(--announcement-height);
+  transition: top 0.35s ease;
 }
 
 .hero-section {
   min-height: 100vh;
   padding: calc(var(--announcement-height) + 72px) 0 0;
+  transition: padding-top 0.35s ease;
   align-items: stretch;
   overflow: hidden;
   background:
@@ -1299,21 +1354,21 @@ if (typeof window !== "undefined") {
 }
 
 .hero-side-left {
-  transform: translateX(-15%);
+  transform: translateX(-17%);
 }
 
 .hero-side-right {
-  transform: translateX(20%);
+  transform: translateX(17%);
 }
 
 .hero-side-left.visible {
   opacity: 1;
-  transform: translateX(-15%);
+  transform: translateX(-17%);
 }
 
 .hero-side-right.visible {
   opacity: 1;
-  transform: translateX(15%);
+  transform: translateX(17%);
 }
 
 .hero-side-image {

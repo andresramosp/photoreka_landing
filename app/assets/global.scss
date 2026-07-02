@@ -837,7 +837,7 @@ section {
   --fs-base: 0.95rem; /* ~15px — default body copy */
   --fs-md: 1rem; /* 16px — body */
   --fs-lead: 1.0625rem; /* 17px — hero/section lead paragraphs */
-  --fs-lg: 1.1rem; /* ~18px — emphasized body */
+  --fs-lg: 1rem; /* ~18px — emphasized body */
   --fs-xl: 1.2rem; /* ~19-20px — card titles */
   --fs-2xl: 1.4rem; /* ~22px — sub-section titles */
   --fs-3xl: 1.5rem; /* 24px — small headings */
@@ -851,7 +851,7 @@ section {
   --fs-subheading: clamp(1rem, 2vw, 1.2rem); /* section subtitles */
 
   /* Landing display tokens (index page) */
-  --fs-display-hero: 3.5rem;
+  --fs-display-hero: 3.4rem;
   --fs-display-hero-sm: 2.8rem;
   --fs-display-promo: 3rem;
   --fs-display-promo-sm: 2rem;
@@ -1759,7 +1759,7 @@ section {
     ),
     radial-gradient(circle at 5% 90%, rgba(0, 0, 200, 0.2) 0%, transparent 14%),
     /* Neutral lighter zones to lift the dark canvas behind the app captures */
-      radial-gradient(
+    radial-gradient(
         ellipse 60% 40% at 50% 12%,
         rgba(255, 255, 255, 0.05) 0%,
         transparent 60%
