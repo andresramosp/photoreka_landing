@@ -650,7 +650,7 @@ let lastScrollY = 0;
 let scrollTicking = false;
 
 const heroAnnouncement = ref({
-  enabled: true,
+  enabled: false,
   dismissible: true,
   label: "EARLY ACCESS",
   message:
