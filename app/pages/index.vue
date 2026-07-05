@@ -896,7 +896,7 @@ const features = ref([
       "Reveal cultural references and compositional habits",
       "Analyze your whole archive with AI, not vibes",
     ],
-    image: "/report/2.png",
+    image: "/report/3.png",
     color: "#f59e0b",
     link: "/photo_reports",
   },
