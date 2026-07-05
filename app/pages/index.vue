@@ -105,7 +105,8 @@
               <p class="hero-description" :class="{ visible: heroVisible }">
                 <strong>Photoreka</strong> is a suite of smart tools to help you
                 curate your photos.<br />
-                Upload a project, a curated selection or your entire
+                Upload a <strong>project</strong>, a curated
+                <strong>selection</strong> or your entire
                 <strong>catalog</strong>.<br />
                 <strong>Search</strong> in natural language,
                 <strong>rank</strong> your photos and
