@@ -37,6 +37,7 @@
 
         <div class="footer-column">
           <h4 class="footer-title">EXPLORE</h4>
+          <NuxtLink to="/blog" class="footer-link">Blog</NuxtLink>
           <NuxtLink to="/photo_3D_atlas" class="footer-link"
             >3D Photo Atlas</NuxtLink
           >
@@ -100,10 +101,10 @@ import AppLogo from "~/components/AppLogo.vue";
 
 <style scoped>
 .premium-footer {
-  background: #0a0a0e;
+  background: var(--premium-bg);
   padding: 48px 0 24px;
   margin-top: auto;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--premium-border);
 }
 
 .footer-container {
@@ -171,7 +172,7 @@ import AppLogo from "~/components/AppLogo.vue";
 
 .footer-bottom {
   padding-top: 24px;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--premium-border);
   text-align: center;
 }
 

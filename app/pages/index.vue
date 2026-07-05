@@ -80,7 +80,8 @@
             >
               <img
                 class="hero-side-image hero-side-image-left"
-                :src="heroSideImages.left"
+                :src="heroSideImages.left.src"
+                :style="heroSideImageStyles.left"
                 alt="AI photo scoring and ranking view in Photoreka"
               />
               <img
@@ -106,8 +107,9 @@
                 curate your photos.<br />
                 Upload a project, a curated selection or your entire
                 <strong>catalog</strong>.<br />
-                Search in <strong>natural language</strong>, rank your photos
-                and <strong>understand</strong> your library.
+                <strong>Search</strong> in natural language,
+                <strong>rank</strong> your photos and
+                <strong>understand</strong> your library.
               </p>
               <div
                 v-if="false"
@@ -166,7 +168,8 @@
             >
               <img
                 class="hero-side-image hero-side-image-right"
-                :src="heroSideImages.right"
+                :src="heroSideImages.right.src"
+                :style="heroSideImageStyles.right"
                 alt="AI-generated photo tag cloud in 2D semantic space"
               />
               <img
@@ -185,7 +188,7 @@
             >
               <img
                 class="hero-side-image hero-side-image-mobile"
-                :src="heroSideImages.mobile"
+                :src="heroSideImages.mobile.src"
                 alt="Photoreka AI photo curation and organizer dashboard"
               />
             </div>
@@ -659,9 +662,22 @@ const heroAnnouncement = ref({
 });
 
 const heroSideImages = {
-  left: "/ai_photo_scoring/2.png",
-  right: "/home/tag_cloud_poster_detailed.png",
-  mobile: "/home/dashboard.png",
+  // Desktop compensation: left panel is slightly larger because
+  // the right panel carries the extra phone overlay visual weight.
+  desktopBreakpoint: 968,
+  left: {
+    src: "/ai_photo_scoring/2.png",
+    // src: "/home/portfolio_desktop.png",
+
+    desktopScale: 1,
+  },
+  right: {
+    src: "/home/tag_cloud_poster_detailed.png",
+    desktopScale: 1,
+  },
+  mobile: {
+    src: "/home/dashboard.png",
+  },
 };
 
 // ── Phone mockup overlay (the "movil con halo" image) ──────────
@@ -712,6 +728,23 @@ const activePhoneConfig = computed(() => {
     .sort((a, b) => a - b)
     .find((bp) => viewportWidth.value <= bp);
   return match ? { ...base, ...bps[match] } : base;
+});
+
+const heroSideImageStyles = computed(() => {
+  const isDesktop = viewportWidth.value > heroSideImages.desktopBreakpoint;
+  const leftScale = isDesktop ? heroSideImages.left.desktopScale || 1 : 1;
+  const rightScale = isDesktop ? heroSideImages.right.desktopScale || 1 : 1;
+
+  return {
+    left: {
+      transform: `scale(${leftScale})`,
+      transformOrigin: "center center",
+    },
+    right: {
+      transform: `scale(${rightScale})`,
+      transformOrigin: "center center",
+    },
+  };
 });
 
 const phoneOverlayStyle = computed(() => {
@@ -1330,7 +1363,7 @@ if (typeof window !== "undefined") {
 }
 
 .hero-title {
-  max-width: 680px;
+  max-width: 500px;
   font-size: var(--landing-fs-title-hero);
   font-weight: var(--landing-fw-display);
   line-height: var(--landing-lh-title);
@@ -1357,7 +1390,7 @@ if (typeof window !== "undefined") {
 }
 
 .hero-side-left {
-  transform: translateX(-17%);
+  transform: translateX(-10%);
 }
 
 .hero-side-right {
@@ -1366,7 +1399,7 @@ if (typeof window !== "undefined") {
 
 .hero-side-left.visible {
   opacity: 1;
-  transform: translateX(-17%);
+  transform: translateX(-10%);
 }
 
 .hero-side-right.visible {
@@ -1528,11 +1561,14 @@ if (typeof window !== "undefined") {
   flex-wrap: wrap;
 }
 .search-promo-visual {
-  overflow: hidden;
+  overflow: visible;
   transition: transform 0.4s ease;
 }
 .search-promo-visual:hover {
   transform: translateY(-6px);
+}
+.search-promo-visual .video-frame {
+  transform: scale(1.1);
 }
 .search-promo-video {
   width: 100%;
