@@ -28,7 +28,7 @@
             >Style Analysis Reports</NuxtLink
           >
           <NuxtLink to="/ai_geo_inference" class="footer-link"
-            >AI Geo-Inference</NuxtLink
+            >AI Geo Inference</NuxtLink
           >
           <NuxtLink to="/ai_geo_recovery" class="footer-link"
             >AI Bulk Geotagging</NuxtLink
@@ -37,7 +37,7 @@
 
         <div class="footer-column">
           <h4 class="footer-title">EXPLORE</h4>
-          <NuxtLink to="/blog" class="footer-link">Blog</NuxtLink>
+          <!-- <NuxtLink to="/blog" class="footer-link">Blog</NuxtLink> -->
           <NuxtLink to="/photo_3D_atlas" class="footer-link"
             >3D Photo Atlas</NuxtLink
           >
