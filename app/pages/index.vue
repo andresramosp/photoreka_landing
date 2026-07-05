@@ -824,6 +824,21 @@ const features = ref([
     link: "/photo_3D_atlas",
   },
   {
+    icon: markRaw(Trophy20Regular),
+    title: "Rankings & Scores",
+    description:
+      "Score your photos across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, humor, and more. Commercial mode adds product-specific scores like subject clarity and commercial intent. Rank your catalog and surface your strongest work automatically.",
+    lead: "Score your photos across multiple dimensions and rank your catalog.",
+    bullets: [
+      "Score aesthetics, composition, narrative and originality",
+      "Commercial mode adds product-specific scores",
+      "Surface your strongest work automatically",
+    ],
+    image: "/ai_photo_scoring/1.png",
+    color: "#ec4899",
+    link: "/photo_scoring",
+  },
+  {
     icon: markRaw(Workspace),
     title: "Interactive Canvas",
     description:
@@ -885,20 +900,21 @@ const features = ref([
     color: "#f59e0b",
     link: "/photo_reports",
   },
+
   {
-    icon: markRaw(Trophy20Regular),
-    title: "Rankings & Scores",
+    icon: markRaw(AnalyticsOutline),
+    title: "AI Geo Inference",
     description:
-      "Score your photos across multiple dimensions: aesthetics, composition, narrative strength, originality, visual wit, humor, and more. Commercial mode adds product-specific scores like subject clarity and commercial intent. Rank your catalog and surface your strongest work automatically.",
-    lead: "Score your photos across multiple dimensions and rank your catalog.",
+      "Map your archive by inferred location, even when GPS data is missing. Photoreka estimates place, city, region, and country from visual context, then lets you explore clusters on an interactive map.",
+    lead: "Map your archive with AI-inferred locations, even without GPS metadata.",
     bullets: [
-      "Score aesthetics, composition, narrative and originality",
-      "Commercial mode adds product-specific scores",
-      "Surface your strongest work automatically",
+      "Infer place, city, region, and country from visual context",
+      "Explore geographic clusters in an interactive map view",
+      "Refine results with source, detail, and time-range filters",
     ],
-    image: "/ai_photo_scoring/1.png",
-    color: "#ec4899",
-    link: "/photo_scoring",
+    image: "/ai_geoinference/3.png",
+    color: "#14b8a6",
+    link: "/ai_geo_inference",
   },
 ]);
 
