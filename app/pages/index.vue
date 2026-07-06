@@ -105,12 +105,13 @@
               <p class="hero-description" :class="{ visible: heroVisible }">
                 <strong>Photoreka</strong> is a suite of smart tools to help you
                 curate your photos.<br />
+
+                <strong>Search</strong> in natural language,
+                <strong>rank</strong> your photos and <strong>chat</strong> with
+                your library.<br />
                 Upload a <strong>project</strong>, a curated
                 <strong>selection</strong> or your entire
-                <strong>catalog</strong>.<br />
-                <strong>Search</strong> in natural language,
-                <strong>rank</strong> your photos and
-                <strong>understand</strong> your library.
+                <strong>catalog</strong>.
               </p>
               <div
                 v-if="false"
@@ -665,7 +666,7 @@ const heroAnnouncement = ref({
 const heroSideImages = {
   // Desktop compensation: left panel is slightly larger because
   // the right panel carries the extra phone overlay visual weight.
-  desktopBreakpoint: 968,
+  desktopBreakpoint: 768,
   left: {
     src: "/ai_photo_scoring/2.png",
     // src: "/home/portfolio_desktop.png",
@@ -701,12 +702,13 @@ const heroPhoneOverlay = ref({
   enabled: true,
   side: "right",
   image: "/home/Photoreka_movil(con halo).png",
-  width: 240,
-  offsetX: -260,
+  width: 230,
+  offsetX: -250,
   offsetY: 40,
   rotation: 0,
   anchor: "bottom",
   responsive: {
+    1280: { width: 170, offsetX: -80 },
     1400: { width: 210, offsetX: -190 },
     1200: { width: 180, offsetX: -110 },
     1024: { width: 150, offsetX: -40 },
@@ -822,6 +824,23 @@ const features = ref([
     image: "/atlas/2d.png",
     color: "#06b6d4",
     link: "/photo_3D_atlas",
+    demoLink: "/demo/2d-atlas",
+  },
+  {
+    icon: markRaw(ChatbubblesOutline),
+    title: "Photo Chat Assistant",
+    description:
+      "Chat with your photo library to find your strongest images, request honest critique, detect patterns across your catalog, and curate meaningful selections in plain language.",
+    lead: "Talk to your archive and get ranked picks, critique, and catalog insights.",
+    bullets: [
+      "Ask natural-language questions about your full photo library",
+      "Get portfolio critique and quality-ranked selections",
+      "Track your evolution and discover recurring patterns",
+    ],
+    image: "/chatlab/1.png",
+    color: "#8b5cf6",
+    link: "/photo_chat",
+    demoLink: "/demo/chatlab",
   },
   {
     icon: markRaw(Trophy20Regular),
@@ -1368,6 +1387,44 @@ if (typeof window !== "undefined") {
   gap: 1.45rem;
   max-width: 600px;
   margin: 0 auto;
+}
+
+@media (max-width: 1280px) {
+  .hero-container {
+    grid-template-columns: minmax(220px, 0.75fr) minmax(540px, 1fr) minmax(
+        220px,
+        0.75fr
+      );
+  }
+
+  .hero-content {
+    max-width: 560px;
+    padding-inline: 0.5rem;
+  }
+
+  .hero-side-left {
+    transform: translateX(-6%);
+  }
+
+  .hero-side-right {
+    transform: translateX(12%);
+  }
+
+  .hero-side-left.visible {
+    transform: translateX(-6%);
+  }
+
+  .hero-side-right.visible {
+    transform: translateX(12%);
+  }
+
+  .hero-title {
+    max-width: 460px;
+  }
+
+  .hero-description {
+    max-width: 560px;
+  }
 }
 
 .hero-badge,
