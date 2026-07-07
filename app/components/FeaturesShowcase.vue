@@ -41,13 +41,9 @@
 
       <!-- ── Variant 2: Alternating showcase rows ─────────────── -->
       <div v-else class="fs-rows">
-        <component
-          :is="feature.link ? 'a' : 'div'"
+        <div
           v-for="(feature, index) in features"
           :key="index"
-          :href="feature.link || undefined"
-          :target="feature.link ? '_blank' : undefined"
-          :rel="feature.link ? 'noopener noreferrer' : undefined"
           class="fs-row"
           :class="{ visible, 'fs-row--reversed': index % 2 === 1 }"
           :style="{ transitionDelay: `${index * 80}ms` }"
@@ -79,10 +75,28 @@
               </li>
             </ul>
 
-            <span v-if="feature.link" class="fs-row-link">
-              Learn more
-              <n-icon size="16"><ArrowForwardOutline /></n-icon>
-            </span>
+            <div v-if="feature.link || feature.demoLink" class="fs-row-actions">
+              <a
+                v-if="feature.link"
+                :href="feature.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="fs-row-link"
+              >
+                Learn more
+                <n-icon size="16"><ArrowForwardOutline /></n-icon>
+              </a>
+              <a
+                v-if="feature.demoLink"
+                :href="buildDemoHref(feature.demoLink)"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="fs-row-demo"
+              >
+                Try demo
+                <n-icon size="16"><ArrowForwardOutline /></n-icon>
+              </a>
+            </div>
           </div>
 
           <!-- Visual -->
@@ -99,7 +113,7 @@
               />
             </div>
           </div>
-        </component>
+        </div>
       </div>
     </div>
   </section>
@@ -120,6 +134,16 @@ const props = defineProps({
   sectionId: { type: String, default: "features" },
   features: { type: Array, required: true },
 });
+
+const config = useRuntimeConfig();
+
+const buildDemoHref = (demoLink) => {
+  if (!demoLink) return "#";
+  if (/^https?:\/\//i.test(demoLink)) return demoLink;
+  const appUrl = config.public.appUrl || "https://app.photoreka.com";
+  const normalizedPath = demoLink.startsWith("/") ? demoLink : `/${demoLink}`;
+  return `${appUrl}${normalizedPath}`;
+};
 
 // Normalize a feature's imagery into an array for FeatureCarousel.
 // Accepts `images` (array of srcs / { src, alt }) or a single `image` string.
@@ -397,15 +421,31 @@ a.fs-card:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  margin-top: 0.5rem;
   font-size: var(--landing-fs-body);
   font-weight: var(--font-weight-semibold);
   color: var(--premium-primary);
-  transition: gap 0.25s ease;
+  text-decoration: none;
 }
 
-.fs-row:hover .fs-row-link {
-  gap: 0.65rem;
+.fs-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.fs-row-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--premium-primary) 45%, transparent);
+  color: var(--premium-text-primary);
+  font-size: var(--landing-fs-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
 }
 
 /* Visual column */
