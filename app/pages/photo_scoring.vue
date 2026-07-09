@@ -171,7 +171,7 @@
                 </div>
                 <div class="step-content">
                   <h3 class="step-title">{{ step.title }}</h3>
-                  <p class="step-description">{{ step.description }}</p>
+                  <p class="step-description" v-html="step.description"></p>
                 </div>
               </div>
             </div>
@@ -483,7 +483,7 @@ const steps = ref([
   {
     title: "Scores feed into every tool",
     description:
-      "Scoring isn't isolated—it powers culling, portfolio building, AI Chat recommendations, and 3D Atlas highlighting. Your quality data follows you across Photoreka's entire workflow.",
+      'Scoring isn\'t isolated—it powers culling, portfolio building, <a href="/photo_chat">AI Chat recommendations</a>, and 3D Atlas highlighting. Your quality data follows you across Photoreka\'s entire workflow.',
     color: "linear-gradient(135deg, #f59e0b, #f97316)",
   },
 ]);
@@ -1070,6 +1070,14 @@ onUnmounted(() => {
   color: var(--premium-text-secondary);
   line-height: var(--line-height-loose);
   font-size: var(--fs-base);
+}
+.step-description a {
+  color: var(--premium-primary);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+.step-description a:hover {
+  text-decoration: underline;
 }
 
 /* ── Features Section ──────────────────────────────────────── */

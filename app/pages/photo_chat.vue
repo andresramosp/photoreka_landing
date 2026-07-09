@@ -64,8 +64,10 @@
                   <em>"Have I improved in the last 6 months?"</em>—and get a
                   real answer backed by your actual work.<br /><br />
                   One conversational interface that combines
-                  <strong>AI photo organization</strong>, library search,
-                  portfolio critique, and catalog intelligence for
+                  <strong>AI photo organization</strong>,
+                  <NuxtLink to="/ai_photo_search" class="cta-link"
+                    >library search</NuxtLink
+                  >, portfolio critique, and catalog intelligence for
                   photographers.
                 </p>
 
@@ -245,6 +247,60 @@
           </div>
         </section>
 
+        <!-- Search & Scoring Cross-promo Section -->
+        <section class="cross-section" ref="crossSection">
+          <div class="hero-background">
+            <div class="gradient-orb orb-2" style="animation-delay: -8s"></div>
+          </div>
+          <div class="section-container" style="position: relative; z-index: 1">
+            <div class="section-header" :class="{ visible: crossVisible }">
+              <div class="hero-badge cross-badge" :class="{ visible: crossVisible }">
+                <span class="badge-content">
+                  <n-icon size="16"><SearchOutline /></n-icon>
+                  Same catalog, more ways in
+                </span>
+              </div>
+              <h2 class="section-title cross-title">
+                Built on the same
+                <span class="gradient-text-blue">search and scoring engines</span>
+              </h2>
+              <p class="section-subtitle">
+                Every answer in ChatLab draws on Photoreka's own semantic
+                search index and multi-dimensional photo scores. Prefer a
+                focused interface instead of a conversation? The same
+                intelligence is available directly.
+              </p>
+            </div>
+
+            <ul class="cross-features" :class="{ visible: crossVisible }">
+              <li>
+                <div class="feature-icon-wrapper" style="color: #06b6d4">
+                  <n-icon size="18"><SearchOutline /></n-icon>
+                </div>
+                <span>
+                  <NuxtLink to="/ai_photo_search" @click="goToAiSearch"
+                    >AI Photo Search</NuxtLink
+                  >
+                  — describe a photo in plain language and find it instantly,
+                  no tagging required.
+                </span>
+              </li>
+              <li>
+                <div class="feature-icon-wrapper" style="color: #f59e0b">
+                  <n-icon size="18"><BarChartOutline /></n-icon>
+                </div>
+                <span>
+                  <NuxtLink to="/photo_scoring" @click="goToScoring"
+                    >AI Photo Scoring</NuxtLink
+                  >
+                  — the same aesthetic, composition, and narrative scores,
+                  ranked and filterable across your whole catalog.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
         <!-- FAQ Section -->
         <section class="faq-section" ref="faqSection">
           <div class="section-container">
@@ -365,101 +421,13 @@ import {
   AnalyticsOutline,
   PersonOutline,
   RepeatOutline,
+  BarChartOutline,
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO
-useSEO("photo_chat", {
-  jsonLd: [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "Photoreka AI Photo Assistant",
-      alternateName: "ChatGPT for your photo library",
-      description:
-        "AI photo assistant for photographers. Chat with your photo library to find your best photos, organize your catalog, get an honest portfolio critique, rate your shots, track your photography improvement over time, discover patterns, and build curated selections in natural language.",
-      applicationCategory: "PhotographyApplication",
-      operatingSystem: "Web",
-      url: "https://www.photoreka.com/photo_chat",
-      offers: {
-        "@type": "Offer",
-        availability: "https://schema.org/PreOrder",
-        price: "0",
-        priceCurrency: "USD",
-      },
-      creator: {
-        "@type": "Organization",
-        name: "Photoreka",
-        url: "https://www.photoreka.com",
-      },
-      featureList: [
-        "Natural language search across your entire photo library",
-        "AI-powered portfolio critique and photography analysis",
-        "Photography improvement and progression tracking over time",
-        "Intelligent photo curation and sequence building",
-        "Photo catalog statistics: subjects, lighting, color patterns",
-        "AI-generated curated selections for exhibitions and competitions",
-        "Personalized photography advice based on your actual archive",
-        "Multilingual support",
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Can the AI find my best photos automatically?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes. Ask it to find your best photos and it ranks your strongest shots across your whole library by composition, expression, and technical quality—then explains why each one stands out.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Can it rate or critique my photography?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes. You can ask it to rate a shoot or critique your portfolio, and it gives evidence-based feedback grounded in your actual catalog: composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is designed to be useful rather than flattering.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How is this different from just searching my photos?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Search finds photos that match a description. The assistant reasons about your catalog as a whole: it can evaluate your work, spot patterns across thousands of images, build curated sequences, and give you personalized feedback.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Does it actually look at my photos, or just the metadata?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Both. For most questions it combines metadata with visual embeddings. When you ask about specific images, it can also process the actual photos directly for visual understanding of composition, mood, and lighting.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Can it really critique my photography objectively?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "It gives evidence-based feedback grounded in your actual catalog, including composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is designed to be useful rather than flattering.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Can I use it to prepare for a competition or exhibition?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes. You can ask for a ranked selection of your best work, a coherent sequence, or a specific number of images that tell a story, and the assistant will select and order them with curatorial intent.",
-          },
-        },
-      ],
-    },
-  ],
-});
+useSEO("photo_chat");
 
 useHead({
   script: [
@@ -743,7 +711,10 @@ const goToAtlas = () => {
 
 const goToAiSearch = () => {
   trackUserAction("navigate_to_ai_search", "photo_chat_page");
-  navigateTo("/ai_photo_search");
+};
+
+const goToScoring = () => {
+  trackUserAction("navigate_to_scoring", "photo_chat_page");
 };
 
 const onRequestSuccess = () => {
@@ -1424,10 +1395,19 @@ onMounted(() => {
 .cross-features {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0 0 0;
+  margin: 2rem auto 0;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+
+.cross-features.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cross-features li {
@@ -1436,6 +1416,17 @@ onMounted(() => {
   gap: 0.75rem;
   color: var(--premium-text-primary);
   font-size: var(--fs-base);
+  text-align: left;
+}
+
+.cross-features li a {
+  color: #8b5cf6;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.cross-features li a:hover {
+  text-decoration: underline;
 }
 
 .feature-icon-wrapper {

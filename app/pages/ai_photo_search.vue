@@ -295,8 +295,10 @@
                   <div class="alt-feature">
                     <span class="alt-check">✓</span>
                     <span
-                      >ChatLab: an LLM vision layer for conversational,
-                      iterative refinement</span
+                      ><NuxtLink to="/photo_chat" class="cta-link"
+                        >ChatLab</NuxtLink
+                      >: an LLM vision layer for conversational, iterative
+                      refinement</span
                     >
                   </div>
                 </div>
