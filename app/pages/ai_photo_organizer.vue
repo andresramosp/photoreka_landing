@@ -62,12 +62,12 @@
                   sits on top of
                   <strong>Lightroom Classic, Google Photos, Dropbox</strong> or
                   local folders and analyzes your library once—making it
-                  searchable in natural language, scored for quality, and
-                  mapped by visual similarity.
+                  searchable in natural language, scored for quality, and mapped
+                  by visual similarity.
                 </p>
                 <p class="hero-note" :class="{ visible: heroVisible }">
-                  No migration. No new catalog. No subscription—pay per
-                  analyzed batch.
+                  No migration. No new catalog. No subscription—pay per analyzed
+                  batch.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -116,8 +116,7 @@
               <p class="section-subtitle">
                 Most photo organizers ask you to rebuild your library inside
                 their system. Photoreka takes the opposite approach: your files
-                stay exactly where they are, and the intelligence comes to
-                them.
+                stay exactly where they are, and the intelligence comes to them.
               </p>
             </div>
 
@@ -269,8 +268,9 @@
                   <div class="alt-feature">
                     <span class="alt-check">✓</span>
                     <span
-                      >Runs in the browser on <strong>Windows, Mac, and
-                      Linux</strong> — unlike Peakto (Mac-only)</span
+                      >Runs in the browser on
+                      <strong>Windows, Mac, and Linux</strong> — unlike Peakto
+                      (Mac-only)</span
                     >
                   </div>
                   <div class="alt-feature">
@@ -284,19 +284,19 @@
                     <span class="alt-check">✓</span>
                     <span
                       >Goes beyond organizing into <strong>curation</strong>:
-                      quality scoring, portfolio sequencing, and an AI
-                      assistant for your catalog</span
+                      quality scoring, portfolio sequencing, and an AI assistant
+                      for your catalog</span
                     >
                   </div>
                   <div class="alt-feature">
                     <span class="alt-check">✓</span>
                     <span
-                      >No query length limit on search — unlike CLIP-based
-                      tools like Excire (~77-token cap)</span
+                      >No query length limit on search — unlike CLIP-based tools
+                      like Excire (~77-token cap)</span
                     >
                   </div>
                 </div>
-                <p class="alt-note">
+                <!-- <p class="alt-note">
                   Deciding between tools? Read our honest comparison:
                   <NuxtLink
                     to="/blog/peakto-alternative-windows"
@@ -304,7 +304,7 @@
                     >Photoreka vs Peakto — AI photo curation beyond the
                     Mac</NuxtLink
                   >.
-                </p>
+                </p> -->
               </div>
             </div>
           </div>
@@ -349,9 +349,7 @@
         <section class="cta-section" ref="ctaSection">
           <div class="section-container">
             <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">
-                Your archive, organized by the weekend.
-              </h2>
+              <h2 class="cta-title">Your archive, organized by the weekend.</h2>
               <p class="cta-description">
                 Connect your sources, let the analysis run, and open a catalog
                 that finally answers back. Your files never move.
@@ -675,7 +673,8 @@ onMounted(() => {
   setupScrollAnimations();
   trackEvent("page_view", {
     page: "ai_photo_organizer",
-    page_title: "AI Photo Organizer — No Migration, No Subscription | Photoreka",
+    page_title:
+      "AI Photo Organizer — No Migration, No Subscription | Photoreka",
   });
 });
 </script>
