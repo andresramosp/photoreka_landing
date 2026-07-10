@@ -5,13 +5,17 @@
         <div class="footer-column">
           <AppLogo layout="horizontal" :with-claim="true" size="small" />
           <p class="footer-description">
-            AI-powered app to curate and organize your photos. Search, score,
-            explore in 3D, and build portfolios with AI.
+            The AI curation layer for your photo archive. Search, score, explore
+            in 3D, and build portfolios with AI—on top of the storage you
+            already use.
           </p>
         </div>
 
         <div class="footer-column">
           <h4 class="footer-title">AI TOOLS</h4>
+          <NuxtLink to="/ai_photo_organizer" class="footer-link"
+            >AI Photo Organizer</NuxtLink
+          >
           <NuxtLink to="/ai_photo_search" class="footer-link"
             >AI Photo Search</NuxtLink
           >
@@ -50,6 +54,9 @@
           <NuxtLink to="/lightroom_search_plugin" class="footer-link"
             >Lightroom Plugin</NuxtLink
           >
+          <!-- <NuxtLink to="/commercial_photography" class="footer-link"
+            >For Commercial Photographers</NuxtLink
+          > -->
 
           <NuxtLink to="/framer" class="footer-link"
             >Free Photo Framer</NuxtLink

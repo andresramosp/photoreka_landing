@@ -57,10 +57,10 @@
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
                   Photoreka is like
                   <strong>ChatGPT for your photo library</strong>—ask it to find
-                  your best photos, organize your catalog, critique your
-                  portfolio, or rate your shots, all in plain language.
+                  your best photos, organize your catalog, or critique your
+                  portfolio, all in plain language.
                   <em>"Which are my strongest photos?"</em>,
-                  <em>"Rate my last shoot"</em>,
+                  <em>"Pick 20 photos from my archive for a photobook"</em>,
                   <em>"Have I improved in the last 6 months?"</em>—and get a
                   real answer backed by your actual work.<br /><br />
                   One conversational interface that combines
@@ -142,7 +142,7 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: examplesVisible }">
               <h2 class="section-title">
-                Ask AI to find, organize, rate or critique your photos
+                Ask AI to find, organize, and critique your photos
               </h2>
               <p class="section-subtitle">
                 This is more than AI photo search. The assistant uses AI to
@@ -627,9 +627,9 @@ const faqs = ref([
       "Yes. Just ask it to find your best photos and it ranks your strongest shots across your entire library—by composition, expression, and technical quality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
   },
   {
-    question: "Can it rate or critique my photography?",
+    question: "Can it critique my portfolio like an editor would?",
     answer:
-      "Yes. Ask it to rate a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
+      "Yes. Ask it to review a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
   },
   {
     question: "Can it help me organize my photo library with AI?",

@@ -160,6 +160,28 @@ export const seoConfig = {
       ],
     },
 
+    // blog: {
+    //   title: "Blog — Notes on AI & Photography | Photoreka",
+    //   description:
+    //     "Technical and artistic write-ups on AI photo curation: semantic search, computer vision, and what it takes to make sense of a photographic body of work.",
+    //   keywords:
+    //     "photoreka blog, ai photography blog, photo curation articles, semantic search explained, computer vision photography",
+    //   ogImage: "/logos/marca/vertical-claim-light.png",
+    //   ogType: "website",
+    //   twitterCard: "summary_large_image",
+    //   jsonLd: {
+    //     "@context": "https://schema.org",
+    //     "@type": "Blog",
+    //     name: "Photoreka Journal",
+    //     url: "https://www.photoreka.com/blog",
+    //     publisher: {
+    //       "@type": "Organization",
+    //       name: "Photoreka",
+    //       url: "https://www.photoreka.com",
+    //     },
+    //   },
+    // },
+
     terms: {
       title: "Terms of Service - Photoreka",
       description:
@@ -197,8 +219,7 @@ export const seoConfig = {
     },
 
     framer: {
-      title:
-        "Free Batch Photo Framer - Frame Hundreds of Photos Instantly | Photoreka",
+      title: "Free Batch Photo Framer — Frame Hundreds at Once | Photoreka",
       description:
         "Free Framer is the ultimate batch photo framing tool and photo workflow automation software. Frame unlimited photos at once with professional borders. No limits, no watermarks, no account needed. Perfect for photo management, culling, and organizing your photo library. The only free tool for true bulk photo framing and batch image processing.",
       keywords:
@@ -242,8 +263,7 @@ export const seoConfig = {
     },
 
     ai_photo_search: {
-      title:
-        "AI Photo Search — Find Any Photo by Describing It | Excire Alternative | Photoreka",
+      title: "AI Photo Search — Find Any Photo by Describing It | Photoreka",
       description:
         "Find any photo by describing it in natural language — no tagging needed. Three honest search modes: Broad (embedding similarity), Adaptive (re-ranked), and Precise (logical inference that verifies conditions, not just ranks them). No query length limit — unlike CLIP-based tools like Excire Search (~77-token cap). Enriched results with AI insights. ChatLab for iterative LLM refinement. The AI photo search app that tells you exactly how precise it's being.",
       keywords:
@@ -378,8 +398,7 @@ export const seoConfig = {
     },
 
     lightroom_plugin: {
-      title:
-        "Natural Language AI Photo Search Plugin for Lightroom Classic | Excire Alternative | Photoreka",
+      title: "AI Photo Search Plugin for Lightroom Classic | Photoreka",
       description:
         "Search your Lightroom Classic catalog by describing what you remember — no manual tagging. Unlike CLIP-based plugins like Excire Search (limited to ~77-token queries), Photoreka has no length cap and offers three search modes: Broad, Adaptive, and Precise (logical inference). All AI processing runs locally. Compatible with Lightroom Classic 13.0+. RAW, CR2, NEF, ARW, JPEG, PNG, TIFF.",
       keywords:
@@ -429,11 +448,11 @@ export const seoConfig = {
     },
 
     photo_chat: {
-      title: "Photoreka AI Photo Assistant — Chat With Your Library",
+      title: "ChatGPT for Your Photo Library — AI Assistant | Photoreka",
       description:
-        "Chat with your photo library to find your best shots, get an honest AI critique, and track your progress. Like ChatGPT for your photos.",
+        "Chat with your photo catalog to find your strongest work, get honest portfolio critique, and track your progress over time. Like ChatGPT for your photo library—built for photographers with serious archives.",
       keywords:
-        "find my best photos, organize photos with AI, AI photo critique, rate my photos AI, chatgpt for my photos, find photos by describing them, how to choose best photos, AI photography feedback, AI photo curation, photo portfolio critique AI, AI photo assistant, ask AI about my photos, photo library AI chat, conversational photo search, AI photo organizer, photography improvement tracker AI, discover photo patterns AI, AI photo curator",
+        "chatgpt for my photos, chat with my photo library, AI photo assistant, find my best photos, organize photos with AI, AI photo critique, photo portfolio critique AI, AI photography feedback, AI photo curation, ask AI about my photos, photo library AI chat, conversational photo search, photo catalog AI assistant, photography improvement tracker AI, discover photo patterns AI, AI photo curator, AI assistant for photographers",
       ogImage: "/home/dashboard.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -486,10 +505,10 @@ export const seoConfig = {
             },
             {
               "@type": "Question",
-              name: "Can it rate or critique my photography?",
+              name: "Can it critique my portfolio like an editor would?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Ask it to rate a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
+                text: "Yes. Ask it to review a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
               },
             },
             {
@@ -572,8 +591,7 @@ export const seoConfig = {
     },
 
     photo_3d_atlas: {
-      title:
-        "3D Photo Atlas - Visualize Your Entire Photo Catalog in 3D Space | Photoreka",
+      title: "3D Photo Atlas — Explore Your Catalog in 3D Space | Photoreka",
       description:
         "Stop scrolling grids endlessly. Photoreka's 3D Photo Atlas uses AI and dimensionality reduction (UMAP) to place your entire catalog in navigable 3D space—automatically clustered by visual similarity. Discover hidden patterns, stylistic evolution, and thematic connections across thousands of photos. Runs in browser via WebGL, no installation required.",
       keywords:
@@ -619,8 +637,7 @@ export const seoConfig = {
     },
 
     ai_photo_culling: {
-      title:
-        "AI Photo Culling — Auto-Select Your Best Photos Instantly | Smart Photo Culling App | Photoreka",
+      title: "AI Photo Culling for Your Whole Catalog | Photoreka",
       description:
         "Stop spending hours culling photos manually. Photoreka's AI photo culling ranks every image by aesthetics, composition, sharpness, and narrative strength—so you instantly see your strongest shots. Not binary keep/reject: multi-dimensional scoring that respects your style. Works with Lightroom Classic, Google Photos, and local files.",
       keywords:
@@ -680,12 +697,11 @@ export const seoConfig = {
     },
 
     photo_scoring: {
-      title:
-        "AI Photo Scoring — Rate, Rank & Find Your Best Photos Automatically | Photoreka",
+      title: "AI Photo Scoring — Rank Your Entire Catalog | Photoreka",
       description:
-        "Automatically score and rank every photo in your catalog across 9+ quality dimensions: aesthetics, composition, narrative strength, originality, humor, visual wit, candidness, and more. Photoreka's AI photo rating finds your best photos instantly—no manual selection, no guesswork. Surface hidden gems from thousands of images, track your artistic progress over time, and separate your strongest work from the noise. The photo quality checker and best-photo picker built for serious photographers.",
+        "Score every photo in your catalog across 9+ quality dimensions: aesthetics, composition, narrative strength, originality, candidness, and more. Surface your strongest work from an archive of thousands, track your artistic progress over time, and separate keepers from noise. Built for photographers with serious catalogs—works with Lightroom Classic, Google Photos, and local libraries.",
       keywords:
-        "AI photo scoring, rate my photos AI, find best photos AI, photo quality checker AI, best photo picker AI, photo rating app, AI photo ranking, photo quality assessment, photo aesthetic score, photography scoring app, AI photo culling alternative, photo quality grader, image quality rating, photo composition analyzer, photo selection AI, automatically find best photos, best photo selector AI, photo ranking software, photo aesthetic analysis, AI photography ranking, score photos automatically, AI photography critique tool, photo quality metrics, rate photos automatically, photo aesthetic rating, select best photos AI, AI photo filter, photo quality comparison tool, photography quality score, auto select best photos, image aesthetic assessment, AI photo assessment tool",
+        "AI photo scoring, photo scoring software, score entire photo catalog, rank photo library AI, find best photos in large catalog, photo aesthetic score, aesthetic scoring photography, AI photo ranking, photo quality assessment, image aesthetic assessment, photo composition analyzer, photo selection AI for photographers, automatically surface best photos, photo ranking software, photo aesthetic analysis, AI photography critique tool, photo quality metrics, photography quality score, score photos lightroom catalog, track photography progress over time, photo scoring for photographers, curate large photo archive",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -694,7 +710,7 @@ export const seoConfig = {
         "@type": "WebApplication",
         name: "Photoreka AI Photo Scoring",
         description:
-          "AI photo scoring and ranking tool for photographers. Rates every photo across 9+ quality dimensions—aesthetics, composition, narrative, originality, and more—to automatically surface your best work from thousands of images.",
+          "AI photo scoring and ranking for large photo catalogs. Scores every photo across 9+ quality dimensions—aesthetics, composition, narrative, originality, and more—to automatically surface a photographer's strongest work from an archive of thousands.",
         applicationCategory: "PhotographyApplication",
         operatingSystem: "Web",
         url: "https://www.photoreka.com/photo_scoring",
@@ -727,8 +743,7 @@ export const seoConfig = {
     },
 
     ai_geo_recovery: {
-      title:
-        "Geo Recovery — Bulk Photo Geotagging & EXIF GPS Writeback Online | Photoreka",
+      title: "Bulk Photo Geotagging Online — EXIF GPS Writeback | Photoreka",
       description:
         "Need to geotag photos already taken without an account? Geo Recovery uses AI to find where your shots were taken, lets you review every pin on a map, and writes GPS coordinates directly into EXIF on download. Built for DSLR and archive photos with missing GPS metadata. One flat payment, no subscription.",
       keywords:
@@ -816,8 +831,7 @@ export const seoConfig = {
     },
 
     ai_geo_inference: {
-      title:
-        "AI Geo-Inference — Recover Missing GPS Metadata in Your Photo Library | Photoreka",
+      title: "Recover Missing GPS in Your Photo Library | Photoreka",
       description:
         "Fix missing GPS metadata in your existing Photoreka library. AI Geo-Inference analyzes your own photos, predicts location from visual context, and places confident results on your world map with city or district precision. Includes a geolocatability forecast before credit spend.",
       keywords:
@@ -1024,8 +1038,7 @@ export const seoConfig = {
     },
 
     photo_tag_cloud: {
-      title:
-        "Photo Tag Cloud — Explore Your Entire Photo Vocabulary in 2D Semantic Space | Photoreka",
+      title: "Photo Tag Cloud — Your Photo Vocabulary as a 2D Map | Photoreka",
       description:
         "See every tag AI extracted from your photos arranged in an interactive 2D semantic map. Similar tags cluster together—mood next to atmosphere, rain next to fog, city next to urban. Navigate the map to search your catalog: zoom into a cluster and instantly surface the photos that live there. No tagging needed, no lists to scroll.",
       keywords:
@@ -1090,8 +1103,7 @@ export const seoConfig = {
     },
 
     photo_reports: {
-      title:
-        "Photography Style Analysis & Pattern Reports - AI Insights | Photoreka",
+      title: "Photography Style Analysis & Pattern Reports | Photoreka",
       description:
         "Understand how you shoot. Photoreka's AI analyzes your entire catalog to surface recurring patterns, stylistic tendencies, compositional habits, color palettes, and thematic preferences. Get detailed reports on your photographic evolution, strengths, blind spots, and unique visual signature. See your work from the outside for the first time.",
       keywords:
@@ -1132,6 +1144,224 @@ export const seoConfig = {
         ],
       },
     },
+
+    ai_photo_organizer: {
+      title: "AI Photo Organizer — No Migration, No Subscription | Photoreka",
+      description:
+        "Organize your photo library with AI—without moving a single file. Photoreka is the AI curation layer on top of Lightroom Classic, Google Photos, Dropbox, and local folders: automatic analysis, semantic search, quality scores, visual maps, and duplicate detection. Web-based (Windows, Mac, Linux), pay per photo batch, no subscription.",
+      keywords:
+        "AI photo organizer, organize photos with AI, photo organizer for large libraries, organize large photo library, photo library organizer, photo catalog organizer, smart photo organizer, photo organizer without subscription, photo organizer works with lightroom, photo organizer windows and mac, Excire Foto alternative, Peakto alternative, Peakto alternative Windows, Mylio alternative, digikam alternative, photo management software for photographers, organize 20000 photos, photo organization software, AI photo tagging automatic, photo library cleanup, photo DAM alternative, photo analysis layer, no migration photo organizer, organize photos without moving files",
+      ogImage: "/home/dashboard.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka AI Photo Organizer",
+          url: "https://www.photoreka.com/ai_photo_organizer",
+          description:
+            "AI photo organizer that works as a curation layer on top of your existing storage. Analyzes your library once, then gives you semantic search, automatic tags, quality scores, visual similarity maps, and duplicate detection—without migrating files or replacing your catalog.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Works on top of Lightroom Classic, Google Photos, Dropbox, and local files",
+            "No file migration, no new catalog, no subscription",
+            "Automatic AI analysis: tags, scores, embeddings",
+            "Natural language semantic search",
+            "Quality scoring across 9+ dimensions",
+            "2D/3D visual similarity maps of the whole library",
+            "Duplicate and near-duplicate detection",
+            "World map view with AI geo-inference",
+            "Runs in the browser on Windows, Mac, and Linux",
+            "Pay per analyzed photo batch",
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Is Photoreka a DAM or photo management software?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Photoreka is the layer most DAMs are missing: intelligence. It doesn't store your originals or replace your folder structure—it analyzes your library and gives you semantic search, quality scores, automatic tags, and visual maps on top of the storage you already use (Lightroom, Google Photos, Dropbox, or local files).",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do I have to migrate my photo library or rebuild my catalog?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. Your files stay exactly where they are. Photoreka reads your existing sources—including your Lightroom Classic catalog via the official plugin—and builds its analysis from compressed previews. Nothing is moved, renamed, or reorganized.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How is Photoreka different from Excire Foto or Peakto?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Excire Foto and Peakto are desktop apps (Peakto is Mac-only, subscription-based). Photoreka runs in the browser on any OS, is paid per analyzed photo batch instead of a subscription, and goes beyond organization into curation: multi-dimensional quality scoring, three-mode semantic search with no query length limit, portfolio sequencing, and an AI assistant for your catalog.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How many photos can I organize with Photoreka?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Photoreka is built for a curated body of work rather than a raw dump of every file ever captured—duplicate detection is built in to help you get there.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does Photoreka replace Lightroom?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI quality scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
+              },
+            },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "AI Photo Organizer",
+              item: "https://www.photoreka.com/ai_photo_organizer",
+            },
+          ],
+        },
+      ],
+    },
+
+    // commercial_photography: {
+    //   title: "AI Photo Curation for Commercial Photographers | Photoreka",
+    //   description:
+    //     "Curation built for commercial work. Score frames for commercial intent and subject clarity, search your archive from a client brief, and assemble sequenced, client-ready selections. For fashion, architecture, lifestyle, product, and wedding photographers.",
+    //   keywords:
+    //     "commercial photography workflow, AI photo culling for commercial photographers, fashion photography culling, product photography selection, architecture photography curation, lifestyle stock photo curation, wedding photo culling AI, client-ready photo selection, commercial intent photo scoring, subject clarity scoring, packshot selection AI, campaign photo curation, stock library organizer, brief to shot photo search, commercial photo portfolio builder, AI photo scoring commercial, photo delivery workflow, Lightroom commercial workflow",
+    //   ogImage: "/portfolio_builder/2.png",
+    //   ogType: "website",
+    //   twitterCard: "summary_large_image",
+    //   jsonLd: [
+    //     {
+    //       "@context": "https://schema.org",
+    //       "@type": "WebApplication",
+    //       name: "Photoreka for Commercial Photographers",
+    //       description:
+    //         "AI photo curation for commercial photographers. Score frames for commercial intent and subject clarity, search an archive from a client brief, and build sequenced client-ready selections across fashion, architecture, lifestyle, product, and wedding work.",
+    //       applicationCategory: "PhotographyApplication",
+    //       operatingSystem: "Web",
+    //       url: "https://www.photoreka.com/commercial_photography",
+    //       offers: {
+    //         "@type": "Offer",
+    //         availability: "https://schema.org/PreOrder",
+    //         price: "0",
+    //         priceCurrency: "USD",
+    //       },
+    //       creator: {
+    //         "@type": "Organization",
+    //         name: "Photoreka",
+    //         url: "https://www.photoreka.com",
+    //       },
+    //       featureList: [
+    //         "Commercial scoring: subject clarity and commercial intent",
+    //         "Natural language search from a client brief",
+    //         "Client-ready portfolio builder with AI sequencing",
+    //         "Photo chat for building selects and critique",
+    //         "Style and pattern reports for commercial work",
+    //         "2D/3D atlas for large stock libraries",
+    //         "Coverage for fashion, architecture, lifestyle, product, and wedding",
+    //         "Lightroom Classic plugin, Google Photos, and Dropbox import",
+    //       ],
+    //     },
+    //     {
+    //       "@context": "https://schema.org",
+    //       "@type": "FAQPage",
+    //       mainEntity: [
+    //         {
+    //           "@type": "Question",
+    //           name: "What does Photoreka do for commercial photographers?",
+    //           acceptedAnswer: {
+    //             "@type": "Answer",
+    //             text: "Photoreka helps you curate faster on paid work. It scores frames for commercial intent and subject clarity, ranks a shoot by what's sellable, lets you search an archive from a client brief in natural language, and assembles sequenced, client-ready selections across fashion, architecture, lifestyle, product, and wedding work.",
+    //           },
+    //         },
+    //         {
+    //           "@type": "Question",
+    //           name: "What is commercial scoring and how is it different?",
+    //           acceptedAnswer: {
+    //             "@type": "Answer",
+    //             text: "On top of aesthetics, composition, narrative, and originality, commercial mode activates two extra scores: subject clarity (how clean and readable the main subject is) and commercial intent (how usable a frame is for a brand, catalog, or campaign). A sharp, usable packshot ranks above a moody frame that wouldn't pass a client review.",
+    //           },
+    //         },
+    //         {
+    //           "@type": "Question",
+    //           name: "Can it handle a full wedding or a large stock library?",
+    //           acceptedAnswer: {
+    //             "@type": "Answer",
+    //             text: "Yes. Photoreka takes a few thousand frames from a wedding or campaign and surfaces your strongest selects, with near-duplicate detection to cut over-shot setups. The sweet spot is a curated body of work up to about 20,000 photos, with up to 50,000 workable.",
+    //           },
+    //         },
+    //         {
+    //           "@type": "Question",
+    //           name: "Does Photoreka retouch, generate, or alter images?",
+    //           acceptedAnswer: {
+    //             "@type": "Answer",
+    //             text: "No. Photoreka only analyzes, organizes, and curates your existing photographs. It never generates synthetic images or edits your files. It works alongside your editing and delivery tools, not as a replacement.",
+    //           },
+    //         },
+    //         {
+    //           "@type": "Question",
+    //           name: "Who owns the rights to work uploaded to Photoreka?",
+    //           acceptedAnswer: {
+    //             "@type": "Answer",
+    //             text: "You keep 100% of the rights. Photoreka stores only reduced versions of your images to power search and curation, analyzed under agreements that prevent retaining or reusing your photos. Your work is never shared, preserving client confidentiality.",
+    //           },
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       "@context": "https://schema.org",
+    //       "@type": "BreadcrumbList",
+    //       itemListElement: [
+    //         {
+    //           "@type": "ListItem",
+    //           position: 1,
+    //           name: "Home",
+    //           item: "https://www.photoreka.com",
+    //         },
+    //         {
+    //           "@type": "ListItem",
+    //           position: 2,
+    //           name: "Commercial Photography",
+    //           item: "https://www.photoreka.com/commercial_photography",
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
   },
 };
 

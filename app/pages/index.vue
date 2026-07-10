@@ -149,7 +149,7 @@
               </div>
               <div class="hero-trust" :class="{ visible: heroVisible }">
                 <span class="hero-trust-label"
-                  >AI-powered photography curation</span
+                  >The AI curation layer for your photo archive</span
                 >
                 <span class="hero-rating">★★★★★</span>
               </div>

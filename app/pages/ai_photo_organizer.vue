@@ -42,28 +42,32 @@
           </div>
           <div class="hero-container">
             <div class="hero-layout">
+              <!-- Left: Content -->
               <div class="hero-content">
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
-                    <n-icon size="16"><BarChartOutline /></n-icon>
-                    AI Photo Scoring &amp; Quality Ranking
+                    <n-icon size="16"><AlbumsOutline /></n-icon>
+                    AI Photo Organizer
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Score your entire catalog,
-                  <span class="gradient-text">surface your best work</span>
+                  Organize your photo library
+                  <span class="gradient-text"
+                    >without moving a single file</span
+                  >
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Your archive has thousands of images—your portfolio needs
-                  twenty. Photoreka scores every photo in your catalog across
-                  <strong
-                    >aesthetics, composition, narrative strength, originality,
-                    visual wit</strong
-                  >, and more—giving you an objective lens on your own work.<br /><br />
-                  For commercial work—product, stock, or fashion—two extra
-                  dimensions activate:
-                  <strong>subject clarity</strong> and
-                  <strong>commercial intent</strong>.
+                  Photoreka is the
+                  <strong>AI curation layer for your photo archive</strong>. It
+                  sits on top of
+                  <strong>Lightroom Classic, Google Photos, Dropbox</strong> or
+                  local folders and analyzes your library once—making it
+                  searchable in natural language, scored for quality, and
+                  mapped by visual similarity.
+                </p>
+                <p class="hero-note" :class="{ visible: heroVisible }">
+                  No migration. No new catalog. No subscription—pay per
+                  analyzed batch.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -88,59 +92,82 @@
                 </div>
               </div>
 
+              <!-- Right: Visual -->
               <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="video-frame hero-slideshow">
-                  <div
-                    v-for="(img, i) in slideshowImages"
-                    :key="i"
-                    class="hero-slide"
-                    :class="{ active: currentSlide === i }"
-                    :style="{
-                      backgroundImage: `url(${img.src})`,
-                      transform: slideTransforms[i],
-                    }"
-                    role="img"
-                    :aria-label="img.alt"
-                  ></div>
-                  <div class="hero-slideshow-overlay"></div>
+                <div class="video-frame">
+                  <img
+                    class="hero-image"
+                    src="/home/dashboard.png"
+                    alt="Photoreka AI photo organizer dashboard showing an analyzed photo catalog"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Scoring Dimensions Section -->
-        <section class="examples-section" ref="dimensionsSection">
+        <!-- Positioning Section -->
+        <section class="pillars-section" ref="pillarsSection">
           <div class="section-container">
-            <div class="section-header" :class="{ visible: dimensionsVisible }">
-              <h2 class="section-title">9+ AI photo scoring dimensions</h2>
+            <div class="section-header" :class="{ visible: pillarsVisible }">
+              <h2 class="section-title">
+                Your storage is fine. Your findability isn't.
+              </h2>
               <p class="section-subtitle">
-                Each photo receives a detailed quality profile across multiple
-                independent criteria—so you can rank and filter by exactly what
-                matters for your project. Commercial mode activates two
-                additional product-, stock-, and fashion-specific scores.
+                Most photo organizers ask you to rebuild your library inside
+                their system. Photoreka takes the opposite approach: your files
+                stay exactly where they are, and the intelligence comes to
+                them.
               </p>
             </div>
 
-            <div
-              class="dimensions-grid"
-              :class="{ visible: dimensionsVisible }"
-            >
+            <div class="pillars-grid" :class="{ visible: pillarsVisible }">
               <div
-                v-for="(dim, i) in dimensions"
+                v-for="(pillar, i) in pillars"
                 :key="i"
-                class="dimension-card"
-                :style="{ transitionDelay: `${i * 80}ms` }"
+                class="pillar-card"
+                :style="{ transitionDelay: `${i * 100}ms` }"
               >
-                <div class="dimension-icon" :style="{ color: dim.color }">
-                  <n-icon size="28">
-                    <component :is="dim.icon" />
+                <div class="pillar-icon" :style="{ color: pillar.color }">
+                  <n-icon size="32">
+                    <component :is="pillar.icon" />
                   </n-icon>
                 </div>
-                <h3 class="dimension-title">{{ dim.title }}</h3>
-                <p class="dimension-description">{{ dim.description }}</p>
+                <h3 class="pillar-title">{{ pillar.title }}</h3>
+                <p class="pillar-description">{{ pillar.description }}</p>
               </div>
             </div>
+          </div>
+        </section>
+
+        <!-- Atlas Showcase Section -->
+        <section class="atlas-section" ref="atlasSection">
+          <div class="atlas-header" :class="{ visible: atlasVisible }">
+            <h2 class="section-title">Your entire archive, in one image</h2>
+            <p class="section-subtitle">
+              Once analyzed, every photo you own takes its place on a single
+              map—clustered by what the images actually are, not by the folder
+              they landed in. Dense continents are the work you keep returning
+              to. The dark space between them is the work you haven't made yet.
+            </p>
+          </div>
+
+          <div class="atlas-figure" :class="{ visible: atlasVisible }">
+            <img
+              class="atlas-image"
+              src="/atlas/2d.png"
+              alt="Photoreka 2D Atlas: an entire photo library organized into visual similarity clusters on a single navigable map"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="atlas-caption" :class="{ visible: atlasVisible }">
+            <p>
+              This is organization as a whole, not a folder at a time.
+              <NuxtLink to="/photo_3D_atlas" class="cta-link"
+                >Explore the 2D &amp; 3D Atlas →</NuxtLink
+              >
+            </p>
           </div>
         </section>
 
@@ -152,10 +179,12 @@
           </div>
           <div class="section-container" style="position: relative; z-index: 1">
             <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">How scoring works</h2>
+              <h2 class="section-title">
+                From folder chaos to organized catalog
+              </h2>
               <p class="section-subtitle">
-                Transparent, reproducible, and based on real computer vision—not
-                subjective crowdsourced ratings.
+                One analysis pass replaces years of manual tagging, rating, and
+                album building.
               </p>
             </div>
 
@@ -183,11 +212,11 @@
           <div class="section-container">
             <div class="section-header" :class="{ visible: featuresVisible }">
               <h2 class="section-title">
-                Quality ranking built for serious catalogs
+                Everything an AI photo organizer should give you
               </h2>
               <p class="section-subtitle">
-                A multi-dimensional scoring engine for photographers who care
-                about nuance—not just pixel-level sharpness metrics.
+                Organization is not folders and stars. It's being able to find,
+                rank, and understand any part of your archive in seconds.
               </p>
             </div>
 
@@ -204,15 +233,82 @@
                     <component :is="feature.icon" />
                   </n-icon>
                 </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
+                <h3 class="feature-title">
+                  <NuxtLink
+                    v-if="feature.link"
+                    :to="feature.link"
+                    class="feature-link"
+                    >{{ feature.title }}</NuxtLink
+                  >
+                  <template v-else>{{ feature.title }}</template>
+                </h3>
                 <p class="feature-description">{{ feature.description }}</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Geo Recovery Promo Section -->
-        <GeoRecoveryPromo />
+        <!-- Alternatives Callout Section -->
+        <section class="alt-section" ref="altSection">
+          <div class="hero-background">
+            <div class="gradient-orb orb-2" style="animation-delay: -8s"></div>
+          </div>
+          <div class="section-container" style="position: relative; z-index: 1">
+            <div class="alt-callout" :class="{ visible: altVisible }">
+              <div class="alt-callout-inner">
+                <h3 class="alt-callout-title">
+                  Not another DAM. Not another desktop app.
+                </h3>
+                <p class="alt-callout-text">
+                  Excire Foto, Peakto, and Mylio are capable desktop organizers
+                  —but each one asks something of you: a new catalog to import
+                  into, a Mac-only environment, or a monthly subscription.
+                  Photoreka asks for none of it.
+                </p>
+                <div class="alt-features">
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      >Runs in the browser on <strong>Windows, Mac, and
+                      Linux</strong> — unlike Peakto (Mac-only)</span
+                    >
+                  </div>
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      ><strong>Pay per analyzed batch</strong>, not per month —
+                      your organized catalog stays organized</span
+                    >
+                  </div>
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      >Goes beyond organizing into <strong>curation</strong>:
+                      quality scoring, portfolio sequencing, and an AI
+                      assistant for your catalog</span
+                    >
+                  </div>
+                  <div class="alt-feature">
+                    <span class="alt-check">✓</span>
+                    <span
+                      >No query length limit on search — unlike CLIP-based
+                      tools like Excire (~77-token cap)</span
+                    >
+                  </div>
+                </div>
+                <p class="alt-note">
+                  Deciding between tools? Read our honest comparison:
+                  <NuxtLink
+                    to="/blog/peakto-alternative-windows"
+                    class="cta-link"
+                    >Photoreka vs Peakto — AI photo curation beyond the
+                    Mac</NuxtLink
+                  >.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- FAQ Section -->
         <section class="faq-section" ref="faqSection">
@@ -220,7 +316,7 @@
             <div class="section-header" :class="{ visible: faqVisible }">
               <h2 class="section-title">Frequently Asked Questions</h2>
               <p class="section-subtitle">
-                Everything you need to know about AI photo scoring
+                What photographers ask before organizing their library with AI
               </p>
             </div>
 
@@ -253,11 +349,12 @@
         <section class="cta-section" ref="ctaSection">
           <div class="section-container">
             <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Your best photos deserve to be found.</h2>
+              <h2 class="cta-title">
+                Your archive, organized by the weekend.
+              </h2>
               <p class="cta-description">
-                Let Photoreka score your entire catalog and surface the work
-                that defines you as a photographer. No guesswork, no
-                second-guessing.
+                Connect your sources, let the analysis run, and open a catalog
+                that finally answers back. Your files never move.
               </p>
               <div class="cta-buttons">
                 <n-button type="info" size="large" strong @click="goToDemo">
@@ -281,9 +378,9 @@
               </div>
               <div class="cta-extra">
                 <p>
-                  Ready to build a portfolio from your top scores?
-                  <a @click="goToPortfolio" class="cta-link"
-                    >Explore Portfolio Builder</a
+                  Using Lightroom Classic?
+                  <NuxtLink to="/lightroom_search_plugin" class="cta-link"
+                    >See the official plugin</NuxtLink
                   >
                 </p>
               </div>
@@ -301,7 +398,7 @@
 </template>
 
 <script setup>
-import { markRaw, nextTick } from "vue";
+import { markRaw } from "vue";
 import {
   SunnyOutline,
   MoonOutline,
@@ -309,26 +406,22 @@ import {
   PlayCircleOutline,
   KeyOutline,
   ChevronDownOutline,
-  BarChartOutline,
-  EyeOutline,
-  FlashOutline,
-  ImagesOutline,
-  ColorPaletteOutline,
-  HappyOutline,
-  LayersOutline,
+  AlbumsOutline,
   SearchOutline,
+  PricetagsOutline,
+  BarChartOutline,
   GitNetworkOutline,
-  BriefcaseOutline,
-  ScanOutline,
-  ExtensionPuzzleOutline,
-  PersonOutline,
+  CopyOutline,
+  MapOutline,
+  CloudOutline,
+  FlashOutline,
+  WalletOutline,
 } from "@vicons/ionicons5";
-import { Trophy20Regular } from "@vicons/fluent";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO
-useSEO("photo_scoring");
+useSEO("ai_photo_organizer");
 
 useHead({
   script: [
@@ -353,137 +446,75 @@ const toggleTheme = () => baseToggleTheme();
 
 // Refs
 const heroSection = ref(null);
-const dimensionsSection = ref(null);
+const pillarsSection = ref(null);
+const atlasSection = ref(null);
 const howSection = ref(null);
 const featuresSection = ref(null);
+const altSection = ref(null);
 const faqSection = ref(null);
 const ctaSection = ref(null);
 
 const heroVisible = ref(false);
-const dimensionsVisible = ref(false);
+const pillarsVisible = ref(false);
+const atlasVisible = ref(false);
 const howVisible = ref(false);
 const featuresVisible = ref(false);
+const altVisible = ref(false);
 const faqVisible = ref(false);
 const ctaVisible = ref(false);
 
 const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
 
-const slideshowImages = [
-  { src: "/ai_photo_scoring/1.png", alt: "Photo scoring hero slide 1" },
-  { src: "/ai_photo_scoring/2.png", alt: "Photo scoring hero slide 2" },
-  { src: "/ai_photo_scoring/3.png", alt: "Photo scoring hero slide 3" },
-  { src: "/ai_photo_scoring/4.png", alt: "Photo scoring hero slide 4" },
-  { src: "/ai_photo_scoring/5.png", alt: "Photo scoring hero slide 5" },
-];
-const currentSlide = ref(0);
-const slideTransforms = ref(slideshowImages.map(() => "scale(1.0)"));
-let slideshowTimer = null;
-
-const activateSlide = (idx) => {
-  slideTransforms.value[idx] = "scale(1.0)";
-  nextTick(() => {
-    slideTransforms.value[idx] = "scale(1.1)";
-  });
-};
-
-const deactivateSlide = (idx) => {
-  setTimeout(() => {
-    slideTransforms.value[idx] = "scale(1.0)";
-  }, 1100);
-};
-
-// Scoring dimensions
-const dimensions = ref([
+// Positioning pillars
+const pillars = ref([
   {
-    icon: markRaw(ColorPaletteOutline),
-    title: "Aesthetic Quality",
+    icon: markRaw(CloudOutline),
+    title: "Works on top of your storage",
     description:
-      "Overall visual beauty: color harmony, tonal balance, light quality, and visual coherence. How pleasing is this image to look at?",
-    color: "#8b5cf6",
-  },
-  {
-    icon: markRaw(LayersOutline),
-    title: "Composition",
-    description:
-      "Spatial arrangement, framing, balance, leading lines, rule of thirds, negative space, and visual flow. How well-structured is the frame?",
+      "Lightroom Classic, Google Photos, Dropbox, local folders—Photoreka reads from all of them and organizes across them. Your originals never move, and your folder structure survives untouched.",
     color: "#2563eb",
   },
   {
-    icon: markRaw(EyeOutline),
-    title: "Narrative Strength",
-    description:
-      "Storytelling power, emotional resonance, tension, implied action, and human connection. Does this photo say something?",
-    color: "#22c55e",
-  },
-  {
     icon: markRaw(FlashOutline),
-    title: "Originality",
+    title: "Analyze once, organized forever",
     description:
-      "Uniqueness within your catalog and in general photographic terms. Does this stand out from your usual work and from common visual tropes?",
-    color: "#f59e0b",
+      "A single AI analysis pass extracts tags, quality scores, and visual embeddings from every photo. That intelligence persists—no re-processing, no ongoing maintenance, no manual tagging ever again.",
+    color: "#8b5cf6",
   },
   {
-    icon: markRaw(ExtensionPuzzleOutline),
-    title: "Visual Games",
+    icon: markRaw(WalletOutline),
+    title: "No subscription",
     description:
-      "Reflections, optical illusions, visual paradoxes, and perceptual tricks. Images that play with the viewer's perception and reward a second look.",
-    color: "#ec4899",
-  },
-  {
-    icon: markRaw(HappyOutline),
-    title: "Humor",
-    description:
-      "Comic timing, irony, absurdity, and wit captured in a single frame. Does this image make you laugh or smile at the world?",
-    color: "#06b6d4",
-  },
-  {
-    icon: markRaw(ScanOutline),
-    title: "Subject Clarity",
-    description:
-      "How clearly and unambiguously the main subject stands out from the background. Especially relevant for product, stock, and fashion photography where instant subject identification is critical.",
-    color: "#f97316",
-  },
-  {
-    icon: markRaw(BriefcaseOutline),
-    title: "Commercial Intent",
-    description:
-      "Suitability for commercial applications: product advertising, stock libraries, fashion editorials. Evaluates background cleanliness, subject isolation, lighting quality for commercial use, and overall production value.",
-    color: "#a78bfa",
-  },
-  {
-    icon: markRaw(PersonOutline),
-    title: "Candidness",
-    description:
-      "Authenticity and spontaneity of the moment. Unposed, genuine expressions and interactions that feel true to life—the opposite of staged or constructed imagery.",
-    color: "#34d399",
+      "You pay per analyzed photo batch, once. Most tools charge you monthly to keep accessing your own organization. With Photoreka, an organized catalog is something you own.",
+    color: "#22c55e",
   },
 ]);
 
 // How it works steps
 const steps = ref([
   {
-    title: "Computer vision analyzes each photo",
+    title: "Connect your photo sources",
     description:
-      "When you upload or sync your library, Photoreka's AI processes each image to extract high-dimensional visual embeddings that capture content, style, composition, lighting, and emotional tone.",
+      'Link your Lightroom Classic catalog via the <a href="/lightroom_search_plugin">official plugin</a>, connect Google Photos or Dropbox, or upload local files. Photoreka works from compressed previews—your full-resolution originals stay on your machine.',
     color: "linear-gradient(135deg, #2563eb, #06b6d4)",
   },
   {
-    title: "Multi-dimensional scores are computed",
+    title: "AI analyzes your library once",
     description:
-      "Each embedding is evaluated across 6+ independent quality dimensions by specialized scoring models. The result is a detailed quality profile—not a single pass/fail number.",
+      "Computer vision processes each photo to extract semantic tags, multi-dimensional quality scores, visual embeddings, and near-duplicate signatures. Analysis runs in the background at roughly 1,000 photos per hour.",
     color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
-    title: "Rankings surface your best work",
+    title: "Your catalog becomes navigable",
     description:
-      "Sort your entire catalog by any dimension or by a combined overall score. Your strongest photos rise to the top automatically. Filters let you narrow by date, source, or semantic content.",
+      "Search in natural language, sort by quality dimension, browse the tag cloud, fly through the 2D/3D similarity map, or see everything on a world map. Every view is generated automatically—zero manual organization.",
     color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
-    title: "Scores feed into every tool",
+    title: "Curate from an organized base",
     description:
-      'Scoring isn\'t isolated—it powers culling, portfolio building, <a href="/photo_chat">AI Chat recommendations</a>, and 3D Atlas highlighting. Your quality data follows you across Photoreka\'s entire workflow.',
+      'Once organized, the real work starts: cull the weak frames, surface hidden gems, and build sequenced selections with the <a href="/photography_portfolio_builder">Portfolio Builder</a>—for exhibitions, photobooks, or client delivery.',
     color: "linear-gradient(135deg, #f59e0b, #f97316)",
   },
 ]);
@@ -491,85 +522,90 @@ const steps = ref([
 // Features
 const features = ref([
   {
-    icon: markRaw(Trophy20Regular),
-    title: "Surface Hidden Gems",
+    icon: markRaw(SearchOutline),
+    title: "Natural Language Search",
     description:
-      "Many photographers underrate their own work. Scoring reveals photos with exceptional quality that you may have overlooked or forgotten deep in your archive.",
-    color: "#f59e0b",
+      "Find any photo by describing it—subject, mood, light, or cinematic reference. Three search modes, no query length limit, no tagging required.",
+    color: "#06b6d4",
+    link: "/ai_photo_search",
   },
   {
-    icon: markRaw(SearchOutline),
-    title: "Score + Search Combined",
+    icon: markRaw(PricetagsOutline),
+    title: "Automatic AI Tagging",
     description:
-      "Filter by score and search simultaneously: 'my highest-rated portraits from winter' or 'top compositions in black and white'. Quality and content work together.",
-    color: "#2563eb",
+      "Every photo receives semantic tags across mood, environment, subjects, weather, and more—browsable as an interactive 2D tag map of your whole vocabulary.",
+    color: "#8b5cf6",
+    link: "/photo_tag_cloud",
   },
   {
     icon: markRaw(BarChartOutline),
-    title: "Track Your Progress",
+    title: "Quality Scoring & Ranking",
     description:
-      "Compare average scores across time periods to see if your photography is improving. Identify which dimensions have grown and which need attention.",
-    color: "#8b5cf6",
+      "9+ scoring dimensions—aesthetics, composition, narrative, originality—rank your entire catalog so your strongest work surfaces automatically.",
+    color: "#f59e0b",
+    link: "/photo_scoring",
   },
   {
     icon: markRaw(GitNetworkOutline),
-    title: "No Subjective Crowdsourcing",
+    title: "2D/3D Visual Maps",
     description:
-      "Scoring is computed by AI trained on expert-level photographic assessment, not random internet votes. Results are consistent, reproducible, and private.",
-    color: "#22c55e",
+      "See your whole archive as a navigable space where similar photos cluster together. Spot themes, gaps, and stylistic shifts no grid can reveal.",
+    color: "#2563eb",
+    link: "/photo_3D_atlas",
   },
   {
-    icon: markRaw(ImagesOutline),
-    title: "Batch Any Catalog Size",
+    icon: markRaw(CopyOutline),
+    title: "Duplicate Detection",
     description:
-      "From 100 photos to 20,000+. Scoring runs in the background and results persist—sort and filter anytime without reprocessing.",
+      "Near-duplicate detection flags over-shot sequences and redundant frames, so your organized catalog starts from an intentional body of work.",
     color: "#ec4899",
   },
   {
-    icon: markRaw(FlashOutline),
-    title: "Instant Re-ranking",
+    icon: markRaw(MapOutline),
+    title: "World Map & Geo Recovery",
     description:
-      "Switch dimensions instantly. Sort by narrative strength for a documentary project, then by aesthetics for a gallery submission—without waiting.",
-    color: "#06b6d4",
+      "Photos with GPS land on your world map automatically—and AI geo-inference recovers locations for the archive shots that never had GPS metadata.",
+    color: "#22c55e",
+    link: "/ai_geo_inference",
   },
 ]);
 
 // FAQs
 const faqs = ref([
   {
-    question: "Can AI really judge the quality of a photo?",
+    question: "Is Photoreka a DAM or photo management software?",
     answer:
-      "Photoreka's scoring models are trained on expert photographic assessments and analyze visual properties that correlate with quality: composition, color harmony, lighting, subject presence, and emotional impact. They're not infallible—art is subjective—but they provide a consistent, data-driven starting point that most photographers find surprisingly accurate.",
+      "Photoreka is the layer most DAMs are missing: intelligence. It doesn't store your originals or replace your folder structure—it analyzes your library and gives you semantic search, quality scores, automatic tags, and visual maps on top of the storage you already use (Lightroom, Google Photos, Dropbox, or local files).",
   },
   {
-    question: "Is this just a sharpness detector?",
+    question: "Do I have to migrate my photo library or rebuild my catalog?",
     answer:
-      "No. Technical sharpness is only one of 6+ dimensions. A soft, atmospheric portrait can score very high on aesthetics, narrative, and originality while scoring lower on technical sharpness. The system evaluates what makes a photo compelling, not just what makes it technically correct.",
+      "No. Your files stay exactly where they are. Photoreka reads your existing sources—including your Lightroom Classic catalog via the official plugin—and builds its analysis from compressed previews. Nothing is moved, renamed, or reorganized.",
   },
   {
-    question: "How are the scoring models trained?",
+    question: "How is Photoreka different from Excire Foto or Peakto?",
     answer:
-      "The models combine large-scale visual understanding (from computer vision foundation models) with specialized fine-tuning on photographic quality datasets curated by professional photographers and critics. They're designed to evaluate photography, not generic images.",
+      "Excire Foto and Peakto are desktop apps (Peakto is Mac-only, subscription-based). Photoreka runs in the browser on any OS, is paid per analyzed photo batch instead of a subscription, and goes beyond organization into curation: multi-dimensional quality scoring, three-mode semantic search with no query length limit, portfolio sequencing, and an AI assistant for your catalog.",
   },
   {
-    question: "Can I sort by a single dimension?",
+    question: "Does Photoreka replace Lightroom?",
     answer:
-      "Yes. You can sort and filter by any individual dimension (aesthetics, composition, narrative strength, originality, visual wit, or technical quality) or by the combined overall score. This lets you tailor rankings to each specific project.",
+      "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI quality scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
   },
   {
-    question: "Do scores change over time?",
+    question: "How many photos can I organize with Photoreka?",
     answer:
-      "Scores are computed once when your photos are analyzed and remain stable. As our models improve, you may optionally re-score your catalog, but existing scores persist. This ensures consistency and allows meaningful comparisons over time.",
+      "The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Photoreka is built for a curated body of work rather than a raw dump of every file ever captured—duplicate detection is built in to help you get there.",
   },
   {
-    question: "Is this included with Photoreka?",
+    question: "What happens to my photos and who can see them?",
     answer:
-      "Yes. Aesthetic scoring is a core feature available to all Photoreka users. Every photo in your catalog receives a full quality profile as part of the standard analysis pipeline.",
+      "Photoreka only stores a reduced version of your images on secure servers for analysis. Your photos are not shared with anyone and you retain 100% of the rights to your work. Analysis uses proprietary and third-party services under agreements that prevent retaining or reusing your photos.",
   },
   {
-    question: "How does commercial scoring work?",
+    question: "Do I need to keep paying to keep my library organized?",
     answer:
-      "When Photoreka detects commercial photography (product, stock, fashion) in your catalog—or when you flag it manually—two additional dimensions are activated: Subject Clarity, which measures how cleanly the main subject stands out from its environment, and Commercial Intent, which evaluates overall production value and suitability for advertising, stock libraries, or editorial use. These scores help you quickly identify your most licensable or pitch-ready images.",
+      "No. Analysis is a one-time batch payment per set of photos. After that, most tools are usable for free with daily limits, or with credits for unlimited access. There is no monthly fee to keep what's already analyzed.",
   },
 ]);
 
@@ -580,27 +616,22 @@ const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 
 // Navigation
 const goToHome = () => {
-  trackUserAction("navigate_to_home", "photo_scoring_page");
+  trackUserAction("navigate_to_home", "ai_photo_organizer_page");
   navigateTo("/");
 };
 
 const goToDemo = () => {
-  trackUserAction("navigate_to_demo", "photo_scoring_page");
-  window.open("https://app.photoreka.com/demo/report", "_blank");
+  trackUserAction("navigate_to_demo", "ai_photo_organizer_page");
+  window.open("https://app.photoreka.com/demo/search", "_blank");
 };
 
 const goToSignup = () => {
-  trackUserAction("open_signup", "photo_scoring_page");
+  trackUserAction("open_signup", "ai_photo_organizer_page");
   if (isOpenMode.value) {
     window.open(`${config.public.appUrl}/auth`, "_blank");
   } else {
     showRequestDialog.value = true;
   }
-};
-
-const goToPortfolio = () => {
-  trackUserAction("navigate_to_portfolio", "photo_scoring_page");
-  navigateTo("/photography_portfolio_builder");
 };
 
 const onRequestSuccess = () => {
@@ -611,7 +642,7 @@ const toggleFAQ = (index) => {
   const wasOpen = activeFAQ.value === index;
   activeFAQ.value = wasOpen ? null : index;
   trackEvent("faq_toggle", {
-    page: "photo_scoring",
+    page: "ai_photo_organizer",
     faq_index: index,
     action: wasOpen ? "close" : "open",
   });
@@ -619,7 +650,7 @@ const toggleFAQ = (index) => {
 
 // Scroll animations
 const setupScrollAnimations = () => {
-  const opts = { threshold: 0.2, rootMargin: "0px 0px -100px 0px" };
+  const opts = { threshold: 0, rootMargin: "0px 0px -50px 0px" };
   const watch = (section, flag) => {
     if (!section.value) return;
     new IntersectionObserver((entries) => {
@@ -629,9 +660,11 @@ const setupScrollAnimations = () => {
     }, opts).observe(section.value);
   };
   watch(heroSection, heroVisible);
-  watch(dimensionsSection, dimensionsVisible);
+  watch(pillarsSection, pillarsVisible);
+  watch(atlasSection, atlasVisible);
   watch(howSection, howVisible);
   watch(featuresSection, featuresVisible);
+  watch(altSection, altVisible);
   watch(faqSection, faqVisible);
   watch(ctaSection, ctaVisible);
 };
@@ -640,24 +673,10 @@ onMounted(() => {
   initTheme();
   heroVisible.value = true;
   setupScrollAnimations();
-  trackEvent("page_view", { page: "photo_scoring" });
-
-  activateSlide(0);
-
-  slideshowTimer = setInterval(() => {
-    const prev = currentSlide.value;
-    const next = (prev + 1) % slideshowImages.length;
-    deactivateSlide(prev);
-    currentSlide.value = next;
-    activateSlide(next);
-  }, 3333);
-});
-
-onUnmounted(() => {
-  if (slideshowTimer) {
-    clearInterval(slideshowTimer);
-    slideshowTimer = null;
-  }
+  trackEvent("page_view", {
+    page: "ai_photo_organizer",
+    page_title: "AI Photo Organizer — No Migration, No Subscription | Photoreka",
+  });
 });
 </script>
 
@@ -745,26 +764,32 @@ onUnmounted(() => {
 }
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: minmax(360px, 460px) 1fr;
+  gap: 3.5rem;
   align-items: center;
 }
+/* Overrides the centered .hero-content in global.scss — this hero is
+   an asymmetric two-column layout, so the copy stays left-aligned. */
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1.5rem;
 }
+
+/* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.3);
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.3);
   border-radius: 50px;
   font-size: var(--fs-sm);
   font-weight: var(--font-weight-semibold);
-  color: #06b6d4;
+  color: #2563eb;
   width: fit-content;
   opacity: 0;
   transform: translateY(20px);
@@ -779,8 +804,10 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.5rem;
 }
+
+/* Title */
 .hero-title {
-  font-size: var(--fs-hero);
+  font-size: clamp(2.25rem, 3.2vw, 3.1rem);
   font-weight: var(--font-weight-black);
   margin: 0;
   line-height: var(--line-height-none);
@@ -793,10 +820,12 @@ onUnmounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Subtitle */
 .hero-subtitle {
-  max-width: 580px;
+  max-width: 460px;
   margin: 0;
-  font-size: var(--fs-lead);
+  font-size: var(--fs-base);
   color: var(--premium-text-secondary);
   line-height: var(--line-height-loose);
   opacity: 0;
@@ -807,6 +836,25 @@ onUnmounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Note under subtitle */
+.hero-note {
+  max-width: 460px;
+  margin: -0.5rem 0 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--premium-text-primary);
+  line-height: var(--line-height-relaxed);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+.hero-note.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Actions */
 .hero-actions {
   display: flex;
   flex-direction: row;
@@ -820,72 +868,49 @@ onUnmounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Visual — bleeds past the right edge of the viewport on desktop.
+   The negative margin cancels the hero padding plus the centering
+   gutter of the 1400px container, then overshoots so the screenshot
+   is cropped by .framer-hero's overflow. */
 .hero-visual {
+  --hero-bleed-overshoot: 4rem;
+  margin-right: calc(
+    -1 *
+      (
+        2rem + max(0px, (100vw - 4rem - 1400px) / 2) +
+          var(--hero-bleed-overshoot)
+      )
+  );
   opacity: 0;
-  transform: translateY(40px) scale(0.95);
+  transform: translateY(40px);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   overflow: hidden;
   box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    -25px 25px 60px -12px rgba(0, 0, 0, 0.45),
     0 0 0 1px var(--premium-border);
 }
 .hero-visual.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
-}
-.hero-visual:hover {
-  transform: translateY(-8px) scale(1);
+  transform: translateY(0);
 }
 .video-frame {
   position: relative;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   overflow: hidden;
   background: var(--premium-bg-card);
 }
-
-/* ── Hero slideshow ─────────────────────────────────────────── */
-.hero-slideshow {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--premium-bg-card);
-}
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transform: scale(1);
-  transition:
-    opacity 0.93s ease,
-    transform 3.5s ease;
-}
-.hero-slide.active {
-  opacity: 1;
-}
-.hero-slideshow-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 60%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
-  border-radius: 20px;
-  pointer-events: none;
-}
-.hero-video {
+.hero-image {
   width: 100%;
   height: auto;
   display: block;
 }
+
+/* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 50%, #22c55e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -904,7 +929,7 @@ onUnmounted(() => {
 .orb-1 {
   width: 700px;
   height: 700px;
-  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
   top: -300px;
   right: -200px;
 }
@@ -919,7 +944,7 @@ onUnmounted(() => {
 .orb-3 {
   width: 500px;
   height: 500px;
-  background: linear-gradient(135deg, #f59e0b, #f97316);
+  background: linear-gradient(135deg, #22c55e, #06b6d4);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -968,14 +993,14 @@ onUnmounted(() => {
   line-height: var(--line-height-loose);
 }
 
-/* ── Dimensions Section ────────────────────────────────────── */
-.examples-section {
+/* ── Pillars Section ───────────────────────────────────────── */
+.pillars-section {
   padding: 6rem 2rem;
   background: var(--premium-bg-secondary);
 }
-.dimensions-grid {
+.pillars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -983,33 +1008,110 @@ onUnmounted(() => {
   transform: translateY(24px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.dimensions-grid.visible {
+.pillars-grid.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.dimension-card {
+.pillar-card {
   background: var(--premium-bg-card);
   border: 1px solid var(--premium-border);
   border-radius: 16px;
   padding: 2rem;
-  transition: all 0.4s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.dimension-card:hover {
+.pillar-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
-.dimension-icon {
-  margin-bottom: 1rem;
+.pillar-icon {
+  margin-bottom: 1.5rem;
 }
-.dimension-title {
+.pillar-title {
   font-size: var(--fs-xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 0.5rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 0.75rem;
 }
-.dimension-description {
+.pillar-description {
   color: var(--premium-text-secondary);
   line-height: var(--line-height-loose);
   font-size: var(--fs-base);
+}
+
+/* ── Atlas Showcase Section ────────────────────────────────────
+   Deliberately dark in both themes: the screenshot is a dark-UI
+   product shot and reads as a spotlight band. Text colors are set
+   explicitly so light mode doesn't inherit dark-on-dark. */
+.atlas-section {
+  position: relative;
+  padding: 4.5rem 0 3.5rem;
+  overflow: hidden;
+  background: #05070d;
+  border-top: 1px solid var(--premium-border);
+  border-bottom: 1px solid var(--premium-border);
+}
+.atlas-header {
+  max-width: 960px;
+  margin: 0 auto 2.25rem;
+  padding: 0 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.atlas-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.atlas-header .section-title {
+  color: #f8fafc;
+}
+.atlas-header .section-subtitle {
+  color: #94a3b8;
+  max-width: 760px;
+}
+.atlas-figure {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: all 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+.atlas-figure.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* Big enough to read the clusters, capped so it never becomes a
+   full-screen takeover. */
+.atlas-image {
+  width: auto;
+  height: auto;
+  max-width: min(1400px, 100%);
+  max-height: 70vh;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow:
+    0 40px 90px -20px rgba(0, 0, 0, 0.75),
+    0 0 120px -40px rgba(37, 99, 235, 0.35);
+}
+.atlas-caption {
+  max-width: 780px;
+  margin: 2.25rem auto 0;
+  padding: 0 2rem;
+  text-align: center;
+  font-size: var(--fs-base);
+  color: #94a3b8;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+.atlas-caption.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── How It Works Section ──────────────────────────────────── */
@@ -1071,12 +1173,12 @@ onUnmounted(() => {
   line-height: var(--line-height-loose);
   font-size: var(--fs-base);
 }
-.step-description a {
+.step-description :deep(a) {
   color: var(--premium-primary);
-  font-weight: var(--font-weight-semibold);
   text-decoration: none;
+  font-weight: var(--font-weight-semibold);
 }
-.step-description a:hover {
+.step-description :deep(a):hover {
   text-decoration: underline;
 }
 
@@ -1117,15 +1219,86 @@ onUnmounted(() => {
   font-weight: var(--font-weight-semibold);
   margin-bottom: 0.75rem;
 }
+.feature-link {
+  color: var(--premium-text-primary);
+  text-decoration: none;
+}
+.feature-link:hover {
+  color: var(--premium-primary);
+  text-decoration: underline;
+}
 .feature-description {
   color: var(--premium-text-secondary);
   line-height: var(--line-height-loose);
   font-size: var(--fs-base);
 }
 
+/* ── Alternatives Callout ──────────────────────────────────── */
+.alt-section {
+  position: relative;
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+.alt-callout {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--premium-bg-card);
+  border: 1px solid var(--premium-border);
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
+}
+.alt-callout.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.alt-callout-inner {
+  padding: 2.5rem;
+}
+.alt-callout-title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.75rem;
+}
+.alt-callout-text {
+  color: var(--premium-text-secondary);
+  line-height: var(--line-height-loose);
+  font-size: var(--fs-base);
+  margin-bottom: 1.5rem;
+}
+.alt-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+.alt-feature {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: var(--fs-base);
+  color: var(--premium-text-primary);
+  line-height: var(--line-height-relaxed);
+}
+.alt-check {
+  color: #22c55e;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.alt-note {
+  font-size: var(--fs-sm);
+  color: var(--premium-text-secondary);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--premium-border);
+  line-height: var(--line-height-loose);
+}
+
 /* ── FAQ Section ───────────────────────────────────────────── */
 .faq-section {
   padding: 6rem 2rem;
+  background: var(--premium-bg-secondary);
 }
 .faqs-container {
   max-width: 800px;
@@ -1194,7 +1367,6 @@ onUnmounted(() => {
 /* ── CTA Section ───────────────────────────────────────────── */
 .cta-section {
   padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
 }
 .cta-content {
   max-width: 700px;
@@ -1254,11 +1426,23 @@ onUnmounted(() => {
     text-align: center;
     align-items: center;
   }
-  .hero-subtitle {
+  .hero-subtitle,
+  .hero-note {
     max-width: 100%;
   }
   .hero-actions {
     justify-content: center;
+  }
+  /* No bleed when stacked: the screenshot returns to the container */
+  .hero-visual {
+    margin-right: 0;
+    border-radius: 20px;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.4),
+      0 0 0 1px var(--premium-border);
+  }
+  .video-frame {
+    border-radius: 20px;
   }
 }
 
@@ -1276,7 +1460,7 @@ onUnmounted(() => {
   .section-title {
     font-size: var(--fs-4xl);
   }
-  .dimensions-grid,
+  .pillars-grid,
   .features-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -1287,14 +1471,26 @@ onUnmounted(() => {
   .step-number {
     margin: 0 auto;
   }
-  .how-section {
-    padding: 4rem 1rem;
-  }
-  .examples-section,
+  .how-section,
+  .alt-section,
+  .pillars-section,
   .features-section,
   .faq-section,
   .cta-section {
-    padding: 4rem 1rem;
+    padding: 3.5rem 0.75rem;
+  }
+  .atlas-section {
+    padding: 3.5rem 0 3rem;
+  }
+  .atlas-header {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  .atlas-figure {
+    padding: 0 0.75rem;
+  }
+  .alt-callout-inner {
+    padding: 1.25rem;
   }
 }
 </style>
