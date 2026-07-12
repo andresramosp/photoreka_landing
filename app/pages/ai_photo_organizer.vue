@@ -69,6 +69,10 @@
                   No migration. No new catalog. No subscription—pay per analyzed
                   batch.
                 </p>
+                <p class="hero-note" :class="{ visible: heroVisible }">
+                  100% cloud-based: runs in your browser, no install—works the
+                  same on Windows, Mac, and Linux.
+                </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
                   <n-button type="info" size="large" strong @click="goToDemo">
@@ -268,8 +272,8 @@
                   <div class="alt-feature">
                     <span class="alt-check">✓</span>
                     <span
-                      >Runs in the browser on
-                      <strong>Windows, Mac, and Linux</strong> — unlike Peakto
+                      ><strong>Cloud-based, runs in the browser</strong> on
+                      Windows, Mac, and Linux — unlike Peakto
                       (Mac-only)</span
                     >
                   </div>
@@ -412,6 +416,7 @@ import {
   CopyOutline,
   MapOutline,
   CloudOutline,
+  GlobeOutline,
   FlashOutline,
   WalletOutline,
 } from "@vicons/ionicons5";
@@ -472,6 +477,13 @@ const pillars = ref([
     description:
       "Lightroom Classic, Google Photos, Dropbox, local folders—Photoreka reads from all of them and organizes across them. Your originals never move, and your folder structure survives untouched.",
     color: "#2563eb",
+  },
+  {
+    icon: markRaw(GlobeOutline),
+    title: "Cloud-based, runs on any OS",
+    description:
+      "No app to install, no OS-specific build. Photoreka is a web-based AI photo organizer that runs in your browser—open the same catalog from Windows, Mac, or Linux.",
+    color: "#06b6d4",
   },
   {
     icon: markRaw(FlashOutline),
@@ -604,6 +616,11 @@ const faqs = ref([
     question: "Do I need to keep paying to keep my library organized?",
     answer:
       "No. Analysis is a one-time batch payment per set of photos. After that, most tools are usable for free with daily limits, or with credits for unlimited access. There is no monthly fee to keep what's already analyzed.",
+  },
+  {
+    question: "Is Photoreka a cloud photo organizer, and does it work on Windows?",
+    answer:
+      "Yes. Photoreka is a cloud-based AI photo organizer: it runs entirely in your web browser, with no software to install and no OS-specific build. That means it works the same way on Windows, Mac, and Linux—unlike desktop organizers such as Peakto, which is Mac-only.",
   },
 ]);
 

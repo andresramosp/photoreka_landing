@@ -1146,11 +1146,12 @@ export const seoConfig = {
     },
 
     ai_photo_organizer: {
-      title: "AI Photo Organizer — No Migration, No Subscription | Photoreka",
+      title:
+        "AI Photo Organizer for Cloud, Windows & Web | No Migration | Photoreka",
       description:
-        "Organize your photo library with AI—without moving a single file. Photoreka is the AI curation layer on top of Lightroom Classic, Google Photos, Dropbox, and local folders: automatic analysis, semantic search, quality scores, visual maps, and duplicate detection. Web-based (Windows, Mac, Linux), pay per photo batch, no subscription.",
+        "Organize your photo library with AI—without moving a single file. Photoreka is a cloud-based AI photo organizer that runs entirely in the browser (web, no install) on Windows, Mac, or Linux, and layers on top of Lightroom Classic, Google Photos, Dropbox, and local folders: automatic analysis, semantic search, quality scores, visual maps, and duplicate detection. Pay per photo batch, no subscription.",
       keywords:
-        "AI photo organizer, organize photos with AI, photo organizer for large libraries, organize large photo library, photo library organizer, photo catalog organizer, smart photo organizer, photo organizer without subscription, photo organizer works with lightroom, photo organizer windows and mac, Excire Foto alternative, Peakto alternative, Peakto alternative Windows, Mylio alternative, digikam alternative, photo management software for photographers, organize 20000 photos, photo organization software, AI photo tagging automatic, photo library cleanup, photo DAM alternative, photo analysis layer, no migration photo organizer, organize photos without moving files",
+        "AI photo organizer, ai photo organizer for cloud, ai photo organizer for windows, ai photo organizer web, cloud photo organizer, web based photo organizer, browser based photo organizer, photo organizer for windows, photo organizer no download, organize photos with AI, photo organizer for large libraries, organize large photo library, photo library organizer, photo catalog organizer, smart photo organizer, photo organizer without subscription, photo organizer works with lightroom, photo organizer windows and mac, Excire Foto alternative, Peakto alternative, Peakto alternative Windows, Mylio alternative, digikam alternative, photo management software for photographers, organize 20000 photos, photo organization software, AI photo tagging automatic, photo library cleanup, photo DAM alternative, photo analysis layer, no migration photo organizer, organize photos without moving files",
       ogImage: "/home/dashboard.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -1161,7 +1162,7 @@ export const seoConfig = {
           name: "Photoreka AI Photo Organizer",
           url: "https://www.photoreka.com/ai_photo_organizer",
           description:
-            "AI photo organizer that works as a curation layer on top of your existing storage. Analyzes your library once, then gives you semantic search, automatic tags, quality scores, visual similarity maps, and duplicate detection—without migrating files or replacing your catalog.",
+            "Cloud-based AI photo organizer that runs in the browser on Windows, Mac, and Linux—no install required. Works as a curation layer on top of your existing storage: analyzes your library once, then gives you semantic search, automatic tags, quality scores, visual similarity maps, and duplicate detection—without migrating files or replacing your catalog.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
           offers: {
@@ -1176,6 +1177,8 @@ export const seoConfig = {
             url: "https://www.photoreka.com",
           },
           featureList: [
+            "Cloud-based: runs entirely in the browser, nothing to install",
+            "Works on Windows, Mac, and Linux from the same web app",
             "Works on top of Lightroom Classic, Google Photos, Dropbox, and local files",
             "No file migration, no new catalog, no subscription",
             "Automatic AI analysis: tags, scores, embeddings",
@@ -1230,6 +1233,14 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI quality scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is Photoreka a cloud photo organizer, and does it work on Windows?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Photoreka is a cloud-based AI photo organizer: it runs entirely in your web browser, with no software to install and no OS-specific build. That means it works the same way on Windows, Mac, and Linux—unlike desktop organizers such as Peakto, which is Mac-only.",
               },
             },
           ],
