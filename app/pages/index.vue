@@ -845,7 +845,7 @@ const features = ref([
     image: "/chatlab/1.png",
     color: "#8b5cf6",
     link: "/photo_chat",
-    demoLink: "/demo/chatlab",
+    demoLink: "/demo/chat-lab",
   },
   {
     icon: markRaw(Trophy20Regular),
