@@ -107,7 +107,7 @@
                 curate your photos.<br />
 
                 <strong>Search</strong> in natural language,
-                <strong>rank</strong> your photos and <strong>chat</strong> with
+                <strong>rank</strong> your photos or <strong>chat</strong> with
                 your library.<br />
                 Upload a <strong>project</strong>, a curated
                 <strong>selection</strong> or your entire
@@ -668,21 +668,32 @@ const heroAnnouncement = ref({
   cta: "Try for Free",
 });
 
+// Las fotos laterales se recortan con `object-fit: cover` sobre un
+// aspect-ratio fijo, así que parte de la imagen queda siempre fuera. El
+// encuadre se ajusta aquí, sin tocar el CSS:
+//   focusX → qué zona horizontal se conserva, en % (0 = pegado al borde
+//            izquierdo de la foto, 50 = centrado, 100 = pegado al derecho)
+//   focusY → lo mismo en vertical (0 = arriba, 50 = centro, 100 = abajo)
 const heroSideImages = {
   // Desktop compensation: left panel is slightly larger because
   // the right panel carries the extra phone overlay visual weight.
   desktopBreakpoint: 768,
   left: {
-    src: "/ai_photo_scoring/2.png",
+    src: "/home/portfolio_desktop_4.png",
     // src: "/home/portfolio_desktop.png",
 
     desktopScale: 1,
+    focusX: 98,
+    focusY: 50,
   },
   right: {
     src: "/home/tag_cloud_poster_detailed.png",
     desktopScale: 1,
+    focusX: 50,
+    focusY: 50,
   },
   mobile: {
+    // No lleva focusX/focusY: se muestra entera (object-fit: contain).
     src: "/home/dashboard.png",
   },
 };
@@ -740,18 +751,21 @@ const activePhoneConfig = computed(() => {
 
 const heroSideImageStyles = computed(() => {
   const isDesktop = viewportWidth.value > heroSideImages.desktopBreakpoint;
-  const leftScale = isDesktop ? heroSideImages.left.desktopScale || 1 : 1;
-  const rightScale = isDesktop ? heroSideImages.right.desktopScale || 1 : 1;
+  const sideStyle = (config, scale) => ({
+    transform: `scale(${scale})`,
+    transformOrigin: "center center",
+    objectPosition: `${config.focusX ?? 50}% ${config.focusY ?? 50}%`,
+  });
 
   return {
-    left: {
-      transform: `scale(${leftScale})`,
-      transformOrigin: "center center",
-    },
-    right: {
-      transform: `scale(${rightScale})`,
-      transformOrigin: "center center",
-    },
+    left: sideStyle(
+      heroSideImages.left,
+      isDesktop ? heroSideImages.left.desktopScale || 1 : 1,
+    ),
+    right: sideStyle(
+      heroSideImages.right,
+      isDesktop ? heroSideImages.right.desktopScale || 1 : 1,
+    ),
   };
 });
 
@@ -816,22 +830,6 @@ const features = ref([
   //   link: "/ai_photo_search",
   // },
   {
-    icon: markRaw(CubeOutline),
-    title: "2D / 3D Atlas",
-    description:
-      "Explore your entire archive as an universe of images mapped in semantic space. Navigate in 2D or immersive 3D to discover visual clusters, stylistic threads, and unexpected connections across your catalog.",
-    lead: "Explore your entire archive as a universe of images mapped in semantic space.",
-    bullets: [
-      "Navigate your catalog in 2D or immersive 3D",
-      "Discover visual clusters and stylistic threads",
-      "Surface unexpected connections across your work",
-    ],
-    image: "/atlas/2d.png",
-    color: "#06b6d4",
-    link: "/photo_3D_atlas",
-    demoLink: "/demo/2d-atlas",
-  },
-  {
     icon: markRaw(ChatbubblesOutline),
     title: "Photo Chat Assistant",
     description:
@@ -847,6 +845,23 @@ const features = ref([
     link: "/photo_chat",
     demoLink: "/demo/chat-lab",
   },
+  {
+    icon: markRaw(CubeOutline),
+    title: "2D / 3D Atlas",
+    description:
+      "Explore your entire archive as an universe of images mapped in semantic space. Navigate in 2D or immersive 3D to discover visual clusters, stylistic threads, and unexpected connections across your catalog.",
+    lead: "Explore your entire archive as a universe of images mapped in semantic space.",
+    bullets: [
+      "Navigate your catalog in 2D or immersive 3D",
+      "Discover visual clusters and stylistic threads",
+      "Surface unexpected connections across your work",
+    ],
+    image: "/atlas/2d.png",
+    color: "#06b6d4",
+    link: "/photo_3D_atlas",
+    demoLink: "/demo/2d-atlas",
+  },
+
   {
     icon: markRaw(Trophy20Regular),
     title: "Rankings & Scores",
@@ -1062,7 +1077,7 @@ const goToDemo = () => {
 
 const goToSearchDemo = () => {
   trackUserAction("navigate_to_search_demo", "landing_page_premium");
-  window.open("https://app.photoreka.com/demo/search", "_blank");
+  window.open("https://app.photoreka.com/demo/", "_blank");
 };
 
 const goToSignup = () => {
