@@ -799,7 +799,7 @@ const goToHome = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_search_page");
-  window.open("https://app.photoreka.com/demo/search", "_blank");
+  window.open("https://app.photoreka.com/demo/", "_blank");
 };
 
 const goToSignup = () => {
