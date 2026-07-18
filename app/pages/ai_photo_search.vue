@@ -97,7 +97,7 @@
                 <div class="video-frame">
                   <video
                     class="hero-video"
-                    src="/videos/search.mp4"
+                    :src="'/videos/search.mp4'"
                     poster="/home/video_poster.jpg"
                     ref="videoRef"
                     autoplay

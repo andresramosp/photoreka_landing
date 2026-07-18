@@ -133,9 +133,7 @@
         <section id="genres" class="genres-section" ref="genresSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: genresVisible }">
-              <h2 class="section-title">
-                Built for every commercial genre
-              </h2>
+              <h2 class="section-title">Built for every commercial genre</h2>
               <p class="section-subtitle">
                 Different briefs, different eyes. Photoreka adapts its scoring
                 and curation to the commercial work you actually shoot — so the
@@ -234,7 +232,7 @@
                 <div class="video-frame">
                   <video
                     class="search-promo-video"
-                    src="/videos/search.mp4"
+                    :src="'/videos/search.mp4'"
                     poster="/home/video_poster.jpg"
                     autoplay
                     muted
@@ -1157,11 +1155,19 @@ onMounted(() => {
 }
 
 .commercial-landing .search-promo-bg .orb-1 {
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.5) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(245, 158, 11, 0.5) 0%,
+    transparent 70%
+  );
 }
 
 .commercial-landing .search-promo-bg .orb-2 {
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.4) 0%,
+    transparent 70%
+  );
 }
 
 .search-promo-layout {
