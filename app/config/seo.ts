@@ -11,6 +11,7 @@ export interface SEOPage {
   ogType?: string;
   twitterCard?: string;
   canonicalUrl?: string;
+  robots?: string;
   jsonLd?: any | any[];
 }
 

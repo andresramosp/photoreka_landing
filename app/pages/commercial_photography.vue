@@ -485,7 +485,9 @@ import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO Configuration
-useSEO("commercial_photography");
+useSEO("commercial_photography", {
+  robots: "noindex, nofollow, noarchive",
+});
 
 const { isMobile } = useMobileDevice();
 

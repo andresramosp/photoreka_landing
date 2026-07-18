@@ -108,7 +108,7 @@ export function useSEO(pageKey?: SEOPageKey, customConfig?: Partial<SEOPage>) {
       // Adicionales para mejorar SEO
       {
         name: "robots",
-        content: "index, follow, max-image-preview:large",
+        content: config.robots || "index, follow, max-image-preview:large",
       },
       {
         name: "author",
