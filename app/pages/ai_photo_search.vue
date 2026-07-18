@@ -61,8 +61,7 @@
                   Lightroom, Google Photos, Dropbox—and it learns what's inside
                   every shot. Then stop scrolling through thousands of images
                   trying to remember where something is. Just type what you
-                  remember—
-                  <em>"rainy street at night with reflections"</em>,
+                  remember— <em>"rainy street at night with reflections"</em>,
                   <em>"smiling kid, warm light, shallow focus"</em>,
                   <em>"Blade Runner-style atmosphere"</em>—and it surfaces the
                   photo instantly.<br /><br />
@@ -98,7 +97,7 @@
                 <div class="video-frame">
                   <video
                     class="hero-video"
-                    src="/videos/Search.mp4"
+                    src="/videos/search.mp4"
                     poster="/home/video_poster.jpg"
                     ref="videoRef"
                     autoplay
@@ -116,7 +115,9 @@
         <section class="examples-section" ref="examplesSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: examplesVisible }">
-              <h2 class="section-title">Search your catalog the way you think</h2>
+              <h2 class="section-title">
+                Search your catalog the way you think
+              </h2>
               <p class="section-subtitle">
                 Photoreka reads every photo in your library and understands
                 natural language, visual descriptions, emotions, styles, and
