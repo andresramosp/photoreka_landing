@@ -116,7 +116,9 @@
                   <span>{{ block.alt }}</span>
                 </div>
                 <img v-else :src="block.src" :alt="block.alt" />
-                <figcaption v-if="block.caption">{{ block.caption }}</figcaption>
+                <figcaption v-if="block.caption">
+                  {{ block.caption }}
+                </figcaption>
               </figure>
 
               <div
@@ -140,7 +142,9 @@
                   block.eyebrow
                 }}</span>
                 <h3 class="inline-cta-title">{{ block.title }}</h3>
-                <p v-if="block.text" class="inline-cta-text">{{ block.text }}</p>
+                <p v-if="block.text" class="inline-cta-text">
+                  {{ block.text }}
+                </p>
                 <n-button
                   type="info"
                   size="large"
@@ -173,12 +177,10 @@
             </div>
 
             <div class="final-cta">
-              <h2 class="final-cta-title">
-                Stop scrolling. Start describing.
-              </h2>
+              <h2 class="final-cta-title">Stop scrolling. Start describing.</h2>
               <p class="final-cta-text">
-                Try Photoreka's AI photo search on a real catalog, or create
-                an account to start curating your own.
+                Try Photoreka's AI photo search on a real catalog, or create an
+                account to start curating your own.
               </p>
               <div class="final-cta-buttons">
                 <n-button type="info" size="large" strong @click="goToDemo">
@@ -256,15 +258,18 @@ if (!post) {
   throw createError({ statusCode: 404, statusMessage: "Post not found" });
 }
 
-useSEO(undefined, {
-  title: `${post.title} | Photoreka Blog`,
-  description: post.description,
-  keywords: post.keywords,
-  ogImage: post.coverImage,
-  ogType: "article",
-});
-
 useHead({
+  title: `${post.title} | Photoreka`,
+  meta: [
+    {
+      name: "robots",
+      content: "noindex, nofollow, noarchive",
+    },
+    {
+      name: "description",
+      content: post.description,
+    },
+  ],
   script: [
     {
       children: `(function(){try{const t=localStorage.getItem('photoreka-theme-mode')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,

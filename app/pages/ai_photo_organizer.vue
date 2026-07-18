@@ -273,8 +273,7 @@
                     <span class="alt-check">✓</span>
                     <span
                       ><strong>Cloud-based, runs in the browser</strong> on
-                      Windows, Mac, and Linux — unlike Peakto
-                      (Mac-only)</span
+                      Windows, Mac, and Linux — unlike Peakto (Mac-only)</span
                     >
                   </div>
                   <div class="alt-feature">
@@ -300,15 +299,10 @@
                     >
                   </div>
                 </div>
-                <!-- <p class="alt-note">
-                  Deciding between tools? Read our honest comparison:
-                  <NuxtLink
-                    to="/blog/peakto-alternative-windows"
-                    class="cta-link"
-                    >Photoreka vs Peakto — AI photo curation beyond the
-                    Mac</NuxtLink
-                  >.
-                </p> -->
+                <p class="alt-note">
+                  Deciding between tools? We’ll publish a full comparison once
+                  the blog is ready.
+                </p>
               </div>
             </div>
           </div>
@@ -618,7 +612,8 @@ const faqs = ref([
       "No. Analysis is a one-time batch payment per set of photos. After that, most tools are usable for free with daily limits, or with credits for unlimited access. There is no monthly fee to keep what's already analyzed.",
   },
   {
-    question: "Is Photoreka a cloud photo organizer, and does it work on Windows?",
+    question:
+      "Is Photoreka a cloud photo organizer, and does it work on Windows?",
     answer:
       "Yes. Photoreka is a cloud-based AI photo organizer: it runs entirely in your web browser, with no software to install and no OS-specific build. That means it works the same way on Windows, Mac, and Linux—unlike desktop organizers such as Peakto, which is Mac-only.",
   },

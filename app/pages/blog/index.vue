@@ -48,9 +48,9 @@
               Notes on <span class="gradient-text">AI &amp; photography</span>
             </h1>
             <p class="blog-hero-subtitle">
-              Technical write-ups and field notes on curation, computer
-              vision, and what it actually takes to make sense of a
-              photographic body of work.
+              Technical write-ups and field notes on curation, computer vision,
+              and what it actually takes to make sense of a photographic body of
+              work.
             </p>
           </div>
         </section>
@@ -66,7 +66,10 @@
                 class="post-card"
               >
                 <div class="post-cover">
-                  <div v-if="post.coverPlaceholder" class="post-cover-placeholder">
+                  <div
+                    v-if="post.coverPlaceholder"
+                    class="post-cover-placeholder"
+                  >
                     <n-icon size="28"><ImageOutline /></n-icon>
                     <span>Cover placeholder</span>
                   </div>
@@ -114,9 +117,14 @@ import {
 import { getAllPosts, formatBlogDate } from "~/config/blog";
 import { trackUserAction } from "~/utils/analytics";
 
-useSEO("blog");
-
 useHead({
+  title: "Photoreka Blog",
+  meta: [
+    {
+      name: "robots",
+      content: "noindex, nofollow, noarchive",
+    },
+  ],
   script: [
     {
       children: `(function(){try{const t=localStorage.getItem('photoreka-theme-mode')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,

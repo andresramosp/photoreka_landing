@@ -160,28 +160,6 @@ export const seoConfig = {
       ],
     },
 
-    // blog: {
-    //   title: "Blog — Notes on AI & Photography | Photoreka",
-    //   description:
-    //     "Technical and artistic write-ups on AI photo curation: semantic search, computer vision, and what it takes to make sense of a photographic body of work.",
-    //   keywords:
-    //     "photoreka blog, ai photography blog, photo curation articles, semantic search explained, computer vision photography",
-    //   ogImage: "/logos/marca/vertical-claim-light.png",
-    //   ogType: "website",
-    //   twitterCard: "summary_large_image",
-    //   jsonLd: {
-    //     "@context": "https://schema.org",
-    //     "@type": "Blog",
-    //     name: "Photoreka Journal",
-    //     url: "https://www.photoreka.com/blog",
-    //     publisher: {
-    //       "@type": "Organization",
-    //       name: "Photoreka",
-    //       url: "https://www.photoreka.com",
-    //     },
-    //   },
-    // },
-
     terms: {
       title: "Terms of Service - Photoreka",
       description:
@@ -263,9 +241,10 @@ export const seoConfig = {
     },
 
     ai_photo_search: {
-      title: "AI Photo Search — Find Any Photo by Describing It | Photoreka",
+      title:
+        "AI Search for Your Own Photo Catalog — Find Any Photo by Describing It | Photoreka",
       description:
-        "Find any photo by describing it in natural language — no tagging needed. Three honest search modes: Broad (embedding similarity), Adaptive (re-ranked), and Precise (logical inference that verifies conditions, not just ranks them). No query length limit — unlike CLIP-based tools like Excire Search (~77-token cap). Enriched results with AI insights. ChatLab for iterative LLM refinement. The AI photo search app that tells you exactly how precise it's being.",
+        "Point Photoreka at your own photo library — local files, Lightroom, Google Photos, Dropbox — and find any shot just by describing it in natural language. No tagging needed. Three honest search modes: Broad (embedding similarity), Adaptive (re-ranked), and Precise (logical inference that verifies conditions, not just ranks them). No query length limit — unlike CLIP-based tools like Excire Search (~77-token cap). Enriched results with AI insights.",
       keywords:
         "AI photo search, natural language photo search, Excire Search alternative, Excire alternative, Mylio Photos alternative, semantic photo search alternative, find photos by description, search photos without tags, AI photo finder, photo search app, search my photo library, find photo by describing it, smart photo search, semantic image search, photo catalog search, AI image search, visual photo search, search photos by mood, search photos AI, intelligent photo finder, AI photo organizer, photo library search, describe photo find it, no tagging photo search, computer vision photo search, photo archive search app, precise AI photo search, broad adaptive precise photo search, ChatLab photo search, AI photo search no character limit",
       ogImage: "/home/video_poster.jpg",

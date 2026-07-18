@@ -41,7 +41,6 @@
 
         <div class="footer-column">
           <h4 class="footer-title">EXPLORE</h4>
-          <!-- <NuxtLink to="/blog" class="footer-link">Blog</NuxtLink> -->
           <NuxtLink to="/photo_3D_atlas" class="footer-link"
             >3D Photo Atlas</NuxtLink
           >
