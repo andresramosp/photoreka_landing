@@ -232,7 +232,7 @@
                 <div class="video-frame">
                   <video
                     class="search-promo-video"
-                    :src="'/videos/search.mp4'"
+                    :src="'/videos/Search.mp4'"
                     poster="/home/video_poster.jpg"
                     autoplay
                     muted
