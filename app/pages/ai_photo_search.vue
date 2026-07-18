@@ -47,20 +47,25 @@
                 <div class="hero-badge" :class="{ visible: heroVisible }">
                   <span class="badge-content">
                     <n-icon size="16"><SearchOutline /></n-icon>
-                    AI Search
+                    AI search across your own library
                   </span>
                 </div>
                 <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Find any photo by
-                  <span class="gradient-text">describing it</span>
+                  Find any photo in
+                  <span class="gradient-text">your own catalog</span>
+                  just by describing it
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Stop scrolling through thousands of photos trying to remember
-                  where something is. Just type what you remember—
+                  Point Photoreka at
+                  <strong>your own photo library</strong>—local files,
+                  Lightroom, Google Photos, Dropbox—and it learns what's inside
+                  every shot. Then stop scrolling through thousands of images
+                  trying to remember where something is. Just type what you
+                  remember—
                   <em>"rainy street at night with reflections"</em>,
                   <em>"smiling kid, warm light, shallow focus"</em>,
-                  <em>"Blade Runner-style atmosphere"</em>—and Photoreka finds
-                  it instantly.<br /><br />
+                  <em>"Blade Runner-style atmosphere"</em>—and it surfaces the
+                  photo instantly.<br /><br />
                   No tagging. No folders. No metadata editing. Pure
                   <strong>semantic search</strong> powered by computer vision AI
                   that understands your photos the way you do
@@ -111,11 +116,12 @@
         <section class="examples-section" ref="examplesSection">
           <div class="section-container">
             <div class="section-header" :class="{ visible: examplesVisible }">
-              <h2 class="section-title">Search the way you think</h2>
+              <h2 class="section-title">Search your catalog the way you think</h2>
               <p class="section-subtitle">
-                Photoreka understands natural language, visual descriptions,
-                emotions, styles, and even references to other photographers or
-                films. If you can describe it, you can find it.
+                Photoreka reads every photo in your library and understands
+                natural language, visual descriptions, emotions, styles, and
+                even references to other photographers or films. If you can
+                describe it, you can find it in your archive.
               </p>
             </div>
 
@@ -733,6 +739,17 @@ const searchModes = ref([
 // FAQs
 const faqs = ref([
   {
+    question:
+      "Does Photoreka search the internet, social media, or stock photos?",
+    answer:
+      "No. Photoreka only searches your own photo catalog—the images you've shot and imported into the app (from local files, Lightroom Classic, Google Photos, Dropbox, etc.). It never searches the web, Facebook, Instagram, or stock libraries. Think of it as a smart search box for your personal or professional archive, not a search engine for photos you don't own.",
+  },
+  {
+    question: "Does Photoreka generate images with AI?",
+    answer:
+      "No. Photoreka does not create or generate any images. It uses AI to understand and find the real photos that already exist in your catalog. When you describe what you're looking for, it returns your own existing photos that match—nothing is invented or synthesized.",
+  },
+  {
     question: "Do I need to tag or keyword my photos first?",
     answer:
       "No. That's the whole point. Photoreka analyzes the visual content of your photos automatically when you upload or sync your library. You never need to add a single keyword or tag to search effectively.",
@@ -863,7 +880,8 @@ onMounted(() => {
   if (videoRef.value) videoRef.value.playbackRate = 0.8;
   trackEvent("page_view", {
     page: "ai_photo_search",
-    page_title: "AI Photo Search - Find Any Photo by Describing It | Photoreka",
+    page_title:
+      "AI Search for Your Own Photo Catalog - Find Any Photo by Describing It | Photoreka",
   });
 });
 </script>
