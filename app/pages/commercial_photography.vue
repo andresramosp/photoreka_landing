@@ -122,7 +122,7 @@
             >
               <img
                 class="hero-side-image hero-side-image-mobile"
-                src="/home/dashboard.png"
+                src="/home/dashboard.jpg"
                 alt="Photoreka AI photo curation dashboard for commercial photographers"
               />
             </div>

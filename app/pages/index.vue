@@ -679,7 +679,7 @@ const heroSideImages = {
   // the right panel carries the extra phone overlay visual weight.
   desktopBreakpoint: 768,
   left: {
-    src: "/home/portfolio_desktop_4.png",
+    src: "/home/portfolio_desktop_4.jpg",
     // src: "/home/portfolio_desktop.png",
 
     desktopScale: 1,
@@ -687,14 +687,14 @@ const heroSideImages = {
     focusY: 50,
   },
   right: {
-    src: "/home/tag_cloud_poster_detailed.png",
+    src: "/home/tag_cloud_poster_detailed.jpg",
     desktopScale: 1,
     focusX: 50,
     focusY: 50,
   },
   mobile: {
     // No lleva focusX/focusY: se muestra entera (object-fit: contain).
-    src: "/home/dashboard.png",
+    src: "/home/dashboard.jpg",
   },
 };
 
@@ -717,7 +717,7 @@ const heroSideImages = {
 const heroPhoneOverlay = ref({
   enabled: true,
   side: "right",
-  image: "/home/Photoreka_movil(con halo).png",
+  image: "/home/photoreka_mobile_halo.png",
   width: 230,
   offsetX: -250,
   offsetY: 40,

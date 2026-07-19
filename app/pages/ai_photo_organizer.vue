@@ -101,7 +101,7 @@
                 <div class="video-frame">
                   <img
                     class="hero-image"
-                    src="/home/dashboard.png"
+                    src="/home/dashboard.jpg"
                     alt="Photoreka AI photo organizer dashboard showing an analyzed photo catalog"
                   />
                 </div>

@@ -289,7 +289,7 @@
                   <!-- TODO: Replace with video element when /videos/search.mp4 is ready -->
                   <img
                     class="hero-video"
-                    src="/home/tag_cloud_poster_detailed.png"
+                    src="/home/tag_cloud_poster_detailed.jpg"
                     alt="AI Photo Search - Dynamic tag cloud navigation with real-time photo results"
                   />
                 </div>

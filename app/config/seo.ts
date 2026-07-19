@@ -40,7 +40,7 @@ export const seoConfig = {
         "AI photo curation and organizer for photographers. Search your library by description, score and rank your best shots, and explore your catalog in 3D.",
       keywords:
         "AI photo curation app, curate photos with AI, AI photo organizer, photo organizer online, organize photos with AI, AI Photo management online, AI photo culling, photo scoring and ranking app, AI photography portfolio builder, photography style analysis, understand my photography style, curate photography portfolio, AI photo search app, natural language photo search, find any photo by describing it, semantic photo search, Excire alternative, photo organizer app for photographers, photo library organizer, photo catalog organizer, smart photo organizer, photo curation software, photo curation platform, 3D photo catalog, AI photography tools, AI photo assistant, photography workflow tool, curate and organize photos, photo management app for photographers",
-      ogImage: "/home/dashboard.png",
+      ogImage: "/home/dashboard.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: [
@@ -433,7 +433,7 @@ export const seoConfig = {
         "Chat with your photo catalog to find your strongest work, get honest portfolio critique, and track your progress over time. Like ChatGPT for your photo library—built for photographers with serious archives.",
       keywords:
         "chatgpt for my photos, chat with my photo library, AI photo assistant, find my best photos, organize photos with AI, AI photo critique, photo portfolio critique AI, AI photography feedback, AI photo curation, ask AI about my photos, photo library AI chat, conversational photo search, photo catalog AI assistant, photography improvement tracker AI, discover photo patterns AI, AI photo curator, AI assistant for photographers",
-      ogImage: "/home/dashboard.png",
+      ogImage: "/home/dashboard.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: [
@@ -1023,7 +1023,7 @@ export const seoConfig = {
         "See every tag AI extracted from your photos arranged in an interactive 2D semantic map. Similar tags cluster together—mood next to atmosphere, rain next to fog, city next to urban. Navigate the map to search your catalog: zoom into a cluster and instantly surface the photos that live there. No tagging needed, no lists to scroll.",
       keywords:
         "photo tag cloud, semantic tag map, photo vocabulary visualization, interactive tag map, photo tags 2D, visual tag browser, AI photo tags, semantic photo search, tag-based photo search, photo catalog tags, tag cloud photographer, interactive photo tags, AI photo tagging, photo tag visualization, semantic photo organization, photo tag explorer, UMAP tag map, photo tag clustering, visual photo exploration, tag-based image search, photo tag atlas, photo semantic map",
-      ogImage: "/home/tag_cloud_poster_detailed.png",
+      ogImage: "/home/tag_cloud_poster_detailed.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: [
@@ -1132,7 +1132,7 @@ export const seoConfig = {
         "Organize your photo library with AI—without moving a single file. Photoreka is a cloud-based AI photo organizer that runs entirely in the browser (web, no install) on Windows, Mac, or Linux, and layers on top of Lightroom Classic, Google Photos, Dropbox, and local folders: automatic analysis, semantic search, quality scores, visual maps, and duplicate detection. Pay per photo batch, no subscription.",
       keywords:
         "AI photo organizer, ai photo organizer for cloud, ai photo management online, ai photo organizer for windows, ai photo organizer web, cloud photo organizer, web based photo organizer, browser based photo organizer, photo organizer for windows, photo organizer no download, organize photos with AI, photo organizer for large libraries, organize large photo library, photo library organizer, photo catalog organizer, smart photo organizer, photo organizer without subscription, photo organizer works with lightroom, photo organizer windows and mac, Excire Foto alternative, Peakto alternative, Peakto alternative Windows, Mylio alternative, digikam alternative, photo management software for photographers, organize 20000 photos, photo organization software, AI photo tagging automatic, photo library cleanup, photo DAM alternative, photo analysis layer, no migration photo organizer, organize photos without moving files",
-      ogImage: "/home/dashboard.png",
+      ogImage: "/home/dashboard.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: [
