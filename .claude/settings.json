@@ -8,7 +8,12 @@
       "Bash(node shot3.mjs)",
       "Bash(node shot4.mjs)",
       "Bash(ls /tmp/chk-am 2>/dev/null && echo \"OK: analytics-mcp resuelve en PyPI\" || echo \"FALLO: analytics-mcp no se descargó\")",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(powershell -Command \"\\(Get-Item 'C:\\\\Users\\\\andre\\\\Desktop'\\).Target\")",
+      "Bash(powershell -Command \"if \\(Test-Path 'C:\\\\Users\\\\andre\\\\OneDrive'\\) { echo 'OneDrive folder exists' }\")",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm ls *)"
     ]
   }
 }
