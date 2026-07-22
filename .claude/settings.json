@@ -13,7 +13,13 @@
       "Bash(powershell -Command \"if \\(Test-Path 'C:\\\\Users\\\\andre\\\\OneDrive'\\) { echo 'OneDrive folder exists' }\")",
       "Bash(npm --version)",
       "Bash(npm install *)",
-      "Bash(npm ls *)"
+      "Bash(npm ls *)",
+      "Bash(docker --version)",
+      "Bash(wsl --status)",
+      "PowerShell(wsl --list --verbose 2>&1)",
+      "Bash(node -e ' *)",
+      "Bash(rm -f package-lock.json)",
+      "Bash(rm -rf node_modules)"
     ]
   }
 }
