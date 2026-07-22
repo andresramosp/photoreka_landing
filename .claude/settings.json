@@ -19,7 +19,8 @@
       "PowerShell(wsl --list --verbose 2>&1)",
       "Bash(node -e ' *)",
       "Bash(rm -f package-lock.json)",
-      "Bash(rm -rf node_modules)"
+      "Bash(rm -rf node_modules)",
+      "Bash(npm cache *)"
     ]
   }
 }
