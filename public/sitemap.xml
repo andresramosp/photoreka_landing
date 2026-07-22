@@ -98,4 +98,29 @@
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
+
+    <url>
+        <loc>https://www.photoreka.com/blog</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/blog/peakto-alternative-windows</loc>
+        <lastmod>2026-07-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/blog/catalog-3d-universe-not-a-grid</loc>
+        <lastmod>2026-07-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/blog/chatlab-a-conversation-with-your-entire-archive</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>

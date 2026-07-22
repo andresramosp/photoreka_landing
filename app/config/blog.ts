@@ -55,6 +55,7 @@ export interface BlogPost {
   readingMinutes: number;
   author: BlogAuthor;
   toc?: boolean;
+  hidden?: boolean;
   content: BlogBlock[];
 }
 
@@ -71,7 +72,7 @@ export const blogPosts: BlogPost[] = [
       "peakto alternative, peakto windows, peakto alternative windows, photoreka vs peakto, cyme peakto alternative, ai photo organizer windows, photo curation software windows, peakto vs, ai photo organizer without subscription, excire foto alternative",
     category: "Comparisons",
     tags: ["Comparisons", "Peakto", "AI Photo Organizer", "Photo Curation"],
-    coverPlaceholder: true,
+    coverImage: "/blog/photoreka_vs_peakto.png",
     publishedAt: "2026-07-10",
     readingMinutes: 7,
     author: { name: "Photoreka Team", role: "Product" },
@@ -206,7 +207,7 @@ export const blogPosts: BlogPost[] = [
       "3d atlas, 2d atlas, photo catalog visualization, umap photography, ai photo clustering, catalog map, photo organization software, visual similarity clustering, photography portfolio tool",
     category: "Curation Philosophy",
     tags: ["3D Atlas", "2D Atlas", "Photo Organization", "Data Visualization"],
-    coverPlaceholder: true,
+    coverImage: "/atlas/2d.png",
     publishedAt: "2026-07-04",
     readingMinutes: 8,
     author: { name: "Photoreka Team", role: "Product" },
@@ -248,8 +249,8 @@ export const blogPosts: BlogPost[] = [
         type: "image",
         alt: "2D Atlas overview showing distinct bright clusters of photo thumbnails separated by dark, empty space",
         caption:
-          "A full catalog rendered as a map: dense clusters where the work concentrates, dark space where it doesn't — placeholder, screenshot to be added.",
-        placeholder: true,
+          "A full catalog rendered as a map: dense clusters where the work concentrates, dark space where it doesn't.",
+        src: "/atlas/2d_detail.png",
       },
       {
         type: "h2",
@@ -287,15 +288,6 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "h2",
-        text: "Nobody Else Shows You the Whole Thing",
-        id: "nobody-else-shows-you-the-whole-thing",
-      },
-      {
-        type: "p",
-        html: "This isn't a case of doing an existing feature better — it's hard to compare because the feature doesn't really exist elsewhere. Lightroom's smart collections, Google Photos' object clustering, and visual-similarity tools like Excire all work adjacent to this problem, but they all answer a narrower question: 'what else looks like this one photo I've selected.' That's useful, and it's a different problem from the one this piece is about. It's still a query, run one photo or one phrase at a time — never a view of the entire archive at once, rendered as a single, continuous, explorable space.<br /><br />None of the major cataloging tools — Lightroom Classic, Capture One, Google Photos, Mylio, digiKam — render your whole catalog as a place you can actually enter. They browse. The Atlas is a first attempt at letting you see the shape of everything you've ever shot, all at once, from the outside.",
-      },
-      {
-        type: "h2",
         text: "What a Map Reveals That a List Never Could",
         id: "what-a-map-reveals",
       },
@@ -311,9 +303,19 @@ export const blogPosts: BlogPost[] = [
         type: "image",
         alt: "3D Atlas flythrough showing navigation between two distinct visual clusters in an immersive 3D space",
         caption:
-          "Flying from one region of a catalog to another in the 3D Atlas — placeholder, screenshot to be added.",
-        placeholder: true,
+          "Flying from one region of a catalog to another in the 3D Atlas.",
+        src: "/atlas/3d_detail.png",
       },
+      {
+        type: "h2",
+        text: "Nobody Else Shows You the Whole Thing",
+        id: "nobody-else-shows-you-the-whole-thing",
+      },
+      {
+        type: "p",
+        html: "This isn't a case of doing an existing feature better — it's hard to compare because the feature doesn't really exist elsewhere. Lightroom's smart collections, Google Photos' object clustering, and visual-similarity tools like Excire all work adjacent to this problem, but they all answer a narrower question: 'what else looks like this one photo I've selected.' That's useful, and it's a different problem from the one this piece is about. It's still a query, run one photo or one phrase at a time — never a view of the entire archive at once, rendered as a single, continuous, explorable space.<br /><br />None of the major cataloging tools — Lightroom Classic, Capture One, Google Photos, Mylio, digiKam — render your whole catalog as a place you can actually enter. They browse. The Atlas is a first attempt at letting you see the shape of everything you've ever shot, all at once, from the outside.",
+      },
+
       {
         type: "h2",
         text: "From Region to Sequence",
@@ -331,6 +333,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "folders-are-a-failed-metaphor",
+    hidden: true,
     title: "Folders Are a Failed Metaphor: The Case for AI Photo Search",
     excerpt:
       "Folders and keyword tags organize static categories, not fluid meaning. Here is why semantic AI search is replacing them and changing how we view our archives.",
@@ -389,7 +392,7 @@ export const blogPosts: BlogPost[] = [
         type: "image",
         alt: "Screenshot placeholder: semantic search results for a mood-based query like 'a lone figure walking into fog'",
         caption:
-          "Search results for a query that was never written anywhere near the photo — placeholder, screenshot to be added.",
+          "Search results for a query that was never written anywhere near the photo.",
         placeholder: true,
       },
       {
@@ -408,8 +411,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "image",
         alt: "Screenshot placeholder: Broad, Adaptive, and Precise search modes shown side by side for the same query",
-        caption:
-          "The same query, three different kinds of answers — placeholder, screenshot to be added.",
+        caption: "The same query, three different kinds of answers.",
         placeholder: true,
       },
       {
@@ -456,16 +458,17 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "chatlab-a-conversation-with-your-entire-archive",
-    title: "ChatLab: una conversación con todo tu archivo fotográfico a la vez",
+    title: "ChatLab: A Conversation with Your Entire Photo Archive",
     excerpt:
-      "Queríamos poder hablar con un catálogo entero — no con una foto suelta — y no encontramos nada ahí fuera que lo hiciera. Así nació ChatLab: un agente sobre modelos frontera que conoce tu archivo, ve tus fotos de verdad y orquesta el resto de herramientas de Photoreka.",
+      "We wanted to talk to an entire catalog—not just a single photo—and we couldn't find anything that could do it. That's how ChatLab was born: an agent built on frontier models that knows your archive, actually sees your photos, and orchestrates the rest of Photoreka's tools.",
     description:
-      "Qué es ChatLab y cómo funciona: un chat agéntico con modelos frontera, RAG y herramientas de búsqueda, análisis de patrones y scoring que trata una librería fotográfica como un todo — ve las fotos reales, no solo metadatos, y actúa como orquestador del organizador completo.",
+      "What ChatLab is and how it works: an agentic chat powered by frontier models, RAG, and tools for search, pattern analysis, and scoring that treats a photographic library as a whole—it sees the actual photos, not just metadata, and acts as the orchestrator of the entire organization suite.",
     keywords:
       "ai photo chat, chat with photo library, agentic ai photography, ai photo curation, rag photography, photo catalog assistant, llm photo analysis, conversational photo curation, ai photo critique",
     category: "Inside Photoreka",
     tags: ["ChatLab", "AI Agents", "RAG", "Photo Curation"],
-    coverPlaceholder: true,
+    // coverPlaceholder: true,
+    coverImage: "/blog/chatlab.png",
     publishedAt: "2026-07-16",
     readingMinutes: 5,
     author: { name: "Photoreka Team", role: "Product" },
@@ -473,146 +476,158 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "p",
-        html: "Hay preguntas que ningún buscador de fotos ha sabido responder nunca. <em>«¿Qué dice este archivo de mí como fotógrafo?» «¿Dónde me estoy repitiendo?» «¿Cuáles de mis fotos de este año aguantarían una convocatoria seria?»</em> No son consultas: no tienen palabras clave ni devuelven una lista ordenada. Son preguntas de conjunto — y hasta ahora, la única inteligencia capaz de responderlas era otro fotógrafo con horas por delante y tu catálogo entero en la cabeza.",
+        html: "There are questions no photo search engine has ever been able to answer. <em>“What does this archive say about me as a photographer?” “Where am I repeating myself?” “Which of my photos from this year could stand up in a serious competition?”</em> These aren't searches: they have no keywords and return no ranked list. They're questions about the whole body of work—and until now, the only intelligence capable of answering them was another photographer with hours to spare and your entire archive in mind.",
       },
       {
         type: "p",
-        html: "<a href='/photo_chat'>ChatLab</a> nació de una necesidad muy concreta: queríamos poder hablar con todo un catálogo — no con una foto, con el cuerpo de trabajo completo. Y al buscar quién lo hacía ya, la sorpresa: no había nada. Sí, algunos chats describen con soltura una foto suelta; ninguno conoce tu catálogo, tu estilo ni tu evolución. Así que lo construimos dentro de Photoreka, sobre la misma arquitectura que mueve a los agentes de IA modernos: modelos frontera, RAG y un buen juego de herramientas.",
+        html: "<a href='/photo_chat'>ChatLab</a> was born from a very specific need: we wanted to talk to an entire catalog—not just one photo, but a complete body of work. And when we looked for someone already doing it, the surprise was: nobody was. Yes, some chatbots can describe a single image quite well; none knows your catalog, your style, or your evolution. So we built it inside Photoreka, on the same architectural principles that power modern AI agents: frontier models, RAG, and a solid toolkit.",
       },
       {
         type: "h2",
-        text: "Un archivo es un todo, no una carpeta de ficheros",
-        id: "un-archivo-es-un-todo",
+        text: "An Archive Is a Whole, Not Just a Folder of Files",
+        id: "an-archive-is-a-whole",
       },
       {
         type: "p",
-        html: "La idea central es fácil de enunciar: tu estilo no está en ninguna foto concreta. Es una <strong>propiedad emergente del conjunto</strong> — vive en lo que repites sin saberlo, en cómo ha cambiado tu paleta en tres años, en la distancia entre lo que crees que fotografías y lo que fotografías de verdad. Nada de eso es visible desde el ángulo local de las herramientas tradicionales: una foto, una carpeta, una búsqueda cada vez.",
+        html: "The core idea is easy to state: your style is not contained in any single photo. It is an <strong>emergent property of the collection</strong>—it lives in what you keep repeating without realizing it, in how your palette has changed over three years, in the distance between what you think you photograph and what you actually photograph. None of that is visible from the local perspective of traditional tools: one photo, one folder, one search at a time.",
       },
       {
         type: "p",
-        html: "ChatLab trabaja sobre el catálogo completo. Puede medir proporciones (<em>«¿fotografío más a hombres o a mujeres?»</em>), rastrear tu evolución por épocas, leer clusters y desequilibrios que ninguna imagen individual contiene, y cruzarlo todo con las <a href='/photo_scoring'>puntuaciones artísticas</a> de cada foto. No responde con impresiones: responde con el archivo entero en la mano.",
-      },
-      {
-        type: "callout",
-        variant: "tip",
-        title: "Agente, RAG y embeddings, en tres frases",
-        html: "Un modelo de lenguaje no sabe nada de tus fotos: si le preguntas «a pelo», inventa con elegancia. <strong>RAG</strong> (Retrieval-Augmented Generation) lo arregla recuperando datos reales antes de responder — descripciones, etiquetas, puntuaciones y <strong>embeddings</strong>: coordenadas matemáticas donde la distancia significa parecido. Y un <strong>agente</strong> va más allá: dispone de herramientas — buscar por estilo, filtrar por puntuación, medir temas, muestrear por épocas, consultar la web — y decide él mismo cuáles usar y en qué orden, leyendo cada resultado antes del siguiente paso.",
+        html: "ChatLab works across your entire catalog. It can measure proportions (<em>“Do I photograph more men or women?”</em>), trace your evolution over time, read clusters and imbalances that no individual image contains, and combine all of that with the <a href='/photo_scoring'>artistic scores</a> assigned to each photo. It doesn't answer with impressions—it answers with your entire archive in hand.",
       },
       {
         type: "image",
-        alt: "ChatLab respondiendo a una petición de curación con varios grupos de fotos etiquetados",
-        caption:
-          "Una petición, varios grupos con criterio: la respuesta no es una lista de resultados, es una selección argumentada — placeholder, captura pendiente.",
-        placeholder: true,
+        alt: "Example conversation with ChatLab: a compound query combining semantic search, filters, and ranking, followed by the chat's answer with a curated photo selection",
+        caption: "Example Conversation with ChatLab",
+        src: "/chatlab/conversacion.png",
       },
       {
         type: "h2",
-        text: "Qué se le puede pedir",
-        id: "que-se-le-puede-pedir",
+        text: "What You Can Ask It",
+        id: "what-you-can-ask",
       },
       {
         type: "list",
         items: [
-          "Curación compuesta: «mis mejores verticales en blanco y negro con gente mayor, ordenadas por composición». Una frase que combina búsqueda semántica, etiquetas, filtros y ranking — cosas que normalmente viven en cuatro pantallas distintas.",
-          "Preguntas de conjunto: «¿qué temas dominan mi archivo?», «¿tengo más motos o coches?», «¿en qué año fui más arriesgado?».",
-          "Mirada exterior: «busca las categorías de este año del premio X y dime qué fotos mías encajan». El agente consulta la web y convierte los criterios en una búsqueda sobre tu catálogo.",
-          "Contradicciones reveladoras: «fotos que impresionan a primera vista pero no cuentan nada» — estética alta, narrativa baja. O la inversa: joyas ocultas que puntúan alto en historia y pasan desapercibidas.",
-          "Crítica con la foto delante: adjunta una imagen y pide una lectura honesta — o pídele sus hermanas: por paleta, por narrativa o por parecido visual.",
+          "Compound curation: “my best vertical black-and-white photos with elderly people, ranked by composition.” A single sentence combining semantic search, tags, filters, and ranking—things that normally live across four different screens.",
+          "Collection-wide questions: “What subjects dominate my archive?”, “Do I have more motorcycles or cars?”, “Which year was I the most daring?”",
+          "An outside perspective: “Look up this year's categories for award X and tell me which of my photos fit.” The agent searches the web and turns the criteria into a search across your catalog.",
+          "Revealing contradictions: “Photos that make a strong first impression but say nothing”—high aesthetics, low narrative. Or the opposite: hidden gems that score highly on storytelling but usually go unnoticed.",
+          "Critique with the photo in front of it: attach an image and ask for an honest reading—or ask it to find its sisters by palette, narrative, or visual similarity.",
         ],
       },
+
       {
         type: "h2",
-        text: "Cómo funciona por dentro",
-        id: "como-funciona-por-dentro",
+        text: "One Catalog, Two Ways of Seeing It",
+        id: "one-catalog-two-views",
       },
       {
         type: "p",
-        html: "La arquitectura tiene dos fases. La primera es un <strong>investigador</strong>: un modelo rápido cuyo único trabajo es decidir qué herramientas llamar — en paralelo cuando son independientes, en cadena cuando una alimenta a la otra — y reunir evidencia. Tiene prohibido juzgar. La segunda es un <strong>curador</strong>: un modelo frontera con capacidad visual que recibe toda esa evidencia y — esto es lo importante — <strong>ve las fotos de verdad</strong>: miniaturas reales, no solo metadatos, lado a lado, antes de escribir una sola línea. Verifica, descarta lo tangencial, agrupa y le pone nombre a cada grupo.",
-      },
-      {
-        type: "p",
-        html: "Una regla de hierro lo gobierna todo: el curador solo puede hablar de fotos que las herramientas hayan devuelto de verdad. Si una búsqueda vuelve vacía, la respuesta lo dice — no rellena el hueco con fotos imaginarias. Cada afirmación tiene una foto real detrás.",
+        html: "This idea of treating an archive as a whole isn't unique to ChatLab: it's the principle that organizes all of Photoreka, and the <a href='/photo_3D_atlas'>2D/3D Atlas</a> is its most visual expression. The Atlas turns your catalog into a navigable map—a universe of points where similar images cluster together and different ones drift apart—allowing you to <strong>see</strong> the overall shape of your work at a glance: where it concentrates, where the gaps are, what clusters exist. That same map is one of the spaces ChatLab can explore on your behalf when you ask about the archive as a whole. But the chat goes further: beyond the spatial view, it combines tags, scores, temporal evolution, and even web information when needed, then answers with a judgment built from all of that—not just by pointing at a region of the map.",
       },
       {
         type: "image",
-        alt: "Diagrama del pipeline interno de ChatLab: una fase investigadora que orquesta las herramientas del catálogo y una fase curadora con acceso visual a las miniaturas",
+        alt: "2D Atlas displaying the entire catalog as a map of clusters alongside a ChatLab conversation asking about those same regions",
         caption:
-          "El mecanismo, simplificado: un investigador que reúne evidencia con las herramientas del catálogo, y un curador con ojos que la juzga — placeholder, diagrama pendiente.",
-        placeholder: true,
+          "The 2D Atlas: the closest visual representation of how ChatLab sees your entire archive.",
+        src: "/atlas/2d.png",
       },
       {
         type: "h2",
-        text: "Un ojo que se adapta a tu perfil",
-        id: "un-ojo-que-se-adapta",
+        text: "How It Works Under the Hood",
+        id: "how-it-works",
       },
       {
         type: "p",
-        html: "Un buen editor no juzga igual un ensayo documental que un book comercial, y ChatLab tampoco. Sus criterios se adaptan al perfil de cada fotógrafo: en fotografía de calle pesan más la espontaneidad, los juegos visuales y la originalidad; en documental, el mensaje y la narrativa; en trabajo comercial, la claridad del sujeto y la intención. Y las puntuaciones almacenadas son punto de partida, no sentencia: cada foto fue puntuada en soledad, y <strong>la comparación lado a lado es exactamente lo que la conversación añade</strong>.",
-      },
-      {
-        type: "h2",
-        text: "El chat que orquesta todo lo demás",
-        id: "el-chat-que-orquesta",
+        html: "Internally, ChatLab works in two stages: first it gathers evidence, then it judges. In the first stage it has access to the same arsenal of tools you would use through the interface—semantic search, tag filters, patterns and clusters, scoring, even web search—and combines them, sometimes in parallel and sometimes sequentially, until it has solid evidence to answer your question. A real example: for <em>“my best vertical black-and-white photos with elderly people, ranked by composition”</em>, it combines semantic search by subject and composition, filters by orientation and palette, and a final ranking by score—three different tools, one answer.",
       },
       {
         type: "p",
-        html: "Construyendo asistentes para otros productos aprendimos una lección que se repite siempre: cuando un dashboard tiene chat, el usuario acaba yendo al chat. Con ChatLab pasa igual, y tiene sentido — puede hacer, en cierta medida, casi todo lo que harías en un organizador de fotos: buscar, comparar, agrupar, analizar. Seamos francos con los matices: su alcance por respuesta es acotado, y cada conversación consume tokens de modelos frontera, así que para la exploración masiva las herramientas dedicadas — <a href='/ai_photo_search'>Search</a>, el <a href='/photo_3D_atlas'>Atlas</a>, el Workspace — siguen siendo más eficientes y, sobre todo, te dan más control. Pero su papel de <strong>orquestador de todo el organizador</strong> es innegable.",
-      },
-      {
-        type: "p",
-        html: "Esa orquestación va en las dos direcciones. Hacia fuera: bajo cada respuesta aparecen <strong>acciones de un clic</strong> — crear una colección con el nombre que el curador ya propuso, convertir un grupo en serie, llevar la selección a otra herramienta — siempre con tu confirmación. Y hacia dentro: ChatLab usa las mismas herramientas que la interfaz te ofrece a ti — la misma búsqueda, los mismos patrones, clusters, distribución de etiquetas y scoring. No es un chat construido <em>encima</em> de Photoreka: está hecho <em>de</em> Photoreka.",
+        html: "Once the evidence is on the table, the second stage begins: a frontier model with visual capabilities examines the actual photos—not just their data—compares them side by side, and writes the final answer, grouping the results and giving each selection a meaningful name. It only talks about photos that those tools have genuinely returned, so if nothing matches, it simply says so.",
       },
       {
         type: "image",
-        alt: "Acciones sugeridas bajo una respuesta de ChatLab: crear colección, añadir a una serie, abrir en Workspace",
+        alt: "Diagram of ChatLab's internal pipeline: an investigative stage orchestrating catalog tools followed by a curator stage with visual access to thumbnails",
         caption:
-          "La conversación desemboca en la aplicación: acciones de un clic bajo cada respuesta, siempre con confirmación — placeholder, captura pendiente.",
-        placeholder: true,
+          "The mechanism, simplified: an investigator gathering evidence with catalog tools, and a curator with eyes judging it—placeholder, final diagram pending.",
+        src: "/chatlab/diagram.png",
+      },
+      {
+        type: "h2",
+        text: "An Eye That Adapts to Your Style",
+        id: "an-eye-that-adapts",
+      },
+      {
+        type: "p",
+        html: "A good editor doesn't judge a documentary essay the same way as a commercial portfolio—and neither does ChatLab. Its criteria adapt to each photographer's profile: in street photography it gives more weight to spontaneity, visual play, and originality; in documentary work, to message and narrative; in commercial photography, to subject clarity and intent. And the stored scores are only a starting point, not the verdict: each photo was originally evaluated in isolation, and <strong>side-by-side comparison is exactly what the conversation adds</strong>.",
+      },
+      {
+        type: "h2",
+        text: "The Chat That Orchestrates Everything Else",
+        id: "the-chat-that-orchestrates",
+      },
+      {
+        type: "p",
+        html: "Building assistants for other products taught us a lesson that keeps repeating itself: when a dashboard has a chat, users eventually gravitate toward the chat. The same happens with ChatLab, and it makes sense—it can do, to a large extent, almost everything you'd do in a photo organizer: search, compare, group, analyze. To be fair, there are limits: each response can only cover so much, and every conversation consumes frontier-model tokens, so for large-scale exploration the dedicated tools—<a href='/ai_photo_search'>Search</a>, the <a href='/photo_3D_atlas'>Atlas</a>, the Workspace—remain more efficient and, above all, give you greater control. But its role as the <strong>orchestrator of the entire organizer</strong> is undeniable.",
+      },
+      {
+        type: "p",
+        html: "That orchestration goes both ways. Outward: beneath every response you'll find <strong>one-click actions</strong>—create a collection using the name the curator already suggested, turn a group into a series, send the selection to another tool—all with your confirmation. Inward: ChatLab uses the exact same tools available through the interface—the same search, the same patterns, clusters, tag distribution, and scoring. It isn't a chat built <em>on top of</em> Photoreka: it's built <em>from</em> Photoreka.",
+      },
+      {
+        type: "image",
+        alt: "Suggested actions beneath a ChatLab response: create collection, add to series, open in Workspace",
+        caption:
+          "The conversation flows back into the application: one-click actions beneath every answer, always requiring confirmation—placeholder, screenshot pending.",
+        src: "/chatlab/actions.png",
       },
       {
         type: "quote",
-        text: "Un buscador te devuelve lo que pides. Un curador discute contigo lo que pides. Esa diferencia — entre una lista de resultados y un criterio — es la que ChatLab viene a cubrir.",
+        text: "A search engine gives you what you ask for. A curator argues with you about what you ask for. That difference—between a list of results and judgment—is what ChatLab is here to provide.",
       },
       {
         type: "callout",
         variant: "info",
-        title: "Lo que ChatLab no es",
-        html: "No modifica tu librería por su cuenta: toda acción pide tu confirmación. Trabaja con selecciones acotadas (~20 fotos por respuesta): un punto de partida con criterio, no un inventario. Y su lectura es una <strong>segunda opinión</strong>, no la última palabra — la mejor curación sale de la simbiosis entre el sistema y tu ojo.",
+        title: "What ChatLab Isn't",
+        html: "It doesn't modify your library on its own: every action requires your confirmation. It works with limited selections (around 20 photos per response): a carefully considered starting point, not a full inventory. And its interpretation is a <strong>second opinion</strong>, not the final word—the best curation emerges from the collaboration between the system and your own eye.",
       },
       {
         type: "h2",
-        text: "Lo que viene",
-        id: "lo-que-viene",
+        text: "What's Next",
+        id: "whats-next",
       },
       {
         type: "p",
-        html: "ChatLab está en pleno crecimiento. Hay nuevas herramientas en camino para el agente, y estamos explorando un enfoque <strong>multi-agente</strong> que le permita «ver» muchas más fotos por conversación: varios curadores mirando en paralelo regiones distintas del catálogo y poniendo su lectura en común. La dirección es clara: cada mes que pasa, el chat conoce tu archivo un poco mejor.",
+        html: "ChatLab is growing rapidly. New tools for the agent are on the way, and we're exploring a <strong>multi-agent</strong> approach that will allow it to 'see' far more photos in a single conversation: multiple curators examining different regions of the catalog in parallel and combining their insights. The direction is clear: every month, the chat gets to know your archive a little better.",
       },
       {
         type: "cta",
-        eyebrow: "Pruébalo con un archivo real",
-        title: "Habla con un catálogo de verdad",
-        text: "La demo incluye ChatLab sobre un archivo fotográfico real: pregunta, pide selecciones, discútele las respuestas.",
-        buttonLabel: "Probar la demo",
+        eyebrow: "Try It on a Real Archive",
+        title: "Talk to a Real Photo Catalog",
+        text: "The demo includes ChatLab running on a real photographic archive: ask questions, request curated selections, challenge its answers.",
+        buttonLabel: "Try the Demo",
         action: "demo",
       },
       {
         type: "p",
-        html: "No prometemos magia. Prometemos algo más raro: un interlocutor que conoce tu catálogo entero, que mira tus fotos de verdad y que convierte cada respuesta en trabajo real dentro de la aplicación. Esa conversación no existía ahí fuera — y era la que llevábamos años queriendo tener con nuestro propio archivo.",
+        html: "We don't promise magic. We promise something rarer: a conversation partner that knows your entire archive, actually looks at your photos, and turns every answer into real work inside the application. That conversation didn't exist before—and it's the one we'd wanted to have with our own archive for years.",
       },
     ],
   },
 ];
 
 export function getAllPosts(): BlogPost[] {
-  return [...blogPosts].sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-  );
+  return [...blogPosts]
+    .filter((post) => !post.hidden)
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    );
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.slug === slug);
+  return blogPosts.find((post) => post.slug === slug && !post.hidden);
 }
 
 export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {

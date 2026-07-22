@@ -119,12 +119,8 @@ import { trackUserAction } from "~/utils/analytics";
 
 useHead({
   title: "Photoreka Blog",
-  meta: [
-    {
-      name: "robots",
-      content: "noindex, nofollow, noarchive",
-    },
-  ],
+  meta: [],
+  // robots: default (index, follow)
   script: [
     {
       children: `(function(){try{const t=localStorage.getItem('photoreka-theme-mode')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,

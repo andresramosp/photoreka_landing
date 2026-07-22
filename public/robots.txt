@@ -1,6 +1,5 @@
 User-Agent: *
 Allow: /
-Disallow: /blog
 Disallow: /commercial_photography
 Host: https://www.photoreka.com
 Sitemap: https://www.photoreka.com/sitemap.xml

@@ -53,6 +53,7 @@
           <NuxtLink to="/lightroom_search_plugin" class="footer-link"
             >Lightroom Plugin</NuxtLink
           >
+          <NuxtLink to="/blog" class="footer-link">Blog</NuxtLink>
           <!-- <NuxtLink to="/commercial_photography" class="footer-link"
             >For Commercial Photographers</NuxtLink
           > -->

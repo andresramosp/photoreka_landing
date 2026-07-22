@@ -262,10 +262,6 @@ useHead({
   title: `${post.title} | Photoreka`,
   meta: [
     {
-      name: "robots",
-      content: "noindex, nofollow, noarchive",
-    },
-    {
       name: "description",
       content: post.description,
     },
@@ -481,7 +477,6 @@ onMounted(() => {
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--premium-border);
-  aspect-ratio: 16 / 9;
   background: var(--premium-bg-elevated);
 }
 .cover-img {
