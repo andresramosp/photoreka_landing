@@ -83,6 +83,50 @@ export function useSEO(pageKey?: SEOPageKey, customConfig?: Partial<SEOPage>) {
         content: "en_US",
       },
 
+      // Article-specific Open Graph tags (only emitted for ogType: "article")
+      ...(config.ogType === "article"
+        ? [
+            ...(config.publishedTime
+              ? [
+                  {
+                    property: "article:published_time",
+                    content: config.publishedTime,
+                  },
+                ]
+              : []),
+            ...(config.modifiedTime
+              ? [
+                  {
+                    property: "article:modified_time",
+                    content: config.modifiedTime,
+                  },
+                ]
+              : []),
+            ...(config.articleAuthor
+              ? [
+                  {
+                    property: "article:author",
+                    content: config.articleAuthor,
+                  },
+                ]
+              : []),
+            ...(config.articleSection
+              ? [
+                  {
+                    property: "article:section",
+                    content: config.articleSection,
+                  },
+                ]
+              : []),
+            ...(config.articleTags
+              ? config.articleTags.map((tag: string) => ({
+                  property: "article:tag",
+                  content: tag,
+                }))
+              : []),
+          ]
+        : []),
+
       // Twitter Card
       {
         name: "twitter:card",

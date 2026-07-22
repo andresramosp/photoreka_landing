@@ -13,6 +13,12 @@ export interface SEOPage {
   canonicalUrl?: string;
   robots?: string;
   jsonLd?: any | any[];
+  // Article-specific fields (used when ogType === "article", e.g. blog posts)
+  publishedTime?: string;
+  modifiedTime?: string;
+  articleAuthor?: string;
+  articleSection?: string;
+  articleTags?: string[];
 }
 
 export const seoConfig = {
@@ -195,6 +201,17 @@ export const seoConfig = {
         description:
           "Privacy and Image Policy for the Photoreka photo curation platform.",
       },
+    },
+
+    blog: {
+      title: "Photoreka Blog — AI Photo Curation & Organization Insights",
+      description:
+        "Technical write-ups and field notes on AI photo curation, semantic photo search, photo organization, and computer vision for photographers — from the team building Photoreka.",
+      keywords:
+        "photoreka blog, ai photo curation blog, photo organization insights, ai photo search articles, photography technology blog, computer vision photography, photo curation philosophy, ai photo organizer articles, semantic search photography, 3D photo atlas articles",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
     },
 
     framer: {

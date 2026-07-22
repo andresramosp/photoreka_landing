@@ -249,6 +249,7 @@ import {
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { getPostBySlug, getRelatedPosts, formatBlogDate } from "~/config/blog";
+import { seoConfig } from "~/config/seo";
 import { trackUserAction } from "~/utils/analytics";
 
 const route = useRoute();
@@ -258,14 +259,82 @@ if (!post) {
   throw createError({ statusCode: 404, statusMessage: "Post not found" });
 }
 
-useHead({
+const postUrl = `${seoConfig.siteUrl}/blog/${post.slug}`;
+const postImage = post.coverImage
+  ? `${seoConfig.siteUrl}${post.coverImage}`
+  : `${seoConfig.siteUrl}${seoConfig.defaultOgImage}`;
+const dateModified = post.updatedAt || post.publishedAt;
+
+useSEO(undefined, {
   title: `${post.title} | Photoreka`,
-  meta: [
+  description: post.description,
+  keywords: post.keywords,
+  ogImage: post.coverImage,
+  ogType: "article",
+  twitterCard: "summary_large_image",
+  publishedTime: post.publishedAt,
+  modifiedTime: dateModified,
+  articleAuthor: post.author.name,
+  articleSection: post.category,
+  articleTags: post.tags,
+  jsonLd: [
     {
-      name: "description",
-      content: post.description,
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      image: postImage,
+      url: postUrl,
+      datePublished: post.publishedAt,
+      dateModified,
+      articleSection: post.category,
+      keywords: post.keywords,
+      author: {
+        "@type": "Person",
+        name: post.author.name,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Photoreka",
+        url: seoConfig.siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${seoConfig.siteUrl}/logos/marca/vertical-claim-light.png`,
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": postUrl,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: seoConfig.siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${seoConfig.siteUrl}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.title,
+          item: postUrl,
+        },
+      ],
     },
   ],
+});
+
+useHead({
   script: [
     {
       children: `(function(){try{const t=localStorage.getItem('photoreka-theme-mode')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,

@@ -115,12 +115,58 @@ import {
   TimeOutline,
 } from "@vicons/ionicons5";
 import { getAllPosts, formatBlogDate } from "~/config/blog";
+import { seoConfig } from "~/config/seo";
 import { trackUserAction } from "~/utils/analytics";
 
+const posts = getAllPosts();
+
+useSEO("blog", {
+  jsonLd: [
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: "Photoreka Blog",
+      url: `${seoConfig.siteUrl}/blog`,
+      description: seoConfig.pages.blog.description,
+      publisher: {
+        "@type": "Organization",
+        name: "Photoreka",
+        url: seoConfig.siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${seoConfig.siteUrl}/logos/marca/vertical-claim-light.png`,
+        },
+      },
+      blogPost: posts.map((post) => ({
+        "@type": "BlogPosting",
+        headline: post.title,
+        url: `${seoConfig.siteUrl}/blog/${post.slug}`,
+        datePublished: post.publishedAt,
+        dateModified: post.updatedAt || post.publishedAt,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: seoConfig.siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${seoConfig.siteUrl}/blog`,
+        },
+      ],
+    },
+  ],
+});
+
 useHead({
-  title: "Photoreka Blog",
-  meta: [],
-  // robots: default (index, follow)
   script: [
     {
       children: `(function(){try{const t=localStorage.getItem('photoreka-theme-mode')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,
@@ -140,8 +186,6 @@ const {
 } = useTheme();
 
 const toggleTheme = () => baseToggleTheme();
-
-const posts = getAllPosts();
 
 const goToHome = () => {
   trackUserAction("navigate_to_home", "blog_index");
