@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Terms of Service</h1>
-        <p class="terms-effective">Last updated: March 30, 2026</p>
+        <p class="terms-effective">Last updated: July 27, 2026</p>
 
         <section class="terms-section">
           <h2>1. Acceptance of Terms</h2>
@@ -55,6 +55,21 @@
             analysis, search, and preview functionalities. You must always
             maintain your own independent copies and backups of your original
             files.
+          </p>
+          <p>
+            Where you choose to sign in using Google, or to import photos from
+            Google Photos or Google Drive, those integrations are additionally
+            subject to the Google Terms of Service. Photoreka's use
+            and transfer of information received from Google APIs to any other
+            app will adhere to the
+            <a
+              href="https://developers.google.com/terms/api-services-user-data-policy"
+              target="_blank"
+              rel="noopener"
+              >Google API Services User Data Policy</a
+            >, including the Limited Use requirements. See our
+            <NuxtLink to="/privacy">Privacy &amp; Image Policy</NuxtLink> for
+            details on what Google user data we access and how it is used.
           </p>
         </section>
 

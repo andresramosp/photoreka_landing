@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Privacy &amp; Image Policy</h1>
-        <p class="terms-effective">Last updated: March 30, 2026</p>
+        <p class="terms-effective">Last updated: July 27, 2026</p>
 
         <section class="terms-section">
           <h2>1. Introduction</h2>
@@ -43,11 +43,16 @@
           <ul>
             <li>
               <strong>Account information:</strong> email address, name, and
-              authentication data when you create an account.
+              authentication data when you create an account. If you sign up or
+              sign in using Google, we receive your email address, name, profile
+              picture, and Google account identifier from your Google account —
+              see the
+              <em>Google User Data and Limited Use</em> section below.
             </li>
             <li>
               <strong>Images:</strong> photographs you upload to the Platform
-              for analysis and curation.
+              for analysis and curation, including photos you choose to import
+              from Google Photos or Google Drive.
             </li>
             <li>
               <strong>Image metadata:</strong> EXIF data, camera settings,
@@ -126,8 +131,9 @@
             </li>
             <li>
               Processing uses proprietary AI models and third-party AI models
-              (including Google services) under paid/private plans that do not
-              use your images to train their models.
+              (including Google and OpenAI services) under paid or enterprise
+              plans whose terms provide that submitted content is not used to
+              train their models.
             </li>
             <li>
               Images may be temporarily transmitted to these providers solely
@@ -231,7 +237,116 @@
         </section>
 
         <section class="terms-section">
-          <h2>9. Sensitive and Personal Images Disclaimer</h2>
+          <h2>9. Google User Data and Limited Use</h2>
+          <p>
+            Photoreka offers "Sign in with Google" as an optional
+            authentication method, and lets you import photos directly from
+            Google Photos and Google Drive. This section describes specifically
+            how we handle data obtained through Google APIs.
+          </p>
+          <p>
+            <strong>What we access.</strong> We request only the following
+            scopes, each tied to a specific user-facing feature:
+          </p>
+          <ul>
+            <li>
+              <strong>userinfo.email</strong> — your Google account email
+              address, used as your unique account identifier and for
+              account-related communication.
+            </li>
+            <li>
+              <strong>userinfo.profile</strong> — your name, profile picture,
+              and Google account identifier, used to create and display your
+              Photoreka user profile.
+            </li>
+            <li>
+              <strong>photospicker.mediaitems.readonly</strong> — read-only
+              access to
+              <strong
+                >only the photos you explicitly select in the Google Photos
+                picker</strong
+              >, so you can import them into your Photoreka workspace. The
+              picker is provided and displayed by Google; Photoreka never sees,
+              browses, or has access to the rest of your Google Photos library.
+            </li>
+            <li>
+              <strong>drive.file</strong> — access limited to
+              <strong
+                >only the individual files you explicitly select in the Google
+                Drive picker</strong
+              >, so you can import them into your Photoreka workspace. Photoreka
+              cannot see, list, or access any other file in your Drive.
+            </li>
+          </ul>
+          <p>
+            We do not request access to Gmail, Google Calendar, Google
+            Contacts, or any other Google service, and we do not request broad
+            library or full-drive scopes. Both import features use Google's own
+            picker interfaces specifically so that access is limited to the
+            items you choose, one selection at a time.
+          </p>
+          <p>
+            <strong>How we use it.</strong> Account data (email, name, profile
+            picture) is used exclusively to create and authenticate your
+            account, populate your user profile, and contact you about your
+            account. Photos and files you import from Google Photos or Google
+            Drive are treated exactly like images you upload directly: a
+            reduced, medium-quality copy is stored to power search, curation,
+            scoring, and visualization, and the image is analyzed to generate
+            tags and scores as described in the Image Processing with AI section
+            above. Google user data is never used for advertising, credit, or
+            lending purposes.
+          </p>
+          <p>
+            <strong>How we share it.</strong> Google user data is not sold,
+            transferred, or disclosed to any third party, except to cloud
+            infrastructure providers strictly necessary to operate the Platform
+            and bound by data processing agreements, or where required by law.
+            We never transfer Google user data to data brokers, advertising
+            networks, credit or lending providers, or any party for purposes
+            unrelated to providing user-facing features of Photoreka.
+          </p>
+          <p>
+            <strong>AI and machine learning.</strong> Google user data —
+            including photos imported from Google Photos or Google Drive and
+            any tags, scores, or embeddings derived from them — is never used
+            to develop, improve, or train generalized artificial intelligence
+            or machine learning models, and is never transferred to any
+            third-party service that would use it to train its models. Imported
+            photos are analyzed by the AI providers described in the Image
+            Processing with AI section above under paid or enterprise plans
+            whose terms provide that submitted content is not used for model
+            training. This analysis exists solely to deliver the Platform
+            features you requested.
+          </p>
+          <p>
+            <strong>Retention and revocation.</strong> Google user data is
+            retained only while your Photoreka account is active, and is
+            deleted within 30 days of account deletion as described in the Data
+            Retention and Deletion section above. You may revoke Photoreka's
+            access to your Google account at any time at
+            <a
+              href="https://myaccount.google.com/permissions"
+              target="_blank"
+              rel="noopener"
+              >myaccount.google.com/permissions</a
+            >.
+          </p>
+          <p>
+            <strong>Limited Use disclosure.</strong> Photoreka's use and
+            transfer of information received from Google APIs to any other app
+            will adhere to the
+            <a
+              href="https://developers.google.com/terms/api-services-user-data-policy"
+              target="_blank"
+              rel="noopener"
+              >Google API Services User Data Policy</a
+            >, including the Limited Use requirements.
+          </p>
+        </section>
+
+        <section class="terms-section">
+          <h2>10. Sensitive and Personal Images Disclaimer</h2>
           <p>
             Photoreka is intended solely for the management and analysis of
             artistic or documentary photographic bodies of work suitable for
@@ -257,15 +372,16 @@
         </section>
 
         <section class="terms-section">
-          <h2>10. Cookies and Analytics</h2>
+          <h2>11. Cookies and Analytics</h2>
           <ul>
             <li>
               Photoreka uses essential cookies required for the Platform to
               function (authentication, session management).
             </li>
             <li>
-              We may use analytics tools to understand usage patterns and
-              improve the service. These tools collect anonymized data only.
+              We use Google Analytics to understand aggregate usage patterns and
+              improve the service. These tools collect anonymized data only and
+              are never linked to your images.
             </li>
             <li>
               We do not use advertising cookies or tracking pixels from third
@@ -275,7 +391,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>11. Your Rights (GDPR / CCPA)</h2>
+          <h2>12. Your Rights (GDPR / CCPA)</h2>
           <p>
             Depending on your jurisdiction, you may have the following rights
             regarding your personal data:
@@ -318,7 +434,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>12. Data Security</h2>
+          <h2>13. Data Security</h2>
           <ul>
             <li>
               All data is encrypted in transit using TLS and at rest using
@@ -351,7 +467,7 @@
         </section> -->
 
         <section class="terms-section">
-          <h2>13. Changes to This Policy</h2>
+          <h2>14. Changes to This Policy</h2>
           <p>
             We may update this Privacy &amp; Image Policy from time to time.
             Material changes will be communicated via the Platform or email.
@@ -361,7 +477,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>14. Contact</h2>
+          <h2>15. Contact</h2>
           <p>
             If you have any questions about this Privacy &amp; Image Policy or
             wish to exercise your data rights, please contact us at

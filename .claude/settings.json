@@ -20,7 +20,26 @@
       "Bash(node -e ' *)",
       "Bash(rm -f package-lock.json)",
       "Bash(rm -rf node_modules)",
-      "Bash(npm cache *)"
+      "Bash(npm cache *)",
+      "Bash(curl -s https://www.photoreka.com/robots.txt)",
+      "mcp__gsc__list_sites",
+      "Bash(curl -s https://www.photoreka.com/sitemap.xml)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://www.photoreka.com/blog/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://www.photoreka.com/blog/peakto-alternative-windows)",
+      "Bash(curl -s https://www.photoreka.com/blog/)",
+      "Bash(curl -sL https://www.photoreka.com/blog/peakto-alternative-windows)",
+      "Bash(curl -sI https://www.photoreka.com/blog/)",
+      "Bash(curl -sI https://www.photoreka.com/blog)",
+      "Bash(curl -sI https://www.photoreka.com/robots.txt)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Linux; Android 6.0.1; Nexus 5X Build/MMB29P\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/121.0.0.0 Mobile Safari/537.36 \\(compatible; Googlebot/2.1; +http://www.google.com/bot.html\\)\" https://www.photoreka.com/robots.txt)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -A \"Mozilla/5.0 \\(Linux; Android 6.0.1; Nexus 5X Build/MMB29P\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/121.0.0.0 Mobile Safari/537.36 \\(compatible; Googlebot/2.1; +http://www.google.com/bot.html\\)\" https://www.photoreka.com/robots.txt)",
+      "Bash(curl -sI -A \"Mozilla/5.0 \\(Linux; Android 6.0.1; Nexus 5X Build/MMB29P\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/121.0.0.0 Mobile Safari/537.36 \\(compatible; Googlebot/2.1; +http://www.google.com/bot.html\\)\" https://www.photoreka.com/robots.txt)",
+      "Bash(ls \"c:/Users/andre/Desktop/Photoreka/App/\")",
+      "Read(//c/Users/andre/Desktop/Photoreka/App/**)",
+      "Read(//c/Users/andre/Desktop/Photoreka/App/api/app/services/**)",
+      "Read(//c/Users/andre/Desktop/Photoreka/App/api/start/**)",
+      "Read(//c/Users/andre/Desktop/Photoreka/App/api/app/**)",
+      "Bash(npx nuxt *)"
     ]
   }
 }
