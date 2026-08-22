@@ -61,6 +61,308 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "photoprism-vs-photoreka",
+    title:
+      "PhotoPrism vs Photoreka: Self-Hosting Your Archive vs. Making Sense of It",
+    excerpt:
+      "PhotoPrism is the best self-hosted photo library you can run: open source, browser-based, AI labels, face recognition, your hardware, your rules. It solves ownership beautifully. An honest look at why that still leaves the harder problem untouched.",
+    description:
+      "An honest comparison of Photoreka and PhotoPrism: labels and captions vs semantic embeddings, quality scores vs artistic scoring, self-hosted storage vs a curation layer that never takes custody of your files.",
+    keywords:
+      "photoprism alternative, photoprism vs photoreka, photoreka vs photoprism, photoprism ai search, photoprism labels captions, self-hosted photo library, photoprism curation, ai photo curation, ai photo organizer, immich photoprism alternative, photo management without self-hosting",
+    category: "Comparisons",
+    tags: ["Comparisons", "PhotoPrism", "AI Photo Organizer", "Photo Curation"],
+    coverImage: "/blog/photoreka_vs_photoprism.png",
+    // coverPlaceholder: true,
+    publishedAt: "2026-08-21",
+    readingMinutes: 8,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "<strong>PhotoPrism</strong> deserves the praise it gets. It's open source, it runs on your own hardware, it has a genuinely good browser interface that works on every device you own, and it does real computer vision: TensorFlow classification for labels, an ONNX face detector feeding FaceNet embeddings clustered into people, places and maps from GPS data, and — more recently — caption generation through Ollama or OpenAI, so the AI layer can run entirely on your own machine if you want it to. For anyone who wants Google Photos without Google, it's one of the two or three serious answers.",
+      },
+      {
+        type: "p",
+        html: "So the comparison here isn't about which is better software. It's about a distinction that gets blurred constantly: <strong>PhotoPrism solves ownership. It doesn't solve judgment.</strong> Those are different problems, and knowing which one is actually hurting you decides whether the next thing you install is a server or something else entirely.",
+      },
+      {
+        type: "h2",
+        text: "What PhotoPrism Does Well",
+        id: "what-photoprism-does-well",
+      },
+      {
+        type: "p",
+        html: "An honest comparison starts here. PhotoPrism is the strongest expression of a good idea: <strong>your photo library should be a service you run, not a service you rent</strong>. The Community edition is free and AGPL-licensed. It indexes originals in place, generates thumbnails and sidecars, exposes everything through a fast web UI and WebDAV, handles video, supports multiple users so a whole household can share one library, and scales to whatever your disks can hold. Nothing is sent anywhere unless you deliberately point the vision layer at an external API. If your concern is that a company will change its pricing, its terms, or its mind about your family photos, PhotoPrism removes that company from the equation entirely.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "Who should just run PhotoPrism",
+        html: "If your problem is <em>where my photos live and who controls them</em> — you want a private, self-hosted library with faces, places, albums, video, and access from every device, and you're comfortable maintaining a Docker container — install PhotoPrism. It's very good at that, and nothing in this article suggests otherwise. The rest of this piece is about a problem it wasn't built for.",
+      },
+      {
+        type: "h2",
+        text: "Where the Walls Are",
+        id: "where-the-walls-are",
+      },
+      {
+        type: "p",
+        html: "PhotoPrism's architecture makes one central bet: <strong>turn pictures into words, then search the words.</strong> Labels, captions, keywords, EXIF fields, places, people — all of it becomes text in a database, and the search box queries that text. It's a sound design, and it has a ceiling.",
+      },
+      {
+        type: "list",
+        items: [
+          "A caption is a lossy summary written before you knew the question. 'Two people walking on a beach' is accurate and useless when what you're actually looking for is the frame where the light went strange and the gesture landed. The photograph contains that. The sentence doesn't.",
+          "Labels are a vocabulary, and vocabularies have edges. Classification models return classes they were trained on. Nothing in that list corresponds to 'tension', 'restraint', or 'the composition I keep accidentally repeating'.",
+          "The quality score is a junk filter, not a judgment. PhotoPrism scores photos 1–5 and hides anything under 3 pending review — the goal being to keep screenshots, memes, and broken files out of your library. It even goes up when you add a location or hit like. It's explicitly not about whether the picture is any good.",
+          "The unit is the memory, not the body of work. Moments, albums, people, trips. Excellent for a family archive; it has no concept of a portfolio, a sequence, or an artistic through-line.",
+          "The price isn't money, it's operations. Docker, storage planning, indexing runs, upgrades, backups you actually test. That's a real, recurring cost paid in your time — and if the container is down, so is your library.",
+          "It takes custody. PhotoPrism wants to be where the photos live: its volumes, its folder conventions, its sidecars, its database. That's the deal you sign for everything it gives you.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Photoreka's Different Starting Point",
+        id: "photorekas-different-starting-point",
+      },
+      {
+        type: "p",
+        html: "Photoreka isn't a place to put photos, and never asks to be. It's an intelligence layer that comes to the archive you already have.<br /><br /><strong>1. It searches the image, not a description of the image.</strong> Every photo becomes an embedding — a numerical description of composition, light, palette, subject, and mood. There's no caption in between to lose the thing you were actually looking for.<br /><br /><strong>2. Nothing to host, nothing to maintain.</strong> It runs in the browser on Windows, Mac, and Linux, and connects to Lightroom Classic (via an official plugin), Google Photos, Dropbox, and local files. Analysis happens in the cloud from compressed previews; your full-resolution originals stay exactly where they are. No container, no backup strategy, no 2am indexing job.<br /><br /><strong>3. Curation is the destination, not a feature.</strong> Finding is step one. Photoreka is built for what comes after: scoring, choosing, ranking, and sequencing the work that matters.",
+      },
+      {
+        type: "quote",
+        text: "PhotoPrism answers 'is my archive safe, private, and mine?'. That's a question about custody. It has never once told a photographer which forty pictures are the good ones.",
+      },
+      {
+        type: "h2",
+        text: "Feature by Feature",
+        id: "feature-by-feature",
+      },
+      {
+        type: "h3",
+        text: "Search",
+        id: "search",
+      },
+      {
+        type: "p",
+        html: "PhotoPrism's search is a well-built filter language over indexed text and metadata: labels, captions, titles, keywords, people, colors, cameras, countries, dates, with AND/NOT operators. It's precise and fast within its vocabulary. Photoreka's <a href='/ai_photo_search'>search</a> works against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
+      },
+      {
+        type: "p",
+        html: "The practical difference: in PhotoPrism, your query has to survive being matched against a caption someone's model wrote months ago. In Photoreka, the query meets the photograph.",
+      },
+      {
+        type: "h3",
+        text: "Quality Scores vs. Artistic Scoring",
+        id: "quality-vs-scoring",
+      },
+      {
+        type: "p",
+        html: "PhotoPrism's 1–5 score exists to decide what deserves to be <em>in</em> your library. Photoreka's <a href='/photo_scoring'>scoring</a> exists to decide what deserves to be <em>seen</em>, and keeps the dimensions separate rather than collapsing them into one number: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. That separation is the point — the same catalog ranks differently for a gallery submission than for a stock pitch, and a single global score can't express that.",
+      },
+      {
+        type: "h3",
+        text: "Beyond Organization",
+        id: "beyond-organization",
+      },
+      {
+        type: "p",
+        html: "Here the two products stop overlapping entirely. Photoreka includes a <a href='/photography_portfolio_builder'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports'>style and pattern reports</a>, and a <a href='/photo_3D_atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space rather than an infinite scroll. PhotoPrism has no equivalent, and shouldn't be criticized for it — a library server's job ends where the editing decisions begin.",
+      },
+      {
+        type: "h3",
+        text: "Where PhotoPrism Still Wins",
+        id: "where-photoprism-still-wins",
+      },
+      {
+        type: "p",
+        html: "Fairness requires this section. PhotoPrism is <strong>free and open source</strong>, with no per-analysis cost and no vendor at all. It can run <strong>fully offline</strong>, vision layer included, which is decisive if cloud analysis is a hard no. It handles <strong>video</strong>; Photoreka is photography-only. It does <strong>face recognition and people management</strong>, which Photoreka doesn't. It serves <strong>multiple users</strong> from one library, syncs over WebDAV, works as a PWA on your phone, and — crucially — it can actually <em>be</em> your storage. Photoreka can't replace any of that, because it isn't trying to.",
+      },
+      {
+        type: "h2",
+        text: "Two Different Anxieties",
+        id: "two-different-anxieties",
+      },
+      {
+        type: "p",
+        html: "Most photographers evaluating these tools are carrying one of two very different worries. The first is <em>I don't trust anyone else with my archive</em> — that's a custody problem, and PhotoPrism is a great answer to it. The second is <em>I have forty thousand photographs and no idea which ones matter</em> — that's a judgment problem, and no amount of self-hosting touches it. A perfectly private, perfectly backed-up, perfectly labeled library where you still can't tell which twenty frames are your best work is a solved storage problem sitting on top of an unsolved curation problem.",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose PhotoPrism if: you want a private self-hosted library you fully control, you need video, faces, maps, and multi-user access, and you're happy to run and maintain a server.",
+          "Choose Photoreka if: hosting isn't the thing you want to spend time on, you'd rather search the image than a caption of it, and your real goal isn't storing the archive — it's curating it: scoring, selecting, sequencing, and understanding a body of work.",
+          "Use both if: PhotoPrism is already the vault and what's missing isn't safety or access, but the ability to look at everything you've shot and say which of it is worth showing.",
+        ],
+      },
+      {
+        type: "cta",
+        eyebrow: "See it on a real archive",
+        title: "Try Photoreka's demo — no server required",
+        text: "Semantic search, artistic scores, and the 3D Atlas on a real catalog, straight from the browser.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+      {
+        type: "p",
+        html: "One last note on philosophy. PhotoPrism's bet — that your photographs shouldn't be hostage to somebody else's business model — is one we take seriously, which is why Photoreka never moves your originals or asks to become their home. Where we differ is on what happens next. Owning your archive is necessary. It just isn't sufficient. Storage is the floor. <strong>Curation is the point.</strong>",
+      },
+    ],
+  },
+  {
+    slug: "digikam-vs-photoreka",
+    title:
+      "digiKam vs Photoreka: Free Local Cataloging, or AI Curation on Top of It?",
+    excerpt:
+      "digiKam is free, open source, cross-platform, and after twenty years it's probably the most capable photo database a photographer can install without paying anything. So why would you add Photoreka? An honest comparison of what tags can do — and where they stop.",
+    description:
+      "An honest comparison of Photoreka and digiKam: auto-tagging vs semantic embeddings, image quality scanning vs artistic scoring, local database vs browser-based analysis, and where the two tools actually complement each other.",
+    keywords:
+      "digikam alternative, digikam vs photoreka, photoreka vs digikam, digikam ai tagging, digikam natural language search, digikam autotags, free photo management software, ai photo curation, ai photo organizer, digikam image quality sorter, open source photo manager alternative",
+    category: "Comparisons",
+    tags: ["Comparisons", "digiKam", "AI Photo Organizer", "Photo Curation"],
+    coverImage: "/blog/photoreka_vs_digikam.png",
+    // coverPlaceholder: true,
+    publishedAt: "2026-08-21",
+    readingMinutes: 8,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Let's be clear about what we're comparing against: <strong>digiKam</strong> is remarkable. Twenty years of development, fully open source, free forever, running natively on Windows, macOS, and Linux, with a real database behind it, RAW support, video, geotagging, face recognition, a batch queue manager, and metadata written straight back into XMP sidecars so nothing is ever locked inside a proprietary catalog. If your requirement is <em>own your archive completely, pay nothing, depend on no company</em>, digiKam has no serious rival.",
+      },
+      {
+        type: "p",
+        html: "So this article isn't going to argue that digiKam is bad software, because it isn't. It's going to argue something narrower and, we think, more useful: <strong>digiKam is a cataloging tool, and cataloging is not curation.</strong> Once you see where that line falls, it becomes fairly obvious which of the two solves your actual problem — and why plenty of photographers end up using both.",
+      },
+      {
+        type: "h2",
+        text: "What digiKam Does Well",
+        id: "what-digikam-does-well",
+      },
+      {
+        type: "p",
+        html: "An honest comparison starts here. digiKam's core strength is being a <strong>complete, self-hosted digital asset manager</strong>: SQLite or MariaDB under the hood, hierarchical tags, ratings, color and pick labels, versioning, and a metadata engine that survives you switching software. Its AI features have come a long way, too — recent versions do face detection and recognition with an ensemble classifier, auto-tag assignment powered by YOLOv11 and EfficientNet models, and an Image Quality Scanner that flags images by blur, noise, exposure, and compression. The 9.x line even adds natural-language search built on a <em>local</em> LLM, so nothing leaves your machine.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "Who should just use digiKam",
+        html: "If your priority is a free, offline, open-source catalog you fully control — no cloud, no account, no vendor — and your daily problem is <em>filing and retrieving</em> photos by people, dates, places, and keywords, install digiKam. It's excellent at that job and we'd never suggest otherwise. The rest of this article is about a different job.",
+      },
+      {
+        type: "h2",
+        text: "Where the Walls Are",
+        id: "where-the-walls-are",
+      },
+      {
+        type: "p",
+        html: "Every wall below follows from the same architectural decision: digiKam's intelligence lives in the <strong>database</strong>. Everything it knows about a photo has to become a tag, a label, or a field first — and whatever can't be written into a field, it can't know.",
+      },
+      {
+        type: "list",
+        items: [
+          "Auto-tagging produces labels, not understanding. Object detection returns 'dog', 'car', 'person', 'beach'. It will never return 'the loneliness of a bus station at 6am', because that isn't a class in a detection model.",
+          "Natural-language search compiles to metadata filters. digiKam's LLM search is genuinely clever, but it translates your sentence into structured criteria — dates, ratings, labels, keywords — and runs it against the database. It can only ever find what someone, or something, already recorded.",
+          "Image quality is technical, not artistic. The Quality Scanner measures blur, noise, exposure, and compression. It can tell you a frame is sharp. It cannot tell you it's good.",
+          "One database, one machine. The catalog lives on a specific computer. Sharing it across machines means shared storage, a MySQL/MariaDB setup, and maintenance you now own.",
+          "It organizes; it doesn't curate. There's no scoring across artistic dimensions, no portfolio sequencing, no conversational review of a body of work, no view of the whole archive as a single space.",
+          "The learning curve is real. digiKam's density is the price of its power, and plenty of photographers bounce off it before that power pays off.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Photoreka's Different Starting Point",
+        id: "photorekas-different-starting-point",
+      },
+      {
+        type: "p",
+        html: "Photoreka doesn't try to be a better database — it deliberately isn't one. It's an intelligence layer that sits on top of the files you already have, wherever they already are.<br /><br /><strong>1. Meaning instead of labels.</strong> Every photo becomes an embedding: a numerical description of composition, light, palette, subject, and mood. Search runs against that meaning, so a frame nobody ever tagged still surfaces for the right query.<br /><br /><strong>2. Browser-based, nothing to install or maintain.</strong> It runs on Windows, Mac, and Linux, and connects to Lightroom Classic (via an official plugin), Google Photos, Dropbox, and local files. Analysis happens in the cloud from compressed previews; your full-resolution originals never leave your machine.<br /><br /><strong>3. Curation is the destination, not a feature.</strong> Organizing is step one. Photoreka is built for what comes after: scoring, choosing, ranking, and sequencing the work that matters.",
+      },
+      {
+        type: "quote",
+        text: "digiKam answers 'where is it, and who's in it?'. That's retrieval. The question that decides whether a body of work goes anywhere is 'which ones — and in what order?'",
+      },
+      {
+        type: "h2",
+        text: "Feature by Feature",
+        id: "feature-by-feature",
+      },
+      {
+        type: "h3",
+        text: "Search",
+        id: "search",
+      },
+      {
+        type: "p",
+        html: "digiKam offers keyword search, a powerful advanced-search builder, similarity search, and now local-LLM natural language search — all of it ultimately resolved against database fields. Photoreka's <a href='/ai_photo_search'>search</a> runs against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
+      },
+      {
+        type: "p",
+        html: "The practical difference is simple: in digiKam, a photo you never tagged is a photo you can't find by description. In Photoreka, nothing needs tagging first — the archive becomes searchable the moment it's analyzed.",
+      },
+      {
+        type: "h3",
+        text: "Quality Scanning vs. Artistic Scoring",
+        id: "quality-vs-scoring",
+      },
+      {
+        type: "p",
+        html: "This is the sharpest contrast between the two tools. digiKam's Image Quality Scanner assigns pick labels based on measurable defects — blurry, noisy, badly exposed, over-compressed. That's genuinely useful for a first culling pass. Photoreka's <a href='/photo_scoring'>scoring</a> asks an entirely different question, and keeps the dimensions separate: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. A technically flawless photograph can score badly, and a slightly soft one can score brilliantly — which is exactly how editors actually choose.",
+      },
+      {
+        type: "h3",
+        text: "Beyond Organization",
+        id: "beyond-organization",
+      },
+      {
+        type: "p",
+        html: "Here the two products stop overlapping altogether. Photoreka includes a <a href='/photography_portfolio_builder'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports'>style and pattern reports</a>, and a <a href='/photo_3D_atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space instead of a scrolling grid. digiKam has no equivalent to any of these, because none of them were ever part of what a DAM is for.",
+      },
+      {
+        type: "h3",
+        text: "Where digiKam Still Wins",
+        id: "where-digikam-still-wins",
+      },
+      {
+        type: "p",
+        html: "Fairness requires this section, and here it's a long one. digiKam is <strong>free and open source</strong> — no per-batch cost, no account, no company that can change its mind. It processes <strong>everything locally</strong>, which is decisive if cloud analysis is a hard no for you. It handles <strong>video</strong>; Photoreka is photography-only. It does <strong>face recognition</strong> and named-person management, which Photoreka doesn't. It edits RAW files, runs batch conversions, writes metadata back into your files, and watches folders continuously rather than working in analysis batches. If any of those are load-bearing in your workflow, no amount of semantic search replaces them.",
+      },
+      {
+        type: "h2",
+        text: "They're Not Really Competing",
+        id: "not-really-competing",
+      },
+      {
+        type: "p",
+        html: "The most honest conclusion we can offer is that many photographers shouldn't be choosing at all. digiKam is a great <em>system of record</em>: it owns the files, the tags, the faces, the backups, the metadata that has to survive the next twenty years. Photoreka is a <em>thinking layer</em>: point it at those same photos to find what you can't put into keywords, score a body of work across artistic dimensions, and build a sequence out of it. Neither one moves your originals. Neither one asks you to migrate anything.",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose digiKam if: you want free and open source, everything must stay offline, you need video, RAW editing, or face recognition, and your problem is filing and retrieving photos reliably.",
+          "Choose Photoreka if: you'd rather search by meaning than by tags you'd have to write first, you need artistic scoring instead of technical quality flags, or your real goal isn't organizing the archive — it's curating it.",
+          "Use both if: digiKam is already your catalog and what you're missing isn't storage or metadata but judgment — which photographs are strongest, what they say together, and in what order they should be seen.",
+        ],
+      },
+      {
+        type: "cta",
+        eyebrow: "See it on a real archive",
+        title: "Try Photoreka's demo — nothing to install",
+        text: "Semantic search, artistic scores, and the 3D Atlas on a real catalog, straight from the browser.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+      {
+        type: "p",
+        html: "One last note on philosophy. digiKam's twenty-year bet — that photographers should own their catalog, their metadata, and their files outright — is a bet we agree with, which is why Photoreka never moves or takes custody of your originals either. Where we differ is on what an archive is <em>for</em>. A perfectly tagged catalog is still a beautifully organized pile of photographs. Organization is the floor. <strong>Curation is the point.</strong>",
+      },
+    ],
+  },
+  {
     slug: "peakto-alternative-windows",
     title:
       "Looking for Peakto on Windows? Photoreka vs Peakto for AI Photo Curation",

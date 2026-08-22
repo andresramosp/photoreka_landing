@@ -101,8 +101,20 @@
 
     <url>
         <loc>https://www.photoreka.com/blog</loc>
-        <lastmod>2026-07-16</lastmod>
+        <lastmod>2026-08-21</lastmod>
         <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/blog/photoprism-vs-photoreka</loc>
+        <lastmod>2026-08-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/blog/digikam-vs-photoreka</loc>
+        <lastmod>2026-08-21</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>

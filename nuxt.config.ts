@@ -108,6 +108,8 @@ export default defineNuxtConfig({
     },
     "/blog/catalog-3d-universe-not-a-grid": { prerender: true },
     "/blog/peakto-alternative-windows": { prerender: true },
+    "/blog/digikam-vs-photoreka": { prerender: true },
+    "/blog/photoprism-vs-photoreka": { prerender: true },
     "/ai_photo_organizer": { prerender: true },
     "/ai_photo_search": { prerender: true },
     "/ai_photo_culling": { prerender: true },
