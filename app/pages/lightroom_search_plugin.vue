@@ -509,7 +509,7 @@ const goToPlugin = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "lightroom_plugin_page");
-  const atlasUrl = `${config.public.appUrl}/demo/atlas?mode=2d`;
+  const atlasUrl = `${config.public.appUrl}/demo/atlas?mode=3d`;
   window.open(atlasUrl, "_blank");
 };
 

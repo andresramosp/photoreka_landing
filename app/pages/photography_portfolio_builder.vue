@@ -456,6 +456,7 @@ import {
   DocumentTextOutline,
   ImageOutline,
   DownloadOutline,
+  CubeOutline,
 } from "@vicons/ionicons5";
 import { Trophy20Regular } from "@vicons/fluent";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
@@ -758,6 +759,12 @@ const goToSignup = () => {
   } else {
     showRequestDialog.value = true;
   }
+};
+
+const goToAtlas = () => {
+  trackUserAction("navigate_to_atlas", "portfolio_builder_page");
+  const atlasUrl = `${config.public.appUrl}/demo/atlas?mode=3d`;
+  window.open(atlasUrl, "_blank");
 };
 
 const goToScoring = () => {
