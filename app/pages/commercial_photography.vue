@@ -645,7 +645,7 @@ const features = ref([
     image: "/atlas/2d.png",
     color: "#14b8a6",
     link: "/photo_3D_atlas",
-    demoLink: "/demo/2d-atlas",
+    demoLink: "/demo/atlas?mode=2d",
   },
 ]);
 
