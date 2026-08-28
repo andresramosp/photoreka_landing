@@ -6,7 +6,7 @@
         <div class="nav-brand">
           <div class="logo">
             <NuxtLink to="/">
-              <AppLogo layout="horizontal" :height="45" />
+              <AppLogo layout="horizontal" :height="40" />
             </NuxtLink>
           </div>
         </div>
@@ -59,9 +59,9 @@
           <p>
             Where you choose to sign in using Google, or to import photos from
             Google Photos or Google Drive, those integrations are additionally
-            subject to the Google Terms of Service. Photoreka's use
-            and transfer of information received from Google APIs to any other
-            app will adhere to the
+            subject to the Google Terms of Service. Photoreka's use and transfer
+            of information received from Google APIs to any other app will
+            adhere to the
             <a
               href="https://developers.google.com/terms/api-services-user-data-policy"
               target="_blank"

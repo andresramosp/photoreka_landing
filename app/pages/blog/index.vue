@@ -7,7 +7,7 @@
           <div class="nav-container">
             <div class="nav-brand">
               <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="45" />
+                <AppLogo layout="horizontal" :height="40" />
               </NuxtLink>
             </div>
             <div class="nav-actions">

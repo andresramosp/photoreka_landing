@@ -45,7 +45,7 @@ export const seoConfig = {
       description:
         "AI photo curation and organizer for photographers. Search your library by description, score and rank your best shots, and explore your catalog in 3D.",
       keywords:
-        "AI photo curation app, curate photos with AI, AI photo organizer, photo organizer online, organize photos with AI, AI Photo management online, AI photo culling, photo scoring and ranking app, AI photography portfolio builder, photography style analysis, understand my photography style, curate photography portfolio, AI photo search app, natural language photo search, find any photo by describing it, semantic photo search, Excire alternative, photo organizer app for photographers, photo library organizer, photo catalog organizer, smart photo organizer, photo curation software, photo curation platform, 3D photo catalog, AI photography tools, AI photo assistant, photography workflow tool, curate and organize photos, photo management app for photographers",
+        "AI photo curation app, curate photos with AI, AI photo organizer, photo organizer online, organize photos with AI, AI Photo management online, AI photo culling, photo scoring and ranking app, AI photography portfolio builder, photography style analysis, understand my photography style, curate photography portfolio, AI photo search app, natural language photo search, find any photo by describing it, semantic photo search, Excire alternative, photo organizer app for photographers, photo library organizer, photo catalog organizer, smart photo organizer, photo curation software, photo curation platform, 3D photo catalog, AI photography tools, AI photo assistant, photography workflow tool, curate and organize photos, photo management app for photographers, AI photo curation for commercial photographers, commercial photo scoring, commercial intent scoring, subject clarity scoring, product photography curation, fashion photo selection AI, wedding photo culling AI, client-ready photo selection, stock photo library organizer",
       ogImage: "/home/dashboard.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -59,6 +59,19 @@ export const seoConfig = {
             "AI-powered photo curation and organizer app. Search your library by natural language, score and rank your best shots, discover patterns across your archive, explore your catalog in 3D, and build portfolios with AI.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
+          audience: {
+            "@type": "Audience",
+            audienceType: [
+              "Photographers",
+              "Commercial photographers",
+              "Product and packshot photographers",
+              "Fashion and editorial photographers",
+              "Architecture and interiors photographers",
+              "Wedding photographers",
+              "Stock photographers",
+              "Documentary and street photographers",
+            ],
+          },
           offers: {
             "@type": "Offer",
             availability: "https://schema.org/PreOrder",
@@ -80,6 +93,7 @@ export const seoConfig = {
             "Natural language photo search",
             "3D photo catalog exploration",
             "AI photo scoring and ranking",
+            "Commercial scoring: subject clarity and commercial intent",
             "Portfolio builder with AI curation",
             "Photo style and pattern reports",
             "AI photo chat assistant",
@@ -108,6 +122,14 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Photoreka uses computer vision AI to analyze your photographs, identifying narrative and stylistic elements. This enables intelligent organization, advanced semantic search by natural language, automatic photo scoring and ranking, 3D catalog visualization, and AI-assisted portfolio curation. No manual tagging required.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does Photoreka work for commercial and product photography?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Alongside the artistic dimensions, commercial mode activates two extra scores: subject clarity—how cleanly the main subject reads—and commercial intent—how usable a frame is for a brand, catalog, or campaign. Commercial photographers use it to search an archive from a client brief, rank a shoot by what's actually sellable, and assemble a client-ready selection, across product, fashion, architecture, lifestyle, and wedding work. A separate commercial demo runs on its own catalog.",
               },
             },
             {
@@ -696,47 +718,111 @@ export const seoConfig = {
     photo_scoring: {
       title: "AI Photo Scoring — Rank Your Entire Catalog | Photoreka",
       description:
-        "Score every photo in your catalog across 9+ quality dimensions: aesthetics, composition, narrative strength, originality, candidness, and more. Surface your strongest work from an archive of thousands, track your artistic progress over time, and separate keepers from noise. Built for photographers with serious catalogs—works with Lightroom Classic, Google Photos, and local libraries.",
+        "Score every photo in your catalog across 9+ quality dimensions: aesthetics, composition, narrative strength, originality, candidness, and more. Surface your strongest work from an archive of thousands, track your artistic progress over time, and separate keepers from noise. Commercial mode adds two extra dimensions—subject clarity and commercial intent—for product, stock, and fashion work. Built for photographers with serious catalogs—works with Lightroom Classic, Google Photos, and local libraries.",
       keywords:
-        "AI photo scoring, photo scoring software, score entire photo catalog, rank photo library AI, find best photos in large catalog, photo aesthetic score, aesthetic scoring photography, AI photo ranking, photo quality assessment, image aesthetic assessment, photo composition analyzer, photo selection AI for photographers, automatically surface best photos, photo ranking software, photo aesthetic analysis, AI photography critique tool, photo quality metrics, photography quality score, score photos lightroom catalog, track photography progress over time, photo scoring for photographers, curate large photo archive",
+        "AI photo scoring, photo scoring software, score entire photo catalog, rank photo library AI, find best photos in large catalog, photo aesthetic score, aesthetic scoring photography, AI photo ranking, photo quality assessment, image aesthetic assessment, photo composition analyzer, photo selection AI for photographers, automatically surface best photos, photo ranking software, photo aesthetic analysis, AI photography critique tool, photo quality metrics, photography quality score, score photos lightroom catalog, track photography progress over time, photo scoring for photographers, curate large photo archive, commercial photo scoring, commercial intent scoring, subject clarity scoring, product photography scoring, packshot selection AI, stock photography scoring, fashion editorial photo selection, score photos for client delivery, find most licensable photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka AI Photo Scoring",
-        description:
-          "AI photo scoring and ranking for large photo catalogs. Scores every photo across 9+ quality dimensions—aesthetics, composition, narrative, originality, and more—to automatically surface a photographer's strongest work from an archive of thousands.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        url: "https://www.photoreka.com/photo_scoring",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka AI Photo Scoring",
+          description:
+            "AI photo scoring and ranking for large photo catalogs. Scores every photo across 9+ quality dimensions—aesthetics, composition, narrative, originality, and more—to automatically surface a photographer's strongest work from an archive of thousands.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/photo_scoring",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "9+ dimensional AI photo scoring",
+            "Aesthetic quality assessment and ranking",
+            "Composition analysis",
+            "Narrative strength rating",
+            "Originality scoring",
+            "Visual wit, humor, and candidness detection",
+            "Commercial subject clarity and intent scoring",
+            "Batch scoring of entire photo catalogs",
+            "Automatic best photo surfacing from thousands",
+            "Sort and filter by any individual quality dimension",
+            "Track artistic progress over time with score history",
+            "Works with Lightroom Classic, Google Photos, and local libraries",
+          ],
         },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+          {
+            "@type": "Question",
+            name: "Can AI really judge the quality of a photo?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Photoreka's scoring models are trained on expert photographic assessments and analyze visual properties that correlate with quality: composition, color harmony, lighting, subject presence, and emotional impact. They're not infallible—art is subjective—but they provide a consistent, data-driven starting point that most photographers find surprisingly accurate.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is this just a sharpness detector?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. Technical sharpness is only one of 6+ dimensions. A soft, atmospheric portrait can score very high on aesthetics, narrative, and originality while scoring lower on technical sharpness. The system evaluates what makes a photo compelling, not just what makes it technically correct.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How are the scoring models trained?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The models combine large-scale visual understanding (from computer vision foundation models) with specialized fine-tuning on photographic quality datasets curated by professional photographers and critics. They're designed to evaluate photography, not generic images.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I sort by a single dimension?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. You can sort and filter by any individual dimension (aesthetics, composition, narrative strength, originality, visual wit, or technical quality) or by the combined overall score. This lets you tailor rankings to each specific project.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do scores change over time?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Scores are computed once when your photos are analyzed and remain stable. As our models improve, you may optionally re-score your catalog, but existing scores persist. This ensures consistency and allows meaningful comparisons over time.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is this included with Photoreka?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Aesthetic scoring is a core feature available to all Photoreka users. Every photo in your catalog receives a full quality profile as part of the standard analysis pipeline.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does commercial scoring work?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "When Photoreka detects commercial photography (product, stock, fashion) in your catalog—or when you flag it manually—two additional dimensions are activated: Subject Clarity, which measures how cleanly the main subject stands out from its environment, and Commercial Intent, which evaluates overall production value and suitability for advertising, stock libraries, or editorial use. These scores help you quickly identify your most licensable or pitch-ready images.",
+            },
+          },
+          ],
         },
-        featureList: [
-          "9+ dimensional AI photo scoring",
-          "Aesthetic quality assessment and ranking",
-          "Composition analysis",
-          "Narrative strength rating",
-          "Originality scoring",
-          "Visual wit, humor, and candidness detection",
-          "Commercial subject clarity and intent scoring",
-          "Batch scoring of entire photo catalogs",
-          "Automatic best photo surfacing from thousands",
-          "Sort and filter by any individual quality dimension",
-          "Track artistic progress over time with score history",
-          "Works with Lightroom Classic, Google Photos, and local libraries",
-        ],
-      },
+      ],
     },
 
     ai_geo_recovery: {
@@ -913,7 +999,7 @@ export const seoConfig = {
       description:
         "Automatically score, select, and sequence your strongest photos into a curated portfolio for exhibitions, competitions, and client delivery.",
       keywords:
-        "AI photography portfolio builder, AI portfolio generator photographer, automatically select best photos for portfolio, AI photo curation portfolio, photo selection for gallery exhibition, competition photo selection AI, photobook AI curation, photo portfolio sequencing AI, curate photography portfolio AI, gallery exhibition photo picker, portfolio photo picker AI, select photos for exhibition AI, coherent photo portfolio AI, narrative photo sequencing, photography exhibition preparation, find my best photos",
+        "AI photography portfolio builder, AI portfolio generator photographer, automatically select best photos for portfolio, AI photo curation portfolio, photo selection for gallery exhibition, competition photo selection AI, photobook AI curation, photo portfolio sequencing AI, curate photography portfolio AI, gallery exhibition photo picker, portfolio photo picker AI, select photos for exhibition AI, coherent photo portfolio AI, narrative photo sequencing, photography exhibition preparation, find my best photos, client-ready photo selection, client delivery portfolio AI, commercial portfolio builder, select photos for a client pitch, campaign photo selection",
       ogImage: "/portfolio_builder/0.png",
       ogType: "website",
       twitterCard: "summary_large_image",

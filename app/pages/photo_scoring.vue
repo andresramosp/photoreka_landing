@@ -7,7 +7,7 @@
           <div class="nav-container">
             <div class="nav-brand">
               <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="45" />
+                <AppLogo layout="horizontal" :height="40" />
               </NuxtLink>
             </div>
             <div class="nav-actions">
@@ -492,7 +492,7 @@ const steps = ref([
   {
     title: "Scores feed into every tool",
     description:
-      'Scoring isn\'t isolated—it powers culling, portfolio building, <a href="/photo_chat">AI Chat recommendations</a>, and 3D Atlas highlighting. Your quality data follows you across Photoreka\'s entire workflow.',
+      "Scoring isn't isolated—it powers culling, portfolio building, <a href=\"/photo_chat\">AI Chat recommendations</a>, and 3D Atlas highlighting. Your quality data follows you across Photoreka's entire workflow.",
     color: "linear-gradient(135deg, #f59e0b, #f97316)",
   },
 ]);

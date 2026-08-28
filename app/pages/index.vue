@@ -35,7 +35,7 @@
         <nav class="premium-nav">
           <div class="nav-container">
             <div class="nav-brand">
-              <AppLogo layout="horizontal" :height="45" />
+              <AppLogo layout="horizontal" :height="40" />
             </div>
             <div class="nav-actions">
               <button
@@ -1053,6 +1053,11 @@ const faqs = ref([
     answer:
       "Photoreka uses computer vision AI to analyze your photographs, identifying narrative and stylistic elements. This enables intelligent organization, advanced semantic search by natural language, automatic photo scoring and ranking, 3D catalog visualization, and AI-assisted portfolio curation—all without manual tagging. For detailed information on our image processing policies, please see our Terms and Image Policy.",
     hasLink: true,
+  },
+  {
+    question: "Does Photoreka work for commercial and product photography?",
+    answer:
+      "Yes. Alongside the artistic dimensions, commercial mode activates two extra scores: subject clarity—how cleanly the main subject reads—and commercial intent—how usable a frame is for a brand, catalog, or campaign. Commercial photographers use it to search an archive from a client brief, rank a shoot by what's actually sellable, and assemble a client-ready selection, across product, fashion, architecture, lifestyle, and wedding work. A separate commercial demo runs on its own catalog.",
   },
   {
     question: "Is Photoreka a storage platform?",

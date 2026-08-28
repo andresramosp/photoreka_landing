@@ -7,7 +7,7 @@
           <div class="nav-container">
             <div class="nav-brand">
               <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="45" />
+                <AppLogo layout="horizontal" :height="40" />
               </NuxtLink>
             </div>
             <div class="nav-actions">
@@ -254,7 +254,10 @@
           </div>
           <div class="section-container" style="position: relative; z-index: 1">
             <div class="section-header" :class="{ visible: crossVisible }">
-              <div class="hero-badge cross-badge" :class="{ visible: crossVisible }">
+              <div
+                class="hero-badge cross-badge"
+                :class="{ visible: crossVisible }"
+              >
                 <span class="badge-content">
                   <n-icon size="16"><SearchOutline /></n-icon>
                   Same catalog, more ways in
@@ -262,13 +265,15 @@
               </div>
               <h2 class="section-title cross-title">
                 Built on the same
-                <span class="gradient-text-blue">search and scoring engines</span>
+                <span class="gradient-text-blue"
+                  >search and scoring engines</span
+                >
               </h2>
               <p class="section-subtitle">
-                Every answer in ChatLab draws on Photoreka's own semantic
-                search index and multi-dimensional photo scores. Prefer a
-                focused interface instead of a conversation? The same
-                intelligence is available directly.
+                Every answer in ChatLab draws on Photoreka's own semantic search
+                index and multi-dimensional photo scores. Prefer a focused
+                interface instead of a conversation? The same intelligence is
+                available directly.
               </p>
             </div>
 
@@ -281,8 +286,8 @@
                   <NuxtLink to="/ai_photo_search" @click="goToAiSearch"
                     >AI Photo Search</NuxtLink
                   >
-                  — describe a photo in plain language and find it instantly,
-                  no tagging required.
+                  — describe a photo in plain language and find it instantly, no
+                  tagging required.
                 </span>
               </li>
               <li>

@@ -6,7 +6,7 @@
         <div class="nav-brand">
           <div class="logo">
             <NuxtLink to="/">
-              <AppLogo layout="horizontal" :height="45" />
+              <AppLogo layout="horizontal" :height="40" />
             </NuxtLink>
           </div>
         </div>
@@ -46,8 +46,7 @@
               authentication data when you create an account. If you sign up or
               sign in using Google, we receive your email address, name, profile
               picture, and Google account identifier from your Google account —
-              see the
-              <em>Google User Data and Limited Use</em> section below.
+              see the <em>Google User Data and Limited Use</em> section below.
             </li>
             <li>
               <strong>Images:</strong> photographs you upload to the Platform
@@ -239,10 +238,10 @@
         <section class="terms-section">
           <h2>9. Google User Data and Limited Use</h2>
           <p>
-            Photoreka offers "Sign in with Google" as an optional
-            authentication method, and lets you import photos directly from
-            Google Photos and Google Drive. This section describes specifically
-            how we handle data obtained through Google APIs.
+            Photoreka offers "Sign in with Google" as an optional authentication
+            method, and lets you import photos directly from Google Photos and
+            Google Drive. This section describes specifically how we handle data
+            obtained through Google APIs.
           </p>
           <p>
             <strong>What we access.</strong> We request only the following
@@ -279,11 +278,11 @@
             </li>
           </ul>
           <p>
-            We do not request access to Gmail, Google Calendar, Google
-            Contacts, or any other Google service, and we do not request broad
-            library or full-drive scopes. Both import features use Google's own
-            picker interfaces specifically so that access is limited to the
-            items you choose, one selection at a time.
+            We do not request access to Gmail, Google Calendar, Google Contacts,
+            or any other Google service, and we do not request broad library or
+            full-drive scopes. Both import features use Google's own picker
+            interfaces specifically so that access is limited to the items you
+            choose, one selection at a time.
           </p>
           <p>
             <strong>How we use it.</strong> Account data (email, name, profile
@@ -308,21 +307,20 @@
           </p>
           <p>
             <strong>AI and machine learning.</strong> Google user data —
-            including photos imported from Google Photos or Google Drive and
-            any tags, scores, or embeddings derived from them — is never used
-            to develop, improve, or train generalized artificial intelligence
-            or machine learning models, and is never transferred to any
-            third-party service that would use it to train its models. Imported
-            photos are analyzed by the AI providers described in the Image
-            Processing with AI section above under paid or enterprise plans
-            whose terms provide that submitted content is not used for model
-            training. This analysis exists solely to deliver the Platform
-            features you requested.
+            including photos imported from Google Photos or Google Drive and any
+            tags, scores, or embeddings derived from them — is never used to
+            develop, improve, or train generalized artificial intelligence or
+            machine learning models, and is never transferred to any third-party
+            service that would use it to train its models. Imported photos are
+            analyzed by the AI providers described in the Image Processing with
+            AI section above under paid or enterprise plans whose terms provide
+            that submitted content is not used for model training. This analysis
+            exists solely to deliver the Platform features you requested.
           </p>
           <p>
             <strong>Retention and revocation.</strong> Google user data is
-            retained only while your Photoreka account is active, and is
-            deleted within 30 days of account deletion as described in the Data
+            retained only while your Photoreka account is active, and is deleted
+            within 30 days of account deletion as described in the Data
             Retention and Deletion section above. You may revoke Photoreka's
             access to your Google account at any time at
             <a
