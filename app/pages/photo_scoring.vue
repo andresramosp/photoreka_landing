@@ -86,6 +86,15 @@
                     {{ joinButtonLabel }}
                   </n-button>
                 </div>
+                <p class="hero-alt-demo" :class="{ visible: heroVisible }">
+                  <n-icon size="14"><BriefcaseOutline /></n-icon>
+                  <span>
+                    Shooting commercial work?
+                    <a class="hero-alt-demo-link" @click="goToCommercialDemo"
+                      >Try the commercial demo →</a
+                    >
+                  </span>
+                </p>
               </div>
 
               <div class="hero-visual" :class="{ visible: heroVisible }">
@@ -587,6 +596,13 @@ const goToHome = () => {
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "photo_scoring_page");
   window.open("https://app.photoreka.com/demo/report", "_blank");
+};
+
+// La demo comercial corre sobre su propio catálogo (/demo-commercial), no es
+// una ruta dentro de /demo. Ver app/pages/commercial_photography.vue.
+const goToCommercialDemo = () => {
+  trackUserAction("navigate_to_demo", "photo_scoring_page", "commercial");
+  window.open("https://app.photoreka.com/demo-commercial/report", "_blank");
 };
 
 const goToSignup = () => {

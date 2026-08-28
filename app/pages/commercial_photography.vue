@@ -614,7 +614,7 @@ const features = ref([
     image: "/chatlab/1.png",
     color: "#8b5cf6",
     link: "/photo_chat",
-    demoLink: "/demo/chatlab",
+    demoLink: "/demo-commercial/chatlab",
   },
   {
     icon: markRaw(BarChartOutline),
@@ -645,7 +645,7 @@ const features = ref([
     image: "/atlas/2d.png",
     color: "#14b8a6",
     link: "/photo_3D_atlas",
-    demoLink: "/demo/atlas?mode=2d",
+    demoLink: "/demo-commercial/atlas?mode=2d",
   },
 ]);
 
@@ -736,12 +736,12 @@ const goToAuth = (mode = "login") => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "landing_commercial");
-  window.open("https://app.photoreka.com/demo/dashboard", "_blank");
+  window.open("https://app.photoreka.com/demo-commercial/dashboard", "_blank");
 };
 
 const goToSearchDemo = () => {
   trackUserAction("navigate_to_search_demo", "landing_commercial");
-  window.open("https://app.photoreka.com/demo/search", "_blank");
+  window.open("https://app.photoreka.com/demo-commercial/search", "_blank");
 };
 
 const onRequestSuccess = () => {};

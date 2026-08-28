@@ -2087,6 +2087,38 @@ section {
   font-weight: var(--font-weight-semibold);
 }
 
+/* Pasarela discreta hacia la demo comercial, bajo los CTAs del hero. Vive aquí
+   y no en cada página porque la repiten la landing principal, search, organizer
+   y scoring. La demo comercial corre sobre su propio catálogo
+   (/demo-commercial); ver app/pages/commercial_photography.vue. */
+.hero-alt-demo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: -0.35rem 0 0;
+  color: var(--premium-text-tertiary);
+  font-size: var(--landing-fs-caption, var(--fs-xs));
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.hero-alt-demo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-alt-demo-link {
+  color: var(--premium-primary);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hero-alt-demo-link:hover {
+  text-decoration: underline;
+}
+
 .emoji-bullet {
   display: inline;
   color: inherit;

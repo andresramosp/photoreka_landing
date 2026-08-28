@@ -75,7 +75,10 @@
               </li>
             </ul>
 
-            <div v-if="feature.link || feature.demoLink" class="fs-row-actions">
+            <div
+              v-if="feature.link || featureDemos(feature).length"
+              class="fs-row-actions"
+            >
               <a
                 v-if="feature.link"
                 :href="feature.link"
@@ -87,13 +90,15 @@
                 <n-icon size="16"><ArrowForwardOutline /></n-icon>
               </a>
               <a
-                v-if="feature.demoLink"
-                :href="buildDemoHref(feature.demoLink)"
+                v-for="(demo, di) in featureDemos(feature)"
+                :key="di"
+                :href="demo.href"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="fs-row-demo"
+                :class="{ 'fs-row-demo--commercial': demo.commercial }"
               >
-                Try demo
+                {{ demo.label }}
                 <n-icon size="16"><ArrowForwardOutline /></n-icon>
               </a>
             </div>
@@ -143,6 +148,24 @@ const buildDemoHref = (demoLink) => {
   const appUrl = config.public.appUrl || "https://app.photoreka.com";
   const normalizedPath = demoLink.startsWith("/") ? demoLink : `/${demoLink}`;
   return `${appUrl}${normalizedPath}`;
+};
+
+// Una feature puede exponer una demo (`demoLink`) o varias (`demoLinks`, con
+// entradas `{ label, link, commercial }`). El caso de las dos es el catálogo
+// comercial, que corre sobre /demo-commercial y no es una ruta dentro de /demo.
+const featureDemos = (feature) => {
+  if (Array.isArray(feature.demoLinks) && feature.demoLinks.length) {
+    return feature.demoLinks
+      .filter((demo) => demo && demo.link)
+      .map((demo) => ({
+        label: demo.label || "Try demo",
+        href: buildDemoHref(demo.link),
+        commercial: Boolean(demo.commercial),
+      }));
+  }
+  return feature.demoLink
+    ? [{ label: "Try demo", href: buildDemoHref(feature.demoLink) }]
+    : [];
 };
 
 // Normalize a feature's imagery into an array for FeatureCarousel.
@@ -446,6 +469,19 @@ a.fs-card:hover {
   font-size: var(--landing-fs-sm);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
+}
+
+/* Variante comercial: el mismo botón en el acento cálido de
+   /commercial_photography, para que se lea como otra rama y no como un
+   duplicado del anterior. */
+.fs-row-demo--commercial {
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.fs-row-demo--commercial:hover {
+  border-color: rgba(245, 158, 11, 0.8);
+  background: rgba(245, 158, 11, 0.14);
 }
 
 /* Visual column */

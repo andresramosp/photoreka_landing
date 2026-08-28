@@ -147,6 +147,15 @@
                   {{ signupButtonLabel }}
                 </n-button>
               </div>
+              <p class="hero-alt-demo" :class="{ visible: heroVisible }">
+                <n-icon size="14"><BriefcaseOutline /></n-icon>
+                <span>
+                  Shooting commercial work?
+                  <a class="hero-alt-demo-link" @click="goToCommercialDemo"
+                    >Try the commercial demo →</a
+                  >
+                </span>
+              </p>
               <div class="hero-trust" :class="{ visible: heroVisible }">
                 <span class="hero-trust-label"
                   >The AI curation layer for your photo archive</span
@@ -843,7 +852,14 @@ const features = ref([
     image: "/chatlab/1.png",
     color: "#8b5cf6",
     link: "/photo_chat",
-    demoLink: "/demo/chat-lab",
+    demoLinks: [
+      { label: "Try demo", link: "/demo/chat-lab" },
+      {
+        label: "Commercial demo",
+        link: "/demo-commercial/chat-lab",
+        commercial: true,
+      },
+    ],
   },
   {
     icon: markRaw(CubeOutline),
@@ -859,7 +875,17 @@ const features = ref([
     image: "/atlas/2d.png",
     color: "#06b6d4",
     link: "/photo_3D_atlas",
-    demoLink: "/demo/atlas?mode=2d",
+    // /2d-atlas en vez de /atlas?mode=2d: el guard de demo de la app reconstruye
+    // el destino desde `to.path` y pierde el query, así que el modo tiene que
+    // viajar en la ruta. /2d-atlas ya redirige a /atlas?mode=2d.
+    demoLinks: [
+      { label: "Try demo", link: "/demo/2d-atlas" },
+      {
+        label: "Commercial demo",
+        link: "/demo-commercial/2d-atlas",
+        commercial: true,
+      },
+    ],
   },
 
   {
@@ -876,6 +902,14 @@ const features = ref([
     image: "/ai_photo_scoring/1.png",
     color: "#ec4899",
     link: "/photo_scoring",
+    demoLinks: [
+      { label: "Try demo", link: "/demo/workspace" },
+      {
+        label: "Commercial demo",
+        link: "/demo-commercial/workspace",
+        commercial: true,
+      },
+    ],
   },
   {
     icon: markRaw(Workspace),
@@ -923,6 +957,14 @@ const features = ref([
     ],
     color: "#22c55e",
     link: "/photography_portfolio_builder",
+    demoLinks: [
+      { label: "Try demo", link: "/demo/portfolios" },
+      {
+        label: "Commercial demo",
+        link: "/demo-commercial/portfolios",
+        commercial: true,
+      },
+    ],
   },
   {
     icon: markRaw(BarChartOutline),
@@ -938,6 +980,14 @@ const features = ref([
     image: "/report/3.png",
     color: "#f59e0b",
     link: "/photo_reports",
+    demoLinks: [
+      { label: "Try demo", link: "/demo/report" },
+      {
+        label: "Commercial demo",
+        link: "/demo-commercial/report",
+        commercial: true,
+      },
+    ],
   },
 
   {
@@ -1078,6 +1128,13 @@ const goToDemo = () => {
 const goToSearchDemo = () => {
   trackUserAction("navigate_to_search_demo", "landing_page_premium");
   window.open("https://app.photoreka.com/demo/", "_blank");
+};
+
+// La demo comercial corre sobre su propio catálogo (/demo-commercial), no es
+// una ruta dentro de /demo. Ver app/pages/commercial_photography.vue.
+const goToCommercialDemo = () => {
+  trackUserAction("navigate_to_demo", "landing_page_premium", "commercial");
+  window.open("https://app.photoreka.com/demo-commercial/dashboard", "_blank");
 };
 
 const goToSignup = () => {
@@ -1545,6 +1602,8 @@ if (typeof window !== "undefined") {
   margin: 0 auto;
 }
 
+/* .hero-alt-demo (pasarela a la demo comercial) vive en assets/global.scss:
+   la repiten esta página, search, organizer y scoring. */
 .hero-trust {
   display: flex;
   align-items: center;
