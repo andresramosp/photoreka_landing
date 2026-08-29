@@ -1139,7 +1139,7 @@ const goToSearchDemo = () => {
 // una ruta dentro de /demo. Ver app/pages/commercial_photography.vue.
 const goToCommercialDemo = () => {
   trackUserAction("navigate_to_demo", "landing_page_premium", "commercial");
-  window.open("https://app.photoreka.com/demo-commercial/dashboard", "_blank");
+  window.open("https://app.photoreka.com/demo-commercial/workspace", "_blank");
 };
 
 const goToSignup = () => {
