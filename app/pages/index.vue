@@ -1132,7 +1132,7 @@ const goToDemo = () => {
 
 const goToSearchDemo = () => {
   trackUserAction("navigate_to_search_demo", "landing_page_premium");
-  window.open("https://app.photoreka.com/demo/", "_blank");
+  window.open("https://app.photoreka.com/demo/search", "_blank");
 };
 
 // La demo comercial corre sobre su propio catálogo (/demo-commercial), no es
