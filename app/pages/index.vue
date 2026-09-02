@@ -38,6 +38,7 @@
               <AppLogo layout="horizontal" :height="40" />
             </div>
             <div class="nav-actions">
+              <button class="nav-link" @click="scrollToPricing">Pricing</button>
               <button
                 v-if="canToggleTheme(true)"
                 class="theme-toggle"
@@ -528,6 +529,24 @@
           </div>
         </section>
 
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section" ref="pricingSection">
+          <div class="section-container">
+            <div class="section-header" :class="{ visible: pricingVisible }">
+              <h2 class="section-title">Simple, one-time pricing</h2>
+              <p class="section-subtitle">
+                Pay once to analyze your photos — no subscription. Slide to size
+                your package: the more you analyze, the less you pay per photo.
+                Slots never expire.
+              </p>
+            </div>
+            <PricingSlider
+              :visible="pricingVisible"
+              @get-started="goToAuth('signup')"
+            />
+          </div>
+        </section>
+
         <!-- FAQs Section -->
         <section id="faq" class="faqs-section" ref="faqsSection">
           <div class="section-container">
@@ -803,6 +822,7 @@ const searchPromoSection = ref(null);
 const integrationSection = ref(null);
 const sourcesSection = ref(null);
 const freeToolsSection = ref(null);
+const pricingSection = ref(null);
 const faqsSection = ref(null);
 const reportsHeroVideoRef = ref(null);
 
@@ -812,6 +832,7 @@ const searchPromoVisible = ref(false);
 const integrationVisible = ref(false);
 const sourcesVisible = ref(false);
 const freeToolsVisible = ref(false);
+const pricingVisible = ref(false);
 const faqsVisible = ref(false);
 
 // Which layout to render for the features section:
@@ -1206,6 +1227,14 @@ const setupScrollAnimations = () => {
     });
   }, observerOptions);
 
+  const pricingObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        pricingVisible.value = true;
+      }
+    });
+  }, observerOptions);
+
   const faqsObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -1243,7 +1272,13 @@ const setupScrollAnimations = () => {
     integrationObserver.observe(integrationSection.value);
   if (sourcesSection.value) sourcesObserver.observe(sourcesSection.value);
   if (freeToolsSection.value) freeToolsObserver.observe(freeToolsSection.value);
+  if (pricingSection.value) pricingObserver.observe(pricingSection.value);
   if (faqsSection.value) faqsObserver.observe(faqsSection.value);
+};
+
+const scrollToPricing = () => {
+  trackUserAction("navigate_to_pricing", "landing_page_premium");
+  pricingSection.value?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 // Mantiene --announcement-height sincronizado con el alto real de la barra
@@ -1412,6 +1447,39 @@ if (typeof window !== "undefined") {
 .premium-nav {
   top: var(--announcement-height);
   transition: top 0.35s ease;
+}
+
+.nav-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--landing-fs-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--premium-text-secondary);
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: var(--premium-primary);
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    display: none;
+  }
+}
+
+/* ── Pricing Section ───────────────────────────────────────── */
+.pricing-section {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--premium-bg-secondary);
+}
+.pricing-section .section-header {
+  margin-bottom: 3rem;
 }
 
 .hero-section {
