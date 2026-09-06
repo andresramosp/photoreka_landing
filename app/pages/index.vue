@@ -1148,7 +1148,7 @@ const goToFreeFramer = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "landing_page_premium");
-  window.open("https://app.photoreka.com/demo/dashboard", "_blank");
+  window.open("https://app.photoreka.com/demo/workspace", "_blank");
 };
 
 const goToSearchDemo = () => {
