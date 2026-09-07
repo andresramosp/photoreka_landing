@@ -641,8 +641,9 @@ import {
   GitNetworkOutline,
   AnalyticsOutline,
 } from "@vicons/ionicons5";
-import { Workspace } from "@vicons/carbon";
-import { BookOpen16Regular, Trophy20Regular } from "@vicons/fluent";
+import Workspace from "@vicons/carbon/es/Workspace.js";
+import BookOpen16Regular from "@vicons/fluent/es/BookOpen16Regular.js";
+import Trophy20Regular from "@vicons/fluent/es/Trophy20Regular.js";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 

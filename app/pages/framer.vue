@@ -177,7 +177,7 @@ import {
   SpeedometerOutline,
   LockClosedOutline,
 } from "@vicons/ionicons5";
-import { Workspace } from "@vicons/carbon";
+import Workspace from "@vicons/carbon/es/Workspace.js";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO Configuration

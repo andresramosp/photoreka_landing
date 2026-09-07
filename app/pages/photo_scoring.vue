@@ -332,7 +332,7 @@ import {
   ExtensionPuzzleOutline,
   PersonOutline,
 } from "@vicons/ionicons5";
-import { Trophy20Regular } from "@vicons/fluent";
+import Trophy20Regular from "@vicons/fluent/es/Trophy20Regular.js";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 

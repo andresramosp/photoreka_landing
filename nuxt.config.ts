@@ -83,12 +83,15 @@ export default defineNuxtConfig({
     },
   },
 
+
   build: {
     transpile: [
-      "vueuc",
-      "naive-ui",
-      "@css-render/vue3-ssr",
-      "@juggle/resize-observer",
+      ({ isClient }: { isClient: boolean }) => (isClient ? false : "vueuc"),
+      ({ isClient }: { isClient: boolean }) => (isClient ? false : "naive-ui"),
+      ({ isClient }: { isClient: boolean }) =>
+        isClient ? false : "@css-render/vue3-ssr",
+      ({ isClient }: { isClient: boolean }) =>
+        isClient ? false : "@juggle/resize-observer",
     ],
   },
 
@@ -174,7 +177,7 @@ export default defineNuxtConfig({
       }),
     ],
     optimizeDeps: {
-      include: ["vueuc", "naive-ui"],
+      include: ["vueuc", "naive-ui", "@vicons/ionicons5"],
     },
     build: {
       cssCodeSplit: true,

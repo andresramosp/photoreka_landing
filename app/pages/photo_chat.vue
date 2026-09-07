@@ -56,19 +56,12 @@
                 </h1>
                 <p class="hero-subtitle" :class="{ visible: heroVisible }">
                   Photoreka is like
-                  <strong>ChatGPT for your photo library</strong>—ask it to find
-                  your best photos, organize your catalog, or critique your
-                  portfolio, all in plain language.
-                  <em>"Which are my strongest photos?"</em>,
-                  <em>"Pick 20 photos from my archive for a photobook"</em>,
-                  <em>"Have I improved in the last 6 months?"</em>—and get a
-                  real answer backed by your actual work.<br /><br />
-                  One conversational interface that combines
-                  <strong>AI photo organization</strong>,
+                  <strong>ChatGPT for your photo library</strong>—ask it to
+                  find your best shots, organize your catalog, or critique
+                  your portfolio, combining AI curation with
                   <NuxtLink to="/ai_photo_search" class="cta-link"
                     >library search</NuxtLink
-                  >, portfolio critique, and catalog intelligence for
-                  photographers.
+                  >, all in plain language.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -100,37 +93,18 @@
                 <p class="cta-note">No credit card required · Free to start</p>
               </div>
 
-              <!-- Right: Chat UI Mockup -->
+              <!-- Right: Video -->
               <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="chat-mockup">
-                  <div class="chat-header">
-                    <div class="chat-header-dot dot-red"></div>
-                    <div class="chat-header-dot dot-yellow"></div>
-                    <div class="chat-header-dot dot-green"></div>
-                    <span class="chat-header-title">ChatLab</span>
-                  </div>
-                  <div class="chat-messages">
-                    <div
-                      v-for="(msg, i) in demoMessages"
-                      :key="i"
-                      class="chat-msg"
-                      :class="[msg.role, { visible: heroVisible }]"
-                      :style="{ transitionDelay: `${0.4 + i * 0.18}s` }"
-                    >
-                      <div v-if="msg.role === 'assistant'" class="msg-avatar">
-                        <n-icon size="14"><SparklesOutline /></n-icon>
-                      </div>
-                      <div class="msg-bubble">{{ msg.text }}</div>
-                    </div>
-                  </div>
-                  <div class="chat-input-row">
-                    <span class="chat-input-placeholder"
-                      >Ask about your photos…</span
-                    >
-                    <n-icon size="18" class="chat-send-icon"
-                      ><SendOutline
-                    /></n-icon>
-                  </div>
+                <div class="video-frame">
+                  <video
+                    class="hero-video"
+                    src="/videos/Chatlab_Largo_1.mp4"
+                    poster="/home/video_poster.jpg"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                  ></video>
                 </div>
               </div>
             </div>
@@ -408,8 +382,6 @@ import {
   RocketOutline,
   KeyOutline,
   ChevronDownOutline,
-  SparklesOutline,
-  SendOutline,
   SearchOutline,
   FlashOutline,
   EyeOutline,
@@ -474,26 +446,6 @@ const ctaVisible = ref(false);
 
 const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
-
-// Demo chat messages shown in the hero mockup
-const demoMessages = ref([
-  {
-    role: "user",
-    text: "Search my photo library for my strongest portraits from last year",
-  },
-  {
-    role: "assistant",
-    text: "I found 46 portrait candidates from last year and ranked the strongest 8 by expression, composition, and technical quality. Your best results cluster around natural window light and tighter framing.",
-  },
-  {
-    role: "user",
-    text: "What is my weakest area as a photographer?",
-  },
-  {
-    role: "assistant",
-    text: "Across 2,847 analyzed photos, artificial lighting is your main weakness: consistency drops sharply compared with your natural-light portraits. Composition is strong overall, but flash portraits score below your catalog average.",
-  },
-]);
 
 // Conversation example groups
 const conversationExamples = ref([
@@ -861,7 +813,7 @@ onMounted(() => {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.6fr;
   gap: 4rem;
   align-items: center;
 }
@@ -903,7 +855,7 @@ onMounted(() => {
 
 /* ─── Hero Title / Subtitle ──────────────────────────────── */
 .hero-title {
-  font-size: var(--fs-hero);
+  font-size: var(--fs-display-promo);
   font-weight: var(--font-weight-black);
   margin: 0;
   line-height: var(--line-height-none);
@@ -919,7 +871,7 @@ onMounted(() => {
 }
 
 .hero-subtitle {
-  max-width: 600px;
+  max-width: 540px;
   margin: 0;
   font-size: var(--fs-lead);
   color: var(--premium-text-secondary);
@@ -977,131 +929,6 @@ onMounted(() => {
 .hero-visual.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
-}
-
-/* ─── Chat Mockup ────────────────────────────────────────── */
-.chat-mockup {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow:
-    0 25px 60px -12px rgba(0, 0, 0, 0.45),
-    0 0 0 1px var(--premium-border);
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--premium-border);
-  background: var(--premium-bg-secondary);
-}
-
-.chat-header-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.dot-red {
-  background: #ff5f57;
-}
-.dot-yellow {
-  background: #ffbd2e;
-}
-.dot-green {
-  background: #28c840;
-}
-
-.chat-header-title {
-  margin-left: 0.5rem;
-  font-size: var(--fs-xs);
-  font-weight: var(--font-weight-semibold);
-  color: var(--premium-text-secondary);
-}
-
-.chat-messages {
-  padding: 1.5rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.chat-msg {
-  display: flex;
-  gap: 0.6rem;
-  align-items: flex-start;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.chat-msg.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.chat-msg.user {
-  flex-direction: row-reverse;
-}
-
-.msg-avatar {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  margin-top: 2px;
-}
-
-.msg-bubble {
-  max-width: 78%;
-  padding: 0.75rem 1rem;
-  border-radius: 16px;
-  font-size: var(--fs-sm);
-  line-height: var(--line-height-relaxed);
-}
-
-.chat-msg.user .msg-bubble {
-  background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  color: white;
-  border-radius: 16px 16px 4px 16px;
-}
-
-.chat-msg.assistant .msg-bubble {
-  background: var(--premium-bg-hover);
-  color: var(--premium-text-primary);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px 16px 16px 4px;
-}
-
-.chat-input-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  border-top: 1px solid var(--premium-border);
-  background: var(--premium-bg-secondary);
-}
-
-.chat-input-placeholder {
-  font-size: var(--fs-sm);
-  color: var(--premium-text-secondary);
-  opacity: 0.6;
-}
-
-.chat-send-icon {
-  color: #8b5cf6;
-  cursor: pointer;
 }
 
 /* ─── Gradient Effects ───────────────────────────────────── */
