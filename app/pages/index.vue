@@ -937,16 +937,24 @@ const features = ref([
     icon: markRaw(Workspace),
     title: "Interactive Canvas",
     description:
-      "Drag, arrange, and compose your photos freely on an infinite canvas. Drop any image and Photoreka surfaces visually or narratively similar photos from your archive to help you find the perfect pairing.",
-    lead: "Drag, arrange and compose your photos freely on an infinite canvas.",
+      "Drag, arrange, and storyboard your photos freely on an infinite canvas. Drop any image and Photoreka surfaces visually or narratively similar photos from your archive — and a chat docked to the board reads the arrangement, tells you what the sequence is missing, and finds it in your library.",
+    lead: "Storyboard your photos freely on an infinite canvas, with AI beside you.",
     bullets: [
-      "Compose freely on an infinite canvas",
+      "Compose and sequence freely on an infinite canvas",
       "Drop an image to surface visually similar photos",
-      "Find the perfect pairing from your archive",
+      "Ask a chat that sees your board what the sequence is missing",
     ],
     image: "/home/canvas_playground.png",
     color: "#8b5cf6",
-    link: null,
+    link: "/ai_photo_storyboard",
+    demoLinks: [
+      { label: "Try demo", link: "/demo/canvas" },
+      {
+        label: "Commercial demo",
+        link: "/demo-commercial/canvas",
+        commercial: true,
+      },
+    ],
   },
   // {
   //   icon: markRaw(GitNetworkOutline),
@@ -1133,12 +1141,6 @@ const goToAuth = (mode = "login") => {
 const goToTerms = () => {
   trackUserAction("navigate_to_terms", "landing_page_premium");
   navigateTo("/terms");
-};
-
-const goToPlayground = () => {
-  trackUserAction("navigate_to_playground", "landing_page_premium", "canvas");
-  const playgroundUrl = `${config.public.appUrl}/canvas-playground`;
-  window.open(playgroundUrl, "_blank");
 };
 
 const goToFreeFramer = () => {

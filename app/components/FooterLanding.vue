@@ -41,6 +41,9 @@
 
         <div class="footer-column">
           <h4 class="footer-title">EXPLORE</h4>
+          <NuxtLink to="/ai_photo_storyboard" class="footer-link"
+            >AI Photo Storyboard</NuxtLink
+          >
           <NuxtLink to="/photo_3D_atlas" class="footer-link"
             >3D Photo Atlas</NuxtLink
           >

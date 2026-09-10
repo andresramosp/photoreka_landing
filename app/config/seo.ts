@@ -609,6 +609,199 @@ export const seoConfig = {
       ],
     },
 
+    ai_photo_storyboard: {
+      title: "Storyboard Your Photos with AI — Infinite Canvas | Photoreka",
+      description:
+        "The app to storyboard your photos with AI. Lay your own shots out on an infinite canvas and a chat that sees the board tells you what is missing, what breaks the sequence, and pulls the next frame straight from your archive. Real photographs, never generated images.",
+      keywords:
+        "app to storyboard my photos with ai, storyboard my photos with AI, AI photo storyboard, photo storyboard maker, storyboard from my own photos, AI photo sequencing, sequence photos with AI, arrange photos into a narrative, photo narrative builder, infinite canvas for photographers, photo canvas app, visual storytelling with my own photos, photo essay builder AI, photo series builder, photo sequencing tool, moodboard from my own photos, AI moodboard photographers, storyboard photo library, order photos into a story, photo layout AI assistant, curate a photo sequence, photo book sequencing AI, exhibition sequence photos, AI photo edit sequence",
+      ogImage: "/home/canvas_playground.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka Canvas — AI Photo Storyboarding",
+          description:
+            "An infinite canvas where photographers storyboard their own photographs, with an AI chat docked to the board that reads the arrangement, judges the sequence, and retrieves the missing frame from the photographer's own archive.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/ai_photo_storyboard",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          mainEntityOfPage: "https://www.photoreka.com/ai_photo_storyboard",
+          featureList: [
+            "Infinite canvas to arrange and sequence your own photographs",
+            "AI chat docked to the board that reads the arrangement",
+            "Three nested levels of context: board, focus area, spotlight",
+            "Layout-aware answers: what sits next to what, and where the gap is",
+            "Search your archive anchored on the photos already on the board",
+            "Drag AI-suggested photos straight from the reply onto the canvas",
+            "Lay a proposed sequence out on the board in one click",
+            "Similar-photo expansion by narrative, chromatic, context or technical criteria",
+            "Canvas-only mode to reason strictly within the photos on the board",
+            "Board profiling: recurring subjects, palette, lighting, dates and places",
+            "Multiple saved canvases per project",
+            "Live demo board on a real catalog, no registration required",
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: "How to storyboard your photos with AI",
+          description:
+            "Turn a pile of your own photographs into an ordered visual sequence using Photoreka's infinite canvas and its docked AI chat.",
+          totalTime: "PT10M",
+          step: [
+            {
+              "@type": "HowToStep",
+              position: 1,
+              name: "Drop your photos on the canvas",
+              text: "Add photos from your catalog to an infinite board and arrange them by hand — left to right, top to bottom, the way the story should read.",
+            },
+            {
+              "@type": "HowToStep",
+              position: 2,
+              name: "Mark out what you are working on",
+              text: "Move the halo over a stretch of the board, or drag a box, to set the focus. Spotlight individual frames when the question is about one shot.",
+            },
+            {
+              "@type": "HowToStep",
+              position: 3,
+              name: "Ask the chat about the sequence",
+              text: "The chat sees the board's arrangement — what sits next to what, and where the hole is. Ask whether a frame fits, which one is weakest, or what the sequence is missing.",
+            },
+            {
+              "@type": "HowToStep",
+              position: 4,
+              name: "Pull the missing frame from your archive",
+              text: "The chat searches your own library for photos that would sit well beside what you have out. Drag any result straight from the reply onto the board.",
+            },
+            {
+              "@type": "HowToStep",
+              position: 5,
+              name: "Lay the proposed sequence out",
+              text: "When the chat proposes an order, one click places those photos on the canvas in that exact sequence, ready to adjust by hand.",
+            },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Is there an app to storyboard my photos with AI?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Photoreka's canvas is an infinite board where you lay your own photographs out and arrange them into a sequence, with an AI chat docked beside it that reads the arrangement. Unlike AI storyboard generators, it never invents an image — every frame it proposes is a real photograph from your own archive.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does it generate images, or use my own photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Only your own photos. Photoreka is a curation tool, not an image generator. Every photo the assistant surfaces comes from the library you uploaded, which is what makes the result usable as a real edit, portfolio sequence or photo essay rather than a mockup.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does the AI actually understand how my photos are arranged?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. The board's geometry travels to the assistant as a grid: which photos are neighbours, what sits above or below what, where the empty slot is, and whether two clusters read as separate groups. That is what lets it answer questions like 'does this fit here', 'what breaks the run', or 'what belongs in the gap' — questions a flat list of photos cannot answer.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How do I tell the AI which photos I am asking about?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Three nested levels. The whole board is the general context. The focus — the photos under the halo, or the ones you pick by hand — is the working area. The spotlight singles out the specific frames you are asking about. You never name a level: you mark it on the board and the assistant reads the finest one as the subject of your question.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can it find the photo that is missing from my sequence?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "That is the most common request on the canvas. The assistant reads the photos you have out, works out what the set is doing, and searches your archive for work that would sit well beside them — by overall look, by narrative, by palette or by setting. Photos already on the board are excluded from results, so everything it shows is genuinely new material you can drag onto the canvas.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can the AI arrange the photos for me?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "It can propose an order and lay it out. When a reply groups photos into a sequence, one click places them on the board in that exact order, as a block you can then rearrange by hand. The canvas stays yours — the assistant proposes, you edit.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I keep the AI strictly inside the photos I already have out?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. The Canvas only switch confines every search to the photos placed on the board. With it on, the conversation is about reading your own edit — which frames are weakest, what repeats, how the set holds together — instead of proposing new material.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What can I use a photo storyboard for?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Sequencing a photo essay or documentary story, ordering a photo book or zine, planning an exhibition wall, building a portfolio edit, laying out a moodboard for a client, or simply working out whether a shoot holds together as a series.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do I need to install anything?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. The canvas runs in the browser. There is also a demo you can open without registering — a board backed by a real catalog, with the chat live — so you can try the arranging and the sequencing before uploading anything of your own.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is the conversation saved with the board?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Each canvas keeps its own conversation, stored with the board rather than in a general chat history. Reopen the board on any device and the discussion about that particular sequence is still there.",
+              },
+            },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "AI Photo Storyboard",
+              item: "https://www.photoreka.com/ai_photo_storyboard",
+            },
+          ],
+        },
+      ],
+    },
+
     photo_3d_atlas: {
       title: "3D Photo Atlas — Explore Your Catalog in 3D Space | Photoreka",
       description:

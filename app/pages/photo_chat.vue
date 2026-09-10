@@ -276,6 +276,19 @@
                   ranked and filterable across your whole catalog.
                 </span>
               </li>
+              <li>
+                <div class="feature-icon-wrapper" style="color: #8b5cf6">
+                  <n-icon size="18"><GridOutline /></n-icon>
+                </div>
+                <span>
+                  <NuxtLink to="/ai_photo_storyboard"
+                    >AI Photo Storyboard</NuxtLink
+                  >
+                  — the same assistant docked to an infinite canvas, where it
+                  reads how your photos are arranged and helps you sequence
+                  them.
+                </span>
+              </li>
             </ul>
           </div>
         </section>
