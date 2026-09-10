@@ -944,7 +944,7 @@ const features = ref([
       "Drop an image to surface visually similar photos",
       "Ask a chat that sees your board what the sequence is missing",
     ],
-    image: "/home/canvas_playground.png",
+    image: "/canvas/levels.png",
     color: "#8b5cf6",
     link: "/ai_photo_storyboard",
     demoLinks: [
