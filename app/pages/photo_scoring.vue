@@ -220,6 +220,9 @@
           </div>
         </section>
 
+        <!-- Photoreka Picks Promo -->
+        <PicksPromo source="photo_scoring" />
+
         <!-- Geo Recovery Promo Section -->
         <GeoRecoveryPromo />
 

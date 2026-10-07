@@ -547,6 +547,9 @@
           </div>
         </section>
 
+        <!-- Photoreka Picks Promo -->
+        <PicksPromo source="home" />
+
         <!-- FAQs Section -->
         <section id="faq" class="faqs-section" ref="faqsSection">
           <div class="section-container">

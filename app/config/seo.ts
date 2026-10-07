@@ -1018,6 +1018,79 @@ export const seoConfig = {
       ],
     },
 
+    ai_photo_picks: {
+      title: "Find Your Best Photos with AI — Photo Ranking & Critique | Photoreka Picks",
+      description:
+        "Drop up to 5,000 photos and let an AI jury score every frame on eight artistic criteria, write a short critique for each one and rank them through street, documentary, landscape or award juries. No account, pay per photo, free trial with 10 photos.",
+      keywords:
+        "find my best photos, pick best photos ai, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, best photo picker, ai photo selection, choose best photos for portfolio, photography competition shortlist, street photography critique, ai photo scoring online, photo culling ai no account, rate my photos ai",
+      ogImage: "/logos/marca/vertical-claim-light.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka Picks",
+          description:
+            "Online AI photo ranking: scores every photo on eight artistic criteria, writes a critique for each and ranks them with genre and award juries. No account required, pay per photo.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/ai_photo_picks",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            priceCurrency: "EUR",
+            price: "0.01",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Scores on eight artistic criteria",
+            "A written critique for every photo",
+            "Genre juries: street, documentary, landscape, portrait, travel, fine art",
+            "Award juries with a minimum score",
+            "Identical copies grouped and judged once",
+            "Originals never leave the browser",
+            "Free trial with 10 photos, no account",
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Do I need an account to rank my photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. Photoreka Picks is a standalone tool: you pay per order and receive a private link to your ranking.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Are my original photos uploaded?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. Only an 800-pixel thumbnail of each photo is sent to the AI jury. Full-resolution files stay on your device.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How much does it cost?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "€0.01 per photo with a €1 minimum per order, and a free trial with 10 photos.",
+              },
+            },
+          ],
+        },
+      ],
+    },
+
     ai_geo_recovery: {
       title: "Bulk Photo Geotagging Online — EXIF GPS Writeback | Photoreka",
       description:

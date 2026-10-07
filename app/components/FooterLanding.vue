@@ -25,6 +25,9 @@
           <NuxtLink to="/photo_scoring" class="footer-link"
             >Photo Scoring &amp; Ranking</NuxtLink
           >
+          <NuxtLink to="/ai_photo_picks" class="footer-link"
+            >Picks: Find Your Best Photos</NuxtLink
+          >
           <NuxtLink to="/photo_chat" class="footer-link"
             >AI Photo Assistant</NuxtLink
           >
