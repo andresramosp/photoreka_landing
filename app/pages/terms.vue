@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Terms of Service</h1>
-        <p class="terms-effective">Last updated: July 27, 2026</p>
+        <p class="terms-effective">Last updated: October 5, 2026</p>
 
         <section class="terms-section">
           <h2>1. Acceptance of Terms</h2>
@@ -253,6 +253,11 @@
               discretion.
             </li>
             <li>
+              Free accounts may also be deleted after a prolonged period of
+              inactivity, with prior email notice, as described in Section 12
+              (Inactive Free Accounts).
+            </li>
+            <li>
               Upon termination, your right to use the Platform ceases
               immediately. Provisions that by their nature should survive
               termination (including intellectual property, limitation of
@@ -262,7 +267,51 @@
         </section>
 
         <section class="terms-section">
-          <h2>12. Governing Law</h2>
+          <h2>12. Inactive Free Accounts</h2>
+          <p>
+            To keep the service sustainable and avoid retaining data that is no
+            longer being used, Photoreka may delete free accounts that remain
+            inactive for an extended period.
+          </p>
+          <ul>
+            <li>
+              An account is considered <strong>inactive</strong> when it has
+              not been signed into or used in any way (including through
+              connected integrations such as the Lightroom plugin) for at least
+              <strong>six (6) consecutive months</strong>.
+            </li>
+            <li>
+              This clause does <strong>not</strong> apply to accounts that have
+              made a purchase on the Platform.
+            </li>
+            <li>
+              Before deleting an account, Photoreka will send a notice to the
+              email address associated with it at least
+              <strong>thirty (30) days in advance</strong>, stating the planned
+              deletion date. Signing in or using the account before that date
+              cancels the deletion.
+            </li>
+            <li>
+              Once deleted, the account, its stored images, and all derived data
+              (tags, scores, collections, series, and other content) are
+              permanently removed as described in our
+              <NuxtLink to="/privacy">Privacy &amp; Image Policy</NuxtLink> and
+              cannot be recovered. Since Photoreka is not a storage service (see
+              Section 2), your original files are not affected.
+            </li>
+            <li>
+              You are responsible for keeping the email address on your account
+              up to date. Notices sent to that address are considered delivered.
+            </li>
+            <li>
+              Photoreka is not obliged to delete inactive accounts and may decide
+              whether and when to apply this clause.
+            </li>
+          </ul>
+        </section>
+
+        <section class="terms-section">
+          <h2>13. Governing Law</h2>
           <p>
             These Terms shall be governed by and construed in accordance with
             the laws of the European Union and the applicable national laws
@@ -273,7 +322,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>13. Contact</h2>
+          <h2>14. Contact</h2>
           <p>
             If you have any questions about these Terms of Service, please
             contact us at

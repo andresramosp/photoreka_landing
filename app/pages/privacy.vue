@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Privacy &amp; Image Policy</h1>
-        <p class="terms-effective">Last updated: July 27, 2026</p>
+        <p class="terms-effective">Last updated: October 5, 2026</p>
 
         <section class="terms-section">
           <h2>1. Introduction</h2>
@@ -227,6 +227,17 @@
             <li>
               Upon account deletion, all associated data is removed following
               the same 30-day process.
+            </li>
+            <li>
+              <strong>Inactive free accounts:</strong> in line with the
+              principle of data minimization, if a free account shows no
+              activity (no sign-in or use of the Platform) for at least four (4)
+              consecutive months, we may delete it together with its images and
+              derived data. We will notify you by email at least 30 days before
+              the deletion, and signing in before the indicated date cancels it.
+              Accounts that have made a purchase are not affected. See
+              <em>Inactive Free Accounts</em> in our
+              <NuxtLink to="/terms">Terms of Service</NuxtLink>.
             </li>
             <li>
               Anonymized, aggregated usage statistics that cannot be linked back

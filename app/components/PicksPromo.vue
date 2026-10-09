@@ -1,5 +1,15 @@
 <template>
   <section ref="sectionRef" class="ppr-section">
+    <div class="section-container">
+      <div class="section-header" :class="{ visible }">
+        <h2 class="section-title">Or just rank your entire catalog, no sign-up</h2>
+        <p class="section-subtitle">
+          Skip the setup: drop your photos and let an AI jury score, critique and rank every
+          frame to surface your best shots.
+        </p>
+      </div>
+    </div>
+
     <!-- Always dark, like the Picks app: it reads as a product showcase on either theme. -->
     <div class="ppr-card" :class="{ visible }">
       <div class="ppr-glow" aria-hidden="true" />
@@ -9,10 +19,10 @@
           <n-icon size="15"><TrophyOutline /></n-icon>
           New · Photoreka Picks
         </span>
-        <h2 class="ppr-title">
+        <h3 class="ppr-title">
           Find your best shots.
           <em>No account needed.</em>
-        </h2>
+        </h3>
         <p class="ppr-desc">
           Drop up to 5,000 photos and let an AI jury score every frame, write a short critique
           for each one and rank them through street, documentary, landscape or award juries. Pay
@@ -96,6 +106,10 @@ function trackDiscover() {
 <style scoped>
 .ppr-section {
   padding: 5rem 2rem;
+}
+
+.ppr-section .section-container {
+  padding: 0;
 }
 
 .ppr-card {
