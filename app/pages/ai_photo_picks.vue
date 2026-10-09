@@ -29,7 +29,7 @@
         <div class="pkl-hero-copy">
           <p class="pkl-eyebrow pkl-in" style="--d: 0ms">AI photo ranking · No account needed</p>
           <h1 class="pkl-hero-title pkl-in" style="--d: 80ms">
-            Find your <em>best shots.</em>
+            Find your <em>best photos</em> with AI.
           </h1>
           <p class="pkl-hero-sub pkl-in" style="--d: 160ms">
             Drop up to {{ formatCount(PICKS_MAX_PHOTOS) }} photos. An AI jury scores every frame
@@ -80,7 +80,7 @@
       <div class="pkl-container">
         <div class="pkl-head">
           <p class="pkl-eyebrow">The juries</p>
-          <h2 class="pkl-title">One set of photos. <em>Many juries.</em></h2>
+          <h2 class="pkl-title">Rank your photos through <em>many juries.</em></h2>
           <p class="pkl-lead">
             A street photographer and a landscape editor would never pick the same frame. Switch
             jury and watch your ranking reorder itself: each one weighs the criteria its own way,
@@ -99,7 +99,7 @@
         </div>
         <div class="pkl-critique-copy">
           <p class="pkl-eyebrow">A critique for every frame</p>
-          <h2 class="pkl-title">Not just a number. <em>A reason.</em></h2>
+          <h2 class="pkl-title">AI photo critique: <em>not just a number.</em></h2>
           <blockquote class="pkl-quote">{{ featured.photo.critique }}</blockquote>
           <div class="pkl-bars">
             <div v-for="criterion in PICKS_CRITERIA" :key="criterion.key" class="pkl-bar">
@@ -123,7 +123,7 @@
       <div class="pkl-container">
         <div class="pkl-head">
           <p class="pkl-eyebrow">How it works</p>
-          <h2 class="pkl-title">From a messy folder to <em>your shortlist.</em></h2>
+          <h2 class="pkl-title">From a messy folder to <em>your best photos.</em></h2>
         </div>
         <ol class="pkl-steps">
           <li v-for="(step, i) in steps" :key="step.title" class="pkl-step">
@@ -140,7 +140,7 @@
       <div class="pkl-container">
         <div class="pkl-head">
           <p class="pkl-eyebrow">What you get</p>
-          <h2 class="pkl-title">Everything a photo editor <em>would tell you.</em></h2>
+          <h2 class="pkl-title">An AI photo picker that <em>thinks like an editor.</em></h2>
         </div>
         <div class="pkl-features">
           <article v-for="feature in features" :key="feature.title" class="pkl-feature">
@@ -159,7 +159,7 @@
       <div class="pkl-container">
         <div class="pkl-head">
           <p class="pkl-eyebrow">Pricing</p>
-          <h2 class="pkl-title">Pay only for <em>what you upload.</em></h2>
+          <h2 class="pkl-title">Rank your photos, <em>pay per photo.</em></h2>
         </div>
         <div class="pkl-pricing">
           <div class="pkl-price-card">
@@ -220,15 +220,20 @@
       <div class="pkl-container pkl-faq-wrap">
         <div class="pkl-head">
           <p class="pkl-eyebrow">FAQ</p>
-          <h2 class="pkl-title">Questions, <em>answered.</em></h2>
+          <h2 class="pkl-title">Ranking your photos, <em>answered.</em></h2>
         </div>
         <div class="pkl-faq">
-          <details v-for="faq in faqs" :key="faq.q" class="pkl-faq-item">
+          <details v-for="faq in PICKS_FAQS" :key="faq.q" class="pkl-faq-item">
             <summary>
               {{ faq.q }}
               <n-icon size="18" class="pkl-faq-chevron"><ChevronDownOutline /></n-icon>
             </summary>
-            <p>{{ faq.a }}</p>
+            <p>
+              {{ faq.a }}
+              <NuxtLink v-if="faq.link" :to="faq.link.to" class="pkl-faq-link">
+                {{ faq.link.label }} →
+              </NuxtLink>
+            </p>
           </details>
         </div>
       </div>
@@ -270,10 +275,12 @@ import {
 import {
   PICKS_APP_URL,
   PICKS_CRITERIA,
+  PICKS_FAQS,
   PICKS_FREE_TRIAL_PHOTOS,
   PICKS_MAX_PHOTOS,
   PICKS_MIN_CHARGE_EUR,
   PICKS_PRICE_PER_PHOTO_EUR,
+  PICKS_RETENTION_DAYS,
   PICKS_TRIAL_URL,
   formatScore,
   rankShowcase,
@@ -282,7 +289,6 @@ import { trackUserAction } from "~/utils/analytics";
 
 useSEO("ai_photo_picks");
 
-const PICKS_RETENTION_DAYS = 30;
 
 const formatCount = (n) => new Intl.NumberFormat("en-US").format(n);
 const formatEur = (n) =>
@@ -341,33 +347,6 @@ const features = [
     icon: markRaw(LinkOutline),
     title: `A private link for ${PICKS_RETENTION_DAYS} days`,
     text: "Close the tab once your photos are uploaded: the ranking keeps going and the link to it reaches your inbox.",
-  },
-];
-
-const faqs = [
-  {
-    q: "Do I need a Photoreka account?",
-    a: "No. Picks is a standalone tool: you pay per order and get a private link to your ranking. Nothing to sign up for, nothing to cancel.",
-  },
-  {
-    q: "Do my original photos get uploaded?",
-    a: "No. Only an 800-pixel thumbnail of each photo is sent for judging. Your full-resolution files stay on your device, and in Chrome or Edge Picks can read them back from your disk to download them from the ranking.",
-  },
-  {
-    q: "How long does it take?",
-    a: "A few minutes for a few hundred photos, and under half an hour for 5,000. You can watch the ranking build up live or close the tab once the upload is done.",
-  },
-  {
-    q: "How are the juries different?",
-    a: "Every photo is scored once on eight criteria. Each jury weighs those criteria differently, and themed juries such as street or landscape only rank the photos that belong to their genre.",
-  },
-  {
-    q: "What file formats are supported?",
-    a: "JPEG, PNG and WebP. Export your RAW files to JPEG first; the jury only needs the image, not the raw data.",
-  },
-  {
-    q: "What happens to my photos afterwards?",
-    a: `Thumbnails and results are deleted after ${PICKS_RETENTION_DAYS} days. They are never shared and never used to train AI models.`,
   },
 ];
 
@@ -1233,6 +1212,18 @@ function goToApp(where) {
   padding: 0 24px 22px;
   line-height: 1.65;
   color: var(--pk-text-2);
+}
+
+.pkl-faq-link {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--pk-gold-2);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pkl-faq-link:hover {
+  text-decoration: underline;
 }
 
 /* ── Final CTA ──────────────────────────────────────────────────── */

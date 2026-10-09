@@ -917,6 +917,319 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "how-to-choose-photos-for-a-photo-contest",
+    title: "How to Choose Which Photos to Enter in a Photography Contest",
+    excerpt:
+      "Most contest entries don't lose because they are bad photos. They lose because they were the wrong photos to send. A practical way to shortlist like a jury: read the brief first, pass the first-glance test, and get a critique instead of a vote.",
+    description:
+      "A practical guide to choosing your photography competition entries: how judges screen images, the thumbnail test, genre fit, originality, technical checks, series vs singles, and how AI can shortlist hundreds of photos.",
+    keywords:
+      "how to choose photos for a photo contest, which photo to enter in a photography competition, photography competition tips, photo contest entry selection, how photo contests are judged, choose best photos for competition, photography award submission tips, street photography competition entry, ai photo critique, ai photo picker",
+    category: "Photography Tips",
+    tags: ["Photo Contests", "Photo Selection", "Photo Critique", "Picks"],
+    coverImage: "/blog/photo_contest_selection.png",
+    publishedAt: "2026-10-09",
+    readingMinutes: 7,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Most photographers spend weeks on a contest entry and about ten minutes choosing it. They open the folder, scroll until something feels right, and send the photo they remember best. The result is predictable: <strong>most entries don't lose because they are bad photos, they lose because they were the wrong photos to send.</strong> A strong frame in the wrong category, a beautiful image the jury has seen five hundred times, a picture that only works at full screen when the first round is judged on a grid of thumbnails.",
+      },
+      {
+        type: "p",
+        html: "Choosing well is a separate skill from shooting well, and it can be learned. This is the process we recommend, from reading the brief to sending the file.",
+      },
+      {
+        type: "h2",
+        text: "Read the Brief Before You Open Your Archive",
+        id: "read-the-brief",
+      },
+      {
+        type: "p",
+        html: "The brief decides what a winning photo looks like before any judge does. Read it twice and write down, in your own words, what each category is really asking for. A “street” category that also accepts staged portraits is a different contest from one that requires candid moments. A theme such as “resilience” will be read literally by some juries and metaphorically by others; past winners are the best evidence of which one you are facing.",
+      },
+      {
+        type: "list",
+        items: [
+          "Category definitions: what belongs, and what is explicitly excluded.",
+          "Editing rules: many documentary and nature competitions forbid adding or removing elements, and some ask for the original raw file if you reach the final round.",
+          "Rules on AI-generated or AI-edited images, which are now common and strictly enforced.",
+          "Number of entries, whether a series is allowed, and whether entries can be previously published or awarded.",
+          "Technical specs: file size, long edge, colour space, and naming conventions.",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "Look at the last two years of winners",
+        html: "Not to copy them, but to calibrate. You will see which genres the jury rewards, how much post-processing they accept, and which subjects already won, which makes a near-identical entry much harder to justify.",
+      },
+      {
+        type: "h2",
+        text: "Build a Long List Fast, Without Filtering by Memory",
+        id: "build-a-long-list",
+      },
+      {
+        type: "p",
+        html: "Your memory of a shoot is a poor index of your archive. You remember the photos that were hard to take, the trips that mattered, and the frames people praised, and none of those is the same as your strongest image. So start wide: pull every photo that could plausibly fit the brief into one folder, even the ones you are unsure about. For most photographers that means a long list of 30 to 100 candidates, sometimes drawn from several thousand frames.",
+      },
+      {
+        type: "p",
+        html: "This is the step where most people give up and fall back on the three photos they always send. If your archive is large, it is also where a tool helps most: an <a href='/ai_photo_picks'>AI photo picker</a> can rank thousands of frames in minutes and surface strong images you had forgotten, so your long list is built from the whole archive rather than from what you happen to remember. We cover the general workflow in <a href='/blog/how-to-pick-your-best-photos'>how to pick your best photos from hundreds of shots</a>.",
+      },
+      {
+        type: "h2",
+        text: "Pass the First-Glance Test",
+        id: "first-glance-test",
+      },
+      {
+        type: "p",
+        html: "Large competitions receive thousands of entries, and the first round is usually a fast screening on a screen, often on a grid of small images. A judge may spend only a few seconds on each photo before deciding whether it moves on. <strong>Your photo has to earn a second look before it can win on its subtleties.</strong>",
+      },
+      {
+        type: "p",
+        html: "Test it the same way. Put your long list on a grid at thumbnail size, step back, and note which images still read: a clear subject, a strong shape, a striking light or colour, a gesture you understand instantly. Photos whose power depends on a small detail, a caption, or knowing the story behind them tend to fall at this stage, however good they are at full size.",
+      },
+      {
+        type: "h2",
+        text: "Judge the Frame, Not the Memory",
+        id: "judge-the-frame",
+      },
+      {
+        type: "p",
+        html: "The hardest bias to escape is the back-story. You know how cold it was, how long you waited, how rare the moment felt. The jury knows none of that; they only see the rectangle. For each candidate, ask one question: <em>if a stranger had taken this, would I still put it on the shortlist?</em> If the answer depends on something outside the frame, the photo is probably weaker than it feels.",
+      },
+      {
+        type: "h2",
+        text: "Score Each Candidate Against What Juries Reward",
+        id: "what-juries-reward",
+      },
+      {
+        type: "p",
+        html: "Every competition words it differently, but most juries weigh a similar set of qualities. Scoring your shortlist on them, even roughly from 1 to 10, forces you to compare photos on the same terms instead of on mood:",
+      },
+      {
+        type: "list",
+        items: [
+          "Impact: does the photo stop you, and does it hold you after the first second?",
+          "Composition: is every element in the frame working, with clean edges and a clear reading order?",
+          "Storytelling and message: does the image say something, or only show something?",
+          "Originality: has the jury seen this subject, from this angle, many times this year?",
+          "Moment and spontaneity: in street and documentary work especially, is it a decisive moment or a well-lit scene?",
+          "Technical execution: focus where it matters, controlled highlights, an edit that serves the image rather than announcing itself.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Then weigh those scores for the category. A street jury will forgive some noise for a perfect gesture; a landscape jury will not forgive blown highlights for a nice composition. The same photo can be a finalist in one category and an early cut in another, which is why it is worth checking where each candidate is strongest before deciding where to enter it.",
+      },
+      {
+        type: "h2",
+        text: "Ask for a Critique, Not a Vote",
+        id: "critique-not-vote",
+      },
+      {
+        type: "p",
+        html: "Asking friends “which one do you like?” gives you a popularity vote, and popularity rewards bright colours, cute subjects and familiar views. What you need is a <strong>reason</strong>: what makes the frame work, and what holds it back. A critique such as “the split frame creates a clever visual rhyme, but the right edge cuts the figure's arm” tells you both whether to send the photo and how to improve it before you do. Ask a photographer you trust, a club, or a mentor, and ask them to explain their ranking.",
+      },
+      {
+        type: "h2",
+        text: "Singles vs Series",
+        id: "singles-vs-series",
+      },
+      {
+        type: "p",
+        html: "If the contest accepts series, judge the set as a whole. A series is only as strong as its weakest image, and juries notice repetition fast: two photos that make the same point weaken each other. Look for consistency of tone and treatment, a sequence that builds, and a final image that closes the story. When in doubt, a tight series of five beats a loose series of ten.",
+      },
+      {
+        type: "h2",
+        text: "Final Technical Checks",
+        id: "technical-checks",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "View the final file at 100% and look for sensor dust, halos from sharpening, and banding in skies.",
+          "Check the edit against the rules: no added or removed elements if the category forbids it.",
+          "Export to the exact specs, in the requested colour space, and keep the original raw file ready.",
+          "Write the title and caption carefully; in documentary categories they are part of the entry.",
+          "Re-read the deadline and the time zone.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Where AI Fits in the Selection",
+        id: "where-ai-fits",
+      },
+      {
+        type: "p",
+        html: "AI will not choose your entry for you, and it shouldn't: it does not know the theme, the jury, or what you are trying to say. Where it is genuinely useful is in the two slowest steps: <strong>going through the whole archive</strong> to build the long list, and giving you a <strong>consistent second opinion</strong> on each candidate. <a href='/ai_photo_picks'>Photoreka Picks</a> does exactly that: you drop up to 5,000 photos, an AI jury scores every frame on eight artistic criteria and writes a short critique for each one, and you can rank the results through genre juries such as street or documentary, or through award juries that only keep photos above a high bar.",
+      },
+      {
+        type: "cta",
+        eyebrow: "Build your shortlist",
+        title: "Let an AI jury pre-select your contest entries",
+        text: "Try Picks free with 10 of your own photos: scores, a written critique for each frame and every jury. No account, no card.",
+        buttonLabel: "Discover Picks",
+        action: "link",
+        href: "/ai_photo_picks",
+      },
+      {
+        type: "p",
+        html: "Whatever tools you use, the principle is the same: read the brief, search the whole archive, test at a glance, and choose with reasons rather than memories. The photo that wins is often not the one you love most; it is the one that makes a stranger stop.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-pick-your-best-photos",
+    title: "How to Pick Your Best Photos from Hundreds of Shots",
+    excerpt:
+      "You came back with 800 photos and you know there are ten great ones in there. A practical editing workflow to find them: separate culling from selecting, let the photos cool down, compare like with like, and choose with criteria instead of memories.",
+    description:
+      "A step-by-step workflow to pick your best photos from a trip, a shoot or a whole archive: culling vs selecting, the two-pass method, criteria for choosing, common traps, and how AI photo pickers can help.",
+    keywords:
+      "how to pick your best photos, how to choose best photos from a shoot, find my best photos, choose best photos from trip, photo selection workflow, photo editing selection tips, cull and select photos, how to choose photos for portfolio, ai photo picker, best photo selector",
+    category: "Photography Tips",
+    tags: ["Photo Selection", "Photo Culling", "Portfolio", "Picks"],
+    coverImage: "/blog/pick_best_photos.png",
+    publishedAt: "2026-10-09",
+    readingMinutes: 6,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "You came back from a trip, a wedding or a long weekend of street photography with 800 frames. Somewhere in there are the ten photos you will still be proud of in five years, and most of them will never be seen, because the folder is too big to face. Choosing is the part of photography nobody teaches, and it matters as much as pressing the shutter: <strong>the photographer is judged by the photos they show, not the photos they took.</strong>",
+      },
+      {
+        type: "h2",
+        text: "Separate Culling from Selecting",
+        id: "culling-vs-selecting",
+      },
+      {
+        type: "p",
+        html: "The most common mistake is trying to do two jobs at once. <strong>Culling</strong> is removing what failed: missed focus, motion blur, closed eyes, bad exposure, and the twenty near-identical frames of the same burst. <strong>Selecting</strong> is choosing what is genuinely good among what remains. Culling is fast and mostly technical; selecting is slow and mostly artistic. Mixing them makes both worse: you agonise over obvious rejects and rush the decisions that matter.",
+      },
+      {
+        type: "h2",
+        text: "Pass One: Cull Fast",
+        id: "cull-fast",
+      },
+      {
+        type: "p",
+        html: "Go through everything once, quickly, with one rule: reject only what is clearly broken or redundant. Use a single flag or a one-star rating and do not stop to compare. For bursts and sequences, keep the best one or two frames of each moment and drop the rest. Expect to remove half of the shoot or more. If you work in a catalog such as Lightroom, this is also where <a href='/ai_photo_culling'>AI culling tools</a> save the most time, because technical defects are exactly what software detects well.",
+      },
+      {
+        type: "h2",
+        text: "Let the Photos Cool Down",
+        id: "cool-down",
+      },
+      {
+        type: "p",
+        html: "Right after a shoot, every photo is attached to a memory: the effort, the place, the people. That attachment is the enemy of a good selection. If you can, wait a few days before the second pass. Photos that still stand out after the excitement has faded are usually the real ones; photos you liked because of how they felt to take tend to fade with the memory.",
+      },
+      {
+        type: "h2",
+        text: "Pass Two: Select with Criteria",
+        id: "select-with-criteria",
+      },
+      {
+        type: "p",
+        html: "Now slow down. For each remaining photo, ask the questions an editor would ask, rather than “do I like it?”:",
+      },
+      {
+        type: "list",
+        items: [
+          "Aesthetics: is the light, colour and tone working for the image?",
+          "Composition: does the eye know where to go, and is anything at the edges stealing attention?",
+          "Storytelling: does the photo say something about the place, the person or the moment?",
+          "Originality: is this your view, or the view everyone takes from the same spot?",
+          "Moment: is there a gesture, an expression or a coincidence that will never happen again?",
+        ],
+      },
+      {
+        type: "p",
+        html: "Giving each photo a rough score on these criteria sounds mechanical, but it does something useful: it makes you compare a landscape and a portrait on the same terms, and it exposes photos that are technically perfect but say nothing.",
+      },
+      {
+        type: "h2",
+        text: "Compare Like with Like",
+        id: "compare-like-with-like",
+      },
+      {
+        type: "p",
+        html: "Put similar photos side by side: the three versions of the same street corner, the five portraits of the same person. Choose one per moment. Then compare the winners across moments. Seeing two frames together reveals differences you miss when viewing them one by one: a cleaner background, a better gesture, a horizon that is not quite level.",
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "The stranger test",
+        html: "For every photo you keep, ask: if a stranger had taken this, would it still make my shortlist? If the answer depends on knowing the story behind it, it belongs in your personal album, not in your portfolio.",
+      },
+      {
+        type: "h2",
+        text: "Decide How Many You Need",
+        id: "how-many",
+      },
+      {
+        type: "p",
+        html: "The right number depends on where the photos are going, and deciding it in advance makes the last cuts much easier:",
+      },
+      {
+        type: "list",
+        items: [
+          "A social post or a message to friends: one to ten photos.",
+          "A portfolio project or a series: usually ten to twenty images that work together.",
+          "A photo book or a family album of a long trip: a larger edit, but still built from the strongest frame of each moment.",
+          "A competition entry: the handful of images that fit the brief best.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Competitions are a special case, because the brief and the jury matter as much as the photo. We cover it in detail in <a href='/blog/how-to-choose-photos-for-a-photo-contest'>how to choose which photos to enter in a photo contest</a>.",
+      },
+      {
+        type: "h2",
+        text: "Common Traps",
+        id: "common-traps",
+      },
+      {
+        type: "list",
+        items: [
+          "Keeping the photo that was hardest to take instead of the one that is best to look at.",
+          "Choosing technical perfection over a strong moment with a little noise or softness.",
+          "Keeping several near-identical frames because you cannot decide; they weaken each other.",
+          "Selecting only from the last shoot and forgetting the strong photos already sitting in your archive.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Where AI Can Help",
+        id: "where-ai-can-help",
+      },
+      {
+        type: "p",
+        html: "There are two kinds of AI tools for this job, and they solve different steps. Culling tools look for technical defects and duplicates, which is ideal for pass one. AI photo pickers judge artistic qualities, which helps with pass two and with digging through a large archive. <a href='/ai_photo_picks'>Photoreka Picks</a> is the second kind: you drop up to 5,000 photos, an AI jury scores each one on eight artistic criteria (aesthetics, composition, storytelling, originality, message, humor, visual games and spontaneity) and writes a one- or two-sentence critique explaining its score. You can then switch between street, documentary, landscape or award juries and watch the ranking reorder itself. Your originals never leave your device: only a small thumbnail of each photo is sent for judging.",
+      },
+      {
+        type: "p",
+        html: "Use it as a second opinion, not a verdict. The value is not that the AI is always right, but that it looks at every frame with the same eye, never gets tired at photo 600, and has no memory of how cold it was when you took the shot. If you want the same scoring permanently across your whole catalog, that is what <a href='/photo_scoring'>Photoreka's Photo Scoring</a> does inside an account.",
+      },
+      {
+        type: "cta",
+        eyebrow: "Find your best photos",
+        title: "Let an AI jury rank your next shoot",
+        text: "Try Picks free with 10 of your own photos: scores on eight criteria and a written critique for every frame. No account, no card.",
+        buttonLabel: "Discover Picks",
+        action: "link",
+        href: "/ai_photo_picks",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {

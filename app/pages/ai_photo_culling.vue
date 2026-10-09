@@ -219,6 +219,9 @@
           </div>
         </section>
 
+        <!-- Photoreka Picks Promo -->
+        <PicksPromo source="ai_photo_culling" />
+
         <!-- FAQ Section -->
         <section class="faq-section" ref="faqSection">
           <div class="section-container">

@@ -9,6 +9,49 @@ export const PICKS_PRICE_PER_PHOTO_EUR = 0.01;
 export const PICKS_MIN_CHARGE_EUR = 1;
 export const PICKS_FREE_TRIAL_PHOTOS = 10;
 export const PICKS_MAX_PHOTOS = 5000;
+export const PICKS_RETENTION_DAYS = 30;
+
+// Shared by the visible FAQ and its FAQPage JSON-LD, which must match word for word.
+export const PICKS_FAQS = [
+  {
+    q: "Do I need a Photoreka account?",
+    a: "No. Picks is a standalone tool: you pay per order and get a private link to your ranking. Nothing to sign up for, nothing to cancel.",
+  },
+  {
+    q: "How much does it cost?",
+    a: `€${PICKS_PRICE_PER_PHOTO_EUR.toFixed(2)} per photo, paid once per order, with a €${PICKS_MIN_CHARGE_EUR} minimum. You can try it free with ${PICKS_FREE_TRIAL_PHOTOS} of your own photos first: no card, no account.`,
+  },
+  {
+    q: "Do my original photos get uploaded?",
+    a: "No. Only an 800-pixel thumbnail of each photo is sent for judging. Your full-resolution files stay on your device, and in Chrome or Edge Picks can read them back from your disk to download them from the ranking.",
+  },
+  {
+    q: "How long does it take?",
+    a: "A few minutes for a few hundred photos, and under half an hour for 5,000. You can watch the ranking build up live or close the tab once the upload is done.",
+  },
+  {
+    q: "How are the juries different?",
+    a: "Every photo is scored once on eight criteria. Each jury weighs those criteria differently, and themed juries such as street or landscape only rank the photos that belong to their genre.",
+  },
+  {
+    q: "Can Picks help me choose photos for a photography competition?",
+    a: "Yes. Award juries only keep the photos that clear a high score, and every photo comes with a critique of what works and what holds it back, so you get a shortlist of candidate entries. The jury does not know the contest's theme or rules, so make the final call against the brief yourself.",
+    link: { to: "/blog/how-to-choose-photos-for-a-photo-contest", label: "How to choose your contest entries" },
+  },
+  {
+    q: "What file formats are supported?",
+    a: "JPEG, PNG and WebP. Export your RAW files to JPEG first; the jury only needs the image, not the raw data.",
+  },
+  {
+    q: "What happens to my photos afterwards?",
+    a: `Thumbnails and results are deleted after ${PICKS_RETENTION_DAYS} days. They are never shared and never used to train AI models.`,
+  },
+  {
+    q: "How is Picks different from Photoreka's Photo Scoring?",
+    a: `Picks is a standalone tool for a one-off batch of photos: no account, pay per photo, results kept for ${PICKS_RETENTION_DAYS} days. Photo Scoring is part of a Photoreka account and scores your whole catalog permanently, so you can search, filter and follow your work over time.`,
+    link: { to: "/photo_scoring", label: "Discover Photo Scoring" },
+  },
+];
 
 export const PICKS_CRITERIA = [
   { key: "aesthetics", label: "Aesthetics" },

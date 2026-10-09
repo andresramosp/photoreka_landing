@@ -3,6 +3,8 @@
  * Edita este archivo para cambiar meta tags, Open Graph, y Twitter Cards
  */
 
+import { PICKS_FAQS } from "../utils/picksShowcase";
+
 export interface SEOPage {
   title: string;
   description: string;
@@ -1019,12 +1021,12 @@ export const seoConfig = {
     },
 
     ai_photo_picks: {
-      title: "Find Your Best Photos with AI — Photo Ranking & Critique | Photoreka Picks",
+      title: "AI Photo Picker: Rank & Critique Your Best Photos | Photoreka",
       description:
-        "Drop up to 5,000 photos and let an AI jury score every frame on eight artistic criteria, write a short critique for each one and rank them through street, documentary, landscape or award juries. No account, pay per photo, free trial with 10 photos.",
+        "Upload up to 5,000 photos and an AI jury ranks them, scores eight artistic criteria and writes a critique for each one. No account. Free trial with 10 photos.",
       keywords:
-        "find my best photos, pick best photos ai, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, best photo picker, ai photo selection, choose best photos for portfolio, photography competition shortlist, street photography critique, ai photo scoring online, photo culling ai no account, rate my photos ai",
-      ogImage: "/logos/marca/vertical-claim-light.png",
+        "ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
+      ogImage: "/picks/og-picks.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
       jsonLd: [
@@ -1061,32 +1063,11 @@ export const seoConfig = {
         {
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Do I need an account to rank my photos?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "No. Photoreka Picks is a standalone tool: you pay per order and receive a private link to your ranking.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Are my original photos uploaded?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "No. Only an 800-pixel thumbnail of each photo is sent to the AI jury. Full-resolution files stay on your device.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How much does it cost?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "€0.01 per photo with a €1 minimum per order, and a free trial with 10 photos.",
-              },
-            },
-          ],
+          mainEntity: PICKS_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
         },
       ],
     },

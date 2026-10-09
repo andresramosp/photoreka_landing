@@ -113,6 +113,8 @@ export default defineNuxtConfig({
     "/blog/peakto-alternative-windows": { prerender: true },
     "/blog/digikam-vs-photoreka": { prerender: true },
     "/blog/photoprism-vs-photoreka": { prerender: true },
+    "/blog/how-to-choose-photos-for-a-photo-contest": { prerender: true },
+    "/blog/how-to-pick-your-best-photos": { prerender: true },
     "/ai_photo_organizer": { prerender: true },
     "/ai_photo_search": { prerender: true },
     "/ai_photo_culling": { prerender: true },
