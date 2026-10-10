@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Terms of Service</h1>
-        <p class="terms-effective">Last updated: October 5, 2026</p>
+        <p class="terms-effective">Last updated: October 10, 2026</p>
 
         <section class="terms-section">
           <h2>1. Acceptance of Terms</h2>
@@ -278,11 +278,12 @@
               An account is considered <strong>inactive</strong> when it has
               not been signed into or used in any way (including through
               connected integrations such as the Lightroom plugin) for at least
-              <strong>six (6) consecutive months</strong>.
+              <strong>four (4) consecutive months</strong>.
             </li>
             <li>
               This clause does <strong>not</strong> apply to accounts that have
-              made a purchase on the Platform.
+              made a purchase on the Platform. Photo analyses and credits
+              obtained through a purchase have no expiry date.
             </li>
             <li>
               Before deleting an account, Photoreka will send a notice to the
@@ -298,6 +299,11 @@
               <NuxtLink to="/privacy">Privacy &amp; Image Policy</NuxtLink> and
               cannot be recovered. Since Photoreka is not a storage service (see
               Section 2), your original files are not affected.
+            </li>
+            <li>
+              Any unused free allowance granted to the account, such as the
+              photo analyses and credits of the welcome pack, is lost when the
+              account is deleted.
             </li>
             <li>
               You are responsible for keeping the email address on your account
