@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Terms of Service</h1>
-        <p class="terms-effective">Last updated: October 10, 2026</p>
+        <p class="terms-effective">Last updated: October 15, 2026</p>
 
         <section class="terms-section">
           <h2>1. Acceptance of Terms</h2>
@@ -198,6 +198,41 @@
           <p>
             Photoreka does not warrant that AI-generated tags, scores, or
             analysis results will be accurate, complete, or error-free.
+          </p>
+          <p>
+            <strong>Not every image can be processed.</strong> The Platform's
+            analysis is designed for genuine photographs. The following types of
+            images may be processed only partially or not at all, either because
+            the analysis cannot interpret them reliably or because the
+            third-party AI providers involved reject them under their own
+            content policies:
+          </p>
+          <ul>
+            <li>Deformed, distorted, or spoofed images.</li>
+            <li>Photographs of other photographs, prints, or screens.</li>
+            <li>Photographs of collages or of several photos arranged together.</li>
+            <li>
+              Synthetic or AI-generated images (which are also prohibited under
+              Section 6).
+            </li>
+            <li>
+              Hand-made drawings and digitally created drawings or
+              illustrations (which are also prohibited under Section 6).
+            </li>
+            <li>
+              Low-quality photographs, for example very blurry, very dark,
+              overexposed, or very low-resolution images.
+            </li>
+            <li>
+              Sensitive images, such as images containing nudity or certain
+              images depicting minors.
+            </li>
+          </ul>
+          <p>
+            In these cases, some tags, scores, or other analysis results may be
+            missing, incomplete, or unreliable, and the features that depend on
+            them may not work for those images. This list is not exhaustive, and
+            these determinations are made automatically.
           </p>
           <p>
             <strong

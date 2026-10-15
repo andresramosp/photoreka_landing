@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Privacy &amp; Image Policy</h1>
-        <p class="terms-effective">Last updated: October 5, 2026</p>
+        <p class="terms-effective">Last updated: October 15, 2026</p>
 
         <section class="terms-section">
           <h2>1. Introduction</h2>
@@ -159,6 +159,16 @@
               produce incomplete results. These determinations are made
               automatically by the third-party providers and do not necessarily
               reflect Photoreka's own assessment of the content.
+            </li>
+            <li>
+              <strong>Images That May Not Be Processed:</strong> Photoreka's
+              analysis is designed for genuine photographs. Deformed or spoofed
+              images, photographs of other photographs or of collages, synthetic
+              images, hand-made or digital drawings, low-quality photographs,
+              and sensitive images (such as images containing nudity or certain
+              images depicting minors) may be processed only partially or not at
+              all. See the Disclaimer of Warranties section of our
+              <NuxtLink to="/terms">Terms of Service</NuxtLink> for details.
             </li>
           </ul>
         </section>
