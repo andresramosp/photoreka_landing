@@ -1,5 +1,5 @@
 <template>
-  <div class="feat-carousel">
+  <div class="feat-carousel" :class="{ 'feat-carousel--contain': fit === 'contain' }">
     <!-- Single image → static -->
     <img
       v-if="slides.length <= 1"
@@ -45,6 +45,8 @@ const props = defineProps({
   alt: { type: String, default: "" },
   /** Milliseconds each slide stays before crossfading. */
   interval: { type: Number, default: 3333 },
+  /** cover | contain; contain shows each image whole and skips the zoom. */
+  fit: { type: String, default: "cover" },
 });
 
 // Normalize to a consistent { src, alt } shape.
@@ -64,6 +66,7 @@ let slideshowTimer = null;
 // slow zoom so the CSS transition always animates from the current value.
 const activateSlide = (idx) => {
   slideTransforms.value[idx] = "scale(1.0)";
+  if (props.fit === "contain") return;
   nextTick(() => {
     slideTransforms.value[idx] = "scale(1.1)";
   });
@@ -136,6 +139,14 @@ onUnmounted(() => {
 
 .feat-carousel-slide.active {
   opacity: 1;
+}
+
+.feat-carousel--contain .feat-carousel-image {
+  object-fit: contain;
+}
+
+.feat-carousel--contain .feat-carousel-slide {
+  background-size: contain;
 }
 
 .feat-carousel-overlay {

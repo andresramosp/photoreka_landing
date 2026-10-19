@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Terms of Service</h1>
-        <p class="terms-effective">Last updated: October 15, 2026</p>
+        <p class="terms-effective">Last updated: October 19, 2026</p>
 
         <section class="terms-section">
           <h2>1. Acceptance of Terms</h2>
@@ -172,8 +172,15 @@
           <h2>7. Service Availability and Modifications</h2>
           <ul>
             <li>
-              Photoreka reserves the right to modify, suspend, or discontinue
-              any part of the service at any time, with or without notice.
+              Photoreka may modify, add, or remove features of the Platform from
+              time to time in order to improve or adapt the service. If a change
+              significantly reduces features you have paid for, we will notify
+              you in advance.
+            </li>
+            <li>
+              We may temporarily suspend access to the Platform without prior
+              notice when necessary for security reasons, urgent maintenance, or
+              compliance with legal obligations.
             </li>
             <li>
               We do not guarantee uninterrupted or error-free access to the
@@ -183,11 +190,105 @@
               We may update these Terms of Service from time to time. Material
               changes will be communicated via the Platform or email.
             </li>
+            <li>
+              The permanent discontinuation of the service and its migration to
+              a different platform or application are governed by Sections 8
+              and 9 below.
+            </li>
           </ul>
         </section>
 
         <section class="terms-section">
-          <h2>8. Disclaimer of Warranties</h2>
+          <h2>8. Discontinuation of the Service</h2>
+          <p>
+            Photoreka may decide to permanently discontinue the Platform as a
+            whole, for example if it is no longer economically viable to
+            operate. In that case:
+          </p>
+          <ul>
+            <li>
+              We will notify you by email and through the Platform at least
+              <strong>sixty (60) days in advance</strong>, stating the date on
+              which the service will close.
+            </li>
+            <li>
+              During that notice period you will be able to keep using the
+              Platform and to export your data, including tags, scores,
+              collections, series, and other derived content, in a structured,
+              machine-readable format. New purchases may be disabled during this
+              period.
+            </li>
+            <li>
+              Photo analyses and credits that you purchased and have not used by
+              the closure date will be refunded in proportion to the price you
+              paid for them. Free or promotional allowances, such as the welcome
+              pack, are not refundable.
+            </li>
+            <li>
+              After the closure date, your account, stored images, and all
+              derived data will be permanently deleted as described in our
+              <NuxtLink to="/privacy">Privacy &amp; Image Policy</NuxtLink>.
+              Since Photoreka is not a storage service (see Section 2), your
+              original files are not affected.
+            </li>
+            <li>
+              If the discontinuation is caused by circumstances beyond our
+              reasonable control (such as the shutdown of an essential
+              third-party provider, a legal requirement, or force majeure), we
+              will give as much notice as is reasonably possible, which may be
+              shorter than sixty days.
+            </li>
+          </ul>
+        </section>
+
+        <section class="terms-section">
+          <h2>9. Migration to a Different Platform</h2>
+          <p>
+            Photoreka may decide to replace the current Platform, in whole or in
+            part, with a different application or platform (for example, a
+            desktop application), or to change where and how your data is
+            stored (for example, locally on your device instead of on our
+            servers). In that case:
+          </p>
+          <ul>
+            <li>
+              We will notify you by email and through the Platform at least
+              <strong>sixty (60) days in advance</strong>, explaining what will
+              change, which data can be migrated, and what you need to do.
+            </li>
+            <li>
+              Where technically feasible, we will provide reasonable means to
+              transfer your account, your purchased photo analyses and credits,
+              and your derived data (tags, scores, collections, series, and
+              other content) to the new platform.
+            </li>
+            <li>
+              Some data or features may not be transferable. For example, you
+              may need to import your photos again from your original files, and
+              some analyses may need to be regenerated.
+            </li>
+            <li>
+              Purchased photo analyses and credits remain valid on the new
+              platform. If you are unable to use the new platform (for example,
+              because of its system requirements) or choose not to migrate, you
+              may request a proportional refund of your unused purchased
+              analyses and credits before the end of the notice period.
+            </li>
+            <li>
+              Using the new platform may require accepting updated terms
+              specific to it.
+            </li>
+            <li>
+              Once the migration period ends, the previous Platform may be
+              discontinued, and any data that has not been migrated will be
+              deleted as described in our
+              <NuxtLink to="/privacy">Privacy &amp; Image Policy</NuxtLink>.
+            </li>
+          </ul>
+        </section>
+
+        <section class="terms-section">
+          <h2>10. Disclaimer of Warranties</h2>
           <p>
             The Platform and all services are provided
             <strong>"as is"</strong> and <strong>"as available"</strong> without
@@ -248,7 +349,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>9. Limitation of Liability</h2>
+          <h2>11. Limitation of Liability</h2>
           <ul>
             <li>
               To the maximum extent permitted by law, Photoreka shall not be
@@ -265,7 +366,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>10. Indemnification</h2>
+          <h2>12. Indemnification</h2>
           <p>
             You agree to indemnify and hold harmless Photoreka, its officers,
             employees, and agents from any claims, damages, or expenses
@@ -276,7 +377,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>11. Termination</h2>
+          <h2>13. Termination</h2>
           <ul>
             <li>
               You may terminate your account at any time by contacting us at
@@ -289,7 +390,7 @@
             </li>
             <li>
               Free accounts may also be deleted after a prolonged period of
-              inactivity, with prior email notice, as described in Section 12
+              inactivity, with prior email notice, as described in Section 14
               (Inactive Free Accounts).
             </li>
             <li>
@@ -302,7 +403,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>12. Inactive Free Accounts</h2>
+          <h2>14. Inactive Free Accounts</h2>
           <p>
             To keep the service sustainable and avoid retaining data that is no
             longer being used, Photoreka may delete free accounts that remain
@@ -352,7 +453,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>13. Governing Law</h2>
+          <h2>15. Governing Law</h2>
           <p>
             These Terms shall be governed by and construed in accordance with
             the laws of the European Union and the applicable national laws
@@ -363,7 +464,7 @@
         </section>
 
         <section class="terms-section">
-          <h2>14. Contact</h2>
+          <h2>16. Contact</h2>
           <p>
             If you have any questions about these Terms of Service, please
             contact us at

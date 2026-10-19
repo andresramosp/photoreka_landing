@@ -2,7 +2,7 @@
   <n-config-provider :theme="currentTheme" :theme-overrides="themeOverrides">
     <n-message-provider>
       <div
-        class="premium-landing"
+        class="lx-page lx-home"
         :class="{
           'has-announcement': heroAnnouncement.enabled && showAnnouncement,
         }"
@@ -31,259 +31,246 @@
             ×
           </button>
         </div>
-        <!-- Navigation Header -->
-        <nav class="premium-nav">
-          <div class="nav-container">
-            <div class="nav-brand">
-              <AppLogo layout="horizontal" :height="40" />
-            </div>
-            <div class="nav-actions">
-              <button class="nav-link" @click="scrollToPricing">Pricing</button>
-              <button
-                v-if="canToggleTheme(true)"
-                class="theme-toggle"
-                @click="toggleTheme"
-                aria-label="Toggle theme"
-              >
-                <n-icon size="20">
-                  <component
-                    :is="themeMode === 'dark' ? SunnyOutline : MoonOutline"
-                  />
-                </n-icon>
-              </button>
-              <n-button strong secondary type="info" @click="goToAuth('login')"
-                >Sign in
-              </n-button>
-              <!-- <n-button
-                v-if="!isMobile"
-                type="info"
-                size="large"
-                @click="goToAuth('signup')"
-              >
-                <template #icon>
-                  <n-icon><RocketOutline /></n-icon>
-                </template>
-                Request Access
-              </n-button> -->
-            </div>
-          </div>
-        </nav>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section" ref="heroSection">
-          <div class="hero-background">
-            <div class="hero-line line-1"></div>
-            <div class="hero-line line-2"></div>
-          </div>
-          <div class="hero-container">
-            <div
-              class="hero-side hero-side-left"
-              :class="{ visible: heroVisible }"
+
+        <!-- Navigation -->
+        <LandingNav :links="navLinks" @navigate="onNavNavigate">
+          <template #actions>
+            <button
+              v-if="canToggleTheme(true)"
+              class="lx-icon-btn"
+              aria-label="Toggle theme"
+              @click="toggleTheme"
             >
-              <img
-                class="hero-side-image hero-side-image-left"
-                :src="heroSideImages.left.src"
-                :style="heroSideImageStyles.left"
-                alt="AI photo scoring and ranking view in Photoreka"
-              />
-              <img
-                v-if="
-                  heroPhoneOverlay.enabled && heroPhoneOverlay.side === 'left'
-                "
-                class="hero-phone-overlay"
-                :src="heroPhoneOverlay.image"
-                :style="phoneOverlayStyle"
-                alt="Photoreka mobile app"
-              />
-            </div>
-            <div class="hero-content">
-              <h1 class="hero-title" :class="{ visible: heroVisible }">
+              <n-icon size="18">
+                <component
+                  :is="themeMode === 'dark' ? SunnyOutline : MoonOutline"
+                />
+              </n-icon>
+            </button>
+            <LxButton variant="ghost" size="sm" @click="goToAuth('login')">
+              Sign in
+            </LxButton>
+          </template>
+        </LandingNav>
+
+        <!-- Hero -->
+        <section id="hero" class="lx-hero">
+          <div class="lx-hero__aura" aria-hidden="true" />
+
+          <div class="lx-container lx-hero__grid">
+            <div class="lx-hero__heading">
+              <p v-reveal class="lx-eyebrow lx-hero__trust">
+                <span class="lx-eyebrow__dot" aria-hidden="true" />
+                <span>The AI curation layer for your photo archive</span>
+                <span class="lx-hero__stars">★★★★★</span>
+              </p>
+              <h1
+                v-split="100"
+                class="lx-title lx-title--display lx-hero__title"
+              >
                 Make full sense of
-                <span class="gradient-text">
-                  your photographic body of work</span
-                >
+                <em class="lx-accent">your photographic body of work</em>
               </h1>
-
-              <p class="hero-description" :class="{ visible: heroVisible }">
-                <strong>Photoreka</strong> is a suite of smart tools to help you
-                curate your photos.<br />
-
-                <strong>Search</strong> in natural language,
-                <strong>rank</strong> your photos or <strong>chat</strong> with
-                your library.<br />
-                Upload a <strong>project</strong>, a curated
-                <strong>selection</strong> or your entire
-                <strong>catalog</strong>.
-              </p>
+              <div class="lx-hero__atlas-box" aria-hidden="true">
+                <img
+                  class="lx-hero__atlas"
+                  src="/home/hero_atlas_17.jpg"
+                  alt=""
+                  decoding="async"
+                />
+                <img
+                  v-for="(src, i) in heroFeatures2d"
+                  :key="src"
+                  class="lx-hero__feature"
+                  :class="`is-${i}`"
+                  :src="src"
+                  alt=""
+                  decoding="async"
+                />
+              </div>
               <div
-                v-if="false"
-                class="hero-badge"
-                :class="{ visible: heroVisible }"
+                v-if="showHeroPrints"
+                v-reveal="{ variant: 'fade', delay: 700 }"
+                class="lx-hero__prints"
+                aria-hidden="true"
               >
-                <span class="badge-content">
-                  <n-icon size="16"><WalkOutline /></n-icon>Street
-                  <n-icon size="16"><BookOpen16Regular /></n-icon>Documentary
-                  <n-icon size="16"><ColorPaletteOutline /></n-icon>Artistic
-                  <n-icon size="16"><PersonOutline /></n-icon>Portrait
-                  <n-icon size="16"><ImageOutline /></n-icon>Landscape
-                </span>
-              </div>
-              <div style="display: inline-flex; gap: 1rem">
-                <n-button type="info" size="large" @click="goToDemo">
-                  <template #icon>
-                    <n-icon><PlayCircleOutline /></n-icon>
-                  </template>
-                  <!-- Explore Demo -->
-                  Try the Demo
-                </n-button>
-                <n-button
-                  strong
-                  secondary
-                  type="info"
-                  size="large"
-                  @click="goToAuth('signup')"
-                >
-                  <template #icon>
-                    <n-icon><KeyOutline /></n-icon>
-                  </template>
-                  {{ signupButtonLabel }}
-                </n-button>
-              </div>
-              <p class="hero-alt-demo" :class="{ visible: heroVisible }">
-                <n-icon size="14"><BriefcaseOutline /></n-icon>
-                <span>
-                  Shooting commercial work?
-                  <a class="hero-alt-demo-link" @click="goToCommercialDemo"
-                    >Try the commercial demo →</a
+                <div class="lx-hero__prints-set">
+                  <span
+                    v-for="(src, i) in heroPrints"
+                    :key="src"
+                    class="lx-hero__print"
+                    :class="`is-${i}`"
                   >
-                </span>
-              </p>
-              <div class="hero-trust" :class="{ visible: heroVisible }">
-                <span class="hero-trust-label"
-                  >The AI curation layer for your photo archive</span
-                >
-                <span class="hero-rating">★★★★★</span>
-              </div>
-              <div class="hero-badge" :class="{ visible: heroVisible }">
-                <span class="badge-content">
-                  <n-icon size="16"><WalkOutline /></n-icon>Street
-                  <n-icon size="16"><BookOpen16Regular /></n-icon>Documentary
-                  <n-icon size="16"><ColorPaletteOutline /></n-icon>Artistic
-                  <n-icon size="16"><PersonOutline /></n-icon>Lifestyle
-                  <!-- <n-icon size="16"><ImageOutline /></n-icon>Travel -->
-                  <n-icon size="16"><BriefcaseOutline /></n-icon>Commercial
-                </span>
+                    <svg class="lx-hero__clip" viewBox="0 0 14 40">
+                      <path
+                        d="M5 12 V30 A2.5 2.5 0 0 0 10 30 V7 A4 4 0 0 0 2 7 V32 A5 5 0 0 0 12 32 V14"
+                      />
+                    </svg>
+                    <img :src="src" alt="" decoding="async" />
+                  </span>
+                </div>
               </div>
             </div>
-            <div
-              class="hero-side hero-side-right"
-              :class="{ visible: heroVisible }"
-            >
-              <img
-                class="hero-side-image hero-side-image-right"
-                :src="heroSideImages.right.src"
-                :style="heroSideImageStyles.right"
-                alt="AI-generated photo tag cloud in 2D semantic space"
-              />
-              <img
-                v-if="
-                  heroPhoneOverlay.enabled && heroPhoneOverlay.side === 'right'
-                "
-                class="hero-phone-overlay"
-                :src="heroPhoneOverlay.image"
-                :style="phoneOverlayStyle"
-                alt="Photoreka mobile app"
-              />
+
+            <div class="lx-hero__aside">
+              <div v-reveal="420" class="lx-hero__intro">
+                <p class="lx-lead lx-hero__lead">
+                  <span>
+                    <strong>Photoreka</strong> is a suite of smart tools to help
+                    you curate your photos.
+                  </span>
+                  <span>
+                    <strong>Search</strong> in natural language,
+                    <strong>rank</strong> your photos or
+                    <strong>chat</strong> with your library.
+                  </span>
+                  <span>
+                    Upload a <strong>project</strong>, a curated
+                    <strong>selection</strong> or your entire
+                    <strong>catalog</strong>.
+                  </span>
+                </p>
+                <div class="lx-hero__tools">
+                  <div class="lx-hero__tools-track">
+                    <ul
+                      v-for="copy in 2"
+                      :key="copy"
+                      class="lx-hero__tools-set"
+                      :aria-hidden="copy === 2 ? 'true' : undefined"
+                    >
+                      <li v-for="(genre, i) in heroGenreChips" :key="i">
+                        <n-icon size="16"
+                          ><component :is="genre.icon"
+                        /></n-icon>
+                        {{ genre.label }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="lx-hero__cta">
+                <div v-reveal="520" class="lx-actions">
+                  <LxButton icon="play" @click="goToDemo"
+                    >Try the Demo</LxButton
+                  >
+                  <LxButton variant="ghost" @click="goToAuth('signup')">
+                    {{ signupButtonLabel }}
+                  </LxButton>
+                </div>
+                <p v-reveal="600" class="lx-hero__alt">
+                  <span>Shooting commercial work?</span>
+                  <button class="lx-link" @click="goToCommercialDemo">
+                    Try the commercial demo
+                    <n-icon size="15"><ArrowForwardOutline /></n-icon>
+                  </button>
+                </p>
+              </div>
             </div>
-            <div
-              class="hero-side hero-side-mobile"
-              :class="{ visible: heroVisible }"
-            >
-              <img
-                class="hero-side-image hero-side-image-mobile"
-                :src="heroSideImages.mobile.src"
-                alt="Photoreka AI photo curation and organizer dashboard"
-              />
+          </div>
+
+          <!-- Product stage: three static captures (see heroStage).
+               Tilted back at load, the whole set straightens as you scroll. -->
+          <div
+            v-scroll-progress="{
+              mode: 'scroll',
+              distance: 0.45,
+              disableBelow: 760,
+            }"
+            class="lx-hero__stage"
+          >
+            <div class="lx-container">
+              <div v-reveal="{ variant: 'scale', delay: 380 }" class="lx-stage">
+                <div class="lx-stage__scene">
+                  <div
+                    class="lx-stage__deck"
+                    :class="{ 'is-turning': heroStageTurning }"
+                  >
+                    <div
+                      v-for="(shot, index) in heroStage"
+                      :key="shot.src"
+                      class="lx-stage__slot"
+                      :class="`is-${heroStagePosition(index)}`"
+                    >
+                      <ShotFrame
+                        :src="shot.src"
+                        :alt="shot.alt"
+                        :label="shot.label"
+                        ratio="auto"
+                        loading="eager"
+                      />
+                      <span
+                        class="lx-stage__phone"
+                        :aria-hidden="heroStagePosition(index) !== 'center'"
+                      >
+                        <img
+                          :src="heroStagePhone"
+                          alt="Photoreka mobile app"
+                          loading="eager"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
+        <MarqueeStrip :items="heroFeatures" :repeat="1" :duration="40" />
+
         <!-- Search Promo Section -->
-        <section
-          id="ai_search"
-          class="search-promo-section"
-          ref="searchPromoSection"
-        >
-          <div class="search-promo-bg">
-            <div class="gradient-orb orb-1" style="animation-delay: -5s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -12s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div
-              class="search-promo-layout"
-              :class="{ visible: searchPromoVisible }"
-            >
-              <!-- Left: content -->
-              <div class="search-promo-content">
-                <div class="search-promo-badge">
-                  <n-icon size="15"><SearchOutline /></n-icon>
-                  AI Photo Search
-                </div>
-                <h2 class="search-promo-title">
-                  Find any photo by
-                  <span class="gradient-text">describing it</span>
-                </h2>
-                <p class="search-promo-description">
+        <section id="ai_search" class="lx-section">
+          <div class="lx-container lx-split lx-split--media">
+            <div class="lx-split__copy">
+              <SectionIntro index="01" eyebrow="AI Photo Search" flush>
+                <template #title>
+                  Find any photo by <em class="lx-accent">describing it</em>
+                </template>
+                <p>
                   Type what you remember and Photoreka finds it — no tagging, no
                   folders. Three modes: <strong>Broad</strong> for open
                   exploration, <strong>Adaptive</strong> for metaphorical and
                   cultural references, <strong>Precise</strong> for conditions
                   that need to be verified, not just approximated.
                 </p>
-                <div class="search-promo-actions">
-                  <n-button
-                    type="info"
-                    size="large"
-                    strong
-                    @click="goToSearchDemo"
-                  >
-                    <template #icon>
-                      <n-icon><PlayCircleOutline /></n-icon>
-                    </template>
-                    Try the Demo
-                  </n-button>
-                  <n-button
-                    text
-                    type="info"
-                    size="large"
-                    tag="a"
-                    href="/ai_photo_search"
-                  >
-                    Learn more →
-                  </n-button>
-                </div>
+              </SectionIntro>
+
+              <div v-reveal="200" class="lx-actions">
+                <LxButton icon="play" @click="goToSearchDemo">
+                  Try the Demo
+                </LxButton>
+                <NuxtLink to="/ai_photo_search" class="lx-link">
+                  Learn more
+                  <n-icon size="15"><ArrowForwardOutline /></n-icon>
+                </NuxtLink>
               </div>
-              <!-- Right: video -->
-              <div class="search-promo-visual">
-                <div class="video-frame">
-                  <video
-                    class="search-promo-video"
-                    :src="'/videos/Search.mp4'"
-                    poster="/home/video_poster.jpg"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
+            </div>
+
+            <div
+              v-reveal="{ variant: 'scale', delay: 120 }"
+              v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              class="lx-split__visual"
+            >
+              <ShotFrame
+                class="lx-zoom"
+                video="/videos/Search.mp4"
+                poster="/home/video_poster.jpg"
+                alt="Photoreka AI photo search by natural language"
+                ratio="16 / 9"
+                bare
+              />
             </div>
           </div>
         </section>
-        <!-- Features Section (componentized, variant-driven) -->
+
+        <!-- Features Section (sticky stacking cards) -->
         <FeaturesShowcase
           :variant="featuresVariant"
           section-id="features"
+          index="02"
+          eyebrow="AI tools"
           title="AI tools to organize, search, and curate your photos"
+          title-accent="curate your photos"
           subtitle="A smart photo organizer built for photographers who take their work seriously. Search with AI, score and rank, explore in 3D, and build portfolios from your photo library."
           :features="features"
         />
@@ -374,229 +361,236 @@
           </div>
         </section> -->
 
-                <!-- Photoreka Picks Promo -->
-        <PicksPromo source="home" />
+        <!-- Photoreka Picks Promo -->
+        <PicksPromo id="picks" source="home" immersive index="03" />
+
+        <!-- Canvas Section (mirrors the search section, video on the left) -->
+        <section id="canvas" class="lx-section">
+          <div class="lx-container lx-split lx-split--media lx-split--reverse">
+            <div
+              v-reveal="{ variant: 'scale', delay: 120 }"
+              v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              class="lx-split__visual"
+            >
+              <!-- Each frame only plays while visible, so the hidden one
+                   never starts. -->
+              <ShotFrame
+                class="lx-zoom lx-canvas-video--desktop"
+                video="/videos/canvas_desktop.mp4"
+                alt="Photoreka infinite canvas clustering photos automatically"
+                ratio="16 / 9"
+                bare
+              />
+              <ShotFrame
+                class="lx-canvas-video--mobile"
+                video="/videos/canvas_mobile.mp4"
+                alt="Photoreka infinite canvas clustering photos automatically"
+                ratio="4 / 5"
+                bare
+              />
+            </div>
+
+            <div class="lx-split__copy">
+              <SectionIntro index="04" eyebrow="Interactive Canvas" flush>
+                <template #title>
+                  Storyboard on an <em class="lx-accent">infinite canvas</em>
+                </template>
+                <p>
+                  Drag, arrange and sequence your photos freely, or let
+                  Photoreka <strong>cluster</strong> them automatically by
+                  <strong>narrative</strong>, <strong>color</strong>,
+                  <strong>score</strong> and more. Drop any image to surface
+                  similar shots from your archive, while a chat docked to the
+                  board tells you what the sequence is missing.
+                </p>
+              </SectionIntro>
+
+              <div v-reveal="200" class="lx-actions">
+                <LxButton icon="play" @click="goToCanvasDemo">
+                  Try the Demo
+                </LxButton>
+                <NuxtLink to="/ai_photo_storyboard" class="lx-link">
+                  Learn more
+                  <n-icon size="15"><ArrowForwardOutline /></n-icon>
+                </NuxtLink>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- Data Sources Section -->
-        <section id="sources" class="sources-section" ref="sourcesSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: sourcesVisible }">
-              <h2 class="section-title">
-                Import and organize photos from anywhere
-              </h2>
-              <p class="section-subtitle">
+        <section id="sources" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro index="05" eyebrow="Import" align="center">
+              <template #title>
+                Import and organize photos
+                <em class="lx-accent">from anywhere</em>
+              </template>
+              <p>
                 Photoreka works with your existing photo sources. Import your
                 images from Lightroom, Google Photos, Dropbox, or local files
                 and start curating with AI immediately. It's a
-                <NuxtLink to="/ai_photo_organizer" class="cta-link"
+                <NuxtLink to="/ai_photo_organizer"
                   >cloud-based AI photo organizer</NuxtLink
                 >
                 that runs in your browser on Windows, Mac, or Linux—nothing to
                 install.
               </p>
-            </div>
+            </SectionIntro>
 
-            <div class="sources-grid">
-              <div
+            <div class="lx-sources">
+              <article
                 v-for="(source, index) in dataSources"
                 :key="index"
-                class="source-card"
-                :class="{
-                  visible: sourcesVisible,
-                  'coming-soon': source.comingSoon,
-                }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
+                v-reveal="index * 90"
+                class="lx-source"
               >
-                <div class="source-icon">
-                  <n-icon v-if="!source.logo" size="40" :color="source.color">
+                <div class="lx-source__logo">
+                  <n-icon v-if="!source.logo" size="28" :color="source.color">
                     <component :is="source.icon" />
                   </n-icon>
-                  <img
-                    v-else
-                    :src="source.logo"
-                    :alt="source.name"
-                    class="source-logo-img"
-                  />
+                  <img v-else :src="source.logo" :alt="source.name" />
                 </div>
-                <h3 class="source-name">{{ source.name }}</h3>
-                <p class="source-description">{{ source.description }}</p>
-                <div
-                  class="source-badge"
-                  :class="{
-                    available: !source.comingSoon,
-                    soon: source.comingSoon,
-                  }"
+                <h3 class="lx-source__name">{{ source.name }}</h3>
+                <p class="lx-source__desc">{{ source.description }}</p>
+                <span
+                  class="lx-status"
+                  :class="{ 'lx-status--soon': source.comingSoon }"
                 >
                   {{ source.comingSoon ? "Coming Soon" : "Available Now" }}
-                </div>
-              </div>
+                </span>
+              </article>
             </div>
           </div>
         </section>
-        <!-- Lightroom Integration Section -->
-        <section
-          id="lightroom_plugin"
-          class="integration-section"
-          ref="integrationSection"
-        >
-          <div class="section-container">
-            <div class="integration-layout">
-              <div
-                class="integration-visual"
-                :class="{ visible: integrationVisible }"
-              >
-                <div class="video-frame">
-                  <video
-                    class="integration-video"
-                    :src="lightroomVideoUrl"
-                    poster="/home/video_lr_poster.jpg"
-                    @loadeddata="onLightroomVideoLoaded"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
 
-              <div
-                class="integration-content"
-                :class="{ visible: integrationVisible }"
-              >
-                <div class="integration-badge">
-                  <span>Official Plugin</span>
-                </div>
-                <div class="integration-header">
-                  <img
-                    src="/logos/lightroom_logo.png"
-                    alt="Adobe Lightroom"
-                    class="integration-logo"
-                  />
-                  <h2 class="integration-title">Lightroom Integration</h2>
-                </div>
-                <p class="integration-description">
+        <!-- Lightroom Integration Section -->
+        <section id="lightroom_plugin" class="lx-section">
+          <div class="lx-container lx-split lx-split--reverse">
+            <div
+              v-reveal="{ variant: 'scale' }"
+              v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              class="lx-split__visual"
+            >
+              <ShotFrame
+                class="lx-zoom"
+                :video="lightroomVideoUrl"
+                poster="/home/video_lr_poster.jpg"
+                :playback-rate="2"
+                alt="Photoreka plugin running inside Adobe Lightroom Classic"
+                label="Lightroom Classic — Photoreka plugin"
+                ratio="auto"
+              />
+            </div>
+
+            <div class="lx-split__copy">
+              <div v-reveal class="lx-lr-badge">
+                <img src="/logos/lightroom_logo.png" alt="Adobe Lightroom" />
+              </div>
+              <SectionIntro index="06" eyebrow="Official Plugin" flush>
+                <template #title>
+                  Lightroom <em class="lx-accent">Integration</em>
+                </template>
+                <p>
                   Seamlessly connect Photoreka with Adobe Lightroom Classic.
                   Sync your catalog, search by natural language directly from
                   Lightroom, and bring the power of intelligent curation to your
                   existing workflow.
                 </p>
+              </SectionIntro>
 
-                <ul class="integration-features">
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #2563eb">
-                      <n-icon size="18"><SyncOutline /></n-icon>
-                    </div>
-                    <span>Direct sync from Lightroom catalog</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #8b5cf6">
-                      <n-icon size="28"><ChatbubblesOutline /></n-icon>
-                    </div>
-                    <span>Search by natural language integrated</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #f59e0b">
-                      <n-icon size="18"><ShareSocialOutline /></n-icon>
-                    </div>
-                    <span>One-click photo transfer to Photoreka</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #22c55e">
-                      <n-icon size="18"><LinkOutline /></n-icon>
-                    </div>
-                    <span>Compatible with Photoreka web workflow</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #6b7280">
-                      <n-icon size="18"><InformationCircleOutline /></n-icon>
-                    </div>
-                    <span>Lightroom Classic 13.0+ · RAW, JPEG, PNG, TIFF </span>
-                  </li>
-                </ul>
+              <ul v-reveal="200" class="lx-list lx-lr-list">
+                <li v-for="item in lightroomFeatures" :key="item.label">
+                  <span class="lx-lr-list__icon" aria-hidden="true">
+                    <n-icon size="16"><component :is="item.icon" /></n-icon>
+                  </span>
+                  <span>{{ item.label }}</span>
+                </li>
+              </ul>
 
-                <div class="integration-cta">
-                  <n-button
-                    type="primary"
-                    size="large"
-                    @click="goToAuth('signup')"
-                  >
-                    <template #icon>
-                      <n-icon><DownloadOutline /></n-icon>
-                    </template>
-                    Get the Plugin
-                  </n-button>
-                  <span class="cta-note">Free with Photoreka account</span>
-                </div>
+              <div v-reveal="280" class="lx-actions">
+                <LxButton icon="download" @click="goToAuth('signup')">
+                  Get the Plugin
+                </LxButton>
+                <span class="lx-note">Free with Photoreka account</span>
               </div>
             </div>
           </div>
         </section>
 
         <!-- Pricing Section -->
-        <section id="pricing" class="pricing-section" ref="pricingSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: pricingVisible }">
-              <h2 class="section-title">Simple, one-time pricing</h2>
-              <p class="section-subtitle">
+        <section id="pricing" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro index="07" eyebrow="Pricing" align="center">
+              <template #title>
+                Simple, <em class="lx-accent">one-time</em> pricing
+              </template>
+              <p>
                 Pay once to analyze your photos — no subscription. Slide to size
                 your package: the more you analyze, the less you pay per photo.
                 Slots never expire.
               </p>
+            </SectionIntro>
+            <div v-reveal="120">
+              <PricingSlider
+                :visible="true"
+                @get-started="goToAuth('signup')"
+              />
             </div>
-            <PricingSlider
-              :visible="pricingVisible"
-              @get-started="goToAuth('signup')"
-            />
           </div>
         </section>
 
-
-
         <!-- FAQs Section -->
-        <section id="faq" class="faqs-section" ref="faqsSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: faqsVisible }">
-              <h2 class="section-title">
-                Frequently asked questions about Photoreka
-              </h2>
-              <p class="section-subtitle">
-                Everything you need to know about using AI to curate and
-                organize your photos
-              </p>
+        <section id="faq" class="lx-section">
+          <div class="lx-container lx-faq-grid">
+            <div class="lx-faq-grid__intro">
+              <SectionIntro index="08" eyebrow="FAQ" flush>
+                <template #title>
+                  Frequently asked questions
+                  <em class="lx-accent">about Photoreka</em>
+                </template>
+                <p>
+                  Everything you need to know about using AI to curate and
+                  organize your photos
+                </p>
+              </SectionIntro>
             </div>
 
-            <div class="faqs-container" :class="{ visible: faqsVisible }">
+            <div v-reveal="150" class="lx-faq">
               <div
                 v-for="(faq, index) in faqs"
                 :key="index"
-                class="faq-item"
-                :class="{ active: activeFAQ === index }"
+                class="lx-faq__item"
+                :class="{ 'is-open': activeFAQ === index }"
               >
-                <button class="faq-question" @click="toggleFAQ(index)">
-                  <span class="faq-q">{{ faq.question }}</span>
-                  <n-icon
-                    size="20"
-                    class="faq-icon"
-                    :class="{ rotated: activeFAQ === index }"
-                  >
-                    <ChevronDownOutline />
-                  </n-icon>
+                <button
+                  class="lx-faq__q"
+                  :aria-expanded="activeFAQ === index"
+                  @click="toggleFAQ(index)"
+                >
+                  <span class="lx-faq__num">{{
+                    String(index + 1).padStart(2, "0")
+                  }}</span>
+                  <span class="lx-faq__text">{{ faq.question }}</span>
+                  <span class="lx-faq__icon" aria-hidden="true" />
                 </button>
-                <div class="faq-answer" v-show="activeFAQ === index">
-                  <p v-if="faq.hasHtml" v-html="faq.answer"></p>
-                  <p v-else-if="!faq.hasLink">{{ faq.answer }}</p>
-                  <p v-else>
-                    {{ faq.answer.split("Terms and Image Policy")[0] }}
-                    <a @click="goToTerms" class="faq-link"
-                      >Terms and Image Policy</a
-                    >
-                    {{
-                      faq.answer
-                        .split("Terms and Image Policy")
-                        .slice(1)
-                        .join("Terms and Image Policy")
-                    }}
-                  </p>
+                <div class="lx-faq__a">
+                  <div class="lx-faq__a-inner">
+                    <p v-if="faq.hasHtml" v-html="faq.answer"></p>
+                    <p v-else-if="!faq.hasLink">{{ faq.answer }}</p>
+                    <p v-else>
+                      {{ faq.answer.split("Terms and Image Policy")[0] }}
+                      <a @click="goToTerms" class="lx-inline-link"
+                        >Terms and Image Policy</a
+                      >
+                      {{
+                        faq.answer
+                          .split("Terms and Image Policy")
+                          .slice(1)
+                          .join("Terms and Image Policy")
+                      }}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -615,47 +609,34 @@
 <script setup>
 import { markRaw } from "vue";
 import {
-  RocketOutline,
-  SearchOutline,
-  ImagesOutline,
   CloudUploadOutline,
   CubeOutline,
   LinkOutline,
   LogoDropbox,
   SunnyOutline,
   MoonOutline,
-  WalkOutline,
-  PersonOutline,
-  ImageOutline,
-  ColorPaletteOutline,
-  BriefcaseOutline,
   SyncOutline,
   ChatbubblesOutline,
   ShareSocialOutline,
-  DownloadOutline,
-  StopOutline,
-  PlayCircleOutline,
-  ChevronDownOutline,
-  KeyOutline,
   InformationCircleOutline,
-  GridOutline,
   BarChartOutline,
   LayersOutline,
-  SpeedometerOutline,
-  EyeOutline,
-  GitNetworkOutline,
   AnalyticsOutline,
+  ArrowForwardOutline,
+  WalkOutline,
+  ColorPaletteOutline,
+  PersonOutline,
+  BriefcaseOutline,
 } from "@vicons/ionicons5";
 import Workspace from "@vicons/carbon/es/Workspace.js";
-import BookOpen16Regular from "@vicons/fluent/es/BookOpen16Regular.js";
 import Trophy20Regular from "@vicons/fluent/es/Trophy20Regular.js";
+import BookOpen16Regular from "@vicons/fluent/es/BookOpen16Regular.js";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO Configuration
 useSEO("home");
 
-const { isMobile } = useMobileDevice();
 // Inyectar script inline para prevenir FOUC
 useHead({
   script: [
@@ -682,6 +663,9 @@ const toggleTheme = () => {
   // trackEvent("theme_toggle", { mode: themeMode.value });
 };
 
+// Scroll suave (Lenis) mientras la página está montada
+const smoothScroll = useSmoothScroll();
+
 // Dialog states
 const showRequestDialog = ref(false);
 const activeFAQ = ref(null);
@@ -702,153 +686,138 @@ const heroAnnouncement = ref({
   cta: "Try for Free",
 });
 
-// Las fotos laterales se recortan con `object-fit: cover` sobre un
-// aspect-ratio fijo, así que parte de la imagen queda siempre fuera. El
-// encuadre se ajusta aquí, sin tocar el CSS:
-//   focusX → qué zona horizontal se conserva, en % (0 = pegado al borde
-//            izquierdo de la foto, 50 = centrado, 100 = pegado al derecho)
-//   focusY → lo mismo en vertical (0 = arriba, 50 = centro, 100 = abajo)
-const heroSideImages = {
-  // Desktop compensation: left panel is slightly larger because
-  // the right panel carries the extra phone overlay visual weight.
-  desktopBreakpoint: 768,
-  left: {
-    src: "/home/portfolio_desktop_4.jpg",
-    // src: "/home/portfolio_desktop.png",
+// Secciones que aparecen en la barra de navegación (target = id de sección)
+const navLinks = [
+  { label: "Search", target: "ai_search" },
+  { label: "Tools", target: "features" },
+  { label: "Picks", target: "picks" },
+  { label: "Sources", target: "sources" },
+  { label: "Pricing", target: "pricing" },
+  { label: "FAQ", target: "faq" },
+];
 
-    desktopScale: 1,
-    focusX: 98,
-    focusY: 50,
-  },
-  right: {
-    src: "/home/tag_cloud_poster_detailed.jpg",
-    desktopScale: 1,
-    focusX: 50,
-    focusY: 50,
-  },
-  mobile: {
-    // No lleva focusX/focusY: se muestra entera (object-fit: contain).
-    src: "/home/dashboard.jpg",
-  },
-};
+const heroGenres = [
+  { icon: markRaw(WalkOutline), label: "Street" },
+  { icon: markRaw(BookOpen16Regular), label: "Documentary" },
+  { icon: markRaw(ColorPaletteOutline), label: "Artistic" },
+  { icon: markRaw(PersonOutline), label: "Lifestyle" },
+  { icon: markRaw(BriefcaseOutline), label: "Commercial" },
+];
+// Repeated so each half of the rolling track is wider than the column;
+// otherwise a gap shows before the loop restarts.
+const heroGenreChips = [...heroGenres, ...heroGenres];
 
-// ── Phone mockup overlay (the "movil con halo" image) ──────────
-// Se superpone sobre una de las imágenes laterales del hero.
-// Ajusta aquí posición/tamaño sin tocar el CSS:
-//   side     → "left" | "right": sobre qué imagen lateral se superpone
-//   width    → ancho del móvil en px
-//   offsetX  → desplazamiento horizontal en px (+ derecha / - izquierda)
-//   offsetY  → desplazamiento vertical en px (+ abajo / - arriba)
-//   rotation → giro en grados
-//   anchor   → "bottom" | "center" | "top": punto de anclaje vertical
+// Hidden while trying the atlas on its own; true brings the prints back.
+const showHeroPrints = false;
+// Photos shown enlarged over the atlas, as on hover in the 2D viewer.
+const heroFeatures2d = [];
+const heroPrints = [
+  "/picks/photos/2.jpg",
+  "/picks/photos/5.jpg",
+  "/picks/photos/1.jpg",
+];
+
+const heroFeatures = [
+  { label: "Natural-language search" },
+  { label: "Chat Assistant" },
+  { label: "Multi-score ranking" },
+  { label: "Smart culling" },
+  { label: "2D/3D clustering" },
+  { label: "Storyboarding" },
+  { label: "Portfolio builder" },
+  { label: "Style patterns" },
+  { label: "Evolution tracking" },
+  { label: "Geo-Location" },
+];
+
+// ── Escenario del hero ─────────────────────────────────────────
+// Tres capturas que rotan entre las posiciones `center` (delante) y `left` /
+// `right` (detrás, más pequeñas y atenuadas); en móvil solo se ve `center`.
+// La primera del array empieza en el centro.
 //
-// responsive → overrides por breakpoint. Cada clave es un ANCHO MÁXIMO de
-//   viewport (px); cuando la ventana es <= esa clave se fusionan sus valores
-//   sobre la config base. Se aplica el breakpoint más ajustado (el menor que
-//   siga siendo >= al ancho actual), así el móvil se va encogiendo y
-//   arrimándose al lado a medida que la pantalla se estrecha, igual que las
-//   fotos laterales.
-const heroPhoneOverlay = ref({
-  enabled: true,
-  side: "right",
-  image: "/home/photoreka_mobile_halo.png",
-  width: 230,
-  offsetX: -250,
-  offsetY: 40,
-  rotation: 0,
-  anchor: "bottom",
-  responsive: {
-    1280: { width: 170, offsetX: -80 },
-    1400: { width: 210, offsetX: -190 },
-    1200: { width: 180, offsetX: -110 },
-    1024: { width: 150, offsetX: -40 },
+// Cada marco adopta la proporción de su captura, así que se ven enteras sin
+// recorte. Tamaños y posiciones de cada hueco viven en el CSS
+// (.lx-stage__slot.is-*).
+//
+// `heroStagePhone`: captura móvil adosada a la esquina inferior derecha de
+// la captura que esté en el centro. El CSS recorta el halo de
+// photoreka_mobile_halo.png, así que otra imagen con distinto encuadre
+// necesitaría ajustar el clip-path de .lx-stage__phone img.
+const heroStage = [
+  {
+    src: "/canvas/chatlab.png",
+    label: "Photoreka — Portfolio",
+    alt: "AI photo portfolio built with Photoreka",
   },
-});
+  {
+    src: "/home/portfolio_desktop_4.jpg",
+    label: "Photoreka — Dashboard",
+    alt: "Photoreka AI photo curation and organizer dashboard",
+  },
+  {
+    src: "/home/tag_cloud_poster_detailed.jpg",
+    label: "Photoreka — Tag Cloud",
+    alt: "AI-generated photo tag cloud in 2D semantic space",
+  },
+];
 
-// Ancho de viewport reactivo (SSR-safe: arranca con un valor de escritorio
-// y se sincroniza en cliente al montar / al redimensionar).
-const viewportWidth = ref(1920);
-const syncViewportWidth = () => {
-  viewportWidth.value = window.innerWidth;
+const heroStagePhone = "/home/photoreka_mobile_halo.png";
+
+// Cada turno: derecha → centro, centro → izquierda, izquierda → derecha.
+const HERO_STAGE_POSITIONS = ["center", "left", "right"];
+// Milisegundos entre cambios; 0 deja las capturas fijas.
+const HERO_STAGE_INTERVAL = 0;
+const HERO_STAGE_TRANSITION = 1100;
+const heroStageTurn = ref(0);
+const heroStageTurning = ref(false);
+const heroStagePosition = (index) =>
+  HERO_STAGE_POSITIONS[(index + heroStageTurn.value) % HERO_STAGE_POSITIONS.length];
+
+let heroStageTimer = null;
+let heroStageTurningTimer = null;
+
+// La transición solo se activa durante el cambio para que el resto del
+// tiempo las capturas sigan al scroll sin retraso.
+const advanceHeroStage = () => {
+  heroStageTurning.value = true;
+  heroStageTurn.value += 1;
+  clearTimeout(heroStageTurningTimer);
+  heroStageTurningTimer = setTimeout(() => {
+    heroStageTurning.value = false;
+  }, HERO_STAGE_TRANSITION);
 };
 
-// Config efectiva del móvil = base + override del breakpoint activo.
-const activePhoneConfig = computed(() => {
-  const base = heroPhoneOverlay.value;
-  const bps = base.responsive || {};
-  const match = Object.keys(bps)
-    .map(Number)
-    .sort((a, b) => a - b)
-    .find((bp) => viewportWidth.value <= bp);
-  return match ? { ...base, ...bps[match] } : base;
-});
+const lightroomVideoUrl = "/videos/lr_plugin.mp4";
 
-const heroSideImageStyles = computed(() => {
-  const isDesktop = viewportWidth.value > heroSideImages.desktopBreakpoint;
-  const sideStyle = (config, scale) => ({
-    transform: `scale(${scale})`,
-    transformOrigin: "center center",
-    objectPosition: `${config.focusX ?? 50}% ${config.focusY ?? 50}%`,
-  });
-
-  return {
-    left: sideStyle(
-      heroSideImages.left,
-      isDesktop ? heroSideImages.left.desktopScale || 1 : 1,
-    ),
-    right: sideStyle(
-      heroSideImages.right,
-      isDesktop ? heroSideImages.right.desktopScale || 1 : 1,
-    ),
-  };
-});
-
-const phoneOverlayStyle = computed(() => {
-  const o = activePhoneConfig.value;
-  const style = {
-    width: `${o.width}px`,
-  };
-  if (o.anchor === "top") {
-    style.top = "0";
-    style.transform = `translate(calc(-50% + ${o.offsetX}px), ${o.offsetY}px) rotate(${o.rotation}deg)`;
-  } else if (o.anchor === "center") {
-    style.top = "50%";
-    style.transform = `translate(calc(-50% + ${o.offsetX}px), calc(-50% + ${o.offsetY}px)) rotate(${o.rotation}deg)`;
-  } else {
-    style.bottom = "0";
-    style.transform = `translate(calc(-50% + ${o.offsetX}px), ${o.offsetY}px) rotate(${o.rotation}deg)`;
-  }
-  return style;
-});
-
-// Intersection observers for animations
-const heroSection = ref(null);
-const reportsHeroSection = ref(null);
-const searchPromoSection = ref(null);
-const integrationSection = ref(null);
-const sourcesSection = ref(null);
-const freeToolsSection = ref(null);
-const pricingSection = ref(null);
-const faqsSection = ref(null);
-const reportsHeroVideoRef = ref(null);
-
-const heroVisible = ref(false);
-const reportsHeroVisible = ref(false);
-const searchPromoVisible = ref(false);
-const integrationVisible = ref(false);
-const sourcesVisible = ref(false);
-const freeToolsVisible = ref(false);
-const pricingVisible = ref(false);
-const faqsVisible = ref(false);
+const lightroomFeatures = [
+  { icon: markRaw(SyncOutline), label: "Direct sync from Lightroom catalog" },
+  {
+    icon: markRaw(ChatbubblesOutline),
+    label: "Search by natural language integrated",
+  },
+  {
+    icon: markRaw(ShareSocialOutline),
+    label: "One-click photo transfer to Photoreka",
+  },
+  {
+    icon: markRaw(LinkOutline),
+    label: "Compatible with Photoreka web workflow",
+  },
+  {
+    icon: markRaw(InformationCircleOutline),
+    label: "Lightroom Classic 13.0+ · RAW, JPEG, PNG, TIFF",
+  },
+];
 
 // Which layout to render for the features section:
 //   "grid"     → original card grid
-//   "showcase" → alternating image + copy rows (see reference mockup)
-const featuresVariant = ref("showcase");
+//   "showcase" → alternating image + copy rows
+//   "stack"    → sticky cards that pile up while scrolling (lx system)
+const featuresVariant = ref("stack");
 
 // Features data
-// `lead` + `bullets` + `image` are used by the "showcase" variant.
-// If `bullets` is omitted the showcase falls back to splitting `description`.
+// `lead` + `bullets` + `image` are used by the "showcase" and "stack" variants.
+// If `bullets` is omitted they fall back to splitting `description`.
 const features = ref([
   // {
   //   icon: markRaw(SearchOutline),
@@ -1118,7 +1087,7 @@ const faqs = ref([
   },
   {
     question: "Can I try Photoreka for free?",
-    answer: `Analyzing your photos requires a single batch payment. Afterward, you can use most tools for free, with some daily/total limits, or purchase credits to work unlimitedly. <span style='color:var(--premium-primary);font-weight:var(--font-weight-semibold);'>During the <a href='#' style='color:var(--premium-primary);text-decoration:underline;' onclick='event.preventDefault();window.__goToEarlyAccess && window.__goToEarlyAccess()'>early access</a> phase, a free photo package and usage credits will be offered.</span>`,
+    answer: `Analyzing your photos requires a single batch payment. Afterward, you can use most tools for free, with some daily/total limits, or purchase credits to work unlimitedly. <span style='color:var(--lx-accent);font-weight:600;'>During the <a href='#' style='color:inherit;text-decoration:underline;' onclick='event.preventDefault();window.__goToEarlyAccess && window.__goToEarlyAccess()'>early access</a> phase, a free photo package and usage credits will be offered.</span>`,
     hasHtml: true,
   },
 ]);
@@ -1148,15 +1117,14 @@ const goToTerms = () => {
   navigateTo("/terms");
 };
 
-const goToFreeFramer = () => {
-  trackUserAction("navigate_to_playground", "landing_page_premium", "framer");
-  const playgroundUrl = `${config.public.appUrl}/free-framer`;
-  window.open(playgroundUrl, "_blank");
-};
-
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "landing_page_premium");
   window.open("https://app.photoreka.com/demo/workspace", "_blank");
+};
+
+const goToCanvasDemo = () => {
+  trackUserAction("navigate_to_canvas_demo", "landing_page_premium");
+  window.open("https://app.photoreka.com/demo/canvas", "_blank");
 };
 
 const goToSearchDemo = () => {
@@ -1171,16 +1139,14 @@ const goToCommercialDemo = () => {
   window.open("https://app.photoreka.com/demo-commercial/workspace", "_blank");
 };
 
-const goToSignup = () => {
-  goToAuth("signup");
-};
-
 const onRequestSuccess = () => {};
 
-const onLightroomVideoLoaded = () => {
-  const lightroomVideoElement = document.querySelector(".integration-video");
-  if (lightroomVideoElement) {
-    lightroomVideoElement.playbackRate = 2;
+// Clicks en la barra de navegación. Pricing conserva su evento de siempre.
+const onNavNavigate = (target) => {
+  if (target === "pricing") {
+    trackUserAction("navigate_to_pricing", "landing_page_premium");
+  } else {
+    trackUserAction("navigate_to_section", "landing_page_premium", target);
   }
 };
 
@@ -1194,99 +1160,6 @@ const toggleFAQ = (index) => {
     question:
       faqs.value[index]?.question?.substring(0, 50) + "..." || `FAQ ${index}`,
   });
-};
-
-// Scroll-based animations
-const setupScrollAnimations = () => {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px 100px 0px",
-  };
-
-  const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        heroVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
-  const integrationObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        integrationVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
-  const sourcesObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        sourcesVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
-  const freeToolsObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        freeToolsVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
-  const pricingObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        pricingVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
-  const faqsObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        faqsVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
-  const searchPromoObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        searchPromoVisible.value = true;
-      }
-    });
-  }, observerOptions);
-
-  const reportsHeroObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        reportsHeroVisible.value = true;
-        // El video está fuera de pantalla con opacity:0 al cargar, por lo que
-        // el autoplay muteado no dispara solo. Lo iniciamos explícitamente
-        // cuando la sección entra al viewport.
-        reportsHeroVideoRef.value?.play?.().catch(() => {});
-      }
-    });
-  }, observerOptions);
-
-  if (heroSection.value) heroObserver.observe(heroSection.value);
-  if (reportsHeroSection.value)
-    reportsHeroObserver.observe(reportsHeroSection.value);
-  if (searchPromoSection.value)
-    searchPromoObserver.observe(searchPromoSection.value);
-  if (integrationSection.value)
-    integrationObserver.observe(integrationSection.value);
-  if (sourcesSection.value) sourcesObserver.observe(sourcesSection.value);
-  if (freeToolsSection.value) freeToolsObserver.observe(freeToolsSection.value);
-  if (pricingSection.value) pricingObserver.observe(pricingSection.value);
-  if (faqsSection.value) faqsObserver.observe(faqsSection.value);
-};
-
-const scrollToPricing = () => {
-  trackUserAction("navigate_to_pricing", "landing_page_premium");
-  pricingSection.value?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 // Mantiene --announcement-height sincronizado con el alto real de la barra
@@ -1349,27 +1222,28 @@ watch(
 
 onBeforeUnmount(() => {
   announcementResizeObserver?.disconnect();
-  window.removeEventListener("resize", syncViewportWidth);
   window.removeEventListener("scroll", onAnnouncementScroll);
+  smoothScroll.disable();
+  clearInterval(heroStageTimer);
+  clearTimeout(heroStageTurningTimer);
 });
 
 onMounted(() => {
   // Inicializar tema completo (el plugin ya aplicó las variables básicas)
   initTheme();
 
-  // Hero is immediately visible
-  heroVisible.value = true;
-
-  // Sincroniza el ancho de viewport para el responsive del móvil superpuesto
-  syncViewportWidth();
-  window.addEventListener("resize", syncViewportWidth);
+  smoothScroll.enable();
 
   // Muestra/oculta el anuncio del top según la dirección del scroll
   lastScrollY = window.scrollY;
   window.addEventListener("scroll", onAnnouncementScroll, { passive: true });
 
-  // Setup scroll animations
-  setupScrollAnimations();
+  if (
+    HERO_STAGE_INTERVAL > 0 &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    heroStageTimer = setInterval(advanceHeroStage, HERO_STAGE_INTERVAL);
+  }
 });
 
 // Attach goToAuth('signup') to window for FAQ HTML link
@@ -1377,9 +1251,10 @@ if (typeof window !== "undefined") {
   window.__goToEarlyAccess = () => goToAuth("signup");
 }
 </script>
+
 <style scoped>
-/* ── Home Hero Redesign ────────────────────────────────────── */
-.premium-landing {
+/* ── Announcement bar (disabled by default, see heroAnnouncement) ── */
+.lx-home {
   --announcement-height: 0px;
 }
 
@@ -1396,8 +1271,8 @@ if (typeof window !== "undefined") {
   justify-content: center;
   background: #fde9c8;
   color: #111827;
-  font-size: var(--landing-fs-sm);
-  line-height: var(--line-height-normal);
+  font-size: var(--lx-fs-sm);
+  line-height: 1.4;
   transform: translateY(0);
   opacity: 1;
   transition:
@@ -1422,7 +1297,7 @@ if (typeof window !== "undefined") {
 
 .announcement-content strong {
   color: #b45309;
-  font-weight: var(--landing-fw-strong);
+  font-weight: 700;
 }
 
 .announcement-link,
@@ -1436,7 +1311,7 @@ if (typeof window !== "undefined") {
 
 .announcement-link {
   color: #b45309;
-  font-weight: var(--landing-fw-strong);
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -1447,645 +1322,919 @@ if (typeof window !== "undefined") {
   top: 50%;
   transform: translateY(-50%);
   color: #111827;
-  font-size: var(--fs-xl);
-  font-weight: var(--landing-fw-strong);
-  line-height: var(--line-height-tight);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.premium-nav {
-  top: var(--announcement-height);
-  transition: top 0.35s ease;
+/* ── Hero ───────────────────────────────────────────────────── */
+.lx-hero {
+  position: relative;
+  padding-top: calc(var(--announcement-height) + clamp(152px, 22svh, 230px));
+  padding-bottom: clamp(16px, 3vw, 40px);
+  transition: padding-top 0.35s ease;
 }
 
-.nav-link {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  font: inherit;
-  font-size: var(--landing-fs-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--premium-text-secondary);
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  transition: color 0.2s ease;
-}
-.nav-link:hover {
-  color: var(--premium-primary);
+/* Soft brand light falling from the top, behind the headline. */
+.lx-hero__aura {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1200px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(48% 42% at 34% 4%, var(--lx-glow-1), transparent 72%),
+    radial-gradient(34% 34% at 10% 16%, var(--lx-glow-2), transparent 72%),
+    radial-gradient(60% 40% at 50% 62%, var(--lx-glow-1), transparent 70%);
 }
 
-@media (max-width: 480px) {
-  .nav-link {
+/* The headline spans the full width; everything else sits in a band
+   below it, so the supporting copy never competes with it side by side.
+   Vertical sizes follow the viewport height so the product stage always
+   peeks above the fold. */
+.lx-hero__grid {
+  display: grid;
+  gap: clamp(28px, 4svh, 48px);
+}
+
+.lx-hero__heading {
+  position: relative;
+  display: grid;
+  gap: 1.9rem;
+}
+
+.lx-hero__title {
+  font-size: clamp(3rem, min(6.9vw, 11.6svh), 6.5rem);
+}
+
+/* Loose prints beside the end of the headline, kept fully opaque.
+   Below 1280px the headline reaches them, so they go. */
+.lx-hero__prints {
+  --lx-prints-bleed: 56px;
+  position: absolute;
+  z-index: 0;
+  top: calc(var(--lx-prints-bleed) * -1);
+  right: calc(var(--lx-prints-bleed) * -1);
+  bottom: calc(var(--lx-prints-bleed) * -1);
+  width: calc(min(31%, 420px) + var(--lx-prints-bleed));
+  pointer-events: none;
+}
+
+.lx-hero__prints-set {
+  position: absolute;
+  inset: var(--lx-prints-bleed) var(--lx-prints-bleed) var(--lx-prints-bleed) 0;
+  container-type: size;
+}
+
+/* Thin paper border at the photos' own 3:2. Dimmed rather than
+   translucent, so overlapping prints don't show through each other. */
+.lx-hero__print {
+  position: absolute;
+  top: var(--y);
+  right: var(--x);
+  /* Capped by the headline's height too, so on short screens the stack
+     stays clear of the divider. */
+  width: min(56cqw, 76cqh);
+  padding: 2.5%;
+  background: #ebe7de;
+  border-radius: 1px;
+  filter: brightness(0.7) saturate(0.8);
+  box-shadow: 0 22px 40px -18px rgba(0, 0, 0, 0.85);
+  transform: translate(var(--dx, 0), var(--dy, 0))
+    rotate(calc(var(--r) + var(--dr, 0deg)));
+  pointer-events: auto;
+  transition:
+    filter 0.5s ease,
+    transform 0.7s var(--lx-ease);
+}
+
+[data-theme="light"] .lx-hero__print {
+  background: #ffffff;
+  filter: brightness(0.7) saturate(0.25);
+  box-shadow: 0 18px 34px -18px rgba(13, 13, 16, 0.35);
+}
+
+.lx-hero__print img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.lx-hero__print.is-0 {
+  --x: 2%;
+  --y: 0%;
+  --r: 6deg;
+}
+
+.lx-hero__print.is-1 {
+  --x: 40%;
+  --y: 16%;
+  --r: -7deg;
+}
+
+.lx-hero__print.is-2 {
+  --x: 15%;
+  --y: 36%;
+  --r: 2.5deg;
+}
+
+/* Hovering any print lifts the dimming on all three and fans them out. */
+.lx-hero__prints-set:has(.lx-hero__print:hover) .lx-hero__print {
+  filter: none;
+}
+
+.lx-hero__prints-set:has(.lx-hero__print:hover) .is-0 {
+  --dx: 10px;
+  --dy: -6px;
+  --dr: 2deg;
+}
+
+.lx-hero__prints-set:has(.lx-hero__print:hover) .is-1 {
+  --dx: -12px;
+  --dy: -2px;
+  --dr: -2deg;
+}
+
+.lx-hero__prints-set:has(.lx-hero__print:hover) .is-2 {
+  --dx: 2px;
+  --dy: 8px;
+  --dr: -1.5deg;
+}
+
+/* The 2D atlas as a far-off universe behind the prints. Screen blending
+   drops the capture's black background, so only the photos and their glow
+   remain; the radial mask dissolves its edges. */
+/* From 40% of the heading to the viewport's right edge, rising above the
+   eyebrow and ending at the divider. The left side fades under the headline
+   through the mask. No z-index here: a stacking context would stop the
+   screen blend reaching the page background. */
+.lx-hero__atlas-box {
+  position: absolute;
+  top: -48%;
+  bottom: -16%;
+  left: 40%;
+  right: calc((100% - 100vw) / 2);
+  pointer-events: none;
+}
+
+.lx-hero__atlas {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  mix-blend-mode: screen;
+  filter: brightness(0.85);
+  -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.18) 22%,
+      rgba(0, 0, 0, 0.55) 42%,
+      #000 62%
+    ),
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 80%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.18) 22%,
+      rgba(0, 0, 0, 0.55) 42%,
+      #000 62%
+    ),
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 80%, transparent 100%);
+  mask-composite: intersect;
+  animation: lx-atlas-in 2s 0.6s ease-out both;
+}
+
+/* One photo of the atlas shown enlarged, as on hover in the 2D viewer. */
+.lx-hero__feature {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 16px 34px -12px rgba(0, 0, 0, 0.9);
+  filter: brightness(0.92);
+  pointer-events: auto;
+  transition: filter 0.5s ease;
+  animation: lx-feature-in 0.9s var(--lx-feature-delay, 1.4s) var(--lx-ease)
+    both;
+}
+
+/* Centred on the cores of the upper and right clusters of the atlas image
+   (57%/28% and 86%/42% of the box). Heights are in box units: the box is
+   2.45 times wider than tall. */
+.lx-hero__feature.is-0 {
+  left: 52.75%;
+  top: 17.6%;
+  width: 8.5%;
+  aspect-ratio: 1;
+}
+
+.lx-hero__feature.is-1 {
+  left: 82.5%;
+  top: 29.2%;
+  width: 7%;
+  aspect-ratio: 2 / 3;
+  --lx-feature-delay: 1.7s;
+}
+
+.lx-hero__feature:hover {
+  filter: none;
+}
+
+@keyframes lx-feature-in {
+  from {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+}
+
+@keyframes lx-atlas-in {
+  from {
+    opacity: 0;
+  }
+}
+
+[data-theme="light"] .lx-hero__atlas,
+[data-theme="light"] .lx-hero__feature {
+  display: none;
+}
+
+/* Paper clip slid over a corner of each print. */
+.lx-hero__clip {
+  position: absolute;
+  z-index: 1;
+  top: -15px;
+  width: 13px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.55));
+}
+
+.lx-hero__clip path {
+  fill: none;
+  stroke: #dfe3e8;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.lx-hero__print.is-0 .lx-hero__clip {
+  right: 9%;
+  transform: rotate(28deg);
+}
+
+.lx-hero__print.is-1 .lx-hero__clip {
+  left: 9%;
+  transform: rotate(-28deg);
+}
+
+.lx-hero__print.is-2 .lx-hero__clip {
+  right: 12%;
+  transform: rotate(22deg);
+}
+
+@media (max-width: 1279px) {
+  .lx-hero__prints,
+  .lx-hero__atlas,
+  .lx-hero__feature {
     display: none;
   }
 }
 
-/* ── Pricing Section ───────────────────────────────────────── */
-.pricing-section {
-  position: relative;
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-.pricing-section .section-header {
-  margin-bottom: 3rem;
+.lx-hero__title .lx-accent {
+  font-weight: 360;
 }
 
-.hero-section {
-  min-height: 100vh;
-  padding: calc(var(--announcement-height) + 72px) 0 0;
-  transition: padding-top 0.35s ease;
-  align-items: stretch;
-  overflow: hidden;
-  background:
-    linear-gradient(115deg, rgba(37, 99, 235, 0.1), transparent 22%),
-    linear-gradient(245deg, rgba(6, 182, 212, 0.12), transparent 20%),
-    var(--premium-bg);
+.lx-hero__stars {
+  color: var(--lx-warm);
+  letter-spacing: 0.12em;
 }
 
-.hero-background {
-  opacity: 1;
-  pointer-events: none;
-}
-
-.hero-line {
-  position: absolute;
-  width: 520px;
-  height: 1px;
-  background: var(--premium-border);
-  transform-origin: left center;
-}
-
-.line-1 {
-  left: -5rem;
-  top: 12rem;
-  transform: rotate(24deg);
-}
-
-.line-2 {
-  right: -8rem;
-  top: 6rem;
-  transform: rotate(90deg);
-}
-
-.hero-container {
-  width: 100%;
-  max-width: none;
-  min-height: calc(100vh - var(--announcement-height) - 72px - 4.5rem);
-  padding: 0;
+.lx-hero__aside {
   display: grid;
-  grid-template-columns: minmax(270px, 0.9fr) minmax(620px, 1fr) minmax(
-      270px,
-      0.9fr
-    );
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
-  /* gap: 3.5rem; */
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--lx-line-2);
 }
 
-.hero-content {
-  gap: 1.45rem;
-  max-width: 600px;
-  margin: 0 auto;
+.lx-hero__intro {
+  display: grid;
+  gap: 1rem;
+  justify-self: start;
+  min-width: 0;
 }
 
-@media (max-width: 1280px) {
-  .hero-container {
-    grid-template-columns: minmax(220px, 0.75fr) minmax(540px, 1fr) minmax(
-        220px,
-        0.75fr
-      );
-  }
-
-  .hero-content {
-    max-width: 560px;
-    padding-inline: 0.5rem;
-  }
-
-  .hero-side-left {
-    transform: translateX(-6%);
-  }
-
-  .hero-side-right {
-    transform: translateX(12%);
-  }
-
-  .hero-side-left.visible {
-    transform: translateX(-6%);
-  }
-
-  .hero-side-right.visible {
-    transform: translateX(12%);
-  }
-
-  .hero-title {
-    max-width: 460px;
-  }
-
-  .hero-description {
-    max-width: 560px;
-  }
+.lx-hero__cta {
+  display: grid;
+  gap: 0.9rem;
+  justify-items: end;
 }
 
-.hero-badge,
-.hero-title,
-.hero-description,
-.hero-trust,
-.hero-side {
-  opacity: 1;
-  transform: none;
+.lx-hero__lead {
+  font-size: 1.04rem;
+  line-height: 1.7;
 }
 
-.hero-title {
-  max-width: 500px;
-  font-size: var(--landing-fs-title-hero);
-  font-weight: var(--landing-fw-display);
-  line-height: var(--landing-lh-title);
-  letter-spacing: var(--landing-ls-heading);
-  color: var(--premium-text-primary);
-}
-
-.hero-description {
-  max-width: 620px;
-  font-size: var(--landing-fs-body-lg);
-  line-height: var(--landing-lh-body);
-}
-
-.hero-side {
-  position: relative;
-  opacity: 1;
-  transform: none;
-  transition: all 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
-}
-
-.hero-side.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.hero-side-left {
-  transform: translateX(-10%);
-}
-
-.hero-side-right {
-  transform: translateX(17%);
-}
-
-.hero-side-left.visible {
-  opacity: 1;
-  transform: translateX(-10%);
-}
-
-.hero-side-right.visible {
-  opacity: 1;
-  transform: translateX(17%);
-}
-
-.hero-side-image {
+.lx-hero__lead > span {
   display: block;
-  width: 100%;
-  max-height: 520px;
-  object-fit: cover;
-  border: 1px solid var(--premium-shot-border);
-  border-radius: 24px;
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.22),
-    0 0 120px 8px var(--premium-shot-glow);
+  text-wrap: balance;
 }
 
-.hero-side-image-left {
-  aspect-ratio: 0.9 / 1;
-}
-
-.hero-side-image-right {
-  aspect-ratio: 0.85 / 1;
-}
-
-/* Móvil superpuesto sobre una imagen lateral. Posición/tamaño se
-   controlan desde `heroPhoneOverlay` en el script (phoneOverlayStyle). */
-.hero-phone-overlay {
-  position: absolute;
-  left: 50%;
-  z-index: 5;
-  height: auto;
-  pointer-events: none;
-  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.45));
-}
-
-.hero-side-mobile {
-  display: none;
-  justify-content: center;
-}
-
-.hero-side-image-mobile {
-  aspect-ratio: auto;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-/* .hero-alt-demo (pasarela a la demo comercial) vive en assets/global.scss:
-   la repiten esta página, search, organizer y scoring. */
-.hero-trust {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  color: var(--premium-text-secondary);
-  font-size: var(--landing-fs-sm);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-}
-
-.hero-trust.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-rating {
-  color: #f59e0b;
-  /* letter-spacing: 0.08em; */
-}
-
-.cta-link {
-  color: var(--premium-primary);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-}
-.cta-link:hover {
-  text-decoration: underline;
-}
-
-.gradient-framer {
-  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-}
-
-.gradient-canvas {
-  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-}
-
-/* ── Search Promo Section ──────────────────────────────────── */
-.search-promo-section {
-  position: relative;
-  padding: 6rem 2rem;
+/* Contained so the endless track adds no width: the row takes the lead's. */
+.lx-hero__tools {
+  contain: inline-size;
   overflow: hidden;
-  background: var(--premium-bg-secondary);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 6%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 6%,
+    #000 88%,
+    transparent
+  );
 }
-.search-promo-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.search-promo-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 4rem;
-  align-items: center;
-  max-width: 1300px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.search-promo-layout.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.search-promo-content {
+
+.lx-hero__tools-track {
   display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+  width: max-content;
+  animation: lx-hero-tools 80s linear infinite;
 }
-.search-promo-badge {
+
+.lx-hero__tools:hover .lx-hero__tools-track {
+  animation-play-state: paused;
+}
+
+/* The trailing padding equals the gap so the -50% loop has no seam. */
+.lx-hero__tools-set {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0 0.5rem 0 0;
+  list-style: none;
+}
+
+@keyframes lx-hero-tools {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lx-hero__tools-track {
+    animation: none;
+  }
+}
+
+.lx-hero__tools li {
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.4rem 0.9rem;
-  background: rgba(37, 99, 235, 0.12);
-  border: 1px solid rgba(37, 99, 235, 0.35);
-  border-radius: 50px;
-  font-size: var(--landing-fs-caption);
-  font-weight: var(--font-weight-bold);
-  color: #60a5fa;
-  width: fit-content;
-}
-.search-promo-title {
-  font-size: var(--landing-fs-title-promo);
-  font-weight: var(--landing-fw-strong);
-  line-height: var(--landing-lh-title);
-  letter-spacing: var(--landing-ls-heading);
-  margin: 0;
-}
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  padding: 0.3rem 0.85rem 0.3rem 0.7rem;
+  border: 1px solid var(--lx-line);
+  border-radius: 999px;
+  color: var(--lx-text-2);
+  font-size: var(--lx-fs-sm);
+  font-weight: 500;
 }
 
-[data-theme="light"] .gradient-text {
-  background: linear-gradient(135deg, #1e40af 0%, #0284c7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.lx-hero__tools .n-icon {
+  color: color-mix(in srgb, var(--lx-accent) 60%, transparent);
 }
-.search-promo-description {
-  font-size: var(--landing-fs-body);
-  color: var(--premium-text-secondary);
-  line-height: var(--landing-lh-body);
-  margin: 0;
-  max-width: 540px;
-}
-.search-promo-actions {
+
+.lx-hero__alt {
   display: flex;
-  align-items: center;
-  gap: 1rem;
   flex-wrap: wrap;
-}
-.search-promo-visual {
-  overflow: visible;
-  transition: transform 0.4s ease;
-}
-.search-promo-visual:hover {
-  transform: translateY(-6px);
-}
-.search-promo-visual .video-frame {
-  transform: scale(1.1);
-}
-.search-promo-video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ── Reports Hero Section ──────────────────────────────────── */
-.reports-hero {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-  min-height: 85vh;
-  display: flex;
   align-items: center;
-  background: var(--premium-bg-primary);
+  gap: 0.3rem 0.7rem;
+  font-size: var(--lx-fs-sm);
+  color: var(--lx-text-3);
 }
 
-.reports-hero-background {
+.lx-hero__alt .lx-link {
+  font-size: var(--lx-fs-sm);
+}
+
+/* ── Hero stage ─────────────────────────────────────────────────
+   .lx-stage__deck follows the scroll (--p, 0..1 over the first ~45% of a
+   viewport): the whole set leans back at load and stands upright. The
+   three captures share one grid cell and are placed with transforms. */
+.lx-hero__stage {
+  margin-top: clamp(32px, 5svh, 64px);
+}
+
+.lx-stage {
+  position: relative;
+}
+
+.lx-stage__scene {
+  position: relative;
+  perspective: 2200px;
+  perspective-origin: 50% 0%;
+  padding-bottom: 6%;
+}
+
+.lx-stage__scene::before {
+  content: "";
   position: absolute;
-  inset: 0;
-  overflow: hidden;
+  inset: 6% 0 -4%;
   pointer-events: none;
+  background: radial-gradient(closest-side, var(--lx-glow-1), transparent);
+  filter: blur(30px);
 }
 
-.reports-hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
+.lx-stage__deck {
+  /* Extra side offset on wide screens, pulled in a little on narrow ones
+     so the side captures don't fall off the viewport. */
+  --lx-stage-spread: clamp(-64px, calc((100vw - 1440px) * 0.3), 180px);
+  position: relative;
+  display: grid;
+  width: min(74%, 940px);
+  margin-inline: auto;
+  transform-origin: 50% 0%;
+  transform: rotateX(calc((1 - var(--p, 1)) * 20deg))
+    scale(calc(0.92 + var(--p, 1) * 0.08));
+  will-change: transform;
+}
+
+.lx-stage__slot {
+  grid-area: 1 / 1;
+  align-self: start;
   position: relative;
   z-index: 1;
 }
 
-.reports-hero-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+.lx-stage__slot.is-center {
+  z-index: 3;
+  transform: none;
 }
 
-.reports-hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+/* The capture wrapping from left to right passes behind the other two. */
+.lx-stage__slot.is-right {
+  z-index: 0;
 }
 
-.reports-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  border-radius: 50px;
-  font-size: var(--landing-fs-sm);
-  font-weight: var(--font-weight-semibold);
-  color: #06b6d4;
-  width: fit-content;
+.lx-stage__deck.is-turning .lx-stage__slot {
+  transition: transform 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.lx-stage__deck.is-turning .lx-stage__slot::after {
+  transition: opacity 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Side captures fan out like an open hand of cards (tops leaning outward)
+   and close as --p reaches 1. */
+.lx-stage__slot.is-left,
+.lx-stage__slot.is-right {
+  --lx-stage-fan: calc((1 - var(--p, 1)) * 6deg);
+}
+
+.lx-stage__slot.is-right {
+  transform: translate3d(calc(47% + var(--lx-stage-spread)), 7%, 0) scale(0.68)
+    rotate(var(--lx-stage-fan));
+}
+
+.lx-stage__slot.is-left {
+  transform: translate3d(calc(-47% - var(--lx-stage-spread)), 7%, 0) scale(0.68)
+    rotate(calc(var(--lx-stage-fan) * -1));
+}
+
+/* A veil of the page colour dims the captures while the stage is tilted
+   (--p < 1) and lifts as it straightens; the side ones keep part of it. */
+.lx-stage__slot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--lx-radius);
+  background: var(--lx-bg);
+  opacity: calc((1 - var(--p, 1)) * 0.5);
+  pointer-events: none;
+}
+
+.lx-stage__slot.is-left::after,
+.lx-stage__slot.is-right::after {
+  opacity: calc(0.45 + (1 - var(--p, 1)) * 0.3);
+}
+
+/* Optional phone hanging off the capture's bottom-right corner; it rises
+   slightly as the stage straightens on scroll.
+   The asset has a cyan halo baked in; clip-path trims the image to the
+   phone body (insets measured on photoreka_mobile_halo.png) and the
+   wrapper adds a neutral shadow, which a clipped element can't cast. */
+.lx-stage__phone {
+  position: absolute;
+  z-index: 5;
+  right: -4.5%;
+  bottom: -13%;
+  width: 21%;
+  pointer-events: none;
+  filter: brightness(calc(1 - (1 - var(--p, 1)) * 0.5))
+    drop-shadow(0 28px 40px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+  transform: translate3d(0, calc((1 - var(--p, 1)) * 14%), 0);
+  will-change: transform;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.5s ease;
 }
 
-.reports-hero-badge.visible {
+.lx-stage__slot.is-center .lx-stage__phone {
   opacity: 1;
-  transform: translateY(0);
+  transition-delay: 0.6s;
 }
 
-.reports-hero-title {
-  font-size: var(--landing-fs-title-reports);
-  font-weight: var(--landing-fw-strong);
-  margin: 0;
-  line-height: var(--landing-lh-title);
-  letter-spacing: var(--landing-ls-heading);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reports-hero-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reports-hero-subtitle {
-  max-width: 580px;
-  margin: 0;
-  font-size: var(--landing-fs-body-lg);
-  color: var(--premium-text-secondary);
-  line-height: var(--landing-lh-body);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-}
-
-.reports-hero-subtitle.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reports-hero-actions {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-
-.reports-hero-actions.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reports-hero-visual {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--premium-shot-border);
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 120px 8px var(--premium-shot-glow);
-}
-
-.reports-hero-visual.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.reports-hero-visual:hover {
-  transform: translateY(-8px) scale(1);
-}
-
-.reports-video-frame {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--premium-bg-card);
-}
-
-.reports-hero-video {
+.lx-stage__phone img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
+  clip-path: inset(6.5% 13.5% 6.5% 16% round 10% / 5.9%);
 }
 
-.reports-gradient-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
+/* ── Split layout (copy + visual) ───────────────────────────── */
+.lx-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  gap: clamp(40px, 6vw, 104px);
+  align-items: start;
 }
 
-.reports-gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.18;
-  animation: reports-float 25s infinite ease-in-out;
-  will-change: transform;
+.lx-split--reverse {
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
 }
 
-.reports-orb-1 {
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(135deg, #06b6d4, #2563eb);
-  top: -300px;
-  right: -200px;
+.lx-split__copy {
+  display: grid;
+  gap: 2.2rem;
 }
 
-.reports-orb-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  bottom: -200px;
-  left: -250px;
-  animation-delay: -10s;
+/* The capture stays pinned beside the copy while the copy is read. */
+.lx-split__visual {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + 12vh);
 }
 
-.reports-orb-3 {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, #f59e0b, #f97316);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -15s;
+/* Media-led variant: wider visual, both columns centred on each other and
+   the visual scrolls with the page instead of pinning. */
+.lx-split--media {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
 }
 
-@keyframes reports-float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-50px, 50px) scale(0.9);
-  }
+/* The visual may overhang the container on the right by up to 72px, never
+   closer than the page gutter to the screen edge, so it can match the
+   height of the copy beside it. */
+.lx-split--media .lx-split__visual {
+  position: relative;
+  top: auto;
+  margin-right: calc(
+    -1 * clamp(0px, (100vw - var(--lx-container)) / 2 - var(--lx-gutter), 72px)
+  );
 }
 
-@media (max-width: 968px) {
-  .hero-container {
-    min-height: auto;
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-    padding: 0 1.25rem;
-  }
+/* Mirrored: visual on the left, overhanging the container on that side. */
+.lx-split--media.lx-split--reverse {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+}
 
-  .hero-section {
-    padding-bottom: 3rem;
-  }
+.lx-split--media.lx-split--reverse .lx-split__visual {
+  margin-right: 0;
+  margin-left: calc(
+    -1 * clamp(0px, (100vw - var(--lx-container)) / 2 - var(--lx-gutter), 72px)
+  );
+}
 
-  .hero-side-left,
-  .hero-side-right {
+/* Canvas video: 16:9 cut on desktop, 4:5 cut on phones. */
+.lx-canvas-video--mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .lx-canvas-video--desktop {
     display: none;
   }
 
-  .hero-side-mobile {
-    display: flex;
-    order: 2;
-    margin: 0;
+  .lx-canvas-video--mobile {
+    display: block;
   }
+}
 
-  .hero-content {
-    order: 1;
-  }
-
-  .hero-title {
-    font-size: 3.6rem;
-  }
-
-  .search-promo-title {
-    font-size: 2.5rem;
-  }
-
-  .search-promo-layout {
+@media (max-width: 1023px) {
+  .lx-split--media.lx-split--reverse {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .search-promo-description {
-    max-width: 100%;
-  }
-  .search-promo-section {
-    padding: 4rem 1rem;
   }
 
-  .reports-hero {
-    padding: 4rem 1rem;
-    min-height: auto;
+  .lx-split--media .lx-split__visual,
+  .lx-split--media.lx-split--reverse .lx-split__visual {
+    margin-right: 0;
+    margin-left: 0;
   }
+}
 
-  .reports-hero-layout {
+/* The capture grows into place as it travels up the viewport. */
+.lx-zoom {
+  transform-origin: 50% 100%;
+  transform: translate3d(0, calc((1 - var(--p, 1)) * 48px), 0)
+    scale(calc(0.9 + var(--p, 1) * 0.1));
+}
+
+/* ── Sources ────────────────────────────────────────────────── */
+.lx-sources {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid var(--lx-line-2);
+  background: var(--lx-line-2);
+  box-shadow: var(--lx-shadow-md);
+}
+
+.lx-source {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(24px, 2.6vw, 38px);
+  background: var(--lx-surface);
+  transition: background-color 0.4s ease;
+}
+
+.lx-source:hover {
+  background: var(--lx-surface-2);
+}
+
+.lx-source__logo {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 0.9rem;
+  border-radius: 16px;
+  background: var(--lx-surface-3);
+  border: 1px solid var(--lx-line);
+}
+
+.lx-source__logo img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.lx-source__name {
+  font-family: var(--lx-font-display);
+  font-weight: 380;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+}
+
+.lx-source__desc {
+  flex: 1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--lx-text-2);
+}
+
+.lx-status--soon::before {
+  background: var(--lx-text-3);
+  box-shadow: none;
+}
+
+/* ── Lightroom ──────────────────────────────────────────────── */
+.lx-lr-badge {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: var(--lx-surface-2);
+  border: 1px solid var(--lx-line-2);
+  box-shadow: var(--lx-shadow-md);
+}
+
+.lx-lr-badge img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.lx-lr-list__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--lx-surface-2);
+  border: 1px solid var(--lx-line);
+  color: var(--lx-text-2);
+}
+
+.lx-note {
+  font-size: var(--lx-fs-sm);
+  color: var(--lx-text-3);
+}
+
+/* ── FAQ ────────────────────────────────────────────────────── */
+.lx-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(40px, 6vw, 104px);
+  align-items: start;
+}
+
+.lx-faq-grid__intro {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + 32px);
+}
+
+.lx-faq {
+  border-top: 1px solid var(--lx-line-2);
+}
+
+.lx-faq__item {
+  border-bottom: 1px solid var(--lx-line-2);
+}
+
+.lx-faq__q {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.55rem 0;
+  border: 0;
+  background: none;
+  color: var(--lx-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lx-faq__num {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+  color: var(--lx-text-3);
+}
+
+.lx-faq__text {
+  font-family: var(--lx-font-display);
+  font-size: clamp(1.15rem, 1.6vw, 1.42rem);
+  font-weight: 380;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  transition: transform 0.6s var(--lx-ease);
+}
+
+.lx-faq__q:hover .lx-faq__text {
+  transform: translateX(4px);
+}
+
+.lx-faq__icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--lx-line-2);
+  color: var(--lx-text);
+  transition:
+    transform 0.6s var(--lx-ease),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.lx-faq__icon::before,
+.lx-faq__icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 11px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.lx-faq__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.lx-faq__item.is-open .lx-faq__icon {
+  transform: rotate(135deg);
+  background: var(--lx-btn-bg);
+  border-color: transparent;
+  color: var(--lx-btn-fg);
+}
+
+.lx-faq__a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.7s var(--lx-ease);
+}
+
+.lx-faq__item.is-open .lx-faq__a {
+  grid-template-rows: 1fr;
+}
+
+.lx-faq__a-inner {
+  overflow: hidden;
+  padding-left: 3.6rem;
+}
+
+.lx-faq__a-inner p {
+  max-width: 46em;
+  padding-bottom: 1.7rem;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--lx-text-2);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .lx-hero__aside,
+  .lx-split,
+  .lx-split--reverse,
+  .lx-faq-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
   }
 
-  .reports-hero-content {
-    text-align: center;
-    align-items: center;
+  .lx-hero__aside {
+    gap: 1.6rem;
+    align-items: start;
   }
 
-  .reports-hero-subtitle {
-    max-width: 100%;
+  .lx-hero__cta {
+    justify-items: stretch;
+    width: 100%;
+    max-width: 460px;
   }
 
-  .reports-hero-actions {
+  /* Both buttons share the row and wrap to full-width rows when they
+     don't fit side by side. */
+  .lx-hero__cta .lx-btn {
+    flex: 1 1 auto;
+    justify-content: space-between;
+  }
+
+  .lx-hero__alt {
     justify-content: center;
+    text-align: center;
+  }
+
+  .lx-split__visual {
+    position: relative;
+    top: auto;
+  }
+
+  .lx-split--reverse .lx-split__visual {
+    order: 2;
+  }
+
+  .lx-faq-grid__intro {
+    position: static;
+  }
+
+  .lx-sources {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  /* No room for the sides on phones: only the centre capture shows. */
+  .lx-stage__deck {
+    width: 100%;
+  }
+
+  .lx-stage__slot.is-left,
+  .lx-stage__slot.is-right {
+    display: none;
+  }
+
+  .lx-stage__phone {
+    right: -2%;
+    bottom: -10%;
+    width: 30%;
+  }
+
+  .lx-sources {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2094,54 +2243,65 @@ if (typeof window !== "undefined") {
     display: none;
   }
 
-  .hero-section {
-    padding-top: calc(var(--announcement-height) + 64px + 2rem);
+  .lx-hero {
+    padding-top: clamp(88px, 12svh, 112px);
   }
 
-  .hero-title {
-    font-size: var(--landing-fs-title-hero-mobile);
+  .lx-hero__heading {
+    gap: 1.25rem;
   }
 
-  .search-promo-title {
-    font-size: var(--landing-fs-title-promo-mobile);
+  /* The eyebrow wraps as running text, stars trailing the last word. */
+  .lx-hero__trust {
+    display: block;
+    line-height: 1.7;
   }
 
-  .hero-description {
-    font-size: var(--fs-base);
+  .lx-hero__trust .lx-eyebrow__dot {
+    display: inline-block;
+    vertical-align: 0.15em;
+    margin-right: 0.6rem;
   }
 
-  .hero-trust {
-    flex-direction: column;
-    gap: 0.35rem;
+  .lx-hero__stars {
+    margin-left: 0.5rem;
+    white-space: nowrap;
   }
 
-  .hero-side-image {
-    max-height: 360px;
+  .lx-hero__title {
+    font-size: clamp(2.5rem, 11vw, 3rem);
   }
-}
 
-.premium-nav {
-  position: fixed;
-  top: var(--announcement-height);
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--premium-bg-nav);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--premium-border);
-}
+  .lx-hero__aside {
+    gap: 1.25rem;
+    padding-top: 1.25rem;
+  }
 
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  /* Tight enough for both buttons to share a row on a 390px phone. */
+  .lx-hero__cta .lx-actions {
+    gap: 0.5rem;
+  }
 
-.nav-brand {
-  display: flex;
-  align-items: center;
+  .lx-hero__cta .lx-btn {
+    gap: 0.5rem;
+    padding-left: 1rem;
+    font-size: 0.88rem;
+  }
+
+  /* One flowing paragraph on phones: the three sentences as separate
+     blocks would each break into two short lines. */
+  .lx-hero__lead > span {
+    display: inline;
+  }
+
+  .lx-faq__q {
+    grid-template-columns: 2rem minmax(0, 1fr) 28px;
+    gap: 0.75rem;
+    padding: 1.3rem 0;
+  }
+
+  .lx-faq__a-inner {
+    padding-left: 2.75rem;
+  }
 }
 </style>

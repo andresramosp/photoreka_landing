@@ -1,6 +1,22 @@
 <template>
-  <section ref="sectionRef" class="ppr-section">
-    <div class="section-container">
+  <section
+    ref="sectionRef"
+    class="ppr-section"
+    :class="{ 'ppr-section--immersive': immersive }"
+  >
+    <div v-if="immersive" class="lx-container">
+      <SectionIntro :eyebrow="eyebrow" :index="index" align="center">
+        <template #title>
+          Or just rank your entire catalog,
+          <em class="lx-accent">no sign-up</em>
+        </template>
+        <p>
+          Skip the setup: drop your photos and let an AI jury score, critique and rank every
+          frame to surface your best shots.
+        </p>
+      </SectionIntro>
+    </div>
+    <div v-else class="section-container">
       <div class="section-header" :class="{ visible }">
         <h2 class="section-title">Or just rank your entire catalog, no sign-up</h2>
         <p class="section-subtitle">
@@ -10,7 +26,12 @@
       </div>
     </div>
 
-    <!-- Always dark, like the Picks app: it reads as a product showcase on either theme. -->
+    <!-- Always dark, like the Picks app: it reads as a product showcase on either theme.
+         Immersive mode: the card opens from container width to full bleed as it rises. -->
+    <div
+      v-scroll-progress="immersive ? { from: 1, to: 0.2, disableBelow: 760 } : null"
+      class="ppr-stage"
+    >
     <div class="ppr-card" :class="{ visible }">
       <div class="ppr-glow" aria-hidden="true" />
 
@@ -54,6 +75,7 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
 </template>
 
@@ -70,6 +92,10 @@ import { trackUserAction } from "~/utils/analytics";
 const props = defineProps({
   /** Analytics label of the page hosting the promo. */
   source: { type: String, default: "landing" },
+  /** lx landing system: section intro + card that expands to full bleed. */
+  immersive: { type: Boolean, default: false },
+  eyebrow: { type: String, default: "Photoreka Picks" },
+  index: { type: String, default: "" },
 });
 
 const podium = rankShowcase("overall").slice(0, 3);
@@ -366,10 +392,44 @@ function trackDiscover() {
   overflow: hidden;
 }
 
+/* ── Immersive (lx landing system) ─────────────────────────────
+   --p (0..1) comes from v-scroll-progress on .ppr-stage. At 0 the card is
+   clipped to the page container with rounded corners; at 1 it is full
+   bleed. The content keeps a fixed inner width, so only the frame moves. */
+.ppr-section--immersive {
+  padding: var(--lx-section-y) 0;
+}
+
+.ppr-section--immersive .ppr-card {
+  --_side: max(var(--lx-gutter), calc((100% - var(--lx-container)) / 2));
+  max-width: none;
+  border: 0;
+  border-radius: 0;
+  padding: clamp(72px, 10vw, 136px) calc(var(--_side) + clamp(24px, 4vw, 64px));
+  clip-path: inset(
+    0 calc((1 - var(--p, 1)) * var(--_side)) round calc((1 - var(--p, 1)) * 32px)
+  );
+  box-shadow: none;
+}
+
+.ppr-section--immersive .ppr-copy {
+  transform: translate3d(0, calc((1 - var(--p, 1)) * 48px), 0);
+}
+
+.ppr-section--immersive .ppr-visual {
+  transform: translate3d(0, calc((1 - var(--p, 1)) * 96px), 0);
+}
+
 @media (max-width: 900px) {
   .ppr-card {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .ppr-section--immersive .ppr-card {
+    padding: 56px var(--lx-gutter);
   }
 }
 

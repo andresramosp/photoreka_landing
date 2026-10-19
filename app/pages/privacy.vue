@@ -20,7 +20,7 @@
     <div class="terms-container">
       <div class="terms-content">
         <h1 class="terms-title">Privacy &amp; Image Policy</h1>
-        <p class="terms-effective">Last updated: October 15, 2026</p>
+        <p class="terms-effective">Last updated: October 19, 2026</p>
 
         <section class="terms-section">
           <h2>1. Introduction</h2>
@@ -247,6 +247,21 @@
               the deletion, and signing in before the indicated date cancels it.
               Accounts that have made a purchase are not affected. See
               <em>Inactive Free Accounts</em> in our
+              <NuxtLink to="/terms">Terms of Service</NuxtLink>.
+            </li>
+            <li>
+              <strong>Service discontinuation or platform migration:</strong> if
+              Photoreka is discontinued, you will be notified at least 60 days in
+              advance and will be able to export your data during that period;
+              all data will then be permanently removed within 30 days of the
+              closure date. If the service moves to a different application or
+              platform, your data will be transferred to it only to the extent
+              needed to keep providing the service, and data that is not migrated
+              will be deleted following the same process. If the new platform
+              processes your data differently (for example, storing it locally
+              on your device), we will update this policy and inform you before
+              the migration. See <em>Discontinuation of the Service</em> and
+              <em>Migration to a Different Platform</em> in our
               <NuxtLink to="/terms">Terms of Service</NuxtLink>.
             </li>
             <li>
