@@ -53,7 +53,7 @@
             </li>
             <li>
               <n-icon size="15"><CardOutline /></n-icon>
-              {{ formatEur(PICKS_PRICE_PER_PHOTO_EUR) }} per photo
+              {{ formatEur(PICKS_PRICE_PER_PHOTO_EUR) }} per photo, VAT included
             </li>
           </ul>
         </div>
@@ -167,8 +167,8 @@
               {{ formatEur(PICKS_PRICE_PER_PHOTO_EUR) }}<span> per photo</span>
             </p>
             <p class="pkl-price-sub">
-              One payment per order, no subscription. Minimum charge
-              {{ formatEur(PICKS_MIN_CHARGE_EUR) }}.
+              One payment per order, VAT included, no subscription. Minimum
+              charge {{ formatEur(PICKS_MIN_CHARGE_EUR) }}.
             </p>
             <ul class="pkl-price-examples">
               <li v-for="n in priceExamples" :key="n">
@@ -291,8 +291,13 @@ useSEO("ai_photo_picks");
 
 
 const formatCount = (n) => new Intl.NumberFormat("en-US").format(n);
+// Up to three decimals: the per-photo price is €0.012.
 const formatEur = (n) =>
-  new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }).format(n);
+  new Intl.NumberFormat("en-IE", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 3,
+  }).format(n);
 const priceFor = (n) =>
   Math.max(PICKS_MIN_CHARGE_EUR, Math.round(n * PICKS_PRICE_PER_PHOTO_EUR * 100) / 100);
 
@@ -309,7 +314,7 @@ const steps = [
   },
   {
     title: "Pay only for what you upload",
-    text: `${formatEur(PICKS_PRICE_PER_PHOTO_EUR)} per photo, one payment, no account. The jury starts the moment you pay and works through your photos as they arrive.`,
+    text: `${formatEur(PICKS_PRICE_PER_PHOTO_EUR)} per photo, VAT included, one payment, no account. The jury starts the moment you pay and works through your photos as they arrive.`,
   },
   {
     title: "Explore your ranking",

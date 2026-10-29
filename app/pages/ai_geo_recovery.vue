@@ -63,7 +63,8 @@
                   for DSLR and archive photos with missing GPS metadata.<br /><br />
                   <strong>Your originals never leave your browser.</strong> Only
                   lightweight thumbnails are sent for analysis. No Photoreka
-                  account required — one flat payment for the entire batch.
+                  account required — one payment for the whole batch, €0.012
+                  per photo, VAT included.
                 </p>
 
                 <div class="hero-actions" :class="{ visible: heroVisible }">
@@ -101,7 +102,7 @@
                   <span class="trust-separator">·</span>
                   <span class="trust-item">
                     <n-icon size="14"><CardOutline /></n-icon>
-                    One-time flat payment
+                    One payment per batch
                   </span>
                   <span class="trust-separator">·</span>
                   <span class="trust-item">
@@ -562,7 +563,7 @@ const steps = ref([
   {
     title: "One-time payment",
     description:
-      "Pay a flat fee for the entire batch. No subscription, no per-photo pricing, no credits to top up. The price is the same whether you upload ten photos or five thousand.",
+      "Pay once for the entire batch: €0.012 per photo, VAT included, with a €2.40 minimum. No subscription, no credits to top up.",
     color: "linear-gradient(135deg, #06b6d4, #0891b2)",
   },
   {
@@ -670,7 +671,7 @@ const faqs = ref([
   {
     question: "What does 'one-time payment' mean exactly?",
     answer:
-      "You pay a flat fee for the full batch at the time you submit it. There is no per-photo pricing, no subscription, and no expiry on your session until you download. If you want to process another batch later, you start a new session and pay once more.",
+      "You pay once for the full batch at the time you submit it: €0.012 per photo, VAT included, with a €2.40 minimum per batch. There is no subscription and no expiry on your session until you download. If you want to process another batch later, you start a new session and pay once more.",
   },
   {
     question: "I already use Photoreka. Should I use this instead?",

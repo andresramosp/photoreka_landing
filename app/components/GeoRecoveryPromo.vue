@@ -30,7 +30,7 @@
               <n-icon size="20" color="#22c55e"
                 ><CheckmarkCircleOutline
               /></n-icon>
-              <span>One-time flat payment per batch</span>
+              <span>One payment per batch, priced per photo</span>
             </div>
             <div class="grp-feature">
               <n-icon size="20" color="#22c55e"

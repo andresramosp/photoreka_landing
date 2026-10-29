@@ -21,7 +21,7 @@
             >
             <span class="pricing-price">€{{ (finalPrice ?? selected.priceEur).toFixed(2) }}</span>
           </div>
-          <span class="pricing-unit">{{ centsPerPhoto }} cents / photo</span>
+          <span class="pricing-unit">{{ centsPerPhoto }} cents / photo · VAT included</span>
         </div>
       </div>
 

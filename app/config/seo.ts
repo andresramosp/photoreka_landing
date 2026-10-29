@@ -1043,7 +1043,7 @@ export const seoConfig = {
             "@type": "Offer",
             availability: "https://schema.org/InStock",
             priceCurrency: "EUR",
-            price: "0.01",
+            price: "0.012",
           },
           creator: {
             "@type": "Organization",
@@ -1075,7 +1075,7 @@ export const seoConfig = {
     ai_geo_recovery: {
       title: "Bulk Photo Geotagging Online — EXIF GPS Writeback | Photoreka",
       description:
-        "Need to geotag photos already taken without an account? Geo Recovery uses AI to find where your shots were taken, lets you review every pin on a map, and writes GPS coordinates directly into EXIF on download. Built for DSLR and archive photos with missing GPS metadata. One flat payment, no subscription.",
+        "Need to geotag photos already taken without an account? Geo Recovery uses AI to find where your shots were taken, lets you review every pin on a map, and writes GPS coordinates directly into EXIF on download. Built for DSLR and archive photos with missing GPS metadata. One payment per batch, no subscription.",
       keywords:
         "how to geotag photos already taken online, geotag photos already taken, add gps data to photos, add gps to photos, add gps coordinates to photos, bulk photo geotagging, batch geotag photos, geotag photos online, geotag photos online free alternative, photo geotagging tool, exif gps editor, bulk exif gps editor online, fix missing gps metadata photos, dslr photos without gps, add geotag to photos online, ai photo geotagging, geotag photos with ai, photo location recovery, gps metadata recovery, lightroom geotag photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
@@ -1095,6 +1095,7 @@ export const seoConfig = {
             "@type": "Offer",
             availability: "https://schema.org/InStock",
             priceCurrency: "EUR",
+            price: "0.012",
           },
           creator: {
             "@type": "Organization",
