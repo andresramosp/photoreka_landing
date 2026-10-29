@@ -4,9 +4,9 @@
     :class="[`lx-intro--${align}`, flush && 'lx-intro--flush']"
   >
     <p v-if="eyebrow" v-reveal class="lx-eyebrow">
-      <span v-if="index" class="lx-eyebrow__num">{{ index }}</span>
-      <span v-if="index" class="lx-eyebrow__rule" aria-hidden="true" />
-      <span v-else class="lx-eyebrow__dot" aria-hidden="true" />
+      <span class="lx-eyebrow__num" aria-hidden="true" />
+      <span class="lx-eyebrow__rule" aria-hidden="true" />
+      <span class="lx-eyebrow__dot" aria-hidden="true" />
       <span>{{ eyebrow }}</span>
     </p>
     <component
@@ -30,9 +30,8 @@
 
 <script setup>
 defineProps({
+  /** Inside a `.lx-numbered` page it gets the next section number. */
   eyebrow: { type: String, default: "" },
-  /** Optional section number shown before the eyebrow ("01"). */
-  index: { type: String, default: "" },
   title: { type: String, default: "" },
   lead: { type: String, default: "" },
   /** left | center */

@@ -1,154 +1,76 @@
 <template>
   <n-config-provider :theme="currentTheme" :theme-overrides="themeOverrides">
     <n-message-provider>
-      <div class="framer-page">
-        <!-- Navigation Header -->
-        <nav class="premium-nav">
-          <div class="nav-container">
-            <div class="nav-brand">
-              <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="40" />
-              </NuxtLink>
-            </div>
-            <div class="nav-actions">
-              <button
-                v-if="canToggleTheme(true)"
-                class="theme-toggle"
-                @click="toggleTheme"
-                aria-label="Toggle theme"
-              >
-                <n-icon size="20">
-                  <component
-                    :is="themeMode === 'dark' ? SunnyOutline : MoonOutline"
-                  />
-                </n-icon>
-              </button>
-              <n-button text @click="goToHome" class="back-link">
-                <template #icon>
-                  <n-icon><ArrowBackOutline /></n-icon>
-                </template>
-                Back to Home
-              </n-button>
-            </div>
-          </div>
-        </nav>
+      <div class="lx-page lx-numbered">
+        <PageNav
+          source="framer_page"
+          :links="[{ label: 'Features', target: 'features' }]"
+        />
 
-        <!-- Hero Section -->
-        <section class="framer-hero" ref="heroSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout">
-              <!-- Left: Content -->
-              <div class="hero-content">
-                <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Frame
-                  <span class="gradient-text"> your photos beautifully </span>-
-                  all at once
-                </h1>
-                <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Tired of framing photos one by one? Free Framer handles
-                  unlimited batch processing. Upload dozens or hundreds of
-                  photos, apply professional frames to all of them instantly,
-                  and export in bulk. No limits. No watermarks. Completely free.
-                </p>
+        <PageHero>
+          <template #title>
+            Frame
+            <em class="lx-accent">your photos beautifully</em>
+            - all at once
+          </template>
+          <p>
+            Tired of framing photos one by one? Free Framer handles unlimited
+            batch processing. Upload dozens or hundreds of photos, apply
+            professional frames to all of them instantly, and export in bulk.
+            No limits. No watermarks. Completely free.
+          </p>
+          <template #actions>
+            <LxButton icon="external" @click="goToFreeTool">
+              Launch Free Framer
+            </LxButton>
+            <span class="lx-status">No signup required</span>
+          </template>
+          <template #visual>
+            <ShotFrame
+              src="/home/free_framer.png"
+              alt="Free Framer interface preview"
+              label="Photoreka — Free Framer"
+              ratio="16 / 9"
+              loading="eager"
+            />
+          </template>
+        </PageHero>
 
-                <div class="hero-actions" :class="{ visible: heroVisible }">
-                  <n-button
-                    type="warning"
-                    size="large"
-                    strong
-                    @click="goToFreeTool"
-                  >
-                    <template #icon>
-                      <n-icon><RocketOutline /></n-icon>
-                    </template>
-                    Launch Free Framer
-                  </n-button>
-                  <span class="cta-note">No signup required</span>
-                </div>
-              </div>
-
-              <!-- Right: Image -->
-              <div class="hero-visual" :class="{ visible: heroVisible }">
-                <img
-                  src="/home/free_framer.png"
-                  alt="Free Framer interface preview"
-                  class="hero-image"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features-section" ref="featuresSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">Stop framing photos one by one</h2>
-              <p class="section-subtitle">
+        <section id="features" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Features" align="center">
+              <template #title>
+                Stop framing photos <em class="lx-accent">one by one</em>
+              </template>
+              <p>
                 Process hundreds of photos at once, not one at a time. The only
                 free tool with truly unlimited batch processing.
               </p>
-            </div>
-
-            <div class="features-grid">
-              <div
-                v-for="(feature, index) in features"
-                :key="index"
-                class="feature-card"
-                :class="{ visible: featuresVisible }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
-              >
-                <div class="feature-icon" :style="{ color: feature.color }">
-                  <n-icon size="32">
-                    <component :is="feature.icon" />
-                  </n-icon>
-                </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-description">{{ feature.description }}</p>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageGrid :items="features" :columns="3" />
           </div>
         </section>
 
-        <!-- Final CTA Section -->
-        <section class="cta-section" ref="ctaSection">
-          <div class="section-container">
-            <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">
-                Stop wasting time on one photo at a time
-              </h2>
-              <p class="cta-description">
-                Frame your entire photo collection in minutes, not hours. Upload
-                as many photos as you want, apply professional frames in bulk,
-                and export everything at once. Zero limits. Zero cost.
-              </p>
-              <n-button
-                type="warning"
-                size="large"
-                strong
-                @click="goToFreeTool"
-              >
-                <template #icon>
-                  <n-icon><RocketOutline /></n-icon>
-                </template>
-                Launch Free Framer Now
-              </n-button>
-              <div class="cta-extra">
-                <p>
-                  Want more powerful tools?
-                  <a @click="goToHome" class="cta-link"
-                    >Explore Photoreka's full platform</a
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageCta>
+          <template #title>
+            Stop wasting time on
+            <em class="lx-accent">one photo at a time</em>
+          </template>
+          <p>
+            Frame your entire photo collection in minutes, not hours. Upload as
+            many photos as you want, apply professional frames in bulk, and
+            export everything at once. Zero limits. Zero cost.
+          </p>
+          <template #actions>
+            <LxButton icon="external" @click="goToFreeTool">
+              Launch Free Framer Now
+            </LxButton>
+          </template>
+          <template #links>
+            Want more powerful tools?
+            <a @click="goToHome">Explore Photoreka's full platform</a>
+          </template>
+        </PageCta>
       </div>
     </n-message-provider>
   </n-config-provider>
@@ -157,27 +79,17 @@
 <script setup>
 import { markRaw } from "vue";
 import {
-  SunnyOutline,
-  MoonOutline,
-  ArrowBackOutline,
-  PlayCircleOutline,
-  RocketOutline,
   StopOutline,
   ColorPaletteOutline,
   ImagesOutline,
   DownloadOutline,
-  CloudDownloadOutline,
   ResizeOutline,
-  LayersOutline,
   ShareSocialOutline,
   BriefcaseOutline,
   LogoInstagram,
   BookOutline,
-  ChevronDownOutline,
   SpeedometerOutline,
-  LockClosedOutline,
 } from "@vicons/ionicons5";
-import Workspace from "@vicons/carbon/es/Workspace.js";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO Configuration
@@ -197,40 +109,13 @@ useHead({
 const {
   naiveTheme: currentTheme,
   naiveThemeOverrides: themeOverrides,
-  themeMode,
-  toggleTheme: baseToggleTheme,
-  canToggleTheme,
   initTheme,
 } = useTheme();
 
-// Wrapper for toggle with tracking
-const toggleTheme = () => {
-  baseToggleTheme();
-};
-
-// Section refs and visibility
-const heroSection = ref(null);
-const demoSection = ref(null);
-const featuresSection = ref(null);
-const howSection = ref(null);
-const usecasesSection = ref(null);
-const gallerySection = ref(null);
-const faqSection = ref(null);
-const ctaSection = ref(null);
-
-const heroVisible = ref(false);
-const demoVisible = ref(false);
-const featuresVisible = ref(false);
-const howVisible = ref(false);
-const usecasesVisible = ref(false);
-const galleryVisible = ref(false);
-const faqVisible = ref(false);
-const ctaVisible = ref(false);
-
-const activeFAQ = ref(null);
+const smoothScroll = useSmoothScroll();
 
 // Features data
-const features = ref([
+const features = [
   {
     icon: markRaw(ImagesOutline),
     title: "Unlimited Batch Processing",
@@ -273,8 +158,9 @@ const features = ref([
       "See changes in real-time as you adjust frame styles and colors. No waiting, no rendering delays.",
     color: "#06b6d4",
   },
-]);
+];
 
+// Not rendered at the moment; kept for when these sections come back.
 // Steps data
 const steps = ref([
   {
@@ -420,946 +306,17 @@ const goToFreeTool = () => {
   window.open(toolUrl, "_blank");
 };
 
-// FAQ methods
-const toggleFAQ = (index) => {
-  const wasOpen = activeFAQ.value === index;
-  activeFAQ.value = activeFAQ.value === index ? null : index;
-  trackEvent("faq_toggle", {
-    page: "framer",
-    faq_index: index,
-    action: wasOpen ? "close" : "open",
-  });
-};
-
-// Scroll-based animations
-const setupScrollAnimations = () => {
-  const observerOptions = {
-    threshold: 0.2,
-    rootMargin: "0px 0px -100px 0px",
-  };
-
-  const createObserver = (section, visibleRef) => {
-    if (!section.value) return;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          visibleRef.value = true;
-        }
-      });
-    }, observerOptions);
-    observer.observe(section.value);
-  };
-
-  createObserver(heroSection, heroVisible);
-  createObserver(demoSection, demoVisible);
-  createObserver(featuresSection, featuresVisible);
-  createObserver(howSection, howVisible);
-  createObserver(usecasesSection, usecasesVisible);
-  createObserver(gallerySection, galleryVisible);
-  createObserver(faqSection, faqVisible);
-  createObserver(ctaSection, ctaVisible);
-};
-
 onMounted(() => {
   initTheme();
-  heroVisible.value = true;
-  setupScrollAnimations();
+  smoothScroll.enable();
 
   trackEvent("page_view", {
     page: "framer",
     page_title: "Free Framer - Professional Photo Frames",
   });
 });
+
+onBeforeUnmount(() => {
+  smoothScroll.disable();
+});
 </script>
-
-<style scoped>
-/* Page Container */
-.framer-page {
-  min-height: 100vh;
-  background: var(--premium-bg-primary);
-  color: var(--premium-text-primary);
-}
-
-/* Navigation */
-.premium-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--premium-bg-nav);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--premium-border);
-}
-
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-}
-.nav-brand a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  color: var(--premium-text-primary);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle:hover {
-  background: var(--premium-bg-hover);
-}
-
-.back-link {
-  font-size: var(--fs-base);
-}
-
-.framer-hero {
-  position: relative;
-  padding: 8rem 2rem 6rem;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.hero-background {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.hero-title {
-  font-size: var(--fs-hero);
-  font-weight: var(--font-weight-black);
-  margin: 0;
-  line-height: var(--line-height-none);
-  letter-spacing: var(--letter-spacing-tighter);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-subtitle {
-  max-width: 600px;
-  margin: 0;
-  font-size: var(--fs-lead);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-}
-
-.hero-subtitle.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-
-.hero-actions.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cta-note {
-  font-size: var(--fs-sm);
-  color: var(--premium-text-secondary);
-}
-
-.hero-visual {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--premium-border);
-}
-
-.hero-visual.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.hero-visual:hover {
-  transform: translateY(-8px) scale(1);
-  box-shadow:
-    0 35px 70px -15px rgba(0, 0, 0, 0.5),
-    0 0 0 1px var(--premium-border);
-}
-
-.hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-@media (max-width: 968px) {
-  .hero-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .hero-content {
-    text-align: center;
-    align-items: center;
-  }
-
-  .hero-actions {
-    align-items: center;
-  }
-
-  .hero-subtitle {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .framer-hero {
-    padding: 6rem 1rem 3rem;
-    min-height: auto;
-  }
-
-  .hero-title {
-    font-size: var(--fs-h1);
-  }
-}
-
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.2;
-  animation: float 25s infinite ease-in-out;
-  will-change: transform;
-}
-
-.orb-1 {
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(135deg, #f59e0b, #f97316);
-  top: -300px;
-  right: -200px;
-}
-
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  bottom: -200px;
-  left: -250px;
-  animation-delay: -10s;
-}
-
-.orb-3 {
-  width: 550px;
-  height: 550px;
-  background: linear-gradient(135deg, #2563eb, #06b6d4);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -15s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-50px, 50px) scale(0.9);
-  }
-}
-
-.gradient-badge {
-  background: linear-gradient(
-    135deg,
-    rgba(245, 158, 11, 0.1),
-    rgba(249, 115, 22, 0.1)
-  );
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #f59e0b;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
-}
-
-.benefit-icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(245, 158, 11, 0.15),
-    rgba(249, 115, 22, 0.15)
-  );
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  border-radius: 10px;
-  color: #f59e0b;
-}
-
-.benefit-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.benefit-text strong {
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--premium-text-primary);
-}
-
-.benefit-text span {
-  font-size: var(--fs-base);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-relaxed);
-}
-
-.cta-note {
-  font-size: var(--fs-xs);
-  color: var(--premium-text-secondary);
-
-  gap: 0.5rem;
-}
-
-.visual-wrapper {
-  position: relative;
-  width: 100%;
-  perspective: 1000px;
-}
-
-.visual-frame {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-  border: 1px solid var(--premium-border);
-  background: var(--premium-bg-card);
-  transform: rotateY(-5deg) rotateX(2deg);
-  transition: transform 0.4s ease;
-}
-
-.visual-frame:hover {
-  transform: rotateY(0deg) rotateX(0deg);
-}
-
-.visual-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.visual-badge {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1.2rem;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 50px;
-  font-size: var(--fs-xs);
-  font-weight: var(--font-weight-semibold);
-  color: var(--premium-text-primary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  animation: fadeInFloat 0.8s ease forwards;
-  opacity: 0;
-}
-
-.badge-1 {
-  top: 10%;
-  right: -5%;
-  animation-delay: 0.5s;
-  color: #22c55e;
-}
-
-.badge-2 {
-  bottom: 25%;
-  left: -8%;
-  animation-delay: 0.7s;
-  color: #8b5cf6;
-}
-
-.badge-3 {
-  bottom: 8%;
-  right: 5%;
-  animation-delay: 0.9s;
-  color: #f59e0b;
-}
-
-@keyframes fadeInFloat {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Demo Section */
-.demo-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.section-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.demo-content {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.demo-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  text-align: center;
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.section-subtitle {
-  font-size: var(--fs-subheading);
-  color: var(--premium-text-secondary);
-  text-align: center;
-  margin-bottom: 3rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.video-wrapper {
-  max-width: 1000px;
-  margin: 0 auto;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-}
-
-.demo-video {
-  width: 100%;
-  display: block;
-}
-
-/* Features Section */
-.features-section {
-  padding: 6rem 2rem;
-}
-
-.section-header {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 3rem;
-}
-
-.section-header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.feature-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.feature-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.feature-icon {
-  margin-bottom: 1.5rem;
-}
-
-.feature-title {
-  font-size: var(--fs-2xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.75rem;
-}
-
-.feature-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-}
-
-/* How It Works Section */
-.how-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.steps-container {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.step-card {
-  display: flex;
-  gap: 2rem;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.step-card.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.step-number {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f59e0b, #f97316);
-  color: white;
-  border-radius: 50%;
-  font-size: var(--fs-3xl);
-  font-weight: var(--font-weight-bold);
-}
-
-.step-content {
-  flex: 1;
-}
-
-.step-title {
-  font-size: var(--fs-3xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.5rem;
-}
-
-.step-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-}
-
-/* Use Cases Section */
-.usecases-section {
-  padding: 6rem 2rem;
-}
-
-.usecases-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.usecase-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.usecase-card.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.usecase-card:hover {
-  transform: scale(1.05);
-}
-
-.usecase-icon {
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  border-radius: 16px;
-  color: white;
-}
-
-.usecase-title {
-  font-size: var(--fs-2xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.75rem;
-}
-
-.usecase-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-}
-
-/* Gallery Section */
-.gallery-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.gallery-grid.visible {
-  opacity: 1;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  aspect-ratio: 4/3;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.gallery-grid.visible .gallery-item {
-  transform: translateY(0);
-}
-
-.gallery-item:hover {
-  transform: translateY(-5px);
-}
-
-.gallery-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
-}
-
-.gallery-label {
-  color: white;
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--fs-lg);
-}
-
-/* FAQ Section */
-.faq-section {
-  padding: 6rem 2rem;
-}
-
-.faqs-container {
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.faqs-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.faq-item {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.faq-item:hover,
-.faq-item.active {
-  border-color: var(--premium-primary);
-}
-
-.faq-question {
-  width: 100%;
-  padding: 1.5rem;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  color: var(--premium-text-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  text-align: left;
-  gap: 1rem;
-}
-
-.faq-icon {
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-  color: var(--premium-text-secondary);
-}
-
-.faq-icon.rotated {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* CTA Section */
-.cta-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.cta-content {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cta-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cta-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
-}
-
-.cta-description {
-  font-size: var(--fs-xl);
-  color: var(--premium-text-secondary);
-  margin-bottom: 2rem;
-  line-height: var(--line-height-loose);
-}
-
-.cta-extra {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--premium-border);
-}
-
-.cta-link {
-  color: var(--premium-primary);
-  font-weight: var(--font-weight-semibold);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.cta-link:hover {
-  text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 968px) {
-  .visual-frame {
-    transform: none;
-  }
-
-  .visual-badge {
-    font-size: var(--fs-2xs);
-    padding: 0.5rem 0.9rem;
-  }
-
-  .badge-1 {
-    top: 5%;
-    right: 2%;
-  }
-
-  .badge-2 {
-    bottom: 20%;
-    left: 2%;
-  }
-
-  .badge-3 {
-    bottom: 5%;
-    right: 2%;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 1rem;
-  }
-
-  .framer-hero {
-    padding: 6rem 1rem 3rem;
-    min-height: auto;
-  }
-
-  .benefit-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .section-title {
-    font-size: var(--fs-4xl);
-  }
-
-  .features-grid,
-  .usecases-grid,
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .step-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .step-number {
-    margin: 0 auto;
-  }
-
-  .visual-badge {
-    display: none;
-  }
-}
-</style>

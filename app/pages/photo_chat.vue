@@ -1,380 +1,171 @@
 <template>
   <n-config-provider :theme="currentTheme" :theme-overrides="themeOverrides">
     <n-message-provider>
-      <div class="framer-page">
-        <!-- Navigation Header -->
-        <nav class="premium-nav">
-          <div class="nav-container">
-            <div class="nav-brand">
-              <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="40" />
-              </NuxtLink>
-            </div>
-            <div class="nav-actions">
-              <button
-                v-if="canToggleTheme(true)"
-                class="theme-toggle"
-                @click="toggleTheme"
-                aria-label="Toggle theme"
-              >
-                <n-icon size="20">
-                  <component
-                    :is="themeMode === 'dark' ? SunnyOutline : MoonOutline"
-                  />
-                </n-icon>
-              </button>
-              <n-button text @click="goToHome" class="back-link">
-                <template #icon>
-                  <n-icon><ArrowBackOutline /></n-icon>
-                </template>
-                Back to Home
-              </n-button>
-            </div>
-          </div>
-        </nav>
+      <div class="lx-page lx-numbered">
+        <PageNav source="photo_chat_page" :links="navLinks" />
 
-        <!-- Hero Section -->
-        <section class="framer-hero" ref="heroSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout">
-              <!-- Left: Content -->
-              <div class="hero-content">
-                <div class="hero-badge" :class="{ visible: heroVisible }">
-                  <span class="badge-content">
-                    <n-icon size="16"><ChatbubblesOutline /></n-icon>
-                    AI Photo Assistant · Find · Organize · Critique
-                  </span>
-                </div>
-                <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Find your best photos by
-                  <span class="gradient-text">chatting with your library</span>
-                </h1>
-                <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Photoreka is like
-                  <strong>ChatGPT for your photo library</strong>—ask it to
-                  find your best shots, organize your catalog, or critique
-                  your portfolio, combining AI curation with
-                  <NuxtLink to="/ai_photo_search" class="cta-link"
-                    >library search</NuxtLink
-                  >, all in plain language.
-                </p>
+        <PageHero eyebrow="AI Photo Assistant · Find · Organize · Critique">
+          <template #title>
+            Find your best photos by
+            <em class="lx-accent">chatting with your library</em>
+          </template>
+          <p>
+            Photoreka is like
+            <strong>ChatGPT for your photo library</strong>—ask it to find your
+            best shots, organize your catalog, or critique your portfolio,
+            combining AI curation with
+            <NuxtLink to="/ai_photo_search">library search</NuxtLink>, all in
+            plain language.
+          </p>
+          <template #actions>
+            <LxButton icon="external" @click="goToApp">
+              Try the Assistant
+            </LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #note>
+            <span class="lx-status">No credit card required · Free to start</span>
+          </template>
+          <template #visual>
+            <ShotFrame
+              video="/videos/Chatlab_Largo_1.mp4"
+              poster="/home/video_poster.jpg"
+              alt="Photoreka ChatLab answering questions about a photo library"
+              label="Photoreka — ChatLab"
+              ratio="16 / 9"
+            />
+          </template>
+        </PageHero>
 
-                <div class="hero-actions" :class="{ visible: heroVisible }">
-                  <n-button
-                    type="primary"
-                    size="large"
-                    strong
-                    @click="goToApp"
-                    class="cta-primary"
-                  >
-                    <template #icon>
-                      <n-icon><RocketOutline /></n-icon>
-                    </template>
-                    Try the Assistant
-                  </n-button>
-                  <n-button
-                    strong
-                    secondary
-                    type="primary"
-                    size="large"
-                    @click="goToSignup"
-                  >
-                    <template #icon>
-                      <n-icon><KeyOutline /></n-icon>
-                    </template>
-                    {{ joinButtonLabel }}
-                  </n-button>
-                </div>
-                <p class="cta-note">No credit card required · Free to start</p>
-              </div>
-
-              <!-- Right: Video -->
-              <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    src="/videos/Chatlab_Largo_1.mp4"
-                    poster="/home/video_poster.jpg"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Example Conversations Section -->
-        <section class="examples-section" ref="examplesSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: examplesVisible }">
-              <h2 class="section-title">
-                Ask AI to find, organize, and critique your photos
-              </h2>
-              <p class="section-subtitle">
+        <section id="examples" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="What you can ask" align="center">
+              <template #title>
+                Ask AI to find, organize,
+                <em class="lx-accent">and critique your photos</em>
+              </template>
+              <p>
                 This is more than AI photo search. The assistant uses AI to
                 organize your full catalog and responds with your best photos,
                 curated selections, honest photography critique, and tracking of
                 your improvement over time—in whatever language you write.
               </p>
-            </div>
-
-            <div class="examples-grid" :class="{ visible: examplesVisible }">
-              <div
-                v-for="(group, i) in conversationExamples"
-                :key="i"
-                class="example-group"
-                :style="{ transitionDelay: `${i * 80}ms` }"
-              >
-                <div class="example-group-label">
-                  <n-icon size="16">
-                    <component :is="group.icon" />
-                  </n-icon>
-                  <span>{{ group.label }}</span>
-                </div>
-                <div class="example-queries">
-                  <span
-                    v-for="(q, j) in group.queries"
-                    :key="j"
-                    class="query-chip"
-                  >
-                    "{{ q }}"
-                  </span>
-                </div>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageGrid :items="conversationExamples" :columns="2">
+              <template #item="{ item }">
+                <ul class="chat-prompts">
+                  <li v-for="query in item.queries" :key="query">
+                    “{{ query }}”
+                  </li>
+                </ul>
+              </template>
+            </PageGrid>
           </div>
         </section>
 
-        <!-- How It Works Section -->
-        <section class="how-section" ref="howSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1" style="animation-delay: -5s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -12s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">How it works</h2>
-              <p class="section-subtitle">
+        <section id="how-it-works" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="How it works">
+              <template #title>
+                How it <em class="lx-accent">works</em>
+              </template>
+              <p>
                 An AI photo assistant and photo catalog search engine working
                 together on the same query.
               </p>
-            </div>
-
-            <div class="steps-container" :class="{ visible: howVisible }">
-              <div
-                v-for="(step, i) in steps"
-                :key="i"
-                class="step-card"
-                :style="{ transitionDelay: `${i * 120}ms` }"
-              >
-                <div class="step-number" :style="{ background: step.color }">
-                  {{ i + 1 }}
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">{{ step.title }}</h3>
-                  <p class="step-description">{{ step.description }}</p>
-                </div>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageSteps :steps="steps" />
           </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features-section" ref="featuresSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">
-                Everything an AI photo assistant should do for your archive
-              </h2>
-              <p class="section-subtitle">
+        <section id="features" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Features" align="center">
+              <template #title>
+                Everything an AI photo assistant
+                <em class="lx-accent">should do for your archive</em>
+              </template>
+              <p>
                 It does not stop at finding images. It reasons across your photo
                 library, curates selections, and explains what is happening in
                 your work.
               </p>
-            </div>
-
-            <div class="features-grid">
-              <div
-                v-for="(feature, index) in features"
-                :key="index"
-                class="feature-card"
-                :class="{ visible: featuresVisible }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
-              >
-                <div class="feature-icon" :style="{ color: feature.color }">
-                  <n-icon size="32">
-                    <component :is="feature.icon" />
-                  </n-icon>
-                </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-description">{{ feature.description }}</p>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageGrid :items="features" :columns="3" />
           </div>
         </section>
 
-        <!-- Search & Scoring Cross-promo Section -->
-        <section class="cross-section" ref="crossSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-2" style="animation-delay: -8s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: crossVisible }">
-              <div
-                class="hero-badge cross-badge"
-                :class="{ visible: crossVisible }"
-              >
-                <span class="badge-content">
-                  <n-icon size="16"><SearchOutline /></n-icon>
-                  Same catalog, more ways in
-                </span>
-              </div>
-              <h2 class="section-title cross-title">
+        <section id="engines" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Same catalog, more ways in" align="center">
+              <template #title>
                 Built on the same
-                <span class="gradient-text-blue"
-                  >search and scoring engines</span
-                >
-              </h2>
-              <p class="section-subtitle">
+                <em class="lx-accent">search and scoring engines</em>
+              </template>
+              <p>
                 Every answer in ChatLab draws on Photoreka's own semantic search
                 index and multi-dimensional photo scores. Prefer a focused
                 interface instead of a conversation? The same intelligence is
                 available directly.
               </p>
-            </div>
+            </SectionIntro>
 
-            <ul class="cross-features" :class="{ visible: crossVisible }">
-              <li>
-                <div class="feature-icon-wrapper" style="color: #06b6d4">
-                  <n-icon size="18"><SearchOutline /></n-icon>
-                </div>
-                <span>
-                  <NuxtLink to="/ai_photo_search" @click="goToAiSearch"
-                    >AI Photo Search</NuxtLink
-                  >
-                  — describe a photo in plain language and find it instantly, no
-                  tagging required.
-                </span>
-              </li>
-              <li>
-                <div class="feature-icon-wrapper" style="color: #f59e0b">
-                  <n-icon size="18"><BarChartOutline /></n-icon>
-                </div>
-                <span>
-                  <NuxtLink to="/photo_scoring" @click="goToScoring"
-                    >AI Photo Scoring</NuxtLink
-                  >
-                  — the same aesthetic, composition, and narrative scores,
-                  ranked and filterable across your whole catalog.
-                </span>
-              </li>
-              <li>
-                <div class="feature-icon-wrapper" style="color: #8b5cf6">
-                  <n-icon size="18"><GridOutline /></n-icon>
-                </div>
-                <span>
-                  <NuxtLink to="/ai_photo_storyboard"
-                    >AI Photo Storyboard</NuxtLink
-                  >
-                  — the same assistant docked to an infinite canvas, where it
-                  reads how your photos are arranged and helps you sequence
-                  them.
-                </span>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section" ref="faqSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: faqVisible }">
-              <h2 class="section-title">Frequently Asked Questions</h2>
-              <p class="section-subtitle">
-                What photographers usually want to know about AI photo chat and
-                photo library search
-              </p>
-            </div>
-
-            <div class="faqs-container" :class="{ visible: faqVisible }">
-              <div
-                v-for="(faq, index) in faqs"
-                :key="index"
-                class="faq-item"
-                :class="{ active: activeFAQ === index }"
+            <div class="chat-cross">
+              <NuxtLink
+                v-for="(link, index) in crossLinks"
+                :key="link.to"
+                v-reveal="index * 90"
+                :to="link.to"
+                class="chat-cross__item"
+                @click="link.onClick?.()"
               >
-                <button class="faq-question" @click="toggleFAQ(index)">
-                  <span>{{ faq.question }}</span>
-                  <n-icon
-                    size="20"
-                    class="faq-icon"
-                    :class="{ rotated: activeFAQ === index }"
-                  >
-                    <ChevronDownOutline />
-                  </n-icon>
-                </button>
-                <div v-if="activeFAQ === index" class="faq-answer">
-                  {{ faq.answer }}
-                </div>
-              </div>
+                <span class="chat-cross__icon" :style="{ color: link.color }">
+                  <n-icon size="20"><component :is="link.icon" /></n-icon>
+                </span>
+                <span class="chat-cross__title">
+                  {{ link.label }}
+                  <n-icon size="16"><ArrowForwardOutline /></n-icon>
+                </span>
+                <span class="chat-cross__desc">{{ link.text }}</span>
+              </NuxtLink>
             </div>
           </div>
         </section>
 
-        <!-- Final CTA Section -->
-        <section class="cta-section" ref="ctaSection">
-          <div class="section-container">
-            <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Start chatting with your photo catalog</h2>
-              <p class="cta-description">
-                Search your photo library, ask for critique, and build curated
-                selections from the same AI assistant.
-              </p>
-              <div class="cta-buttons">
-                <n-button
-                  type="primary"
-                  size="large"
-                  strong
-                  @click="goToApp"
-                  class="cta-primary"
-                >
-                  <template #icon>
-                    <n-icon><RocketOutline /></n-icon>
-                  </template>
-                  Try the Assistant
-                </n-button>
-                <n-button
-                  strong
-                  secondary
-                  type="primary"
-                  size="large"
-                  @click="goToSignup"
-                >
-                  <template #icon>
-                    <n-icon><KeyOutline /></n-icon>
-                  </template>
-                  {{ joinButtonLabel }}
-                </n-button>
-              </div>
-              <div class="cta-extra">
-                <p>
-                  Want to explore your photos in 3D space?
-                  <a @click="goToAtlas" class="cta-link"
-                    >Explore the 3D Atlas</a
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FaqSection :faqs="faqs" @toggle="onFaqToggle">
+          <template #title>
+            Frequently asked <em class="lx-accent">questions</em>
+          </template>
+          <p>
+            What photographers usually want to know about AI photo chat and
+            photo library search
+          </p>
+        </FaqSection>
+
+        <PageCta>
+          <template #title>
+            Start chatting with
+            <em class="lx-accent">your photo catalog</em>
+          </template>
+          <p>
+            Search your photo library, ask for critique, and build curated
+            selections from the same AI assistant.
+          </p>
+          <template #actions>
+            <LxButton icon="external" @click="goToApp">
+              Try the Assistant
+            </LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #links>
+            Want to explore your photos in 3D space?
+            <a @click="goToAtlas">Explore the 3D Atlas</a>
+          </template>
+        </PageCta>
       </div>
 
       <RequestAccessDialog
@@ -388,29 +179,14 @@
 <script setup>
 import { markRaw } from "vue";
 import {
-  SunnyOutline,
-  MoonOutline,
-  ArrowBackOutline,
-  ChatbubblesOutline,
-  RocketOutline,
-  KeyOutline,
-  ChevronDownOutline,
+  ArrowForwardOutline,
   SearchOutline,
-  FlashOutline,
-  EyeOutline,
-  ImagesOutline,
-  SpeedometerOutline,
   TrendingUpOutline,
-  ColorPaletteOutline,
   GridOutline,
   BookOutline,
-  StarOutline,
-  PodiumOutline,
   LayersOutline,
   BulbOutline,
   AnalyticsOutline,
-  PersonOutline,
-  RepeatOutline,
   BarChartOutline,
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
@@ -432,38 +208,25 @@ useHead({
 const {
   naiveTheme: currentTheme,
   naiveThemeOverrides: themeOverrides,
-  themeMode,
-  toggleTheme: baseToggleTheme,
-  canToggleTheme,
   initTheme,
 } = useTheme();
 
-const toggleTheme = () => baseToggleTheme();
+const smoothScroll = useSmoothScroll();
 
-// Refs
-const heroSection = ref(null);
-const examplesSection = ref(null);
-const howSection = ref(null);
-const featuresSection = ref(null);
-const crossSection = ref(null);
-const faqSection = ref(null);
-const ctaSection = ref(null);
-
-const heroVisible = ref(false);
-const examplesVisible = ref(false);
-const howVisible = ref(false);
-const featuresVisible = ref(false);
-const crossVisible = ref(false);
-const faqVisible = ref(false);
-const ctaVisible = ref(false);
-
-const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
 
+const navLinks = [
+  { label: "Examples", target: "examples" },
+  { label: "How it works", target: "how-it-works" },
+  { label: "Features", target: "features" },
+  { label: "Engines", target: "engines" },
+  { label: "FAQ", target: "faq" },
+];
+
 // Conversation example groups
-const conversationExamples = ref([
+const conversationExamples = [
   {
-    label: "Portfolio critique",
+    title: "Portfolio critique",
     icon: markRaw(BookOutline),
     queries: [
       "What are my strengths and weaknesses as a photographer?",
@@ -472,7 +235,7 @@ const conversationExamples = ref([
     ],
   },
   {
-    label: "Artistic evolution",
+    title: "Artistic evolution",
     icon: markRaw(TrendingUpOutline),
     queries: [
       "Have I improved in the last 6 months?",
@@ -481,7 +244,7 @@ const conversationExamples = ref([
     ],
   },
   {
-    label: "Curation & sequences",
+    title: "Curation & sequences",
     icon: markRaw(LayersOutline),
     queries: [
       "Build a narrative sequence from my Venice trip",
@@ -491,7 +254,7 @@ const conversationExamples = ref([
   },
 
   {
-    label: "Visual statistics",
+    title: "Visual statistics",
     icon: markRaw(AnalyticsOutline),
     queries: [
       "What subjects do I photograph the most?",
@@ -499,38 +262,34 @@ const conversationExamples = ref([
       "How many photos have I taken this year vs last?",
     ],
   },
-]);
+];
 
 // How it works steps
-const steps = ref([
+const steps = [
   {
     title: "You ask a question in plain language",
     description:
       "Write naturally—in English, Spanish, French, or any language you prefer. The assistant understands conversational phrasing, follow-up questions, and references to previous messages in the session.",
-    color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
     title: "The AI selects the right tools for your question",
     description:
       "Your question is automatically classified and routed to the most suitable underlying AI. Creative and curatorial questions go to one model; catalog analytics and search go to another. You never have to think about this.",
-    color: "linear-gradient(135deg, #a855f7, #ec4899)",
   },
   {
     title: "Your photos and data are fetched in parallel",
     description:
       "The assistant queries your catalog, pulls relevant photo data, and—when needed—analyzes the actual images (not just metadata). Multiple data sources can be combined in a single response.",
-    color: "linear-gradient(135deg, #6366f1, #2563eb)",
   },
   {
     title: "You get a concise answer with a curated photo set",
     description:
       "The response comes as text plus a ranked, intentionally ordered list of photos. The order is meaningful: it can represent a quality ranking, a narrative sequence, a before/after comparison, or a thematic grouping.",
-    color: "linear-gradient(135deg, #22c55e, #06b6d4)",
   },
-]);
+];
 
 // Features
-const features = ref([
+const features = [
   {
     icon: markRaw(BookOutline),
     title: "Portfolio Critique",
@@ -587,10 +346,10 @@ const features = ref([
   //     "Responds in your language. Remembers the context of your conversation so you can ask follow-up questions naturally without repeating yourself.",
   //   color: "#ec4899",
   // },
-]);
+];
 
 // FAQs
-const faqs = ref([
+const faqs = [
   {
     question: "Can the AI find my best photos automatically?",
     answer:
@@ -646,24 +405,17 @@ const faqs = ref([
     answer:
       "Yes. The assistant only accesses your own catalog—it has no visibility into other users' libraries. Your photos are processed under Photoreka's privacy policy, and your full-resolution originals are never uploaded unless you explicitly share them.",
   },
-]);
+];
 
-// Runtime config
 const config = useRuntimeConfig();
+const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 
 // Navigation
-const goToHome = () => {
-  trackUserAction("navigate_to_home", "photo_chat_page");
-  navigateTo("/");
-};
-
 const goToApp = () => {
   trackUserAction("navigate_to_app", "photo_chat_page");
   const appUrl = config.public.appUrl || "https://app.photoreka.com";
   window.open(`${appUrl}/demo/chat-lab`, "_blank");
 };
-
-const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 
 const goToSignup = () => {
   trackUserAction("open_signup", "photo_chat_page");
@@ -687,808 +439,150 @@ const goToScoring = () => {
   trackUserAction("navigate_to_scoring", "photo_chat_page");
 };
 
+const crossLinks = [
+  {
+    to: "/ai_photo_search",
+    label: "AI Photo Search",
+    text: "Describe a photo in plain language and find it instantly, no tagging required.",
+    icon: markRaw(SearchOutline),
+    color: "#06b6d4",
+    onClick: goToAiSearch,
+  },
+  {
+    to: "/photo_scoring",
+    label: "AI Photo Scoring",
+    text: "The same aesthetic, composition, and narrative scores, ranked and filterable across your whole catalog.",
+    icon: markRaw(BarChartOutline),
+    color: "#f59e0b",
+    onClick: goToScoring,
+  },
+  {
+    to: "/ai_photo_storyboard",
+    label: "AI Photo Storyboard",
+    text: "The same assistant docked to an infinite canvas, where it reads how your photos are arranged and helps you sequence them.",
+    icon: markRaw(GridOutline),
+    color: "#8b5cf6",
+  },
+];
+
 const onRequestSuccess = () => {
   showRequestDialog.value = false;
 };
 
-const toggleFAQ = (index) => {
-  const wasOpen = activeFAQ.value === index;
-  activeFAQ.value = wasOpen ? null : index;
+const onFaqToggle = (index, isOpen) => {
   trackEvent("faq_toggle", {
     page: "photo_chat",
     faq_index: index,
-    action: wasOpen ? "close" : "open",
+    action: isOpen ? "open" : "close",
   });
-};
-
-// Scroll animations
-const setupScrollAnimations = () => {
-  const opts = { threshold: 0.2, rootMargin: "0px 0px -100px 0px" };
-  const watch = (section, flag) => {
-    if (!section.value) return;
-    new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) flag.value = true;
-      });
-    }, opts).observe(section.value);
-  };
-  watch(heroSection, heroVisible);
-  watch(examplesSection, examplesVisible);
-  watch(howSection, howVisible);
-  watch(featuresSection, featuresVisible);
-  watch(crossSection, crossVisible);
-  watch(faqSection, faqVisible);
-  watch(ctaSection, ctaVisible);
 };
 
 onMounted(() => {
   initTheme();
-  heroVisible.value = true;
-  setupScrollAnimations();
-
+  smoothScroll.enable();
   trackEvent("page_view", {
     page: "photo_chat",
     page_title: "ChatLab – Photoreka",
   });
 });
+
+onBeforeUnmount(() => {
+  smoothScroll.disable();
+});
 </script>
 
 <style scoped>
-/* ─── Page Container ─────────────────────────────────────── */
-.framer-page {
-  min-height: 100vh;
-  background: var(--premium-bg-primary);
-  color: var(--premium-text-primary);
-}
-
-/* ─── Navigation ─────────────────────────────────────────── */
-.premium-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--premium-bg-nav);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--premium-border);
-}
-
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-}
-.nav-brand a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  color: var(--premium-text-primary);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle:hover {
-  background: var(--premium-bg-hover);
-}
-
-.back-link {
-  font-size: var(--fs-base);
-}
-
-/* ─── Hero ───────────────────────────────────────────────── */
-.framer-hero {
-  position: relative;
-  padding: 8rem 2rem 6rem;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.hero-background {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-layout {
+/* ── Prompt examples ───────────────────────────────────────── */
+.chat-prompts {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 4rem;
-  align-items: center;
+  gap: 0.55rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.hero-content {
+.chat-prompts li {
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--lx-radius-sm);
+  background: var(--lx-surface-2);
+  border: 1px solid var(--lx-line);
+  font-family: var(--lx-font-display);
+  font-style: italic;
+  font-weight: 340;
+  font-size: 1.04rem;
+  line-height: 1.4;
+  color: var(--lx-text-2);
+}
+
+/* ── Cross-links to search, scoring and storyboard ─────────── */
+.chat-cross {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.chat-cross__item {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0.85rem;
+  padding: clamp(24px, 2.6vw, 36px);
+  border-radius: var(--lx-radius-lg);
+  border: 1px solid var(--lx-line-2);
+  background: var(--lx-surface);
+  box-shadow: var(--lx-highlight);
+  color: var(--lx-text);
+  text-decoration: none;
+  transition:
+    transform 0.6s var(--lx-ease),
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 }
 
-/* ─── Hero Badge ─────────────────────────────────────────── */
-.hero-badge {
+.chat-cross__item:hover {
+  transform: translateY(-4px);
+  border-color: var(--lx-line-3);
+  background: var(--lx-surface-2);
+}
+
+.chat-cross__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0.5rem;
+  border-radius: 13px;
+  background: var(--lx-surface-3);
+  border: 1px solid var(--lx-line);
+}
+
+.chat-cross__title {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  border-radius: 50px;
-  font-size: var(--fs-sm);
-  font-weight: var(--font-weight-semibold);
-  color: #8b5cf6;
-  width: fit-content;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--lx-font-display);
+  font-weight: 380;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-.hero-badge.visible {
-  opacity: 1;
-  transform: translateY(0);
+.chat-cross__title .n-icon {
+  transition: transform 0.5s var(--lx-ease);
 }
 
-.badge-content {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.chat-cross__item:hover .chat-cross__title .n-icon {
+  transform: translateX(4px);
 }
 
-/* ─── Hero Title / Subtitle ──────────────────────────────── */
-.hero-title {
-  font-size: var(--fs-display-promo);
-  font-weight: var(--font-weight-black);
-  margin: 0;
-  line-height: var(--line-height-none);
-  letter-spacing: var(--letter-spacing-tighter);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+.chat-cross__desc {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--lx-text-2);
 }
 
-.hero-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-subtitle {
-  max-width: 540px;
-  margin: 0;
-  font-size: var(--fs-lead);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-}
-
-.hero-subtitle.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-
-.hero-actions.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cta-note {
-  font-size: var(--fs-xs);
-  color: var(--premium-text-secondary);
-  margin-top: -0.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-}
-
-/* cta-note follows the visible class cascade from hero-badge since hero is set
-   visible on mount – we apply it directly */
-.framer-hero .cta-note {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.6s;
-}
-
-/* ─── Hero Visual ────────────────────────────────────────── */
-.hero-visual {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.hero-visual.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* ─── Gradient Effects ───────────────────────────────────── */
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.18;
-  animation: float 25s infinite ease-in-out;
-  will-change: transform;
-}
-
-.orb-1 {
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  top: -300px;
-  right: -200px;
-}
-
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, #6366f1, #2563eb);
-  bottom: -200px;
-  left: -250px;
-  animation-delay: -10s;
-}
-
-.orb-3 {
-  width: 550px;
-  height: 550px;
-  background: linear-gradient(135deg, #a855f7, #ec4899);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -15s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-50px, 50px) scale(0.9);
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
-}
-
-.gradient-text-blue {
-  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
-}
-
-/* ─── Sections (shared) ──────────────────────────────────── */
-.section-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.section-header {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 3rem;
-}
-
-.section-header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  text-align: center;
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.section-subtitle {
-  font-size: var(--fs-subheading);
-  color: var(--premium-text-secondary);
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: var(--line-height-loose);
-}
-
-/* ─── Examples Section ───────────────────────────────────── */
-.examples-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.examples-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.examples-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.example-group {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.example-group:hover {
-  border-color: rgba(139, 92, 246, 0.4);
-  transform: translateY(-3px);
-}
-
-.example-group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--fs-xs);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wider);
-  color: #8b5cf6;
-  margin-bottom: 1rem;
-}
-
-.example-queries {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.query-chip {
-  display: inline-block;
-  font-size: var(--fs-sm);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-relaxed);
-  font-style: italic;
-}
-
-/* ─── How It Works ───────────────────────────────────────── */
-.how-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-
-.steps-container {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.steps-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.step-card {
-  display: flex;
-  gap: 2rem;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.step-card:hover {
-  transform: translateX(6px);
-  border-color: rgba(139, 92, 246, 0.35);
-}
-
-.step-number {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border-radius: 50%;
-  font-size: var(--fs-3xl);
-  font-weight: var(--font-weight-bold);
-}
-
-.step-content {
-  flex: 1;
-}
-
-.step-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.5rem;
-}
-
-.step-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-}
-
-/* ─── Features Grid ──────────────────────────────────────── */
-.features-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.feature-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.feature-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.12);
-}
-
-.feature-icon {
-  margin-bottom: 1.25rem;
-}
-
-.feature-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.6rem;
-}
-
-.feature-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-}
-
-/* ─── Cross-promo Section ────────────────────────────────── */
-.cross-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-
-.cross-badge {
-  background: rgba(37, 99, 235, 0.1);
-  border-color: rgba(37, 99, 235, 0.3);
-  color: #2563eb;
-}
-
-.cross-title {
-  font-size: var(--fs-h1) !important;
-}
-
-.cross-features {
-  list-style: none;
-  padding: 0;
-  margin: 2rem auto 0;
-  max-width: 640px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
-}
-
-.cross-features.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cross-features li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--premium-text-primary);
-  font-size: var(--fs-base);
-  text-align: left;
-}
-
-.cross-features li a {
-  color: #8b5cf6;
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-}
-
-.cross-features li a:hover {
-  text-decoration: underline;
-}
-
-.feature-icon-wrapper {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 8px;
-}
-
-.video-frame {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--premium-bg-card);
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--premium-border);
-}
-
-.hero-video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ─── FAQ Section ────────────────────────────────────────── */
-.faq-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.faqs-container {
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.faqs-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.faq-item {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.faq-item:hover,
-.faq-item.active {
-  border-color: #8b5cf6;
-}
-
-.faq-question {
-  width: 100%;
-  padding: 1.5rem;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  color: var(--premium-text-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  text-align: left;
-  gap: 1rem;
-}
-
-.faq-icon {
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-  color: var(--premium-text-secondary);
-}
-
-.faq-icon.rotated {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ─── CTA Section ────────────────────────────────────────── */
-.cta-section {
-  padding: 6rem 2rem;
-}
-
-.cta-content {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cta-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cta-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.cta-description {
-  font-size: var(--fs-xl);
-  color: var(--premium-text-secondary);
-  margin-bottom: 2rem;
-  line-height: var(--line-height-loose);
-}
-
-.cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.cta-extra {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--premium-border);
-  font-size: var(--fs-base);
-  color: var(--premium-text-secondary);
-}
-
-.cta-link {
-  color: #8b5cf6;
-  font-weight: var(--font-weight-semibold);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.cta-link:hover {
-  text-decoration: underline;
-}
-
-/* ─── Responsive ─────────────────────────────────────────── */
-@media (max-width: 968px) {
-  .hero-layout {
+@media (max-width: 1023px) {
+  .chat-cross {
     grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .hero-content {
-    text-align: center;
-    align-items: center;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .hero-subtitle {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 1rem;
-  }
-
-  .framer-hero {
-    padding: 6rem 1rem 3rem;
-    min-height: auto;
-  }
-
-  .hero-title {
-    font-size: var(--fs-h1);
-  }
-
-  .features-grid,
-  .examples-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .step-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .cross-features li {
-    font-size: var(--fs-sm);
   }
 }
 </style>

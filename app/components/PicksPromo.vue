@@ -5,7 +5,7 @@
     :class="{ 'ppr-section--immersive': immersive }"
   >
     <div v-if="immersive" class="lx-container">
-      <SectionIntro :eyebrow="eyebrow" :index="index" align="center">
+      <SectionIntro :eyebrow="eyebrow" align="center">
         <template #title>
           Or just rank your entire catalog,
           <em class="lx-accent">no sign-up</em>
@@ -95,7 +95,6 @@ const props = defineProps({
   /** lx landing system: section intro + card that expands to full bleed. */
   immersive: { type: Boolean, default: false },
   eyebrow: { type: String, default: "Photoreka Picks" },
-  index: { type: String, default: "" },
 });
 
 const podium = rankShowcase("overall").slice(0, 3);

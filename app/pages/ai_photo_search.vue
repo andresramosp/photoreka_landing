@@ -1,284 +1,142 @@
 <template>
   <n-config-provider :theme="currentTheme" :theme-overrides="themeOverrides">
     <n-message-provider>
-      <div class="framer-page">
-        <!-- Navigation Header -->
-        <nav class="premium-nav">
-          <div class="nav-container">
-            <div class="nav-brand">
-              <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="40" />
-              </NuxtLink>
-            </div>
-            <div class="nav-actions">
-              <button
-                v-if="canToggleTheme(true)"
-                class="theme-toggle"
-                @click="toggleTheme"
-                aria-label="Toggle theme"
-              >
-                <n-icon size="20">
-                  <component
-                    :is="themeMode === 'dark' ? SunnyOutline : MoonOutline"
-                  />
-                </n-icon>
-              </button>
-              <n-button text @click="goToHome" class="back-link">
-                <template #icon>
-                  <n-icon><ArrowBackOutline /></n-icon>
-                </template>
-                Back to Home
-              </n-button>
-            </div>
-          </div>
-        </nav>
+      <div class="lx-page lx-numbered">
+        <PageNav source="ai_photo_search_page" :links="navLinks" />
 
-        <!-- Hero Section -->
-        <section class="framer-hero" ref="heroSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout">
-              <!-- Left: Content -->
-              <div class="hero-content">
-                <div class="hero-badge" :class="{ visible: heroVisible }">
-                  <span class="badge-content">
-                    <n-icon size="16"><SearchOutline /></n-icon>
-                    AI search across your own library
-                  </span>
-                </div>
-                <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Find any photo in
-                  <span class="gradient-text">your own catalog</span>
-                  just by describing it
-                </h1>
-                <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Point Photoreka at
-                  <strong>your own photo library</strong>—local files,
-                  Lightroom, Google Photos, Dropbox—and it learns what's inside
-                  every shot. Then stop scrolling through thousands of images
-                  trying to remember where something is. Just type what you
-                  remember— <em>"rainy street at night with reflections"</em>,
-                  <em>"smiling kid, warm light, shallow focus"</em>,
-                  <em>"Blade Runner-style atmosphere"</em>—and it surfaces the
-                  photo instantly.<br /><br />
-                  No tagging. No folders. No metadata editing. Pure
-                  <strong>semantic search</strong> powered by computer vision AI
-                  that understands your photos the way you do
-                </p>
+        <PageHero eyebrow="AI search across your own library">
+          <template #title>
+            Find any photo in
+            <em class="lx-accent">your own catalog</em>
+            just by describing it
+          </template>
+          <p>
+            Point Photoreka at <strong>your own photo library</strong>—local
+            files, Lightroom, Google Photos, Dropbox—and it learns what's inside
+            every shot. Then stop scrolling through thousands of images trying
+            to remember where something is. Just type what you remember—
+            <em>"rainy street at night with reflections"</em>,
+            <em>"smiling kid, warm light, shallow focus"</em>,
+            <em>"Blade Runner-style atmosphere"</em>—and it surfaces the photo
+            instantly.
+          </p>
+          <p>
+            No tagging. No folders. No metadata editing. Pure
+            <strong>semantic search</strong> powered by computer vision AI that
+            understands your photos the way you do
+          </p>
+          <template #actions>
+            <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #note>
+            <span>Shooting commercial work?</span>
+            <button class="lx-link" @click="goToCommercialDemo">
+              Try the commercial demo
+              <n-icon size="15"><ArrowForwardOutline /></n-icon>
+            </button>
+          </template>
+          <template #visual>
+            <ShotFrame
+              video="/videos/Search.mp4"
+              poster="/home/video_poster.jpg"
+              alt="Photoreka AI photo search by natural language"
+              label="Photoreka — Search"
+              ratio="16 / 9"
+              :playback-rate="0.8"
+            />
+          </template>
+        </PageHero>
 
-                <div class="hero-actions" :class="{ visible: heroVisible }">
-                  <n-button type="info" size="large" strong @click="goToDemo">
-                    <template #icon>
-                      <n-icon><PlayCircleOutline /></n-icon>
-                    </template>
-                    Try the Demo
-                  </n-button>
-                  <n-button
-                    strong
-                    secondary
-                    type="info"
-                    size="large"
-                    @click="goToSignup"
-                  >
-                    <template #icon>
-                      <n-icon><KeyOutline /></n-icon>
-                    </template>
-                    {{ joinButtonLabel }}
-                  </n-button>
-                </div>
-                <p class="hero-alt-demo" :class="{ visible: heroVisible }">
-                  <n-icon size="14"><BriefcaseOutline /></n-icon>
-                  <span>
-                    Shooting commercial work?
-                    <a class="hero-alt-demo-link" @click="goToCommercialDemo"
-                      >Try the commercial demo →</a
-                    >
-                  </span>
-                </p>
-              </div>
-
-              <!-- Right: Video -->
-              <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    :src="'/videos/Search.mp4'"
-                    poster="/home/video_poster.jpg"
-                    ref="videoRef"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Search Examples Section -->
-        <section class="examples-section" ref="examplesSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: examplesVisible }">
-              <h2 class="section-title">
-                Search your catalog the way you think
-              </h2>
-              <p class="section-subtitle">
+        <section id="examples" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Search examples" align="center">
+              <template #title>
+                Search your catalog
+                <em class="lx-accent">the way you think</em>
+              </template>
+              <p>
                 Photoreka reads every photo in your library and understands
                 natural language, visual descriptions, emotions, styles, and
                 even references to other photographers or films. If you can
                 describe it, you can find it in your archive.
               </p>
-            </div>
-
-            <div class="examples-grid" :class="{ visible: examplesVisible }">
-              <div
-                v-for="(group, i) in searchExamples"
-                :key="i"
-                class="example-group"
-                :style="{ transitionDelay: `${i * 80}ms` }"
-              >
-                <div class="example-group-label">
-                  <n-icon size="16">
-                    <component :is="group.icon" />
-                  </n-icon>
-                  <span>{{ group.label }}</span>
-                </div>
-                <div class="example-queries">
-                  <span
-                    v-for="(q, j) in group.queries"
-                    :key="j"
-                    class="query-chip"
-                  >
-                    "{{ q }}"
-                  </span>
-                </div>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageGrid :items="searchExamples" :columns="3">
+              <template #item="{ item }">
+                <ul class="search-queries">
+                  <li v-for="query in item.queries" :key="query">
+                    “{{ query }}”
+                  </li>
+                </ul>
+              </template>
+            </PageGrid>
           </div>
         </section>
 
-        <!-- How It Works Section -->
-        <section class="how-section" ref="howSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1" style="animation-delay: -5s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -12s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">How it works</h2>
-              <p class="section-subtitle">
+        <section id="how-it-works" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="How it works">
+              <template #title>
+                How it <em class="lx-accent">works</em>
+              </template>
+              <p>
                 No black box. Here's exactly what happens when you type a query.
               </p>
-            </div>
-
-            <div class="steps-container" :class="{ visible: howVisible }">
-              <div
-                v-for="(step, i) in steps"
-                :key="i"
-                class="step-card"
-                :style="{ transitionDelay: `${i * 120}ms` }"
-              >
-                <div class="step-number" :style="{ background: step.color }">
-                  {{ i + 1 }}
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">{{ step.title }}</h3>
-                  <p class="step-description">{{ step.description }}</p>
-                </div>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageSteps :steps="steps" />
           </div>
         </section>
 
-        <!-- Features Grid Section -->
-        <section class="features-section" ref="featuresSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">More than keyword search</h2>
-              <p class="section-subtitle">
+        <section id="features" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Features" align="center">
+              <template #title>
+                More than <em class="lx-accent">keyword search</em>
+              </template>
+              <p>
                 Photoreka's search understands context, mood, composition, and
                 intent—not just the words in your metadata.
               </p>
-            </div>
-
-            <div class="features-grid">
-              <div
-                v-for="(feature, index) in features"
-                :key="index"
-                class="feature-card"
-                :class="{ visible: featuresVisible }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
-              >
-                <div class="feature-icon" :style="{ color: feature.color }">
-                  <n-icon size="32">
-                    <component :is="feature.icon" />
-                  </n-icon>
-                </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-description">{{ feature.description }}</p>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageGrid :items="features" :columns="3" />
           </div>
         </section>
 
-        <!-- Search Modes / Alternatives Section -->
-        <section class="modes-section" ref="modesSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-2" style="animation-delay: -8s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: modesVisible }">
-              <h2 class="section-title">
-                Three search modes, honest about precision
-              </h2>
-              <p class="section-subtitle">
+        <section id="modes" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Search modes" align="center">
+              <template #title>
+                Three search modes,
+                <em class="lx-accent">honest about precision</em>
+              </template>
+              <p>
                 Most AI photo search tools use a single embedding model. When
                 results drift, they call it "associative" or "metaphorical"—but
                 that's just imprecision with better branding. Photoreka gives
                 you three distinct modes and tells you exactly what each one
                 does.
               </p>
-            </div>
+            </SectionIntro>
 
-            <div class="modes-grid" :class="{ visible: modesVisible }">
-              <div
-                v-for="(mode, i) in searchModes"
-                :key="i"
-                class="mode-card"
-                :style="{ transitionDelay: `${i * 110}ms` }"
-              >
-                <div class="mode-header">
-                  <span
-                    class="mode-tag"
-                    :style="{
-                      color: mode.color,
-                      borderColor: mode.color + '55',
-                      background: mode.color + '18',
-                    }"
-                    >{{ mode.tag }}</span
-                  >
-                  <h3 class="mode-title">{{ mode.title }}</h3>
-                </div>
-                <p class="mode-description">{{ mode.description }}</p>
-                <div class="mode-example">
-                  <span class="mode-example-label">Example:</span>
-                  <em>"{{ mode.example }}"</em>
-                </div>
-              </div>
-            </div>
+            <PageGrid :items="searchModes" :columns="3">
+              <template #item="{ item }">
+                <p class="search-mode-example">
+                  <span>Example</span>
+                  <em>“{{ item.example }}”</em>
+                </p>
+              </template>
+            </PageGrid>
 
-            <!-- Excire/alternatives callout -->
-            <div class="alt-callout" :class="{ visible: modesVisible }">
-              <div class="alt-callout-inner">
-                <h3 class="alt-callout-title">
-                  A real Excire Search alternative
+            <div v-reveal="120" class="lx-card search-alt">
+              <div class="search-alt__copy">
+                <h3 class="lx-title lx-title--md">
+                  A real
+                  <em class="lx-accent">Excire Search alternative</em>
                 </h3>
-                <p class="alt-callout-text">
+                <p class="search-alt__text">
                   Excire Search, Mylio Photos, and DigiKam use CLIP-based
                   embeddings with a hard ~77-token limit—long queries get
                   silently truncated, and a single mode means results are always
@@ -286,39 +144,7 @@
                   Precise mode that <em>verifies</em> candidates against your
                   exact conditions rather than just ranking by vector proximity.
                 </p>
-                <div class="alt-features">
-                  <div class="alt-feature">
-                    <span class="alt-check">✓</span>
-                    <span
-                      >Unlimited query length — no silent truncation of complex
-                      descriptions</span
-                    >
-                  </div>
-                  <div class="alt-feature">
-                    <span class="alt-check">✓</span>
-                    <span
-                      >Three honest modes instead of one broad model rebranded
-                      as "intelligent"</span
-                    >
-                  </div>
-                  <div class="alt-feature">
-                    <span class="alt-check">✓</span>
-                    <span
-                      >Enriched result insights — understand <em>why</em> each
-                      photo surfaced</span
-                    >
-                  </div>
-                  <div class="alt-feature">
-                    <span class="alt-check">✓</span>
-                    <span
-                      ><NuxtLink to="/photo_chat" class="cta-link"
-                        >ChatLab</NuxtLink
-                      >: an LLM vision layer for conversational, iterative
-                      refinement</span
-                    >
-                  </div>
-                </div>
-                <p class="alt-note">
+                <p class="search-alt__note">
                   Also relevant if you're looking for an alternative to
                   <strong>Google Photos</strong> (avoid cloud lock-in),
                   <strong>Mylio Photos</strong>, or
@@ -326,181 +152,103 @@
                   or curation tools of Photoreka.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Lightroom Section (secondary) -->
-        <section class="lr-section" ref="lrSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1" style="animation-delay: -8s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -3s"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout lr-layout" :class="{ visible: lrVisible }">
-              <!-- Left: Video -->
-              <div class="hero-visual" :class="{ visible: lrVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    src="/videos/lr_plugin.mp4"
-                    poster="/home/video_lr_poster.jpg"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
-
-              <!-- Right: Content -->
-              <div class="hero-content" :class="{ visible: lrVisible }">
-                <div class="hero-badge lr-badge">
-                  <span class="badge-content">
-                    <img
-                      src="/logos/lightroom_logo.png"
-                      alt="Adobe Lightroom"
-                      style="height: 18px; width: 18px; object-fit: contain"
-                    />
-                    Also available in Lightroom Classic
-                  </span>
-                </div>
-                <h2 class="hero-title lr-title">
-                  Search directly from
-                  <span class="gradient-text">Lightroom Classic</span>
-                </h2>
-                <!-- <p class="hero-subtitle">
-                  Already using Lightroom? Our official plugin brings the same
-                  AI-powered natural language search directly into your existing
-                  workflow—without leaving Lightroom or migrating your catalog.
-                  Install it, analyze your library once, and start searching
-                  naturally from within Lightroom's own panels.
-                </p> -->
-
-                <ul class="lr-features">
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #2563eb">
-                      <n-icon size="18"><SyncOutline /></n-icon>
-                    </div>
-                    <span>Reads your existing catalog—nothing changes</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #8b5cf6">
-                      <n-icon size="18"><ChatbubblesOutline /></n-icon>
-                    </div>
-                    <span>Search panel integrated inside Lightroom</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #22c55e">
-                      <n-icon size="18"><LockClosedOutline /></n-icon>
-                    </div>
-                    <span>All processing runs locally on your machine</span>
-                  </li>
-                  <li>
-                    <div class="feature-icon-wrapper" style="color: #f59e0b">
-                      <n-icon size="18"><LinkOutline /></n-icon>
-                    </div>
-                    <span>Compatible with Lightroom Classic 13.0+</span>
-                  </li>
-                </ul>
-
-                <div class="hero-actions">
-                  <n-button
-                    type="warning"
-                    size="large"
-                    strong
-                    @click="goToLightroomPlugin"
+              <ul class="lx-list search-alt__list">
+                <li>
+                  <span class="lx-tick" aria-hidden="true" />
+                  <span
+                    >Unlimited query length — no silent truncation of complex
+                    descriptions</span
                   >
-                    <template #icon>
-                      <n-icon><DownloadOutline /></n-icon>
-                    </template>
-                    See the Plugin
-                  </n-button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Geo Recovery Promo Section -->
-        <GeoRecoveryPromo />
-
-        <!-- FAQ Section -->
-        <section class="faq-section" ref="faqSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: faqVisible }">
-              <h2 class="section-title">Frequently Asked Questions</h2>
-              <p class="section-subtitle">
-                Everything you need to know about AI photo search
-              </p>
-            </div>
-
-            <div class="faqs-container" :class="{ visible: faqVisible }">
-              <div
-                v-for="(faq, index) in faqs"
-                :key="index"
-                class="faq-item"
-                :class="{ active: activeFAQ === index }"
-              >
-                <button class="faq-question" @click="toggleFAQ(index)">
-                  <span>{{ faq.question }}</span>
-                  <n-icon
-                    size="20"
-                    class="faq-icon"
-                    :class="{ rotated: activeFAQ === index }"
+                </li>
+                <li>
+                  <span class="lx-tick" aria-hidden="true" />
+                  <span
+                    >Three honest modes instead of one broad model rebranded as
+                    "intelligent"</span
                   >
-                    <ChevronDownOutline />
-                  </n-icon>
-                </button>
-                <div v-if="activeFAQ === index" class="faq-answer">
-                  {{ faq.answer }}
-                </div>
-              </div>
+                </li>
+                <li>
+                  <span class="lx-tick" aria-hidden="true" />
+                  <span
+                    >Enriched result insights — understand <em>why</em> each
+                    photo surfaced</span
+                  >
+                </li>
+                <li>
+                  <span class="lx-tick" aria-hidden="true" />
+                  <span
+                    ><NuxtLink to="/photo_chat" class="lx-inline-link"
+                      >ChatLab</NuxtLink
+                    >: an LLM vision layer for conversational, iterative
+                    refinement</span
+                  >
+                </li>
+              </ul>
             </div>
           </div>
         </section>
 
-        <!-- Final CTA Section -->
-        <section class="cta-section" ref="ctaSection">
-          <div class="section-container">
-            <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Stop searching. Start finding.</h2>
-              <p class="cta-description">
-                Your archive has been waiting to be understood. Try the demo and
-                search your photos the way you've always wanted—by describing
-                what you see, feel, and remember.
-              </p>
-              <div class="cta-buttons">
-                <n-button type="info" size="large" strong @click="goToDemo">
-                  <template #icon>
-                    <n-icon><PlayCircleOutline /></n-icon>
-                  </template>
-                  Try the Demo
-                </n-button>
-                <n-button
-                  strong
-                  secondary
-                  type="info"
-                  size="large"
-                  @click="goToSignup"
-                >
-                  <template #icon>
-                    <n-icon><KeyOutline /></n-icon>
-                  </template>
-                  {{ joinButtonLabel }}
-                </n-button>
-              </div>
-              <div class="cta-extra">
-                <p>
-                  Want to see how photos are organized in space?
-                  <a @click="goToAtlas" class="cta-link"
-                    >Explore the 3D Atlas</a
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <MediaSplitSection
+          id="lightroom"
+          eyebrow="Also available in Lightroom Classic"
+          video="/videos/lr_plugin.mp4"
+          poster="/home/video_lr_poster.jpg"
+          alt="Photoreka search panel inside Adobe Lightroom Classic"
+          label="Lightroom Classic — Photoreka"
+          reverse
+        >
+          <template #title>
+            Search directly from
+            <em class="lx-accent">Lightroom Classic</em>
+          </template>
+          <ul class="lx-list search-lr">
+            <li v-for="item in lightroomPoints" :key="item.text">
+              <span class="search-lr__icon" :style="{ color: item.color }">
+                <n-icon size="17"><component :is="item.icon" /></n-icon>
+              </span>
+              <span>{{ item.text }}</span>
+            </li>
+          </ul>
+          <template #actions>
+            <LxButton
+              icon="download"
+              to="/lightroom_search_plugin"
+              @click="onLightroomPlugin"
+            >
+              See the Plugin
+            </LxButton>
+          </template>
+        </MediaSplitSection>
+
+        <GeoRecoveryPromo source="ai_photo_search_page" />
+
+        <FaqSection :faqs="faqs" @toggle="onFaqToggle">
+          <template #title>
+            Frequently asked <em class="lx-accent">questions</em>
+          </template>
+          <p>Everything you need to know about AI photo search</p>
+        </FaqSection>
+
+        <PageCta>
+          <template #title>
+            Stop searching. <em class="lx-accent">Start finding.</em>
+          </template>
+          <p>
+            Your archive has been waiting to be understood. Try the demo and
+            search your photos the way you've always wanted—by describing what
+            you see, feel, and remember.
+          </p>
+          <template #actions>
+            <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #links>
+            Want to see how photos are organized in space?
+            <a @click="goToAtlas">Explore the 3D Atlas</a>
+          </template>
+        </PageCta>
       </div>
 
       <RequestAccessDialog
@@ -514,20 +262,12 @@
 <script setup>
 import { markRaw } from "vue";
 import {
-  SunnyOutline,
-  MoonOutline,
-  ArrowBackOutline,
-  PlayCircleOutline,
-  SearchOutline,
-  KeyOutline,
-  ChevronDownOutline,
+  ArrowForwardOutline,
   ChatbubblesOutline,
-  BriefcaseOutline,
   SpeedometerOutline,
   LockClosedOutline,
   LinkOutline,
   SyncOutline,
-  DownloadOutline,
   ColorPaletteOutline,
   ImagesOutline,
   EyeOutline,
@@ -555,42 +295,28 @@ useHead({
 const {
   naiveTheme: currentTheme,
   naiveThemeOverrides: themeOverrides,
-  themeMode,
-  toggleTheme: baseToggleTheme,
-  canToggleTheme,
   initTheme,
 } = useTheme();
 
-const toggleTheme = () => baseToggleTheme();
+const smoothScroll = useSmoothScroll();
 
-// Refs
-const heroSection = ref(null);
-const examplesSection = ref(null);
-const howSection = ref(null);
-const featuresSection = ref(null);
-const modesSection = ref(null);
-const lrSection = ref(null);
-const faqSection = ref(null);
-const ctaSection = ref(null);
-const videoRef = ref(null);
-
-const heroVisible = ref(false);
-const examplesVisible = ref(false);
-const howVisible = ref(false);
-const featuresVisible = ref(false);
-const modesVisible = ref(false);
-const lrVisible = ref(false);
-const faqVisible = ref(false);
-const ctaVisible = ref(false);
-
-const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
 
+const navLinks = [
+  { label: "Examples", target: "examples" },
+  { label: "How it works", target: "how-it-works" },
+  { label: "Features", target: "features" },
+  { label: "Modes", target: "modes" },
+  { label: "Lightroom", target: "lightroom" },
+  { label: "FAQ", target: "faq" },
+];
+
 // Search example groups
-const searchExamples = ref([
+const searchExamples = [
   {
-    label: "By subject & scene",
+    title: "By subject & scene",
     icon: markRaw(ImagesOutline),
+    color: "#06b6d4",
     queries: [
       "street scene at dusk with neon signs",
       "child laughing on the beach",
@@ -598,8 +324,9 @@ const searchExamples = ref([
     ],
   },
   {
-    label: "By mood & emotion",
+    title: "By mood & emotion",
     icon: markRaw(HappyOutline),
+    color: "#f59e0b",
     queries: [
       "melancholic portrait in window light",
       "joyful chaos at a family gathering",
@@ -607,8 +334,9 @@ const searchExamples = ref([
     ],
   },
   {
-    label: "By light & color",
+    title: "By light & color",
     icon: markRaw(ColorPaletteOutline),
+    color: "#ec4899",
     queries: [
       "warm golden hour backlight",
       "high contrast black and white, deep shadows",
@@ -616,8 +344,9 @@ const searchExamples = ref([
     ],
   },
   {
-    label: "By style & reference",
+    title: "By style & reference",
     icon: markRaw(FilmOutline),
+    color: "#8b5cf6",
     queries: [
       "Blade Runner-style atmosphere",
       "Vivian Maier street photography feel",
@@ -625,8 +354,9 @@ const searchExamples = ref([
     ],
   },
   {
-    label: "Super precise & logical",
+    title: "Super precise & logical",
     icon: markRaw(GridOutline),
+    color: "#22c55e",
     queries: [
       "silhouette with sun behind",
       "three people looking at the camera",
@@ -634,46 +364,43 @@ const searchExamples = ref([
     ],
   },
   {
-    label: "Nuanced & broad",
+    title: "Nuanced & broad",
     icon: markRaw(EyeOutline),
+    color: "#2563eb",
     queries: [
       "tension and release",
       "nostalgia mixed with hope",
       "abandoned but not desolate",
     ],
   },
-]);
+];
 
 // How it works steps
-const steps = ref([
+const steps = [
   {
     title: "Your photos are analyzed once",
     description:
       "When you upload or sync your library, Photoreka's computer vision model processes each photo and extracts a high-dimensional visual embedding—a numerical representation that captures content, mood, composition, colors, and style.",
-    color: "linear-gradient(135deg, #2563eb, #06b6d4)",
   },
   {
     title: "Your query becomes a vector too",
     description:
       "When you type a search, Photoreka converts your text into a vector in the same semantic space as your photo embeddings using a multimodal AI model trained to align language and images.",
-    color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
     title: "Similarity search returns results instantly",
     description:
       "A fast vector similarity search (cosine distance) finds the photos whose embeddings are closest to your query vector. Results are ranked by semantic relevance—not by filename, date, or metadata.",
-    color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
     title: "Results improve as you refine",
     description:
       "You can combine queries, filter by date or source, and use figurative or emotional language. The more specific your description, the more precise the results—even across 100,000+ photos.",
-    color: "linear-gradient(135deg, #f59e0b, #f97316)",
   },
-]);
+];
 
 // Features
-const features = ref([
+const features = [
   {
     icon: markRaw(ChatbubblesOutline),
     title: "Natural Language",
@@ -716,39 +443,62 @@ const features = ref([
       "Whether you have 100 or 5000 photos, search performance stays consistent. The more you have, the more powerful the discovery.",
     color: "#06b6d4",
   },
-]);
+];
 
 // Search modes (Broad / Adaptive / Precise)
-const searchModes = ref([
+const searchModes = [
   {
-    tag: "Broad",
+    kicker: "Broad",
     title: "Broad search",
     description:
       "Pure embedding similarity — your query and every photo coexist in the same semantic space. Fast, associative, and ideal when you're exploring or describing mood, style, and feeling rather than specific facts.",
     example: "abandoned but not desolate",
-    color: "#8b5cf6",
+    color: "#a78bfa",
   },
   {
-    tag: "Adaptive",
+    kicker: "Adaptive",
     title: "Adaptive search",
     description:
       "Designed for cultural references and stylistic shorthand. When you type 'Blade Runner-inspired photos', Photoreka automatically unpacks what that means — neon reflections, wet asphalt, dystopian atmosphere, high contrast — and adds those nuances under the hood. It uses Broad's recall strength and enriches it with the implicit vocabulary your reference carries.",
     example: "Blade Runner-inspired photos",
-    color: "#2563eb",
+    color: "var(--lx-accent)",
   },
   {
-    tag: "Precise",
+    kicker: "Precise",
     title: "Precise search",
     description:
       "Adds a logical inference layer on top of embeddings. The model doesn't just rank candidates by vector proximity — it reasons through your description and actively verifies that each result meets your specific conditions. Real precision, not rebranded association.",
     example:
       "exactly three people, at least one looking away from camera, outdoor setting",
-    color: "#22c55e",
+    color: "var(--lx-ok)",
   },
-]);
+];
+
+const lightroomPoints = [
+  {
+    icon: markRaw(SyncOutline),
+    color: "#2563eb",
+    text: "Reads your existing catalog—nothing changes",
+  },
+  {
+    icon: markRaw(ChatbubblesOutline),
+    color: "#8b5cf6",
+    text: "Search panel integrated inside Lightroom",
+  },
+  {
+    icon: markRaw(LockClosedOutline),
+    color: "#22c55e",
+    text: "All processing runs locally on your machine",
+  },
+  {
+    icon: markRaw(LinkOutline),
+    color: "#f59e0b",
+    text: "Compatible with Lightroom Classic 13.0+",
+  },
+];
 
 // FAQs
-const faqs = ref([
+const faqs = [
   {
     question:
       "Does Photoreka search the internet, social media, or stock photos?",
@@ -812,19 +562,12 @@ const faqs = ref([
     answer:
       "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 20,000 photos; up to 50,000 is tested and workable, but we recommend keeping it focused. Because analysis runs in the cloud and the tools are built around curation—sequences, semantic search, visual clusters, scores—they work best when your archive already has a baseline of intentionality: duplicates removed, clearly failed shots discarded. There is duplicate detection built in, but the value of every feature increases the more curated your starting point is.",
   },
-]);
+];
 
-// Runtime config
 const config = useRuntimeConfig();
-
 const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 
 // Navigation
-const goToHome = () => {
-  trackUserAction("navigate_to_home", "ai_photo_search_page");
-  navigateTo("/");
-};
-
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_search_page");
   window.open("https://app.photoreka.com/demo/", "_blank");
@@ -851,878 +594,137 @@ const goToAtlas = () => {
   navigateTo("/photo_3D_atlas");
 };
 
-const goToLightroomPlugin = () => {
+const onLightroomPlugin = () => {
   trackUserAction("navigate_to_lr_plugin", "ai_photo_search_page");
-  navigateTo("/lightroom_search_plugin");
 };
 
 const onRequestSuccess = () => {
   showRequestDialog.value = false;
 };
 
-const toggleFAQ = (index) => {
-  const wasOpen = activeFAQ.value === index;
-  activeFAQ.value = wasOpen ? null : index;
+const onFaqToggle = (index, isOpen) => {
   trackEvent("faq_toggle", {
     page: "ai_photo_search",
     faq_index: index,
-    action: wasOpen ? "close" : "open",
+    action: isOpen ? "open" : "close",
   });
-};
-
-// Scroll animations
-const setupScrollAnimations = () => {
-  const opts = { threshold: 0, rootMargin: "0px 0px -50px 0px" };
-  const watch = (section, flag) => {
-    if (!section.value) return;
-    new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) flag.value = true;
-      });
-    }, opts).observe(section.value);
-  };
-  watch(heroSection, heroVisible);
-  watch(examplesSection, examplesVisible);
-  watch(howSection, howVisible);
-  watch(featuresSection, featuresVisible);
-  watch(modesSection, modesVisible);
-  watch(lrSection, lrVisible);
-  watch(faqSection, faqVisible);
-  watch(ctaSection, ctaVisible);
 };
 
 onMounted(() => {
   initTheme();
-  heroVisible.value = true;
-  setupScrollAnimations();
-  if (videoRef.value) videoRef.value.playbackRate = 0.8;
+  smoothScroll.enable();
   trackEvent("page_view", {
     page: "ai_photo_search",
     page_title:
       "AI Search for Your Own Photo Catalog - Find Any Photo by Describing It | Photoreka",
   });
 });
+
+onBeforeUnmount(() => {
+  smoothScroll.disable();
+});
 </script>
 
 <style scoped>
-/* ── Layout & Base ─────────────────────────────────────────── */
-.framer-page {
-  min-height: 100vh;
-  background: var(--premium-bg-primary);
-  color: var(--premium-text-primary);
-}
-
-/* ── Nav ───────────────────────────────────────────────────── */
-.premium-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--premium-bg-nav);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--premium-border);
-}
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.nav-brand {
-  display: flex;
-  align-items: center;
-}
-.nav-brand a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  color: var(--premium-text-primary);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.theme-toggle:hover {
-  background: var(--premium-bg-hover);
-}
-.back-link {
-  font-size: var(--fs-base);
-}
-
-/* ── Hero ──────────────────────────────────────────────────── */
-.framer-hero {
-  position: relative;
-  padding: 8rem 2rem 6rem;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-.hero-background {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-.hero-layout {
+/* ── Search examples ───────────────────────────────────────── */
+.search-queries {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 4rem;
-  align-items: center;
-}
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* Badge */
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  border-radius: 50px;
-  font-size: var(--fs-sm);
-  font-weight: var(--font-weight-semibold);
-  color: #06b6d4;
-  width: fit-content;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hero-badge.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.badge-content {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* LR Badge variant */
-.lr-badge {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #f59e0b;
-  opacity: 1;
-  transform: none;
-}
-
-/* Title */
-.hero-title {
-  font-size: var(--fs-hero);
-  font-weight: var(--font-weight-black);
-  margin: 0;
-  line-height: var(--line-height-none);
-  letter-spacing: var(--letter-spacing-tighter);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hero-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* LR title variant */
-.lr-title {
-  font-size: var(--fs-h1) !important;
-  opacity: 1;
-  transform: none;
-}
-
-/* Subtitle */
-.hero-subtitle {
-  max-width: 580px;
-  margin: 0;
-  font-size: var(--fs-lead);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-}
-.hero-subtitle.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Actions */
-.hero-actions {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-.hero-actions.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.cta-note {
-  font-size: var(--fs-sm);
-  color: var(--premium-text-secondary);
-}
-
-/* Video visual */
-.hero-visual {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--premium-border);
-}
-.hero-visual.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-.hero-visual:hover {
-  transform: translateY(-8px) scale(1);
-  box-shadow:
-    0 35px 70px -15px rgba(0, 0, 0, 0.5),
-    0 0 0 1px var(--premium-border);
-}
-.video-frame {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--premium-bg-card);
-}
-.hero-video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
-}
-
-/* Orbs */
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.18;
-  animation: float 25s infinite ease-in-out;
-  will-change: transform;
-}
-.orb-1 {
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(135deg, #06b6d4, #2563eb);
-  top: -300px;
-  right: -200px;
-}
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  bottom: -200px;
-  left: -250px;
-  animation-delay: -10s;
-}
-.orb-3 {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, #f59e0b, #f97316);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -15s;
-}
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-50px, 50px) scale(0.9);
-  }
-}
-
-/* ── Section shell ─────────────────────────────────────────── */
-.section-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.section-header {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 3rem;
-  text-align: center;
-}
-.section-header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.section-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-.section-subtitle {
-  font-size: var(--fs-subheading);
-  color: var(--premium-text-secondary);
-  max-width: 680px;
-  margin: 0 auto;
-  line-height: var(--line-height-loose);
-}
-
-/* ── Examples Section ──────────────────────────────────────── */
-.examples-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-.examples-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.examples-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.example-group {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.example-group:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-}
-.example-group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--fs-xs);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-  color: #06b6d4;
-}
-.example-queries {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.query-chip {
-  display: block;
-  font-size: var(--fs-sm);
-  color: var(--premium-text-secondary);
-  font-style: italic;
-  line-height: var(--line-height-relaxed);
-  padding: 0.4rem 0.75rem;
-  background: rgba(6, 182, 212, 0.05);
-  border-radius: 8px;
-  border-left: 2px solid rgba(6, 182, 212, 0.3);
-}
-
-/* ── How It Works Section ──────────────────────────────────── */
-.how-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-.steps-container {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.steps-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.step-card {
-  display: flex;
-  gap: 1.75rem;
-  align-items: flex-start;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.4s ease;
-}
-.step-card:hover {
-  transform: translateX(6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-.step-number {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: var(--fs-2xl);
-  font-weight: var(--font-weight-bold);
-  color: white;
-}
-.step-content {
-  flex: 1;
-}
-.step-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 0.5rem;
-}
-.step-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-}
-
-/* ── Features Section ──────────────────────────────────────── */
-.features-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.feature-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.feature-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-.feature-icon {
-  margin-bottom: 1.5rem;
-}
-.feature-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.75rem;
-}
-.feature-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-}
-
-/* ── LR Section ────────────────────────────────────────────── */
-.lr-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-.lr-layout {
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.lr-layout.visible {
-  opacity: 1;
-}
-.lr-features {
-  list-style: none;
+  gap: 0.55rem;
+  margin: 0.35rem 0 0;
   padding: 0;
-  margin: 1.5rem 0 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+  list-style: none;
 }
-.lr-features li {
-  display: flex;
+
+.search-queries li {
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--lx-radius-sm);
+  background: var(--lx-surface-2);
+  border: 1px solid var(--lx-line);
+  font-family: var(--lx-font-display);
+  font-style: italic;
+  font-weight: 340;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--lx-text-2);
+}
+
+/* ── Search modes ──────────────────────────────────────────── */
+.search-mode-example {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--lx-line);
+  font-size: var(--lx-fs-sm);
+  line-height: 1.5;
+  color: var(--lx-text);
+}
+
+.search-mode-example span {
+  font-size: var(--lx-fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lx-text-3);
+}
+
+.search-mode-example em {
+  font-family: var(--lx-font-display);
+  font-size: 1.08rem;
+}
+
+.search-alt {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
-  gap: 0.75rem;
-  font-size: var(--fs-base);
-  color: var(--premium-text-primary);
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: clamp(28px, 4.5vw, 64px);
 }
-.feature-icon-wrapper {
+
+.search-alt__copy {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.search-alt__text {
+  font-size: var(--lx-fs-body);
+  line-height: 1.75;
+  color: var(--lx-text-2);
+}
+
+.search-alt__note {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--lx-line);
+  font-size: var(--lx-fs-sm);
+  line-height: 1.7;
+  color: var(--lx-text-3);
+}
+
+.search-alt__note strong {
+  color: var(--lx-text-2);
+  font-weight: 600;
+}
+
+/* ── Lightroom ─────────────────────────────────────────────── */
+.search-lr {
+  margin-top: 0.5rem;
+}
+
+.search-lr__icon {
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 8px;
+  border-radius: 10px;
+  background: var(--lx-surface-3);
+  border: 1px solid var(--lx-line);
 }
 
-/* ── FAQ Section ───────────────────────────────────────────── */
-.faq-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-.faqs-container {
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.faqs-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.faq-item {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-.faq-item:hover,
-.faq-item.active {
-  border-color: var(--premium-primary);
-}
-.faq-question {
-  width: 100%;
-  padding: 1.5rem;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  color: var(--premium-text-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  text-align: left;
-  gap: 1rem;
-}
-.faq-icon {
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-  color: var(--premium-text-secondary);
-}
-.faq-icon.rotated {
-  transform: rotate(180deg);
-}
-.faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  animation: fadeIn 0.3s ease;
-  font-size: var(--fs-base);
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ── CTA Section ───────────────────────────────────────────── */
-.cta-section {
-  padding: 6rem 2rem;
-}
-.cta-content {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.cta-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.cta-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-.cta-description {
-  font-size: var(--fs-xl);
-  color: var(--premium-text-secondary);
-  margin-bottom: 2rem;
-  line-height: var(--line-height-loose);
-}
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.cta-extra {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--premium-border);
-  font-size: var(--fs-base);
-  color: var(--premium-text-secondary);
-}
-.cta-link {
-  color: var(--premium-primary);
-  font-weight: var(--font-weight-semibold);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.cta-link:hover {
-  text-decoration: underline;
-}
-
-/* ── Responsive ────────────────────────────────────────────── */
-@media (max-width: 968px) {
-  .hero-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .hero-content {
-    text-align: center;
-    align-items: center;
-  }
-  .hero-subtitle {
-    max-width: 100%;
-  }
-  .hero-actions {
-    justify-content: center;
-  }
-  .lr-layout {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 1rem;
-  }
-  .framer-hero {
-    padding: 6rem 1rem 3rem;
-    min-height: auto;
-  }
-  .hero-title {
-    font-size: var(--fs-h1);
-  }
-  .section-title {
-    font-size: var(--fs-4xl);
-  }
-  .examples-grid,
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .step-card {
-    flex-direction: column;
-  }
-  .step-number {
-    margin: 0 auto;
-  }
-  .how-section,
-  .lr-section,
-  .modes-section {
-    padding: 3.5rem 0.75rem;
-  }
-  .examples-section,
-  .features-section,
-  .faq-section,
-  .cta-section {
-    padding: 3.5rem 0.75rem;
-  }
-  .modes-grid {
+@media (max-width: 1023px) {
+  .search-alt {
     grid-template-columns: 1fr;
   }
-  .alt-callout {
-    padding: 1.25rem;
-  }
-}
-
-/* ── Search Modes Section ──────────────────────────────────── */
-.modes-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-  background: var(--premium-bg-secondary);
-}
-.modes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto 3rem;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.modes-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.mode-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.4s ease;
-}
-.mode-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-}
-.mode-header {
-  margin-bottom: 1rem;
-}
-.mode-tag {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  font-size: var(--fs-xs);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-  border: 1px solid;
-  margin-bottom: 0.75rem;
-}
-.mode-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-bold);
-  margin: 0;
-}
-.mode-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-  margin-bottom: 1rem;
-}
-.mode-example {
-  font-size: var(--fs-xs);
-  color: var(--premium-text-secondary);
-  padding: 0.6rem 0.85rem;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 8px;
-  border-left: 2px solid rgba(255, 255, 255, 0.12);
-}
-.mode-example-label {
-  font-weight: var(--font-weight-semibold);
-  font-style: normal;
-  margin-right: 0.3rem;
-}
-
-/* ── Alternatives Callout ──────────────────────────────────── */
-.alt-callout {
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 20px;
-  /* padding: 2.5rem; */
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.18s;
-}
-.alt-callout.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.alt-callout-title {
-  font-size: var(--fs-2xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 0.75rem;
-}
-.alt-callout-text {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-  margin-bottom: 1.5rem;
-}
-.alt-features {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin-bottom: 1.5rem;
-}
-.alt-feature {
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  font-size: var(--fs-base);
-  color: var(--premium-text-primary);
-  line-height: var(--line-height-relaxed);
-}
-.alt-check {
-  color: #22c55e;
-  font-weight: var(--font-weight-bold);
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.alt-note {
-  font-size: var(--fs-sm);
-  color: var(--premium-text-secondary);
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--premium-border);
-  line-height: var(--line-height-loose);
 }
 </style>

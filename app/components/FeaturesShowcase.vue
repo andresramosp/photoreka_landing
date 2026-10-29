@@ -10,7 +10,6 @@
       <SectionIntro
         v-if="variant === 'stack' && (title || subtitle)"
         :eyebrow="eyebrow"
-        :index="index"
         :lead="subtitle"
         align="center"
       >
@@ -248,7 +247,6 @@ const props = defineProps({
   subtitle: { type: String, default: "" },
   /** Eyebrow label and section number (stack variant). */
   eyebrow: { type: String, default: "" },
-  index: { type: String, default: "" },
   sectionId: { type: String, default: "features" },
   features: { type: Array, required: true },
 });

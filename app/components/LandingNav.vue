@@ -219,7 +219,9 @@ onBeforeUnmount(() => {
   opacity: 1;
 }
 
+/* Pinned to the last column so it stays right even without links. */
 .lx-nav__actions {
+  grid-column: -2 / -1;
   display: flex;
   align-items: center;
   justify-content: flex-end;

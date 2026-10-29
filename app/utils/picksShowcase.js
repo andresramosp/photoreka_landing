@@ -5,8 +5,9 @@
 export const PICKS_APP_URL = "https://app.photoreka.com/picks";
 export const PICKS_TRIAL_URL = `${PICKS_APP_URL}?trial=1`;
 
-export const PICKS_PRICE_PER_PHOTO_EUR = 0.01;
-export const PICKS_MIN_CHARGE_EUR = 1;
+// VAT included; the API is the source of truth for the charge.
+export const PICKS_PRICE_PER_PHOTO_EUR = 0.012;
+export const PICKS_MIN_CHARGE_EUR = 2.4;
 export const PICKS_FREE_TRIAL_PHOTOS = 10;
 export const PICKS_MAX_PHOTOS = 5000;
 export const PICKS_RETENTION_DAYS = 30;
@@ -19,7 +20,7 @@ export const PICKS_FAQS = [
   },
   {
     q: "How much does it cost?",
-    a: `€${PICKS_PRICE_PER_PHOTO_EUR.toFixed(2)} per photo, paid once per order, with a €${PICKS_MIN_CHARGE_EUR} minimum. You can try it free with ${PICKS_FREE_TRIAL_PHOTOS} of your own photos first: no card, no account.`,
+    a: `€${PICKS_PRICE_PER_PHOTO_EUR.toFixed(3)} per photo, VAT included, paid once per order, with a €${PICKS_MIN_CHARGE_EUR.toFixed(2)} minimum. You can try it free with ${PICKS_FREE_TRIAL_PHOTOS} of your own photos first: no card, no account.`,
   },
   {
     q: "Do my original photos get uploaded?",

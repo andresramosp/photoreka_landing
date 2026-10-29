@@ -1,303 +1,148 @@
 <template>
   <n-config-provider :theme="currentTheme" :theme-overrides="themeOverrides">
     <n-message-provider>
-      <div class="framer-page">
-        <!-- Navigation Header -->
-        <nav class="premium-nav">
-          <div class="nav-container">
-            <div class="nav-brand">
-              <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="40" />
-              </NuxtLink>
-            </div>
-            <div class="nav-actions">
-              <button
-                v-if="canToggleTheme(true)"
-                class="theme-toggle"
-                @click="toggleTheme"
-                aria-label="Toggle theme"
-              >
-                <n-icon size="20">
-                  <component
-                    :is="themeMode === 'dark' ? SunnyOutline : MoonOutline"
-                  />
-                </n-icon>
-              </button>
-              <n-button text @click="goToHome" class="back-link">
-                <template #icon>
-                  <n-icon><ArrowBackOutline /></n-icon>
-                </template>
-                Back to Home
-              </n-button>
-            </div>
-          </div>
-        </nav>
+      <div class="lx-page lx-numbered">
+        <PageNav source="ai_photo_culling_page" :links="navLinks" />
 
-        <!-- Hero Section -->
-        <section class="framer-hero" ref="heroSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout">
-              <div class="hero-content">
-                <div class="hero-badge" :class="{ visible: heroVisible }">
-                  <span class="badge-content">
-                    <n-icon size="16"><SpeedometerOutline /></n-icon>
-                    AI Photo Culling
-                  </span>
-                </div>
-                <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Cull thousands of photos in
-                  <span class="gradient-text">minutes, not hours</span>
-                </h1>
-                <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Stop spending entire evenings rejecting photos one by one.
-                  Photoreka scores every image across
-                  <strong
-                    >aesthetics, composition, sharpness, and narrative
-                    strength</strong
-                  >—so your best shots rise to the top automatically.<br /><br />
-                  This isn't binary keep/reject. It's a
-                  <strong>multi-dimensional ranking</strong> that respects
-                  nuance: a technically imperfect photo with strong narrative
-                  weight won't be thrown away.
-                </p>
+        <PageHero eyebrow="AI Photo Culling">
+          <template #title>
+            Cull thousands of photos in
+            <em class="lx-accent">minutes, not hours</em>
+          </template>
+          <p>
+            Stop spending entire evenings rejecting photos one by one.
+            Photoreka scores every image across
+            <strong
+              >aesthetics, composition, sharpness, and narrative
+              strength</strong
+            >—so your best shots rise to the top automatically.
+          </p>
+          <p>
+            This isn't binary keep/reject. It's a
+            <strong>multi-dimensional ranking</strong> that respects nuance: a
+            technically imperfect photo with strong narrative weight won't be
+            thrown away.
+          </p>
+          <template #actions>
+            <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #visual>
+            <ShotFrame
+              video="/videos/atlas_1.mp4"
+              poster="/home/video_poster.jpg"
+              alt="Photoreka ranking a whole photo catalog"
+              label="Photoreka — Atlas"
+              ratio="16 / 9"
+            />
+          </template>
+        </PageHero>
 
-                <div class="hero-actions" :class="{ visible: heroVisible }">
-                  <n-button type="info" size="large" strong @click="goToDemo">
-                    <template #icon>
-                      <n-icon><PlayCircleOutline /></n-icon>
-                    </template>
-                    Try the Demo
-                  </n-button>
-                  <n-button
-                    strong
-                    secondary
-                    type="info"
-                    size="large"
-                    @click="goToSignup"
-                  >
-                    <template #icon>
-                      <n-icon><KeyOutline /></n-icon>
-                    </template>
-                    {{ joinButtonLabel }}
-                  </n-button>
-                </div>
-              </div>
-
-              <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="video-frame">
-                  <video
-                    class="hero-video"
-                    src="/videos/atlas_1.mp4"
-                    poster="/home/video_poster.jpg"
-                    ref="videoRef"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                  ></video>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Why Culling Is Broken Section -->
-        <section class="examples-section" ref="problemSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: problemVisible }">
-              <h2 class="section-title">Traditional culling is broken</h2>
-              <p class="section-subtitle">
+        <section id="problem" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="The problem" align="center">
+              <template #title>
+                Traditional culling <em class="lx-accent">is broken</em>
+              </template>
+              <p>
                 Photographers lose hours on repetitive manual selection.
                 Existing tools use a binary keep/reject model that can't handle
                 nuance. Photoreka takes a different approach.
               </p>
-            </div>
+            </SectionIntro>
 
-            <div class="comparison-grid" :class="{ visible: problemVisible }">
-              <div class="comparison-card old">
-                <h3 class="comparison-title">
+            <div class="cull-compare">
+              <div v-reveal class="lx-card cull-compare__card is-old">
+                <h3 class="cull-compare__title">
                   <n-icon size="20"><CloseCircleOutline /></n-icon>
                   Traditional Culling
                 </h3>
-                <ul class="comparison-list">
-                  <li>Binary keep/reject decisions</li>
-                  <li>Hours of manual scrolling per session</li>
-                  <li>Only judges technical sharpness</li>
-                  <li>Misses narratively strong but imperfect shots</li>
-                  <li>No understanding of mood or intent</li>
-                  <li>Starts from scratch every time</li>
+                <ul class="lx-list">
+                  <li v-for="item in oldWay" :key="item">
+                    <span class="cull-cross" aria-hidden="true" />
+                    <span>{{ item }}</span>
+                  </li>
                 </ul>
               </div>
-              <div class="comparison-card new">
-                <h3 class="comparison-title">
+              <div v-reveal="120" class="lx-card cull-compare__card is-new">
+                <div class="cull-compare__glow" aria-hidden="true" />
+                <h3 class="cull-compare__title">
                   <n-icon size="20"><CheckmarkCircleOutline /></n-icon>
                   Photoreka's Approach
                 </h3>
-                <ul class="comparison-list">
-                  <li>Multi-dimensional scoring (6+ criteria)</li>
-                  <li>Instant ranking of entire catalog</li>
-                  <li>Understands composition, narrative, and emotion</li>
-                  <li>Respects artistic intent over technical perfection</li>
-                  <li>Natural language to refine selections</li>
-                  <li>Scores persist—filter anytime</li>
+                <ul class="lx-list">
+                  <li v-for="item in newWay" :key="item">
+                    <span class="lx-tick" aria-hidden="true" />
+                    <span>{{ item }}</span>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- How It Works Section -->
-        <section class="how-section" ref="howSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1" style="animation-delay: -5s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -12s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">How AI culling works</h2>
-              <p class="section-subtitle">
+        <section id="how-it-works" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="How it works">
+              <template #title>
+                How <em class="lx-accent">AI culling</em> works
+              </template>
+              <p>
                 No guesswork, no black box. Here's exactly what happens when
                 Photoreka processes your library.
               </p>
-            </div>
-
-            <div class="steps-container" :class="{ visible: howVisible }">
-              <div
-                v-for="(step, i) in steps"
-                :key="i"
-                class="step-card"
-                :style="{ transitionDelay: `${i * 120}ms` }"
-              >
-                <div class="step-number" :style="{ background: step.color }">
-                  {{ i + 1 }}
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">{{ step.title }}</h3>
-                  <p class="step-description">{{ step.description }}</p>
-                </div>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageSteps :steps="steps" />
           </div>
         </section>
 
-        <!-- Features Grid Section -->
-        <section class="features-section" ref="featuresSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">
-                Culling that understands photography
-              </h2>
-              <p class="section-subtitle">
+        <section id="features" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Features" align="center">
+              <template #title>
+                Culling that
+                <em class="lx-accent">understands photography</em>
+              </template>
+              <p>
                 Not just sharpness detection. Photoreka evaluates what makes a
                 photo worth keeping—from emotional impact to compositional
                 intent.
               </p>
-            </div>
-
-            <div class="features-grid">
-              <div
-                v-for="(feature, index) in features"
-                :key="index"
-                class="feature-card"
-                :class="{ visible: featuresVisible }"
-                :style="{ transitionDelay: `${index * 100}ms` }"
-              >
-                <div class="feature-icon" :style="{ color: feature.color }">
-                  <n-icon size="32">
-                    <component :is="feature.icon" />
-                  </n-icon>
-                </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-description">{{ feature.description }}</p>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageGrid :items="features" :columns="3" />
           </div>
         </section>
 
-        <!-- Photoreka Picks Promo -->
-        <PicksPromo source="ai_photo_culling" />
+        <PicksPromo id="picks" source="ai_photo_culling" immersive />
 
-        <!-- FAQ Section -->
-        <section class="faq-section" ref="faqSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: faqVisible }">
-              <h2 class="section-title">Frequently Asked Questions</h2>
-              <p class="section-subtitle">
-                Everything you need to know about AI photo culling
-              </p>
-            </div>
+        <FaqSection :faqs="faqs" @toggle="onFaqToggle">
+          <template #title>
+            Frequently asked <em class="lx-accent">questions</em>
+          </template>
+          <p>Everything you need to know about AI photo culling</p>
+        </FaqSection>
 
-            <div class="faqs-container" :class="{ visible: faqVisible }">
-              <div
-                v-for="(faq, index) in faqs"
-                :key="index"
-                class="faq-item"
-                :class="{ active: activeFAQ === index }"
-              >
-                <button class="faq-question" @click="toggleFAQ(index)">
-                  <span>{{ faq.question }}</span>
-                  <n-icon
-                    size="20"
-                    class="faq-icon"
-                    :class="{ rotated: activeFAQ === index }"
-                  >
-                    <ChevronDownOutline />
-                  </n-icon>
-                </button>
-                <div v-if="activeFAQ === index" class="faq-answer">
-                  {{ faq.answer }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Final CTA Section -->
-        <section class="cta-section" ref="ctaSection">
-          <div class="section-container">
-            <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Stop culling. Start ranking.</h2>
-              <p class="cta-description">
-                Your best photos are already in your archive. Let Photoreka
-                surface them automatically—scored, ranked, and ready for your
-                next project.
-              </p>
-              <div class="cta-buttons">
-                <n-button type="info" size="large" strong @click="goToDemo">
-                  <template #icon>
-                    <n-icon><PlayCircleOutline /></n-icon>
-                  </template>
-                  Try the Demo
-                </n-button>
-                <n-button
-                  strong
-                  secondary
-                  type="info"
-                  size="large"
-                  @click="goToSignup"
-                >
-                  <template #icon>
-                    <n-icon><KeyOutline /></n-icon>
-                  </template>
-                  {{ joinButtonLabel }}
-                </n-button>
-              </div>
-              <div class="cta-extra">
-                <p>
-                  Want to see the detailed scoring?
-                  <a @click="goToScoring" class="cta-link"
-                    >Explore Photo Scoring</a
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageCta>
+          <template #title>
+            Stop culling. <em class="lx-accent">Start ranking.</em>
+          </template>
+          <p>
+            Your best photos are already in your archive. Let Photoreka surface
+            them automatically—scored, ranked, and ready for your next project.
+          </p>
+          <template #actions>
+            <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #links>
+            Want to see the detailed scoring?
+            <a @click="goToScoring">Explore Photo Scoring</a>
+          </template>
+        </PageCta>
       </div>
 
       <RequestAccessDialog
@@ -311,13 +156,6 @@
 <script setup>
 import { markRaw } from "vue";
 import {
-  SunnyOutline,
-  MoonOutline,
-  ArrowBackOutline,
-  PlayCircleOutline,
-  KeyOutline,
-  ChevronDownOutline,
-  SpeedometerOutline,
   CheckmarkCircleOutline,
   CloseCircleOutline,
   FlashOutline,
@@ -346,63 +184,65 @@ useHead({
 const {
   naiveTheme: currentTheme,
   naiveThemeOverrides: themeOverrides,
-  themeMode,
-  toggleTheme: baseToggleTheme,
-  canToggleTheme,
   initTheme,
 } = useTheme();
 
-const toggleTheme = () => baseToggleTheme();
+const smoothScroll = useSmoothScroll();
 
-// Refs
-const heroSection = ref(null);
-const problemSection = ref(null);
-const howSection = ref(null);
-const featuresSection = ref(null);
-const faqSection = ref(null);
-const ctaSection = ref(null);
-const videoRef = ref(null);
-
-const heroVisible = ref(false);
-const problemVisible = ref(false);
-const howVisible = ref(false);
-const featuresVisible = ref(false);
-const faqVisible = ref(false);
-const ctaVisible = ref(false);
-
-const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
 
+const navLinks = [
+  { label: "The problem", target: "problem" },
+  { label: "How it works", target: "how-it-works" },
+  { label: "Features", target: "features" },
+  { label: "Picks", target: "picks" },
+  { label: "FAQ", target: "faq" },
+];
+
+const oldWay = [
+  "Binary keep/reject decisions",
+  "Hours of manual scrolling per session",
+  "Only judges technical sharpness",
+  "Misses narratively strong but imperfect shots",
+  "No understanding of mood or intent",
+  "Starts from scratch every time",
+];
+
+const newWay = [
+  "Multi-dimensional scoring (6+ criteria)",
+  "Instant ranking of entire catalog",
+  "Understands composition, narrative, and emotion",
+  "Respects artistic intent over technical perfection",
+  "Natural language to refine selections",
+  "Scores persist—filter anytime",
+];
+
 // How it works steps
-const steps = ref([
+const steps = [
   {
     title: "Every photo is analyzed by computer vision",
     description:
       "When you upload or sync your library, Photoreka's AI extracts a rich visual embedding from each image—capturing composition, lighting, color harmony, sharpness, subject presence, and emotional tone.",
-    color: "linear-gradient(135deg, #2563eb, #06b6d4)",
   },
   {
     title: "Multi-dimensional scores are computed",
     description:
       "Each photo receives scores across 6+ dimensions: aesthetic quality, technical sharpness, compositional strength, narrative weight, originality, and visual impact. No single metric decides the outcome.",
-    color: "linear-gradient(135deg, #8b5cf6, #6366f1)",
   },
   {
     title: "Your catalog is instantly ranked",
     description:
       "Photos are sorted by overall quality or by individual dimensions. Your strongest work rises to the top—whether it's technically perfect or artistically compelling despite imperfections.",
-    color: "linear-gradient(135deg, #22c55e, #16a34a)",
   },
   {
     title: "Refine with natural language",
     description:
       "Combine scoring with semantic search: 'show me my top-rated portraits from summer' or 'best compositions in black and white'. Scores and search work together to give you exactly what you need.",
-    color: "linear-gradient(135deg, #f59e0b, #f97316)",
   },
-]);
+];
 
 // Features
-const features = ref([
+const features = [
   {
     icon: markRaw(BarChartOutline),
     title: "6+ Scoring Dimensions",
@@ -445,10 +285,10 @@ const features = ref([
       "Once you've found your top shots, seamlessly move to sequencing, portfolio building, or 3D Atlas exploration. Culling is just the first step in the workflow.",
     color: "#06b6d4",
   },
-]);
+];
 
 // FAQs
-const faqs = ref([
+const faqs = [
   {
     question: "How is this different from Aftershoot or Narrative Select?",
     answer:
@@ -479,19 +319,12 @@ const faqs = ref([
     answer:
       "Absolutely. Culling, scoring, and portfolio building are all part of the same workflow. Surface your top-scored photos, refine with natural language, and use the sequencing tools to arrange them into a cohesive portfolio or exhibition selection.",
   },
-]);
+];
 
-// Runtime config
 const config = useRuntimeConfig();
-
 const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 
 // Navigation
-const goToHome = () => {
-  trackUserAction("navigate_to_home", "ai_photo_culling_page");
-  navigateTo("/");
-};
-
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_culling_page");
   window.open("https://app.photoreka.com/demo/workspace", "_blank");
@@ -515,668 +348,123 @@ const onRequestSuccess = () => {
   showRequestDialog.value = false;
 };
 
-const toggleFAQ = (index) => {
-  const wasOpen = activeFAQ.value === index;
-  activeFAQ.value = wasOpen ? null : index;
+const onFaqToggle = (index, isOpen) => {
   trackEvent("faq_toggle", {
     page: "ai_photo_culling",
     faq_index: index,
-    action: wasOpen ? "close" : "open",
+    action: isOpen ? "open" : "close",
   });
-};
-
-// Scroll animations
-const setupScrollAnimations = () => {
-  const opts = { threshold: 0.2, rootMargin: "0px 0px -100px 0px" };
-  const watch = (section, flag) => {
-    if (!section.value) return;
-    new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) flag.value = true;
-      });
-    }, opts).observe(section.value);
-  };
-  watch(heroSection, heroVisible);
-  watch(problemSection, problemVisible);
-  watch(howSection, howVisible);
-  watch(featuresSection, featuresVisible);
-  watch(faqSection, faqVisible);
-  watch(ctaSection, ctaVisible);
 };
 
 onMounted(() => {
   initTheme();
-  heroVisible.value = true;
-  setupScrollAnimations();
+  smoothScroll.enable();
   trackEvent("page_view", { page: "ai_photo_culling" });
+});
+
+onBeforeUnmount(() => {
+  smoothScroll.disable();
 });
 </script>
 
 <style scoped>
-/* ── Layout & Base ─────────────────────────────────────────── */
-.framer-page {
-  min-height: 100vh;
-  background: var(--premium-bg-primary);
-  color: var(--premium-text-primary);
+/* ── Old vs new comparison ─────────────────────────────────── */
+.cull-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  max-width: 1080px;
+  margin-inline: auto;
 }
 
-/* ── Nav ───────────────────────────────────────────────────── */
-.premium-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--premium-bg-nav);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--premium-border);
-}
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.nav-brand {
-  display: flex;
-  align-items: center;
-}
-.nav-brand a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  color: var(--premium-text-primary);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.theme-toggle:hover {
-  background: var(--premium-bg-hover);
-}
-.back-link {
-  font-size: var(--fs-base);
-}
-
-/* ── Hero ──────────────────────────────────────────────────── */
-.framer-hero {
+.cull-compare__card {
   position: relative;
-  padding: 8rem 2rem 6rem;
   overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  isolation: isolate;
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+  padding: clamp(28px, 3.5vw, 48px);
 }
-.hero-background {
+
+.cull-compare__card.is-old {
+  background: var(--lx-bg-2);
+}
+
+.cull-compare__card.is-new {
+  box-shadow: var(--lx-shadow-md), var(--lx-highlight);
+}
+
+.cull-compare__glow {
   position: absolute;
   inset: 0;
-  overflow: hidden;
+  z-index: -1;
   pointer-events: none;
-}
-.hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-.hero-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  border-radius: 50px;
-  font-size: var(--fs-sm);
-  font-weight: var(--font-weight-semibold);
-  color: #06b6d4;
-  width: fit-content;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hero-badge.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.badge-content {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.hero-title {
-  font-size: var(--fs-hero);
-  font-weight: var(--font-weight-black);
-  margin: 0;
-  line-height: var(--line-height-none);
-  letter-spacing: var(--letter-spacing-tighter);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hero-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.hero-subtitle {
-  max-width: 580px;
-  margin: 0;
-  font-size: var(--fs-lead);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-}
-.hero-subtitle.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.hero-actions {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-.hero-actions.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.hero-visual {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--premium-border);
-}
-.hero-visual.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-.hero-visual:hover {
-  transform: translateY(-8px) scale(1);
-  box-shadow:
-    0 35px 70px -15px rgba(0, 0, 0, 0.5),
-    0 0 0 1px var(--premium-border);
-}
-.video-frame {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--premium-bg-card);
-}
-.hero-video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.gradient-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 60%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
+  background: radial-gradient(
+    70% 60% at 100% 0%,
+    var(--lx-glow-1),
+    transparent 70%
+  );
 }
 
-/* Orbs */
-.gradient-orb {
-  position: absolute;
+.cull-compare__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--lx-font-display);
+  font-weight: 380;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+}
+
+.is-old .cull-compare__title {
+  color: var(--lx-text-2);
+}
+
+.is-old .cull-compare__title .n-icon {
+  color: var(--lx-text-3);
+}
+
+.is-new .cull-compare__title .n-icon {
+  color: var(--lx-accent);
+}
+
+.is-old .lx-list > li {
+  color: var(--lx-text-2);
+}
+
+/* Muted counterpart of .lx-tick for the old way. */
+.cull-cross {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.18;
-  animation: float 25s infinite ease-in-out;
-  will-change: transform;
+  border: 1px solid var(--lx-line-2);
 }
-.orb-1 {
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(135deg, #06b6d4, #2563eb);
-  top: -300px;
-  right: -200px;
-}
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  bottom: -200px;
-  left: -250px;
-  animation-delay: -10s;
-}
-.orb-3 {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, #f59e0b, #f97316);
-  top: 50%;
+
+.cull-cross::before,
+.cull-cross::after {
+  content: "";
+  position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -15s;
-}
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-50px, 50px) scale(0.9);
-  }
+  top: 50%;
+  width: 8px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--lx-text-3);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-/* ── Section shell ─────────────────────────────────────────── */
-.section-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.section-header {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 3rem;
-  text-align: center;
-}
-.section-header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.section-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-.section-subtitle {
-  font-size: var(--fs-subheading);
-  color: var(--premium-text-secondary);
-  max-width: 680px;
-  margin: 0 auto;
-  line-height: var(--line-height-loose);
+.cull-cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* ── Comparison Section ────────────────────────────────────── */
-.examples-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-.comparison-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.comparison-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.comparison-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-}
-.comparison-card.old {
-  border-color: rgba(239, 68, 68, 0.3);
-}
-.comparison-card.new {
-  border-color: rgba(34, 197, 94, 0.3);
-}
-.comparison-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1.5rem;
-}
-.comparison-card.old .comparison-title {
-  color: #ef4444;
-}
-.comparison-card.new .comparison-title {
-  color: #22c55e;
-}
-.comparison-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.comparison-list li {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  padding-left: 1.25rem;
-  position: relative;
-  font-size: var(--fs-base);
-}
-.comparison-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  font-weight: var(--font-weight-bold);
-}
-.comparison-card.old .comparison-list li::before {
-  color: #ef4444;
-}
-.comparison-card.new .comparison-list li::before {
-  color: #22c55e;
-}
-
-/* ── How It Works Section ──────────────────────────────────── */
-.how-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-.steps-container {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.steps-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.step-card {
-  display: flex;
-  gap: 1.75rem;
-  align-items: flex-start;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.4s ease;
-}
-.step-card:hover {
-  transform: translateX(6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-.step-number {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: var(--fs-2xl);
-  font-weight: var(--font-weight-bold);
-  color: white;
-}
-.step-content {
-  flex: 1;
-}
-.step-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 0.5rem;
-}
-.step-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-}
-
-/* ── Features Section ──────────────────────────────────────── */
-.features-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.feature-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.feature-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-.feature-icon {
-  margin-bottom: 1.5rem;
-}
-.feature-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.75rem;
-}
-.feature-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-}
-
-/* ── FAQ Section ───────────────────────────────────────────── */
-.faq-section {
-  padding: 6rem 2rem;
-}
-.faqs-container {
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.faqs-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.faq-item {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-.faq-item:hover,
-.faq-item.active {
-  border-color: var(--premium-primary);
-}
-.faq-question {
-  width: 100%;
-  padding: 1.5rem;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  color: var(--premium-text-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  text-align: left;
-  gap: 1rem;
-}
-.faq-icon {
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-  color: var(--premium-text-secondary);
-}
-.faq-icon.rotated {
-  transform: rotate(180deg);
-}
-.faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  animation: fadeIn 0.3s ease;
-  font-size: var(--fs-base);
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ── CTA Section ───────────────────────────────────────────── */
-.cta-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-.cta-content {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.cta-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.cta-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-.cta-description {
-  font-size: var(--fs-xl);
-  color: var(--premium-text-secondary);
-  margin-bottom: 2rem;
-  line-height: var(--line-height-loose);
-}
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.cta-extra {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--premium-border);
-  font-size: var(--fs-base);
-  color: var(--premium-text-secondary);
-}
-.cta-link {
-  color: var(--premium-primary);
-  font-weight: var(--font-weight-semibold);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.cta-link:hover {
-  text-decoration: underline;
-}
-
-/* ── Responsive ────────────────────────────────────────────── */
-@media (max-width: 968px) {
-  .hero-layout {
+@media (max-width: 760px) {
+  .cull-compare {
     grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .hero-content {
-    text-align: center;
-    align-items: center;
-  }
-  .hero-subtitle {
-    max-width: 100%;
-  }
-  .hero-actions {
-    justify-content: center;
-  }
-  .comparison-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 1rem;
-  }
-  .framer-hero {
-    padding: 6rem 1rem 3rem;
-    min-height: auto;
-  }
-  .hero-title {
-    font-size: var(--fs-h1);
-  }
-  .section-title {
-    font-size: var(--fs-4xl);
-  }
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .step-card {
-    flex-direction: column;
-  }
-  .step-number {
-    margin: 0 auto;
-  }
-  .how-section {
-    padding: 4rem 1rem;
-  }
-  .examples-section,
-  .features-section,
-  .faq-section,
-  .cta-section {
-    padding: 4rem 1rem;
   }
 }
 </style>

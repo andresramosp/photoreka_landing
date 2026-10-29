@@ -23,7 +23,11 @@
         role="img"
         :aria-label="img.alt || alt"
       ></div>
-      <div class="feat-carousel-overlay" aria-hidden="true"></div>
+      <div
+        v-if="fit !== 'contain'"
+        class="feat-carousel-overlay"
+        aria-hidden="true"
+      ></div>
       <div class="feat-carousel-dots" aria-hidden="true">
         <span
           v-for="(_, i) in slides"
