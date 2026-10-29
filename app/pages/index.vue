@@ -374,7 +374,7 @@
           </div>
         </section> -->
 
-                <!-- Photoreka Picks Promo -->
+        <!-- Photoreka Picks Promo -->
         <PicksPromo source="home" />
 
         <!-- Data Sources Section -->
@@ -549,8 +549,6 @@
             />
           </div>
         </section>
-
-
 
         <!-- FAQs Section -->
         <section id="faq" class="faqs-section" ref="faqsSection">
@@ -930,7 +928,7 @@ const features = ref([
     color: "#ec4899",
     link: "/photo_scoring",
     demoLinks: [
-      { label: "Try demo", link: "/demo/workspace" },
+      { label: "Try demo", link: "/demo" },
       {
         label: "Commercial demo",
         link: "/demo-commercial/workspace",
@@ -1156,7 +1154,7 @@ const goToFreeFramer = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "landing_page_premium");
-  window.open("https://app.photoreka.com/demo/workspace", "_blank");
+  window.open("https://app.photoreka.com/demo", "_blank");
 };
 
 const goToSearchDemo = () => {

@@ -494,7 +494,7 @@ const goToHome = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_culling_page");
-  window.open("https://app.photoreka.com/demo/workspace", "_blank");
+  window.open("https://app.photoreka.com/demo", "_blank");
 };
 
 const goToSignup = () => {
