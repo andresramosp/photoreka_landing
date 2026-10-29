@@ -10,8 +10,8 @@
             <em class="lx-accent">minutes, not hours</em>
           </template>
           <p>
-            Stop spending entire evenings rejecting photos one by one.
-            Photoreka scores every image across
+            Stop spending entire evenings rejecting photos one by one. Photoreka
+            scores every image across
             <strong
               >aesthetics, composition, sharpness, and narrative
               strength</strong
@@ -327,7 +327,7 @@ const { isOpenMode, joinButtonLabel } = useRegistrationMode();
 // Navigation
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_culling_page");
-  window.open("https://app.photoreka.com/demo/workspace", "_blank");
+  window.open("https://app.photoreka.com/demo", "_blank");
 };
 
 const goToSignup = () => {

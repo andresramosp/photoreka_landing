@@ -108,10 +108,10 @@ const features = [
     color: "#ec4899",
     link: "/photo_scoring",
     demoLinks: [
-      { label: "Try demo", link: "/demo/workspace" },
+      { label: "Try demo", link: "/demo/" },
       {
         label: "Commercial demo",
-        link: "/demo-commercial/workspace",
+        link: "/demo-commercial/",
         commercial: true,
       },
     ],
