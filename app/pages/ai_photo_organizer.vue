@@ -642,14 +642,14 @@ const goToHome = () => {
 
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_organizer_page");
-  window.open("https://app.photoreka.com/demo/search", "_blank");
+  window.open("https://app.photoreka.com/demo", "_blank");
 };
 
 // La demo comercial corre sobre su propio catálogo (/demo-commercial), no es
 // una ruta dentro de /demo. Ver app/pages/commercial_photography.vue.
 const goToCommercialDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_organizer_page", "commercial");
-  window.open("https://app.photoreka.com/demo-commercial/search", "_blank");
+  window.open("https://app.photoreka.com/demo-commercial", "_blank");
 };
 
 const goToSignup = () => {
