@@ -31,15 +31,22 @@
               No credit card required · The demo needs no account
             </span>
           </template>
-          <!-- Placeholder for now — swap `heroShot` below for the final
-               canvas + chat capture when it is ready. -->
           <template #visual>
+            <!-- Each frame only plays while visible, so the hidden one never
+                 starts. -->
             <ShotFrame
-              :src="heroShot"
-              alt="Photos arranged into a storyboard on Photoreka's infinite canvas, with the AI chat panel proposing a narrative sequence beside it"
+              class="sb-canvas-video--desktop"
+              video="/videos/canvas_desktop.mp4"
+              alt="Photoreka infinite canvas clustering photos automatically"
               label="Photoreka — Canvas"
-              ratio="auto"
-              loading="eager"
+              ratio="16 / 9"
+            />
+            <ShotFrame
+              class="sb-canvas-video--mobile"
+              video="/videos/canvas_mobile.mp4"
+              alt="Photoreka infinite canvas clustering photos automatically"
+              label="Photoreka — Canvas"
+              ratio="4 / 5"
             />
           </template>
         </PageHero>
@@ -223,21 +230,12 @@
                 v-reveal="{ variant: 'scale', delay: 120 }"
                 v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
               >
-                <!-- Each frame only plays while visible, so the hidden one
-                     never starts. -->
                 <ShotFrame
-                  class="lx-zoom sb-canvas-video--desktop"
-                  video="/videos/canvas_desktop.mp4"
-                  alt="Photoreka infinite canvas clustering photos automatically"
+                  class="lx-zoom"
+                  :src="canvasShot"
+                  alt="Photos arranged into a storyboard on Photoreka's infinite canvas, with the AI chat panel proposing a narrative sequence beside it"
                   label="Photoreka — Canvas"
-                  ratio="16 / 9"
-                />
-                <ShotFrame
-                  class="sb-canvas-video--mobile"
-                  video="/videos/canvas_mobile.mp4"
-                  alt="Photoreka infinite canvas clustering photos automatically"
-                  label="Photoreka — Canvas"
-                  ratio="4 / 5"
+                  ratio="auto"
                 />
               </div>
             </div>
@@ -512,9 +510,8 @@ const {
 
 const smoothScroll = useSmoothScroll();
 
-// Hero screenshot. Placeholder until the final canvas + chat capture is dropped in;
-// swap this one path and the hero picks it up.
-const heroShot = "/canvas/hero_3.png";
+// Canvas + chat capture beside the canvas intro.
+const canvasShot = "/canvas/hero_3.png";
 
 // Full-width shot under the three levels. Placeholder for now — a capture showing
 // the board, the halo and a spotlighted photo at once is what belongs here.
