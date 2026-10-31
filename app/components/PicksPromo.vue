@@ -2,7 +2,7 @@
   <section
     ref="sectionRef"
     class="ppr-section"
-    :class="{ 'ppr-section--immersive': immersive }"
+    :class="{ 'ppr-section--immersive': immersive, 'ppr-section--media-first': mediaFirst }"
   >
     <div v-if="immersive" class="lx-container">
       <SectionIntro :eyebrow="eyebrow" align="center">
@@ -95,6 +95,8 @@ const props = defineProps({
   /** lx landing system: section intro + card that expands to full bleed. */
   immersive: { type: Boolean, default: false },
   eyebrow: { type: String, default: "Photoreka Picks" },
+  /** Podium before the copy (left on desktop, on top on phones). */
+  mediaFirst: { type: Boolean, default: false },
 });
 
 const podium = rankShowcase("overall").slice(0, 3);
@@ -417,6 +419,10 @@ function trackDiscover() {
 
 .ppr-section--immersive .ppr-visual {
   transform: translate3d(0, calc((1 - var(--p, 1)) * 96px), 0);
+}
+
+.ppr-section--media-first .ppr-visual {
+  order: -1;
 }
 
 @media (max-width: 900px) {

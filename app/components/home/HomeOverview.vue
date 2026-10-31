@@ -14,20 +14,47 @@
           <strong>connections</strong> that folders and grids keep hidden.
         </p>
       </SectionIntro>
+    </div>
 
+    <!-- Wider than the intro so the video carries the section. -->
+    <div class="lx-container">
       <div
         v-reveal="{ variant: 'scale', delay: 120 }"
         v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
       >
+        <!-- Each frame only plays while visible, so the hidden one never
+             starts. -->
         <ShotFrame
-          class="lx-zoom"
-          video="/videos/atlas_1.mp4"
-          poster="/home/video_poster.jpg"
-          alt="Photoreka mapping a whole photo catalog by visual similarity"
-          label="Photoreka — Atlas"
+          class="lx-zoom overview-video--desktop"
+          video="/videos/canvas_desktop.mp4"
+          alt="Photoreka infinite canvas clustering photos automatically"
+          label="Photoreka — Canvas"
           ratio="16 / 9"
+        />
+        <ShotFrame
+          class="overview-video--mobile"
+          video="/videos/canvas_mobile.mp4"
+          alt="Photoreka infinite canvas clustering photos automatically"
+          label="Photoreka — Canvas"
+          ratio="4 / 5"
         />
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.overview-video--mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .overview-video--desktop {
+    display: none;
+  }
+
+  .overview-video--mobile {
+    display: block;
+  }
+}
+</style>

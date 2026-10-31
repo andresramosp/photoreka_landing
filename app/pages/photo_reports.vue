@@ -30,37 +30,66 @@
           </template>
           <template #visual>
             <ShotFrame
-              video="/videos/atlas_1.mp4"
-              poster="/home/video_poster.jpg"
-              alt="Photoreka mapping a photo catalog to reveal patterns"
+              src="/report/2.png"
+              alt="Photoreka patterns report: narrative and contextual patterns detected across a photo catalog, each with example photos"
               label="Photoreka — Reports"
-              ratio="16 / 9"
+              ratio="16 / 10"
+              focus="0% 0%"
+              loading="eager"
             />
           </template>
         </PageHero>
 
         <section id="reports" class="lx-section">
           <div class="lx-container">
-            <SectionIntro eyebrow="Report types" align="center">
-              <template #title>
-                Reports that <em class="lx-accent">reveal your work</em>
-              </template>
-              <p>
-                Every report is generated from real AI analysis of your photos—
-                not metadata alone. Understand patterns, track growth, and make
-                informed creative decisions.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="reportTypes" :columns="3">
-              <template #item="{ item }">
+            <div class="lx-beside rep-head">
+              <SectionIntro eyebrow="Report types" flush>
+                <template #title>
+                  Reports that <em class="lx-accent">reveal your work</em>
+                </template>
+                <p>
+                  Every report is generated from real AI analysis of your
+                  photos— not metadata alone. Understand patterns, track growth,
+                  and make informed creative decisions.
+                </p>
+              </SectionIntro>
+              <div
+                v-reveal="{ variant: 'scale', delay: 120 }"
+                v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              >
+                <ShotFrame
+                  class="lx-zoom"
+                  src="/report/3.png"
+                  alt="Photoreka narrative and contextual patterns report with example photos for each pattern"
+                  label="Photoreka — Patterns report"
+                  ratio="4 / 3"
+                  focus="0% 0%"
+                />
+              </div>
+            </div>
+
+            <!-- Plain columns, no cards: the page keeps its one card grid
+                 for the features. -->
+            <ul class="lx-columns">
+              <li
+                v-for="(item, i) in reportTypes"
+                :key="item.title"
+                v-reveal="(i % 3) * 80"
+                class="lx-column"
+              >
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <h3 class="lx-column__title">{{ item.title }}</h3>
+                <p class="lx-column__text">{{ item.description }}</p>
                 <ul class="lx-list report-insights">
                   <li v-for="insight in item.insights" :key="insight">
                     <span class="lx-tick" aria-hidden="true" />
                     <span>{{ insight }}</span>
                   </li>
                 </ul>
-              </template>
-            </PageGrid>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -416,6 +445,10 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.rep-head {
+  margin-bottom: clamp(56px, 7vw, 96px);
+}
+
 .report-insights {
   margin-top: auto;
   padding-top: 0.5rem;

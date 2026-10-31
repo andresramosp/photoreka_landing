@@ -1,5 +1,5 @@
 <template>
-  <HeroShell class="lx-page-hero">
+  <HeroShell class="lx-page-hero" :class="{ 'lx-page-hero--showcase': showcase }">
     <div class="lx-page-hero__layout">
       <div class="lx-page-hero__copy">
         <p v-if="eyebrow" v-reveal class="lx-eyebrow">
@@ -22,7 +22,12 @@
         </div>
       </div>
 
+      <!-- A showcase visual brings its own entrance animation. -->
+      <div v-if="showcase" class="lx-page-hero__visual">
+        <slot name="visual" />
+      </div>
       <div
+        v-else
         v-reveal="{ variant: 'scale', delay: 200 }"
         class="lx-page-hero__visual"
       >
@@ -39,6 +44,8 @@ import HeroShell from "~/components/hero/HeroShell.vue";
 defineProps({
   /** The `eyebrow-icon` slot can replace its dot, e.g. with a logo. */
   eyebrow: { type: String, default: "" },
+  /** Same columns as the home hero, for a HeroRotatingShot visual. */
+  showcase: { type: Boolean, default: false },
 });
 </script>
 
@@ -48,12 +55,14 @@ defineProps({
   --hero-bottom: clamp(48px, 7vw, 96px);
 }
 
+/* Wider than .lx-container and weighted towards the capture, so the visual
+   carries the hero instead of a tall column of copy. */
 .lx-page-hero__layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
-  gap: clamp(40px, 5vw, 80px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+  gap: clamp(40px, 4.5vw, 72px);
   align-items: center;
-  max-width: calc(var(--lx-container) + 2 * var(--lx-gutter));
+  max-width: calc(1480px + 2 * var(--lx-gutter));
   margin-inline: auto;
   padding-inline: var(--lx-gutter);
 }
@@ -62,7 +71,7 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.9rem;
+  gap: 1.5rem;
 }
 
 /* Long eyebrows wrap on phones; their lines need room. */
@@ -72,7 +81,7 @@ defineProps({
 }
 
 .lx-page-hero__title {
-  font-size: clamp(2.7rem, min(4.4vw, 8.6svh), 4.5rem);
+  font-size: clamp(2.5rem, min(3.6vw, 7.4svh), 3.9rem);
   line-height: 1;
   letter-spacing: -0.04em;
 }
@@ -81,7 +90,7 @@ defineProps({
   display: grid;
   gap: 1rem;
   max-width: 36em;
-  font-size: 1.04rem;
+  font-size: 1rem;
 }
 
 .lx-page-hero__note {
@@ -100,6 +109,14 @@ defineProps({
 
 .lx-page-hero__visual {
   position: relative;
+}
+
+@media (min-width: 1024px) {
+  .lx-page-hero--showcase .lx-page-hero__layout {
+    grid-template-columns: minmax(0, 570px) minmax(0, 1fr);
+    gap: clamp(32px, 4vw, 64px);
+    max-width: calc(1560px + 2 * var(--lx-gutter));
+  }
 }
 
 /* Brand light pooling behind the capture. */

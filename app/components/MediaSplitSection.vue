@@ -38,6 +38,7 @@
           :alt="alt"
           :label="label"
           :ratio="ratio"
+          :focus="focus"
           :bare="bare"
         />
         <ShotFrame
@@ -51,6 +52,12 @@
           :bare="bare"
         />
       </div>
+    </div>
+
+    <!-- Details that would make the copy taller than the video run in a row
+         under both columns instead. -->
+    <div v-if="$slots.below" v-reveal="160" class="lx-container media-split__below">
+      <slot name="below" />
     </div>
   </section>
 </template>
@@ -71,6 +78,8 @@ defineProps({
   /** Caption in the window bar of the frame. */
   label: { type: String, default: "" },
   ratio: { type: String, default: "16 / 9" },
+  /** object-position when the capture is cropped to `ratio`. */
+  focus: { type: String, default: "50% 0%" },
   /** No window frame around the video. */
   bare: { type: Boolean, default: false },
   /** Alternative cut shown on phones instead of `video`. */
@@ -98,6 +107,10 @@ const emit = defineEmits(["demo"]);
 
 .media-split__mobile {
   display: none;
+}
+
+.media-split__below {
+  margin-top: clamp(48px, 6vw, 80px);
 }
 
 @media (max-width: 760px) {

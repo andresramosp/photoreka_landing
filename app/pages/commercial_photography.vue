@@ -67,13 +67,25 @@
                 right frames rise to the top, whatever the assignment.
               </p>
             </SectionIntro>
-            <PageGrid :items="genreItems" :columns="5">
-              <template #item="{ item }">
+            <!-- Plain columns, no cards: the page keeps its one card grid
+                 for the import sources. -->
+            <ul class="lx-columns" style="--lx-cols: 5">
+              <li
+                v-for="(item, i) in genreItems"
+                :key="item.title"
+                v-reveal="i * 70"
+                class="lx-column"
+              >
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <h3 class="lx-column__title">{{ item.title }}</h3>
+                <p class="lx-column__text">{{ item.description }}</p>
                 <ul class="com-tags">
                   <li v-for="tag in item.tags" :key="tag">{{ tag }}</li>
                 </ul>
-              </template>
-            </PageGrid>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -102,54 +114,18 @@
           </p>
         </MediaSplitSection>
 
-        <FeaturesShowcase
-          variant="stack"
+        <ToolExplorer
           section-id="features"
           eyebrow="AI tools"
           title="AI tools that move commercial work forward"
           title-accent="commercial work forward"
           subtitle="Score for commercial intent, build client-ready selections, and understand which of your styles actually lands the job — all on top of your existing library."
-          :features="features"
+          :tools="toolItems"
         />
-
-        <MediaSplitSection
-          id="lightroom_plugin"
-          eyebrow="Official Plugin"
-          video="/videos/lr_plugin.mp4"
-          poster="/home/video_lr_poster.jpg"
-          alt="Photoreka search panel inside Adobe Lightroom Classic"
-          label="Lightroom Classic — Photoreka"
-          :playback-rate="2"
-          reverse
-        >
-          <template #title>
-            Straight from <em class="lx-accent">your catalog</em>
-          </template>
-          <p>
-            Commercial work lives in Lightroom Classic — so Photoreka meets it
-            there. Sync a shoot, search it by brief, and push your selects to
-            Photoreka without breaking the delivery workflow your clients
-            already expect.
-          </p>
-          <ul class="lx-list com-lr">
-            <li v-for="item in lightroomPoints" :key="item.text">
-              <span class="com-lr__icon" :style="{ color: item.color }">
-                <n-icon size="17"><component :is="item.icon" /></n-icon>
-              </span>
-              <span>{{ item.text }}</span>
-            </li>
-          </ul>
-          <template #actions>
-            <LxButton icon="download" @click="goToAuth('signup')">
-              Get the Plugin
-            </LxButton>
-            <span class="lx-status">Free with Photoreka account</span>
-          </template>
-        </MediaSplitSection>
 
         <section id="sources" class="lx-section">
           <div class="lx-container">
-            <SectionIntro eyebrow="Import" align="center">
+            <SectionIntro eyebrow="Import">
               <template #title>
                 Bring in work from
                 <em class="lx-accent">wherever it lives</em>
@@ -173,6 +149,43 @@
           </div>
         </section>
 
+        <MediaSplitSection
+          id="lightroom_plugin"
+          eyebrow="Official Plugin"
+          video="/videos/lr_plugin.mp4"
+          poster="/home/video_lr_poster.jpg"
+          alt="Photoreka search panel inside Adobe Lightroom Classic"
+          label="Lightroom Classic — Photoreka"
+          :playback-rate="2"
+          reverse
+        >
+          <template #title>
+            Straight from <em class="lx-accent">your catalog</em>
+          </template>
+          <p>
+            Commercial work lives in Lightroom Classic — so Photoreka meets it
+            there. Sync a shoot, search it by brief, and push your selects to
+            Photoreka without breaking the delivery workflow your clients
+            already expect.
+          </p>
+          <template #below>
+            <ul class="com-lr">
+              <li v-for="item in lightroomPoints" :key="item.text">
+                <span class="com-lr__icon" :style="{ color: item.color }">
+                  <n-icon size="17"><component :is="item.icon" /></n-icon>
+                </span>
+                <span>{{ item.text }}</span>
+              </li>
+            </ul>
+          </template>
+          <template #actions>
+            <LxButton icon="download" @click="goToAuth('signup')">
+              Get the Plugin
+            </LxButton>
+            <span class="lx-status">Free with Photoreka account</span>
+          </template>
+        </MediaSplitSection>
+
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
             Questions from
@@ -180,6 +193,23 @@
           </template>
           <p>How Photoreka fits into a paid, deadline-driven workflow</p>
         </FaqSection>
+
+        <PageCta>
+          <template #title>
+            Your next brief is already
+            <em class="lx-accent">in your archive.</em>
+          </template>
+          <p>
+            Search it, score it, and send the client a selection — try it on
+            the commercial demo catalog.
+          </p>
+          <template #actions>
+            <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
+            <LxButton variant="ghost" @click="goToAuth('signup')">
+              {{ signupButtonLabel }}
+            </LxButton>
+          </template>
+        </PageCta>
       </div>
 
       <RequestAccessDialog
@@ -243,8 +273,8 @@ const navLinks = [
   { label: "Genres", target: "genres" },
   { label: "Search", target: "ai_search" },
   { label: "Features", target: "features" },
-  { label: "Lightroom", target: "lightroom_plugin" },
   { label: "Sources", target: "sources" },
+  { label: "Lightroom", target: "lightroom_plugin" },
   { label: "FAQ", target: "faq" },
 ];
 
@@ -348,7 +378,7 @@ const features = ref([
       "Score every frame for commercial intent and subject clarity, alongside aesthetics and composition.",
     lead: "Score every frame the way a client would — then rank the set automatically.",
     bullets: [
-      "Commercial mode adds subject clarity and commercial intent scores",
+      "Adds subject clarity and commercial intent scores",
       "Rank a full shoot by what's actually sellable",
       "Surface the packshot or hero frame without hunting",
     ],
@@ -364,7 +394,7 @@ const features = ref([
     lead: "Turn a shoot into a client-ready, sequenced selection in minutes.",
     bullets: [
       "Score across artistic and commercial dimensions",
-      "Pick a coherence mode: visual, chromatic, narrative and more",
+      "Coherence modes: visual, chromatic, narrative…",
       "Let AI sequence the deck for a clean pitch flow",
     ],
     images: [
@@ -494,6 +524,15 @@ const faqs = ref([
       "Yes. During the early access phase a free photo package and usage credits are available. Analyzing a batch requires a single payment, after which most tools are free within daily limits, or unlimited with credits.",
   },
 ]);
+
+const toolItems = computed(() =>
+  features.value.map(({ demoLink, ...tool }) => ({
+    ...tool,
+    demoLinks: demoLink
+      ? [{ label: "Try demo", link: demoLink, commercial: true }]
+      : [],
+  })),
+);
 
 // PageGrid reads `title` and an icon component; brand logos are wrapped as
 // tiny image components so they sit in the same icon tile.
@@ -651,7 +690,42 @@ onBeforeUnmount(() => {
 
 /* ── Lightroom list ───────────────────────────────────────── */
 .com-lr {
-  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 36px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.com-lr li {
+  display: grid;
+  align-content: start;
+  gap: 0.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--lx-line-2);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--lx-text);
+}
+
+@media (max-width: 1023px) {
+  .com-lr {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .com-lr {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .com-lr li {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-top: 0.9rem;
+  }
 }
 
 .com-lr__icon {

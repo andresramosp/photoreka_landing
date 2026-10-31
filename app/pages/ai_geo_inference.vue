@@ -34,15 +34,18 @@
             </LxButton>
           </template>
           <template #visual>
-            <ShotFrame label="Photoreka — World Map" ratio="16 / 9">
+            <ShotFrame label="Photoreka — World Map" ratio="4 / 3">
               <FeatureCarousel :images="slideshowImages" />
             </ShotFrame>
           </template>
         </PageHero>
 
         <section id="use-cases" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Use cases" align="center">
+          <div class="lx-container lx-beside">
+            <SectionIntro
+              eyebrow="Use cases"
+              flush
+            >
               <template #title>
                 Who needs to recover
                 <em class="lx-accent">missing GPS metadata</em>
@@ -53,9 +56,47 @@
                 story on the map.
               </p>
             </SectionIntro>
-            <PageGrid :items="usecases" :columns="4" />
+            <ul v-reveal="120" class="lx-list lx-list--rich">
+              <li v-for="item in usecases" :key="item.title">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lx-list__copy">
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.description }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </section>
+
+        <MediaSplitSection
+          id="map"
+          eyebrow="Interactive Map"
+          src="/ai_geoinference/3.png"
+          alt="Geo-inference interactive map"
+          label="Photoreka — World Map"
+          ratio="4 / 3"
+          focus="100% 50%"
+          reverse
+        >
+          <template #title>
+            Every photo. Every location.
+            <em class="lx-accent">One map.</em>
+          </template>
+          <p>
+            Once geo-inference completes, your photos appear as clustered,
+            geotagged markers on a full-screen interactive map. Click any
+            cluster to explore what was shot there. Filter by GPS confidence, AI
+            inference quality, or granularity (city, region, country). Correct
+            any misplaced photo directly from its marker — manual precision
+            always wins over AI.
+          </p>
+          <template #actions>
+            <LxButton icon="external" @click="goToApp">Explore the Map</LxButton>
+            <span class="lx-status">Available in the Photoreka web platform</span>
+          </template>
+        </MediaSplitSection>
 
         <section id="how-it-works" class="lx-section">
           <div class="lx-container">
@@ -69,6 +110,23 @@
               </p>
             </SectionIntro>
             <PageSteps :steps="steps" />
+          </div>
+        </section>
+
+        <section id="features" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Features" align="center">
+              <template #title>
+                Built for accuracy,
+                <em class="lx-accent">designed for trust</em>
+              </template>
+              <p>
+                Not every photo can be geolocated or geotagged — and we tell you
+                that upfront. Every design decision prioritises reliability over
+                recall.
+              </p>
+            </SectionIntro>
+            <PageGrid :items="features" :columns="3" />
           </div>
         </section>
 
@@ -89,49 +147,6 @@
             sign-up required, no subscription, no strings attached.
           </p>
         </GeoRecoveryPromo>
-
-        <section id="features" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Features" align="center">
-              <template #title>
-                Built for accuracy,
-                <em class="lx-accent">designed for trust</em>
-              </template>
-              <p>
-                Not every photo can be geolocated or geotagged — and we tell you
-                that upfront. Every design decision prioritises reliability over
-                recall.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="features" :columns="3" />
-          </div>
-        </section>
-
-        <MediaSplitSection
-          id="map"
-          eyebrow="Interactive Map"
-          src="/ai_geoinference/4.png"
-          alt="Geo-inference interactive map"
-          label="Photoreka — World Map"
-          reverse
-        >
-          <template #title>
-            Every photo. Every location.
-            <em class="lx-accent">One map.</em>
-          </template>
-          <p>
-            Once geo-inference completes, your photos appear as clustered,
-            geotagged markers on a full-screen interactive map. Click any
-            cluster to explore what was shot there. Filter by GPS confidence, AI
-            inference quality, or granularity (city, region, country). Correct
-            any misplaced photo directly from its marker — manual precision
-            always wins over AI.
-          </p>
-          <template #actions>
-            <LxButton icon="external" @click="goToApp">Explore the Map</LxButton>
-            <span class="lx-status">Available in the Photoreka web platform</span>
-          </template>
-        </MediaSplitSection>
 
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
@@ -216,9 +231,9 @@ const showRequestDialog = ref(false);
 
 const navLinks = [
   { label: "Use cases", target: "use-cases" },
+  { label: "Map", target: "map" },
   { label: "How it works", target: "how-it-works" },
   { label: "Features", target: "features" },
-  { label: "Map", target: "map" },
   { label: "FAQ", target: "faq" },
 ];
 

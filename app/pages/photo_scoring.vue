@@ -43,20 +43,42 @@
         </PageHero>
 
         <section id="dimensions" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Scoring dimensions" align="center">
-              <template #title>
-                9+ AI photo
-                <em class="lx-accent">scoring dimensions</em>
-              </template>
-              <p>
-                Each photo receives a detailed quality profile across multiple
-                independent criteria—so you can rank and filter by exactly what
-                matters for your project. Commercial mode activates two
-                additional product-, stock-, and fashion-specific scores.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="dimensions" :columns="3" />
+          <div class="lx-container sc-dims">
+            <!-- The intro and the capture stay pinned while the list is read. -->
+            <div class="sc-dims__side">
+              <SectionIntro eyebrow="Scoring dimensions" flush>
+                <template #title>
+                  9+ AI photo
+                  <em class="lx-accent">scoring dimensions</em>
+                </template>
+                <p>
+                  Each photo receives a detailed quality profile across multiple
+                  independent criteria—so you can rank and filter by exactly
+                  what matters for your project. Commercial mode activates two
+                  additional product-, stock-, and fashion-specific scores.
+                </p>
+              </SectionIntro>
+              <div v-reveal="{ variant: 'scale', delay: 120 }">
+                <ShotFrame
+                  src="/ai_photo_scoring/3.png"
+                  alt="Photoreka score breakdown: aesthetic quality, composition, storytelling, originality, message, humor, visual games and candidness, with the weights of the Street preset"
+                  label="Photoreka — Scores"
+                  ratio="4 / 3"
+                  focus="0% 50%"
+                />
+              </div>
+            </div>
+            <ul class="lx-list lx-list--rich">
+              <li v-for="item in dimensions" :key="item.title">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lx-list__copy">
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.description }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -92,8 +114,6 @@
         </section>
 
         <PicksPromo id="picks" source="photo_scoring" immersive />
-
-        <GeoRecoveryPromo source="photo_scoring_page" />
 
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
@@ -188,7 +208,6 @@ const navLinks = [
 const slideshowImages = [
   { src: "/ai_photo_scoring/1.png", alt: "Photo scoring hero slide 1" },
   { src: "/ai_photo_scoring/2.png", alt: "Photo scoring hero slide 2" },
-  { src: "/ai_photo_scoring/3.png", alt: "Photo scoring hero slide 3" },
   { src: "/ai_photo_scoring/4.png", alt: "Photo scoring hero slide 4" },
   { src: "/ai_photo_scoring/5.png", alt: "Photo scoring hero slide 5" },
 ];
@@ -423,3 +442,30 @@ onBeforeUnmount(() => {
 });
 </script>
 
+<style scoped>
+/* ── Dimensions: pinned intro + capture beside the list ────── */
+.sc-dims {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+
+.sc-dims__side {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + 24px);
+  display: grid;
+  gap: clamp(28px, 3vw, 40px);
+}
+
+@media (max-width: 1023px) {
+  .sc-dims {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sc-dims__side {
+    position: relative;
+    top: auto;
+  }
+}
+</style>

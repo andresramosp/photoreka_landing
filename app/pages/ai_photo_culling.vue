@@ -95,6 +95,19 @@
               </p>
             </SectionIntro>
             <PageSteps :steps="steps" />
+            <div
+              v-reveal="{ variant: 'scale', delay: 120 }"
+              v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              class="cull-result"
+            >
+              <ShotFrame
+                class="lx-zoom"
+                src="/ai_photo_scoring/4.png"
+                alt="A whole catalog ranked by AI scores in Photoreka, best photos first"
+                label="Photoreka — Ranked catalog"
+                ratio="1378 / 918"
+              />
+            </div>
           </div>
         </section>
 
@@ -369,6 +382,12 @@ onBeforeUnmount(() => {
 
 <style scoped>
 /* ── Old vs new comparison ─────────────────────────────────── */
+/* The payoff of the steps: the catalog, ranked. */
+.cull-result {
+  max-width: 1000px;
+  margin: clamp(56px, 7vw, 96px) auto 0;
+}
+
 .cull-compare {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

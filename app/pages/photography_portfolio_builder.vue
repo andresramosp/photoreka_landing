@@ -39,8 +39,8 @@
         </PageHero>
 
         <section id="use-cases" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Use cases" align="center">
+          <div class="lx-container lx-beside">
+            <SectionIntro eyebrow="Use cases" flush>
               <template #title>
                 One AI portfolio generator,
                 <em class="lx-accent">many outputs</em>
@@ -51,7 +51,17 @@
                 your goal and automatically selects your strongest photos.
               </p>
             </SectionIntro>
-            <PageGrid :items="usecases" :columns="4" />
+            <ul v-reveal="120" class="lx-list lx-list--rich">
+              <li v-for="item in usecases" :key="item.title">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lx-list__copy">
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.description }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </section>
 

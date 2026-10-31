@@ -53,30 +53,57 @@
                 your improvement over time—in whatever language you write.
               </p>
             </SectionIntro>
-            <PageGrid :items="conversationExamples" :columns="2">
-              <template #item="{ item }">
-                <ul class="chat-prompts">
-                  <li v-for="query in item.queries" :key="query">
-                    “{{ query }}”
-                  </li>
-                </ul>
-              </template>
-            </PageGrid>
-          </div>
-        </section>
+            <div class="chat-examples">
+              <div v-reveal class="chat-examples__side">
+                <div class="lx-tabs" role="tablist" aria-label="What you can ask">
+                  <button
+                    v-for="(group, i) in conversationExamples"
+                    :id="`chat-tab-${i}`"
+                    :key="group.title"
+                    type="button"
+                    role="tab"
+                    class="lx-tab"
+                    :class="{ 'is-active': activeExample === i }"
+                    :aria-selected="activeExample === i"
+                    :aria-controls="`chat-panel-${i}`"
+                    @click="activeExample = i"
+                  >
+                    <n-icon size="16"><component :is="group.icon" /></n-icon>
+                    {{ group.title }}
+                  </button>
+                </div>
 
-        <section id="how-it-works" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="How it works">
-              <template #title>
-                How it <em class="lx-accent">works</em>
-              </template>
-              <p>
-                An AI photo assistant and photo catalog search engine working
-                together on the same query.
-              </p>
-            </SectionIntro>
-            <PageSteps :steps="steps" />
+                <!-- Every panel stays in the DOM so all the copy is indexable. -->
+                <div
+                  v-for="(group, i) in conversationExamples"
+                  v-show="activeExample === i"
+                  :id="`chat-panel-${i}`"
+                  :key="group.title"
+                  class="lx-panel"
+                  role="tabpanel"
+                  :aria-labelledby="`chat-tab-${i}`"
+                >
+                  <ul class="chat-prompts">
+                    <li v-for="query in group.queries" :key="query">
+                      “{{ query }}”
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                v-reveal="{ variant: 'scale', delay: 120 }"
+                class="chat-examples__shot"
+              >
+                <ShotFrame
+                  src="/chatlab/conversacion.png"
+                  alt="A ChatLab conversation: the assistant picks the strongest photo of a series and explains why, with the photos it compared"
+                  label="Photoreka — ChatLab"
+                  ratio="16 / 10"
+                  focus="50% 0%"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -94,6 +121,35 @@
               </p>
             </SectionIntro>
             <PageGrid :items="features" :columns="3" />
+          </div>
+        </section>
+
+        <section id="how-it-works" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="How it works">
+              <template #title>
+                How it <em class="lx-accent">works</em>
+              </template>
+              <p>
+                An AI photo assistant and photo catalog search engine working
+                together on the same query.
+              </p>
+            </SectionIntro>
+            <PageSteps :steps="steps" />
+            <div
+              v-reveal="{ variant: 'scale', delay: 120 }"
+              v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              class="chat-diagram"
+            >
+              <ShotFrame
+                class="lx-zoom"
+                src="/chatlab/diagram.png"
+                alt="How ChatLab answers: an orchestrator plans the work across semantic search, the metadata engine, the Atlas, rankings, reports and vision models, then a judge checks the evidence before the answer is synthesized"
+                label="Photoreka — ChatLab"
+                ratio="1536 / 1024"
+                bare
+              />
+            </div>
           </div>
         </section>
 
@@ -215,10 +271,12 @@ const smoothScroll = useSmoothScroll();
 
 const showRequestDialog = ref(false);
 
+const activeExample = ref(0);
+
 const navLinks = [
   { label: "Examples", target: "examples" },
-  { label: "How it works", target: "how-it-works" },
   { label: "Features", target: "features" },
+  { label: "How it works", target: "how-it-works" },
   { label: "Engines", target: "engines" },
   { label: "FAQ", target: "faq" },
 ];
@@ -493,10 +551,33 @@ onBeforeUnmount(() => {
 
 <style scoped>
 /* ── Prompt examples ───────────────────────────────────────── */
+/* ── Examples: tabs on the left, a real conversation on the right ── */
+.chat-examples {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .chat-examples {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chat-examples__shot {
+    order: -1;
+  }
+}
+
+.chat-diagram {
+  max-width: 1000px;
+  margin: clamp(56px, 7vw, 96px) auto 0;
+}
+
 .chat-prompts {
   display: grid;
   gap: 0.55rem;
-  margin: 0.35rem 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }

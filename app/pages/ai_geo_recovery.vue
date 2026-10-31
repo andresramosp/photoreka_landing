@@ -52,28 +52,11 @@
           </template>
           <template #visual>
             <!-- Placeholder slideshow — replace with Geo Recovery screenshots. -->
-            <ShotFrame label="Photoreka — Geo Recovery" ratio="16 / 9">
+            <ShotFrame label="Photoreka — Geo Recovery" ratio="4 / 3">
               <FeatureCarousel :images="slideshowImages" />
             </ShotFrame>
           </template>
         </PageHero>
-
-        <section id="use-cases" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Use cases" align="center">
-              <template #title>
-                Who needs bulk
-                <em class="lx-accent">EXIF GPS recovery</em>
-              </template>
-              <p>
-                If you have photos without GPS and want them back with
-                coordinates embedded — without setting up an account or learning
-                a new tool — this is it.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="usecases" :columns="4" />
-          </div>
-        </section>
 
         <section id="how-it-works" class="lx-section">
           <div class="lx-container">
@@ -112,10 +95,10 @@
           id="map"
           class="gr-map"
           eyebrow="Interactive Map Review"
-          src="/ai_geoinference/4.png"
+          src="/ai_geoinference/5.png"
           alt="Geo Recovery interactive map"
           label="Photoreka — Geo Recovery"
-          reverse
+          ratio="4 / 3"
         >
           <template #title>
             Every photo on the map.
@@ -167,6 +150,38 @@
                 </p>
               </SectionIntro>
             </div>
+          </div>
+        </section>
+
+        <section id="use-cases" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Use cases" align="center">
+              <template #title>
+                Who needs bulk
+                <em class="lx-accent">EXIF GPS recovery</em>
+              </template>
+              <p>
+                If you have photos without GPS and want them back with
+                coordinates embedded — without setting up an account or learning
+                a new tool — this is it.
+              </p>
+            </SectionIntro>
+            <!-- Plain columns, no cards: the page keeps its one card grid
+                 for the features. -->
+            <ul class="lx-columns" style="--lx-cols: 4">
+              <li
+                v-for="(item, i) in usecases"
+                :key="item.title"
+                v-reveal="i * 70"
+                class="lx-column"
+              >
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <h3 class="lx-column__title">{{ item.title }}</h3>
+                <p class="lx-column__text">{{ item.description }}</p>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -246,21 +261,21 @@ const {
 const smoothScroll = useSmoothScroll();
 
 const navLinks = [
-  { label: "Use cases", target: "use-cases" },
   { label: "How it works", target: "how-it-works" },
   { label: "Features", target: "features" },
   { label: "Map", target: "map" },
   { label: "Privacy", target: "privacy" },
+  { label: "Use cases", target: "use-cases" },
   { label: "FAQ", target: "faq" },
 ];
 
 // Hero slideshow — using geo-inference screenshots as placeholders
 // TODO: replace with Geo Recovery product screenshots
 const slideshowImages = [
-  { src: "/ai_geoinference/1.png", alt: "Geo Recovery - upload photos" },
   { src: "/ai_geoinference/2.png", alt: "Geo Recovery - AI processing" },
-  { src: "/ai_geoinference/3.png", alt: "Geo Recovery - map review" },
   { src: "/ai_geoinference/4.png", alt: "Geo Recovery - results map" },
+  { src: "/ai_geoinference/1.png", alt: "Geo Recovery - upload photos" },
+  { src: "/ai_geoinference/3.png", alt: "Geo Recovery - map review" },
 ];
 
 // Use cases

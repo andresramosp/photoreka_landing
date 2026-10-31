@@ -74,6 +74,43 @@
           </div>
         </section>
 
+        <!-- TODO: Replace with video element when /videos/search.mp4 is ready -->
+        <MediaSplitSection
+          id="dynamic-search"
+          eyebrow="Navigation as Search"
+          src="/home/tag_cloud_poster_detailed.jpg"
+          alt="AI Photo Search - Dynamic tag cloud navigation with real-time photo results"
+          label="Photoreka — Dynamic search"
+        >
+          <template #title>
+            Pan into a cluster,
+            <em class="lx-accent">instantly see those photos</em>
+          </template>
+          <p>
+            Enable <strong>dynamic search</strong> and the Tag Cloud becomes a
+            spatial photo browser. As you zoom and pan, Photoreka automatically
+            queries your catalog with the most visible tags and streams the
+            results—no button needed. Arrive in the
+            <em>"melancholy urban"</em> cluster and your best matching photos
+            appear instantly.
+          </p>
+          <template #below>
+            <ul class="lx-columns tag-bridge" style="--lx-cols: 4">
+              <li v-for="item in bridgePoints" :key="item.text" class="lx-column">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="17"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="tag-bridge__text">{{ item.text }}</span>
+              </li>
+            </ul>
+          </template>
+          <template #actions>
+            <LxButton to="/ai_photo_search" @click="onSearchClick">
+              See AI Photo Search
+            </LxButton>
+          </template>
+        </MediaSplitSection>
+
         <section id="how-it-works" class="lx-section">
           <div class="lx-container">
             <SectionIntro eyebrow="How it works">
@@ -103,41 +140,6 @@
             <PageGrid :items="features" :columns="3" />
           </div>
         </section>
-
-        <!-- TODO: Replace with video element when /videos/search.mp4 is ready -->
-        <MediaSplitSection
-          id="dynamic-search"
-          eyebrow="Navigation as Search"
-          src="/home/tag_cloud_poster_detailed.jpg"
-          alt="AI Photo Search - Dynamic tag cloud navigation with real-time photo results"
-          label="Photoreka — Dynamic search"
-        >
-          <template #title>
-            Pan into a cluster,
-            <em class="lx-accent">instantly see those photos</em>
-          </template>
-          <p>
-            Enable <strong>dynamic search</strong> and the Tag Cloud becomes a
-            spatial photo browser. As you zoom and pan, Photoreka automatically
-            queries your catalog with the most visible tags and streams the
-            results—no button needed. Arrive in the
-            <em>"melancholy urban"</em> cluster and your best matching photos
-            appear instantly.
-          </p>
-          <ul class="lx-list tag-bridge">
-            <li v-for="item in bridgePoints" :key="item.text">
-              <span class="tag-bridge__icon" :style="{ color: item.color }">
-                <n-icon size="17"><component :is="item.icon" /></n-icon>
-              </span>
-              <span>{{ item.text }}</span>
-            </li>
-          </ul>
-          <template #actions>
-            <LxButton to="/ai_photo_search" @click="onSearchClick">
-              See AI Photo Search
-            </LxButton>
-          </template>
-        </MediaSplitSection>
 
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
@@ -234,9 +236,9 @@ const showRequestDialog = ref(false);
 
 const navLinks = [
   { label: "Groups", target: "groups" },
+  { label: "Dynamic search", target: "dynamic-search" },
   { label: "How it works", target: "how-it-works" },
   { label: "Features", target: "features" },
-  { label: "Dynamic search", target: "dynamic-search" },
   { label: "FAQ", target: "faq" },
 ];
 
@@ -549,19 +551,10 @@ onBeforeUnmount(() => {
 }
 
 /* ── Dynamic search list ───────────────────────────────────── */
-.tag-bridge {
-  margin-top: 1.5rem;
-}
-
-.tag-bridge__icon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  background: var(--lx-surface-3);
-  border: 1px solid var(--lx-line);
+.tag-bridge__text {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--lx-text);
 }
 
 @media (max-width: 1023px) {

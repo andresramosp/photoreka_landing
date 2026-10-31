@@ -34,19 +34,43 @@
         </PageHero>
 
         <section id="features" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Features" align="center">
-              <template #title>
-                See your work
-                <em class="lx-accent">like never before</em>
-              </template>
-              <p>
-                The 3D Atlas transforms how you understand and curate your
-                photographic archive. Explore relationships, discover patterns,
-                and gain insights impossible in traditional grid views.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="features" :columns="3" />
+          <div class="lx-container atlas-features">
+            <!-- The intro and the 2D view stay pinned while the list is read. -->
+            <div class="atlas-features__side">
+              <SectionIntro eyebrow="Features" flush>
+                <template #title>
+                  See your work
+                  <em class="lx-accent">like never before</em>
+                </template>
+                <p>
+                  The 3D Atlas transforms how you understand and curate your
+                  photographic archive. Explore relationships, discover
+                  patterns, and gain insights impossible in traditional grid
+                  views.
+                </p>
+              </SectionIntro>
+              <div v-reveal="{ variant: 'scale', delay: 120 }">
+                <ShotFrame
+                  video="/videos/atlas_2d.mp4"
+                  poster="/atlas/atlas_2d_poster.jpg"
+                  alt="Photoreka 2D Atlas: photos clustered by visual similarity on a flat, zoomable map"
+                  label="Photoreka — 2D Atlas"
+                  ratio="16 / 10"
+                  focus="100% 50%"
+                />
+              </div>
+            </div>
+            <ul class="lx-list lx-list--rich">
+              <li v-for="item in features" :key="item.title">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lx-list__copy">
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.description }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -264,3 +288,30 @@ onBeforeUnmount(() => {
   smoothScroll.disable();
 });
 </script>
+
+<style scoped>
+.atlas-features {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+
+.atlas-features__side {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + 24px);
+  display: grid;
+  gap: clamp(28px, 3vw, 40px);
+}
+
+@media (max-width: 1023px) {
+  .atlas-features {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .atlas-features__side {
+    position: relative;
+    top: auto;
+  }
+}
+</style>

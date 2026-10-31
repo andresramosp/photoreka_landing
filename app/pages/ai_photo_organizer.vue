@@ -4,7 +4,7 @@
       <div class="lx-page lx-numbered">
         <PageNav source="ai_photo_organizer_page" :links="navLinks" />
 
-        <PageHero eyebrow="AI Photo Organizer">
+        <PageHero eyebrow="AI Photo Organizer" showcase>
           <template #title>
             Organize your photo library
             <em class="lx-accent">without moving a single file</em>
@@ -47,19 +47,13 @@
             </button>
           </template>
           <template #visual>
-            <ShotFrame
-              src="/home/dashboard.png"
-              alt="Photoreka AI photo organizer dashboard showing an analyzed photo catalog"
-              label="Photoreka — Workspace"
-              ratio="auto"
-              loading="eager"
-            />
+            <HeroRotatingShot />
           </template>
         </PageHero>
 
         <section id="approach" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="The approach" align="center">
+          <div class="lx-container lx-beside">
+            <SectionIntro eyebrow="The approach" flush>
               <template #title>
                 Your storage is fine.
                 <em class="lx-accent">Your findability isn't.</em>
@@ -70,7 +64,17 @@
                 stay exactly where they are, and the intelligence comes to them.
               </p>
             </SectionIntro>
-            <PageGrid :items="pillars" :columns="4" />
+            <ul v-reveal="120" class="lx-list lx-list--rich">
+              <li v-for="item in pillars" :key="item.title">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lx-list__copy">
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.description }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </section>
 

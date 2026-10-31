@@ -89,10 +89,10 @@
           </div>
         </section>
 
-        <!-- The three levels -->
+        <!-- The three levels, with the questions you ask at each one -->
         <section id="levels" class="lx-section">
           <div class="lx-container">
-            <SectionIntro eyebrow="You point, it understands" align="center">
+            <SectionIntro eyebrow="You point, it understands">
               <template #title>
                 You never explain
                 <em class="lx-accent">which photos you mean</em>
@@ -105,35 +105,85 @@
               </p>
             </SectionIntro>
 
-            <PageGrid :items="levelItems" :columns="3">
-              <template #item="{ item }">
-                <p class="sb-level-how">
-                  <n-icon size="14"><HandLeftOutline /></n-icon>
-                  <span>{{ item.how }}</span>
+            <div class="sb-levels">
+              <div v-reveal class="sb-levels__side">
+                <div class="lx-tabs" role="tablist" aria-label="Levels">
+                  <button
+                    v-for="(tab, i) in levelTabs"
+                    :id="`sb-tab-${i}`"
+                    :key="tab.label"
+                    type="button"
+                    role="tab"
+                    class="lx-tab"
+                    :class="{ 'is-active': activeLevel === i }"
+                    :aria-selected="activeLevel === i"
+                    :aria-controls="`sb-panel-${i}`"
+                    @click="activeLevel = i"
+                  >
+                    <n-icon size="16"><component :is="tab.icon" /></n-icon>
+                    {{ tab.title }}
+                  </button>
+                </div>
+
+                <!-- Every panel stays in the DOM so all the copy is indexable. -->
+                <div
+                  v-for="(tab, i) in levelTabs"
+                  v-show="activeLevel === i"
+                  :id="`sb-panel-${i}`"
+                  :key="tab.label"
+                  class="lx-panel"
+                  role="tabpanel"
+                  :aria-labelledby="`sb-tab-${i}`"
+                >
+                  <template v-if="tab.level">
+                    <p class="sb-panel__kicker">{{ tab.level.kicker }}</p>
+                    <p class="sb-panel__text">{{ tab.level.text }}</p>
+                    <p class="sb-level-how">
+                      <n-icon size="14"><HandLeftOutline /></n-icon>
+                      <span>{{ tab.level.how }}</span>
+                    </p>
+                    <p class="sb-level-example">“{{ tab.level.example }}”</p>
+                  </template>
+
+                  <div class="sb-panel__prompts">
+                    <h3 class="sb-prompts-title">
+                      What you actually ask
+                      <em class="lx-accent">a board like this</em>
+                    </h3>
+                    <p class="sb-prompts-lead">
+                      The same question means something different depending on
+                      what you marked. Write in whatever language you think in —
+                      the assistant answers in it.
+                    </p>
+                    <p class="sb-prompts-label">{{ tab.label }}</p>
+                    <ul class="sb-queries">
+                      <li v-for="query in tab.queries" :key="query">
+                        “{{ query }}”
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Placeholder until the real capture is ready — swap
+                   `levelsShot` below and this picks it up. -->
+              <div
+                v-reveal="{ variant: 'scale', delay: 120 }"
+                class="sb-levels__shot"
+              >
+                <ShotFrame
+                  :src="levelsShot"
+                  alt="The three levels of context on Photoreka's canvas: the whole board, the focus area marked out with the halo, and a single spotlighted photo"
+                  label="Photoreka — Canvas"
+                  ratio="auto"
+                />
+                <p class="sb-levels-footnote">
+                  The finest level you marked is the subject of the question.
+                  Everything wider than it is context — which is exactly how you
+                  already think when you stand in front of a wall of prints.
                 </p>
-                <p class="sb-level-example">“{{ item.example }}”</p>
-              </template>
-            </PageGrid>
-
-            <!-- Placeholder until the real capture is ready — swap
-                 `levelsShot` below and this picks it up. -->
-            <div
-              v-reveal="{ variant: 'scale', delay: 120 }"
-              class="sb-levels-shot"
-            >
-              <ShotFrame
-                :src="levelsShot"
-                alt="The three levels of context on Photoreka's canvas: the whole board, the focus area marked out with the halo, and a single spotlighted photo"
-                label="Photoreka — Canvas"
-                ratio="auto"
-              />
+              </div>
             </div>
-
-            <p v-reveal class="sb-levels-footnote">
-              The finest level you marked is the subject of the question.
-              Everything wider than it is context — which is exactly how you
-              already think when you stand in front of a wall of prints.
-            </p>
           </div>
         </section>
 
@@ -157,25 +207,68 @@
         <!-- Canvas features -->
         <section id="canvas" class="lx-section">
           <div class="lx-container">
-            <SectionIntro eyebrow="The canvas" align="center">
-              <template #title>
-                Everything the canvas does
-                <em class="lx-accent">on its own</em>
-              </template>
-              <p>
-                Before a single word is typed, the board is already a proper
-                editing table: infinite space, real drag-and-drop, and your
-                archive one gesture away from any photo on it.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="canvasFeatures" :columns="4" />
+            <div class="sb-canvas-head">
+              <SectionIntro eyebrow="The canvas" flush>
+                <template #title>
+                  Everything the canvas does
+                  <em class="lx-accent">on its own</em>
+                </template>
+                <p>
+                  Before a single word is typed, the board is already a proper
+                  editing table: infinite space, real drag-and-drop, and your
+                  archive one gesture away from any photo on it.
+                </p>
+              </SectionIntro>
+              <div
+                v-reveal="{ variant: 'scale', delay: 120 }"
+                v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              >
+                <!-- Each frame only plays while visible, so the hidden one
+                     never starts. -->
+                <ShotFrame
+                  class="lx-zoom sb-canvas-video--desktop"
+                  video="/videos/canvas_desktop.mp4"
+                  alt="Photoreka infinite canvas clustering photos automatically"
+                  label="Photoreka — Canvas"
+                  ratio="16 / 9"
+                />
+                <ShotFrame
+                  class="sb-canvas-video--mobile"
+                  video="/videos/canvas_mobile.mp4"
+                  alt="Photoreka infinite canvas clustering photos automatically"
+                  label="Photoreka — Canvas"
+                  ratio="4 / 5"
+                />
+              </div>
+            </div>
+
+            <!-- Plain columns, no cards: the page keeps its one card grid
+                 for the chat. -->
+            <ul class="lx-columns" style="--lx-cols: 4">
+              <li
+                v-for="(item, i) in canvasFeatures"
+                :key="item.title"
+                v-reveal="(i % 4) * 80"
+                class="lx-column"
+              >
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <h3 class="lx-column__title">{{ item.title }}</h3>
+                <p class="lx-column__text">{{ item.description }}</p>
+              </li>
+            </ul>
           </div>
         </section>
 
         <!-- Similarity criteria -->
         <section id="similarity" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Similarity" align="center">
+          <div class="lx-container sb-similarity">
+            <SectionIntro
+              eyebrow="Similarity"
+              flush
+              class="sb-similarity__intro"
+            >
               <template #title>
                 Pick any photo on the board and ask for
                 <em class="lx-accent">more like it — on your axis</em>
@@ -187,7 +280,17 @@
                 fills with candidates you drag straight up onto the board.
               </p>
             </SectionIntro>
-            <PageGrid :items="criteriaItems" :columns="3" />
+            <ul v-reveal="120" class="lx-list lx-list--rich">
+              <li v-for="item in criteriaItems" :key="item.title">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lx-list__copy">
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.description }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -212,32 +315,6 @@
           </div>
         </section>
 
-        <!-- Prompts by level -->
-        <section id="prompts" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Prompts" align="center">
-              <template #title>
-                What you actually ask
-                <em class="lx-accent">a board like this</em>
-              </template>
-              <p>
-                The same question means something different depending on what
-                you marked. Write in whatever language you think in — the
-                assistant answers in it.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="promptItems" :columns="2">
-              <template #item="{ item }">
-                <ul class="sb-queries">
-                  <li v-for="query in item.queries" :key="query">
-                    “{{ query }}”
-                  </li>
-                </ul>
-              </template>
-            </PageGrid>
-          </div>
-        </section>
-
         <!-- Use cases -->
         <section id="use-cases" class="lx-section">
           <div class="lx-container">
@@ -248,7 +325,20 @@
               </template>
               <p>Any body of work whose order carries meaning.</p>
             </SectionIntro>
-            <PageGrid :items="useCaseItems" :columns="3" />
+            <ul class="lx-columns">
+              <li
+                v-for="(item, i) in useCaseItems"
+                :key="item.title"
+                v-reveal="(i % 3) * 80"
+                class="lx-column"
+              >
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <h3 class="lx-column__title">{{ item.title }}</h3>
+                <p class="lx-column__text">{{ item.description }}</p>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -842,9 +932,21 @@ const criteriaItems = computed(() =>
   criteria.value.map((c) => ({ ...c, description: c.text })),
 );
 
-const promptItems = computed(() =>
-  promptExamples.value.map((group) => ({ ...group, title: group.label })),
+// One tab per level, plus "Reading your own edit", which only has prompts.
+const levelTabs = computed(() =>
+  promptExamples.value.map((group, i) => {
+    const level = levelItems.value[i];
+    return {
+      label: group.label,
+      title: level ? level.title : group.label,
+      icon: level ? level.icon : group.icon,
+      queries: group.queries,
+      level: level || null,
+    };
+  }),
 );
+
+const activeLevel = ref(0);
 
 const useCaseItems = computed(() =>
   useCases.value.map((u) => ({ ...u, description: u.text })),
@@ -906,6 +1008,20 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.sb-canvas-video--mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .sb-canvas-video--desktop {
+    display: none;
+  }
+
+  .sb-canvas-video--mobile {
+    display: block;
+  }
+}
+
 /* ── Generators vs Photoreka ───────────────────────────────── */
 .sb-compare {
   display: grid;
@@ -1033,18 +1149,112 @@ onBeforeUnmount(() => {
   color: var(--lx-text);
 }
 
-.sb-levels-shot {
-  max-width: 1040px;
-  margin: clamp(40px, 5vw, 64px) auto 0;
-}
-
 .sb-levels-footnote {
   max-width: 44em;
-  margin: clamp(28px, 3vw, 40px) auto 0;
-  text-align: center;
-  font-size: var(--lx-fs-body);
-  line-height: 1.75;
+  margin-top: clamp(20px, 2.4vw, 28px);
+  font-size: var(--lx-fs-sm);
+  line-height: 1.7;
   color: var(--lx-text-2);
+}
+
+/* ── Levels: tabs on the left, capture on the right ────────── */
+.sb-levels {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: start;
+}
+
+.sb-levels__shot {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + 24px);
+}
+
+.sb-panel__kicker {
+  font-size: var(--lx-fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lx-text-3);
+}
+
+.sb-panel__text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--lx-text);
+}
+
+.sb-panel__prompts {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--lx-line);
+}
+
+.sb-prompts-title {
+  font-family: var(--lx-font-display);
+  font-size: 1.45rem;
+  font-weight: 360;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+}
+
+.sb-prompts-lead {
+  font-size: var(--lx-fs-sm);
+  line-height: 1.7;
+  color: var(--lx-text-2);
+}
+
+.sb-prompts-label {
+  margin-top: 0.3rem;
+  font-size: var(--lx-fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lx-text-3);
+}
+
+/* ── Canvas: intro beside the video ────────────────────────── */
+.sb-canvas-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: center;
+  margin-bottom: clamp(56px, 7vw, 96px);
+}
+
+/* ── Similarity: the list on the left, the intro on the right ─ */
+.sb-similarity {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: center;
+}
+
+.sb-similarity__intro {
+  order: 2;
+}
+
+@media (max-width: 1023px) {
+  /* minmax(0, …): the scrolling tab row must not widen the column. */
+  .sb-levels,
+  .sb-canvas-head,
+  .sb-similarity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* On phones and tablets the capture comes first. */
+  .sb-levels__shot {
+    position: relative;
+    top: auto;
+    order: -1;
+  }
+
+  .sb-similarity__intro {
+    order: -1;
+  }
 }
 
 /* ── Prompts ───────────────────────────────────────────────── */

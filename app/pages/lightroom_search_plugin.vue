@@ -82,14 +82,16 @@
             aesthetically to understand your photographic body of work as a
             cohesive whole.
           </p>
-          <ul class="lx-list lr-atlas">
-            <li v-for="item in atlasPoints" :key="item.text">
-              <span class="lr-atlas__icon" :style="{ color: item.color }">
-                <n-icon size="17"><component :is="item.icon" /></n-icon>
-              </span>
-              <span>{{ item.text }}</span>
-            </li>
-          </ul>
+          <template #below>
+            <ul class="lx-columns">
+              <li v-for="item in atlasPoints" :key="item.text" class="lx-column">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="17"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lr-atlas__text">{{ item.text }}</span>
+              </li>
+            </ul>
+          </template>
           <template #actions>
             <LxButton icon="external" @click="goToAtlas">Open 3D Atlas</LxButton>
             <span class="lx-status">Launch in Photoreka web platform</span>
@@ -356,18 +358,9 @@ onBeforeUnmount(() => {
   object-fit: contain;
 }
 
-.lr-atlas {
-  margin-top: 1.5rem;
-}
-
-.lr-atlas__icon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  background: var(--lx-surface-3);
-  border: 1px solid var(--lx-line);
+.lr-atlas__text {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--lx-text);
 }
 </style>

@@ -628,6 +628,189 @@ html.lenis body {
 }
 
 /* ==========================================================================
+   CARDLESS ITEMS  (icon lists and plain columns, so a page keeps a single
+   card grid)
+   ========================================================================== */
+
+/* Icon tile; its colour comes from an inline `color`. */
+.lx-icon-tile {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 26%, transparent);
+}
+
+/* Titled items with an icon, usually beside an intro. */
+.lx-list--rich > li {
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 0;
+}
+
+.lx-list__copy {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--lx-text-2);
+}
+
+.lx-list__copy strong {
+  font-family: var(--lx-font-display);
+  font-size: 1.18rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--lx-text);
+}
+
+/* Plain columns; set the count with --lx-cols. */
+.lx-columns {
+  display: grid;
+  grid-template-columns: repeat(var(--lx-cols, 3), minmax(0, 1fr));
+  gap: clamp(28px, 3vw, 44px) clamp(24px, 3vw, 48px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lx-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--lx-line-2);
+}
+
+.lx-column__title {
+  font-family: var(--lx-font-display);
+  font-size: 1.22rem;
+  font-weight: 380;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+}
+
+.lx-column__text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--lx-text-2);
+}
+
+/* Intro on one side, content on the other. */
+.lx-beside {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .lx-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lx-beside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .lx-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================================================
+   TABS  (pill tabs; every panel stays in the DOM, shown with v-show)
+   ========================================================================== */
+
+.lx-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.lx-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--lx-line-2);
+  background: transparent;
+  color: var(--lx-text-2);
+  font: inherit;
+  font-size: var(--lx-fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.lx-tab:hover {
+  color: var(--lx-text);
+  border-color: var(--lx-line-3);
+}
+
+.lx-tab.is-active {
+  color: var(--lx-btn-fg);
+  background: var(--lx-btn-bg);
+  border-color: transparent;
+}
+
+.lx-tab:focus-visible {
+  outline: 2px solid var(--lx-accent);
+  outline-offset: 2px;
+}
+
+.lx-tab__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.lx-panel {
+  display: grid;
+  gap: 1rem;
+  animation: lx-panel-in 0.5s var(--lx-ease);
+}
+
+@keyframes lx-panel-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+/* On phones the tab row scrolls sideways instead of wrapping. */
+@media (max-width: 600px) {
+  .lx-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(-1 * var(--lx-gutter));
+    padding-inline: var(--lx-gutter);
+    scrollbar-width: none;
+  }
+
+  .lx-tab {
+    flex-shrink: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lx-panel {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
    SPLIT LAYOUT  (copy + visual side by side)
    ========================================================================== */
 

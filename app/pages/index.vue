@@ -14,11 +14,9 @@
         <HomeHero @signup="goToAuth('signup')" />
 
         <HomeOverview />
-        <HomeCanvas />
-        <HomeSearch />
-        <HomeFeatures />
-        <PicksPromo id="picks" source="home" immersive />
         <HomeSources />
+        <HomeFeatures />
+        <PicksPromo id="picks" source="home" immersive media-first />
         <!-- <HomeLightroom @signup="goToAuth('signup')" /> -->
         <HomePricing @signup="goToAuth('signup')" />
         <HomeFaq @signup="goToAuth('signup')" />

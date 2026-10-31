@@ -51,8 +51,12 @@
         </PageHero>
 
         <section id="examples" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Search examples" align="center">
+          <div class="lx-container search-examples">
+            <SectionIntro
+              eyebrow="Search examples"
+              flush
+              class="search-examples__intro"
+            >
               <template #title>
                 Search your catalog
                 <em class="lx-accent">the way you think</em>
@@ -64,44 +68,29 @@
                 describe it, you can find it in your archive.
               </p>
             </SectionIntro>
-            <PageGrid :items="searchExamples" :columns="3">
-              <template #item="{ item }">
+            <ul class="search-examples__list">
+              <li
+                v-for="(group, i) in searchExamples"
+                :key="group.title"
+                v-reveal="i * 60"
+                class="search-examples__row"
+              >
+                <h3 class="search-examples__label">
+                  <span
+                    class="search-examples__icon"
+                    :style="{ color: group.color }"
+                  >
+                    <n-icon size="16"><component :is="group.icon" /></n-icon>
+                  </span>
+                  {{ group.title }}
+                </h3>
                 <ul class="search-queries">
-                  <li v-for="query in item.queries" :key="query">
+                  <li v-for="query in group.queries" :key="query">
                     “{{ query }}”
                   </li>
                 </ul>
-              </template>
-            </PageGrid>
-          </div>
-        </section>
-
-        <section id="how-it-works" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="How it works">
-              <template #title>
-                How it <em class="lx-accent">works</em>
-              </template>
-              <p>
-                No black box. Here's exactly what happens when you type a query.
-              </p>
-            </SectionIntro>
-            <PageSteps :steps="steps" />
-          </div>
-        </section>
-
-        <section id="features" class="lx-section">
-          <div class="lx-container">
-            <SectionIntro eyebrow="Features" align="center">
-              <template #title>
-                More than <em class="lx-accent">keyword search</em>
-              </template>
-              <p>
-                Photoreka's search understands context, mood, composition, and
-                intent—not just the words in your metadata.
-              </p>
-            </SectionIntro>
-            <PageGrid :items="features" :columns="3" />
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -121,14 +110,62 @@
               </p>
             </SectionIntro>
 
-            <PageGrid :items="searchModes" :columns="3">
-              <template #item="{ item }">
-                <p class="search-mode-example">
-                  <span>Example</span>
-                  <em>“{{ item.example }}”</em>
-                </p>
-              </template>
-            </PageGrid>
+            <div class="search-modes">
+              <div v-reveal class="search-modes__side">
+                <div class="lx-tabs" role="tablist" aria-label="Search modes">
+                  <button
+                    v-for="(mode, i) in searchModes"
+                    :id="`search-tab-${i}`"
+                    :key="mode.kicker"
+                    type="button"
+                    role="tab"
+                    class="lx-tab"
+                    :class="{ 'is-active': activeMode === i }"
+                    :aria-selected="activeMode === i"
+                    :aria-controls="`search-panel-${i}`"
+                    @click="activeMode = i"
+                  >
+                    <span
+                      class="lx-tab__dot"
+                      :style="{ background: mode.color }"
+                    />
+                    {{ mode.kicker }}
+                  </button>
+                </div>
+
+                <!-- Every panel stays in the DOM so all the copy is indexable. -->
+                <div
+                  v-for="(mode, i) in searchModes"
+                  v-show="activeMode === i"
+                  :id="`search-panel-${i}`"
+                  :key="mode.kicker"
+                  class="lx-panel"
+                  role="tabpanel"
+                  :aria-labelledby="`search-tab-${i}`"
+                >
+                  <h3 class="search-panel__title">{{ mode.title }}</h3>
+                  <p class="search-panel__text">{{ mode.description }}</p>
+                  <p class="search-mode-example">
+                    <span>Example</span>
+                    <em>“{{ mode.example }}”</em>
+                  </p>
+                </div>
+              </div>
+
+              <div
+                v-reveal="{ variant: 'scale', delay: 120 }"
+                class="search-modes__shot"
+              >
+                <ShotFrame
+                  src="/home/search_results.jpg"
+                  alt="Photoreka search results: a grid of matching photos from your own catalog, ranked by relevance"
+                  label="Photoreka — Search"
+                  ratio="7 / 4"
+                  fit="cover"
+                  focus="100% 50%"
+                />
+              </div>
+            </div>
 
             <div v-reveal="120" class="lx-card search-alt">
               <div class="search-alt__copy">
@@ -188,6 +225,35 @@
           </div>
         </section>
 
+        <section id="how-it-works" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="How it works">
+              <template #title>
+                How it <em class="lx-accent">works</em>
+              </template>
+              <p>
+                No black box. Here's exactly what happens when you type a query.
+              </p>
+            </SectionIntro>
+            <PageSteps :steps="steps" />
+          </div>
+        </section>
+
+        <section id="features" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Features" align="center">
+              <template #title>
+                More than <em class="lx-accent">keyword search</em>
+              </template>
+              <p>
+                Photoreka's search understands context, mood, composition, and
+                intent—not just the words in your metadata.
+              </p>
+            </SectionIntro>
+            <PageGrid :items="features" :columns="3" />
+          </div>
+        </section>
+
         <MediaSplitSection
           id="lightroom"
           eyebrow="Also available in Lightroom Classic"
@@ -219,8 +285,6 @@
             </LxButton>
           </template>
         </MediaSplitSection>
-
-        <GeoRecoveryPromo source="ai_photo_search_page" />
 
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
@@ -304,9 +368,9 @@ const showRequestDialog = ref(false);
 
 const navLinks = [
   { label: "Examples", target: "examples" },
+  { label: "Modes", target: "modes" },
   { label: "How it works", target: "how-it-works" },
   { label: "Features", target: "features" },
-  { label: "Modes", target: "modes" },
   { label: "Lightroom", target: "lightroom" },
   { label: "FAQ", target: "faq" },
 ];
@@ -474,6 +538,8 @@ const searchModes = [
   },
 ];
 
+const activeMode = ref(0);
+
 const lightroomPoints = [
   {
     icon: markRaw(SyncOutline),
@@ -626,17 +692,65 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* ── Search examples ───────────────────────────────────────── */
-.search-queries {
+/* ── Search examples: intro beside a list of query rows ────── */
+.search-examples {
   display: grid;
-  gap: 0.55rem;
-  margin: 0.35rem 0 0;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+
+.search-examples__intro {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + 32px);
+}
+
+.search-examples__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--lx-line-2);
+}
+
+.search-examples__row {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--lx-line-2);
+}
+
+.search-examples__label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--lx-font-display);
+  font-size: 1.22rem;
+  font-weight: 380;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+}
+
+.search-examples__icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 26%, transparent);
+}
+
+.search-queries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .search-queries li {
-  padding: 0.55rem 0.85rem;
+  padding: 0.5rem 0.85rem;
   border-radius: var(--lx-radius-sm);
   background: var(--lx-surface-2);
   border: 1px solid var(--lx-line);
@@ -648,11 +762,33 @@ onBeforeUnmount(() => {
   color: var(--lx-text-2);
 }
 
-/* ── Search modes ──────────────────────────────────────────── */
+/* ── Search modes: tabs on the left, results on the right ──── */
+.search-modes {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: center;
+}
+
+.search-panel__title {
+  font-family: var(--lx-font-display);
+  font-size: 1.6rem;
+  font-weight: 360;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+}
+
+.search-panel__text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--lx-text-2);
+}
+
 .search-mode-example {
   display: grid;
   gap: 0.35rem;
-  margin-top: auto;
+  margin-top: 0.4rem;
   padding-top: 1.1rem;
   border-top: 1px solid var(--lx-line);
   font-size: var(--lx-fs-sm);
@@ -723,8 +859,20 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 1023px) {
-  .search-alt {
-    grid-template-columns: 1fr;
+  .search-alt,
+  .search-examples,
+  .search-modes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .search-examples__intro {
+    position: relative;
+    top: auto;
+  }
+
+  /* On phones and tablets the capture comes first. */
+  .search-modes__shot {
+    order: -1;
   }
 }
 </style>

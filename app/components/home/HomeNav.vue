@@ -29,9 +29,9 @@ const { themeMode, toggleTheme, canToggleTheme } = useTheme();
 // Secciones que aparecen en la barra de navegación (target = id de sección)
 const links = [
   { label: "Overview", target: "overview" },
+  { label: "Sources", target: "sources" },
   { label: "Tools", target: "features" },
   { label: "Picks", target: "picks" },
-  { label: "Sources", target: "sources" },
   { label: "Pricing", target: "pricing" },
   { label: "FAQ", target: "faq" },
 ];
