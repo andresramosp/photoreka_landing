@@ -7,14 +7,12 @@
           <em class="lx-accent">from anywhere</em>
         </template>
         <p>
-          Photoreka works with your existing photo sources. Import your images
-          from Lightroom Classic, Google Photos, Google Drive, Dropbox, or local
-          files and start curating with AI immediately. It's a
+          Import from Lightroom Classic, Google Photos, Google Drive, Dropbox,
+          or local files and start curating right away. A
           <NuxtLink to="/ai_photo_organizer"
             >cloud-based AI photo organizer</NuxtLink
           >
-          that runs in your browser on Windows, Mac, or Linux—nothing to
-          install.
+          that runs in your browser on any OS—nothing to install.
         </p>
       </SectionIntro>
 

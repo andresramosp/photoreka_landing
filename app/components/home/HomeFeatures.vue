@@ -1,7 +1,7 @@
 <template>
-  <!-- All tools in one explorer: a list on the left and the open tool's
-       capture on the right (an accordion on phones). -->
-  <ToolExplorer
+  <!-- All tools as scroll steps: the copy scrolls on the left while the
+       active capture stays pinned on the right (stacked on phones). -->
+  <ToolScrolly
     section-id="features"
     eyebrow="AI tools"
     title="A whole range of AI tools to organize, search, and curate your photos"
@@ -229,7 +229,7 @@ const tools = [
       "Explore geographic clusters in an interactive map view",
       "Refine results with source, detail, and time-range filters",
     ],
-    image: "/ai_geoinference/6.png",
+    image: "/ai_geoinference/3_estrecho.png",
     color: "#14b8a6",
     link: "/ai_geo_inference",
   },
