@@ -117,7 +117,7 @@ import AppLogo from "~/components/AppLogo.vue";
   position: relative;
   overflow: hidden;
   background: var(--lx-bg);
-  padding: clamp(64px, 8vw, 104px) 0 0;
+  padding: clamp(64px, 8vw, 104px) 0 clamp(32px, 4vw, 48px);
   margin-top: auto;
   border-top: 1px solid var(--lx-line);
   font-family: var(--lx-font-sans);
