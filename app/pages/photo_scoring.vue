@@ -60,11 +60,10 @@
               </SectionIntro>
               <div v-reveal="{ variant: 'scale', delay: 120 }">
                 <ShotFrame
-                  src="/ai_photo_scoring/3.png"
-                  alt="Photoreka score breakdown: aesthetic quality, composition, storytelling, originality, message, humor, visual games and candidness, with the weights of the Street preset"
+                  src="/ai_photo_scoring/12.png"
+                  alt="Photoreka score panel with the General preset: overall 8.3/10 Remarkable, with fundamentals (aesthetic, composition, storytelling, originality) and bonus dimensions (message, humor, visual games, spontaneity)"
                   label="Photoreka — Scores"
-                  ratio="4 / 3"
-                  focus="0% 50%"
+                  ratio="814 / 466"
                 />
               </div>
             </div>
@@ -206,10 +205,18 @@ const navLinks = [
 ];
 
 const slideshowImages = [
-  { src: "/ai_photo_scoring/1.png", alt: "Photo scoring hero slide 1" },
-  { src: "/ai_photo_scoring/2.png", alt: "Photo scoring hero slide 2" },
-  { src: "/ai_photo_scoring/4.png", alt: "Photo scoring hero slide 4" },
-  { src: "/ai_photo_scoring/5.png", alt: "Photo scoring hero slide 5" },
+  {
+    src: "/ai_photo_scoring/9.png",
+    alt: "Photoreka score panel for a single photo: overall 7.1/10 with the Street preset, fundamentals and bonus dimensions",
+  },
+  {
+    src: "/ai_photo_scoring/7.png",
+    alt: "Photoreka workspace sorted by aesthetic and originality scores, with each photo's score on its thumbnail",
+  },
+  {
+    src: "/ai_photo_scoring/11.png",
+    alt: "Photoreka Artistic Scores report: average score, distribution and consistency for each dimension across the whole catalog",
+  },
 ];
 
 // Scoring dimensions

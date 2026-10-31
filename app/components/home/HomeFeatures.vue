@@ -98,7 +98,11 @@ const tools = [
       "Commercial mode adds product-specific scores",
       "Surface your strongest work automatically",
     ],
-    images: ["/ai_photo_scoring/9.png", "/ai_photo_scoring/7.png"],
+    images: [
+      "/ai_photo_scoring/9.png",
+      "/ai_photo_scoring/7.png",
+      "/ai_photo_scoring/10.png",
+    ],
     color: "#ec4899",
     link: "/photo_scoring",
     demoLinks: [
