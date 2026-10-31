@@ -8,7 +8,9 @@
     <div class="pricing-card">
       <div class="pricing-readout">
         <div class="pricing-photos">
-          <span class="pricing-photos-num">+{{ selected.photos.toLocaleString("en-US") }}</span>
+          <span class="pricing-photos-num">
+            <RollingNumber :value="`+${selected.photos.toLocaleString('en-US')}`" />
+          </span>
           <span class="pricing-photos-label">photos analyzed</span>
         </div>
 
@@ -19,7 +21,9 @@
               class="pricing-price-old"
               >€{{ selected.priceEur.toFixed(2) }}</span
             >
-            <span class="pricing-price">€{{ (finalPrice ?? selected.priceEur).toFixed(2) }}</span>
+            <span class="pricing-price">
+              <RollingNumber :value="`€${(finalPrice ?? selected.priceEur).toFixed(2)}`" />
+            </span>
           </div>
           <span class="pricing-unit">{{ centsPerPhoto }} cents / photo · VAT included</span>
         </div>
@@ -58,19 +62,9 @@
         </div>
       </div>
 
-      <n-button
-        type="info"
-        size="large"
-        strong
-        block
-        class="pricing-cta"
-        @click="$emit('get-started', selected)"
-      >
-        <template #icon>
-          <n-icon><RocketOutline /></n-icon>
-        </template>
+      <LxButton block class="pricing-cta" @click="$emit('get-started', selected)">
         Get started
-      </n-button>
+      </LxButton>
 
       <p class="pricing-note">
         One-time purchase — photos are added to your account instantly. No subscription.
@@ -84,7 +78,6 @@ import {
   LayersOutline,
   SparklesOutline,
   InfiniteOutline,
-  RocketOutline,
   PricetagOutline,
 } from "@vicons/ionicons5";
 
@@ -168,11 +161,13 @@ onMounted(async () => {
 
 <style scoped>
 .pricing-slider {
-  max-width: 650px;
+  max-width: 680px;
   margin: 0 auto;
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 1s var(--lx-ease),
+    transform 1.2s var(--lx-ease);
 }
 .pricing-slider.visible {
   opacity: 1;
@@ -183,32 +178,48 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   width: fit-content;
-  margin: 0 auto 1rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 50px;
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  color: #22c55e;
-  font-size: var(--landing-fs-caption);
-  font-weight: var(--font-weight-bold);
+  margin: 0 auto 1.25rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--lx-ok) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lx-ok) 32%, transparent);
+  color: var(--lx-ok);
+  font-size: var(--lx-fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .pricing-card {
-  background: var(--premium-bg);
-  border: 1px solid var(--premium-border);
-  border-radius: 24px;
-  padding: 2.5rem 2.5rem 2rem;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-line-2);
+  border-radius: 32px;
+  padding: clamp(28px, 4vw, 48px);
+  box-shadow: var(--lx-shadow-lg), var(--lx-highlight);
+}
+
+/* Soft brand light in the top corner of the card. */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 70%;
+  height: 90%;
+  background: radial-gradient(closest-side, var(--lx-glow-1), transparent);
+  pointer-events: none;
 }
 
 .pricing-readout {
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .pricing-photos {
@@ -216,24 +227,17 @@ onMounted(async () => {
   flex-direction: column;
 }
 .pricing-photos-num {
-  font-size: clamp(2.4rem, 5vw, 3.4rem);
-  font-weight: var(--landing-fw-display);
+  font-family: var(--lx-font-display);
+  font-size: clamp(2.8rem, 6vw, 4.4rem);
+  font-weight: 340;
   line-height: 1;
-  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-[data-theme="light"] .pricing-photos-num {
-  background: linear-gradient(135deg, #1e40af 0%, #0284c7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: -0.04em;
+  color: var(--lx-text);
 }
 .pricing-photos-label {
-  margin-top: 0.35rem;
-  font-size: var(--landing-fs-sm);
-  color: var(--premium-text-secondary);
+  margin-top: 0.6rem;
+  font-size: var(--lx-fs-sm);
+  color: var(--lx-text-2);
 }
 
 .pricing-price-col {
@@ -244,70 +248,84 @@ onMounted(async () => {
 .pricing-price-row {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 .pricing-price {
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-  font-weight: var(--landing-fw-strong);
-  color: var(--premium-text-primary);
+  font-family: var(--lx-font-display);
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  font-weight: 380;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--lx-text);
 }
 .pricing-price-old {
-  font-size: var(--landing-fs-body);
-  color: var(--premium-text-secondary);
+  font-size: var(--lx-fs-body);
+  color: var(--lx-text-3);
   text-decoration: line-through;
 }
 .pricing-unit {
-  margin-top: 0.25rem;
-  font-size: var(--landing-fs-caption);
-  color: var(--premium-text-secondary);
+  margin-top: 0.6rem;
+  font-size: var(--lx-fs-xs);
+  color: var(--lx-text-2);
 }
 
 .pricing-track {
+  position: relative;
   padding: 0 0.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
+}
+
+.pricing-track :deep(.n-slider-rail__fill) {
+  background: var(--lx-accent-grad);
+}
+
+.pricing-track :deep(.n-slider-handle) {
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--lx-accent) 25%, transparent),
+    0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 .pricing-meta {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1.5rem;
   justify-content: center;
+  padding: 1.25rem 0;
   margin-bottom: 1.75rem;
+  border-block: 1px solid var(--lx-line);
 }
 .pricing-meta-item {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: var(--landing-fs-sm);
-  color: var(--premium-text-secondary);
+  font-size: var(--lx-fs-sm);
+  color: var(--lx-text-2);
 }
 .pricing-meta-item strong {
-  color: var(--premium-text-primary);
-  font-weight: var(--font-weight-semibold);
+  color: var(--lx-text);
+  font-weight: 600;
 }
 .pricing-meta-icon {
-  color: var(--premium-primary);
+  color: var(--lx-accent);
 }
 
 .pricing-cta {
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 .pricing-note {
   text-align: center;
-  font-size: var(--landing-fs-caption);
-  color: var(--premium-text-secondary);
+  font-size: var(--lx-fs-xs);
+  color: var(--lx-text-3);
   margin: 0;
 }
 
 @media (max-width: 560px) {
-  .pricing-card {
-    padding: 1.75rem 1.25rem 1.5rem;
-  }
   .pricing-readout {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1rem;
   }
   .pricing-price-col {
     align-items: flex-start;

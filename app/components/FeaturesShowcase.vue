@@ -5,15 +5,119 @@
     :class="`features-showcase--${variant}`"
     ref="sectionRef"
   >
-    <div class="fs-container">
+    <div :class="variant === 'stack' ? 'lx-container' : 'fs-container'">
       <!-- Section header -->
-      <div v-if="title || subtitle" class="fs-header" :class="{ visible }">
+      <SectionIntro
+        v-if="variant === 'stack' && (title || subtitle)"
+        :eyebrow="eyebrow"
+        :lead="subtitle"
+        align="center"
+      >
+        <template #title>
+          {{ titleParts.before
+          }}<em v-if="titleParts.accent" class="lx-accent">{{
+            titleParts.accent
+          }}</em
+          >{{ titleParts.after }}
+        </template>
+      </SectionIntro>
+      <div
+        v-else-if="title || subtitle"
+        class="fs-header"
+        :class="{ visible }"
+      >
         <h2 v-if="title" class="fs-section-title">{{ title }}</h2>
         <p v-if="subtitle" class="fs-section-subtitle">{{ subtitle }}</p>
       </div>
 
+      <!-- ── Variant 3: Sticky stacking cards (lx system) ─────── -->
+      <div v-if="variant === 'stack'" ref="stackRef" class="fs-stack">
+        <article
+          v-for="(feature, index) in features"
+          :key="index"
+          class="fs-stack-card"
+          :style="{ '--i': index }"
+        >
+          <div class="fs-stack-inner">
+            <div v-reveal class="fs-stack-copy">
+              <div class="fs-stack-meta">
+                <span class="fs-stack-icon" :style="{ color: feature.color }">
+                  <n-icon size="20">
+                    <component :is="feature.icon" />
+                  </n-icon>
+                </span>
+                <span class="fs-stack-count">
+                  {{ pad(index + 1) }}
+                  <span>/ {{ pad(features.length) }}</span>
+                </span>
+              </div>
+              <h3 class="fs-stack-title">{{ feature.title }}</h3>
+              <p v-if="feature.lead" class="fs-stack-lead">
+                {{ feature.lead }}
+              </p>
+              <ul class="lx-list fs-stack-bullets">
+                <li v-for="(bullet, bi) in featureBullets(feature)" :key="bi">
+                  <span class="lx-tick" aria-hidden="true" />
+                  <span>{{ bullet }}</span>
+                </li>
+              </ul>
+              <div
+                v-if="feature.link || featureDemos(feature).length"
+                class="fs-stack-actions"
+              >
+                <LxButton
+                  v-for="(demo, di) in featureDemos(feature)"
+                  :key="di"
+                  size="sm"
+                  :variant="demo.commercial ? 'warm' : 'ghost'"
+                  icon="external"
+                  :href="demo.href"
+                  target="_blank"
+                  >{{ demo.label }}</LxButton
+                >
+                <a
+                  v-if="feature.link"
+                  :href="feature.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="lx-link"
+                >
+                  Learn more
+                  <n-icon size="15"><ArrowForwardOutline /></n-icon>
+                </a>
+              </div>
+            </div>
+
+            <div
+              v-reveal="{ variant: 'scale', delay: 120 }"
+              class="fs-stack-visual"
+            >
+              <div
+                class="fs-stack-glow"
+                :style="{ background: feature.color }"
+                aria-hidden="true"
+              />
+              <!-- A single capture sets the frame's shape; a carousel mixes
+                   shapes, so it gets a fixed frame and fits each one inside. -->
+              <ShotFrame
+                :label="feature.title"
+                :ratio="featureImages(feature).length > 1 ? '16 / 10.4' : 'auto'"
+              >
+                <FeatureCarousel
+                  :images="featureImages(feature)"
+                  :alt="feature.title"
+                  fit="contain"
+                />
+              </ShotFrame>
+            </div>
+
+            <div class="fs-stack-shade" aria-hidden="true" />
+          </div>
+        </article>
+      </div>
+
       <!-- ── Variant 1: Grid of cards ─────────────────────────── -->
-      <div v-if="variant === 'grid'" class="fs-grid">
+      <div v-else-if="variant === 'grid'" class="fs-grid">
         <component
           :is="feature.link ? 'NuxtLink' : 'div'"
           v-for="(feature, index) in features"
@@ -128,17 +232,36 @@
 import { CheckmarkCircle, ArrowForwardOutline } from "@vicons/ionicons5";
 
 const props = defineProps({
-  /** "grid" (current card layout) | "showcase" (alternating rows) */
+  /**
+   * "grid" (card grid) | "showcase" (alternating rows) |
+   * "stack" (lx system: sticky cards that pile up while scrolling)
+   */
   variant: {
     type: String,
     default: "grid",
-    validator: (v) => ["grid", "showcase"].includes(v),
+    validator: (v) => ["grid", "showcase", "stack"].includes(v),
   },
   title: { type: String, default: "" },
+  /** Part of `title` set in the italic accent (stack variant). */
+  titleAccent: { type: String, default: "" },
   subtitle: { type: String, default: "" },
+  /** Eyebrow label and section number (stack variant). */
+  eyebrow: { type: String, default: "" },
   sectionId: { type: String, default: "features" },
   features: { type: Array, required: true },
 });
+
+const titleParts = computed(() => {
+  const at = props.titleAccent ? props.title.indexOf(props.titleAccent) : -1;
+  if (at < 0) return { before: props.title, accent: "", after: "" };
+  return {
+    before: props.title.slice(0, at),
+    accent: props.titleAccent,
+    after: props.title.slice(at + props.titleAccent.length),
+  };
+});
+
+const pad = (n) => String(n).padStart(2, "0");
 
 const config = useRuntimeConfig();
 
@@ -191,13 +314,56 @@ const featureBullets = (feature) => {
     .slice(0, 3);
 };
 
+// ── Stack variant: covered cards recede ───────────────────────
+// Each sticky card measures how far the next card has slid over it and
+// writes that as --cover (0..1); CSS scales and darkens it accordingly.
+// Written straight to the DOM so scrolling never triggers a re-render.
+const stackRef = ref(null);
+let stackFrame = 0;
+
+const measureStack = () => {
+  stackFrame = 0;
+  const cards = stackRef.value?.querySelectorAll(".fs-stack-card");
+  if (!cards?.length) return;
+  const stacked = window.innerWidth >= 1024;
+  cards.forEach((card, i) => {
+    const inner = card.firstElementChild;
+    const next = cards[i + 1];
+    let cover = 0;
+    if (stacked && next) {
+      const rect = card.getBoundingClientRect();
+      const nextTop = next.getBoundingClientRect().top;
+      cover = (rect.top + rect.height - nextTop) / (rect.height * 0.9);
+      cover = Math.max(0, Math.min(1, cover));
+    }
+    inner.style.setProperty("--cover", cover.toFixed(3));
+  });
+};
+
+const onStackScroll = () => {
+  if (!stackFrame) stackFrame = requestAnimationFrame(measureStack);
+};
+
+onMounted(() => {
+  if (props.variant !== "stack") return;
+  measureStack();
+  window.addEventListener("scroll", onStackScroll, { passive: true });
+  window.addEventListener("resize", onStackScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", onStackScroll);
+  window.removeEventListener("resize", onStackScroll);
+  if (stackFrame) cancelAnimationFrame(stackFrame);
+});
+
 // ── Scroll-reveal animation ────────────────────────────────────
 const sectionRef = ref(null);
 const visible = ref(false);
 let observer = null;
 
 onMounted(() => {
-  if (!sectionRef.value) return;
+  if (!sectionRef.value || props.variant === "stack") return;
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -517,6 +683,171 @@ a.fs-row:hover .fs-row-frame {
   box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.34),
     0 0 130px 10px var(--premium-shot-glow);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VARIANT 3 — STICKY STACK (lx landing system)
+   Cards stick under the nav with a small step, so the previous ones peek
+   out above like a deck; --cover (set in JS) recedes the covered card.
+   ══════════════════════════════════════════════════════════════ */
+.features-showcase--stack {
+  padding: var(--lx-section-y) 0;
+  background: transparent;
+  scroll-margin-top: 40px;
+}
+
+.fs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 7vh, 72px);
+}
+
+.fs-stack-card {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + var(--i) * 14px);
+}
+
+.fs-stack-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: center;
+  min-height: min(620px, calc(100vh - var(--lx-nav-offset) - 130px));
+  padding: clamp(28px, 3.6vw, 52px);
+  border-radius: 32px;
+  background: var(--lx-surface);
+  border: 1px solid var(--lx-line-2);
+  box-shadow: var(--lx-shadow-lg), var(--lx-highlight);
+  overflow: hidden;
+  transform-origin: 50% 0%;
+  transform: scale(calc(1 - var(--cover, 0) * 0.05));
+}
+
+.fs-stack-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  background: var(--lx-bg);
+  opacity: calc(var(--cover, 0) * 0.62);
+}
+
+.fs-stack-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.fs-stack-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fs-stack-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 26%, transparent);
+}
+
+.fs-stack-count {
+  font-family: var(--lx-font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  font-variant-numeric: tabular-nums;
+  color: var(--lx-text);
+}
+
+.fs-stack-count span {
+  color: var(--lx-text-3);
+}
+
+.fs-stack-title {
+  margin: 0.4rem 0 0;
+  font-family: var(--lx-font-display);
+  font-size: var(--lx-fs-h3);
+  font-weight: 360;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--lx-text);
+}
+
+.fs-stack-lead {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--lx-text-2);
+}
+
+.fs-stack-bullets {
+  margin-top: 0.2rem;
+}
+
+.fs-stack-bullets > li {
+  font-size: 0.95rem;
+  padding: 0.8rem 0;
+}
+
+.fs-stack-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  margin-top: 0.4rem;
+}
+
+.fs-stack-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.fs-stack-glow {
+  position: absolute;
+  inset: 8% 4%;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.fs-stack-visual :deep(.feat-carousel) {
+  aspect-ratio: auto;
+  height: 100%;
+  background: transparent;
+}
+
+@media (max-width: 1023px) {
+  .fs-stack-card {
+    position: relative;
+    top: auto;
+  }
+
+  .fs-stack-inner {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    transform: none;
+  }
+
+  .fs-stack-shade {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .fs-stack-inner {
+    padding: 20px;
+    gap: 28px;
+    border-radius: 24px;
+  }
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */

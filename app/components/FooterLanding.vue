@@ -12,13 +12,26 @@
         </div>
 
         <div class="footer-column">
-          <h4 class="footer-title">AI TOOLS</h4>
+          <h4 class="footer-title">FIND &amp; ORGANIZE</h4>
           <NuxtLink to="/ai_photo_organizer" class="footer-link"
             >AI Photo Organizer</NuxtLink
           >
           <NuxtLink to="/ai_photo_search" class="footer-link"
             >AI Photo Search</NuxtLink
           >
+          <NuxtLink to="/photo_tag_cloud" class="footer-link"
+            >Photo Tag Cloud</NuxtLink
+          >
+          <NuxtLink to="/photo_3D_atlas" class="footer-link"
+            >3D Photo Atlas</NuxtLink
+          >
+          <NuxtLink to="/lightroom_search_plugin" class="footer-link"
+            >Lightroom Plugin</NuxtLink
+          >
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-title">SELECT &amp; SCORE</h4>
           <NuxtLink to="/ai_photo_culling" class="footer-link"
             >AI Photo Culling</NuxtLink
           >
@@ -28,11 +41,21 @@
           <NuxtLink to="/ai_photo_picks" class="footer-link"
             >Picks: Find Your Best Photos</NuxtLink
           >
+          <NuxtLink to="/photo_reports" class="footer-link"
+            >Style Analysis Reports</NuxtLink
+          >
           <NuxtLink to="/photo_chat" class="footer-link"
             >AI Photo Assistant</NuxtLink
           >
-          <NuxtLink to="/photo_reports" class="footer-link"
-            >Style Analysis Reports</NuxtLink
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-title">CREATE &amp; LOCATE</h4>
+          <NuxtLink to="/ai_photo_storyboard" class="footer-link"
+            >AI Photo Storyboard</NuxtLink
+          >
+          <NuxtLink to="/photography_portfolio_builder" class="footer-link"
+            >Portfolio Builder</NuxtLink
           >
           <NuxtLink to="/ai_geo_inference" class="footer-link"
             >AI Geo Inference</NuxtLink
@@ -40,45 +63,14 @@
           <NuxtLink to="/ai_geo_recovery" class="footer-link"
             >AI Bulk Geotagging</NuxtLink
           >
-        </div>
-
-        <div class="footer-column">
-          <h4 class="footer-title">EXPLORE</h4>
-          <NuxtLink to="/ai_photo_storyboard" class="footer-link"
-            >AI Photo Storyboard</NuxtLink
-          >
-          <NuxtLink to="/photo_3D_atlas" class="footer-link"
-            >3D Photo Atlas</NuxtLink
-          >
-          <NuxtLink to="/photo_tag_cloud" class="footer-link"
-            >Photo Tag Cloud</NuxtLink
-          >
-          <NuxtLink to="/photography_portfolio_builder" class="footer-link"
-            >Portfolio Builder</NuxtLink
-          >
-          <NuxtLink to="/lightroom_search_plugin" class="footer-link"
-            >Lightroom Plugin</NuxtLink
-          >
-          <NuxtLink to="/blog" class="footer-link">Blog</NuxtLink>
-          <!-- <NuxtLink to="/commercial_photography" class="footer-link"
-            >For Commercial Photographers</NuxtLink
-          > -->
-
           <NuxtLink to="/framer" class="footer-link"
             >Free Photo Framer</NuxtLink
           >
         </div>
 
         <div class="footer-column">
-          <h4 class="footer-title">LEGAL</h4>
-          <NuxtLink to="/terms" class="footer-link">Terms of Service</NuxtLink>
-          <NuxtLink to="/privacy" class="footer-link"
-            >Privacy &amp; Image Policy</NuxtLink
-          >
-        </div>
-
-        <div class="footer-column">
-          <h4 class="footer-title">CONTACT</h4>
+          <h4 class="footer-title">COMPANY</h4>
+          <NuxtLink to="/blog" class="footer-link">Blog</NuxtLink>
           <a
             href="https://www.instagram.com/photoreka_curation_lab/"
             target="_blank"
@@ -86,7 +78,7 @@
             class="footer-link footer-social"
           >
             <n-icon size="18"><LogoInstagram /></n-icon>
-            <span>@photoreka_curation_lab</span>
+            <span>Instagram</span>
           </a>
           <a
             href="mailto:hello@photoreka.com"
@@ -95,6 +87,10 @@
             <n-icon size="18"><MailOutline /></n-icon>
             <span>hello@photoreka.com</span>
           </a>
+          <NuxtLink to="/terms" class="footer-link">Terms of Service</NuxtLink>
+          <NuxtLink to="/privacy" class="footer-link"
+            >Privacy &amp; Image Policy</NuxtLink
+          >
         </div>
       </div>
 
@@ -104,6 +100,9 @@
         </p>
       </div>
     </div>
+    <!-- <div class="footer-wordmark" aria-hidden="true">
+      <AppLogo layout="horizontal" :with-claim="false" />
+    </div> -->
   </footer>
 </template>
 
@@ -113,24 +112,28 @@ import AppLogo from "~/components/AppLogo.vue";
 </script>
 
 <style scoped>
+/* Styled with the lx landing tokens (assets/landing-system.scss). */
 .premium-footer {
-  background: var(--premium-bg);
-  padding: 48px 0 24px;
+  position: relative;
+  overflow: hidden;
+  background: var(--lx-bg);
+  padding: clamp(64px, 8vw, 104px) 0 0;
   margin-top: auto;
-  border-top: 1px solid var(--premium-border);
+  border-top: 1px solid var(--lx-line);
+  font-family: var(--lx-font-sans);
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: calc(var(--lx-container) + 2 * var(--lx-gutter));
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--lx-gutter);
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-  gap: 32px;
-  margin-bottom: 32px;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 56px;
 }
 
 .footer-column {
@@ -141,23 +144,28 @@ import AppLogo from "~/components/AppLogo.vue";
 .footer-column:first-child {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 18px;
 }
 
 .footer-column h4 {
-  margin: 0 0 16px 0;
+  margin: 0 0 18px 0;
 }
 
 .footer-description {
-  color: var(--text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-sm);
+  max-width: 30em;
+  margin: 0;
+  color: var(--lx-text-2);
+  line-height: 1.75;
+  font-size: var(--lx-fs-sm);
 }
 
 .footer-title {
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 16px;
-  color: var(--text-primary);
+  font-family: var(--lx-font-sans);
+  font-size: var(--lx-fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--lx-text-3);
   margin: 0;
 }
 
@@ -165,16 +173,20 @@ import AppLogo from "~/components/AppLogo.vue";
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-secondary);
+  width: fit-content;
+  color: var(--lx-text-2);
   text-decoration: none;
-  margin-bottom: 8px;
-  transition: color 0.2s ease;
+  margin-bottom: 10px;
+  transition:
+    color 0.3s ease,
+    transform 0.5s var(--lx-ease);
   cursor: pointer;
-  font-size: var(--fs-sm);
+  font-size: var(--lx-fs-sm);
 }
 
 .footer-link:hover {
-  color: var(--primary-color);
+  color: var(--lx-text);
+  transform: translateX(3px);
 }
 
 .footer-social {
@@ -185,14 +197,36 @@ import AppLogo from "~/components/AppLogo.vue";
 
 .footer-bottom {
   padding-top: 24px;
-  border-top: 1px solid var(--premium-border);
-  text-align: center;
+  border-top: 1px solid var(--lx-line);
+  text-align: left;
 }
 
 .footer-copyright {
-  color: var(--text-tertiary);
-  font-size: var(--fs-sm);
+  color: var(--lx-text-3);
+  font-size: var(--lx-fs-xs);
   margin: 0;
+}
+
+.footer-wordmark {
+  margin-top: clamp(16px, 3vw, 40px);
+  padding: 0 16px clamp(24px, 4vw, 56px);
+  display: flex;
+  justify-content: center;
+  opacity: 0.09;
+  -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 30%, transparent 100%);
+  user-select: none;
+  pointer-events: none;
+}
+
+.footer-wordmark :deep(.photoreka-logo) {
+  width: 100%;
+}
+
+/* AppLogo caps its height at 35px on mobile with !important. */
+.footer-wordmark :deep(.logo-image) {
+  width: min(1100px, 100%);
+  height: auto !important;
 }
 
 /* Mobile Responsive */
@@ -200,6 +234,10 @@ import AppLogo from "~/components/AppLogo.vue";
   .footer-content {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+  }
+
+  .footer-column:first-child {
+    grid-column: 1 / -1;
   }
 }
 

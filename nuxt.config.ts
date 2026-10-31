@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
   modules: ["nuxtjs-naive-ui", "@nuxtjs/color-mode"],
-  css: ["~/assets/global.scss"],
+  css: ["~/assets/global.scss", "~/assets/landing-system.scss"],
 
   // SSR needed at build time for proper static prerendering; no server runs at deploy time
   ssr: true,
@@ -78,6 +78,16 @@ export default defineNuxtConfig({
           rel: "apple-touch-icon",
           sizes: "180x180",
           href: "/apple-touch-icon.png",
+        },
+      ],
+      script: [
+        // Enables the hidden-until-revealed states of the lx landing system
+        // before first paint; skipped for reduced motion, and without JS the
+        // content simply renders visible.
+        {
+          innerHTML:
+            "(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('lx-motion')}}catch(e){}})();",
+          tagPosition: "head",
         },
       ],
     },

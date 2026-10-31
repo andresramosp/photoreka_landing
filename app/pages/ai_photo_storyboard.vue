@@ -1,169 +1,86 @@
 <template>
   <n-config-provider :theme="currentTheme" :theme-overrides="themeOverrides">
     <n-message-provider>
-      <div class="framer-page">
-        <!-- Navigation Header -->
-        <nav class="premium-nav">
-          <div class="nav-container">
-            <div class="nav-brand">
-              <NuxtLink to="/">
-                <AppLogo layout="horizontal" :height="40" />
-              </NuxtLink>
-            </div>
-            <div class="nav-actions">
-              <button
-                v-if="canToggleTheme(true)"
-                class="theme-toggle"
-                @click="toggleTheme"
-                aria-label="Toggle theme"
-              >
-                <n-icon size="20">
-                  <component
-                    :is="themeMode === 'dark' ? SunnyOutline : MoonOutline"
-                  />
-                </n-icon>
-              </button>
-              <n-button text @click="goToHome" class="back-link">
-                <template #icon>
-                  <n-icon><ArrowBackOutline /></n-icon>
-                </template>
-                Back to Home
-              </n-button>
-            </div>
-          </div>
-        </nav>
+      <div class="lx-page lx-numbered">
+        <PageNav source="ai_photo_storyboard_page" :links="navLinks" />
 
-        <!-- Hero Section -->
-        <section class="framer-hero" ref="heroSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-          </div>
-          <div class="hero-container">
-            <div class="hero-layout">
-              <!-- Left: Content -->
-              <div class="hero-content">
-                <div class="hero-badge" :class="{ visible: heroVisible }">
-                  <span class="badge-content">
-                    <n-icon size="16"><GridOutline /></n-icon>
-                    Infinite Canvas · Sequence · AI Chat on the board
-                  </span>
-                </div>
-                <h1 class="hero-title" :class="{ visible: heroVisible }">
-                  Storyboard your photos with
-                  <span class="gradient-text">an AI that sees your board</span>
-                </h1>
-                <p class="hero-subtitle" :class="{ visible: heroVisible }">
-                  Lay your own photographs out on an infinite canvas and arrange
-                  them into a sequence. A chat docked to the board reads how
-                  they sit, where the hole is, and tells you what is missing
-                  using
-                  <NuxtLink to="/ai_photo_search" class="cta-link"
-                    >your own archive</NuxtLink
-                  >.
-                </p>
-
-                <div class="hero-actions" :class="{ visible: heroVisible }">
-                  <n-button
-                    type="primary"
-                    size="large"
-                    strong
-                    @click="goToDemo"
-                    class="cta-primary"
-                  >
-                    <template #icon>
-                      <n-icon><PlayCircleOutline /></n-icon>
-                    </template>
-                    Try the Demo
-                  </n-button>
-                  <n-button
-                    strong
-                    secondary
-                    type="primary"
-                    size="large"
-                    @click="goToSignup"
-                  >
-                    <template #icon>
-                      <n-icon><KeyOutline /></n-icon>
-                    </template>
-                    {{ joinButtonLabel }}
-                  </n-button>
-                </div>
-                <p class="hero-alt-demo" :class="{ visible: heroVisible }">
-                  <n-icon size="14"><BriefcaseOutline /></n-icon>
-                  <span>
-                    Shooting commercial work?
-                    <a class="hero-alt-demo-link" @click="goToCommercialDemo"
-                      >Try the commercial demo →</a
-                    >
-                  </span>
-                </p>
-                <p class="cta-note">
-                  No credit card required · The demo needs no account
-                </p>
-              </div>
-
-              <!-- Right: Screenshot.
-                   Placeholder for now — swap `heroShot` below for the final
-                   canvas + chat capture when it is ready. -->
-              <div class="hero-visual" :class="{ visible: heroVisible }">
-                <div class="video-frame">
-                  <img
-                    class="hero-shot"
-                    :src="heroShot"
-                    alt="Photos arranged into a storyboard on Photoreka's infinite canvas, with the AI chat panel proposing a narrative sequence beside it"
-                    width="1600"
-                    height="900"
-                    loading="eager"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageHero eyebrow="Infinite Canvas · Sequence · AI Chat on the board">
+          <template #title>
+            Storyboard your photos with
+            <em class="lx-accent">an AI that sees your board</em>
+          </template>
+          <p>
+            Lay your own photographs out on an infinite canvas and arrange them
+            into a sequence. A chat docked to the board reads how they sit,
+            where the hole is, and tells you what is missing using
+            <NuxtLink to="/ai_photo_search">your own archive</NuxtLink>.
+          </p>
+          <template #actions>
+            <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #note>
+            <span>Shooting commercial work?</span>
+            <button class="lx-link" @click="goToCommercialDemo">
+              Try the commercial demo
+              <n-icon size="15"><ArrowForwardOutline /></n-icon>
+            </button>
+            <span class="lx-status sb-hero-status">
+              No credit card required · The demo needs no account
+            </span>
+          </template>
+          <!-- Placeholder for now — swap `heroShot` below for the final
+               canvas + chat capture when it is ready. -->
+          <template #visual>
+            <ShotFrame
+              :src="heroShot"
+              alt="Photos arranged into a storyboard on Photoreka's infinite canvas, with the AI chat panel proposing a narrative sequence beside it"
+              label="Photoreka — Canvas"
+              ratio="auto"
+              loading="eager"
+            />
+          </template>
+        </PageHero>
 
         <!-- Not a generator -->
-        <section class="contrast-section" ref="contrastSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: contrastVisible }">
-              <h2 class="section-title">
+        <section id="not-a-generator" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Not a generator" align="center">
+              <template #title>
                 Every other AI storyboard tool draws the frames.
-                <span class="gradient-text">This one finds yours.</span>
-              </h2>
-              <p class="section-subtitle">
+                <em class="lx-accent">This one finds yours.</em>
+              </template>
+              <p>
                 A storyboard made of invented images is a mockup. A storyboard
                 made of your own photographs is an edit — the thing you can
                 actually print, hang, publish or send.
               </p>
-            </div>
+            </SectionIntro>
 
-            <div class="contrast-grid" :class="{ visible: contrastVisible }">
-              <div class="contrast-card contrast-card--them">
-                <div class="contrast-label">
-                  <n-icon size="16"><ColorWandOutline /></n-icon>
+            <div class="sb-compare">
+              <div v-reveal class="lx-card sb-compare__card is-old">
+                <h3 class="sb-compare__title">
+                  <n-icon size="20"><ColorWandOutline /></n-icon>
                   AI storyboard generators
-                </div>
-                <ul class="contrast-list">
-                  <li v-for="(item, i) in generatorTraits" :key="i">
-                    <n-icon size="16" class="contrast-icon contrast-icon--no">
-                      <CloseCircleOutline />
-                    </n-icon>
+                </h3>
+                <ul class="lx-list">
+                  <li v-for="item in generatorTraits" :key="item">
+                    <span class="sb-cross" aria-hidden="true" />
                     <span>{{ item }}</span>
                   </li>
                 </ul>
               </div>
-
-              <div class="contrast-card contrast-card--us">
-                <div class="contrast-label contrast-label--us">
-                  <n-icon size="16"><ImagesOutline /></n-icon>
+              <div v-reveal="120" class="lx-card sb-compare__card is-new">
+                <div class="sb-compare__glow" aria-hidden="true" />
+                <h3 class="sb-compare__title">
+                  <n-icon size="20"><ImagesOutline /></n-icon>
                   Photoreka Canvas
-                </div>
-                <ul class="contrast-list">
-                  <li v-for="(item, i) in photorekaTraits" :key="i">
-                    <n-icon size="16" class="contrast-icon contrast-icon--yes">
-                      <CheckmarkCircleOutline />
-                    </n-icon>
+                </h3>
+                <ul class="lx-list">
+                  <li v-for="item in photorekaTraits" :key="item">
+                    <span class="lx-tick" aria-hidden="true" />
                     <span>{{ item }}</span>
                   </li>
                 </ul>
@@ -172,365 +89,307 @@
           </div>
         </section>
 
-        <!-- The three levels -->
-        <section class="levels-section" ref="levelsSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-1" style="animation-delay: -5s"></div>
-            <div class="gradient-orb orb-2" style="animation-delay: -12s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: levelsVisible }">
-              <div
-                class="hero-badge levels-badge"
-                :class="{ visible: levelsVisible }"
-              >
-                <span class="badge-content">
-                  <n-icon size="16"><LocateOutline /></n-icon>
-                  You point, it understands
-                </span>
-              </div>
-              <h2 class="section-title">
-                You never explain which photos you mean
-              </h2>
-              <p class="section-subtitle">
+        <!-- The three levels, with the questions you ask at each one -->
+        <section id="levels" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="You point, it understands">
+              <template #title>
+                You never explain
+                <em class="lx-accent">which photos you mean</em>
+              </template>
+              <p>
                 On a board full of pictures, "does this one fit here?" is
                 ambiguous — unless the assistant can see what you marked. Three
                 nested levels turn a gesture on the canvas into the subject of
                 your question.
               </p>
-            </div>
+            </SectionIntro>
 
-            <div class="levels-grid" :class="{ visible: levelsVisible }">
-              <div
-                v-for="(level, i) in levels"
-                :key="i"
-                class="level-card"
-                :style="{
-                  transitionDelay: `${i * 120}ms`,
-                  '--level-color': level.color,
-                }"
-              >
-                <div class="level-head">
-                  <span class="level-badge">
-                    <n-icon size="20"><component :is="level.icon" /></n-icon>
-                  </span>
-                  <div>
-                    <span class="level-index">Level {{ i + 1 }}</span>
-                    <h3 class="level-title">{{ level.title }}</h3>
+            <div class="sb-levels">
+              <div v-reveal class="sb-levels__side">
+                <div class="lx-tabs" role="tablist" aria-label="Levels">
+                  <button
+                    v-for="(tab, i) in levelTabs"
+                    :id="`sb-tab-${i}`"
+                    :key="tab.label"
+                    type="button"
+                    role="tab"
+                    class="lx-tab"
+                    :class="{ 'is-active': activeLevel === i }"
+                    :aria-selected="activeLevel === i"
+                    :aria-controls="`sb-panel-${i}`"
+                    @click="activeLevel = i"
+                  >
+                    <n-icon size="16"><component :is="tab.icon" /></n-icon>
+                    {{ tab.title }}
+                  </button>
+                </div>
+
+                <!-- Every panel stays in the DOM so all the copy is indexable. -->
+                <div
+                  v-for="(tab, i) in levelTabs"
+                  v-show="activeLevel === i"
+                  :id="`sb-panel-${i}`"
+                  :key="tab.label"
+                  class="lx-panel"
+                  role="tabpanel"
+                  :aria-labelledby="`sb-tab-${i}`"
+                >
+                  <template v-if="tab.level">
+                    <p class="sb-panel__kicker">{{ tab.level.kicker }}</p>
+                    <p class="sb-panel__text">{{ tab.level.text }}</p>
+                    <p class="sb-level-how">
+                      <n-icon size="14"><HandLeftOutline /></n-icon>
+                      <span>{{ tab.level.how }}</span>
+                    </p>
+                    <p class="sb-level-example">“{{ tab.level.example }}”</p>
+                  </template>
+
+                  <div class="sb-panel__prompts">
+                    <h3 class="sb-prompts-title">
+                      What you actually ask
+                      <em class="lx-accent">a board like this</em>
+                    </h3>
+                    <p class="sb-prompts-lead">
+                      The same question means something different depending on
+                      what you marked. Write in whatever language you think in —
+                      the assistant answers in it.
+                    </p>
+                    <p class="sb-prompts-label">{{ tab.label }}</p>
+                    <ul class="sb-queries">
+                      <li v-for="query in tab.queries" :key="query">
+                        “{{ query }}”
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <p class="level-text">{{ level.text }}</p>
-                <p class="level-how">
-                  <n-icon size="13" class="level-how-icon"
-                    ><HandLeftOutline
-                  /></n-icon>
-                  {{ level.how }}
+              </div>
+
+              <!-- Placeholder until the real capture is ready — swap
+                   `levelsShot` below and this picks it up. -->
+              <div
+                v-reveal="{ variant: 'scale', delay: 120 }"
+                class="sb-levels__shot"
+              >
+                <ShotFrame
+                  :src="levelsShot"
+                  alt="The three levels of context on Photoreka's canvas: the whole board, the focus area marked out with the halo, and a single spotlighted photo"
+                  label="Photoreka — Canvas"
+                  ratio="auto"
+                />
+                <p class="sb-levels-footnote">
+                  The finest level you marked is the subject of the question.
+                  Everything wider than it is context — which is exactly how you
+                  already think when you stand in front of a wall of prints.
                 </p>
-                <div class="level-example">"{{ level.example }}"</div>
               </div>
             </div>
-
-            <!-- Placeholder until the real capture is ready — swap `levelsShot`
-                 below and this picks it up. -->
-            <figure class="levels-figure" :class="{ visible: levelsVisible }">
-              <img
-                class="levels-shot"
-                :src="levelsShot"
-                alt="The three levels of context on Photoreka's canvas: the whole board, the focus area marked out with the halo, and a single spotlighted photo"
-                width="2400"
-                height="1200"
-                loading="lazy"
-              />
-            </figure>
-
-            <p class="levels-footnote" :class="{ visible: levelsVisible }">
-              The finest level you marked is the subject of the question.
-              Everything wider than it is context — which is exactly how you
-              already think when you stand in front of a wall of prints.
-            </p>
           </div>
         </section>
 
         <!-- How it works -->
-        <section class="how-section" ref="howSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: howVisible }">
-              <h2 class="section-title">
-                How to storyboard your photos with AI
-              </h2>
-              <p class="section-subtitle">
+        <section id="how-it-works" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="How it works">
+              <template #title>
+                How to storyboard your photos
+                <em class="lx-accent">with AI</em>
+              </template>
+              <p>
                 Five steps from a pile of frames to an ordered sequence you can
                 defend.
               </p>
-            </div>
-
-            <div class="steps-container" :class="{ visible: howVisible }">
-              <div
-                v-for="(step, i) in steps"
-                :key="i"
-                class="step-card"
-                :style="{ transitionDelay: `${i * 120}ms` }"
-              >
-                <div class="step-number" :style="{ background: step.color }">
-                  {{ i + 1 }}
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">{{ step.title }}</h3>
-                  <p class="step-description">{{ step.description }}</p>
-                </div>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageSteps :steps="steps" />
           </div>
         </section>
 
         <!-- Canvas features -->
-        <section class="features-section" ref="featuresSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: featuresVisible }">
-              <h2 class="section-title">
-                Everything the canvas does on its own
-              </h2>
-              <p class="section-subtitle">
-                Before a single word is typed, the board is already a proper
-                editing table: infinite space, real drag-and-drop, and your
-                archive one gesture away from any photo on it.
-              </p>
-            </div>
-
-            <div class="features-grid">
+        <section id="canvas" class="lx-section">
+          <div class="lx-container">
+            <div class="sb-canvas-head">
+              <SectionIntro eyebrow="The canvas" flush>
+                <template #title>
+                  Everything the canvas does
+                  <em class="lx-accent">on its own</em>
+                </template>
+                <p>
+                  Before a single word is typed, the board is already a proper
+                  editing table: infinite space, real drag-and-drop, and your
+                  archive one gesture away from any photo on it.
+                </p>
+              </SectionIntro>
               <div
-                v-for="(feature, index) in canvasFeatures"
-                :key="index"
-                class="feature-card"
-                :class="{ visible: featuresVisible }"
-                :style="{ transitionDelay: `${index * 80}ms` }"
+                v-reveal="{ variant: 'scale', delay: 120 }"
+                v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
               >
-                <div class="feature-icon" :style="{ color: feature.color }">
-                  <n-icon size="30">
-                    <component :is="feature.icon" />
-                  </n-icon>
-                </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-description">{{ feature.description }}</p>
+                <!-- Each frame only plays while visible, so the hidden one
+                     never starts. -->
+                <ShotFrame
+                  class="lx-zoom sb-canvas-video--desktop"
+                  video="/videos/canvas_desktop.mp4"
+                  alt="Photoreka infinite canvas clustering photos automatically"
+                  label="Photoreka — Canvas"
+                  ratio="16 / 9"
+                />
+                <ShotFrame
+                  class="sb-canvas-video--mobile"
+                  video="/videos/canvas_mobile.mp4"
+                  alt="Photoreka infinite canvas clustering photos automatically"
+                  label="Photoreka — Canvas"
+                  ratio="4 / 5"
+                />
               </div>
             </div>
+
+            <!-- Plain columns, no cards: the page keeps its one card grid
+                 for the chat. -->
+            <ul class="lx-columns" style="--lx-cols: 4">
+              <li
+                v-for="(item, i) in canvasFeatures"
+                :key="item.title"
+                v-reveal="(i % 4) * 80"
+                class="lx-column"
+              >
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <h3 class="lx-column__title">{{ item.title }}</h3>
+                <p class="lx-column__text">{{ item.description }}</p>
+              </li>
+            </ul>
           </div>
         </section>
 
         <!-- Similarity criteria -->
-        <section class="criteria-section" ref="criteriaSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-3" style="animation-delay: -6s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: criteriaVisible }">
-              <h2 class="section-title">
+        <section id="similarity" class="lx-section">
+          <div class="lx-container sb-similarity">
+            <SectionIntro
+              eyebrow="Similarity"
+              flush
+              class="sb-similarity__intro"
+            >
+              <template #title>
                 Pick any photo on the board and ask for
-                <span class="gradient-text-blue"
-                  >more like it — on your axis</span
-                >
-              </h2>
-              <p class="section-subtitle">
+                <em class="lx-accent">more like it — on your axis</em>
+              </template>
+              <p>
                 "Similar" is not one thing. A frame can rhyme with another by
                 colour and clash with it narratively. Choose which kind of
                 resemblance you are extending, and the strip under the canvas
                 fills with candidates you drag straight up onto the board.
               </p>
-            </div>
-
-            <div class="criteria-grid" :class="{ visible: criteriaVisible }">
-              <div
-                v-for="(criterion, i) in criteria"
-                :key="i"
-                class="criterion-card"
-                :style="{
-                  transitionDelay: `${i * 70}ms`,
-                  '--criterion-color': criterion.color,
-                }"
-              >
-                <n-icon size="22" class="criterion-icon">
-                  <component :is="criterion.icon" />
-                </n-icon>
-                <h3 class="criterion-title">{{ criterion.title }}</h3>
-                <p class="criterion-text">{{ criterion.text }}</p>
-              </div>
-            </div>
+            </SectionIntro>
+            <ul v-reveal="120" class="lx-list lx-list--rich">
+              <li v-for="item in criteriaItems" :key="item.title">
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <span class="lx-list__copy">
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.description }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </section>
 
         <!-- Chat superpowers -->
-        <section class="chat-section" ref="chatSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: chatVisible }">
-              <div
-                class="hero-badge chat-badge"
-                :class="{ visible: chatVisible }"
-              >
-                <span class="badge-content">
-                  <n-icon size="16"><ChatbubblesOutline /></n-icon>
-                  The canvas, with the chat open
-                </span>
-              </div>
-              <h2 class="section-title">
-                What changes when the assistant is looking at the board
-              </h2>
-              <p class="section-subtitle">
+        <section id="chat" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro
+              eyebrow="The canvas, with the chat open"
+              align="center"
+            >
+              <template #title>
+                What changes when the assistant
+                <em class="lx-accent">is looking at the board</em>
+              </template>
+              <p>
                 A general photo chat knows your catalog. This one also knows the
                 arrangement in front of you — and that turns questions about
                 sequence, rhythm and gaps into questions it can actually answer.
               </p>
-            </div>
-
-            <div class="chat-grid">
-              <div
-                v-for="(item, index) in chatPowers"
-                :key="index"
-                class="chat-card"
-                :class="{ visible: chatVisible }"
-                :style="{ transitionDelay: `${index * 80}ms` }"
-              >
-                <div class="chat-card-head">
-                  <div class="chat-icon" :style="{ color: item.color }">
-                    <n-icon size="22">
-                      <component :is="item.icon" />
-                    </n-icon>
-                  </div>
-                  <h3 class="chat-title">{{ item.title }}</h3>
-                </div>
-                <p class="chat-text">{{ item.description }}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Prompts by level -->
-        <section class="examples-section" ref="examplesSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: examplesVisible }">
-              <h2 class="section-title">
-                What you actually ask a board like this
-              </h2>
-              <p class="section-subtitle">
-                The same question means something different depending on what
-                you marked. Write in whatever language you think in — the
-                assistant answers in it.
-              </p>
-            </div>
-
-            <div class="examples-grid" :class="{ visible: examplesVisible }">
-              <div
-                v-for="(group, i) in promptExamples"
-                :key="i"
-                class="example-group"
-                :style="{ transitionDelay: `${i * 80}ms` }"
-              >
-                <div class="example-group-label">
-                  <n-icon size="16">
-                    <component :is="group.icon" />
-                  </n-icon>
-                  <span>{{ group.label }}</span>
-                </div>
-                <div class="example-queries">
-                  <span
-                    v-for="(q, j) in group.queries"
-                    :key="j"
-                    class="query-chip"
-                  >
-                    "{{ q }}"
-                  </span>
-                </div>
-              </div>
-            </div>
+            </SectionIntro>
+            <PageGrid :items="chatPowers" :columns="2" />
           </div>
         </section>
 
         <!-- Use cases -->
-        <section class="usecase-section" ref="useCaseSection">
-          <div class="hero-background">
-            <div class="gradient-orb orb-2" style="animation-delay: -9s"></div>
-          </div>
-          <div class="section-container" style="position: relative; z-index: 1">
-            <div class="section-header" :class="{ visible: useCaseVisible }">
-              <h2 class="section-title">What photographers storyboard here</h2>
-              <p class="section-subtitle">
-                Any body of work whose order carries meaning.
-              </p>
-            </div>
-
-            <div class="usecase-grid" :class="{ visible: useCaseVisible }">
-              <div
-                v-for="(useCase, i) in useCases"
-                :key="i"
-                class="usecase-card"
-                :style="{ transitionDelay: `${i * 70}ms` }"
+        <section id="use-cases" class="lx-section">
+          <div class="lx-container">
+            <SectionIntro eyebrow="Use cases" align="center">
+              <template #title>
+                What photographers
+                <em class="lx-accent">storyboard here</em>
+              </template>
+              <p>Any body of work whose order carries meaning.</p>
+            </SectionIntro>
+            <ul class="lx-columns">
+              <li
+                v-for="(item, i) in useCaseItems"
+                :key="item.title"
+                v-reveal="(i % 3) * 80"
+                class="lx-column"
               >
-                <n-icon
-                  size="20"
-                  class="usecase-icon"
-                  :style="{ color: useCase.color }"
-                >
-                  <component :is="useCase.icon" />
-                </n-icon>
-                <div>
-                  <h3 class="usecase-title">{{ useCase.title }}</h3>
-                  <p class="usecase-text">{{ useCase.text }}</p>
-                </div>
-              </div>
-            </div>
+                <span class="lx-icon-tile" :style="{ color: item.color }">
+                  <n-icon size="18"><component :is="item.icon" /></n-icon>
+                </span>
+                <h3 class="lx-column__title">{{ item.title }}</h3>
+                <p class="lx-column__text">{{ item.description }}</p>
+              </li>
+            </ul>
           </div>
         </section>
 
         <!-- Cross-promo -->
-        <section class="cross-section" ref="crossSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: crossVisible }">
-              <div
-                class="hero-badge cross-badge"
-                :class="{ visible: crossVisible }"
-              >
-                <span class="badge-content">
-                  <n-icon size="16"><LayersOutline /></n-icon>
-                  Same catalog, more ways in
-                </span>
-              </div>
-              <h2 class="section-title cross-title">
+        <section id="more" class="lx-section">
+          <div class="lx-container lx-container--narrow">
+            <SectionIntro eyebrow="Same catalog, more ways in" align="center">
+              <template #title>
                 The board sits on top of
-                <span class="gradient-text-blue">the rest of Photoreka</span>
-              </h2>
-              <p class="section-subtitle">
+                <em class="lx-accent">the rest of Photoreka</em>
+              </template>
+              <p>
                 Every photo it offers has already been searched, scored and
                 understood by the same engines that power the rest of the app.
               </p>
-            </div>
+            </SectionIntro>
 
-            <ul class="cross-features" :class="{ visible: crossVisible }">
+            <ul v-reveal="120" class="lx-list sb-cross-list">
               <li>
-                <div class="feature-icon-wrapper" style="color: #8b5cf6">
+                <span class="sb-cross-list__icon" style="color: #8b5cf6">
                   <n-icon size="18"><ChatbubblesOutline /></n-icon>
-                </div>
+                </span>
                 <span>
-                  <NuxtLink to="/photo_chat">AI Photo Assistant</NuxtLink>
+                  <NuxtLink to="/photo_chat" class="lx-inline-link"
+                    >AI Photo Assistant</NuxtLink
+                  >
                   — the same conversation without a board: critique your
                   portfolio, track how your work has changed, ask anything about
                   your archive.
                 </span>
               </li>
               <li>
-                <div class="feature-icon-wrapper" style="color: #06b6d4">
+                <span class="sb-cross-list__icon" style="color: #06b6d4">
                   <n-icon size="18"><SearchOutline /></n-icon>
-                </div>
+                </span>
                 <span>
-                  <NuxtLink to="/ai_photo_search">AI Photo Search</NuxtLink>
+                  <NuxtLink to="/ai_photo_search" class="lx-inline-link"
+                    >AI Photo Search</NuxtLink
+                  >
                   — describe a frame in plain language and find it in seconds,
                   no tagging required. It is what fills the board.
                 </span>
               </li>
               <li>
-                <div class="feature-icon-wrapper" style="color: #22c55e">
+                <span class="sb-cross-list__icon" style="color: #22c55e">
                   <n-icon size="18"><TrophyOutline /></n-icon>
-                </div>
+                </span>
                 <span>
-                  <NuxtLink to="/photography_portfolio_builder"
+                  <NuxtLink
+                    to="/photography_portfolio_builder"
+                    class="lx-inline-link"
                     >AI Portfolio Builder</NuxtLink
                   >
                   — when a sequence graduates into a finished edit, it builds
@@ -538,11 +397,13 @@
                 </span>
               </li>
               <li>
-                <div class="feature-icon-wrapper" style="color: #f59e0b">
+                <span class="sb-cross-list__icon" style="color: #f59e0b">
                   <n-icon size="18"><BarChartOutline /></n-icon>
-                </div>
+                </span>
                 <span>
-                  <NuxtLink to="/photo_scoring">AI Photo Scoring</NuxtLink>
+                  <NuxtLink to="/photo_scoring" class="lx-inline-link"
+                    >AI Photo Scoring</NuxtLink
+                  >
                   — the aesthetic, narrative and originality scores behind
                   "which of these is strongest".
                 </span>
@@ -551,90 +412,37 @@
           </div>
         </section>
 
-        <!-- FAQ -->
-        <section class="faq-section" ref="faqSection">
-          <div class="section-container">
-            <div class="section-header" :class="{ visible: faqVisible }">
-              <h2 class="section-title">Frequently Asked Questions</h2>
-              <p class="section-subtitle">
-                What photographers ask before storyboarding their own photos
-                with AI
-              </p>
-            </div>
+        <FaqSection :faqs="faqs" @toggle="onFaqToggle">
+          <template #title>
+            Frequently asked <em class="lx-accent">questions</em>
+          </template>
+          <p>
+            What photographers ask before storyboarding their own photos with AI
+          </p>
+        </FaqSection>
 
-            <div class="faqs-container" :class="{ visible: faqVisible }">
-              <div
-                v-for="(faq, index) in faqs"
-                :key="index"
-                class="faq-item"
-                :class="{ active: activeFAQ === index }"
-              >
-                <button class="faq-question" @click="toggleFAQ(index)">
-                  <span>{{ faq.question }}</span>
-                  <n-icon
-                    size="20"
-                    class="faq-icon"
-                    :class="{ rotated: activeFAQ === index }"
-                  >
-                    <ChevronDownOutline />
-                  </n-icon>
-                </button>
-                <div v-if="activeFAQ === index" class="faq-answer">
-                  {{ faq.answer }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Final CTA -->
-        <section class="cta-section" ref="ctaSection">
-          <div class="section-container">
-            <div class="cta-content" :class="{ visible: ctaVisible }">
-              <h2 class="cta-title">Put your photos on a board and start</h2>
-              <p class="cta-description">
-                Arrange, question, replace, reorder. The archive is yours and so
-                is the edit — the assistant just never lets you forget what you
-                already shot.
-              </p>
-              <div class="cta-buttons">
-                <n-button
-                  type="primary"
-                  size="large"
-                  strong
-                  @click="goToDemo"
-                  class="cta-primary"
-                >
-                  <template #icon>
-                    <n-icon><PlayCircleOutline /></n-icon>
-                  </template>
-                  Try the Demo
-                </n-button>
-                <n-button
-                  strong
-                  secondary
-                  type="primary"
-                  size="large"
-                  @click="goToSignup"
-                >
-                  <template #icon>
-                    <n-icon><KeyOutline /></n-icon>
-                  </template>
-                  {{ joinButtonLabel }}
-                </n-button>
-              </div>
-              <div class="cta-extra">
-                <p>
-                  Shooting commercial work?
-                  <a @click="goToCommercialDemo" class="cta-link"
-                    >Try the commercial demo</a
-                  >
-                  — the same board on a product and packshot catalog.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageCta>
+          <template #title>
+            Put your photos on a board
+            <em class="lx-accent">and start</em>
+          </template>
+          <p>
+            Arrange, question, replace, reorder. The archive is yours and so is
+            the edit — the assistant just never lets you forget what you already
+            shot.
+          </p>
+          <template #actions>
+            <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
+            <LxButton variant="ghost" @click="goToSignup">
+              {{ joinButtonLabel }}
+            </LxButton>
+          </template>
+          <template #links>
+            Shooting commercial work?
+            <a @click="goToCommercialDemo">Try the commercial demo</a>
+            — the same board on a product and packshot catalog.
+          </template>
+        </PageCta>
       </div>
 
       <RequestAccessDialog
@@ -648,12 +456,8 @@
 <script setup>
 import { markRaw } from "vue";
 import {
-  SunnyOutline,
-  MoonOutline,
-  ArrowBackOutline,
+  ArrowForwardOutline,
   PlayCircleOutline,
-  KeyOutline,
-  ChevronDownOutline,
   SearchOutline,
   GridOutline,
   LayersOutline,
@@ -666,8 +470,6 @@ import {
   ColorPaletteOutline,
   ColorWandOutline,
   ImagesOutline,
-  CheckmarkCircleOutline,
-  CloseCircleOutline,
   BookOutline,
   CameraOutline,
   LocationOutline,
@@ -705,13 +507,10 @@ useHead({
 const {
   naiveTheme: currentTheme,
   naiveThemeOverrides: themeOverrides,
-  themeMode,
-  toggleTheme: baseToggleTheme,
-  canToggleTheme,
   initTheme,
 } = useTheme();
 
-const toggleTheme = () => baseToggleTheme();
+const smoothScroll = useSmoothScroll();
 
 // Hero screenshot. Placeholder until the final canvas + chat capture is dropped in;
 // swap this one path and the hero picks it up.
@@ -721,35 +520,16 @@ const heroShot = "/canvas/hero_3.png";
 // the board, the halo and a spotlighted photo at once is what belongs here.
 const levelsShot = "/canvas/levels.png";
 
-// Refs
-const heroSection = ref(null);
-const contrastSection = ref(null);
-const levelsSection = ref(null);
-const howSection = ref(null);
-const featuresSection = ref(null);
-const criteriaSection = ref(null);
-const chatSection = ref(null);
-const examplesSection = ref(null);
-const useCaseSection = ref(null);
-const crossSection = ref(null);
-const faqSection = ref(null);
-const ctaSection = ref(null);
-
-const heroVisible = ref(false);
-const contrastVisible = ref(false);
-const levelsVisible = ref(false);
-const howVisible = ref(false);
-const featuresVisible = ref(false);
-const criteriaVisible = ref(false);
-const chatVisible = ref(false);
-const examplesVisible = ref(false);
-const useCaseVisible = ref(false);
-const crossVisible = ref(false);
-const faqVisible = ref(false);
-const ctaVisible = ref(false);
-
-const activeFAQ = ref(null);
 const showRequestDialog = ref(false);
+
+const navLinks = [
+  { label: "Levels", target: "levels" },
+  { label: "How it works", target: "how-it-works" },
+  { label: "Canvas", target: "canvas" },
+  { label: "Chat", target: "chat" },
+  { label: "Use cases", target: "use-cases" },
+  { label: "FAQ", target: "faq" },
+];
 
 // ─── Not a generator ───────────────────────────────────────
 const generatorTraits = ref([
@@ -1139,15 +919,43 @@ const faqs = ref([
   },
 ]);
 
+// The card panels read { icon, kicker, title, description, color }.
+const levelItems = computed(() =>
+  levels.value.map((level, i) => ({
+    ...level,
+    kicker: `Level ${i + 1}`,
+    description: level.text,
+  })),
+);
+
+const criteriaItems = computed(() =>
+  criteria.value.map((c) => ({ ...c, description: c.text })),
+);
+
+// One tab per level, plus "Reading your own edit", which only has prompts.
+const levelTabs = computed(() =>
+  promptExamples.value.map((group, i) => {
+    const level = levelItems.value[i];
+    return {
+      label: group.label,
+      title: level ? level.title : group.label,
+      icon: level ? level.icon : group.icon,
+      queries: group.queries,
+      level: level || null,
+    };
+  }),
+);
+
+const activeLevel = ref(0);
+
+const useCaseItems = computed(() =>
+  useCases.value.map((u) => ({ ...u, description: u.text })),
+);
+
 // Runtime config
 const config = useRuntimeConfig();
 
 // Navigation
-const goToHome = () => {
-  trackUserAction("navigate_to_home", "ai_photo_storyboard_page");
-  navigateTo("/");
-};
-
 const goToDemo = () => {
   trackUserAction("navigate_to_demo", "ai_photo_storyboard_page");
   const appUrl = config.public.appUrl || "https://app.photoreka.com";
@@ -1177,1247 +985,331 @@ const onRequestSuccess = () => {
   showRequestDialog.value = false;
 };
 
-const toggleFAQ = (index) => {
-  const wasOpen = activeFAQ.value === index;
-  activeFAQ.value = wasOpen ? null : index;
+const onFaqToggle = (index, isOpen) => {
   trackEvent("faq_toggle", {
     page: "ai_photo_storyboard",
     faq_index: index,
-    action: wasOpen ? "close" : "open",
+    action: isOpen ? "open" : "close",
   });
-};
-
-// Scroll animations
-const setupScrollAnimations = () => {
-  const opts = { threshold: 0.2, rootMargin: "0px 0px -100px 0px" };
-  const watch = (section, flag) => {
-    if (!section.value) return;
-    new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) flag.value = true;
-      });
-    }, opts).observe(section.value);
-  };
-  watch(heroSection, heroVisible);
-  watch(contrastSection, contrastVisible);
-  watch(levelsSection, levelsVisible);
-  watch(howSection, howVisible);
-  watch(featuresSection, featuresVisible);
-  watch(criteriaSection, criteriaVisible);
-  watch(chatSection, chatVisible);
-  watch(examplesSection, examplesVisible);
-  watch(useCaseSection, useCaseVisible);
-  watch(crossSection, crossVisible);
-  watch(faqSection, faqVisible);
-  watch(ctaSection, ctaVisible);
 };
 
 onMounted(() => {
   initTheme();
-  heroVisible.value = true;
-  setupScrollAnimations();
-
+  smoothScroll.enable();
   trackEvent("page_view", {
     page: "ai_photo_storyboard",
     page_title: "AI Photo Storyboard – Photoreka",
   });
 });
+
+onBeforeUnmount(() => {
+  smoothScroll.disable();
+});
 </script>
 
 <style scoped>
-/* ─── Page Container ─────────────────────────────────────── */
-.framer-page {
-  min-height: 100vh;
-  background: var(--premium-bg-primary);
-  color: var(--premium-text-primary);
+.sb-canvas-video--mobile {
+  display: none;
 }
 
-/* ─── Navigation ─────────────────────────────────────────── */
-.premium-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--premium-bg-nav);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--premium-border);
+@media (max-width: 760px) {
+  .sb-canvas-video--desktop {
+    display: none;
+  }
+
+  .sb-canvas-video--mobile {
+    display: block;
+  }
 }
 
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ── Generators vs Photoreka ───────────────────────────────── */
+.sb-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  max-width: 1080px;
+  margin-inline: auto;
 }
 
-.nav-brand {
-  display: flex;
-  align-items: center;
-}
-.nav-brand a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  color: var(--premium-text-primary);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle:hover {
-  background: var(--premium-bg-hover);
-}
-
-.back-link {
-  font-size: var(--fs-base);
-}
-
-/* ─── Hero ───────────────────────────────────────────────── */
-.framer-hero {
+.sb-compare__card {
   position: relative;
-  padding: 8rem 2rem 6rem;
   overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  isolation: isolate;
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+  padding: clamp(28px, 3.5vw, 48px);
 }
 
-.hero-background {
+.sb-compare__card.is-old {
+  background: var(--lx-bg-2);
+}
+
+.sb-compare__card.is-new {
+  box-shadow: var(--lx-shadow-md), var(--lx-highlight);
+}
+
+.sb-compare__glow {
   position: absolute;
   inset: 0;
-  overflow: hidden;
+  z-index: -1;
   pointer-events: none;
+  background: radial-gradient(
+    70% 60% at 100% 0%,
+    var(--lx-glow-1),
+    transparent 70%
+  );
 }
 
-.hero-container {
-  max-width: 1560px;
-  margin: 0 auto;
-  width: 100%;
+.sb-compare__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--lx-font-display);
+  font-weight: 380;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
+}
+
+.is-old .sb-compare__title {
+  color: var(--lx-text-2);
+}
+
+.is-old .sb-compare__title .n-icon {
+  color: var(--lx-text-3);
+}
+
+.is-new .sb-compare__title .n-icon {
+  color: var(--lx-accent);
+}
+
+.is-old .lx-list > li {
+  color: var(--lx-text-2);
+}
+
+/* Muted counterpart of .lx-tick for the generators column. */
+.sb-cross {
   position: relative;
-  z-index: 1;
-}
-
-.hero-layout {
-  display: grid;
-  grid-template-columns: minmax(420px, 1fr) 2.15fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* ─── Hero Badge ─────────────────────────────────────────── */
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  border-radius: 50px;
-  font-size: var(--fs-sm);
-  font-weight: var(--font-weight-semibold);
-  color: #8b5cf6;
-  width: fit-content;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero-badge.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.badge-content {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* ─── Hero Title / Subtitle ──────────────────────────────── */
-.hero-title {
-  font-size: var(--fs-display-promo);
-  font-weight: var(--font-weight-black);
-  margin: 0;
-  line-height: var(--line-height-none);
-  letter-spacing: var(--letter-spacing-tighter);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-subtitle {
-  max-width: 540px;
-  margin: 0;
-  font-size: var(--fs-lead);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-}
-
-.hero-subtitle.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-
-.hero-actions.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cta-note {
-  font-size: var(--fs-xs);
-  color: var(--premium-text-secondary);
-  margin-top: -0.5rem;
-}
-
-.framer-hero .cta-note {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.6s;
-}
-
-/* ─── Hero Visual ────────────────────────────────────────── */
-.hero-visual {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.hero-visual.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.video-frame {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--premium-bg-card);
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--premium-border);
-}
-
-.hero-shot {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ─── Gradient Effects ───────────────────────────────────── */
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.18;
-  animation: float 25s infinite ease-in-out;
-  will-change: transform;
-}
-
-.orb-1 {
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  top: -300px;
-  right: -200px;
-}
-
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, #6366f1, #2563eb);
-  bottom: -200px;
-  left: -250px;
-  animation-delay: -10s;
-}
-
-.orb-3 {
-  width: 550px;
-  height: 550px;
-  background: linear-gradient(135deg, #a855f7, #ec4899);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -15s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-50px, 50px) scale(0.9);
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
-}
-
-.gradient-text-blue {
-  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline;
-}
-
-/* ─── Sections (shared) ──────────────────────────────────── */
-.section-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.section-header {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.section-header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  text-align: center;
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.section-subtitle {
-  font-size: var(--fs-subheading);
-  color: var(--premium-text-secondary);
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
-  line-height: var(--line-height-loose);
-}
-
-/* ─── Contrast Section ───────────────────────────────────── */
-.contrast-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.contrast-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.contrast-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.contrast-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-}
-
-.contrast-card--us {
-  border-color: rgba(139, 92, 246, 0.4);
-  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.1);
-}
-
-.contrast-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--fs-xs);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wider);
-  color: var(--premium-text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.contrast-label--us {
-  color: #8b5cf6;
-}
-
-.contrast-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contrast-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  line-height: var(--line-height-relaxed);
-  color: var(--premium-text-secondary);
-  font-size: var(--fs-base);
-}
-
-.contrast-icon {
   flex-shrink: 0;
-  margin-top: 0.2rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--lx-line-2);
 }
 
-.contrast-icon--no {
-  color: #64748b;
-}
-
-.contrast-icon--yes {
-  color: #22c55e;
-}
-
-/* ─── Levels Section ─────────────────────────────────────── */
-.levels-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-
-.levels-badge {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
-  color: #3b82f6;
-  margin-bottom: 1.5rem;
-}
-
-.levels-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.levels-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.level-card {
-  position: relative;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 1.75rem;
-  transition: all 0.3s ease;
-}
-
-.level-card::before {
+.sb-cross::before,
+.sb-cross::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 1.75rem;
-  right: 1.75rem;
-  height: 2px;
-  border-radius: 0 0 2px 2px;
-  background: var(--level-color);
-  opacity: 0.8;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--lx-text-3);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.level-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--level-color);
+.sb-cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.level-head {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin-bottom: 1rem;
+/* ── Hero note ─────────────────────────────────────────────── */
+.sb-hero-status {
+  flex-basis: 100%;
+  margin-top: 0.35rem;
 }
 
-.level-badge {
-  flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  color: var(--level-color);
-  background: color-mix(in srgb, var(--level-color) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--level-color) 30%, transparent);
-}
-
-.level-index {
-  display: block;
-  font-size: var(--fs-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wider);
-  color: var(--premium-text-secondary);
-  font-weight: var(--font-weight-semibold);
-}
-
-.level-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-semibold);
-  margin: 0;
-}
-
-.level-text {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-  margin: 0 0 1rem;
-}
-
-.level-how {
+/* ── Levels ────────────────────────────────────────────────── */
+.sb-level-how {
   display: flex;
   align-items: flex-start;
-  gap: 0.45rem;
-  font-size: var(--fs-sm);
-  color: var(--premium-text-primary);
-  margin: 0 0 1rem;
-  line-height: var(--line-height-relaxed);
-}
-
-.level-how-icon {
-  flex-shrink: 0;
+  gap: 0.5rem;
   margin-top: 0.25rem;
-  color: var(--level-color);
+  font-size: var(--lx-fs-sm);
+  line-height: 1.6;
+  color: var(--lx-text-3);
 }
 
-.level-example {
-  font-size: var(--fs-sm);
-  font-style: italic;
-  color: var(--premium-text-secondary);
-  padding: 0.7rem 0.9rem;
-  border-radius: 10px;
-  border-left: 2px solid var(--level-color);
-  background: var(--premium-bg-secondary);
-}
-
-/* Full width of the section container — deliberately wider than the level cards
-   above it, so the shot reads as the three levels seen on a real board. */
-.levels-figure {
-  width: 100%;
-  margin: 3rem 0 0;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--premium-bg-card);
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--premium-border);
-  opacity: 0;
-  transform: translateY(30px) scale(0.98);
-  transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
-}
-
-.levels-figure.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.levels-shot {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.levels-footnote {
-  max-width: 720px;
-  margin: 2.5rem auto 0;
-  text-align: center;
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-
-.levels-footnote.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ─── How It Works ───────────────────────────────────────── */
-.how-section {
-  position: relative;
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-  overflow: hidden;
-}
-
-.steps-container {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.steps-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.step-card {
-  display: flex;
-  gap: 2rem;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.step-card:hover {
-  transform: translateX(6px);
-  border-color: rgba(139, 92, 246, 0.35);
-}
-
-.step-number {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border-radius: 50%;
-  font-size: var(--fs-3xl);
-  font-weight: var(--font-weight-bold);
-}
-
-.step-content {
-  flex: 1;
-}
-
-.step-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.5rem;
-}
-
-.step-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-}
-
-/* ─── Features Grid ──────────────────────────────────────── */
-.features-section {
-  padding: 6rem 2rem;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.feature-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.feature-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.12);
-}
-
-.feature-icon {
-  margin-bottom: 1.25rem;
-}
-
-.feature-title {
-  font-size: var(--fs-xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.6rem;
-}
-
-.feature-description {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-}
-
-/* ─── Criteria Section ───────────────────────────────────── */
-.criteria-section {
-  position: relative;
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-  overflow: hidden;
-}
-
-.criteria-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.criteria-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.criterion-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 14px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.criterion-card:hover {
-  border-color: var(--criterion-color);
-  transform: translateY(-3px);
-}
-
-.criterion-icon {
-  color: var(--criterion-color);
-  margin-bottom: 0.75rem;
-}
-
-.criterion-title {
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  margin: 0 0 0.4rem;
-}
-
-.criterion-text {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-relaxed);
-  font-size: var(--fs-sm);
-  margin: 0;
-}
-
-/* ─── Chat Section ───────────────────────────────────────── */
-.chat-section {
-  padding: 6rem 2rem;
-}
-
-.chat-badge {
-  background: rgba(139, 92, 246, 0.1);
-  border-color: rgba(139, 92, 246, 0.3);
-  color: #8b5cf6;
-  margin-bottom: 1.5rem;
-}
-
-.chat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.chat-card {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 1.75rem;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.chat-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.chat-card:hover {
-  border-color: rgba(139, 92, 246, 0.4);
-  transform: translateY(-4px);
-}
-
-.chat-card-head {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.chat-icon {
-  flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: var(--premium-bg-secondary);
-  border: 1px solid var(--premium-border);
-}
-
-.chat-title {
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  margin: 0;
-}
-
-.chat-text {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  font-size: var(--fs-base);
-  margin: 0;
-}
-
-/* ─── Examples Section ───────────────────────────────────── */
-.examples-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.examples-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.examples-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.example-group {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.example-group:hover {
-  border-color: rgba(139, 92, 246, 0.4);
-  transform: translateY(-3px);
-}
-
-.example-group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--fs-xs);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wider);
-  color: #8b5cf6;
-  margin-bottom: 1rem;
-}
-
-.example-queries {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.query-chip {
-  display: inline-block;
-  font-size: var(--fs-sm);
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-relaxed);
-  font-style: italic;
-}
-
-/* ─── Use Cases ──────────────────────────────────────────── */
-.usecase-section {
-  position: relative;
-  padding: 6rem 2rem;
-  overflow: hidden;
-}
-
-.usecase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.25rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.usecase-grid.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.usecase-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 14px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.usecase-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(139, 92, 246, 0.35);
-}
-
-.usecase-icon {
+.sb-level-how .n-icon {
   flex-shrink: 0;
   margin-top: 0.2rem;
 }
 
-.usecase-title {
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  margin: 0 0 0.35rem;
+.sb-level-example {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--lx-line);
+  font-family: var(--lx-font-display);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  color: var(--lx-text);
 }
 
-.usecase-text {
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-relaxed);
-  font-size: var(--fs-sm);
-  margin: 0;
+.sb-levels-footnote {
+  max-width: 44em;
+  margin-top: clamp(20px, 2.4vw, 28px);
+  font-size: var(--lx-fs-sm);
+  line-height: 1.7;
+  color: var(--lx-text-2);
 }
 
-/* ─── Cross-promo Section ────────────────────────────────── */
-.cross-section {
-  position: relative;
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-  overflow: hidden;
+/* ── Levels: tabs on the left, capture on the right ────────── */
+.sb-levels {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: start;
 }
 
-.cross-badge {
-  background: rgba(37, 99, 235, 0.1);
-  border-color: rgba(37, 99, 235, 0.3);
-  color: #2563eb;
-  margin-bottom: 1.5rem;
+.sb-levels__shot {
+  position: sticky;
+  top: calc(var(--lx-nav-offset) + 24px);
 }
 
-.cross-title {
-  font-size: var(--fs-h1) !important;
+.sb-panel__kicker {
+  font-size: var(--lx-fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lx-text-3);
 }
 
-.cross-features {
-  list-style: none;
-  padding: 0;
-  margin: 2rem auto 0;
-  max-width: 680px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+.sb-panel__text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--lx-text);
 }
 
-.cross-features.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cross-features li {
-  display: flex;
-  align-items: center;
+.sb-panel__prompts {
+  display: grid;
   gap: 0.75rem;
-  color: var(--premium-text-primary);
-  font-size: var(--fs-base);
-  text-align: left;
+  margin-top: 1.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--lx-line);
 }
 
-.cross-features li a {
-  color: #8b5cf6;
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
+.sb-prompts-title {
+  font-family: var(--lx-font-display);
+  font-size: 1.45rem;
+  font-weight: 360;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--lx-text);
 }
 
-.cross-features li a:hover {
-  text-decoration: underline;
+.sb-prompts-lead {
+  font-size: var(--lx-fs-sm);
+  line-height: 1.7;
+  color: var(--lx-text-2);
 }
 
-.feature-icon-wrapper {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
+.sb-prompts-label {
+  margin-top: 0.3rem;
+  font-size: var(--lx-fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lx-text-3);
+}
+
+/* ── Canvas: intro beside the video ────────────────────────── */
+.sb-canvas-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(32px, 4.5vw, 72px);
   align-items: center;
-  justify-content: center;
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 8px;
+  margin-bottom: clamp(56px, 7vw, 96px);
 }
 
-/* ─── FAQ Section ────────────────────────────────────────── */
-.faq-section {
-  padding: 6rem 2rem;
-}
-
-.faqs-container {
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.faqs-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.faq-item {
-  background: var(--premium-bg-card);
-  border: 1px solid var(--premium-border);
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.faq-item:hover,
-.faq-item.active {
-  border-color: #8b5cf6;
-}
-
-.faq-question {
-  width: 100%;
-  padding: 1.5rem;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: space-between;
+/* ── Similarity: the list on the left, the intro on the right ─ */
+.sb-similarity {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 88px);
   align-items: center;
-  cursor: pointer;
-  color: var(--premium-text-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--font-weight-semibold);
-  text-align: left;
-  gap: 1rem;
 }
 
-.faq-icon {
+.sb-similarity__intro {
+  order: 2;
+}
+
+@media (max-width: 1023px) {
+  /* minmax(0, …): the scrolling tab row must not widen the column. */
+  .sb-levels,
+  .sb-canvas-head,
+  .sb-similarity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* On phones and tablets the capture comes first. */
+  .sb-levels__shot {
+    position: relative;
+    top: auto;
+    order: -1;
+  }
+
+  .sb-similarity__intro {
+    order: -1;
+  }
+}
+
+/* ── Prompts ───────────────────────────────────────────────── */
+.sb-queries {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sb-queries li {
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--lx-radius-sm);
+  background: var(--lx-surface-2);
+  border: 1px solid var(--lx-line);
+  font-family: var(--lx-font-display);
+  font-style: italic;
+  font-weight: 340;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--lx-text-2);
+}
+
+/* ── Cross-promo ───────────────────────────────────────────── */
+.sb-cross-list {
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.sb-cross-list > li {
+  align-items: flex-start;
+  padding: 1.15rem 0;
+  line-height: 1.6;
+  color: var(--lx-text-2);
+}
+
+.sb-cross-list__icon {
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
-  color: var(--premium-text-secondary);
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--lx-surface-3);
+  border: 1px solid var(--lx-line);
 }
 
-.faq-icon.rotated {
-  transform: rotate(180deg);
+.sb-cross-list .lx-inline-link {
+  font-weight: 600;
 }
 
-.faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--premium-text-secondary);
-  line-height: var(--line-height-loose);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ─── CTA Section ────────────────────────────────────────── */
-.cta-section {
-  padding: 6rem 2rem;
-  background: var(--premium-bg-secondary);
-}
-
-.cta-content {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cta-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cta-title {
-  font-size: var(--fs-h1);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 1rem;
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.cta-description {
-  font-size: var(--fs-xl);
-  color: var(--premium-text-secondary);
-  margin-bottom: 2rem;
-  line-height: var(--line-height-loose);
-}
-
-.cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.cta-extra {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--premium-border);
-  font-size: var(--fs-base);
-  color: var(--premium-text-secondary);
-}
-
-.cta-link {
-  color: #8b5cf6;
-  font-weight: var(--font-weight-semibold);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.cta-link:hover {
-  text-decoration: underline;
-}
-
-/* ─── Responsive ─────────────────────────────────────────── */
-@media (max-width: 968px) {
-  .hero-layout {
+@media (max-width: 760px) {
+  .sb-compare {
     grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .hero-content {
-    text-align: center;
-    align-items: center;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .hero-subtitle {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 1rem;
-  }
-
-  .framer-hero {
-    padding: 6rem 1rem 3rem;
-    min-height: auto;
-  }
-
-  .hero-title {
-    font-size: var(--fs-h1);
-  }
-
-  .features-grid,
-  .examples-grid,
-  .levels-grid,
-  .chat-grid,
-  .criteria-grid,
-  .usecase-grid,
-  .contrast-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .step-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .cross-features li {
-    font-size: var(--fs-sm);
   }
 }
 </style>
