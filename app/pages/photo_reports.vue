@@ -59,7 +59,7 @@
               >
                 <ShotFrame
                   class="lx-zoom"
-                  src="/report/3.png"
+                  src="/report/3.webp"
                   alt="Photoreka narrative and contextual patterns report with example photos for each pattern"
                   label="Photoreka — Patterns report"
                   ratio="4 / 3"

@@ -511,7 +511,7 @@ const {
 const smoothScroll = useSmoothScroll();
 
 // Canvas + chat capture beside the canvas intro.
-const canvasShot = "/canvas/hero_3.png";
+const canvasShot = "/canvas/hero_3.webp";
 
 // Full-width shot under the three levels. Placeholder for now — a capture showing
 // the board, the halo and a spotlighted photo at once is what belongs here.

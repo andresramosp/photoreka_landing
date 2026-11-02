@@ -35,7 +35,7 @@
           <template #visual>
             <ShotFrame
               video="/videos/lr_plugin.mp4"
-              poster="/home/video_lr_poster.jpg"
+              poster="/home/video_lr_poster.webp"
               alt="Photoreka search panel inside Adobe Lightroom Classic"
               label="Lightroom Classic — Photoreka"
               ratio="16 / 9"
@@ -65,7 +65,7 @@
           id="atlas"
           eyebrow="3D Atlas"
           video="/videos/atlas_1.mp4"
-          poster="/home/video_poster.jpg"
+          poster="/home/video_poster.webp"
           alt="Photoreka 3D Atlas clustering a photo catalog by visual similarity"
           label="Photoreka — 3D Atlas"
           reverse

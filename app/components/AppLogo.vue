@@ -45,8 +45,8 @@ const logoStyle = computed(() => {
 // Mapa de logos según layout y themeMode (usando rutas públicas)
 const logoMap = {
   icon: {
-    dark: "/logos/marca/icon-dark.png",
-    light: "/logos/marca/icon-light.png",
+    dark: "/logos/marca/icon-dark.webp",
+    light: "/logos/marca/icon-light.webp",
   },
   horizontal: {
     dark: {
@@ -60,12 +60,12 @@ const logoMap = {
   },
   vertical: {
     dark: {
-      withClaim: "/logos/marca/vertical-claim-dark.png",
-      noClaim: "/logos/marca/vertical-dark.png",
+      withClaim: "/logos/marca/vertical-claim-dark.webp",
+      noClaim: "/logos/marca/vertical-dark.webp",
     },
     light: {
-      withClaim: "/logos/marca/vertical-claim-light.png",
-      noClaim: "/logos/marca/vertical-light.png",
+      withClaim: "/logos/marca/vertical-claim-light.webp",
+      noClaim: "/logos/marca/vertical-light.webp",
     },
   },
 };

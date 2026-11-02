@@ -19,6 +19,9 @@
           <NuxtLink to="/ai_photo_search" class="footer-link"
             >AI Photo Search</NuxtLink
           >
+          <NuxtLink to="/ai_image_library_search" class="footer-link"
+            >Image Library Search</NuxtLink
+          >
           <NuxtLink to="/photo_tag_cloud" class="footer-link"
             >Photo Tag Cloud</NuxtLink
           >

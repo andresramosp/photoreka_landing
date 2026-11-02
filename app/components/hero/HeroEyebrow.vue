@@ -1,7 +1,7 @@
 <template>
   <p class="lx-eyebrow lx-hero__trust">
     <span class="lx-eyebrow__dot" aria-hidden="true" />
-    <span>The AI curation layer for your photo archive</span>
+    <span><slot>The AI curation layer for your photo archive</slot></span>
     <span class="lx-hero__stars">★★★★★</span>
   </p>
 </template>

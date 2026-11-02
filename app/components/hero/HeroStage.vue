@@ -59,7 +59,7 @@
 //
 // `heroStagePhone`: captura móvil adosada a la esquina inferior derecha de
 // la captura que esté en el centro. El CSS recorta el halo de
-// photoreka_mobile_halo.png, así que otra imagen con distinto encuadre
+// photoreka_mobile_halo.webp, así que otra imagen con distinto encuadre
 // necesitaría ajustar el clip-path de .lx-stage__phone img.
 const heroStage = [
   {
@@ -68,18 +68,18 @@ const heroStage = [
     alt: "AI photo portfolio built with Photoreka",
   },
   {
-    src: "/home/portfolio_desktop_4.jpg",
+    src: "/home/portfolio_desktop_4.webp",
     label: "Photoreka — Dashboard",
     alt: "Photoreka AI photo curation and organizer dashboard",
   },
   {
-    src: "/home/tag_cloud_poster_detailed.jpg",
+    src: "/home/tag_cloud_poster_detailed.webp",
     label: "Photoreka — Tag Cloud",
     alt: "AI-generated photo tag cloud in 2D semantic space",
   },
 ];
 
-const heroStagePhone = "/home/photoreka_mobile_halo.png";
+const heroStagePhone = "/home/photoreka_mobile_halo.webp";
 
 // Cada turno: derecha → centro, centro → izquierda, izquierda → derecha.
 const HERO_STAGE_POSITIONS = ["center", "left", "right"];
@@ -227,7 +227,7 @@ onBeforeUnmount(() => {
 /* Optional phone hanging off the capture's bottom-right corner; it rises
    slightly as the stage straightens on scroll.
    The asset has a cyan halo baked in; clip-path trims the image to the
-   phone body (insets measured on photoreka_mobile_halo.png) and the
+   phone body (insets measured on photoreka_mobile_halo.webp) and the
    wrapper adds a neutral shadow, which a clipped element can't cast. */
 .lx-stage__phone {
   position: absolute;

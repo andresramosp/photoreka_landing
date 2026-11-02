@@ -27,7 +27,7 @@
           </template>
           <template #visual>
             <ShotFrame
-              src="/home/free_framer.png"
+              src="/home/free_framer.webp"
               alt="Free Framer interface preview"
               label="Photoreka — Free Framer"
               ratio="16 / 9"
@@ -220,22 +220,22 @@ const usecases = ref([
 // Gallery items
 const galleryItems = ref([
   {
-    image: "/home/free_framer.png",
+    image: "/home/free_framer.webp",
     alt: "Classic frame example",
     label: "Classic Border",
   },
   {
-    image: "/home/free_framer.png",
+    image: "/home/free_framer.webp",
     alt: "Modern frame example",
     label: "Modern Minimal",
   },
   {
-    image: "/home/free_framer.png",
+    image: "/home/free_framer.webp",
     alt: "Polaroid style frame",
     label: "Polaroid Style",
   },
   {
-    image: "/home/free_framer.png",
+    image: "/home/free_framer.webp",
     alt: "Custom color frame",
     label: "Custom Colors",
   },

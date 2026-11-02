@@ -41,7 +41,7 @@
           <template #visual>
             <ShotFrame
               video="/videos/Search.mp4"
-              poster="/home/video_poster.jpg"
+              poster="/home/video_poster.webp"
               alt="Photoreka AI photo search by natural language"
               label="Photoreka — Search"
               ratio="16 / 9"
@@ -258,7 +258,7 @@
           id="lightroom"
           eyebrow="Also available in Lightroom Classic"
           video="/videos/lr_plugin.mp4"
-          poster="/home/video_lr_poster.jpg"
+          poster="/home/video_lr_poster.webp"
           alt="Photoreka search panel inside Adobe Lightroom Classic"
           label="Lightroom Classic — Photoreka"
           reverse
@@ -311,6 +311,11 @@
           <template #links>
             Want to see how photos are organized in space?
             <a @click="goToAtlas">Explore the 3D Atlas</a>
+            <span class="lx-sep" aria-hidden="true">·</span>
+            Searching a company image library?
+            <NuxtLink to="/ai_image_library_search"
+              >See Photoreka for businesses</NuxtLink
+            >
           </template>
         </PageCta>
       </div>

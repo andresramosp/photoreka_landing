@@ -3,7 +3,7 @@
     <div class="lx-hero__visual" aria-hidden="true">
       <img
         class="lx-hero__atlas"
-        src="/home/hero_atlas_19.jpg"
+        src="/home/hero_atlas_19.webp"
         alt=""
         decoding="async"
       />

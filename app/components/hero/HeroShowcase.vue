@@ -2,7 +2,7 @@
   <HeroShell class="lx-hero--showcase">
     <div class="lx-hero__side is-left">
       <ShotFrame
-        src="/home/portfolio_desktop_4.jpg"
+        src="/home/portfolio_desktop_4.webp"
         alt="Photoreka AI photo curation and organizer dashboard"
         label="Photoreka — Dashboard"
         ratio="auto"
@@ -11,7 +11,7 @@
     </div>
     <div class="lx-hero__side is-right">
       <ShotFrame
-        src="/canvas/chatlab.png"
+        src="/canvas/chatlab.webp"
         alt="AI-generated photo tag cloud in 2D semantic space"
         label="Photoreka — Tag Cloud"
         ratio="auto"
@@ -19,7 +19,7 @@
       />
       <span class="lx-hero__phone">
         <img
-          src="/home/photoreka_mobile_halo.png"
+          src="/home/photoreka_mobile_halo.webp"
           alt="Photoreka mobile app"
           loading="eager"
         />

@@ -78,7 +78,7 @@ const sources = [
   },
   {
     logos: [
-      { src: "/logos/google_photos.png", alt: "Google Photos" },
+      { src: "/logos/google_photos.webp", alt: "Google Photos" },
       { src: "/logos/google_drive.svg", alt: "Google Drive" },
     ],
     name: "Google Photos & Drive",

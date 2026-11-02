@@ -1078,6 +1078,38 @@ html.lx-motion .is-split.is-in .lx-w > span {
 }
 
 /* ==========================================================================
+   HERO FOLD
+   ========================================================================== */
+
+/* Hero plus the strip under it (home and ai_image_library_search). Desktop:
+   both fill the first screen (up to 1100px tall), the strip on its bottom
+   edge and the copy centred in the rest. When the copy does not fit, the
+   block grows and the strip falls below the fold. */
+@media (min-width: 1024px) {
+  .lx-fold {
+    display: flex;
+    flex-direction: column;
+    min-height: min(100svh, 1100px);
+  }
+
+  /* .lx-page raises the specificity above each hero variant's own
+     --hero-top/--hero-bottom, which load after this sheet. */
+  .lx-page .lx-fold > .lx-hero {
+    --hero-top: clamp(104px, 12svh, 136px);
+    --hero-bottom: clamp(32px, 4svh, 56px);
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* With auto side margins a flex item would shrink to its content. */
+  .lx-page .lx-fold > .lx-hero > * {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 

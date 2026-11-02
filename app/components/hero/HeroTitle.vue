@@ -1,7 +1,9 @@
 <template>
   <h1 v-split="100" class="lx-title lx-title--display lx-hero__title">
-    Make full sense of
-    <em class="lx-accent">your photographic body of work</em>
+    <slot>
+      Make full sense of
+      <em class="lx-accent">your photographic body of work</em>
+    </slot>
   </h1>
 </template>
 
@@ -12,7 +14,8 @@
   font-size: var(--hero-title-size, clamp(3rem, min(6.9vw, 11.6svh), 6.5rem));
 }
 
-.lx-hero__title .lx-accent {
+.lx-hero__title .lx-accent,
+.lx-hero__title :slotted(.lx-accent) {
   font-weight: 360;
 }
 

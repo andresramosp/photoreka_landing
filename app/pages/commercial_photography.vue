@@ -16,8 +16,8 @@
           </template>
           <p class="com-lead">
             <span>
-              <strong>Photoreka</strong> is a suite of smart tools built for
-              the way commercial photographers actually work.
+              <strong>Photoreka</strong> is a suite of smart tools built for the
+              way commercial photographers actually work.
             </span>
             <span>
               <strong>Search</strong> your archive from a client brief,
@@ -93,7 +93,7 @@
           id="ai_search"
           eyebrow="Brief-to-shot search"
           video="/videos/Search.mp4"
-          poster="/home/video_poster.jpg"
+          poster="/home/video_poster.webp"
           alt="Photoreka searching a commercial archive from a client brief"
           label="Photoreka — Search"
           learn-more-to="/ai_photo_search"
@@ -153,7 +153,7 @@
           id="lightroom_plugin"
           eyebrow="Official Plugin"
           video="/videos/lr_plugin.mp4"
-          poster="/home/video_lr_poster.jpg"
+          poster="/home/video_lr_poster.webp"
           alt="Photoreka search panel inside Adobe Lightroom Classic"
           label="Lightroom Classic — Photoreka"
           :playback-rate="2"
@@ -200,14 +200,20 @@
             <em class="lx-accent">in your archive.</em>
           </template>
           <p>
-            Search it, score it, and send the client a selection — try it on
-            the commercial demo catalog.
+            Search it, score it, and send the client a selection — try it on the
+            commercial demo catalog.
           </p>
           <template #actions>
             <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
             <LxButton variant="ghost" @click="goToAuth('signup')">
               {{ signupButtonLabel }}
             </LxButton>
+          </template>
+          <template #links>
+            Managing the image library of an agency or business?
+            <NuxtLink to="/ai_image_library_search"
+              >See Photoreka for businesses</NuxtLink
+            >
           </template>
         </PageCta>
       </div>
@@ -279,13 +285,21 @@ const navLinks = [
 
 const heroImages = [
   {
-    src: "/ai_photo_scoring/1.png",
-    alt: "Commercial photo scoring with subject clarity and commercial intent in Photoreka",
+    src: "/ai_photo_scoring/9.webp",
+    alt: "Photoreka score panel for a single photo: overall 7.1/10 with the Street preset, fundamentals and bonus dimensions",
   },
   {
-    src: "/portfolio_builder/2.png",
+    src: "/ai_photo_scoring/13.webp",
+    alt: "Photoreka workspace sorted by aesthetic and originality scores, with each photo's score on its thumbnail",
+  },
+  {
+    src: "/canvas/hero_3.webp",
     alt: "Client-ready commercial portfolio built with Photoreka AI",
   },
+  // {
+  //   src: "/ai_photo_scoring/11.webp",
+  //   alt: "Photoreka Artistic Scores report: average score, distribution and consistency for each dimension across the whole catalog",
+  // },
 ];
 
 const heroGenres = [
@@ -381,7 +395,11 @@ const features = ref([
       "Rank a full shoot by what's actually sellable",
       "Surface the packshot or hero frame without hunting",
     ],
-    image: "/ai_photo_scoring/1.png",
+    images: [
+      "/ai_photo_scoring/9.webp",
+      "/ai_photo_scoring/7.webp",
+      "/ai_photo_scoring/10.webp",
+    ],
     color: "#f59e0b",
     link: "/photo_scoring",
   },
@@ -398,11 +416,11 @@ const features = ref([
     ],
     images: [
       "/portfolio_builder/0.webp",
-      "/portfolio_builder/1.png",
-      "/portfolio_builder/2.png",
-      "/portfolio_builder/3.png",
-      "/portfolio_builder/4.png",
-      "/portfolio_builder/5.png",
+      "/portfolio_builder/1.webp",
+      "/portfolio_builder/2.webp",
+      "/portfolio_builder/3.webp",
+      "/portfolio_builder/4.webp",
+      "/portfolio_builder/5.webp",
     ],
     color: "#ec4899",
     link: "/photography_portfolio_builder",
@@ -418,7 +436,11 @@ const features = ref([
       "Get evidence-based critique before you send to a client",
       "Assemble curated selections conversationally",
     ],
-    image: "/chatlab/1.png",
+    images: [
+      "/chatlab/dashboard.webp",
+      "/chatlab/dashboard_empty.webp",
+      "/canvas/chatlab_2_estrecho.webp",
+    ],
     color: "#8b5cf6",
     link: "/photo_chat",
     demoLink: "/demo-commercial/chatlab",
@@ -434,7 +456,7 @@ const features = ref([
       "See your commercial signature from the outside",
       "Spot the gaps between what you shoot and what sells",
     ],
-    image: "/report/3.png",
+    images: ["/report/1.webp", "/report/2.webp"],
     color: "#06b6d4",
     link: "/photo_reports",
   },
@@ -449,7 +471,10 @@ const features = ref([
       "Spot near-duplicates and over-shot setups fast",
       "Rediscover sellable frames buried in the archive",
     ],
-    image: "/atlas/2d.png",
+    video: "/videos/atlas_2d.mp4",
+    // 16:9 video in a 16:10 frame: keep the clustering panel on the right.
+    videoFocus: "100% 50%",
+    image: "/atlas/atlas_2d_poster.webp",
     color: "#14b8a6",
     link: "/photo_3D_atlas",
     demoLink: "/demo-commercial/atlas?mode=2d",
@@ -467,14 +492,14 @@ const dataSources = ref([
     comingSoon: false,
   },
   {
-    logo: "/logos/google_photos.png",
+    logo: "/logos/google_photos.webp",
     name: "Google Photos",
     description:
       "Sync client galleries and shared libraries with one click. Keep campaigns organized across platforms.",
     comingSoon: false,
   },
   {
-    logo: "/logos/lightroom_logo.png",
+    logo: "/logos/lightroom_logo.webp",
     name: "Adobe Lightroom",
     description:
       "Connect directly with your Lightroom Classic catalog through our official plugin.",

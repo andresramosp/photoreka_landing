@@ -86,11 +86,11 @@ const props = defineProps({
 });
 
 const slides = [
-  { src: "/ai_geoinference/1.png", alt: "Geo Recovery – upload photos" },
-  { src: "/ai_geoinference/2.png", alt: "Geo Recovery – AI processing" },
-  { src: "/ai_geoinference/3.png", alt: "Geo Recovery – map review" },
-  { src: "/ai_geoinference/4.png", alt: "Geo Recovery – results with GPS" },
-  { src: "/ai_geoinference/5.png", alt: "Geo Recovery – download with EXIF" },
+  { src: "/ai_geoinference/1.webp", alt: "Geo Recovery – upload photos" },
+  { src: "/ai_geoinference/2.webp", alt: "Geo Recovery – AI processing" },
+  { src: "/ai_geoinference/3.webp", alt: "Geo Recovery – map review" },
+  { src: "/ai_geoinference/4.webp", alt: "Geo Recovery – results with GPS" },
+  { src: "/ai_geoinference/5.webp", alt: "Geo Recovery – download with EXIF" },
 ];
 
 const facts = [

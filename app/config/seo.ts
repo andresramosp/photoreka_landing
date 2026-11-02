@@ -5,6 +5,7 @@
 
 import { PICKS_FAQS } from "../utils/picksShowcase";
 import { COMMERCIAL_FAQS } from "../utils/commercialFaqs";
+import { IMAGE_LIBRARY_FAQS } from "../utils/imageLibraryFaqs";
 
 export interface SEOPage {
   title: string;
@@ -1592,6 +1593,83 @@ export const seoConfig = {
               position: 2,
               name: "AI Photo Organizer",
               item: "https://www.photoreka.com/ai_photo_organizer",
+            },
+          ],
+        },
+      ],
+    },
+
+    ai_image_library_search: {
+      title: "AI Image Library Search for Businesses & Agencies | Photoreka",
+      description:
+        "Find any image in your company photo library by describing it. No tagging, no migration: works on Dropbox, Lightroom or local folders. Pay per batch.",
+      keywords:
+        "AI image library search, search photo archive by description, search company photo library, image library software for business, photo library software for business, photo management software for business, photo management software for marketing agencies, AI photo tagging alternative, search Dropbox images by description, find duplicate images in photo library, tourism photo library software, travel photo library search, destination photo library, select best product photos AI, e-commerce product photo selection, hotel photo library, real estate photo library, marketing image library search, DAM alternative without migration, photo archive without metadata",
+      ogImage: "/home/video_poster.jpg",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka Image Library Search",
+          url: "https://www.photoreka.com/ai_image_library_search/",
+          description:
+            "AI search and curation layer for business image libraries. Find any image by describing it, rank shots by quality and commercial intent, flag near-duplicates, recover missing locations, and assemble selections — on top of Dropbox, Google Photos, Lightroom Classic, or local folders, without migration or a monthly subscription.",
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web",
+          audience: {
+            "@type": "BusinessAudience",
+            audienceType:
+              "Travel agencies, tour operators, e-commerce teams, marketing agencies, real estate and hospitality businesses",
+          },
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Natural language image search from a written brief",
+            "No tagging or keywording required",
+            "Quality and commercial-intent scoring",
+            "Near-duplicate detection",
+            "2D map of the whole image library",
+            "AI location recovery for images without GPS",
+            "Selections for campaigns, brochures, and catalogs",
+            "Works on Dropbox, Google Photos, Lightroom Classic, and local files",
+            "Pay per analyzed batch, no monthly subscription",
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: IMAGE_LIBRARY_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Image Library Search",
+              item: "https://www.photoreka.com/ai_image_library_search/",
             },
           ],
         },

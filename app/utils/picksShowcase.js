@@ -68,7 +68,7 @@ export const PICKS_CRITERIA = [
 export const SHOWCASE_PHOTOS = [
   {
     id: 1,
-    src: "/picks/photos/1.jpg",
+    src: "/picks/photos/1.webp",
     genres: ["street", "documentary"],
     scores: { aesthetics: 8.5, composition: 9, storytelling: 9, originality: 8, message: 8, humor: 3, visual_games: 4, spontaneity: 8.5 },
     critique:
@@ -76,7 +76,7 @@ export const SHOWCASE_PHOTOS = [
   },
   {
     id: 2,
-    src: "/picks/photos/2.jpg",
+    src: "/picks/photos/2.webp",
     genres: ["street", "fine_art"],
     scores: { aesthetics: 8, composition: 8.5, storytelling: 8, originality: 8.5, message: 7, humor: 4, visual_games: 7.5, spontaneity: 8 },
     critique:
@@ -84,7 +84,7 @@ export const SHOWCASE_PHOTOS = [
   },
   {
     id: 3,
-    src: "/picks/photos/3.jpg",
+    src: "/picks/photos/3.webp",
     genres: ["street", "travel"],
     scores: { aesthetics: 8, composition: 9, storytelling: 7.5, originality: 8, message: 6.5, humor: 5, visual_games: 7, spontaneity: 7.5 },
     critique:
@@ -92,7 +92,7 @@ export const SHOWCASE_PHOTOS = [
   },
   {
     id: 4,
-    src: "/picks/photos/4.jpg",
+    src: "/picks/photos/4.webp",
     genres: ["street", "documentary"],
     scores: { aesthetics: 7, composition: 7.5, storytelling: 8, originality: 7, message: 7.5, humor: 3, visual_games: 6.5, spontaneity: 8.5 },
     critique:
@@ -100,7 +100,7 @@ export const SHOWCASE_PHOTOS = [
   },
   {
     id: 5,
-    src: "/picks/photos/5.jpg",
+    src: "/picks/photos/5.webp",
     genres: ["street", "travel", "portrait"],
     scores: { aesthetics: 8.5, composition: 8, storytelling: 7.5, originality: 7.5, message: 6.5, humor: 4, visual_games: 3, spontaneity: 8 },
     critique:
@@ -108,7 +108,7 @@ export const SHOWCASE_PHOTOS = [
   },
   {
     id: 6,
-    src: "/picks/photos/6.jpg",
+    src: "/picks/photos/6.webp",
     genres: ["street", "documentary"],
     scores: { aesthetics: 8, composition: 8.5, storytelling: 8.5, originality: 7.5, message: 8, humor: 4, visual_games: 4, spontaneity: 8.5 },
     critique:
@@ -116,7 +116,7 @@ export const SHOWCASE_PHOTOS = [
   },
   {
     id: 7,
-    src: "/picks/photos/7.jpg",
+    src: "/picks/photos/7.webp",
     genres: ["street", "travel"],
     scores: { aesthetics: 8, composition: 8.5, storytelling: 8, originality: 8.5, message: 7.5, humor: 6, visual_games: 8.5, spontaneity: 8 },
     critique:
@@ -124,7 +124,7 @@ export const SHOWCASE_PHOTOS = [
   },
   {
     id: 8,
-    src: "/picks/photos/8.jpg",
+    src: "/picks/photos/8.webp",
     genres: ["street", "landscape"],
     scores: { aesthetics: 7.5, composition: 8, storytelling: 7, originality: 7.5, message: 6, humor: 5, visual_games: 7, spontaneity: 8 },
     critique:

@@ -9,7 +9,7 @@
         <ShotFrame
           class="lx-zoom"
           video="/videos/lr_plugin.mp4"
-          poster="/home/video_lr_poster.jpg"
+          poster="/home/video_lr_poster.webp"
           :playback-rate="2"
           alt="Photoreka plugin running inside Adobe Lightroom Classic"
           label="Lightroom Classic — Photoreka plugin"
@@ -19,7 +19,7 @@
 
       <div class="lx-split__copy">
         <div v-reveal class="lx-lr-badge">
-          <img src="/logos/lightroom_logo.png" alt="Adobe Lightroom" />
+          <img src="/logos/lightroom_logo.webp" alt="Adobe Lightroom" />
         </div>
         <SectionIntro eyebrow="Official Plugin" flush>
           <template #title>

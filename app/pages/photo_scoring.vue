@@ -60,7 +60,7 @@
               </SectionIntro>
               <div v-reveal="{ variant: 'scale', delay: 120 }">
                 <ShotFrame
-                  src="/ai_photo_scoring/12.png"
+                  src="/ai_photo_scoring/12.webp"
                   alt="Photoreka score panel with the General preset: overall 8.3/10 Remarkable, with fundamentals (aesthetic, composition, storytelling, originality) and bonus dimensions (message, humor, visual games, spontaneity)"
                   label="Photoreka — Scores"
                   ratio="814 / 466"
@@ -214,7 +214,7 @@ const slideshowImages = [
     alt: "Photoreka workspace sorted by aesthetic and originality scores, with each photo's score on its thumbnail",
   },
   {
-    src: "/ai_photo_scoring/11.png",
+    src: "/ai_photo_scoring/11.webp",
     alt: "Photoreka Artistic Scores report: average score, distribution and consistency for each dimension across the whole catalog",
   },
 ];

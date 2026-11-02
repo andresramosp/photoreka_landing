@@ -73,7 +73,7 @@
         <MediaSplitSection
           id="map"
           eyebrow="Interactive Map"
-          src="/ai_geoinference/3.png"
+          src="/ai_geoinference/3.webp"
           alt="Geo-inference interactive map"
           label="Photoreka — World Map"
           ratio="4 / 3"
@@ -240,10 +240,10 @@ const navLinks = [
 // Hero slideshow
 // TODO: replace with geo-inference / world-map product screenshots
 const slideshowImages = [
-  { src: "/ai_geoinference/1.png", alt: "Geo-inference map view - step 1" },
-  { src: "/ai_geoinference/2.png", alt: "Geo-inference map view - step 2" },
-  { src: "/ai_geoinference/3.png", alt: "Geo-inference map view - step 3" },
-  { src: "/ai_geoinference/4.png", alt: "Geo-inference map view - step 4" },
+  { src: "/ai_geoinference/1.webp", alt: "Geo-inference map view - step 1" },
+  { src: "/ai_geoinference/2.webp", alt: "Geo-inference map view - step 2" },
+  { src: "/ai_geoinference/3.webp", alt: "Geo-inference map view - step 3" },
+  { src: "/ai_geoinference/4.webp", alt: "Geo-inference map view - step 4" },
 ];
 
 const geoRecoveryPoints = [

@@ -29,7 +29,7 @@
           <template #visual>
             <!-- TODO: Replace with video element when /videos/tag_cloud.mp4 is ready -->
             <ShotFrame
-              src="/home/tag_cloud_poster.png"
+              src="/home/tag_cloud_poster.webp"
               alt="Tag Cloud visualization - Photo vocabulary mapped in 2D semantic space"
               label="Photoreka — Tag Cloud"
               ratio="16 / 9"
@@ -78,7 +78,7 @@
         <MediaSplitSection
           id="dynamic-search"
           eyebrow="Navigation as Search"
-          src="/home/tag_cloud_poster_detailed.jpg"
+          src="/home/tag_cloud_poster_detailed.webp"
           alt="AI Photo Search - Dynamic tag cloud navigation with real-time photo results"
           label="Photoreka — Dynamic search"
         >

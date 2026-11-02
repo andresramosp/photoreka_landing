@@ -25,7 +25,7 @@
           <template #visual>
             <ShotFrame
               video="/videos/atlas_1.mp4"
-              poster="/home/video_poster.jpg"
+              poster="/home/video_poster.webp"
               alt="Photoreka 3D Atlas mapping a photo catalog by visual similarity"
               label="Photoreka — 3D Atlas"
               ratio="16 / 9"
@@ -52,7 +52,7 @@
               <div v-reveal="{ variant: 'scale', delay: 120 }">
                 <ShotFrame
                   video="/videos/atlas_2d.mp4"
-                  poster="/atlas/atlas_2d_poster.jpg"
+                  poster="/atlas/atlas_2d_poster.webp"
                   alt="Photoreka 2D Atlas: photos clustered by visual similarity on a flat, zoomable map"
                   label="Photoreka — 2D Atlas"
                   ratio="16 / 10"

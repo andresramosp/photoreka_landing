@@ -56,9 +56,9 @@ import HeroStage from "./HeroStage.vue";
 const emit = defineEmits(["demo", "signup", "commercial-demo"]);
 
 const heroPrints = [
-  "/picks/photos/2.jpg",
-  "/picks/photos/5.jpg",
-  "/picks/photos/1.jpg",
+  "/picks/photos/2.webp",
+  "/picks/photos/5.webp",
+  "/picks/photos/1.webp",
 ];
 </script>
 

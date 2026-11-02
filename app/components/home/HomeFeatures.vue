@@ -45,7 +45,7 @@ const tools = [
     // 16:9 video in a 16:10 frame: crop the left edge (sidebar), keep the
     // clustering panel on the right.
     videoFocus: "100% 50%",
-    image: "/atlas/atlas_2d_poster.jpg",
+    image: "/atlas/atlas_2d_poster.webp",
     color: "#06b6d4",
     link: "/photo_3D_atlas",
     // /2d-atlas en vez de /atlas?mode=2d: el guard de demo de la app reconstruye
@@ -101,7 +101,7 @@ const tools = [
     images: [
       "/ai_photo_scoring/9.webp",
       "/ai_photo_scoring/7.webp",
-      "/ai_photo_scoring/10.png",
+      "/ai_photo_scoring/10.webp",
     ],
     color: "#ec4899",
     link: "/photo_scoring",
@@ -202,11 +202,11 @@ const tools = [
     // Several images → auto-rotating carousel.
     images: [
       "/portfolio_builder/0.webp",
-      // "/portfolio_builder/1.png",
-      // "/portfolio_builder/2.png",
-      // "/portfolio_builder/3.png",
-      // "/portfolio_builder/4.png",
-      // "/portfolio_builder/5.png",
+      // "/portfolio_builder/1.webp",
+      // "/portfolio_builder/2.webp",
+      // "/portfolio_builder/3.webp",
+      // "/portfolio_builder/4.webp",
+      // "/portfolio_builder/5.webp",
     ],
     color: "#22c55e",
     link: "/photography_portfolio_builder",

@@ -552,7 +552,7 @@ export const blogPosts: BlogPost[] = [
         alt: "2D Atlas overview showing distinct bright clusters of photo thumbnails separated by dark, empty space",
         caption:
           "A full catalog rendered as a map: dense clusters where the work concentrates, dark space where it doesn't.",
-        src: "/atlas/2d_detail.png",
+        src: "/atlas/2d_detail.webp",
       },
       {
         type: "h2",
@@ -606,7 +606,7 @@ export const blogPosts: BlogPost[] = [
         alt: "3D Atlas flythrough showing navigation between two distinct visual clusters in an immersive 3D space",
         caption:
           "Flying from one region of a catalog to another in the 3D Atlas.",
-        src: "/atlas/3d_detail.png",
+        src: "/atlas/3d_detail.webp",
       },
       {
         type: "h2",
@@ -801,7 +801,7 @@ export const blogPosts: BlogPost[] = [
         type: "image",
         alt: "Example conversation with ChatLab: a compound query combining semantic search, filters, and ranking, followed by the chat's answer with a curated photo selection",
         caption: "Example Conversation with ChatLab",
-        src: "/chatlab/conversacion.png",
+        src: "/chatlab/conversacion.webp",
       },
       {
         type: "h2",
@@ -833,7 +833,7 @@ export const blogPosts: BlogPost[] = [
         alt: "2D Atlas displaying the entire catalog as a map of clusters alongside a ChatLab conversation asking about those same regions",
         caption:
           "The 2D Atlas: the closest visual representation of how ChatLab sees your entire archive.",
-        src: "/atlas/2d.png",
+        src: "/atlas/2d.webp",
       },
       {
         type: "h2",
@@ -853,7 +853,7 @@ export const blogPosts: BlogPost[] = [
         alt: "Diagram of ChatLab's internal pipeline: an investigative stage orchestrating catalog tools followed by a curator stage with visual access to thumbnails",
         caption:
           "The mechanism, simplified: an investigator gathering evidence with catalog tools, and a curator with eyes judging it—placeholder, final diagram pending.",
-        src: "/chatlab/diagram.png",
+        src: "/chatlab/diagram.webp",
       },
       {
         type: "h2",
@@ -882,7 +882,7 @@ export const blogPosts: BlogPost[] = [
         alt: "Suggested actions beneath a ChatLab response: create collection, add to series, open in Workspace",
         caption:
           "The conversation flows back into the application: one-click actions beneath every answer, always requiring confirmation—placeholder, screenshot pending.",
-        src: "/chatlab/actions.png",
+        src: "/chatlab/actions.webp",
       },
       {
         type: "quote",

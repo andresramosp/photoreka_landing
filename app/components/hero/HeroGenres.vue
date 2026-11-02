@@ -26,13 +26,19 @@ import {
 } from "@vicons/ionicons5";
 import BookOpen16Regular from "@vicons/fluent/es/BookOpen16Regular.js";
 
-const genres = [
+const props = defineProps({
+  /** [{ icon, label }]; defaults to the photography genres. */
+  items: { type: Array, default: undefined },
+});
+
+const defaultGenres = [
   { icon: markRaw(WalkOutline), label: "Street" },
   { icon: markRaw(BookOpen16Regular), label: "Documentary" },
   { icon: markRaw(ColorPaletteOutline), label: "Artistic" },
   { icon: markRaw(PersonOutline), label: "Lifestyle" },
   { icon: markRaw(BriefcaseOutline), label: "Commercial" },
 ];
+const genres = props.items || defaultGenres;
 // Repeated so each half of the rolling track is wider than the column;
 // otherwise a gap shows before the loop restarts.
 const rollingGenres = [...genres, ...genres];

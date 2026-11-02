@@ -32,7 +32,7 @@
           <template #visual>
             <ShotFrame
               video="/videos/atlas_1.mp4"
-              poster="/home/video_poster.jpg"
+              poster="/home/video_poster.webp"
               alt="Photoreka ranking a whole photo catalog"
               label="Photoreka — Atlas"
               ratio="16 / 9"
@@ -102,7 +102,7 @@
             >
               <ShotFrame
                 class="lx-zoom"
-                src="/ai_photo_scoring/4.png"
+                src="/ai_photo_scoring/4.webp"
                 alt="A whole catalog ranked by AI scores in Photoreka, best photos first"
                 label="Photoreka — Ranked catalog"
                 ratio="1378 / 918"

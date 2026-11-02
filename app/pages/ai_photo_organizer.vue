@@ -100,7 +100,7 @@
             >
               <ShotFrame
                 class="lx-zoom"
-                src="/atlas/2d.png"
+                src="/atlas/2d.webp"
                 alt="Photoreka 2D Atlas: an entire photo library organized into visual similarity clusters on a single navigable map"
                 label="Photoreka — 2D Atlas"
                 ratio="auto"

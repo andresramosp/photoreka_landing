@@ -102,7 +102,7 @@
           id="atlas"
           eyebrow="3D Atlas"
           video="/videos/atlas_1.mp4"
-          poster="/home/video_lr_poster.jpg"
+          poster="/home/video_lr_poster.webp"
           alt="Photoreka 3D Atlas arranging photos by visual similarity"
           label="Photoreka — 3D Atlas"
           reverse
@@ -221,23 +221,23 @@ const slideshowImages = [
     alt: "Portfolio builder interface - step 0",
   },
   {
-    src: "/portfolio_builder/1.png",
+    src: "/portfolio_builder/1.webp",
     alt: "Portfolio builder interface - step 1",
   },
   {
-    src: "/portfolio_builder/2.png",
+    src: "/portfolio_builder/2.webp",
     alt: "Portfolio builder interface - step 2",
   },
   {
-    src: "/portfolio_builder/3.png",
+    src: "/portfolio_builder/3.webp",
     alt: "Portfolio builder interface - step 3",
   },
   {
-    src: "/portfolio_builder/4.png",
+    src: "/portfolio_builder/4.webp",
     alt: "Portfolio builder interface - step 4",
   },
   {
-    src: "/portfolio_builder/5.png",
+    src: "/portfolio_builder/5.webp",
     alt: "Portfolio builder interface - step 5",
   },
 ];

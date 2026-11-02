@@ -31,7 +31,7 @@
           <template #visual>
             <ShotFrame
               video="/videos/Chatlab_Largo_1.mp4"
-              poster="/home/video_poster.jpg"
+              poster="/home/video_poster.webp"
               alt="Photoreka ChatLab answering questions about a photo library"
               label="Photoreka — ChatLab"
               ratio="16 / 9"
@@ -96,7 +96,7 @@
                 class="chat-examples__shot"
               >
                 <ShotFrame
-                  src="/chatlab/conversacion.png"
+                  src="/chatlab/conversacion.webp"
                   alt="A ChatLab conversation: the assistant picks the strongest photo of a series and explains why, with the photos it compared"
                   label="Photoreka — ChatLab"
                   ratio="16 / 10"
@@ -143,7 +143,7 @@
             >
               <ShotFrame
                 class="lx-zoom"
-                src="/chatlab/diagram.png"
+                src="/chatlab/diagram.webp"
                 alt="How ChatLab answers: an orchestrator plans the work across semantic search, the metadata engine, the Atlas, rankings, reports and vision models, then a judge checks the evidence before the answer is synthesized"
                 label="Photoreka — ChatLab"
                 ratio="1536 / 1024"

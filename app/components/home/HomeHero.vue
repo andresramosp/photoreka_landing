@@ -50,7 +50,7 @@ const features = [
   { label: "2D/3D clustering" },
   { label: "Storyboarding" },
   { label: "AI Portfolio builder" },
-  { label: "Style patterns" },
+  { label: "Patterns detection" },
   { label: "AI Geo-Location" },
 ];
 
@@ -66,30 +66,3 @@ const goToCommercialDemo = () => {
   window.open("https://app.photoreka.com/demo-commercial/workspace", "_blank");
 };
 </script>
-
-<style scoped>
-/* Desktop: hero and strip fill the first screen (up to 1100px tall), the
-   strip on its bottom edge and the copy centred in the rest. When the copy
-   does not fit, the block grows and the strip falls below the fold. */
-@media (min-width: 1024px) {
-  .lx-fold {
-    display: flex;
-    flex-direction: column;
-    min-height: min(100svh, 1100px);
-  }
-
-  .lx-fold > :deep(.lx-hero) {
-    --hero-top: clamp(104px, 12svh, 136px);
-    --hero-bottom: clamp(32px, 4svh, 56px);
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  /* With auto side margins a flex item would shrink to its content. */
-  .lx-fold > :deep(.lx-hero > *) {
-    width: 100%;
-  }
-}
-</style>

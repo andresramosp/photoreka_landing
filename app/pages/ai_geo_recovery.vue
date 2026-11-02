@@ -95,7 +95,7 @@
           id="map"
           class="gr-map"
           eyebrow="Interactive Map Review"
-          src="/ai_geoinference/5.png"
+          src="/ai_geoinference/5.webp"
           alt="Geo Recovery interactive map"
           label="Photoreka — Geo Recovery"
           ratio="4 / 3"
@@ -272,10 +272,10 @@ const navLinks = [
 // Hero slideshow — using geo-inference screenshots as placeholders
 // TODO: replace with Geo Recovery product screenshots
 const slideshowImages = [
-  { src: "/ai_geoinference/2.png", alt: "Geo Recovery - AI processing" },
-  { src: "/ai_geoinference/4.png", alt: "Geo Recovery - results map" },
-  { src: "/ai_geoinference/1.png", alt: "Geo Recovery - upload photos" },
-  { src: "/ai_geoinference/3.png", alt: "Geo Recovery - map review" },
+  { src: "/ai_geoinference/2.webp", alt: "Geo Recovery - AI processing" },
+  { src: "/ai_geoinference/4.webp", alt: "Geo Recovery - results map" },
+  { src: "/ai_geoinference/1.webp", alt: "Geo Recovery - upload photos" },
+  { src: "/ai_geoinference/3.webp", alt: "Geo Recovery - map review" },
 ];
 
 // Use cases

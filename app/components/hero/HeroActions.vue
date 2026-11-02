@@ -1,17 +1,19 @@
 <template>
   <div class="lx-hero__cta" :class="`is-${align}`">
     <div v-reveal="520" class="lx-actions">
-      <LxButton icon="play" @click="emit('demo')">Try the Demo</LxButton>
+      <LxButton icon="play" @click="emit('demo')">{{ demoLabel }}</LxButton>
       <LxButton variant="ghost" @click="emit('signup')">
         {{ signupButtonLabel }}
       </LxButton>
     </div>
     <p v-reveal="600" class="lx-hero__alt">
-      <span>Shooting commercial work?</span>
-      <button class="lx-link" @click="emit('commercial-demo')">
-        Try the commercial demo
-        <n-icon size="15"><ArrowForwardOutline /></n-icon>
-      </button>
+      <slot name="alt">
+        <span>Shooting commercial work?</span>
+        <button class="lx-link" @click="emit('commercial-demo')">
+          Try the commercial demo
+          <n-icon size="15"><ArrowForwardOutline /></n-icon>
+        </button>
+      </slot>
     </p>
   </div>
 </template>
@@ -22,6 +24,7 @@ import { ArrowForwardOutline } from "@vicons/ionicons5";
 defineProps({
   /** start | center | end: where the buttons sit in their column */
   align: { type: String, default: "end" },
+  demoLabel: { type: String, default: "Try the Demo" },
 });
 
 const emit = defineEmits(["demo", "signup", "commercial-demo"]);
@@ -61,7 +64,8 @@ const { signupButtonLabel } = useRegistrationMode();
   color: var(--lx-text-3);
 }
 
-.lx-hero__alt .lx-link {
+.lx-hero__alt .lx-link,
+.lx-hero__alt :slotted(.lx-link) {
   font-size: var(--lx-fs-sm);
 }
 

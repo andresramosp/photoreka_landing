@@ -139,6 +139,7 @@ export default defineNuxtConfig({
     "/ai_photo_picks": { prerender: true },
     "/lightroom_search_plugin": { prerender: true },
     "/commercial_photography": { prerender: true },
+    "/ai_image_library_search": { prerender: true },
     "/framer": { prerender: true },
   },
 
@@ -169,6 +170,7 @@ export default defineNuxtConfig({
         "/ai_photo_picks",
         "/lightroom_search_plugin",
         "/commercial_photography",
+        "/ai_image_library_search",
         "/framer",
       ],
     },

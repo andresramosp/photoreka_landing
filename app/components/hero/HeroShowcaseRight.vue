@@ -2,16 +2,22 @@
   <HeroShell class="lx-hero--showcase-right">
     <div class="lx-hero__layout">
       <div class="lx-hero__center">
-        <HeroEyebrow v-reveal class="lx-hero__eyebrow" />
-        <HeroTitle />
-        <HeroLead v-reveal="420" />
+        <!-- Each slot falls back to the home copy when a page leaves it out. -->
+        <HeroEyebrow v-reveal class="lx-hero__eyebrow">
+          <slot name="eyebrow" />
+        </HeroEyebrow>
+        <HeroTitle><slot name="title" /></HeroTitle>
+        <HeroLead v-reveal="420"><slot name="lead" /></HeroLead>
         <HeroActions
           align="center"
+          :demo-label="demoLabel"
           @demo="emit('demo')"
           @signup="emit('signup')"
           @commercial-demo="emit('commercial-demo')"
-        />
-        <HeroGenres v-reveal="680" class="lx-hero__genres" />
+        >
+          <template v-if="$slots.alt" #alt><slot name="alt" /></template>
+        </HeroActions>
+        <HeroGenres v-reveal="680" class="lx-hero__genres" :items="genres" />
       </div>
 
       <HeroRotatingShot
@@ -38,6 +44,9 @@ defineProps({
   /** Captures shown in turn; HeroRotatingShot has the default set. */
   images: { type: Array, default: undefined },
   interval: { type: Number, default: undefined },
+  demoLabel: { type: String, default: undefined },
+  /** Items of the genres row; HeroGenres has the photography default. */
+  genres: { type: Array, default: undefined },
 });
 
 const emit = defineEmits(["demo", "signup", "commercial-demo"]);

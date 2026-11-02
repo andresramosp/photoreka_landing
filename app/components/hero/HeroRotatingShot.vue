@@ -18,7 +18,7 @@
     </ShotFrame>
     <span v-if="phone" class="lx-rshot__phone">
       <img
-        src="/home/photoreka_mobile_halo.png"
+        src="/home/photoreka_mobile_halo.webp"
         alt="Photoreka mobile app"
         loading="eager"
       />
