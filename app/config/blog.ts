@@ -978,7 +978,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This is the step where most people give up and fall back on the three photos they always send. If your archive is large, it is also where a tool helps most: an <a href='/ai_photo_picks'>AI photo picker</a> can rank thousands of frames in minutes and surface strong images you had forgotten, so your long list is built from the whole archive rather than from what you happen to remember. We cover the general workflow in <a href='/blog/how-to-pick-your-best-photos'>how to pick your best photos from hundreds of shots</a>.",
+        html: "This is the step where most people give up and fall back on the three photos they always send. If your archive is large, it is also where a tool helps most: an <a href='/ai_photo_picks/'>AI photo picker</a> can rank thousands of frames in minutes and surface strong images you had forgotten, so your long list is built from the whole archive rather than from what you happen to remember. We cover the general workflow in <a href='/blog/how-to-pick-your-best-photos'>how to pick your best photos from hundreds of shots</a>.",
       },
       {
         type: "h2",
@@ -1067,7 +1067,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "AI will not choose your entry for you, and it shouldn't: it does not know the theme, the jury, or what you are trying to say. Where it is genuinely useful is in the two slowest steps: <strong>going through the whole archive</strong> to build the long list, and giving you a <strong>consistent second opinion</strong> on each candidate. <a href='/ai_photo_picks'>Photoreka Picks</a> does exactly that: you drop up to 5,000 photos, an AI jury scores every frame on eight artistic criteria and writes a short critique for each one, and you can rank the results through genre juries such as street or documentary, or through award juries that only keep photos above a high bar.",
+        html: "AI will not choose your entry for you, and it shouldn't: it does not know the theme, the jury, or what you are trying to say. Where it is genuinely useful is in the two slowest steps: <strong>going through the whole archive</strong> to build the long list, and giving you a <strong>consistent second opinion</strong> on each candidate. <a href='/ai_photo_picks/'>Photoreka Picks</a> does exactly that: you drop up to 5,000 photos, an AI jury scores every frame on eight artistic criteria and writes a short critique for each one, and you can rank the results through genre juries such as street or documentary, or through award juries that only keep photos above a high bar.",
       },
       {
         type: "cta",
@@ -1076,7 +1076,7 @@ export const blogPosts: BlogPost[] = [
         text: "Try Picks free with 10 of your own photos: scores, a written critique for each frame and every jury. No account, no card.",
         buttonLabel: "Discover Picks",
         action: "link",
-        href: "/ai_photo_picks",
+        href: "/ai_photo_picks/",
       },
       {
         type: "p",
@@ -1213,7 +1213,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "There are two kinds of AI tools for this job, and they solve different steps. Culling tools look for technical defects and duplicates, which is ideal for pass one. AI photo pickers judge artistic qualities, which helps with pass two and with digging through a large archive. <a href='/ai_photo_picks'>Photoreka Picks</a> is the second kind: you drop up to 5,000 photos, an AI jury scores each one on eight artistic criteria (aesthetics, composition, storytelling, originality, message, humor, visual games and spontaneity) and writes a one- or two-sentence critique explaining its score. You can then switch between street, documentary, landscape or award juries and watch the ranking reorder itself. Your originals never leave your device: only a small thumbnail of each photo is sent for judging.",
+        html: "There are two kinds of AI tools for this job, and they solve different steps. Culling tools look for technical defects and duplicates, which is ideal for pass one. AI photo pickers judge artistic qualities, which helps with pass two and with digging through a large archive. <a href='/ai_photo_picks/'>Photoreka Picks</a> is the second kind: you drop up to 5,000 photos, an AI jury scores each one on eight artistic criteria (aesthetics, composition, storytelling, originality, message, humor, visual games and spontaneity) and writes a one- or two-sentence critique explaining its score. You can then switch between street, documentary, landscape or award juries and watch the ranking reorder itself. Your originals never leave your device: only a small thumbnail of each photo is sent for judging.",
       },
       {
         type: "p",
@@ -1226,7 +1226,7 @@ export const blogPosts: BlogPost[] = [
         text: "Try Picks free with 10 of your own photos: scores on eight criteria and a written critique for every frame. No account, no card.",
         buttonLabel: "Discover Picks",
         action: "link",
-        href: "/ai_photo_picks",
+        href: "/ai_photo_picks/",
       },
     ],
   },

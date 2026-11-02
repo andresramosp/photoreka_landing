@@ -55,11 +55,17 @@
           <li><n-icon size="16"><CheckmarkOutline /></n-icon>Originals never leave your device</li>
         </ul>
         <div class="ppr-actions">
-          <button class="ppr-cta" @click="goToTrial">
+          <a
+            class="ppr-cta"
+            :href="PICKS_TRIAL_URL"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="trackTrial"
+          >
             Try it free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos
-          </button>
-          <NuxtLink to="/ai_photo_picks" class="ppr-link" @click="trackDiscover">
-            Discover Picks
+          </a>
+          <NuxtLink to="/ai_photo_picks/" class="ppr-link" @click="trackDiscover">
+            Discover the AI photo ranker
             <n-icon size="16"><ArrowForwardOutline /></n-icon>
           </NuxtLink>
         </div>
@@ -120,9 +126,8 @@ onMounted(() => {
 
 onUnmounted(() => observer?.disconnect());
 
-function goToTrial() {
+function trackTrial() {
   trackUserAction("navigate_to_picks_trial", `${props.source}_picks_promo`);
-  window.open(PICKS_TRIAL_URL, "_blank");
 }
 
 function trackDiscover() {
@@ -259,7 +264,9 @@ function trackDiscover() {
 
 .ppr-cta {
   position: relative;
+  display: inline-block;
   overflow: hidden;
+  text-decoration: none;
   padding: 0.95rem 1.7rem;
   border: 0;
   border-radius: 999px;

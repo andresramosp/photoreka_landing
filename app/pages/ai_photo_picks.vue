@@ -8,11 +8,13 @@
     <LandingNav :links="navLinks" @navigate="onNavigate">
       <template #actions>
         <NuxtLink to="/" class="lx-link pkl-nav-back">Back to Photoreka</NuxtLink>
-        <LxButton size="sm" @click="goToTrial('nav')">Try it free</LxButton>
+        <LxButton size="sm" :href="PICKS_TRIAL_URL" target="_blank" @click="trackTrial('nav')">
+          Try it free
+        </LxButton>
       </template>
     </LandingNav>
 
-    <PageHero eyebrow="AI photo ranking · No account needed">
+    <PageHero eyebrow="AI photo ranker · No account needed">
       <template #title>
         Find your <em class="lx-accent">best photos</em> with AI.
       </template>
@@ -22,10 +24,10 @@
         through the eyes of street, documentary, landscape or award juries.
       </p>
       <template #actions>
-        <LxButton icon="external" @click="goToTrial('hero')">
+        <LxButton icon="external" :href="PICKS_TRIAL_URL" target="_blank" @click="trackTrial('hero')">
           Try it free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos
         </LxButton>
-        <LxButton variant="ghost" @click="goToApp('hero')">
+        <LxButton variant="ghost" :href="PICKS_APP_URL" target="_blank" @click="trackApp('hero')">
           Rank my whole collection
         </LxButton>
       </template>
@@ -164,7 +166,7 @@
                 <strong>{{ formatEur(priceFor(n)) }}</strong>
               </li>
             </ul>
-            <LxButton icon="external" block @click="goToApp('pricing')">
+            <LxButton icon="external" block :href="PICKS_APP_URL" target="_blank" @click="trackApp('pricing')">
               Rank my photos
             </LxButton>
           </div>
@@ -179,7 +181,7 @@
               <li><span class="lx-tick" aria-hidden="true" />A critique for every photo</li>
               <li><span class="lx-tick" aria-hidden="true" />Every jury and competition</li>
             </ul>
-            <LxButton variant="ghost" icon="external" block @click="goToTrial('pricing')">
+            <LxButton variant="ghost" icon="external" block :href="PICKS_TRIAL_URL" target="_blank" @click="trackTrial('pricing')">
               Try it free
             </LxButton>
           </div>
@@ -229,10 +231,10 @@
       </template>
       <p>Let the jury find it.</p>
       <template #actions>
-        <LxButton icon="external" @click="goToTrial('final')">
+        <LxButton icon="external" :href="PICKS_TRIAL_URL" target="_blank" @click="trackTrial('final')">
           Try it free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos
         </LxButton>
-        <LxButton variant="ghost" @click="goToApp('final')">
+        <LxButton variant="ghost" :href="PICKS_APP_URL" target="_blank" @click="trackApp('final')">
           Rank my whole collection
         </LxButton>
       </template>
@@ -384,14 +386,12 @@ onBeforeUnmount(() => {
   smoothScroll.disable();
 });
 
-function goToTrial(where) {
+function trackTrial(where) {
   trackUserAction("navigate_to_picks_trial", `ai_photo_picks_${where}`);
-  window.open(PICKS_TRIAL_URL, "_blank");
 }
 
-function goToApp(where) {
+function trackApp(where) {
   trackUserAction("navigate_to_picks_tool", `ai_photo_picks_${where}`);
-  window.open(PICKS_APP_URL, "_blank");
 }
 </script>
 

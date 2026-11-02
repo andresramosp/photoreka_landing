@@ -39,10 +39,10 @@
             >AI Photo Culling</NuxtLink
           >
           <NuxtLink to="/photo_scoring" class="footer-link"
-            >Photo Scoring &amp; Ranking</NuxtLink
+            >Photo Scoring</NuxtLink
           >
-          <NuxtLink to="/ai_photo_picks" class="footer-link"
-            >Picks: Find Your Best Photos</NuxtLink
+          <NuxtLink to="/ai_photo_picks/" class="footer-link"
+            >Picks: AI Photo Ranker</NuxtLink
           >
           <NuxtLink to="/photo_reports" class="footer-link"
             >Style Analysis Reports</NuxtLink

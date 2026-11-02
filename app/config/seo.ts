@@ -913,7 +913,7 @@ export const seoConfig = {
     },
 
     photo_scoring: {
-      title: "AI Photo Scoring — Rank Your Entire Catalog | Photoreka",
+      title: "AI Photo Scoring — Score Your Entire Catalog | Photoreka",
       description:
         "Score every photo in your catalog across 9+ quality dimensions: aesthetics, composition, narrative strength, originality, candidness, and more. Surface your strongest work from an archive of thousands, track your artistic progress over time, and separate keepers from noise. Commercial mode adds two extra dimensions—subject clarity and commercial intent—for product, stock, and fashion work. Built for photographers with serious catalogs—works with Lightroom Classic, Google Photos, and local libraries.",
       keywords:
@@ -1023,11 +1023,11 @@ export const seoConfig = {
     },
 
     ai_photo_picks: {
-      title: "AI Photo Picker: Rank & Critique Your Best Photos | Photoreka",
+      title: "AI Photo Ranker: Pick & Critique Your Best Photos | Photoreka",
       description:
-        "Upload up to 5,000 photos and an AI jury ranks them, scores eight artistic criteria and writes a critique for each one. No account. Free trial with 10 photos.",
+        "AI photo ranker: drop up to 5,000 photos and an AI jury ranks them, scores eight artistic criteria and critiques each one. No account. Free trial with 10 photos.",
       keywords:
-        "ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
+        "photo ranker, ai photo ranker, photo ranking, ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
       ogImage: "/picks/og-picks.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -1040,7 +1040,7 @@ export const seoConfig = {
             "Online AI photo ranking: scores every photo on eight artistic criteria, writes a critique for each and ranks them with genre and award juries. No account required, pay per photo.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
-          url: "https://www.photoreka.com/ai_photo_picks",
+          url: "https://www.photoreka.com/ai_photo_picks/",
           offers: {
             "@type": "Offer",
             availability: "https://schema.org/InStock",
