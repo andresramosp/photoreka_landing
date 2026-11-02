@@ -35,15 +35,15 @@ const props = defineProps({
     type: Array,
     default: () => [
       {
-        src: "/canvas/chatlab_2.png",
+        src: "/canvas/chatlab_2.webp",
         alt: "Photoreka infinite canvas with an AI chat docked to the board",
       },
       {
-        src: "/home/hero_dashboard.jpg",
+        src: "/home/hero_dashboard.webp",
         alt: "Photoreka dashboard: world map, scores, genres and photographic patterns of a library",
       },
       {
-        src: "/home/hero_portfolio.jpg",
+        src: "/home/hero_portfolio.webp",
         alt: "AI photo portfolio built with Photoreka",
       },
     ],

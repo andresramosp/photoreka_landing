@@ -69,7 +69,7 @@ const tools = [
     panelHtml:
       "Type what you remember and Photoreka finds it — no tagging, no folders. <strong>Broad</strong> to explore, <strong>Adaptive</strong> for cultural references, <strong>Precise</strong> for exact conditions.",
     video: "/videos/Search.mp4",
-    image: "/home/search_results.jpg",
+    image: "/home/search_results.webp",
     color: "#2563eb",
     link: "/ai_photo_search",
     demoLinks: [
@@ -99,8 +99,8 @@ const tools = [
       "Surface your strongest work automatically",
     ],
     images: [
-      "/ai_photo_scoring/9.png",
-      "/ai_photo_scoring/7.png",
+      "/ai_photo_scoring/9.webp",
+      "/ai_photo_scoring/7.webp",
       "/ai_photo_scoring/10.png",
     ],
     color: "#ec4899",
@@ -121,9 +121,9 @@ const tools = [
       "Track your evolution and discover recurring patterns",
     ],
     images: [
-      "/chatlab/dashboard.png",
-      "/chatlab/dashboard_empty.png",
-      "/canvas/chatlab_2_estrecho.png",
+      "/chatlab/dashboard.webp",
+      "/chatlab/dashboard_empty.webp",
+      "/canvas/chatlab_2_estrecho.webp",
     ],
 
     color: "#8b5cf6",
@@ -147,7 +147,7 @@ const tools = [
       "Reveal cultural references and compositional habits",
       "Analyze your whole archive with AI, not vibes",
     ],
-    images: ["/report/1.png", "/report/2.png"],
+    images: ["/report/1.webp", "/report/2.webp"],
     color: "#f59e0b",
     link: "/photo_reports",
     demoLinks: [
@@ -173,7 +173,7 @@ const tools = [
       "Drop an image to surface visually similar photos",
       "Ask a chat that sees your board what's missing",
     ],
-    images: ["/canvas/levels.png", "/canvas/question.png"],
+    images: ["/canvas/levels.webp", "/canvas/question.webp"],
     color: "#8b5cf6",
     link: "/ai_photo_storyboard",
     demoLinks: [
@@ -201,7 +201,7 @@ const tools = [
     ],
     // Several images → auto-rotating carousel.
     images: [
-      "/portfolio_builder/0.png",
+      "/portfolio_builder/0.webp",
       // "/portfolio_builder/1.png",
       // "/portfolio_builder/2.png",
       // "/portfolio_builder/3.png",
@@ -229,7 +229,7 @@ const tools = [
       "Explore geographic clusters in an interactive map view",
       "Refine results with source, detail, and time-range filters",
     ],
-    image: "/ai_geoinference/3_estrecho.png",
+    image: "/ai_geoinference/3_estrecho.webp",
     color: "#14b8a6",
     link: "/ai_geo_inference",
   },

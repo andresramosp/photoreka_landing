@@ -50,12 +50,12 @@ const logoMap = {
   },
   horizontal: {
     dark: {
-      withClaim: "/logos/marca/horizontal-claim-dark.png",
-      noClaim: "/logos/marca/horizontal-dark.png",
+      withClaim: "/logos/marca/horizontal-claim-dark.webp",
+      noClaim: "/logos/marca/horizontal-dark.webp",
     },
     light: {
-      withClaim: "/logos/marca/horizontal-claim-light.png",
-      noClaim: "/logos/marca/horizontal-light.png",
+      withClaim: "/logos/marca/horizontal-claim-light.webp",
+      noClaim: "/logos/marca/horizontal-light.webp",
     },
   },
   vertical: {

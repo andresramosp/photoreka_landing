@@ -53,9 +53,17 @@ const emit = defineEmits(["demo", "signup", "commercial-demo"]);
   --hero-title-size: clamp(3rem, min(4.9vw, 9svh), 4.9rem);
 }
 
+/* Below ~1400px the copy column shrinks with the row instead of holding
+   570px, and the headline with it, so the capture stays the larger block. */
+@media (min-width: 1024px) {
+  .lx-hero--showcase-right {
+    --hero-title-size: clamp(2.6rem, min(4.9vw, 9svh, 6.6vw - 25px), 4.9rem);
+  }
+}
+
 .lx-hero__layout {
   display: grid;
-  grid-template-columns: minmax(0, 570px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, min(570px, 45%)) minmax(0, 1fr);
   gap: clamp(32px, 4vw, 64px);
   align-items: center;
   max-width: calc(1560px + 2 * var(--lx-gutter));
@@ -81,6 +89,25 @@ const emit = defineEmits(["demo", "signup", "commercial-demo"]);
 .lx-hero__genres {
   --lx-hero-genres-justify: center;
   width: min(100%, 600px);
+}
+
+/* Narrowed copy column: the lead flows as one paragraph (three separate
+   sentences would each break into ragged short lines) and the eyebrow
+   tightens to stay on one line. */
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .lx-hero__center :deep(.lx-hero__lead) {
+    text-wrap: balance;
+  }
+
+  .lx-hero__center :deep(.lx-hero__lead > span) {
+    display: inline;
+  }
+
+  .lx-hero__eyebrow {
+    gap: 0.5rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
 }
 
 /* Single column: the capture goes under the copy. */
