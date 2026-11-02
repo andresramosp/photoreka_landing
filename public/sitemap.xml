@@ -3,158 +3,164 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://www.photoreka.com/</loc>
-        <lastmod>2026-07-10</lastmod>
+        <lastmod>2026-11-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/ai_photo_organizer</loc>
-        <lastmod>2026-07-10</lastmod>
+        <loc>https://www.photoreka.com/ai_photo_organizer/</loc>
+        <lastmod>2026-11-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/ai_photo_search</loc>
+        <loc>https://www.photoreka.com/commercial_photography/</loc>
+        <lastmod>2026-11-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/ai_photo_search/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/ai_photo_culling</loc>
+        <loc>https://www.photoreka.com/ai_photo_culling/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/photo_scoring</loc>
+        <loc>https://www.photoreka.com/photo_scoring/</loc>
         <lastmod>2026-07-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/ai_photo_storyboard</loc>
+        <loc>https://www.photoreka.com/ai_photo_storyboard/</loc>
         <lastmod>2026-09-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/photo_chat</loc>
+        <loc>https://www.photoreka.com/photo_chat/</loc>
         <lastmod>2026-07-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/photo_3D_atlas</loc>
+        <loc>https://www.photoreka.com/photo_3D_atlas/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/photo_reports</loc>
+        <loc>https://www.photoreka.com/photo_reports/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/photo_tag_cloud</loc>
+        <loc>https://www.photoreka.com/photo_tag_cloud/</loc>
         <lastmod>2026-07-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/photography_portfolio_builder</loc>
+        <loc>https://www.photoreka.com/photography_portfolio_builder/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://www.photoreka.com/lightroom_search_plugin</loc>
+        <loc>https://www.photoreka.com/lightroom_search_plugin/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/framer</loc>
+        <loc>https://www.photoreka.com/framer/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
       <url>
-        <loc>https://www.photoreka.com/ai_geo_inference</loc>
+        <loc>https://www.photoreka.com/ai_geo_inference/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
           <url>
-        <loc>https://www.photoreka.com/ai_geo_recovery</loc>
+        <loc>https://www.photoreka.com/ai_geo_recovery/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/ai_photo_picks</loc>
+        <loc>https://www.photoreka.com/ai_photo_picks/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/terms</loc>
+        <loc>https://www.photoreka.com/terms/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/privacy</loc>
+        <loc>https://www.photoreka.com/privacy/</loc>
         <lastmod>2026-04-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
 
     <url>
-        <loc>https://www.photoreka.com/blog</loc>
+        <loc>https://www.photoreka.com/blog/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/blog/how-to-choose-photos-for-a-photo-contest</loc>
+        <loc>https://www.photoreka.com/blog/how-to-choose-photos-for-a-photo-contest/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/blog/how-to-pick-your-best-photos</loc>
+        <loc>https://www.photoreka.com/blog/how-to-pick-your-best-photos/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/blog/photoprism-vs-photoreka</loc>
+        <loc>https://www.photoreka.com/blog/photoprism-vs-photoreka/</loc>
         <lastmod>2026-08-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/blog/digikam-vs-photoreka</loc>
+        <loc>https://www.photoreka.com/blog/digikam-vs-photoreka/</loc>
         <lastmod>2026-08-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/blog/peakto-alternative-windows</loc>
+        <loc>https://www.photoreka.com/blog/peakto-alternative-windows/</loc>
         <lastmod>2026-07-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/blog/catalog-3d-universe-not-a-grid</loc>
+        <loc>https://www.photoreka.com/blog/catalog-3d-universe-not-a-grid/</loc>
         <lastmod>2026-07-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.photoreka.com/blog/chatlab-a-conversation-with-your-entire-archive</loc>
+        <loc>https://www.photoreka.com/blog/chatlab-a-conversation-with-your-entire-archive/</loc>
         <lastmod>2026-07-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

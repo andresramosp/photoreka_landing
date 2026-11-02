@@ -138,7 +138,7 @@ export default defineNuxtConfig({
     "/ai_geo_recovery": { prerender: true },
     "/ai_photo_picks": { prerender: true },
     "/lightroom_search_plugin": { prerender: true },
-    // "/commercial_photography": { prerender: true },
+    "/commercial_photography": { prerender: true },
     "/framer": { prerender: true },
   },
 
@@ -168,7 +168,7 @@ export default defineNuxtConfig({
         "/ai_geo_recovery",
         "/ai_photo_picks",
         "/lightroom_search_plugin",
-        // "/commercial_photography",
+        "/commercial_photography",
         "/framer",
       ],
     },

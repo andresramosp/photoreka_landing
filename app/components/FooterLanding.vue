@@ -47,6 +47,9 @@
           <NuxtLink to="/photo_chat" class="footer-link"
             >AI Photo Assistant</NuxtLink
           >
+          <NuxtLink to="/commercial_photography" class="footer-link"
+            >Commercial Photography</NuxtLink
+          >
         </div>
 
         <div class="footer-column">

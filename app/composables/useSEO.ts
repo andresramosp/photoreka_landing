@@ -17,10 +17,13 @@ export function useSEO(pageKey?: SEOPageKey, customConfig?: Partial<SEOPage>) {
     ...customConfig,
   };
 
-  // Construir URL canónica
+  // The static host 308-redirects /page to /page/, so the canonical must carry
+  // the trailing slash or Google splits each page into two URLs.
+  const canonicalPath = route.path.endsWith("/")
+    ? route.path
+    : `${route.path}/`;
   const canonicalUrl =
-    config.canonicalUrl ||
-    `${seoConfig.siteUrl}${route.path === "/" ? "" : route.path}`;
+    config.canonicalUrl || `${seoConfig.siteUrl}${canonicalPath}`;
 
   // Construir imagen OG completa
   const ogImage = config.ogImage

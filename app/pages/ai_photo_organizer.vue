@@ -237,6 +237,11 @@
             <NuxtLink to="/lightroom_search_plugin"
               >See the official plugin</NuxtLink
             >
+            <span class="lx-sep" aria-hidden="true">·</span>
+            Shooting product or commercial work?
+            <NuxtLink to="/commercial_photography"
+              >See Photoreka for commercial photography</NuxtLink
+            >
           </template>
         </PageCta>
       </div>

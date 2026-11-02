@@ -16,7 +16,7 @@ Un único service account sirve para ambos.
 
 En https://console.cloud.google.com:
 
-1. Crea un proyecto (o reutiliza uno). Anota el **Project ID**.
+1. Crea un proyecto (o reutiliza uno). Anota el **Project ID**. 443605623808
 2. Ve a **APIs & Services → Library** y activa estas tres:
    - `Google Search Console API`
    - `Google Analytics Admin API`
@@ -34,25 +34,27 @@ En https://console.cloud.google.com:
    c:\Users\andre\Desktop\Photoreka\App\Landing\.credentials\google-seo.json
    ```
 
-5. Copia el **email** del service account (`...@<project-id>.iam.gserviceaccount.com`).
+5. Copia el **email** del service account (`...@<project-id>.iam.gserviceaccount.com`). photoreka-seo-readonly@photoreka.iam.gserviceaccount.com
 
 ### 3. Dar acceso en Search Console
 
 En https://search.google.com/search-console, propiedad `photoreka.com`:
 
 **Settings → Users and permissions → Add user**
+
 - Email: el del service account
 - Permiso: **Full**
 
 > "Full" cubre datos de rendimiento y sitemaps. La API de URL Inspection puede exigir
 > **Owner**; si la quieres, añádelo como propietario delegado en
-> *Settings → Ownership verification → delegated owners*.
+> _Settings → Ownership verification → delegated owners_.
 
 ### 4. Dar acceso en GA4
 
 En https://analytics.google.com, en la propiedad de Photoreka:
 
 **Admin → Property access management → `+` → Add users**
+
 - Email: el del service account
 - Rol: **Viewer** (nada más — no necesita más)
 

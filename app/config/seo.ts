@@ -4,6 +4,7 @@
  */
 
 import { PICKS_FAQS } from "../utils/picksShowcase";
+import { COMMERCIAL_FAQS } from "../utils/commercialFaqs";
 
 export interface SEOPage {
   title: string;
@@ -115,7 +116,7 @@ export const seoConfig = {
               name: "What is Photoreka and who is it for?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, and landscape photographers who take their work seriously.",
+                text: "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
               },
             },
             {
@@ -1478,9 +1479,9 @@ export const seoConfig = {
 
     ai_photo_organizer: {
       title:
-        "AI Photo Organizer for Cloud, Windows & Web | No Migration | Photoreka",
+        "AI Photo Organizer for Windows, Mac & Web | Photoreka",
       description:
-        "Organize your photo library with AI—without moving a single file. Photoreka is a cloud-based AI photo organizer that runs entirely in the browser (web, no install) on Windows, Mac, or Linux, and layers on top of Lightroom Classic, Google Photos, Dropbox, and local folders: automatic analysis, semantic search, quality scores, visual maps, and duplicate detection. Pay per photo batch, no subscription.",
+        "Organize your photos with AI without moving a file. Runs in the browser on top of Lightroom, Google Photos, Dropbox or local folders. No subscription.",
       keywords:
         "AI photo organizer, ai photo organizer for cloud, ai photo management online, ai photo organizer for windows, ai photo organizer web, cloud photo organizer, web based photo organizer, browser based photo organizer, photo organizer for windows, photo organizer no download, organize photos with AI, photo organizer for large libraries, organize large photo library, photo library organizer, photo catalog organizer, smart photo organizer, photo organizer without subscription, photo organizer works with lightroom, photo organizer windows and mac, Excire Foto alternative, Peakto alternative, Peakto alternative Windows, Mylio alternative, digikam alternative, photo management software for photographers, organize 20000 photos, photo organization software, AI photo tagging automatic, photo library cleanup, photo DAM alternative, photo analysis layer, no migration photo organizer, organize photos without moving files",
       ogImage: "/home/dashboard.jpg",
@@ -1597,113 +1598,77 @@ export const seoConfig = {
       ],
     },
 
-    // commercial_photography: {
-    //   title: "AI Photo Curation for Commercial Photographers | Photoreka",
-    //   description:
-    //     "Curation built for commercial work. Score frames for commercial intent and subject clarity, search your archive from a client brief, and assemble sequenced, client-ready selections. For fashion, architecture, lifestyle, product, and wedding photographers.",
-    //   keywords:
-    //     "commercial photography workflow, AI photo culling for commercial photographers, fashion photography culling, product photography selection, architecture photography curation, lifestyle stock photo curation, wedding photo culling AI, client-ready photo selection, commercial intent photo scoring, subject clarity scoring, packshot selection AI, campaign photo curation, stock library organizer, brief to shot photo search, commercial photo portfolio builder, AI photo scoring commercial, photo delivery workflow, Lightroom commercial workflow",
-    //   ogImage: "/portfolio_builder/2.png",
-    //   ogType: "website",
-    //   twitterCard: "summary_large_image",
-    //   jsonLd: [
-    //     {
-    //       "@context": "https://schema.org",
-    //       "@type": "WebApplication",
-    //       name: "Photoreka for Commercial Photographers",
-    //       description:
-    //         "AI photo curation for commercial photographers. Score frames for commercial intent and subject clarity, search an archive from a client brief, and build sequenced client-ready selections across fashion, architecture, lifestyle, product, and wedding work.",
-    //       applicationCategory: "PhotographyApplication",
-    //       operatingSystem: "Web",
-    //       url: "https://www.photoreka.com/commercial_photography",
-    //       offers: {
-    //         "@type": "Offer",
-    //         availability: "https://schema.org/PreOrder",
-    //         price: "0",
-    //         priceCurrency: "USD",
-    //       },
-    //       creator: {
-    //         "@type": "Organization",
-    //         name: "Photoreka",
-    //         url: "https://www.photoreka.com",
-    //       },
-    //       featureList: [
-    //         "Commercial scoring: subject clarity and commercial intent",
-    //         "Natural language search from a client brief",
-    //         "Client-ready portfolio builder with AI sequencing",
-    //         "Photo chat for building selects and critique",
-    //         "Style and pattern reports for commercial work",
-    //         "2D/3D atlas for large stock libraries",
-    //         "Coverage for fashion, architecture, lifestyle, product, and wedding",
-    //         "Lightroom Classic plugin, Google Photos, and Dropbox import",
-    //       ],
-    //     },
-    //     {
-    //       "@context": "https://schema.org",
-    //       "@type": "FAQPage",
-    //       mainEntity: [
-    //         {
-    //           "@type": "Question",
-    //           name: "What does Photoreka do for commercial photographers?",
-    //           acceptedAnswer: {
-    //             "@type": "Answer",
-    //             text: "Photoreka helps you curate faster on paid work. It scores frames for commercial intent and subject clarity, ranks a shoot by what's sellable, lets you search an archive from a client brief in natural language, and assembles sequenced, client-ready selections across fashion, architecture, lifestyle, product, and wedding work.",
-    //           },
-    //         },
-    //         {
-    //           "@type": "Question",
-    //           name: "What is commercial scoring and how is it different?",
-    //           acceptedAnswer: {
-    //             "@type": "Answer",
-    //             text: "On top of aesthetics, composition, narrative, and originality, commercial mode activates two extra scores: subject clarity (how clean and readable the main subject is) and commercial intent (how usable a frame is for a brand, catalog, or campaign). A sharp, usable packshot ranks above a moody frame that wouldn't pass a client review.",
-    //           },
-    //         },
-    //         {
-    //           "@type": "Question",
-    //           name: "Can it handle a full wedding or a large stock library?",
-    //           acceptedAnswer: {
-    //             "@type": "Answer",
-    //             text: "Yes. Photoreka takes a few thousand frames from a wedding or campaign and surfaces your strongest selects, with near-duplicate detection to cut over-shot setups. The sweet spot is a curated body of work up to about 20,000 photos, with up to 50,000 workable.",
-    //           },
-    //         },
-    //         {
-    //           "@type": "Question",
-    //           name: "Does Photoreka retouch, generate, or alter images?",
-    //           acceptedAnswer: {
-    //             "@type": "Answer",
-    //             text: "No. Photoreka only analyzes, organizes, and curates your existing photographs. It never generates synthetic images or edits your files. It works alongside your editing and delivery tools, not as a replacement.",
-    //           },
-    //         },
-    //         {
-    //           "@type": "Question",
-    //           name: "Who owns the rights to work uploaded to Photoreka?",
-    //           acceptedAnswer: {
-    //             "@type": "Answer",
-    //             text: "You keep 100% of the rights. Photoreka stores only reduced versions of your images to power search and curation, analyzed under agreements that prevent retaining or reusing your photos. Your work is never shared, preserving client confidentiality.",
-    //           },
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       "@context": "https://schema.org",
-    //       "@type": "BreadcrumbList",
-    //       itemListElement: [
-    //         {
-    //           "@type": "ListItem",
-    //           position: 1,
-    //           name: "Home",
-    //           item: "https://www.photoreka.com",
-    //         },
-    //         {
-    //           "@type": "ListItem",
-    //           position: 2,
-    //           name: "Commercial Photography",
-    //           item: "https://www.photoreka.com/commercial_photography",
-    //         },
-    //       ],
-    //     },
-    //   ],
-    // },
+    commercial_photography: {
+      title: "Pick the Best Product & Commercial Photos with AI | Photoreka",
+      description:
+        "AI curation for product, fashion, architecture and stock work. Score shots for commercial intent, search your archive by client brief, send client selects.",
+      keywords:
+        "select best product photos AI, AI e-commerce photo selection, product photography culling software, AI photo selection for commercial photographers, find duplicate product photos, choose best stock photos to submit, curate stock photo portfolio, commercial intent photo scoring, subject clarity scoring, packshot selection AI, fashion photography culling, architecture photography curation, campaign photo curation, search photo archive by client brief, client-ready photo selection, commercial photo portfolio builder, Lightroom commercial workflow",
+      ogImage: "/portfolio_builder/2.png",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: "Photoreka for Commercial Photographers",
+          description:
+            "AI photo curation for commercial photographers. Score frames for commercial intent and subject clarity, search an archive from a client brief, and build sequenced client-ready selections across fashion, architecture, lifestyle, product, and wedding work.",
+          applicationCategory: "PhotographyApplication",
+          operatingSystem: "Web",
+          url: "https://www.photoreka.com/commercial_photography/",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/PreOrder",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          creator: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+          featureList: [
+            "Commercial scoring: subject clarity and commercial intent",
+            "Natural language search from a client brief",
+            "Client-ready portfolio builder with AI sequencing",
+            "Photo chat for building selects and critique",
+            "Style and pattern reports for commercial work",
+            "2D/3D atlas for large stock libraries",
+            "Near-duplicate detection for over-shot setups",
+            "Coverage for fashion, architecture, lifestyle, product, and wedding",
+            "Lightroom Classic plugin, Google Photos, and Dropbox import",
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: COMMERCIAL_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.photoreka.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Commercial Photography",
+              item: "https://www.photoreka.com/commercial_photography/",
+            },
+          ],
+        },
+      ],
+    },
   },
 };
 
