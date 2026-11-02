@@ -157,7 +157,7 @@
                 class="search-modes__shot"
               >
                 <ShotFrame
-                  src="/home/search_results.jpg"
+                  src="/home/search_results.webp"
                   alt="Photoreka search results: a grid of matching photos from your own catalog, ranked by relevance"
                   label="Photoreka — Search"
                   ratio="7 / 4"

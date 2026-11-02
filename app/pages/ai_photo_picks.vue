@@ -403,7 +403,7 @@ function goToApp(where) {
 }
 
 .pkl--site-light :deep(.lx-nav__brand) {
-  background: url("/logos/marca/horizontal-dark.png") left center / contain
+  background: url("/logos/marca/horizontal-dark.webp") left center / contain
     no-repeat;
 }
 

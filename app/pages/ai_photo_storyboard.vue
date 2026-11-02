@@ -515,7 +515,7 @@ const canvasShot = "/canvas/hero_3.png";
 
 // Full-width shot under the three levels. Placeholder for now — a capture showing
 // the board, the halo and a spotlighted photo at once is what belongs here.
-const levelsShot = "/canvas/levels.png";
+const levelsShot = "/canvas/levels.webp";
 
 const showRequestDialog = ref(false);
 

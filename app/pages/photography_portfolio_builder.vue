@@ -217,7 +217,7 @@ const navLinks = [
 // Hero slideshow with portfolio builder product screenshots.
 const slideshowImages = [
   {
-    src: "/portfolio_builder/0.png",
+    src: "/portfolio_builder/0.webp",
     alt: "Portfolio builder interface - step 0",
   },
   {

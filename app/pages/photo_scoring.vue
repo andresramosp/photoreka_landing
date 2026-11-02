@@ -206,11 +206,11 @@ const navLinks = [
 
 const slideshowImages = [
   {
-    src: "/ai_photo_scoring/9.png",
+    src: "/ai_photo_scoring/9.webp",
     alt: "Photoreka score panel for a single photo: overall 7.1/10 with the Street preset, fundamentals and bonus dimensions",
   },
   {
-    src: "/ai_photo_scoring/7.png",
+    src: "/ai_photo_scoring/7.webp",
     alt: "Photoreka workspace sorted by aesthetic and originality scores, with each photo's score on its thumbnail",
   },
   {

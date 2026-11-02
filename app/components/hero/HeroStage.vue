@@ -63,7 +63,7 @@
 // necesitaría ajustar el clip-path de .lx-stage__phone img.
 const heroStage = [
   {
-    src: "/canvas/chatlab_2.png",
+    src: "/canvas/chatlab_2.webp",
     label: "Photoreka — Portfolio",
     alt: "AI photo portfolio built with Photoreka",
   },

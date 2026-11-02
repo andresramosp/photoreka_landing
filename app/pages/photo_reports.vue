@@ -30,7 +30,7 @@
           </template>
           <template #visual>
             <ShotFrame
-              src="/report/2.png"
+              src="/report/2.webp"
               alt="Photoreka patterns report: narrative and contextual patterns detected across a photo catalog, each with example photos"
               label="Photoreka — Reports"
               ratio="16 / 10"

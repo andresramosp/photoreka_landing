@@ -398,7 +398,7 @@ const features = ref([
       "Let AI sequence the deck for a clean pitch flow",
     ],
     images: [
-      "/portfolio_builder/0.png",
+      "/portfolio_builder/0.webp",
       "/portfolio_builder/1.png",
       "/portfolio_builder/2.png",
       "/portfolio_builder/3.png",
