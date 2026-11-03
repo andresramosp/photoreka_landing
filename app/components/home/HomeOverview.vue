@@ -9,9 +9,9 @@
         </template>
         <p>
           Photoreka reads your <strong>entire library</strong> at once and
-          learns how your photos relate, surfacing the
-          <strong>themes</strong>, <strong>patterns</strong> and
-          <strong>connections</strong> that folders and grids keep hidden.
+          learns how your photos relate, surfacing the <strong>themes</strong>,
+          <strong>patterns</strong> and <strong>connections</strong> that
+          folders and grids keep hidden.
         </p>
       </SectionIntro>
     </div>
@@ -30,6 +30,7 @@
           alt="Photoreka infinite canvas clustering photos automatically"
           label="Photoreka — Canvas"
           ratio="16 / 9"
+          :playback-rate="1.35"
         />
         <ShotFrame
           class="overview-video--mobile"
@@ -37,6 +38,7 @@
           alt="Photoreka infinite canvas clustering photos automatically"
           label="Photoreka — Canvas"
           ratio="4 / 5"
+          :playback-rate="1.35"
         />
       </div>
     </div>
