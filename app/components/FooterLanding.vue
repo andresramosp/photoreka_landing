@@ -22,10 +22,10 @@
           <NuxtLink to="/ai_image_library_search" class="footer-link"
             >Image Library Search</NuxtLink
           >
-          <NuxtLink to="/photo_tag_cloud" class="footer-link"
+          <NuxtLink to="/ai_photo_organizer/#tag-map" class="footer-link"
             >Photo Tag Cloud</NuxtLink
           >
-          <NuxtLink to="/photo_3D_atlas" class="footer-link"
+          <NuxtLink to="/ai_photo_organizer/#atlas" class="footer-link"
             >3D Photo Atlas</NuxtLink
           >
           <NuxtLink to="/lightroom_search_plugin" class="footer-link"
@@ -44,7 +44,7 @@
           <NuxtLink to="/ai_photo_picks/" class="footer-link"
             >Picks: AI Photo Ranker</NuxtLink
           >
-          <NuxtLink to="/photo_reports" class="footer-link"
+          <NuxtLink to="/ai_photo_organizer/#reports" class="footer-link"
             >Style Analysis Reports</NuxtLink
           >
           <NuxtLink to="/photo_chat" class="footer-link"

@@ -433,7 +433,7 @@ export const seoConfig = {
     lightroom_plugin: {
       title: "AI Photo Search Plugin for Lightroom Classic | Photoreka",
       description:
-        "Search your Lightroom Classic catalog by describing what you remember — no manual tagging. Unlike CLIP-based plugins like Excire Search (limited to ~77-token queries), Photoreka has no length cap and offers three search modes: Broad, Adaptive, and Precise (logical inference). All AI processing runs locally. Compatible with Lightroom Classic 13.0+. RAW, CR2, NEF, ARW, JPEG, PNG, TIFF.",
+        "Search your Lightroom Classic catalog by describing what you remember — no manual tagging. Unlike CLIP-based plugins like Excire Search (limited to ~77-token queries), Photoreka has no length cap and offers three search modes: Broad, Adaptive, and Precise (logical inference). Your originals never leave your computer. Compatible with Lightroom Classic 13.0+. RAW, CR2, NEF, ARW, JPEG, PNG, TIFF.",
       keywords:
         "lightroom plugin, lightroom classic plugin, AI photo search, Excire Search alternative, Excire plugin alternative, lightroom AI search plugin, semantic photo search lightroom, 3D photo navigation, 3D catalog view, natural language photo search, lightroom catalog sync, lightroom integration, photo analysis AI, lightroom workflow, adobe lightroom plugin, smart photo organization, AI photography tools, lightroom catalog search, navigate photos in 3D, AI photo organizer, photo curation platform, photo library organizer, professional photo organizer, precise photo search, broad adaptive precise search, no character limit photo search",
       ogImage: "/home/video_lr_poster.jpg",
@@ -472,7 +472,7 @@ export const seoConfig = {
           "Launch 3D Atlas from Lightroom",
           "Seamless Lightroom integration",
           "Privacy-first design",
-          "Local photo processing",
+          "Originals stay on your computer",
           "Automatic metadata sync",
           "Compatible with Photoreka web platform",
           "Works with existing Lightroom structure",
@@ -814,52 +814,6 @@ export const seoConfig = {
           ],
         },
       ],
-    },
-
-    photo_3d_atlas: {
-      title: "3D Photo Atlas — Explore Your Catalog in 3D Space | Photoreka",
-      description:
-        "Stop scrolling grids endlessly. Photoreka's 3D Photo Atlas uses AI and dimensionality reduction (UMAP) to place your entire catalog in navigable 3D space—automatically clustered by visual similarity. Discover hidden patterns, stylistic evolution, and thematic connections across thousands of photos. Runs in browser via WebGL, no installation required.",
-      keywords:
-        "3D photo atlas, 3D catalog navigation, photo visualization, 3D photo gallery, visual similarity clustering, photo archive navigation, immersive photo exploration, 3D photo space, catalog clustering, photographic patterns, photo relationships, navigate photos 3D, photo body of work, visual archive 3D, photo universe, AI photo clustering, contextual photo navigation, narrative photo view, aesthetic photo grouping, photo sequence building, AI photo organizer, photo curation platform, photo library organizer, professional photo organizer, image visualization, photo library management",
-      ogImage: "/home/video_lr_poster.jpg",
-      ogType: "website",
-      twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka 3D Atlas",
-        description:
-          "Revolutionary 3D visualization tool that displays your entire photo catalog in immersive 3D space, automatically clustered by visual similarity.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        url: "https://www.photoreka.com/photo_3D_atlas/",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/InStock",
-          price: "0",
-          priceCurrency: "USD",
-          description: "Included with Photoreka",
-        },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
-        },
-        featureList: [
-          "Immersive 3D navigation",
-          "Automatic visual similarity clustering",
-          "Multi-dimensional navigation modes",
-          "Contextual, narrative, and aesthetic views",
-          "Pattern and relationship discovery",
-          "Sequence building in 3D space",
-          "Real-time performance with large catalogs",
-          "Export and share discoveries",
-          "Navigate thousands of photos smoothly",
-          "Reveal hidden photographic patterns",
-          "Understand catalog as cohesive whole",
-        ],
-      },
     },
 
     ai_photo_culling: {
@@ -1380,121 +1334,13 @@ export const seoConfig = {
       ],
     },
 
-    photo_tag_cloud: {
-      title: "Photo Tag Cloud — Your Photo Vocabulary as a 2D Map | Photoreka",
-      description:
-        "See every tag AI extracted from your photos arranged in an interactive 2D semantic map. Similar tags cluster together—mood next to atmosphere, rain next to fog, city next to urban. Navigate the map to search your catalog: zoom into a cluster and instantly surface the photos that live there. No tagging needed, no lists to scroll.",
-      keywords:
-        "photo tag cloud, semantic tag map, photo vocabulary visualization, interactive tag map, photo tags 2D, visual tag browser, AI photo tags, semantic photo search, tag-based photo search, photo catalog tags, tag cloud photographer, interactive photo tags, AI photo tagging, photo tag visualization, semantic photo organization, photo tag explorer, UMAP tag map, photo tag clustering, visual photo exploration, tag-based image search, photo tag atlas, photo semantic map",
-      ogImage: "/home/tag_cloud_poster_detailed.jpg",
-      ogType: "website",
-      twitterCard: "summary_large_image",
-      jsonLd: [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "Photoreka Photo Tag Cloud",
-          description:
-            "Interactive 2D semantic map of every tag extracted from your photos. Navigate by meaning—similar tags cluster together. Zoom in to search, drag to multi-select, enable dynamic search for real-time photo discovery.",
-          applicationCategory: "PhotographyApplication",
-          operatingSystem: "Web",
-          url: "https://www.photoreka.com/photo_tag_cloud/",
-          offers: {
-            "@type": "Offer",
-            availability: "https://schema.org/PreOrder",
-            price: "0",
-            priceCurrency: "USD",
-          },
-          creator: {
-            "@type": "Organization",
-            name: "Photoreka",
-            url: "https://www.photoreka.com",
-          },
-          featureList: [
-            "Semantic 2D tag placement using UMAP dimensionality reduction",
-            "10 color-coded tag groups (mood, environment, objects, people, weather, animals, place, symbols, abstract, misc)",
-            "Collision-aware progressive label rendering",
-            "Balloon expansion for dense clusters",
-            "Click-to-search any tag",
-            "Rectangle multi-select (Ctrl/Cmd + drag)",
-            "Dynamic search mode: navigate = search",
-            "Group filter panel",
-            "Touch-native (pinch zoom, pan, tap)",
-            "Keyboard navigation (WASD / arrows)",
-            "Handles 10,000+ tags in real time via WebGL",
-          ],
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "Home",
-              item: "https://www.photoreka.com",
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: "Photo Tag Cloud",
-              item: "https://www.photoreka.com/photo_tag_cloud/",
-            },
-          ],
-        },
-      ],
-    },
-
-    photo_reports: {
-      title: "Photography Style Analysis & Pattern Reports | Photoreka",
-      description:
-        "Understand how you shoot. Photoreka's AI analyzes your entire catalog to surface recurring patterns, stylistic tendencies, compositional habits, color palettes, and thematic preferences. Get detailed reports on your photographic evolution, strengths, blind spots, and unique visual signature. See your work from the outside for the first time.",
-      keywords:
-        "photography style analysis AI, photo pattern report, photography portfolio analysis, AI photography critique, visual style analysis tool, understand my photography style, photography insights, photo catalog analysis, photographer style report, visual pattern detection, photography evolution tracker, photo habit analysis, compositional style analysis, photography strengths analysis, photographic body of work analysis",
-      ogImage: "/logos/marca/vertical-claim-light.png",
-      ogType: "website",
-      twitterCard: "summary_large_image",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        name: "Photoreka Photography Reports",
-        description:
-          "AI-powered photography style analysis and pattern reports. Discover your visual signature, track stylistic evolution, and understand your photographic habits across your entire archive.",
-        applicationCategory: "PhotographyApplication",
-        operatingSystem: "Web",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
-        },
-        creator: {
-          "@type": "Organization",
-          name: "Photoreka",
-          url: "https://www.photoreka.com",
-        },
-        featureList: [
-          "Stylistic pattern detection",
-          "Compositional habit analysis",
-          "Color palette evolution tracking",
-          "Thematic preference reports",
-          "Strengths and blind spots analysis",
-          "Photography evolution timeline",
-          "Visual signature identification",
-          "Subject frequency analysis",
-          "Lighting style breakdown",
-          "Cross-catalog pattern comparison",
-        ],
-      },
-    },
-
     ai_photo_organizer: {
       title:
         "AI Photo Organizer for Windows, Mac & Web | Photoreka",
       description:
         "Organize your photos with AI without moving a file. Runs in the browser on top of Lightroom, Google Photos, Dropbox or local folders. No subscription.",
       keywords:
-        "AI photo organizer, ai photo organizer for cloud, ai photo management online, ai photo organizer for windows, ai photo organizer web, cloud photo organizer, web based photo organizer, browser based photo organizer, photo organizer for windows, photo organizer no download, organize photos with AI, photo organizer for large libraries, organize large photo library, photo library organizer, photo catalog organizer, smart photo organizer, photo organizer without subscription, photo organizer works with lightroom, photo organizer windows and mac, Excire Foto alternative, Peakto alternative, Peakto alternative Windows, Mylio alternative, digikam alternative, photo management software for photographers, organize 20000 photos, photo organization software, AI photo tagging automatic, photo library cleanup, photo DAM alternative, photo analysis layer, no migration photo organizer, organize photos without moving files",
+        "AI photo organizer, ai photo organizer for cloud, ai photo management online, ai photo organizer for windows, ai photo organizer web, cloud photo organizer, web based photo organizer, browser based photo organizer, photo organizer for windows, photo organizer no download, organize photos with AI, photo organizer for large libraries, organize large photo library, photo library organizer, photo catalog organizer, smart photo organizer, photo organizer without subscription, photo organizer works with lightroom, photo organizer windows and mac, Excire Foto alternative, Peakto alternative, Peakto alternative Windows, Mylio alternative, digikam alternative, photo management software for photographers, organize 20000 photos, photo organization software, AI photo tagging automatic, photo library cleanup, photo DAM alternative, photo analysis layer, no migration photo organizer, organize photos without moving files, 3D photo atlas, visualize photo library, photo similarity map, photo tag cloud, photo tag map, semantic tag map, photography reports, photo style analysis, photography progress report",
       ogImage: "/home/dashboard.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -1505,14 +1351,16 @@ export const seoConfig = {
           name: "Photoreka AI Photo Organizer",
           url: "https://www.photoreka.com/ai_photo_organizer/",
           description:
-            "Cloud-based AI photo organizer that runs in the browser on Windows, Mac, and Linux—no install required. Works as a curation layer on top of your existing storage: analyzes your library once, then gives you semantic search, automatic tags, quality scores, visual similarity maps, and duplicate detection—without migrating files or replacing your catalog.",
+            "Cloud-based AI photo organizer that runs in the browser on Windows, Mac, and Linux—no install required. Works as a curation layer on top of your existing storage: analyzes your library once, then gives you semantic search, automatic tags, quality scores, a 2D/3D visual similarity atlas, an interactive tag map, style and evolution reports, and duplicate detection—without migrating files or replacing your catalog.",
           applicationCategory: "PhotographyApplication",
-          operatingSystem: "Web",
+          operatingSystem: "Windows, macOS, Linux (web browser)",
           offers: {
-            "@type": "Offer",
-            availability: "https://schema.org/PreOrder",
-            price: "0",
-            priceCurrency: "USD",
+            "@type": "AggregateOffer",
+            availability: "https://schema.org/InStock",
+            lowPrice: "9.90",
+            highPrice: "315",
+            priceCurrency: "EUR",
+            offerCount: 7,
           },
           creator: {
             "@type": "Organization",
@@ -1528,6 +1376,8 @@ export const seoConfig = {
             "Natural language semantic search",
             "Quality scoring across 9+ dimensions",
             "2D/3D visual similarity maps of the whole library",
+            "Interactive tag map of your photo vocabulary, with dynamic search",
+            "Quality, evolution, style and pattern reports",
             "Duplicate and near-duplicate detection",
             "World map view with AI geo-inference",
             "Runs in the browser on Windows, Mac, and Linux",
@@ -1576,6 +1426,38 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI quality scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What is the 3D Atlas and how are photos placed on it?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "The Atlas shows your entire catalog as a navigable 2D or 3D map. Photoreka extracts a visual embedding from every photo—composition, colors, subjects, mood and lighting as numbers—and projects them with UMAP, a dimensionality-reduction technique that keeps similar photos close together. The clusters that form reveal your recurring themes and how your work has evolved.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do I need special hardware to use the 3D Atlas?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. The Atlas runs in modern browsers using WebGL, and any computer with reasonably recent graphics—even integrated graphics from the last five years—can navigate thousands of photos smoothly. There's nothing to install.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How is the tag map different from a tag list or a word cloud?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "A word cloud shows tags by frequency and a tag list sorts them alphabetically. The tag map places them by meaning: tags that share meaning or appear in the same kind of scene sit close together, using UMAP on AI-generated semantic embeddings. Click a tag, drag a rectangle over several, or turn on dynamic search to browse your photos by moving across the map.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What do the photography reports show, and how many photos do I need?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Reports are built from the AI scores of every photo plus metadata such as date, camera settings and detected subjects. They cover quality distribution, evolution over time, style, strengths and gaps, patterns, and individual sessions. You get basic insights from about 50 photos; for meaningful trends, 200 or more spread over time works best. Reports update as your catalog grows.",
               },
             },
             {

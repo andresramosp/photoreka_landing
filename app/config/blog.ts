@@ -61,6 +61,853 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "best-ai-photo-rater",
+    title:
+      "AI Photo Raters Compared: The Best Ways to Rate and Rank Your Photos in 2026",
+    excerpt:
+      "Type 'rate my photo' into a search engine and you get dating-profile graders, camera-roll apps, wedding-culling software and research papers. They answer three very different questions. An honest guide to which AI photo rater or photo ranker fits yours.",
+    description:
+      "An honest comparison of AI photo raters and rankers: Photofeeler, rate-my-photo.com, Better Camera, SpectraSort, chatbots, AI culling tools and Photoreka Picks — and which question each one actually answers.",
+    keywords:
+      "ai photo rater, photo ranker, ai photo ranker, rate my photo, rate my photo ai, rate my picture, photo rating, photo rating app, image ranker, image rater, ai to choose best photos, pick the best photo, best photo picker ai, ai photo critique, photofeeler alternative, aftershoot alternative, narrative select alternative, rank photos with ai",
+    category: "Comparisons",
+    tags: ["Comparisons", "Photo Ranking", "AI Photo Critique", "Photoreka Picks"],
+    coverImage: "/blog/ai_photo_raters.png",
+    publishedAt: "2026-11-03",
+    readingMinutes: 9,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Type <strong>rate my photo</strong> into a search engine and you get a strange mix of results: dating-profile graders, phone apps that put a number on your camera roll, wedding-culling software, research papers about aesthetic models. That's not because the web is confused. It's because the phrase hides three very different questions, and every tool worth considering was built to answer one of them — and usually only one.",
+      },
+      {
+        type: "p",
+        html: "We make one of these tools — <a href='/ai_photo_picks/'>Photoreka Picks</a>, an AI photo ranker for photographers — so read this as an informed comparison, not a neutral one. We've tried to be straight about where each alternative is the better choice, and we've only included what we could check on each product's own pages at the time of writing (November 2026).",
+      },
+      {
+        type: "h2",
+        text: "Three Questions Hiding Behind 'Rate My Photo'",
+        id: "three-questions",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "How do I come across in this picture? This is the dating-profile, LinkedIn and social-media question. What's being judged is the person — trustworthy, confident, attractive — far more than the photograph.",
+          "Is this a technically good photo? Sharp, well exposed, decently composed, eyes open. This is the camera-roll and client-delivery question, and it's the one AI answers most reliably.",
+          "Which of these hundreds of frames are my best ones? This is the photographer's question: picking a portfolio, a contest entry, the twenty pictures worth showing from a trip. It's about storytelling, originality and intent, and it's the hardest to automate.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Use a tool built for the first question on the third, and you get a confident number that means nothing. Use a culling tool on a street photography archive, and it will happily reject your best frame because it's soft. So before comparing tools, it's worth knowing which question you're actually asking.",
+      },
+      {
+        type: "h2",
+        text: "Photofeeler: How You Come Across, Rated by People",
+        id: "photofeeler",
+      },
+      {
+        type: "p",
+        html: "If your question is the first one, the most honest answer isn't an AI at all. <strong>Photofeeler</strong> shows your photo to real people, who score it on traits relevant to the context you choose: dating, business (think LinkedIn) or social profiles. You can earn a free test by voting on other people's photos, or buy credits for faster results.",
+      },
+      {
+        type: "p",
+        html: "Its strength is exactly that it doesn't pretend: how a face reads to strangers is a human judgment, and asking humans is the most direct way to measure it. Some of the AI graders that rank for the same searches describe themselves, in their own terms of use, as entertainment. <strong>Who it's for:</strong> anyone choosing a profile picture. <strong>What it isn't:</strong> a way to judge photography. A beautifully composed street photograph and a well-lit headshot are answering different questions — and so is Picks, which judges photographs, not the people in them.",
+      },
+      {
+        type: "h2",
+        text: "rate-my-photo.com: A Free Score for a Single Photo",
+        id: "rate-my-photo-com",
+      },
+      {
+        type: "p",
+        html: "<strong>rate-my-photo.com</strong> is the simplest tool on this list: take or upload one photo and an AI model returns a score from 1 to 10 for its overall aesthetic quality. The site says the model was trained on more than 20,000 images annotated with human aesthetic scores, and it looks at the whole frame rather than just the face — a bad background can pull the score down. It's free, with no signup and no account, and photos are processed in memory rather than stored unless you choose to share a result.",
+      },
+      {
+        type: "p",
+        html: "<strong>Who it's for:</strong> curiosity, or a quick sanity check on one picture. <strong>Limits:</strong> it works one photo at a time and gives you a single overall number, so it won't sort a shoot, and it can't tell you <em>why</em> one frame beats another.",
+      },
+      {
+        type: "h2",
+        text: "On Your iPhone: Better Camera and SpectraSort",
+        id: "iphone-apps",
+      },
+      {
+        type: "p",
+        html: "Two iPhone apps turn the same idea into a camera-roll tool. <strong>Compare Photos: Better Camera</strong> (listed as 'Ranker: Pick Best Photos') gives each selected photo an AI aesthetic score from 0 to 10 and sorts them so the strongest rise to the top; its built-in camera even shows a live score while you frame. It's free to download, with optional subscriptions — $0.99 a week or $9.99 a year at the time of writing — for full access and more processing.",
+      },
+      {
+        type: "p",
+        html: "<strong>SpectraSort</strong> runs entirely on the phone, with no account and nothing uploaded. It surfaces your sharpest, best-exposed, best-composed shots, removes duplicates, lets you search for a subject in plain words, and learns your taste as you use it. Sorting is free and unlimited; a paid Premium tier lifts the weekly limit on actions like sharing or deleting and adds finer quality controls.",
+      },
+      {
+        type: "p",
+        html: "<strong>Who they're for:</strong> cleaning up a phone library and finding the keeper among ten near-identical shots. <strong>Limits:</strong> they're built around the photos on your iPhone (both also list compatibility with Apple-silicon Macs), and their scores lean on technical and general aesthetic quality rather than the criteria an editor or a contest jury would use.",
+      },
+      {
+        type: "h2",
+        text: "General Chatbots: ChatGPT, Gemini and Claude",
+        id: "chatbots",
+      },
+      {
+        type: "p",
+        html: "Plenty of people now simply upload a photo to a general AI assistant and ask for a rating. For a single image, this works better than you might expect: modern chatbots write articulate critiques, notice composition and light, and can respond to a brief ('is this strong enough for a documentary portfolio?').",
+      },
+      {
+        type: "p",
+        html: "The problems appear when you need a <em>ranking</em>. Ask twice and the number moves. Ask about photo 3 and photo 300 in different conversations and there's no guarantee they were judged on the same scale. And a chat window is built for a conversation, not for working through a folder of several hundred files. <strong>Who they're for:</strong> a second opinion on a handful of images. <strong>Limits:</strong> consistency and scale.",
+      },
+      {
+        type: "h2",
+        text: "AI Culling Tools: Aftershoot, Narrative Select and Co.",
+        id: "ai-culling-tools",
+      },
+      {
+        type: "p",
+        html: "If you shoot weddings, events or portrait sessions, the 'AI to choose best photos' you want is probably a culling tool. <strong>Aftershoot</strong> covers culling, editing, retouching and delivery in one desktop app for Windows and macOS that works offline, so files never leave your machine; it offers 30 days of full access without a credit card. <strong>Narrative Select</strong> is another established option, with paid plans starting at $15 a month (or $10 a month billed yearly) at the time of writing, a free trial and no permanently free plan. FilterPixel and Imagen also offer AI culling.",
+      },
+      {
+        type: "p",
+        html: "These tools are excellent at their job, which is turning thousands of client frames into a deliverable set: grouping near-duplicates, flagging blur and closed eyes, keeping the best of each moment. <strong>Who they're for:</strong> working professionals with high-volume shoots and a client waiting. <strong>Limits:</strong> they're priced and designed for that workflow, and a deliverable set is not the same thing as an artistic ranking. The motion-blurred street frame with all the energy in it is precisely what a technical cull is built to throw away.",
+      },
+      {
+        type: "h2",
+        text: "Photoreka Picks: Ranking Your Own Work Like a Jury Would",
+        id: "photoreka-picks",
+      },
+      {
+        type: "p",
+        html: "<a href='/ai_photo_picks/'>Picks</a> exists for the third question. You drop up to 5,000 photos — a whole trip, a year of street work, the shortlist for a contest — and an AI jury scores every frame from 1 to 10 on <strong>eight artistic criteria</strong>: aesthetics, composition, storytelling, originality, message, humor, visual games and spontaneity. Each photo also gets a one- or two-sentence <strong>critique</strong> naming what makes it work or what holds it back, the way an editor would say it in a portfolio review. A real example, for a street photograph in our demo set:",
+      },
+      {
+        type: "quote",
+        text: "The split frame between the smoking man and the sensuous waterfall painting is a clever visual rhyme; a slight step left to avoid cutting the right figure's arm would refine it further.",
+        cite: "Picks jury",
+      },
+      {
+        type: "p",
+        html: "Then you rank. The <strong>Overall</strong> jury balances every criterion; <strong>street, documentary, landscape, portrait, travel and fine art</strong> juries weigh them their own way and only rank the photos of their genre; <strong>award juries</strong> keep only the photos above a high bar. Identical copies are grouped and judged once, so duplicates don't crowd your top picks, and you can export the whole ranking as CSV.",
+      },
+      {
+        type: "p",
+        html: "The practical details: no account and no subscription; €0.012 per photo, VAT included, paid once per order with a €2.40 minimum — so 500 photos cost €6 and 5,000 cost €60. Only an 800-pixel thumbnail of each photo is sent for judging; your full-resolution files stay on your device. A private link to your ranking reaches your inbox, and thumbnails and results are deleted after 30 days and never used to train AI models. You can <a href='https://app.photoreka.com/picks?trial=1' target='_blank' rel='noopener'>try it free with 10 of your own photos</a>, critiques included, with no card and no account.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits, honestly:</strong> Picks doesn't judge faces or profile pictures, and it isn't a client-delivery culling tool. It accepts JPEG, PNG and WebP, so RAW files need exporting first. The jury doesn't know a contest's theme or rules, so the final call against a brief is yours. And it's built for one-off batches: if you want scores kept on your whole catalog permanently, that's Photoreka's <a href='/photo_scoring/'>Photo Scoring</a>, part of a full account.",
+      },
+      {
+        type: "h2",
+        text: "How AI Rating Actually Works — and Where It Breaks",
+        id: "how-ai-rating-works",
+      },
+      {
+        type: "p",
+        html: "Almost every AI photo rater learned the same way: a model is shown large numbers of images alongside scores people gave them, and it learns to predict the score a new image would get. That's useful, and it has a built-in ceiling. The model learns what the <em>average</em> annotator liked, which tends to be pleasant, sharp, bright and conventional. Ask it to rate a deliberately unsettling documentary frame and it will often prefer a sunset.",
+      },
+      {
+        type: "p",
+        html: "The deeper issue is that <strong>a score is an opinion, not a measurement</strong>. A street photographer and a landscape editor would never pick the same frame from the same folder, and neither would be wrong. Collapsing everything into one global number hides that disagreement instead of showing it to you.",
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "What to look for in any photo rater",
+        html: "Prefer tools that <strong>separate the criteria</strong> instead of returning one number, that <strong>explain</strong> each score in words, and that let you <strong>change the point of view</strong>. That's why Picks scores each photo once on eight criteria and then lets different juries weigh them: switch from the Overall jury to the Street jury and the ranking reorders itself, which is exactly how real juries behave.",
+      },
+      {
+        type: "p",
+        html: "Whatever you use, treat the ranking as a shortlist, not a verdict. The AI's job is to get you from 2,000 frames to 50 worth looking at closely. Choosing the final 12 — and the order they're seen in — is still editing, and editing is yours. We wrote more about that last step in <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos from hundreds of shots</a>.",
+      },
+      {
+        type: "h2",
+        text: "Which One Should You Use?",
+        id: "which-one-should-you-use",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose Photofeeler if: you're picking a dating, LinkedIn or social profile picture and want to know how real people read it.",
+          "Choose rate-my-photo.com if: you want a free, instant score on a single photo and nothing more.",
+          "Choose Better Camera or SpectraSort if: the photos live on your iPhone and you want the camera roll sorted by quality, with duplicates out of the way.",
+          "Choose a general chatbot if: you want a written second opinion on two or three images and don't need them ranked on a consistent scale.",
+          "Choose Aftershoot, Narrative Select or another culling tool if: you shoot weddings, events or sessions for clients and need a deliverable set fast.",
+          "Choose Photoreka Picks if: you're a photographer choosing your own best work — a portfolio, a contest entry, the best of a trip or a year — and want artistic criteria, a critique for every frame and more than one jury's point of view.",
+        ],
+      },
+      {
+        type: "cta",
+        eyebrow: "Try it on your own photos",
+        title: "Let the Picks jury rank your best photos",
+        text: "Eight artistic criteria, a critique for every frame and juries for street, documentary, landscape and more. Free with 10 photos, no account.",
+        buttonLabel: "Try it free with 10 photos",
+        action: "link",
+        href: "https://app.photoreka.com/picks?trial=1",
+      },
+      {
+        type: "p",
+        html: "One last thought. The reason 'rate my photo' returns such a mess of results is that people rarely want a rating for its own sake. They want to make a decision: which picture goes on the profile, which frames go to the client, which twelve go into the portfolio or the competition. Pick the tool built for your decision, and the number starts to mean something. If that decision is a contest, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing which photos to enter in a photography contest</a> is a good next read.",
+      },
+    ],
+  },
+  {
+    slug: "best-ai-culling-software",
+    title:
+      "Best AI Culling Software in 2026: Aftershoot, Narrative Select, FilterPixel, Imagen and Photoreka Compared",
+    excerpt:
+      "AI culling has turned an evening of rejecting frames into a coffee break. An honest look at Aftershoot, Narrative Select, FilterPixel and Imagen — what each does best, where each stops — and where Photoreka fits, which is not where you might expect.",
+    description:
+      "An honest comparison of the best AI photo culling software in 2026: Aftershoot, Narrative Select, FilterPixel, Imagen and Photoreka. Blink and focus detection, duplicate grouping, local vs cloud processing, Lightroom integration, pricing models, and which tool fits which kind of photographer.",
+    keywords:
+      "ai culling, ai culling software, best ai photo culling software, ai photo culling, best photo culling software 2026, aftershoot alternative, narrative select alternative, filterpixel alternative, imagen culling alternative, aftershoot vs narrative select, photo culling app, wedding photo culling software, ai photo selection, choose best photos ai, photo ranker",
+    category: "Comparisons",
+    tags: ["Comparisons", "AI Culling", "Aftershoot", "Narrative Select", "Photo Selection"],
+    coverImage: "/blog/ai_culling_software.png",
+    publishedAt: "2026-11-03",
+    readingMinutes: 9,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "<strong>AI culling</strong> has quietly become the most useful kind of AI in a photographer's workflow. Not the generative kind — the kind that looks at the 4,000 frames you shot on Saturday and tells you which 3,000 you never need to look at twice. Aftershoot, Narrative Select, FilterPixel and Imagen have turned that job from an evening into a coffee break, and for wedding and event photographers they're no longer optional.",
+      },
+      {
+        type: "p",
+        html: "This is an honest comparison of the four tools that lead the category, plus where Photoreka fits — and where it doesn't. We'll say it up front: <strong>Photoreka is not a wedding culler.</strong> It doesn't flag closed eyes, and if your job is delivering a gallery by Thursday you should pick one of the first four. What it does is the other half of culling: deciding which of your good photos are actually your best. Features and prices below were checked on each vendor's own site at the time of writing (November 2026); they change often, so confirm before you buy.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "The short version",
+        html: "Shooting weddings and events and want a fast, offline cull? <strong>Aftershoot</strong> or <strong>Narrative Select</strong>. Want genre-aware ranking with a reason for every frame? <strong>FilterPixel</strong>. Already editing with Imagen? Its <strong>culling add-on</strong> is the easy choice. Choosing your strongest images for a portfolio, a contest or a book rather than delivering a gallery? That's where <a href='/ai_photo_picks/'>Photoreka Picks</a> and <a href='/ai_photo_culling/'>Photoreka</a> come in.",
+      },
+      {
+        type: "h2",
+        text: "What AI Culling Actually Does",
+        id: "what-ai-culling-does",
+      },
+      {
+        type: "p",
+        html: "Every tool in this list does some version of the same three jobs. First, <strong>technical rejection</strong>: blurry frames, missed focus, closed eyes, blown exposures. Second, <strong>grouping</strong>: bursts and near-identical frames collapsed together, so you compare variations side by side instead of scrolling past them. Third, <strong>ranking</strong>: inside each group, a suggestion of which frame is the keeper. The selection then goes to Lightroom Classic or Capture One with ratings or flags attached.",
+      },
+      {
+        type: "p",
+        html: "The first two jobs are largely solved, and all four dedicated cullers handle them well. The third is where they differ — and where the question shifts from <em>is this frame usable?</em> to <em>is this frame good?</em> Keep that distinction in mind (we wrote more about it in <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos</a>); it decides which tool you actually need.",
+      },
+      {
+        type: "h2",
+        text: "Aftershoot",
+        id: "aftershoot",
+      },
+      {
+        type: "p",
+        html: "<strong>Aftershoot</strong> is the best-known name in the category, and it has grown from a culling app into a full post-production suite: AI culling, AI editing that learns your style, batch retouching and client galleries. Its culling runs <strong>locally on Windows and macOS</strong> — in Aftershoot's own words, images never leave your machine — so there are no uploads and no per-image fees.",
+      },
+      {
+        type: "list",
+        items: [
+          "Flags blurry frames, closed eyes and blown exposures, and sorts them into groups you can review or ignore.",
+          "Duplicate grouping that tries to separate true duplicates from intentional variations.",
+          "Key face detection to surface the frames where everyone looks their best.",
+          "Exports to Lightroom Classic and Capture One with ratings, labels and flags preserved.",
+          "Flat pricing, not per image: AI culling starts at $10 a month, with a 30-day free trial and no card required (at the time of writing, November 2026).",
+        ],
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> it's built around the high-volume shoot — weddings, events, sessions. It decides what's usable and helps you choose among similar frames, but it doesn't try to judge a photograph's artistic weight across a whole body of work. Local processing also means your computer does the work; Aftershoot lists 8 GB of RAM as the minimum. <strong>Best for:</strong> wedding and event photographers who want offline culling and editing in one subscription.",
+      },
+      {
+        type: "h2",
+        text: "Narrative Select",
+        id: "narrative-select",
+      },
+      {
+        type: "p",
+        html: "<strong>Narrative Select</strong> starts from a slightly different philosophy: the AI assists, you decide. It groups a shoot into <strong>Scenes</strong> (similar frames from the same moment), shows face <strong>Close-ups</strong> so you can check every subject at a glance, and runs eye and focus assessments that tell you whether each face is sharp and whether eyes are open — with enough context to know a kiss isn't a missed blink. Its AI First Pass ranks each frame within its scene, from best in scene to undesirable, and shows the reason. Nothing is deleted for you.",
+      },
+      {
+        type: "list",
+        items: [
+          "Runs on macOS and Windows, though some features, such as key element detection and the people filter, are Mac-only for now.",
+          "Culling and AI assessments happen locally; nothing is uploaded unless you use a feature that needs it.",
+          "Ships selections to Lightroom Classic on both platforms, and to Lightroom, Photoshop and Capture One on Mac.",
+          "Plans from $15 a month, or $10 a month billed yearly, up to $79 a month for Ultra, with a free trial of Ultra and no credit card (at the time of writing, November 2026).",
+        ],
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> the most useful culling features sit in the Standard tier and above, and Mac and Windows aren't at full parity yet. Like Aftershoot, its idea of 'best' is best within a moment: the strongest frame of this sequence, not the strongest photograph of your year. <strong>Best for:</strong> photographers who want fast, transparent assistance and prefer to keep the final call — especially on a Mac.",
+      },
+      {
+        type: "h2",
+        text: "FilterPixel",
+        id: "filterpixel",
+      },
+      {
+        type: "p",
+        html: "<strong>FilterPixel</strong> pushes hardest on the ranking problem. Alongside a basic cull that groups similar images and filters on blur, focus, expressions and composition, it offers <strong>DeepCull</strong>, a genre-aware mode that evaluates frames by the logic of the shoot — expressions, moments, peak action, emotional impact — and shows you why it picked each one. Genre modes cover weddings, conferences, concerts and sports.",
+      },
+      {
+        type: "list",
+        items: [
+          "Windows and Mac, with a dedicated macOS app.",
+          "Your originals stay on your computer; only the embedded RAW preview is uploaded, and DeepCull analyses it in the cloud.",
+          "Sends selections to Lightroom, Capture One or Photo Mechanic, and adds AI editing that can learn your style.",
+          "Subscription pricing with a yearly allowance of DeepCull shoots: Standard is $14.99 a month billed annually, with unlimited basic culling and 20 DeepCull shoots a year, and extra shoots cost $7.99 each (at the time of writing, November 2026). There are free projects to try it first.",
+        ],
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> the genre-aware mode is metered by shoot, so a heavy season means a higher tier or extra purchases, and the cloud step needs a connection. Its sense of quality is tuned to client genres: it knows what a strong first-dance frame looks like, not what makes a street photograph or a personal project land. <strong>Best for:</strong> event and wedding shooters who want a reasoned ranking, not just a reject pile.",
+      },
+      {
+        type: "h2",
+        text: "Imagen",
+        id: "imagen",
+      },
+      {
+        type: "p",
+        html: "<strong>Imagen</strong> is first an AI editing service, and its culling is designed to sit next to that. It recognizes unintentional blinks (while treating some closed eyes, like a kiss, as keepers), groups similar images with a similarity threshold you control, flags out-of-focus and poorly exposed shots, and can <strong>cull to an exact number</strong> or percentage — handy when a contract promises a fixed gallery size.",
+      },
+      {
+        type: "list",
+        items: [
+          "Windows 10 or later and macOS, on 64-bit machines.",
+          "Cloud-based: it doesn't use your CPU or GPU, but it needs an internet connection.",
+          "Integrates with Lightroom and uses Lightroom-style keyboard shortcuts.",
+          "Culling is a flat-fee add-on to an Imagen editing plan with unlimited culling: $12 a month billed yearly or $18 billed monthly, plus two free culling projects (at the time of writing, November 2026).",
+        ],
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> it makes most sense if you already edit with Imagen; as a stand-alone culler the add-on model is less natural. Working in the cloud trades local hardware requirements for upload time. <strong>Best for:</strong> Imagen editing customers who want culling in the same Lightroom pipeline.",
+      },
+      {
+        type: "h2",
+        text: "Photoreka and Photoreka Picks",
+        id: "photoreka",
+      },
+      {
+        type: "p",
+        html: "Here's the honest positioning. Photoreka doesn't detect blinks or check every face for focus, and its quick tool doesn't read RAW files. If your Monday problem is turning 4,000 wedding frames into a 600-image gallery, the four tools above are built for that and we aren't. Photoreka works on a different question: <strong>out of photographs that are all usable, which ones are actually your best?</strong> That's the question behind a portfolio, a contest entry, a photobook, a print sale or a year-end review — and it's the one keep/reject culling was never designed to answer.",
+      },
+      {
+        type: "h3",
+        text: "Picks: a Ranking Pass on Any Folder",
+        id: "photoreka-picks",
+      },
+      {
+        type: "p",
+        html: "<a href='/ai_photo_picks/'>Photoreka Picks</a> is the closest thing we make to a culling pass. Drop up to 5,000 photos in the browser and an AI jury scores every frame on eight artistic criteria — aesthetics, composition, storytelling, originality, message, humor, visual games and spontaneity — writes a one- or two-sentence critique for each, and ranks the set. Switch between juries (overall, street, documentary, landscape, portrait, travel, fine art, plus award juries that only keep photos above a high bar) and the ranking reorders itself. A few hundred photos take a few minutes; 5,000 take under half an hour.",
+      },
+      {
+        type: "list",
+        items: [
+          "No account and no subscription: €0.012 per photo, VAT included, with a €2.40 minimum per order.",
+          "A free trial with 10 of your own photos, critiques included, no card.",
+          "Only an 800-pixel thumbnail of each photo is sent; your full-resolution originals stay on your device.",
+          "Identical copies are grouped and judged once; the ranking can be exported as CSV.",
+          "Thumbnails and results are deleted after 30 days and never used to train AI models.",
+          "JPEG, PNG and WebP only, so export RAW files to JPEG first.",
+        ],
+      },
+      {
+        type: "h3",
+        text: "Photoreka: Scoring a Whole Catalog",
+        id: "photoreka-catalog",
+      },
+      {
+        type: "p",
+        html: "The full Photoreka app does the same kind of judgment permanently, across your whole archive. Every photo is scored on separate dimensions — aesthetics, composition, narrative strength, originality and more (see <a href='/photo_scoring/'>photo scoring</a>) — so you can sort a catalog by what matters for the project at hand, and combine scores with <a href='/ai_photo_search/'>natural-language search</a>: 'my strongest black-and-white portraits from last summer'. Near-duplicate detection flags over-shot sequences. It runs in the browser on Windows, Mac and Linux, connects to Lightroom Classic through an official plugin as well as Google Photos, Google Drive, Dropbox and local files, analyzes roughly 1,000 photos an hour from compressed previews, and is paid once per batch of photos analyzed, with no subscription.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits, stated plainly:</strong> no blink or eye detection, no per-face focus checks, no video and no editing; Picks groups only exact copies, not bursts; and analysis happens in the cloud, so you need a connection. Photoreka is a second pass after the technical cull, or a first pass on work that has already been culled once.",
+      },
+      {
+        type: "quote",
+        text: "A culler answers 'can I deliver this frame?'. The question that decides whether a body of work goes anywhere is 'which of these deserve to be seen?'",
+      },
+      {
+        type: "h2",
+        text: "Where the Dedicated Cullers Still Win",
+        id: "where-dedicated-cullers-win",
+      },
+      {
+        type: "p",
+        html: "Fairness requires this section, and it's a long one. For delivery work, Aftershoot, Narrative Select, FilterPixel and Imagen beat Photoreka on almost every axis that matters: they read RAW files directly, catch closed eyes and missed focus face by face, collapse bursts into scenes or groups, write ratings and flags straight into Lightroom Classic or Capture One, and most of them edit too. Aftershoot and Narrative Select do their AI work locally, which matters if uploading a client's wedding is a hard no. And their flat or tiered subscriptions make sense when you shoot every weekend, in a way that paying per photo wouldn't.",
+      },
+      {
+        type: "h2",
+        text: "How to Choose",
+        id: "how-to-choose",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose Aftershoot if: you shoot weddings or events, want unlimited offline culling, and would like editing, retouching and client galleries from the same company.",
+          "Choose Narrative Select if: you want the AI to assist rather than decide, value face close-ups and scene grouping, and work mostly on a Mac.",
+          "Choose FilterPixel if: you want genre-aware ranking with a stated reason for every frame, and don't mind a cloud step on the previews.",
+          "Choose Imagen if: you already edit with Imagen and want culling in the same Lightroom pipeline.",
+          "Choose Photoreka Picks if: you have a folder of photos that are all usable and need to know which are strongest — for a portfolio, a contest or a book — without an account or a subscription.",
+          "Choose Photoreka if: the problem isn't one shoot but a whole archive, and you want artistic scores you can search, filter and revisit over time.",
+          "Use both if: a dedicated culler handles the technical pass on client work, and Photoreka handles the curatorial pass on your own.",
+        ],
+      },
+      {
+        type: "cta",
+        eyebrow: "Try it on your own photos",
+        title: "Rank 10 photos free with Photoreka Picks",
+        text: "Eight artistic criteria, a written critique for every frame and a ranking by jury. No account, no card.",
+        buttonLabel: "Try it free with 10 photos",
+        action: "link",
+        href: "https://app.photoreka.com/picks?trial=1",
+      },
+      {
+        type: "p",
+        html: "One last note on what culling is for. The tools in this article are extraordinary at removing the frames you'd never show, and every photographer who shoots volume should use one. That's the floor. The harder decision comes after — which ten photographs from a year of shooting actually say something — and no amount of blink detection makes it for you. <strong>Rejecting is a filter. Choosing is the work.</strong>",
+      },
+    ],
+  },
+  {
+    slug: "best-ai-photo-organizer",
+    title: "The Best AI Photo Organizers for Photographers in 2026",
+    excerpt:
+      "Excire Foto, Peakto, Mylio, Lightroom, Google Photos, digiKam, Immich, PhotoPrism and Photoreka all call themselves AI photo organizers — and they solve different problems. An honest guide to what each one actually does, where it stops, and who it's for.",
+    description:
+      "Honest 2026 comparison of AI photo organizers for photographers: Excire Foto, Peakto, Mylio, Lightroom, Google Photos, digiKam, Immich, PhotoPrism and Photoreka.",
+    keywords:
+      "ai photo organizer, best ai photo organizer, photo organizer ai, ai photo sorting, ai photo sorter, ai photo sorter alternative, ai photo organizer windows, ai photo management software, best photo organizer for photographers, excire foto alternative, peakto alternative, mylio alternative, lightroom ai search, google photos ask photos, immich vs photoprism, digikam ai, ai photo organizer without subscription",
+    category: "Comparisons",
+    tags: ["Comparisons", "AI Photo Organizer", "Photo Curation", "Photo Management"],
+    coverImage: "/blog/ai_photo_organizers.png",
+    publishedAt: "2026-11-03",
+    readingMinutes: 11,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Search for an <strong>AI photo organizer</strong> and you get a list that mixes very different things: cloud backups with a clever search box, desktop catalogs with face recognition, self-hosted servers, and a few tools that try to tell you which pictures are actually good. They all wear the same label, and they solve different problems. Picking the wrong one usually means migrating a library into something that answers a question you weren't asking.",
+      },
+      {
+        type: "p",
+        html: "This guide compares the tools we think a working photographer should consider in 2026, for what they actually do today. One disclosure up front: we make <a href='/ai_photo_organizer/'>Photoreka</a>, which is on the list. We've tried to describe every tool — ours included — by its real strengths and its real limits, and we checked competitor details against their official sites at the time of writing (November 2026). Prices and features move fast, so confirm before you buy.",
+      },
+      {
+        type: "h2",
+        text: "Three Jobs Hiding Behind One Label",
+        id: "three-jobs",
+      },
+      {
+        type: "p",
+        html: "Almost every tool here does some mix of three jobs, and the mix is what really separates them:",
+      },
+      {
+        type: "list",
+        items: [
+          "Keeping: where the files live, how they sync between devices, how they're backed up. Google Photos, Mylio and the self-hosted servers are strongest here.",
+          "Finding: getting back to a photo you never tagged — search by content or description, faces, places, duplicates. Most tools now do some of this.",
+          "Judging: telling you which frames are strongest and how they work together. Few tools attempt it, and they define 'best' very differently.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Decide which of the three is actually hurting before you compare feature lists. A great keeper won't fix a judging problem, and a great judge won't back up your archive.",
+      },
+      {
+        type: "h2",
+        text: "The Short Version",
+        id: "short-version",
+      },
+      {
+        type: "list",
+        items: [
+          "Excire Foto: a local desktop app for Windows and Mac with AI keywords, faces, duplicates and best-shot selection, sold as a one-time license.",
+          "Peakto: a Mac app that unifies Lightroom, Capture One, Apple Photos and plain folders into one local, searchable view.",
+          "Mylio Photos: keeps your files on your own devices and syncs them peer-to-peer across Windows, Mac, iOS and Android.",
+          "Adobe Lightroom: natural-language search arrived in Lightroom Desktop and Web in 2026, at full strength only for photos in Adobe's cloud.",
+          "Google Photos: the most convenient everyday search and the Ask Photos assistant, if you're happy to upload everything to Google.",
+          "digiKam: a free, open-source, offline catalog for Windows, Mac and Linux with faces, auto-tags and a technical quality scanner.",
+          "Immich and PhotoPrism: self-hosted, open-source libraries with semantic search and faces, for people willing to run a server.",
+          "Photoreka: a browser-based layer on top of the storage you already have, built for search by description and artistic scoring rather than storage.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "1. Excire Foto",
+        id: "excire-foto",
+      },
+      {
+        type: "p",
+        html: "<strong>Excire Foto</strong> (currently Excire Foto 2027) is a standalone photo and video manager for Windows and macOS, and its defining choice is that <strong>everything runs locally</strong>: the AI analyzes your photos on your own computer, and Excire states it doesn't use a cloud at all. On top of that sits one of the broadest AI toolkits in this list — automatic keywording, free-text content search, face search (including by age group and expression), duplicate removal, and a 'find your best shots' selection that weighs aesthetics, sharpness and facial expressions, with a survey view and automatic grouping by people, scene or sequence to speed up culling.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> it's a desktop catalog, so the library lives on one computer and you work where that computer is. Its idea of a 'best shot' blends aesthetics with technical signals like sharpness and open eyes — very useful for culling a shoot, less so for deciding which frames carry a body of work. <strong>Pricing:</strong> a one-time license with no subscription; major version upgrades are paid, with a discount for existing customers. If you live in Lightroom Classic, the same company sells <strong>Excire Search</strong>, a plugin that brings its search and culling into Lightroom.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> photographers who want serious AI organization on Windows or Mac, completely offline, paid once.",
+      },
+      {
+        type: "h2",
+        text: "2. Peakto",
+        id: "peakto",
+      },
+      {
+        type: "p",
+        html: "<strong>Peakto</strong>, by the French developer CYME, solves fragmentation. It's a native Mac app that indexes Lightroom, Capture One, Luminar Neo, Apple Photos, Aperture and plain folders into a single view without moving your originals, then adds natural-language search, face tagging, color analysis and keyword suggestions — with the AI running locally on your Mac. It also takes video seriously, with tools aimed at editors, and a web app now lets you reach your library from any browser.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> the engine is a Mac app. The browser access is a window onto a library indexed on a Mac, not a Windows or Linux version of Peakto. <strong>Pricing:</strong> at the time of writing (November 2026), subscription plans billed monthly, yearly or every two years, plus a Standard lifetime license; higher tiers add collaboration features. We compared the two tools in detail in <a href='/blog/peakto-alternative-windows/'>Peakto vs Photoreka</a>.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> Mac photographers whose work is scattered across several catalogs and editing apps, and creators who need the same tool for stills and footage.",
+      },
+      {
+        type: "h2",
+        text: "3. Mylio Photos",
+        id: "mylio-photos",
+      },
+      {
+        type: "p",
+        html: "<strong>Mylio Photos</strong> is built on a different idea: your library should live on your own devices and follow you between them. It runs on Windows, macOS, iOS and Android, syncs peer-to-peer between your devices with no cloud upload required, and lets you decide where files are stored — locally, on external drives, or in its optional encrypted cloud. The AI side covers offline face recognition, search that needs no tagging, duplicate removal, and help rating and tagging photos faster.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> Mylio's AI is aimed at finding and tidying a lifetime of photos, videos and documents, not at judging photographs as work; it doesn't score images artistically. <strong>Pricing:</strong> you can start for free, and the full feature set sits on paid personal plans (individual or family), so check the current price on its site.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> photographers who want one library across computer and phone without handing it to a big cloud provider.",
+      },
+      {
+        type: "h2",
+        text: "4. Adobe Lightroom",
+        id: "adobe-lightroom",
+      },
+      {
+        type: "p",
+        html: "If you already pay for Adobe's Photography plan, check this one first. In 2026 <strong>Lightroom</strong> — the cloud-based Desktop and Web apps, not Lightroom Classic — gained <strong>natural-language search</strong>: describe a scene and it returns matching photos you never tagged. Lightroom Classic and Lightroom Desktop also have <strong>Assisted Culling</strong>, which scores subject and eye focus and flags exposure problems across a whole batch.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> the full visual search needs your photos in Adobe's cloud; on local photos, search is limited to the metadata stored in the files. Lightroom Classic, still where many professionals keep their catalog, doesn't get the new search at all. And culling here means rejecting technical failures, not ranking what's left. <strong>Pricing:</strong> part of an Adobe Creative Cloud subscription. Lightroom Classic users can fill the search gap with a plugin: Excire Search, or our own <a href='/lightroom_search_plugin/'>Lightroom Classic plugin</a>.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> photographers already editing in Lightroom Desktop with their library synced to Adobe's cloud.",
+      },
+      {
+        type: "h2",
+        text: "5. Google Photos",
+        id: "google-photos",
+      },
+      {
+        type: "p",
+        html: "<strong>Google Photos</strong> has the most polished everyday search of any tool here: type what you remember and it usually finds it, across people, places, things and text inside images. Its <strong>Ask Photos</strong> assistant, powered by Gemini, lets you ask questions about your library in plain conversation. It expanded to more than 100 countries in late 2025, but availability still depends on your country and language.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> Google Photos is storage first — anything you want to search has to be uploaded to Google, which is a non-starter for some photographers and impractical for large RAW archives. It's designed around memories (people, trips, highlights) rather than bodies of work, and it won't tell you which frames are your strongest. <strong>Pricing:</strong> 15 GB of free storage shared with your Google account, then a paid Google One plan for more.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> personal and family photos, and photographers who already back up to Google and want effortless search. Photoreka can import from Google Photos if you'd like to curate on top of it.",
+      },
+      {
+        type: "h2",
+        text: "6. digiKam",
+        id: "digikam",
+      },
+      {
+        type: "p",
+        html: "<strong>digiKam</strong> is the long-standing open-source answer: free, offline and native on Windows, macOS and Linux, with a real database, RAW and video support, face recognition, AI auto-tagging, and an Image Quality Scanner that flags blur, noise and bad exposure. The latest stable release at the time of writing is 9.1 (June 2026), and a natural-language search powered by a local LLM is on its way in 9.2 — it turns your sentence into metadata filters rather than looking at the images themselves.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> its intelligence lives in metadata — tags, labels and fields — and its quality checks are technical rather than artistic. It's powerful and dense, with a real learning curve. Our <a href='/blog/digikam-vs-photoreka/'>digiKam vs Photoreka</a> comparison goes deeper. <strong>Pricing:</strong> free.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> photographers who want a free, offline, vendor-free catalog and are willing to invest time in learning it.",
+      },
+      {
+        type: "h2",
+        text: "7. Immich and PhotoPrism (Self-Hosted)",
+        id: "immich-photoprism",
+      },
+      {
+        type: "p",
+        html: "If you'd rather run your own Google Photos, these are the two serious options. <strong>Immich</strong> is open source (AGPL), with mobile apps for Android and iOS, CLIP-based smart search for freeform descriptions, face recognition, and search by text inside images, location, camera and more. <strong>PhotoPrism</strong> is also open source and browser-based, with AI labels, face recognition and — more recently — captions generated through Ollama or the OpenAI API; its Community edition is free, with paid memberships for extra features.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> you're the operator — a server, storage, updates, backups you actually test, and enough memory for the machine-learning side. Both are built around memories and household libraries rather than portfolios, and neither scores photos as artwork. More in <a href='/blog/photoprism-vs-photoreka/'>PhotoPrism vs Photoreka</a>. <strong>Pricing:</strong> the software is free; you pay in hardware and time.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> technically comfortable photographers who want full ownership and a private library on every device.",
+      },
+      {
+        type: "h2",
+        text: "8. Photoreka",
+        id: "photoreka",
+      },
+      {
+        type: "p",
+        html: "<strong>Photoreka</strong> is our tool, so read this section with that in mind. It isn't a place to store photos. It's a browser-based layer that analyzes the library you already have — from local folders, Google Photos, Google Drive, Dropbox, or Lightroom Classic through an official plugin — and it works from compressed previews, so your originals stay exactly where they are. It runs the same way on Windows, macOS and Linux, with nothing to install.",
+      },
+      {
+        type: "p",
+        html: "What it adds is <strong>finding and judging</strong>. <a href='/ai_photo_search/'>Search</a> works against the image itself, in three modes (Broad, Adaptive and Precise) with no query length limit. Every photo gets <a href='/photo_scoring/'>scores</a> across 9+ dimensions — aesthetics, composition, narrative strength, originality and more — kept separate, so you can rank the same catalog differently for a gallery submission than for a client pitch. You also get automatic tags, near-duplicate detection, a 2D/3D map that groups the whole library by visual similarity, and a world map that uses AI to estimate where photos without GPS were taken.",
+      },
+      {
+        type: "p",
+        html: "<strong>Limits:</strong> no video, no face recognition or people management, and the analysis happens in the cloud, so it isn't for anyone who needs everything offline. It's built for a curated body of work — the sweet spot is up to 20,000 photos, with 50,000 workable — not for every phone snapshot you own. <strong>Pricing:</strong> no subscription; you pay once per batch of photos analyzed. At the time of writing (November 2026), 500 photos cost €9.90, 2,500 cost €36 and 10,000 cost €89, and new accounts get 100 photos and 500 credits free. If you only want an AI jury to rank one folder, <a href='/ai_photo_picks/'>Photoreka Picks</a> does that without an account.",
+      },
+      {
+        type: "p",
+        html: "<strong>Best for:</strong> photographers whose files are already stored somewhere and whose real problem is finding photos by what's in them and deciding which ones are worth showing.",
+      },
+      {
+        type: "h2",
+        text: "How to Choose",
+        id: "how-to-choose",
+      },
+      {
+        type: "p",
+        html: "Start from the job, not from the feature list:",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose Excire Foto if: you want strong AI organization on Windows or Mac, everything offline, paid once.",
+          "Choose Peakto if: you're on a Mac and your photos and videos are scattered across Lightroom, Capture One and Apple Photos.",
+          "Choose Mylio Photos if: you want one library across your computer and phone, stored on your own devices.",
+          "Choose Lightroom if: you already work in Lightroom Desktop with your photos synced to Adobe's cloud.",
+          "Choose Google Photos if: convenience matters most and uploading everything to Google is fine with you.",
+          "Choose digiKam if: you want free, open source and offline, and you'll put in the time to learn it.",
+          "Choose Immich or PhotoPrism if: you want to own the whole stack and you're comfortable running a server.",
+          "Choose Photoreka if: storage is already solved and what you need is to search by description and score your work artistically, on any operating system, without a subscription.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Plenty of photographers end up with two: one tool that <em>keeps</em> the archive and one that helps them <em>judge</em> it. That isn't indecision — those really are different jobs, and the tools that try to do both usually do one of them better.",
+      },
+      {
+        type: "cta",
+        eyebrow: "See it on a real archive",
+        title: "Try Photoreka's demo — nothing to install",
+        text: "Semantic search, artistic scores, and the 3D Atlas on a real catalog, straight from the browser.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+      {
+        type: "p",
+        html: "One last note. 'AI photo organizer' has become a label for everything from a backup service to a culling assistant, and the best tool on this list for someone else can be the wrong one for you. Ask which of the three jobs is actually hurting — keeping, finding or judging — and the shortlist usually writes itself. Organization is the floor. <strong>Curation is the point.</strong>",
+      },
+    ],
+  },
+  {
+    slug: "excire-search-vs-photoreka",
+    title: "Lightroom Classic AI Search: Excire Search vs Photoreka Compared",
+    excerpt:
+      "Lightroom Classic still can't find a photo you never keyworded, and Adobe's natural-language search only lives in the cloud-based Lightroom app. Two plugins fill the gap: Excire Search and Photoreka. An honest look at what each one does inside Classic — and where each one stops.",
+    description:
+      "An honest comparison of Excire Search and Photoreka for AI search in Lightroom Classic: prompt search vs three search modes, keywords written to the catalog vs a curation layer, local processing vs cloud analysis from previews, culling vs artistic scoring.",
+    keywords:
+      "lightroom ai search, lightroom classic ai search, lightroom ai plugin, lightroom classic natural language search, nlp lightroom, how to search in lightroom classic, excire search alternative, excire search vs photoreka, photoreka vs excire, excire foto alternative, lightroom semantic search plugin, ai photo search lightroom classic",
+    category: "Comparisons",
+    tags: ["Comparisons", "Excire", "Lightroom Classic", "AI Photo Search"],
+    coverImage: "/blog/excire_vs_photoreka.png",
+    publishedAt: "2026-11-03",
+    readingMinutes: 9,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "If you've ever typed into Lightroom Classic's search bar and found nothing, you already know the rule: <strong>Classic can only find what someone wrote down</strong>. Keywords, captions, ratings, camera, date. The frame you remember as 'the girl with the red umbrella crossing in the rain' is invisible unless you keyworded it exactly that way years ago — and almost nobody did.",
+      },
+      {
+        type: "p",
+        html: "There are now two serious ways to fix that without leaving Classic: <strong>Excire Search</strong>, the long-standing AI plugin from Excire, and Photoreka's <a href='/lightroom_search_plugin/'>Lightroom Classic plugin</a>. They solve overlapping problems from very different starting points. This is an honest comparison of both — written by one of them, so we've tried to be especially careful with the other's strengths. First, though, the question most people actually search for.",
+      },
+      {
+        type: "h2",
+        text: "Can Lightroom Classic Search Photos by Description?",
+        id: "can-lightroom-classic-search-by-description",
+      },
+      {
+        type: "p",
+        html: "Not natively, at the time of writing (November 2026). Lightroom Classic's search is the Library Filter bar — Text, Attribute and Metadata filters — plus keywords, Smart Collections and the People view, which uses face recognition to group the people you've named. It's precise and fast over whatever metadata exists. What it can't do is look at the pixels and match them to a sentence. Adobe keeps adding AI elsewhere in Classic: Assisted Culling scores open eyes and sharpness, and the release notes for version 15.5 (August 2026) add automatic duplicate detection. Search by description isn't among those additions.",
+      },
+      {
+        type: "p",
+        html: "Adobe does have natural-language search — in <strong>Lightroom</strong>, the cloud-based app, not in Classic. Adobe's own tutorial shows queries like 'a man with an umbrella looking at a painting in a museum' or 'golden hour light on the water', and the release notes for the April 2026 desktop version (9.3) list natural-language search as a new feature. If your library already lives in Adobe's cloud ecosystem, try that first. If it lives in a Classic catalog, the answer today is a plugin.",
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "The short answer",
+        html: "<strong>Lightroom Classic:</strong> keywords, filters and faces — no search by description. <strong>Lightroom (cloud):</strong> natural-language search on the photos in your cloud library. <strong>Lightroom Classic with a plugin:</strong> Excire Search or Photoreka, compared below.",
+      },
+      {
+        type: "h2",
+        text: "What Excire Search Does Well",
+        id: "what-excire-search-does-well",
+      },
+      {
+        type: "p",
+        html: "An honest comparison starts here. <strong>Excire Search 2026</strong> is a mature, well-designed plugin that turns Lightroom Classic into something much closer to a modern, AI-indexed library. According to Excire, it offers prompt search ('backlit portrait', 'child in snow'), one-click similarity search, people search, duplicate and near-duplicate detection, automatic tagging that is <strong>written directly into your Lightroom catalog fields</strong>, aesthetic ratings to surface your best shots, AI-assisted culling that groups a shoot by scenes and people, automatic focus checking on faces, and — new in the 2026 version — video support. Everything runs locally on your computer, with no cloud involved at all.",
+      },
+      {
+        type: "p",
+        html: "It's also a straightforward purchase: a one-time license valid on both Mac and Windows, no subscription, with a 14-day trial. It requires Lightroom Classic 14 or newer and runs on macOS 11 or later and on Windows 10 and 11. For photographers who don't use Lightroom Classic, the same company sells <strong>Excire Foto</strong>, a standalone app.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "Who should just use Excire Search",
+        html: "If you want AI search and culling that lives entirely inside Lightroom Classic, works offline, never sends a pixel anywhere, and leaves real keywords behind in your catalog — and your daily problem is <em>finding and culling shoots</em>, especially weddings, events or anything with people — Excire Search is a very good answer. Nothing in this article argues otherwise.",
+      },
+      {
+        type: "h2",
+        text: "Where the Walls Are",
+        id: "where-the-walls-are",
+      },
+      {
+        type: "p",
+        html: "Excire's design goal is a smarter Lightroom catalog. That's its strength, and it also sets its limits: what it understands about a photo ends up as tags, ratings, groups and filters inside Classic. A few consequences follow from that.",
+      },
+      {
+        type: "list",
+        items: [
+          "Keywords are a vocabulary, and vocabularies have edges. Automatic tagging is excellent for 'beach', 'dog' or 'portrait'. It will never write 'the quiet tension just before the gesture lands', because that isn't a keyword — even though it's exactly what you'll remember.",
+          "Long descriptions are undocumented territory. Excire's examples are short phrases, and it doesn't publish which model powers its prompt search or how it handles long, multi-condition descriptions. If you tend to remember photos in full sentences, test exactly that during the trial.",
+          "Culling is built around the shoot. Grouping by scenes and people, checking face sharpness, picking the best frame of a sequence — that's what a wedding or event workflow needs. It says much less about which photographs, across ten years of work, actually belong together.",
+          "It stays inside Lightroom Classic. Photos in Google Photos, Dropbox or a folder outside the catalog are out of reach unless you also buy Excire Foto, which is a separate app.",
+          "It stops at finding. There's no sequencing, no portfolio building, no conversation about a body of work and no view of the whole archive at once.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Photoreka's Different Starting Point",
+        id: "photorekas-different-starting-point",
+      },
+      {
+        type: "p",
+        html: "Photoreka's plugin isn't trying to be a better Lightroom catalog. It's a bridge from your catalog to a curation platform that sits on top of it.<br /><br /><strong>1. Search by meaning, with a mode for each kind of question.</strong> Every photo becomes an embedding — a numerical description of composition, light, palette, subject and mood. You search it in three modes: <strong>Broad</strong> for moods and styles, <strong>Adaptive</strong> for cultural references like 'Blade Runner-inspired', and <strong>Precise</strong>, which verifies each candidate against your conditions instead of just ranking by similarity. There's no query length limit.<br /><br /><strong>2. Your catalog stays exactly as it is.</strong> The plugin reads your catalog and never modifies your originals, your collections or your metadata. It sends small previews and metadata to Photoreka for analysis in the cloud; your full-resolution files never leave your computer.<br /><br /><strong>3. Finding is step one.</strong> From Lightroom you can send photos to Photoreka in one click and keep going: artistic scoring, a 3D map of your whole catalog, portfolio sequencing, and an assistant you can talk to about your work.",
+      },
+      {
+        type: "quote",
+        text: "Excire Search makes Lightroom Classic better at answering 'where is that photo?'. Photoreka is built for the question that comes after: 'which of these matter — and in what order?'",
+      },
+      {
+        type: "h2",
+        text: "Feature by Feature",
+        id: "feature-by-feature",
+      },
+      {
+        type: "h3",
+        text: "Search",
+        id: "search",
+      },
+      {
+        type: "p",
+        html: "Both plugins search by visual content without needing keywords first. Excire combines prompt search with similarity search and people search, all inside the Lightroom interface. Photoreka's <a href='/ai_photo_search/'>search</a> adds the three explicit modes described above, accepts descriptions of any length, and lets you use any photo as a query to find visually similar ones. The difference shows most with specific, multi-part memories — 'two people on a bench, one looking away, late light' — where Precise mode checks each condition instead of returning whatever is closest.",
+      },
+      {
+        type: "p",
+        html: "Where Excire is clearly ahead is <strong>people</strong>. Photoreka doesn't do face recognition, so 'every photo of my sister' is a job for Excire, or for Lightroom Classic's own People view.",
+      },
+      {
+        type: "h3",
+        text: "Keywords and Your Catalog",
+        id: "keywords-and-your-catalog",
+      },
+      {
+        type: "p",
+        html: "This is the most practical difference between the two. Excire writes its tags into your Lightroom catalog fields, so they work with Classic's own filters and travel with your catalog. Photoreka deliberately doesn't touch your catalog metadata: its analysis lives in Photoreka, and the plugin brings search results back into Lightroom. If you want AI keywords permanently stored inside your catalog, Excire is the tool for that.",
+      },
+      {
+        type: "h3",
+        text: "Culling vs. Artistic Scoring",
+        id: "culling-vs-scoring",
+      },
+      {
+        type: "p",
+        html: "Excire's culling, aesthetic ratings and face-sharpness checks are designed to get you from a full card to a clean selection quickly — and Lightroom Classic's own Assisted Culling now covers part of that ground too. Photoreka's <a href='/photo_scoring/'>scoring</a> answers a different question. It scores every photo across separate artistic dimensions — aesthetics, composition, narrative strength, originality, visual games, humor and candidness, plus subject clarity and commercial intent in commercial mode — and lets you sort by any one of them. A motion-blurred street frame with real energy can rank high on narrative while failing a sharpness check, which is how editors actually choose. Both tools detect duplicates.",
+      },
+      {
+        type: "h3",
+        text: "Seeing the Whole Catalog",
+        id: "seeing-the-whole-catalog",
+      },
+      {
+        type: "p",
+        html: "Here the two products stop overlapping. From Lightroom Classic you can launch Photoreka's <a href='/ai_photo_organizer/#atlas'>3D Atlas</a>, which places your whole catalog in a navigable space clustered by visual similarity — the fastest way we know to see what you actually photograph, as opposed to what you think you photograph. On the web platform the same analysis feeds a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences a set under visual and narrative constraints, and a <a href='/photo_chat/'>conversational assistant</a> for reviewing a body of work. Excire has no equivalent to these, and isn't trying to.",
+      },
+      {
+        type: "h3",
+        text: "Privacy, Workflow and Price",
+        id: "privacy-workflow-and-price",
+      },
+      {
+        type: "p",
+        html: "Excire runs fully offline; nothing leaves your machine. Photoreka needs an internet connection for the initial analysis and for search, analyzes small previews in the cloud — typically around 1,000 photos an hour while you keep working in Lightroom — and keeps your originals local. Excire is a one-time license with a 14-day trial. Photoreka's plugin is free with a Photoreka account, and you pay once per batch of analyzed photos, with no subscription. Excire requires Lightroom Classic 14 or newer; Photoreka's plugin works from Lightroom Classic 13.0.",
+      },
+      {
+        type: "p",
+        html: "One more honest note, on scale. Photoreka is designed for a curated body of work rather than every frame you've ever shot: up to around 20,000 photos is the sweet spot, and 50,000 is workable. If your catalog holds a decade of unculled weddings, cull first — with Excire, Lightroom's Assisted Culling or by hand — and bring the keepers to Photoreka.",
+      },
+      {
+        type: "h3",
+        text: "Where Excire Search Still Wins",
+        id: "where-excire-search-still-wins",
+      },
+      {
+        type: "p",
+        html: "Fairness requires this section. Excire processes <strong>everything locally</strong>, which settles the question if cloud analysis is a hard no for you. It writes <strong>keywords into your catalog</strong>. It does <strong>people search</strong>, which Photoreka doesn't. It handles <strong>video</strong>; Photoreka is photography-only. Its culling tools — scene grouping and face sharpness — are aimed squarely at high-volume shoots. And it lives entirely inside Lightroom, so there's no second interface to learn.",
+      },
+      {
+        type: "h2",
+        text: "Which One Fits Your Catalog?",
+        id: "which-one-fits-your-catalog",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose Excire Search if: you want everything inside Lightroom Classic and offline, you need people search, video or keywords written into the catalog, and your main job is finding and culling shoots.",
+          "Choose Photoreka if: you remember photos in sentences rather than keywords, you want artistic scoring instead of a technical first pass, or your real goal isn't finding one photo — it's understanding, ranking and sequencing a body of work.",
+          "Use both if: Excire already keeps your catalog tagged and culled, and what's missing is the editorial layer on top — which of your photographs are strongest, and what they say together.",
+        ],
+      },
+      {
+        type: "cta",
+        eyebrow: "See it on a real catalog",
+        title: "Try Photoreka's demo — nothing to install",
+        text: "Three search modes, artistic scores and the 3D Atlas on a real archive, straight from the browser.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+      {
+        type: "p",
+        html: "One last note on philosophy. Excire's bet — that AI should make your existing Lightroom catalog smarter without taking anything away from you — is a good one, and it's why Photoreka's plugin never rewrites your metadata or moves your files either. Where we differ is on what the catalog is <em>for</em>. A catalog where every photo can be found is a solved retrieval problem. Deciding which ones deserve to be seen is the part that's still yours. Search is the floor. <strong>Curation is the point.</strong>",
+      },
+    ],
+  },
+  {
     slug: "photoprism-vs-photoreka",
     title:
       "PhotoPrism vs Photoreka: Self-Hosting Your Archive vs. Making Sense of It",
@@ -169,7 +1016,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here the two products stop overlapping entirely. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports/'>style and pattern reports</a>, and a <a href='/photo_3D_atlas/'>2D/3D atlas</a> that renders your entire archive as a navigable space rather than an infinite scroll. PhotoPrism has no equivalent, and shouldn't be criticized for it — a library server's job ends where the editing decisions begin.",
+        html: "Here the two products stop overlapping entirely. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/ai_photo_organizer/#reports'>style and pattern reports</a>, and a <a href='/ai_photo_organizer/#atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space rather than an infinite scroll. PhotoPrism has no equivalent, and shouldn't be criticized for it — a library server's job ends where the editing decisions begin.",
       },
       {
         type: "h3",
@@ -245,7 +1092,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "An honest comparison starts here. digiKam's core strength is being a <strong>complete, self-hosted digital asset manager</strong>: SQLite or MariaDB under the hood, hierarchical tags, ratings, color and pick labels, versioning, and a metadata engine that survives you switching software. Its AI features have come a long way, too — recent versions do face detection and recognition with an ensemble classifier, auto-tag assignment powered by YOLOv11 and EfficientNet models, and an Image Quality Scanner that flags images by blur, noise, exposure, and compression. The 9.x line even adds natural-language search built on a <em>local</em> LLM, so nothing leaves your machine.",
+        html: "An honest comparison starts here. digiKam's core strength is being a <strong>complete, self-hosted digital asset manager</strong>: SQLite or MariaDB under the hood, hierarchical tags, ratings, color and pick labels, versioning, and a metadata engine that survives you switching software. Its AI features have come a long way, too — recent versions do face detection and recognition with an ensemble classifier, auto-tag assignment powered by YOLOv11 and EfficientNet models, and an Image Quality Scanner that flags images by blur, noise, exposure, and compression. And the upcoming 9.2 release adds natural-language search built on a <em>local</em> LLM, so nothing leaves your machine.",
       },
       {
         type: "callout",
@@ -298,7 +1145,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "digiKam offers keyword search, a powerful advanced-search builder, similarity search, and now local-LLM natural language search — all of it ultimately resolved against database fields. Photoreka's <a href='/ai_photo_search/'>search</a> runs against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
+        html: "digiKam offers keyword search, a powerful advanced-search builder, similarity search, and, from version 9.2, local-LLM natural language search — all of it ultimately resolved against database fields. Photoreka's <a href='/ai_photo_search/'>search</a> runs against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
       },
       {
         type: "p",
@@ -320,7 +1167,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here the two products stop overlapping altogether. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports/'>style and pattern reports</a>, and a <a href='/photo_3D_atlas/'>2D/3D atlas</a> that renders your entire archive as a navigable space instead of a scrolling grid. digiKam has no equivalent to any of these, because none of them were ever part of what a DAM is for.",
+        html: "Here the two products stop overlapping altogether. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/ai_photo_organizer/#reports'>style and pattern reports</a>, and a <a href='/ai_photo_organizer/#atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space instead of a scrolling grid. digiKam has no equivalent to any of these, because none of them were ever part of what a DAM is for.",
       },
       {
         type: "h3",
@@ -411,8 +1258,8 @@ export const blogPosts: BlogPost[] = [
       {
         type: "list",
         items: [
-          "Mac-only. There is no Windows or Linux version, and none has been announced. Roughly two out of three photographers edit on Windows.",
-          "Subscription-priced. The intelligence layer over your own archive stops working the month you stop paying.",
+          "Mac-only at its core. There is no Windows or Linux version of the app. A newer web app lets you reach a library from any browser, but the library still has to be indexed and analyzed by Peakto on a Mac. Roughly two out of three photographers edit on Windows.",
+          "Mostly subscription-priced. There is a Standard lifetime license, but the main plans are monthly, yearly or two-yearly subscriptions, so the intelligence layer over your own archive tends to become a recurring cost.",
           "Organization-first, curation-second. Peakto excels at unifying and finding, but it is not built around the next step: scoring a body of work across artistic dimensions, sequencing a portfolio, or interrogating your archive in conversation.",
           "Single-mode AI search. Search is associative — great for 'show me something like this', with no way to enforce precise, verifiable conditions.",
         ],
@@ -460,7 +1307,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This is where the two products stop overlapping. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track your evolution over time, <a href='/photo_reports/'>style and pattern reports</a>, and a <a href='/photo_3D_atlas/'>2D/3D atlas</a> that renders the entire archive as a navigable space. Peakto's Panorama offers a taste of that spatial idea; the Atlas is built around it.",
+        html: "This is where the two products stop overlapping. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track your evolution over time, <a href='/ai_photo_organizer/#reports'>style and pattern reports</a>, and a <a href='/ai_photo_organizer/#atlas'>2D/3D atlas</a> that renders the entire archive as a navigable space. Peakto's Panorama offers a taste of that spatial idea; the Atlas is built around it.",
       },
       {
         type: "h3",
@@ -826,7 +1673,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This idea of treating an archive as a whole isn't unique to ChatLab: it's the principle that organizes all of Photoreka, and the <a href='/photo_3D_atlas/'>2D/3D Atlas</a> is its most visual expression. The Atlas turns your catalog into a navigable map—a universe of points where similar images cluster together and different ones drift apart—allowing you to <strong>see</strong> the overall shape of your work at a glance: where it concentrates, where the gaps are, what clusters exist. That same map is one of the spaces ChatLab can explore on your behalf when you ask about the archive as a whole. But the chat goes further: beyond the spatial view, it combines tags, scores, temporal evolution, and even web information when needed, then answers with a judgment built from all of that—not just by pointing at a region of the map.",
+        html: "This idea of treating an archive as a whole isn't unique to ChatLab: it's the principle that organizes all of Photoreka, and the <a href='/ai_photo_organizer/#atlas'>2D/3D Atlas</a> is its most visual expression. The Atlas turns your catalog into a navigable map—a universe of points where similar images cluster together and different ones drift apart—allowing you to <strong>see</strong> the overall shape of your work at a glance: where it concentrates, where the gaps are, what clusters exist. That same map is one of the spaces ChatLab can explore on your behalf when you ask about the archive as a whole. But the chat goes further: beyond the spatial view, it combines tags, scores, temporal evolution, and even web information when needed, then answers with a judgment built from all of that—not just by pointing at a region of the map.",
       },
       {
         type: "image",
@@ -871,7 +1718,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Building assistants for other products taught us a lesson that keeps repeating itself: when a dashboard has a chat, users eventually gravitate toward the chat. The same happens with ChatLab, and it makes sense—it can do, to a large extent, almost everything you'd do in a photo organizer: search, compare, group, analyze. To be fair, there are limits: each response can only cover so much, and every conversation consumes frontier-model tokens, so for large-scale exploration the dedicated tools—<a href='/ai_photo_search/'>Search</a>, the <a href='/photo_3D_atlas/'>Atlas</a>, the Workspace—remain more efficient and, above all, give you greater control. But its role as the <strong>orchestrator of the entire organizer</strong> is undeniable.",
+        html: "Building assistants for other products taught us a lesson that keeps repeating itself: when a dashboard has a chat, users eventually gravitate toward the chat. The same happens with ChatLab, and it makes sense—it can do, to a large extent, almost everything you'd do in a photo organizer: search, compare, group, analyze. To be fair, there are limits: each response can only cover so much, and every conversation consumes frontier-model tokens, so for large-scale exploration the dedicated tools—<a href='/ai_photo_search/'>Search</a>, the <a href='/ai_photo_organizer/#atlas'>Atlas</a>, the Workspace—remain more efficient and, above all, give you greater control. But its role as the <strong>orchestrator of the entire organizer</strong> is undeniable.",
       },
       {
         type: "p",

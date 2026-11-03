@@ -385,7 +385,7 @@ const tools = [
     videoFocus: "100% 50%",
     image: "/atlas/atlas_2d_poster.webp",
     color: "#06b6d4",
-    link: "/photo_3D_atlas/",
+    link: "/ai_photo_organizer/#atlas",
     demoLinks: [
       {
         label: "Commercial demo",

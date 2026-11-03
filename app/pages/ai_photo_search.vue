@@ -559,7 +559,7 @@ const lightroomPoints = [
   {
     icon: markRaw(LockClosedOutline),
     color: "#22c55e",
-    text: "All processing runs locally on your machine",
+    text: "Your originals never leave your machine",
   },
   {
     icon: markRaw(LinkOutline),
@@ -662,7 +662,7 @@ const goToSignup = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "ai_photo_search_page");
-  navigateTo("/photo_3D_atlas/");
+  navigateTo("/ai_photo_organizer/#atlas");
 };
 
 const onLightroomPlugin = () => {

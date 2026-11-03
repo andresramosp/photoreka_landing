@@ -486,7 +486,7 @@ const goToSignup = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "photo_chat_page");
-  navigateTo("/photo_3D_atlas/");
+  navigateTo("/ai_photo_organizer/#atlas");
 };
 
 const goToAiSearch = () => {

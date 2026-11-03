@@ -300,7 +300,12 @@ const handleCtaClick = (block) => {
   } else if (block.action === "signup") {
     goToSignup();
   } else if (block.action === "link" && block.href) {
-    navigateTo(block.href);
+    trackUserAction("navigate_to_link", "blog_article", `${post.slug}:${block.href}`);
+    if (/^https?:\/\//.test(block.href)) {
+      window.open(block.href, "_blank");
+    } else {
+      navigateTo(block.href);
+    }
   }
 };
 

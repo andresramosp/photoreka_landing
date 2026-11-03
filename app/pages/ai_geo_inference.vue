@@ -422,7 +422,7 @@ const goToSignup = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "ai_geo_inference_page");
-  navigateTo("/photo_3D_atlas/");
+  navigateTo("/ai_photo_organizer/#atlas");
 };
 
 const goToPortfolio = () => {

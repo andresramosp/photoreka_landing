@@ -78,42 +78,89 @@
           </div>
         </section>
 
-        <section id="atlas" class="lx-section">
+        <section id="explore" class="lx-section">
           <div class="lx-container">
-            <SectionIntro eyebrow="Atlas" align="center">
+            <SectionIntro eyebrow="Explore your archive" align="center">
               <template #title>
-                Your entire archive,
-                <em class="lx-accent">in one image</em>
+                Three ways to see
+                <em class="lx-accent">your whole archive</em>
               </template>
               <p>
-                Once analyzed, every photo you own takes its place on a single
-                map—clustered by what the images actually are, not by the folder
-                they landed in. Dense continents are the work you keep returning
-                to. The dark space between them is the work you haven't made
-                yet.
+                Once analyzed, your library stops being a grid you scroll. Fly
+                through it as a map, navigate it as a vocabulary, or read it as
+                a report on your own work.
               </p>
             </SectionIntro>
 
             <div
-              v-reveal="{ variant: 'scale', delay: 120 }"
-              v-scroll-progress="{ from: 1, to: 0.3, disableBelow: 760 }"
+              v-reveal="80"
+              class="lx-tabs org-tabs"
+              role="tablist"
+              aria-label="Ways to explore your archive"
             >
-              <ShotFrame
-                class="lx-zoom"
-                src="/atlas/2d.webp"
-                alt="Photoreka 2D Atlas: an entire photo library organized into visual similarity clusters on a single navigable map"
-                label="Photoreka — 2D Atlas"
-                ratio="auto"
-              />
+              <button
+                v-for="view in views"
+                :id="`org-tab-${view.key}`"
+                :key="view.key"
+                type="button"
+                role="tab"
+                class="lx-tab"
+                :class="{ 'is-active': activeView === view.key }"
+                :aria-selected="activeView === view.key"
+                :aria-controls="`org-panel-${view.key}`"
+                @click="selectView(view.key)"
+              >
+                <n-icon size="16"><component :is="view.icon" /></n-icon>
+                {{ view.label }}
+              </button>
             </div>
 
-            <p v-reveal="160" class="org-caption">
-              This is organization as a whole, not a folder at a time.
-              <NuxtLink to="/photo_3D_atlas" class="lx-link">
-                Explore the 2D &amp; 3D Atlas
-                <n-icon size="15"><ArrowForwardOutline /></n-icon>
-              </NuxtLink>
-            </p>
+            <!-- Every panel stays in the DOM so all the copy is indexable. -->
+            <div
+              v-for="view in views"
+              v-show="activeView === view.key"
+              :id="`org-panel-${view.key}`"
+              :key="view.key"
+              role="tabpanel"
+              :aria-labelledby="`org-tab-${view.key}`"
+              class="lx-panel org-view"
+            >
+              <ShotFrame v-bind="view.media" />
+              <div class="org-view__body">
+                <div class="org-view__copy">
+                  <h3 class="lx-title lx-title--md">
+                    {{ view.title }}
+                    <em class="lx-accent">{{ view.accent }}</em>
+                  </h3>
+                  <p class="org-view__text">{{ view.text }}</p>
+                  <ul v-if="view.key === 'tag-map'" class="org-groups">
+                    <li v-for="group in tagGroups" :key="group.name">
+                      <span
+                        class="org-groups__dot"
+                        :style="{ '--dot': group.color }"
+                        aria-hidden="true"
+                      />
+                      {{ group.name }}
+                    </li>
+                  </ul>
+                  <div>
+                    <LxButton
+                      variant="ghost"
+                      icon="external"
+                      @click="openViewDemo(view)"
+                    >
+                      {{ view.demoLabel }}
+                    </LxButton>
+                  </div>
+                </div>
+                <ul class="lx-list org-view__points">
+                  <li v-for="point in view.points" :key="point">
+                    <span class="lx-tick" aria-hidden="true" />
+                    <span>{{ point }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -171,8 +218,10 @@
                   Photoreka asks for none of it.
                 </p>
                 <p class="org-alt__note">
-                  Deciding between tools? We’ll publish a full comparison once
-                  the blog is ready.
+                  Deciding between tools?
+                  <NuxtLink to="/blog/best-ai-photo-organizer/" class="lx-link"
+                    >Read our comparison of the best AI photo organizers</NuxtLink
+                  >
                 </p>
               </div>
               <ul class="lx-list org-alt__list">
@@ -297,7 +346,7 @@ const showRequestDialog = ref(false);
 
 const navLinks = [
   { label: "Approach", target: "approach" },
-  { label: "Atlas", target: "atlas" },
+  { label: "Explore", target: "explore" },
   { label: "How it works", target: "how-it-works" },
   { label: "Features", target: "features" },
   { label: "FAQ", target: "faq" },
@@ -377,7 +426,6 @@ const features = [
     description:
       "Every photo receives semantic tags across mood, environment, subjects, weather, and more—browsable as an interactive 2D tag map of your whole vocabulary.",
     color: "#8b5cf6",
-    link: "/photo_tag_cloud/",
   },
   {
     icon: markRaw(BarChartOutline),
@@ -393,7 +441,6 @@ const features = [
     description:
       "See your whole archive as a navigable space where similar photos cluster together. Spot themes, gaps, and stylistic shifts no grid can reveal.",
     color: "#2563eb",
-    link: "/photo_3D_atlas/",
   },
   {
     icon: markRaw(CopyOutline),
@@ -411,6 +458,99 @@ const features = [
     link: "/ai_geo_inference/",
   },
 ];
+
+// Explore block: the former /photo_3D_atlas/, /photo_tag_cloud/ and
+// /photo_reports/ pages, which now redirect here.
+const views = [
+  {
+    key: "atlas",
+    label: "2D & 3D Atlas",
+    icon: markRaw(GitNetworkOutline),
+    media: {
+      video: "/videos/atlas_1.mp4",
+      poster: "/home/video_poster.webp",
+      alt: "Photoreka 3D Atlas: a whole photo catalog clustered by visual similarity in navigable 3D space",
+      label: "Photoreka — 3D Atlas",
+      ratio: "16 / 9",
+    },
+    title: "Your entire archive,",
+    accent: "in one image",
+    text: "Every photo you own takes its place on a single map, in 2D or in 3D, clustered by what the images actually are—composition, color, subject, mood—not by the folder they landed in. Dense continents are the work you keep returning to. The dark space between them is the work you haven't made yet.",
+    points: [
+      "Fly through thousands of photos in real-time 3D, or read them on a flat, zoomable 2D map",
+      "Clusters come from visual embeddings projected with UMAP, so neighbors really look alike",
+      "Switch between contextual, narrative, visual-accent and overall-style views",
+      "Select photos in space to start a sequence, a portfolio or an exhibition",
+      "Runs in the browser with WebGL: no install, no special hardware",
+    ],
+    demoLabel: "Open the Atlas demo",
+    demoPath: "/demo/atlas",
+  },
+  {
+    key: "tag-map",
+    label: "Tag map",
+    icon: markRaw(PricetagsOutline),
+    media: {
+      src: "/home/tag_cloud_poster_detailed.webp",
+      alt: "Photoreka tag map: thousands of photo tags arranged by meaning, with matching photos appearing as you navigate",
+      label: "Photoreka — Tag map",
+      ratio: "16 / 9",
+    },
+    title: "Your photo vocabulary,",
+    accent: "mapped by meaning",
+    text: "Thousands of tags from your photos—people, places, moods, objects, weather—placed on an interactive map where tags that share meaning sit together. The map is also a search: pan into the \"melancholy urban\" cluster and the photos that match appear as you move.",
+    points: [
+      "Tags are extracted automatically, typically 20–50 per photo—no manual tagging",
+      "Dynamic search turns the visible part of the map into a live query",
+      "Drag a rectangle over any area to combine its tags into one search",
+      "Expand dense clusters and filter by group to keep the map readable",
+      "Renders tens of thousands of tags smoothly, with touch support on mobile",
+    ],
+    demoLabel: "Open the tag map demo",
+    demoPath: "/demo/tagcloud",
+  },
+  {
+    key: "reports",
+    label: "Reports",
+    icon: markRaw(BarChartOutline),
+    media: {
+      src: "/report/1.webp",
+      alt: "Photoreka report: narrative patterns detected across a photo catalog, each with its strength and example photos",
+      label: "Photoreka — Reports",
+      ratio: "16 / 9",
+      focus: "0% 0%",
+    },
+    title: "Your photography,",
+    accent: "seen from the outside",
+    text: "Reports on your style, patterns, strengths and evolution, generated from the analysis of your whole catalog. Each one combines charts, your own photos as examples and plain-language takeaways on what you're great at and what to shoot next.",
+    points: [
+      "Quality distribution: how scores spread across the catalog, and your top percentile",
+      "Evolution: score trends by month and year, dimension by dimension",
+      "Style: dominant color profiles, moods and recurring motifs",
+      "Strengths and gaps across the scoring dimensions, with suggestions",
+      "Patterns and clusters, plus the outliers that stand apart",
+      "Session analysis: keeper rate and the conditions of your best work",
+    ],
+    demoLabel: "Open a sample report",
+    demoPath: "/demo/report",
+  },
+];
+
+// Colors match the tag groups in the app.
+const tagGroups = [
+  { name: "Mood & Atmosphere", color: "#a78bfa" },
+  { name: "Environment & Place", color: "#10b981" },
+  { name: "Objects & Things", color: "#60a5fa" },
+  { name: "People & Figures", color: "#f472b6" },
+  { name: "Weather & Light", color: "#38bdf8" },
+  { name: "Animals", color: "#fbbf24" },
+  { name: "Geographic Names", color: "#34d399" },
+  { name: "Symbols & Signs", color: "#f87171" },
+  { name: "Abstract Concepts", color: "#c084fc" },
+  { name: "Other", color: "#9ca3af" },
+];
+
+const activeView = ref(views[0].key);
 
 // FAQs
 const faqs = [
@@ -433,6 +573,27 @@ const faqs = [
     question: "Does Photoreka replace Lightroom?",
     answer:
       "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI quality scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
+  },
+  {
+    question: "What is the 3D Atlas and how are photos placed on it?",
+    answer:
+      "The Atlas shows your entire catalog as a navigable 2D or 3D map. Photoreka extracts a visual embedding from every photo—composition, colors, subjects, mood and lighting as numbers—and projects them with UMAP, a dimensionality-reduction technique that keeps similar photos close together. The clusters that form reveal your recurring themes and how your work has evolved.",
+  },
+  {
+    question: "Do I need special hardware to use the 3D Atlas?",
+    answer:
+      "No. The Atlas runs in modern browsers using WebGL, and any computer with reasonably recent graphics—even integrated graphics from the last five years—can navigate thousands of photos smoothly. There's nothing to install.",
+  },
+  {
+    question: "How is the tag map different from a tag list or a word cloud?",
+    answer:
+      "A word cloud shows tags by frequency and a tag list sorts them alphabetically. The tag map places them by meaning: tags that share meaning or appear in the same kind of scene sit close together, using UMAP on AI-generated semantic embeddings. Click a tag, drag a rectangle over several, or turn on dynamic search to browse your photos by moving across the map.",
+  },
+  {
+    question:
+      "What do the photography reports show, and how many photos do I need?",
+    answer:
+      "Reports are built from the AI scores of every photo plus metadata such as date, camera settings and detected subjects. They cover quality distribution, evolution over time, style, strengths and gaps, patterns, and individual sessions. You get basic insights from about 50 photos; for meaningful trends, 200 or more spread over time works best. Reports update as your catalog grows.",
   },
   {
     question: "How many photos can I organize with Photoreka?",
@@ -488,6 +649,16 @@ const onRequestSuccess = () => {
   showRequestDialog.value = false;
 };
 
+const selectView = (key) => {
+  activeView.value = key;
+  trackUserAction("switch_explore_view", "ai_photo_organizer_page", key);
+};
+
+const openViewDemo = (view) => {
+  trackUserAction("navigate_to_demo", "ai_photo_organizer_page", view.key);
+  window.open(`${config.public.appUrl}${view.demoPath}`, "_blank");
+};
+
 const onFaqToggle = (index, isOpen) => {
   trackEvent("faq_toggle", {
     page: "ai_photo_organizer",
@@ -499,6 +670,12 @@ const onFaqToggle = (index, isOpen) => {
 onMounted(() => {
   initTheme();
   smoothScroll.enable();
+  // Links such as /ai_photo_organizer/#reports open their tab.
+  const hashKey = window.location.hash.slice(1);
+  if (views.some((view) => view.key === hashKey)) {
+    activeView.value = hashKey;
+    nextTick(() => smoothScroll.scrollTo("#explore", -24));
+  }
   trackEvent("page_view", {
     page: "ai_photo_organizer",
     page_title:
@@ -522,16 +699,69 @@ onBeforeUnmount(() => {
   color: var(--lx-text-2);
 }
 
-.org-caption {
+/* Below 601px .lx-tabs becomes a scrolling row; centering it would clip the
+   first tab. */
+@media (min-width: 601px) {
+  .org-tabs {
+    justify-content: center;
+  }
+}
+
+.org-view {
+  gap: clamp(28px, 3.5vw, 48px);
+}
+
+.org-view__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.org-view__copy {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.org-view__text {
+  font-size: var(--lx-fs-body);
+  line-height: 1.75;
+  color: var(--lx-text-2);
+}
+
+.org-view__points {
+  font-size: var(--lx-fs-sm);
+}
+
+.org-view__points > li {
+  color: var(--lx-text-2);
+}
+
+.org-groups {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.org-groups li {
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem 1rem;
-  margin-top: clamp(28px, 3vw, 40px);
-  text-align: center;
-  font-size: var(--lx-fs-body);
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--lx-line);
+  font-size: var(--lx-fs-xs);
   color: var(--lx-text-2);
+}
+
+.org-groups__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot);
 }
 
 .org-more {
@@ -573,7 +803,8 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 1023px) {
-  .org-alt {
+  .org-alt,
+  .org-view__body {
     grid-template-columns: 1fr;
   }
 }

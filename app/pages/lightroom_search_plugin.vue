@@ -24,7 +24,7 @@
           </p>
           <p>
             Compatible with Lightroom Classic 13.0+ · RAW, CR2, NEF, ARW, JPEG,
-            PNG, TIFF · All AI processing runs locally.
+            PNG, TIFF · Your originals never leave your computer.
           </p>
           <template #actions>
             <LxButton icon="download" @click="goToPlugin">
@@ -221,7 +221,7 @@ const features = [
     icon: markRaw(LockClosedOutline),
     title: "Privacy First",
     description:
-      "Your photos stay on your computer. The plugin only analyzes locally and sends minimal metadata to Photoreka. You maintain complete control over your catalog and files.",
+      "Your full-resolution photos stay on your computer. The plugin only sends small previews and metadata to Photoreka for analysis. You maintain complete control over your catalog and files.",
     color: "#06b6d4",
   },
 ];
@@ -249,7 +249,7 @@ const faqs = [
   {
     question: "Is the plugin really free?",
     answer:
-      "Yes, the Lightroom plugin is completely free with any Photoreka account. No additional costs beyond your Photoreka subscription.",
+      "Yes, the Lightroom plugin is completely free with any Photoreka account. You only pay once for each batch of photos you analyze; there is no subscription.",
   },
   {
     question: "Which version of Lightroom is supported?",

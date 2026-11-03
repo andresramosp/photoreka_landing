@@ -14,7 +14,7 @@ export const IMAGE_LIBRARY_FAQS = [
   {
     question: "Can our whole team use the same account?",
     answer:
-      "Not today. Each Photoreka account belongs to one person. The usual setup is that whoever manages the image library — a marketing, content, or e-commerce lead — runs the analysis and the searches, and hands colleagues the images they need.",
+      "Yes. Anyone on the team who signs in to the account works with the same analyzed library, so marketing, content, and e-commerce can all search it and build their own selections. What Photoreka doesn't have is separate per-person logins with roles or permissions — if you need that level of access control, it belongs in a DAM, with Photoreka alongside it as the search layer.",
   },
   {
     question: "Do we have to move or re-upload our image library?",

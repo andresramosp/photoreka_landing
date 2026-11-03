@@ -47,7 +47,7 @@ const tools = [
     videoFocus: "100% 50%",
     image: "/atlas/atlas_2d_poster.webp",
     color: "#06b6d4",
-    link: "/photo_3D_atlas/",
+    link: "/ai_photo_organizer/#atlas",
     // /2d-atlas en vez de /atlas?mode=2d: el guard de demo de la app reconstruye
     // el destino desde `to.path` y pierde el query, así que el modo tiene que
     // viajar en la ruta. /2d-atlas ya redirige a /atlas?mode=2d.
@@ -86,7 +86,7 @@ const tools = [
   //   description:
   //     "Every AI-extracted tag from your photos mapped in 2D semantic space. Similar concepts cluster together. Navigate the map to browse, select a region to search, or enable dynamic mode for real-time photo discovery.",
   //   color: "#a78bfa",
-  //   link: "/photo_tag_cloud/",
+  //   link: "/ai_photo_organizer/#tag-map",
   // },
   {
     group: "Select & Score",
@@ -149,7 +149,7 @@ const tools = [
     ],
     images: ["/report/1.webp", "/report/2.webp"],
     color: "#f59e0b",
-    link: "/photo_reports/",
+    link: "/ai_photo_organizer/#reports",
     demoLinks: [
       { label: "Try demo", link: "/demo/report" },
       {

@@ -458,7 +458,7 @@ const features = ref([
     ],
     images: ["/report/1.webp", "/report/2.webp"],
     color: "#06b6d4",
-    link: "/photo_reports/",
+    link: "/ai_photo_organizer/#reports",
   },
   {
     icon: markRaw(CubeOutline),
@@ -476,7 +476,7 @@ const features = ref([
     videoFocus: "100% 50%",
     image: "/atlas/atlas_2d_poster.webp",
     color: "#14b8a6",
-    link: "/photo_3D_atlas/",
+    link: "/ai_photo_organizer/#atlas",
     demoLink: "/demo-commercial/atlas?mode=2d",
   },
 ]);
