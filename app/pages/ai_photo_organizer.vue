@@ -340,7 +340,7 @@ const steps = [
   {
     title: "Connect your photo sources",
     description:
-      'Link your Lightroom Classic catalog via the <a href="/lightroom_search_plugin">official plugin</a>, connect Google Photos or Dropbox, or upload local files. Photoreka works from compressed previews—your full-resolution originals stay on your machine.',
+      'Link your Lightroom Classic catalog via the <a href="/lightroom_search_plugin/">official plugin</a>, connect Google Photos or Dropbox, or upload local files. Photoreka works from compressed previews—your full-resolution originals stay on your machine.',
     html: true,
   },
   {
@@ -356,7 +356,7 @@ const steps = [
   {
     title: "Curate from an organized base",
     description:
-      'Once organized, the real work starts: cull the weak frames, surface hidden gems, and build sequenced selections with the <a href="/photography_portfolio_builder">Portfolio Builder</a>—for exhibitions, photobooks, or client delivery.',
+      'Once organized, the real work starts: cull the weak frames, surface hidden gems, and build sequenced selections with the <a href="/photography_portfolio_builder/">Portfolio Builder</a>—for exhibitions, photobooks, or client delivery.',
     html: true,
   },
 ];
@@ -369,7 +369,7 @@ const features = [
     description:
       "Find any photo by describing it—subject, mood, light, or cinematic reference. Three search modes, no query length limit, no tagging required.",
     color: "#06b6d4",
-    link: "/ai_photo_search",
+    link: "/ai_photo_search/",
   },
   {
     icon: markRaw(PricetagsOutline),
@@ -377,7 +377,7 @@ const features = [
     description:
       "Every photo receives semantic tags across mood, environment, subjects, weather, and more—browsable as an interactive 2D tag map of your whole vocabulary.",
     color: "#8b5cf6",
-    link: "/photo_tag_cloud",
+    link: "/photo_tag_cloud/",
   },
   {
     icon: markRaw(BarChartOutline),
@@ -385,7 +385,7 @@ const features = [
     description:
       "9+ scoring dimensions—aesthetics, composition, narrative, originality—rank your entire catalog so your strongest work surfaces automatically.",
     color: "#f59e0b",
-    link: "/photo_scoring",
+    link: "/photo_scoring/",
   },
   {
     icon: markRaw(GitNetworkOutline),
@@ -393,7 +393,7 @@ const features = [
     description:
       "See your whole archive as a navigable space where similar photos cluster together. Spot themes, gaps, and stylistic shifts no grid can reveal.",
     color: "#2563eb",
-    link: "/photo_3D_atlas",
+    link: "/photo_3D_atlas/",
   },
   {
     icon: markRaw(CopyOutline),
@@ -408,7 +408,7 @@ const features = [
     description:
       "Photos with GPS land on your world map automatically—and AI geo-inference recovers locations for the archive shots that never had GPS metadata.",
     color: "#22c55e",
-    link: "/ai_geo_inference",
+    link: "/ai_geo_inference/",
   },
 ];
 

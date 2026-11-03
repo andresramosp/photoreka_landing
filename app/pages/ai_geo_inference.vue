@@ -422,17 +422,17 @@ const goToSignup = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "ai_geo_inference_page");
-  navigateTo("/photo_3D_atlas");
+  navigateTo("/photo_3D_atlas/");
 };
 
 const goToPortfolio = () => {
   trackUserAction("navigate_to_portfolio", "ai_geo_inference_page");
-  navigateTo("/photography_portfolio_builder");
+  navigateTo("/photography_portfolio_builder/");
 };
 
 const goToGeoRecovery = () => {
   trackUserAction("navigate_to_geo_recovery", "ai_geo_inference_page");
-  navigateTo("/ai_geo_recovery");
+  navigateTo("/ai_geo_recovery/");
 };
 
 const onRequestSuccess = () => {

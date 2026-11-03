@@ -7,7 +7,7 @@
         <HeroShell class="article-hero">
           <div class="lx-container article-head">
             <a
-              href="/blog"
+              href="/blog/"
               class="lx-link article-back"
               @click.prevent="goToBlog"
             >
@@ -155,7 +155,7 @@ if (!post) {
   throw createError({ statusCode: 404, statusMessage: "Post not found" });
 }
 
-const postUrl = `${seoConfig.siteUrl}/blog/${post.slug}`;
+const postUrl = `${seoConfig.siteUrl}/blog/${post.slug}/`;
 const postImage = post.coverImage
   ? `${seoConfig.siteUrl}${post.coverImage}`
   : `${seoConfig.siteUrl}${seoConfig.defaultOgImage}`;
@@ -217,7 +217,7 @@ useSEO(undefined, {
           "@type": "ListItem",
           position: 2,
           name: "Blog",
-          item: `${seoConfig.siteUrl}/blog`,
+          item: `${seoConfig.siteUrl}/blog/`,
         },
         {
           "@type": "ListItem",
@@ -277,7 +277,7 @@ const authorInitials = computed(() =>
 
 const goToBlog = () => {
   trackUserAction("navigate_to_blog", "blog_article");
-  navigateTo("/blog");
+  navigateTo("/blog/");
 };
 
 const goToDemo = () => {

@@ -447,7 +447,7 @@ const goToTool = () => {
 
 const goToGeoInference = () => {
   trackUserAction("navigate_to_geo_inference", "ai_geo_recovery_page");
-  navigateTo("/ai_geo_inference");
+  navigateTo("/ai_geo_inference/");
 };
 
 const onFaqToggle = (index, isOpen) => {

@@ -413,12 +413,12 @@ const goToSignup = () => {
 
 const goToScoring = () => {
   trackUserAction("navigate_to_scoring", "photo_reports_page");
-  navigateTo("/photo_scoring");
+  navigateTo("/photo_scoring/");
 };
 
 const goToChat = () => {
   trackUserAction("navigate_to_chat", "photo_reports_page");
-  navigateTo("/photo_chat");
+  navigateTo("/photo_chat/");
 };
 
 const onRequestSuccess = () => {

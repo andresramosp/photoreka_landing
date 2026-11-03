@@ -86,7 +86,7 @@ const onToggle = (index, isOpen) => {
 
 const goToTerms = () => {
   trackUserAction("navigate_to_terms", "landing_page_premium");
-  navigateTo("/terms");
+  navigateTo("/terms/");
 };
 
 // El enlace "early access" vive dentro del HTML de una respuesta (v-html),

@@ -216,7 +216,7 @@ useHead({
             "@type": "ListItem",
             position: 2,
             name: "Photo Tag Cloud",
-            item: "https://www.photoreka.com/photo_tag_cloud",
+            item: "https://www.photoreka.com/photo_tag_cloud/",
           },
         ],
       }),
@@ -462,7 +462,7 @@ const onSearchClick = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "photo_tag_cloud_page");
-  navigateTo("/photo_3D_atlas");
+  navigateTo("/photo_3D_atlas/");
 };
 
 const onRequestSuccess = () => {

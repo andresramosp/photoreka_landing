@@ -147,7 +147,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "PhotoPrism's search is a well-built filter language over indexed text and metadata: labels, captions, titles, keywords, people, colors, cameras, countries, dates, with AND/NOT operators. It's precise and fast within its vocabulary. Photoreka's <a href='/ai_photo_search'>search</a> works against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
+        html: "PhotoPrism's search is a well-built filter language over indexed text and metadata: labels, captions, titles, keywords, people, colors, cameras, countries, dates, with AND/NOT operators. It's precise and fast within its vocabulary. Photoreka's <a href='/ai_photo_search/'>search</a> works against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
       },
       {
         type: "p",
@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "PhotoPrism's 1–5 score exists to decide what deserves to be <em>in</em> your library. Photoreka's <a href='/photo_scoring'>scoring</a> exists to decide what deserves to be <em>seen</em>, and keeps the dimensions separate rather than collapsing them into one number: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. That separation is the point — the same catalog ranks differently for a gallery submission than for a stock pitch, and a single global score can't express that.",
+        html: "PhotoPrism's 1–5 score exists to decide what deserves to be <em>in</em> your library. Photoreka's <a href='/photo_scoring/'>scoring</a> exists to decide what deserves to be <em>seen</em>, and keeps the dimensions separate rather than collapsing them into one number: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. That separation is the point — the same catalog ranks differently for a gallery submission than for a stock pitch, and a single global score can't express that.",
       },
       {
         type: "h3",
@@ -169,7 +169,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here the two products stop overlapping entirely. Photoreka includes a <a href='/photography_portfolio_builder'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports'>style and pattern reports</a>, and a <a href='/photo_3D_atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space rather than an infinite scroll. PhotoPrism has no equivalent, and shouldn't be criticized for it — a library server's job ends where the editing decisions begin.",
+        html: "Here the two products stop overlapping entirely. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports/'>style and pattern reports</a>, and a <a href='/photo_3D_atlas/'>2D/3D atlas</a> that renders your entire archive as a navigable space rather than an infinite scroll. PhotoPrism has no equivalent, and shouldn't be criticized for it — a library server's job ends where the editing decisions begin.",
       },
       {
         type: "h3",
@@ -298,7 +298,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "digiKam offers keyword search, a powerful advanced-search builder, similarity search, and now local-LLM natural language search — all of it ultimately resolved against database fields. Photoreka's <a href='/ai_photo_search'>search</a> runs against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
+        html: "digiKam offers keyword search, a powerful advanced-search builder, similarity search, and now local-LLM natural language search — all of it ultimately resolved against database fields. Photoreka's <a href='/ai_photo_search/'>search</a> runs against the image itself, in three explicit modes: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There's no query length limit, so a long, specific description isn't silently truncated.",
       },
       {
         type: "p",
@@ -311,7 +311,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This is the sharpest contrast between the two tools. digiKam's Image Quality Scanner assigns pick labels based on measurable defects — blurry, noisy, badly exposed, over-compressed. That's genuinely useful for a first culling pass. Photoreka's <a href='/photo_scoring'>scoring</a> asks an entirely different question, and keeps the dimensions separate: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. A technically flawless photograph can score badly, and a slightly soft one can score brilliantly — which is exactly how editors actually choose.",
+        html: "This is the sharpest contrast between the two tools. digiKam's Image Quality Scanner assigns pick labels based on measurable defects — blurry, noisy, badly exposed, over-compressed. That's genuinely useful for a first culling pass. Photoreka's <a href='/photo_scoring/'>scoring</a> asks an entirely different question, and keeps the dimensions separate: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. A technically flawless photograph can score badly, and a slightly soft one can score brilliantly — which is exactly how editors actually choose.",
       },
       {
         type: "h3",
@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here the two products stop overlapping altogether. Photoreka includes a <a href='/photography_portfolio_builder'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports'>style and pattern reports</a>, and a <a href='/photo_3D_atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space instead of a scrolling grid. digiKam has no equivalent to any of these, because none of them were ever part of what a DAM is for.",
+        html: "Here the two products stop overlapping altogether. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/photo_reports/'>style and pattern reports</a>, and a <a href='/photo_3D_atlas/'>2D/3D atlas</a> that renders your entire archive as a navigable space instead of a scrolling grid. digiKam has no equivalent to any of these, because none of them were ever part of what a DAM is for.",
       },
       {
         type: "h3",
@@ -442,7 +442,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Both tools offer semantic search over untagged photos. Peakto's is single-mode and associative. Photoreka offers <a href='/ai_photo_search'>three explicit modes</a>: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There is no query length limit, unlike CLIP-based tools that silently truncate long descriptions at ~77 tokens.",
+        html: "Both tools offer semantic search over untagged photos. Peakto's is single-mode and associative. Photoreka offers <a href='/ai_photo_search/'>three explicit modes</a>: <strong>Broad</strong> (pure embedding similarity, for moods and styles), <strong>Adaptive</strong> (expands cultural references like 'Blade Runner-inspired' into their implicit visual vocabulary), and <strong>Precise</strong> (a logical inference layer that <em>verifies</em> each result against your conditions — 'exactly three people, one looking away' means exactly that). There is no query length limit, unlike CLIP-based tools that silently truncate long descriptions at ~77 tokens.",
       },
       {
         type: "h3",
@@ -451,7 +451,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Peakto computes an aesthetic score that blends aesthetics, composition, and technique into a global number used by its Panorama view. Photoreka's <a href='/photo_scoring'>scoring</a> keeps the dimensions separate — aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work — so you can rank the same catalog differently for a gallery submission than for a stock pitch.",
+        html: "Peakto computes an aesthetic score that blends aesthetics, composition, and technique into a global number used by its Panorama view. Photoreka's <a href='/photo_scoring/'>scoring</a> keeps the dimensions separate — aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work — so you can rank the same catalog differently for a gallery submission than for a stock pitch.",
       },
       {
         type: "h3",
@@ -460,7 +460,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This is where the two products stop overlapping. Photoreka includes a <a href='/photography_portfolio_builder'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat'>conversational assistant</a> that can critique your portfolio and track your evolution over time, <a href='/photo_reports'>style and pattern reports</a>, and a <a href='/photo_3D_atlas'>2D/3D atlas</a> that renders the entire archive as a navigable space. Peakto's Panorama offers a taste of that spatial idea; the Atlas is built around it.",
+        html: "This is where the two products stop overlapping. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track your evolution over time, <a href='/photo_reports/'>style and pattern reports</a>, and a <a href='/photo_3D_atlas/'>2D/3D atlas</a> that renders the entire archive as a navigable space. Peakto's Panorama offers a taste of that spatial idea; the Atlas is built around it.",
       },
       {
         type: "h3",
@@ -782,7 +782,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "<a href='/photo_chat'>ChatLab</a> was born from a very specific need: we wanted to talk to an entire catalog—not just one photo, but a complete body of work. And when we looked for someone already doing it, the surprise was: nobody was. Yes, some chatbots can describe a single image quite well; none knows your catalog, your style, or your evolution. So we built it inside Photoreka, on the same architectural principles that power modern AI agents: frontier models, RAG, and a solid toolkit.",
+        html: "<a href='/photo_chat/'>ChatLab</a> was born from a very specific need: we wanted to talk to an entire catalog—not just one photo, but a complete body of work. And when we looked for someone already doing it, the surprise was: nobody was. Yes, some chatbots can describe a single image quite well; none knows your catalog, your style, or your evolution. So we built it inside Photoreka, on the same architectural principles that power modern AI agents: frontier models, RAG, and a solid toolkit.",
       },
       {
         type: "h2",
@@ -795,7 +795,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "ChatLab works across your entire catalog. It can measure proportions (<em>“Do I photograph more men or women?”</em>), trace your evolution over time, read clusters and imbalances that no individual image contains, and combine all of that with the <a href='/photo_scoring'>artistic scores</a> assigned to each photo. It doesn't answer with impressions—it answers with your entire archive in hand.",
+        html: "ChatLab works across your entire catalog. It can measure proportions (<em>“Do I photograph more men or women?”</em>), trace your evolution over time, read clusters and imbalances that no individual image contains, and combine all of that with the <a href='/photo_scoring/'>artistic scores</a> assigned to each photo. It doesn't answer with impressions—it answers with your entire archive in hand.",
       },
       {
         type: "image",
@@ -826,7 +826,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This idea of treating an archive as a whole isn't unique to ChatLab: it's the principle that organizes all of Photoreka, and the <a href='/photo_3D_atlas'>2D/3D Atlas</a> is its most visual expression. The Atlas turns your catalog into a navigable map—a universe of points where similar images cluster together and different ones drift apart—allowing you to <strong>see</strong> the overall shape of your work at a glance: where it concentrates, where the gaps are, what clusters exist. That same map is one of the spaces ChatLab can explore on your behalf when you ask about the archive as a whole. But the chat goes further: beyond the spatial view, it combines tags, scores, temporal evolution, and even web information when needed, then answers with a judgment built from all of that—not just by pointing at a region of the map.",
+        html: "This idea of treating an archive as a whole isn't unique to ChatLab: it's the principle that organizes all of Photoreka, and the <a href='/photo_3D_atlas/'>2D/3D Atlas</a> is its most visual expression. The Atlas turns your catalog into a navigable map—a universe of points where similar images cluster together and different ones drift apart—allowing you to <strong>see</strong> the overall shape of your work at a glance: where it concentrates, where the gaps are, what clusters exist. That same map is one of the spaces ChatLab can explore on your behalf when you ask about the archive as a whole. But the chat goes further: beyond the spatial view, it combines tags, scores, temporal evolution, and even web information when needed, then answers with a judgment built from all of that—not just by pointing at a region of the map.",
       },
       {
         type: "image",
@@ -871,7 +871,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Building assistants for other products taught us a lesson that keeps repeating itself: when a dashboard has a chat, users eventually gravitate toward the chat. The same happens with ChatLab, and it makes sense—it can do, to a large extent, almost everything you'd do in a photo organizer: search, compare, group, analyze. To be fair, there are limits: each response can only cover so much, and every conversation consumes frontier-model tokens, so for large-scale exploration the dedicated tools—<a href='/ai_photo_search'>Search</a>, the <a href='/photo_3D_atlas'>Atlas</a>, the Workspace—remain more efficient and, above all, give you greater control. But its role as the <strong>orchestrator of the entire organizer</strong> is undeniable.",
+        html: "Building assistants for other products taught us a lesson that keeps repeating itself: when a dashboard has a chat, users eventually gravitate toward the chat. The same happens with ChatLab, and it makes sense—it can do, to a large extent, almost everything you'd do in a photo organizer: search, compare, group, analyze. To be fair, there are limits: each response can only cover so much, and every conversation consumes frontier-model tokens, so for large-scale exploration the dedicated tools—<a href='/ai_photo_search/'>Search</a>, the <a href='/photo_3D_atlas/'>Atlas</a>, the Workspace—remain more efficient and, above all, give you greater control. But its role as the <strong>orchestrator of the entire organizer</strong> is undeniable.",
       },
       {
         type: "p",
@@ -978,7 +978,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This is the step where most people give up and fall back on the three photos they always send. If your archive is large, it is also where a tool helps most: an <a href='/ai_photo_picks/'>AI photo picker</a> can rank thousands of frames in minutes and surface strong images you had forgotten, so your long list is built from the whole archive rather than from what you happen to remember. We cover the general workflow in <a href='/blog/how-to-pick-your-best-photos'>how to pick your best photos from hundreds of shots</a>.",
+        html: "This is the step where most people give up and fall back on the three photos they always send. If your archive is large, it is also where a tool helps most: an <a href='/ai_photo_picks/'>AI photo picker</a> can rank thousands of frames in minutes and surface strong images you had forgotten, so your long list is built from the whole archive rather than from what you happen to remember. We cover the general workflow in <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos from hundreds of shots</a>.",
       },
       {
         type: "h2",
@@ -1121,7 +1121,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Go through everything once, quickly, with one rule: reject only what is clearly broken or redundant. Use a single flag or a one-star rating and do not stop to compare. For bursts and sequences, keep the best one or two frames of each moment and drop the rest. Expect to remove half of the shoot or more. If you work in a catalog such as Lightroom, this is also where <a href='/ai_photo_culling'>AI culling tools</a> save the most time, because technical defects are exactly what software detects well.",
+        html: "Go through everything once, quickly, with one rule: reject only what is clearly broken or redundant. Use a single flag or a one-star rating and do not stop to compare. For bursts and sequences, keep the best one or two frames of each moment and drop the rest. Expect to remove half of the shoot or more. If you work in a catalog such as Lightroom, this is also where <a href='/ai_photo_culling/'>AI culling tools</a> save the most time, because technical defects are exactly what software detects well.",
       },
       {
         type: "h2",
@@ -1190,7 +1190,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Competitions are a special case, because the brief and the jury matter as much as the photo. We cover it in detail in <a href='/blog/how-to-choose-photos-for-a-photo-contest'>how to choose which photos to enter in a photo contest</a>.",
+        html: "Competitions are a special case, because the brief and the jury matter as much as the photo. We cover it in detail in <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>how to choose which photos to enter in a photo contest</a>.",
       },
       {
         type: "h2",
@@ -1217,7 +1217,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Use it as a second opinion, not a verdict. The value is not that the AI is always right, but that it looks at every frame with the same eye, never gets tired at photo 600, and has no memory of how cold it was when you took the shot. If you want the same scoring permanently across your whole catalog, that is what <a href='/photo_scoring'>Photoreka's Photo Scoring</a> does inside an account.",
+        html: "Use it as a second opinion, not a verdict. The value is not that the AI is always right, but that it looks at every frame with the same eye, never gets tired at photo 600, and has no memory of how cold it was when you took the shot. If you want the same scoring permanently across your whole catalog, that is what <a href='/photo_scoring/'>Photoreka's Photo Scoring</a> does inside an account.",
       },
       {
         type: "cta",

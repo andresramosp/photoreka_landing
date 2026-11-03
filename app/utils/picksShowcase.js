@@ -37,7 +37,7 @@ export const PICKS_FAQS = [
   {
     q: "Can Picks help me choose photos for a photography competition?",
     a: "Yes. Award juries only keep the photos that clear a high score, and every photo comes with a critique of what works and what holds it back, so you get a shortlist of candidate entries. The jury does not know the contest's theme or rules, so make the final call against the brief yourself.",
-    link: { to: "/blog/how-to-choose-photos-for-a-photo-contest", label: "How to choose your contest entries" },
+    link: { to: "/blog/how-to-choose-photos-for-a-photo-contest/", label: "How to choose your contest entries" },
   },
   {
     q: "What file formats are supported?",
@@ -50,7 +50,7 @@ export const PICKS_FAQS = [
   {
     q: "How is Picks different from Photoreka's Photo Scoring?",
     a: `Picks is a standalone tool for a one-off batch of photos: no account, pay per photo, results kept for ${PICKS_RETENTION_DAYS} days. Photo Scoring is part of a Photoreka account and scores your whole catalog permanently, so you can search, filter and follow your work over time.`,
-    link: { to: "/photo_scoring", label: "Discover Photo Scoring" },
+    link: { to: "/photo_scoring/", label: "Discover Photo Scoring" },
   },
 ];
 

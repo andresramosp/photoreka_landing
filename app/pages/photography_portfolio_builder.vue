@@ -416,12 +416,12 @@ const goToAtlas = () => {
 
 const goToScoring = () => {
   trackUserAction("navigate_to_scoring", "portfolio_builder_page");
-  navigateTo("/photo_scoring");
+  navigateTo("/photo_scoring/");
 };
 
 const goToChat = () => {
   trackUserAction("navigate_to_chat", "portfolio_builder_page");
-  navigateTo("/photo_chat");
+  navigateTo("/photo_chat/");
 };
 
 const onRequestSuccess = () => {

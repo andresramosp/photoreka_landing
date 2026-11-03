@@ -107,6 +107,11 @@ export default defineNuxtConfig({
 
   experimental: {
     payloadExtraction: false,
+    // The static host 308-redirects /page to /page/; linking straight to the
+    // final URL saves crawlers and visitors that hop.
+    defaults: {
+      nuxtLink: { trailingSlash: "append" },
+    },
   },
 
   // Configuración de generación para SEO

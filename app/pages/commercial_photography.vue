@@ -401,7 +401,7 @@ const features = ref([
       "/ai_photo_scoring/10.webp",
     ],
     color: "#f59e0b",
-    link: "/photo_scoring",
+    link: "/photo_scoring/",
   },
   {
     icon: markRaw(LayersOutline),
@@ -423,7 +423,7 @@ const features = ref([
       "/portfolio_builder/5.webp",
     ],
     color: "#ec4899",
-    link: "/photography_portfolio_builder",
+    link: "/photography_portfolio_builder/",
   },
   {
     icon: markRaw(ChatbubblesOutline),
@@ -442,7 +442,7 @@ const features = ref([
       "/canvas/chatlab_2_estrecho.webp",
     ],
     color: "#8b5cf6",
-    link: "/photo_chat",
+    link: "/photo_chat/",
     demoLink: "/demo-commercial/chatlab",
   },
   {
@@ -458,7 +458,7 @@ const features = ref([
     ],
     images: ["/report/1.webp", "/report/2.webp"],
     color: "#06b6d4",
-    link: "/photo_reports",
+    link: "/photo_reports/",
   },
   {
     icon: markRaw(CubeOutline),
@@ -476,7 +476,7 @@ const features = ref([
     videoFocus: "100% 50%",
     image: "/atlas/atlas_2d_poster.webp",
     color: "#14b8a6",
-    link: "/photo_3D_atlas",
+    link: "/photo_3D_atlas/",
     demoLink: "/demo-commercial/atlas?mode=2d",
   },
 ]);

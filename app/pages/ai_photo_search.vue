@@ -662,7 +662,7 @@ const goToSignup = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "ai_photo_search_page");
-  navigateTo("/photo_3D_atlas");
+  navigateTo("/photo_3D_atlas/");
 };
 
 const onLightroomPlugin = () => {

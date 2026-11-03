@@ -47,7 +47,7 @@ const tools = [
     videoFocus: "100% 50%",
     image: "/atlas/atlas_2d_poster.webp",
     color: "#06b6d4",
-    link: "/photo_3D_atlas",
+    link: "/photo_3D_atlas/",
     // /2d-atlas en vez de /atlas?mode=2d: el guard de demo de la app reconstruye
     // el destino desde `to.path` y pierde el query, así que el modo tiene que
     // viajar en la ruta. /2d-atlas ya redirige a /atlas?mode=2d.
@@ -71,7 +71,7 @@ const tools = [
     video: "/videos/Search.mp4",
     image: "/home/search_results.webp",
     color: "#2563eb",
-    link: "/ai_photo_search",
+    link: "/ai_photo_search/",
     demoLinks: [
       {
         label: "Try the Demo",
@@ -86,7 +86,7 @@ const tools = [
   //   description:
   //     "Every AI-extracted tag from your photos mapped in 2D semantic space. Similar concepts cluster together. Navigate the map to browse, select a region to search, or enable dynamic mode for real-time photo discovery.",
   //   color: "#a78bfa",
-  //   link: "/photo_tag_cloud",
+  //   link: "/photo_tag_cloud/",
   // },
   {
     group: "Select & Score",
@@ -104,7 +104,7 @@ const tools = [
       "/ai_photo_scoring/10.webp",
     ],
     color: "#ec4899",
-    link: "/photo_scoring",
+    link: "/photo_scoring/",
     demoLinks: [
       { label: "Try demo", link: "/demo/" },
       { label: "Commercial demo", link: "/demo-commercial/", commercial: true },
@@ -127,7 +127,7 @@ const tools = [
     ],
 
     color: "#8b5cf6",
-    link: "/photo_chat",
+    link: "/photo_chat/",
     demoLinks: [
       { label: "Try demo", link: "/demo/chat-lab" },
       {
@@ -149,7 +149,7 @@ const tools = [
     ],
     images: ["/report/1.webp", "/report/2.webp"],
     color: "#f59e0b",
-    link: "/photo_reports",
+    link: "/photo_reports/",
     demoLinks: [
       { label: "Try demo", link: "/demo/report" },
       {
@@ -175,7 +175,7 @@ const tools = [
     ],
     images: ["/canvas/levels.webp", "/canvas/question.webp"],
     color: "#8b5cf6",
-    link: "/ai_photo_storyboard",
+    link: "/ai_photo_storyboard/",
     demoLinks: [
       {
         label: "Try demo",
@@ -209,7 +209,7 @@ const tools = [
       // "/portfolio_builder/5.webp",
     ],
     color: "#22c55e",
-    link: "/photography_portfolio_builder",
+    link: "/photography_portfolio_builder/",
     demoLinks: [
       { label: "Try demo", link: "/demo/portfolios" },
       {
@@ -231,7 +231,7 @@ const tools = [
     ],
     image: "/ai_geoinference/3_estrecho.webp",
     color: "#14b8a6",
-    link: "/ai_geo_inference",
+    link: "/ai_geo_inference/",
   },
 ];
 </script>

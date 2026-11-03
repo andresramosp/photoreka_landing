@@ -354,7 +354,7 @@ const goToSignup = () => {
 
 const goToScoring = () => {
   trackUserAction("navigate_to_scoring", "ai_photo_culling_page");
-  navigateTo("/photo_scoring");
+  navigateTo("/photo_scoring/");
 };
 
 const onRequestSuccess = () => {

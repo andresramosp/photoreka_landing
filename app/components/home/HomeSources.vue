@@ -95,7 +95,7 @@ const sources = [
     description:
       "Connect directly with your Lightroom Classic catalog through our official plugin.",
     brand: "#31a8ff",
-    to: "/lightroom_search_plugin",
+    to: "/lightroom_search_plugin/",
     linkLabel: "Explore the plugin",
     comingSoon: false,
   },

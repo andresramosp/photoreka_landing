@@ -58,7 +58,7 @@ useSEO("blog", {
       "@context": "https://schema.org",
       "@type": "Blog",
       name: "Photoreka Blog",
-      url: `${seoConfig.siteUrl}/blog`,
+      url: `${seoConfig.siteUrl}/blog/`,
       description: seoConfig.pages.blog.description,
       publisher: {
         "@type": "Organization",
@@ -72,7 +72,7 @@ useSEO("blog", {
       blogPost: posts.map((post) => ({
         "@type": "BlogPosting",
         headline: post.title,
-        url: `${seoConfig.siteUrl}/blog/${post.slug}`,
+        url: `${seoConfig.siteUrl}/blog/${post.slug}/`,
         datePublished: post.publishedAt,
         dateModified: post.updatedAt || post.publishedAt,
       })),
@@ -91,7 +91,7 @@ useSEO("blog", {
           "@type": "ListItem",
           position: 2,
           name: "Blog",
-          item: `${seoConfig.siteUrl}/blog`,
+          item: `${seoConfig.siteUrl}/blog/`,
         },
       ],
     },

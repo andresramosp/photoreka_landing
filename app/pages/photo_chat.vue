@@ -486,7 +486,7 @@ const goToSignup = () => {
 
 const goToAtlas = () => {
   trackUserAction("navigate_to_atlas", "photo_chat_page");
-  navigateTo("/photo_3D_atlas");
+  navigateTo("/photo_3D_atlas/");
 };
 
 const goToAiSearch = () => {
@@ -499,7 +499,7 @@ const goToScoring = () => {
 
 const crossLinks = [
   {
-    to: "/ai_photo_search",
+    to: "/ai_photo_search/",
     label: "AI Photo Search",
     text: "Describe a photo in plain language and find it instantly, no tagging required.",
     icon: markRaw(SearchOutline),
@@ -507,7 +507,7 @@ const crossLinks = [
     onClick: goToAiSearch,
   },
   {
-    to: "/photo_scoring",
+    to: "/photo_scoring/",
     label: "AI Photo Scoring",
     text: "The same aesthetic, composition, and narrative scores, ranked and filterable across your whole catalog.",
     icon: markRaw(BarChartOutline),
@@ -515,7 +515,7 @@ const crossLinks = [
     onClick: goToScoring,
   },
   {
-    to: "/ai_photo_storyboard",
+    to: "/ai_photo_storyboard/",
     label: "AI Photo Storyboard",
     text: "The same assistant docked to an infinite canvas, where it reads how your photos are arranged and helps you sequence them.",
     icon: markRaw(GridOutline),

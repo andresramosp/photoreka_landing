@@ -345,7 +345,7 @@ const tools = [
     video: "/videos/Search.mp4",
     image: "/home/search_results.webp",
     color: "#2563eb",
-    link: "/ai_photo_search",
+    link: "/ai_photo_search/",
     demoLinks: [
       {
         label: "Commercial demo",
@@ -366,7 +366,7 @@ const tools = [
     ],
     images: ["/ai_photo_scoring/9.webp", "/ai_photo_scoring/7.webp"],
     color: "#f59e0b",
-    link: "/photo_scoring",
+    link: "/photo_scoring/",
     demoLinks: [
       { label: "Commercial demo", link: "/demo-commercial/", commercial: true },
       { label: "Standard demo", link: "/demo/" },
@@ -385,7 +385,7 @@ const tools = [
     videoFocus: "100% 50%",
     image: "/atlas/atlas_2d_poster.webp",
     color: "#06b6d4",
-    link: "/photo_3D_atlas",
+    link: "/photo_3D_atlas/",
     demoLinks: [
       {
         label: "Commercial demo",
@@ -406,7 +406,7 @@ const tools = [
     ],
     image: "/ai_geoinference/3_estrecho.webp",
     color: "#14b8a6",
-    link: "/ai_geo_inference",
+    link: "/ai_geo_inference/",
   },
   {
     icon: markRaw(LayersOutline),
@@ -419,7 +419,7 @@ const tools = [
     ],
     images: ["/portfolio_builder/0.webp"],
     color: "#22c55e",
-    link: "/photography_portfolio_builder",
+    link: "/photography_portfolio_builder/",
     demoLinks: [
       {
         label: "Commercial demo",
@@ -435,7 +435,7 @@ const steps = [
   {
     title: "Connect the folders you already use",
     description:
-      'Link Dropbox or Google Photos, connect a Lightroom Classic catalog through the <a href="/lightroom_search_plugin">official plugin</a>, or upload local files. Photoreka works from compressed previews, so your originals stay where they are.',
+      'Link Dropbox or Google Photos, connect a Lightroom Classic catalog through the <a href="/lightroom_search_plugin/">official plugin</a>, or upload local files. Photoreka works from compressed previews, so your originals stay where they are.',
     html: true,
   },
   {

@@ -306,7 +306,7 @@ const steps = [
   {
     title: "Scores feed into every tool",
     description:
-      "Scoring isn't isolated—it powers culling, portfolio building, <a href=\"/photo_chat\">AI Chat recommendations</a>, and 3D Atlas highlighting. Your quality data follows you across Photoreka's entire workflow.",
+      "Scoring isn't isolated—it powers culling, portfolio building, <a href=\"/photo_chat/\">AI Chat recommendations</a>, and 3D Atlas highlighting. Your quality data follows you across Photoreka's entire workflow.",
     html: true,
   },
 ];
@@ -423,7 +423,7 @@ const goToSignup = () => {
 
 const goToPortfolio = () => {
   trackUserAction("navigate_to_portfolio", "photo_scoring_page");
-  navigateTo("/photography_portfolio_builder");
+  navigateTo("/photography_portfolio_builder/");
 };
 
 const onRequestSuccess = () => {
