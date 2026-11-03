@@ -62,7 +62,7 @@ export const seoConfig = {
           description:
             "AI-powered photo curation and organizer app. Search your library by natural language, score and rank your best shots, discover patterns across your archive, explore your catalog in 3D, and build portfolios with AI.",
           applicationCategory: "PhotographyApplication",
-          operatingSystem: "Web",
+          operatingSystem: "Windows, macOS, Linux (web browser)",
           audience: {
             "@type": "Audience",
             audienceType: [
@@ -77,10 +77,12 @@ export const seoConfig = {
             ],
           },
           offers: {
-            "@type": "Offer",
-            availability: "https://schema.org/PreOrder",
-            price: "0",
-            priceCurrency: "USD",
+            "@type": "AggregateOffer",
+            availability: "https://schema.org/InStock",
+            lowPrice: "9.90",
+            highPrice: "315",
+            priceCurrency: "EUR",
+            offerCount: 7,
           },
           creator: {
             "@type": "Organization",
@@ -118,6 +120,22 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How much does Photoreka cost? Is there a free version?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "There is no subscription. You pay once to analyze a batch of photos, and the price per photo drops as the batch grows: 500 photos cost €9.90, 2,500 cost €36 and 10,000 cost €89. Every package includes tool credits, and photo slots never expire. After the analysis, most tools are free within daily limits, and credits let you use them without limits. New accounts get a free welcome pack of 100 photos and 500 credits, so you can try Photoreka on your own work before paying.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does Photoreka work on Windows and Mac?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Photoreka runs in the browser, so it works on Windows, macOS and Linux with nothing to install. You can bring photos from local folders, Google Photos, Google Drive or Dropbox, or straight from your Lightroom Classic catalog with the official plugin for Windows and macOS.",
               },
             },
             {
@@ -166,14 +184,6 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Photoreka is built for photographers who want to work with a curated body of work, not a raw dump of every file ever captured. The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Because the AI tools are built around curation, they work best when your archive already has a baseline of intentionality.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Can I try Photoreka for free?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "During the early access phase, a free photo package and usage credits are offered. Analyzing your photos requires a single batch payment, after which you can use most tools for free with daily limits, or purchase credits for unlimited access.",
               },
             },
           ],
@@ -1023,11 +1033,11 @@ export const seoConfig = {
     },
 
     ai_photo_picks: {
-      title: "AI Photo Ranker: Pick & Critique Your Best Photos | Photoreka",
+      title: "AI Photo Rater & Ranker: Find Your Best Photos | Photoreka",
       description:
-        "AI photo ranker: drop up to 5,000 photos and an AI jury ranks them, scores eight artistic criteria and critiques each one. No account. Free trial with 10 photos.",
+        "Rate your photos with AI: drop up to 5,000 photos and an AI jury rates each one on eight artistic criteria, ranks them and writes a critique. No account. 10 photos free.",
       keywords:
-        "photo ranker, ai photo ranker, photo ranking, ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
+        "photo rater, ai photo rater, rate my photo, rate my photos, photo rating, ai photo rating, image rating ai, photo ranker, ai photo ranker, photo ranking, ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
       ogImage: "/picks/og-picks.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -1037,7 +1047,7 @@ export const seoConfig = {
           "@type": "WebApplication",
           name: "Photoreka Picks",
           description:
-            "Online AI photo ranking: scores every photo on eight artistic criteria, writes a critique for each and ranks them with genre and award juries. No account required, pay per photo.",
+            "Online AI photo rater and ranker: rates every photo on eight artistic criteria, writes a critique for each and ranks them with genre and award juries. No account required, pay per photo.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
           url: "https://www.photoreka.com/ai_photo_picks/",

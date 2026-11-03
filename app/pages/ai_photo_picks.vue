@@ -14,12 +14,12 @@
       </template>
     </LandingNav>
 
-    <PageHero eyebrow="AI photo ranker · No account needed">
+    <PageHero eyebrow="AI photo rater & ranker · No account needed">
       <template #title>
         Find your <em class="lx-accent">best photos</em> with AI.
       </template>
       <p>
-        Drop up to {{ formatCount(PICKS_MAX_PHOTOS) }} photos. An AI jury scores every frame
+        Drop up to {{ formatCount(PICKS_MAX_PHOTOS) }} photos. An AI jury rates every frame
         on eight artistic criteria, writes a short critique for each one and ranks them
         through the eyes of street, documentary, landscape or award juries.
       </p>

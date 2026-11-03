@@ -37,6 +37,16 @@ const faqs = [
       "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
   },
   {
+    question: "How much does Photoreka cost? Is there a free version?",
+    answer: `There is no subscription. You pay once to analyze a batch of photos, and the price per photo drops as the batch grows: 500 photos cost €9.90, 2,500 cost €36 and 10,000 cost €89. Every package includes tool credits, and photo slots never expire. After the analysis, most tools are free within daily limits, and credits let you use them without limits. <span style='color:var(--lx-accent);font-weight:600;'>New accounts get a free welcome pack of 100 photos and 500 credits, so you can try Photoreka on your own work before paying — <a href='#' style='color:inherit;text-decoration:underline;' onclick='event.preventDefault();window.__goToEarlyAccess && window.__goToEarlyAccess()'>create a free account</a>.</span>`,
+    hasHtml: true,
+  },
+  {
+    question: "Does Photoreka work on Windows and Mac?",
+    answer:
+      "Yes. Photoreka runs in the browser, so it works on Windows, macOS and Linux with nothing to install. You can bring photos from local folders, Google Photos, Google Drive or Dropbox, or straight from your Lightroom Classic catalog with the official plugin for Windows and macOS.",
+  },
+  {
     question: "How does Photoreka organize and curate photos with AI?",
     answer:
       "Photoreka uses computer vision AI to analyze your photographs, identifying narrative and stylistic elements. This enables intelligent organization, advanced semantic search by natural language, automatic photo scoring and ranking, 3D catalog visualization, and AI-assisted portfolio curation—all without manual tagging. For detailed information on our image processing policies, please see our Terms and Image Policy.",
@@ -69,11 +79,6 @@ const faqs = [
     answer:
       "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 20,000 photos; up to 50,000 is workable but we recommend keeping it focused. Because the AI tools are built around curation—semantic search, visual clusters, scoring, sequencing—they work best when your archive already has a baseline of intentionality.",
   },
-  {
-    question: "Can I try Photoreka for free?",
-    answer: `Analyzing your photos requires a single batch payment. Afterward, you can use most tools for free, with some daily/total limits, or purchase credits to work unlimitedly. <span style='color:var(--lx-accent);font-weight:600;'>During the <a href='#' style='color:inherit;text-decoration:underline;' onclick='event.preventDefault();window.__goToEarlyAccess && window.__goToEarlyAccess()'>early access</a> phase, a free photo package and usage credits will be offered.</span>`,
-    hasHtml: true,
-  },
 ];
 
 const onToggle = (index, isOpen) => {
@@ -89,7 +94,7 @@ const goToTerms = () => {
   navigateTo("/terms/");
 };
 
-// El enlace "early access" vive dentro del HTML de una respuesta (v-html),
+// El enlace "create a free account" vive dentro del HTML de una respuesta (v-html),
 // así que solo puede llegar aquí a través de window.
 onMounted(() => {
   window.__goToEarlyAccess = () => emit("signup");
