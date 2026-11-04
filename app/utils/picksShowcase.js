@@ -136,8 +136,8 @@ export const SHOWCASE_JURIES = [
   {
     id: "overall",
     label: "Overall",
-    tagline: "A balanced eye across every criterion.",
-    weights: { aesthetics: 1, composition: 1, storytelling: 0.8, originality: 0.8, message: 0.6, humor: 0.3, visual_games: 0.4, spontaneity: 0.4 },
+    tagline: "Beauty, composition, storytelling and originality.",
+    weights: { aesthetics: 1, composition: 1, storytelling: 0.8, originality: 0.8 },
   },
   {
     id: "street",

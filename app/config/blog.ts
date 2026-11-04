@@ -189,7 +189,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Then you rank. The <strong>Overall</strong> jury balances every criterion; <strong>street, documentary, landscape, portrait, travel and fine art</strong> juries weigh them their own way and only rank the photos of their genre; <strong>award juries</strong> keep only the photos above a high bar. Identical copies are grouped and judged once, so duplicates don't crowd your top picks, and you can export the whole ranking as CSV.",
+        html: "Then you rank. The <strong>Overall</strong> jury weighs aesthetics, composition, storytelling and originality; <strong>street, documentary, landscape, portrait, travel and fine art</strong> juries weigh them their own way and only rank the photos of their genre; <strong>award juries</strong> keep only the photos above a high bar. Identical copies are grouped and judged once, so duplicates don't crowd your top picks, and you can export the whole ranking as CSV.",
       },
       {
         type: "p",
