@@ -306,6 +306,10 @@ const faqs = [
     question: "How is this different from Aftershoot or Narrative Select?",
     answer:
       "Most culling tools use a binary keep/reject model optimized for wedding and event photography. Photoreka takes a fundamentally different approach: it scores photos across multiple artistic dimensions, respects narrative intent over pure technical quality, and integrates with semantic search so you can filter by content, mood, and style—not just sharpness.",
+    link: {
+      to: "/blog/best-ai-culling-software/",
+      label: "Compare the best AI culling software",
+    },
   },
   {
     question: "Will it reject my intentionally imperfect photos?",

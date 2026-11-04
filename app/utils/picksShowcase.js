@@ -48,6 +48,11 @@ export const PICKS_FAQS = [
     a: `Thumbnails and results are deleted after ${PICKS_RETENTION_DAYS} days. They are never shared and never used to train AI models.`,
   },
   {
+    q: "How is Picks different from other AI photo raters?",
+    a: "Most AI photo raters give one overall score to a single photo, or judge how a person comes across in a profile picture. Picks ranks a whole batch on eight artistic criteria, writes a critique for every photo and lets different juries weigh them, so it's built for choosing your best work rather than grading a selfie.",
+    link: { to: "/blog/best-ai-photo-rater/", label: "Compare AI photo raters" },
+  },
+  {
     q: "How is Picks different from Photoreka's Photo Scoring?",
     a: `Picks is a standalone tool for a one-off batch of photos: no account, pay per photo, results kept for ${PICKS_RETENTION_DAYS} days. Photo Scoring is part of a Photoreka account and scores your whole catalog permanently, so you can search, filter and follow your work over time.`,
     link: { to: "/photo_scoring/", label: "Discover Photo Scoring" },

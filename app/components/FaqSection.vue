@@ -29,7 +29,16 @@
           <div class="lx-faq__a">
             <div class="lx-faq__a-inner">
               <slot name="answer" :faq="faq" :index="index">
-                <p>{{ faq.answer }}</p>
+                <p>
+                  {{ faq.answer }}
+                  <NuxtLink
+                    v-if="faq.link"
+                    :to="faq.link.to"
+                    class="lx-inline-link"
+                  >
+                    {{ faq.link.label }} →
+                  </NuxtLink>
+                </p>
               </slot>
             </div>
           </div>

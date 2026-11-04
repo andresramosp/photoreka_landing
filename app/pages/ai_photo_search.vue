@@ -188,6 +188,16 @@
                   <strong>DigiKam</strong>—none of which offer the search depth
                   or curation tools of Photoreka.
                 </p>
+                <p class="search-alt__note">
+                  Comparing options? Read
+                  <NuxtLink to="/blog/best-ai-photo-organizer/" class="lx-link"
+                    >the best AI photo organizers for photographers</NuxtLink
+                  >
+                  and
+                  <NuxtLink to="/blog/excire-search-vs-photoreka/" class="lx-link"
+                    >Excire Search vs Photoreka</NuxtLink
+                  >.
+                </p>
               </div>
               <ul class="lx-list search-alt__list">
                 <li>
