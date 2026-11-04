@@ -48,6 +48,10 @@ export const PICKS_FAQS = [
     a: `Thumbnails and results are deleted after ${PICKS_RETENTION_DAYS} days. They are never shared and never used to train AI models.`,
   },
   {
+    q: "Is the AI photo critique like a real photography critique?",
+    a: "It follows the same logic as a portfolio review: one or two sentences naming what makes each frame work and what holds it back, from composition and light to timing and storytelling, plus a rating on eight criteria. It's a fast first opinion on hundreds of photos, not a replacement for a mentor; use it to find the frames that deserve one.",
+  },
+  {
     q: "How is Picks different from other AI photo raters?",
     a: "Most AI photo raters give one overall score to a single photo, or judge how a person comes across in a profile picture. Picks ranks a whole batch on eight artistic criteria, writes a critique for every photo and lets different juries weigh them, so it's built for choosing your best work rather than grading a selfie.",
     link: { to: "/blog/best-ai-photo-rater/", label: "Compare AI photo raters" },

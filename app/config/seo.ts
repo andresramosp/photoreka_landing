@@ -295,12 +295,11 @@ export const seoConfig = {
     },
 
     ai_photo_search: {
-      title:
-        "AI Search for Your Own Photo Catalog — Find Any Photo by Describing It | Photoreka",
+      title: "AI Photo Search: Find Any Photo by Describing It | Photoreka",
       description:
-        "Point Photoreka at your own photo library — local files, Lightroom, Google Photos, Dropbox — and find any shot just by describing it in natural language. No tagging needed. Three honest search modes: Broad (embedding similarity), Adaptive (re-ranked), and Precise (logical inference that verifies conditions, not just ranks them). No query length limit — unlike CLIP-based tools like Excire Search (~77-token cap). Enriched results with AI insights.",
+        "AI photo search and image finder for your own library. Describe any shot and find it across Lightroom, Google Photos, Dropbox or local files. No tagging, no keywords.",
       keywords:
-        "AI photo search, natural language photo search, Excire Search alternative, Excire alternative, Mylio Photos alternative, semantic photo search alternative, find photos by description, search photos without tags, AI photo finder, photo search app, search my photo library, find photo by describing it, smart photo search, semantic image search, photo catalog search, AI image search, visual photo search, search photos by mood, search photos AI, intelligent photo finder, AI photo organizer, photo library search, describe photo find it, no tagging photo search, computer vision photo search, photo archive search app, precise AI photo search, broad adaptive precise photo search, ChatLab photo search, AI photo search no character limit",
+        "AI photo search, AI image finder, photo search AI, natural language photo search, Excire Search alternative, Excire alternative, Mylio Photos alternative, semantic photo search alternative, find photos by description, search photos without tags, AI photo finder, photo search app, search my photo library, find photo by describing it, smart photo search, semantic image search, photo catalog search, AI image search, visual photo search, search photos by mood, search photos AI, intelligent photo finder, AI photo organizer, photo library search, describe photo find it, no tagging photo search, computer vision photo search, photo archive search app, precise AI photo search, broad adaptive precise photo search, ChatLab photo search, AI photo search no character limit",
       ogImage: "/home/video_poster.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -343,6 +342,14 @@ export const seoConfig = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: [
+            {
+              "@type": "Question",
+              name: "What is AI photo search?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "AI photo search lets you find pictures by describing what's in them instead of relying on file names, folders or keywords. A computer-vision model analyzes every photo once—subjects, setting, light, composition and mood—so a sentence like 'two people on a bench at dusk' finds the right frame. Photoreka is an AI photo search tool and image finder for your own catalog, not for photos on the web.",
+              },
+            },
             {
               "@type": "Question",
               name: "Do I need to tag or keyword my photos first?",
@@ -987,11 +994,11 @@ export const seoConfig = {
     },
 
     ai_photo_picks: {
-      title: "AI Photo Rater & Ranker: Find Your Best Photos | Photoreka",
+      title: "AI Photo Rating & Critique: Rank Your Best Photos | Photoreka",
       description:
-        "Rate your photos with AI: drop up to 5,000 photos and an AI jury rates each one on eight artistic criteria, ranks them and writes a critique. No account. 10 photos free.",
+        "AI photo rating and critique: an AI jury rates up to 5,000 photos on eight artistic criteria, writes a critique of each one and ranks them. No account. 10 photos free.",
       keywords:
-        "photo rater, ai photo rater, rate my photo, rate my photos, photo rating, ai photo rating, image rating ai, photo ranker, ai photo ranker, photo ranking, ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
+        "photo critique, photography critique, ai photo critique, photo rating, photo rater, ai photo rater, rate my photo, rate my photos, photo rating, ai photo rating, image rating ai, photo ranker, ai photo ranker, photo ranking, ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
       ogImage: "/picks/og-picks.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -1001,7 +1008,7 @@ export const seoConfig = {
           "@type": "WebApplication",
           name: "Photoreka Picks",
           description:
-            "Online AI photo rater and ranker: rates every photo on eight artistic criteria, writes a critique for each and ranks them with genre and award juries. No account required, pay per photo.",
+            "Online AI photo rating and critique: rates every photo on eight artistic criteria, writes a critique for each and ranks them with genre and award juries. No account required, pay per photo.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
           url: "https://www.photoreka.com/ai_photo_picks/",

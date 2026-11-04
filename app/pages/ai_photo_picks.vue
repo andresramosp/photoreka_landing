@@ -14,7 +14,7 @@
       </template>
     </LandingNav>
 
-    <PageHero eyebrow="AI photo rater & ranker · No account needed">
+    <PageHero eyebrow="AI photo rating & critique · No account needed">
       <template #title>
         Find your <em class="lx-accent">best photos</em> with AI.
       </template>
@@ -96,7 +96,7 @@
           />
         </div>
         <div class="pkl-critique__copy">
-          <SectionIntro eyebrow="A critique for every frame" size="md" flush>
+          <SectionIntro eyebrow="Photography critique, frame by frame" size="md" flush>
             <template #title>
               AI photo critique: <em class="lx-accent">not just a number.</em>
             </template>

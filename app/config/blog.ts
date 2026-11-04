@@ -750,7 +750,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Not natively, at the time of writing (November 2026). Lightroom Classic's search is the Library Filter bar — Text, Attribute and Metadata filters — plus keywords, Smart Collections and the People view, which uses face recognition to group the people you've named. It's precise and fast over whatever metadata exists. What it can't do is look at the pixels and match them to a sentence. Adobe keeps adding AI elsewhere in Classic: Assisted Culling scores open eyes and sharpness, and the release notes for version 15.5 (August 2026) add automatic duplicate detection. Search by description isn't among those additions.",
+        html: "Not natively, at the time of writing (November 2026). Lightroom Classic's search is the Library Filter bar — Text, Attribute and Metadata filters — plus keywords, Smart Collections and the People view, which uses face recognition to group the people you've named. It's precise and fast over whatever metadata exists. What it can't do is look at the pixels and match them to a sentence. Adobe keeps adding AI elsewhere in Classic: Assisted Culling scores open eyes and sharpness, and version 15.4 (June 2026) added automatic duplicate detection. Search by description isn't among those additions.",
       },
       {
         type: "p",

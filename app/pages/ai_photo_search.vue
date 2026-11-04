@@ -4,7 +4,7 @@
       <div class="lx-page lx-numbered">
         <PageNav source="ai_photo_search_page" :links="navLinks" />
 
-        <PageHero eyebrow="AI search across your own library">
+        <PageHero eyebrow="AI photo search · Image finder for your own library">
           <template #title>
             Find any photo in
             <em class="lx-accent">your own catalog</em>
@@ -21,9 +21,9 @@
             instantly.
           </p>
           <p>
-            No tagging. No folders. No metadata editing. Pure
-            <strong>semantic search</strong> powered by computer vision AI that
-            understands your photos the way you do
+            No tagging. No folders. No metadata editing. An
+            <strong>AI image finder</strong> built on semantic search that
+            understands your photos the way you do.
           </p>
           <template #actions>
             <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
@@ -580,6 +580,11 @@ const lightroomPoints = [
 
 // FAQs
 const faqs = [
+  {
+    question: "What is AI photo search?",
+    answer:
+      "AI photo search lets you find pictures by describing what's in them instead of relying on file names, folders or keywords. A computer-vision model analyzes every photo once—subjects, setting, light, composition and mood—so a sentence like 'two people on a bench at dusk' finds the right frame. Photoreka is an AI photo search tool and image finder for your own catalog, not for photos on the web.",
+  },
   {
     question:
       "Does Photoreka search the internet, social media, or stock photos?",
