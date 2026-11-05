@@ -26,16 +26,14 @@
             </LxButton>
           </template>
           <template #note>
-            <span class="lx-status">No credit card required · Free to start</span>
+            <span class="lx-status"
+              >No credit card required · Free to start</span
+            >
           </template>
           <template #visual>
-            <ShotFrame
-              video="/videos/Chatlab_Largo_1.mp4"
-              poster="/home/video_poster.webp"
-              alt="Photoreka ChatLab answering questions about a photo library"
-              label="Photoreka — ChatLab"
-              ratio="16 / 9"
-            />
+            <ShotFrame label="Photoreka — ChatLab" ratio="16 / 11">
+              <FeatureCarousel :images="heroImages" fit="contain" />
+            </ShotFrame>
           </template>
         </PageHero>
 
@@ -55,7 +53,11 @@
             </SectionIntro>
             <div class="chat-examples">
               <div v-reveal class="chat-examples__side">
-                <div class="lx-tabs" role="tablist" aria-label="What you can ask">
+                <div
+                  class="lx-tabs"
+                  role="tablist"
+                  aria-label="What you can ask"
+                >
                   <button
                     v-for="(group, i) in conversationExamples"
                     :id="`chat-tab-${i}`"
@@ -272,6 +274,22 @@ const smoothScroll = useSmoothScroll();
 const showRequestDialog = ref(false);
 
 const activeExample = ref(0);
+
+const heroImages = [
+  {
+    src: "/chatlab/dashboard.webp",
+    alt: "Photoreka ChatLab building a portfolio step by step: it picks an Urban Reflections theme, explains each of the first five photos and suggests next actions",
+  },
+  {
+    src: "/canvas/chatlab_2_estrecho.webp",
+    alt: "Photoreka Canvas Chat reading a board of street portraits and suggesting new photos from the library that keep the same mood",
+  },
+
+  {
+    src: "/chatlab/dashboard_empty.webp",
+    alt: "Photoreka home with the 'Chat with your library' assistant ready for a question, next to the user's recent portfolios and series",
+  },
+];
 
 const navLinks = [
   { label: "Examples", target: "examples" },
