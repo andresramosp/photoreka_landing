@@ -2,7 +2,7 @@
   <div class="lx-page">
     <PageNav source="privacy_page" />
 
-    <PageLegal eyebrow="Legal" updated="October 19, 2026">
+    <PageLegal eyebrow="Legal" updated="November 7, 2026">
       <template #title>Privacy &amp; <em class="lx-accent">Image Policy</em></template>
 
       <section>
@@ -222,14 +222,14 @@
             the same 30-day process.
           </li>
           <li>
-            <strong>Inactive free accounts:</strong> in line with the
-            principle of data minimization, if a free account shows no
-            activity (no sign-in or use of the Platform) for at least four (4)
-            consecutive months, we may delete it together with its images and
-            derived data. We will notify you by email at least 30 days before
-            the deletion, and signing in before the indicated date cancels it.
-            Accounts that have made a purchase are not affected. See
-            <em>Inactive Free Accounts</em> in our
+            <strong>Inactive accounts:</strong> in line with the principle of
+            data minimization, if an account shows no activity (no sign-in or
+            use of the Platform) for at least four (4) consecutive months, or
+            twelve (12) consecutive months if it has made a purchase, we
+            may delete it together with its images and derived data. We will
+            notify you by email at least 30 days before the deletion, and
+            signing in before the indicated date cancels it. See
+            <em>Inactive Accounts</em> in our
             <NuxtLink to="/terms">Terms of Service</NuxtLink>.
           </li>
           <li>

@@ -2,7 +2,7 @@
   <div class="lx-page">
     <PageNav source="terms_page" />
 
-    <PageLegal eyebrow="Legal" updated="October 27, 2026">
+    <PageLegal eyebrow="Legal" updated="November 7, 2026">
       <template #title>Terms of <em class="lx-accent">Service</em></template>
 
       <section>
@@ -382,9 +382,9 @@
             discretion.
           </li>
           <li>
-            Free accounts may also be deleted after a prolonged period of
+            Accounts may also be deleted after a prolonged period of
             inactivity, with prior email notice, as described in Section 14
-            (Inactive Free Accounts).
+            (Inactive Accounts).
           </li>
           <li>
             Upon termination, your right to use the Platform ceases
@@ -396,10 +396,10 @@
       </section>
 
       <section>
-        <h2>14. Inactive Free Accounts</h2>
+        <h2>14. Inactive Accounts</h2>
         <p>
           To keep the service sustainable and avoid retaining data that is no
-          longer being used, Photoreka may delete free accounts that remain
+          longer being used, Photoreka may delete accounts that remain
           inactive for an extended period.
         </p>
         <ul>
@@ -407,12 +407,16 @@
             An account is considered <strong>inactive</strong> when it has
             not been signed into or used in any way (including through
             connected integrations such as the Lightroom plugin) for at least
-            <strong>four (4) consecutive months</strong>.
+            <strong>four (4) consecutive months</strong> in the case of free
+            accounts, or at least
+            <strong>twelve (12) consecutive months</strong> in the case of
+            accounts that have made a purchase on the Platform.
           </li>
           <li>
-            This clause does <strong>not</strong> apply to accounts that have
-            made a purchase on the Platform. Photo analyses and credits
-            obtained through a purchase have no expiry date.
+            Photo analyses and credits obtained through a purchase have no
+            expiry date while the account remains active. This clause is the
+            only case in which unused purchased analyses and credits can be
+            lost through inactivity.
           </li>
           <li>
             Before deleting an account, Photoreka will send a notice to the
@@ -433,6 +437,15 @@
             Any unused free allowance granted to the account, such as the
             photo analyses and credits of the welcome pack, is lost when the
             account is deleted.
+          </li>
+          <li>
+            If the account has unused photo analyses or credits obtained
+            through a purchase, you may request a refund of them, in proportion
+            to the price you paid, by replying to the notice or writing to
+            <a href="mailto:hello@photoreka.com">hello@photoreka.com</a>
+            <strong>before the planned deletion date</strong>. Purchased
+            analyses and credits for which no refund has been requested by
+            that date are lost when the account is deleted.
           </li>
           <li>
             You are responsible for keeping the email address on your account
