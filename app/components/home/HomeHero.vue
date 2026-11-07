@@ -49,9 +49,10 @@ const features = [
   { label: "Multi-score ranking" },
   { label: "2D/3D clustering" },
   { label: "Storyboarding" },
-  { label: "AI Portfolio builder" },
+  { label: "AI Moodboard" },
   { label: "Patterns detection" },
-  { label: "AI Geo-Location" },
+  { label: "AI Portfolio builder" },
+  { label: "Geo-Location" },
 ];
 
 const goToDemo = () => {

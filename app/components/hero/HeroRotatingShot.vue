@@ -43,7 +43,7 @@ const props = defineProps({
         alt: "Photoreka dashboard: world map, scores, genres and photographic patterns of a library",
       },
       {
-        src: "/home/hero_portfolio.webp",
+        src: "/home/portfolio_desktop_4.webp",
         alt: "AI photo portfolio built with Photoreka",
       },
     ],
