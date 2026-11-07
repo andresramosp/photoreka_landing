@@ -89,8 +89,10 @@
                 <em class="lx-accent">curation &amp; selection</em>
               </template>
               <p>
-                Not a template gallery. An AI photo selection engine that
-                understands quality, coherence, and narrative—and lets you stay
+                Not a template gallery. An AI photo selection engine that starts
+                where the first pass stops: it doesn't hunt for blurry frames, it
+                decides which of your keepers carry the series and in what
+                order—judging quality, coherence, and narrative while you stay
                 in control.
               </p>
             </SectionIntro>
@@ -262,7 +264,7 @@ const usecases = [
     icon: markRaw(BriefcaseOutline),
     title: "Client Delivery",
     description:
-      "Distill a shoot into a tight edit. Filter by date range or collection, score across quality dimensions, and deliver a sequenced selection — not a raw dump.",
+      "Distill a shoot into a tight edit. Filter by date range or collection, score across 8 artistic criteria, and deliver a sequenced selection — not a raw dump.",
     color: "#2563eb",
   },
   {

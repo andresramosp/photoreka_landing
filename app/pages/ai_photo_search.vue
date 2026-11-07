@@ -181,6 +181,13 @@
                   Precise mode that <em>verifies</em> candidates against your
                   exact conditions rather than just ranking by vector proximity.
                 </p>
+                <p class="search-alt__text">
+                  There's also a difference of purpose. Those tools are built to
+                  organize and retrieve everything you've ever shot—keywords,
+                  faces, objects. Photoreka is built for the photos you kept: it
+                  searches by mood, narrative and cultural reference, the
+                  dimensions that matter once a body of work has been edited.
+                </p>
                 <p class="search-alt__note">
                   Also relevant if you're looking for an alternative to
                   <strong>Google Photos</strong> (avoid cloud lock-in),
@@ -474,7 +481,7 @@ const steps = [
   {
     title: "Results improve as you refine",
     description:
-      "You can combine queries, filter by date or source, and use figurative or emotional language. The more specific your description, the more precise the results—even across 100,000+ photos.",
+      "You can combine queries, filter by date or source, and use figurative or emotional language. The more specific your description, the more precise the results—even across a body of work of up to 50,000 photos.",
   },
 ];
 
@@ -498,7 +505,7 @@ const features = [
     icon: markRaw(FlashOutline),
     title: "Instant Results",
     description:
-      "Once your library is analyzed, searches are near-instantaneous regardless of catalog size. Vector similarity search is orders of magnitude faster than scanning metadata records.",
+      "Once your library is analyzed, searches are near-instantaneous across your whole catalog. Vector similarity search is orders of magnitude faster than scanning metadata records.",
     color: "#f59e0b",
   },
   {
@@ -517,9 +524,9 @@ const features = [
   },
   {
     icon: markRaw(SpeedometerOutline),
-    title: "Scales to Any Archive",
+    title: "Built for the Photos You Kept",
     description:
-      "Whether you have 100 or 5000 photos, search performance stays consistent. The more you have, the more powerful the discovery.",
+      "Made for a body of work of up to 50,000 photos—your keepers, not every frame you shot. Search stays fast at that scale, and the more intentional the catalog, the more meaningful the discovery.",
     color: "#06b6d4",
   },
 ];
@@ -646,7 +653,7 @@ const faqs = [
   {
     question: "What kind of photo catalog is Photoreka designed for?",
     answer:
-      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 20,000 photos; up to 50,000 is tested and workable, but we recommend keeping it focused. Because analysis runs in the cloud and the tools are built around curation—sequences, semantic search, visual clusters, scores—they work best when your archive already has a baseline of intentionality: duplicates removed, clearly failed shots discarded. There is duplicate detection built in, but the value of every feature increases the more curated your starting point is.",
+      "Photoreka is built for the photos you kept, not every photo you shot: a curated body of work of up to 50,000 photos. Think of it as a studio, not a warehouse. Culling tools like Aftershoot, Imagen or Lightroom's Assisted Culling handle the first pass—rejecting blur, blinks and duplicates across thousands of raw frames. Photoreka works on what survives it: searching by mood, narrative and reference, scoring, clustering and sequencing a body of work. That's a deliberate design choice—every photo is read in the context of the rest of your catalog, so the analysis goes deeper when the starting point already has intention. Duplicate detection is built in for the stragglers.",
   },
 ];
 

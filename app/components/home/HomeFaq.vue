@@ -34,7 +34,18 @@ const faqs = [
   {
     question: "What is Photoreka and who is it for?",
     answer:
-      "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
+      "Photoreka is an AI app to curate the photos you kept. A first pass, by hand or with a tool like Aftershoot, gets you from a full memory card to your keepers; Photoreka finishes the cull and curates them—a project, a series or years of selects, up to 50,000 photos. Score them on 8 artistic criteria, search them in natural language, find the patterns across your work, explore them in 3D and turn them into sequenced portfolios. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
+  },
+  {
+    question: "How is Photoreka different from Aftershoot, Imagen or Excire?",
+    answer:
+      "They're built for large volumes of photos. Aftershoot, Imagen, Narrative Select, FilterPixel and Lightroom's Assisted Culling spot the shots that failed—blinks, blur, missed focus—and suggest the strongest frame of each moment. Libraries like Excire, Peakto or Mylio keep everything you shot and find it by keyword, and some add an aesthetic score per photo. Photoreka works on more carefully curated catalogs—the photos you kept—which is what lets it go a level higher: curation and editorial judgment. It scores each photo on 8 artistic criteria—storytelling, originality, message and more—reads it against the rest of your work, and helps you see patterns, build sequences and critique the whole. Many photographers use both: one of them for the first pass, Photoreka for the final cull and the edit. More in <a href='/blog/culling-is-not-editing/' class='lx-inline-link'>Culling Is Not Editing</a>.",
+    hasHtml: true,
+  },
+  {
+    question: "Why up to 50,000 photos?",
+    answer:
+      "Because Photoreka is built for bodies of work, not memory cards. Every photo is read against all the others: originality is measured within your own catalog, and clusters, patterns and gaps emerge from the whole set. Bursts, blinks and near-duplicates would only drown that signal. Up to 50,000 photos leaves room for years of selects—bring the keepers of every shoot, a long-term project or a client archive, and Photoreka shows you what they say together.",
   },
   {
     question: "How much does Photoreka cost? Is there a free version?",
@@ -55,7 +66,7 @@ const faqs = [
   {
     question: "Does Photoreka work for commercial and product photography?",
     answer:
-      "Yes. Alongside the artistic dimensions, commercial mode activates two extra scores: subject clarity—how cleanly the main subject reads—and commercial intent—how usable a frame is for a brand, catalog, or campaign. Commercial photographers use it to search an archive from a client brief, rank a shoot by what's actually sellable, and assemble a client-ready selection, across product, fashion, architecture, lifestyle, and wedding work. A separate commercial demo runs on its own catalog.",
+      "Yes. The commercial profile swaps two of the 8 criteria for subject clarity—how cleanly the main subject reads—and commercial intent—how usable a frame is for a brand, catalog, or campaign. Commercial photographers use it to search an archive from a client brief, rank their selects by what's actually sellable, and assemble a client-ready selection, across product, fashion, architecture, lifestyle, and wedding work. A separate commercial demo runs on its own catalog.",
   },
   {
     question: "Is Photoreka a storage platform?",
@@ -73,11 +84,6 @@ const faqs = [
     answer:
       "We only store a reduced version of your images on secure servers—sufficient to facilitate searches and for common social media uses, but not for any other purpose. The analysis is performed using proprietary and third-party services under agreements that prevent retaining or reusing your photos. They are not shared with anyone and you always retain 100% of the rights to your work. For complete details, please read our Terms and Image Policy.",
     hasLink: true,
-  },
-  {
-    question: "What kind of photo catalog works best with Photoreka?",
-    answer:
-      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 20,000 photos; up to 50,000 is workable but we recommend keeping it focused. Because the AI tools are built around curation—semantic search, visual clusters, scoring, sequencing—they work best when your archive already has a baseline of intentionality.",
   },
 ];
 

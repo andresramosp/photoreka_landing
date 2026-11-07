@@ -234,6 +234,10 @@ html.lenis body {
   text-wrap: pretty;
 }
 
+.lx-lead > p + p {
+  margin-top: 1rem;
+}
+
 .lx-lead strong {
   color: var(--lx-text);
   font-weight: 600;

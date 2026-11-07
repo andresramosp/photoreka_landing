@@ -11,7 +11,7 @@
           </template>
           <p>
             Photoreka is the
-            <strong>AI curation layer for your photo archive</strong>. It sits
+            <strong>AI curation layer for your body of work</strong>. It sits
             on top of <strong>Lightroom Classic, Google Photos, Dropbox</strong>
             or local folders and analyzes your library once—making it searchable
             in natural language, scored for quality, and mapped by visual
@@ -83,7 +83,7 @@
             <SectionIntro eyebrow="Explore your archive" align="center">
               <template #title>
                 Three ways to see
-                <em class="lx-accent">your whole archive</em>
+                <em class="lx-accent">your body of work</em>
               </template>
               <p>
                 Once analyzed, your library stops being a grid you scroll. Fly
@@ -172,8 +172,8 @@
                 <em class="lx-accent">to organized catalog</em>
               </template>
               <p>
-                One analysis pass replaces years of manual tagging, rating, and
-                album building.
+                One analysis pass over the photos you kept replaces years of
+                manual tagging, rating, and album building.
               </p>
             </SectionIntro>
             <PageSteps :steps="steps" />
@@ -209,13 +209,15 @@
               <div class="org-alt__copy">
                 <h3 class="lx-title lx-title--md">
                   Not another DAM.
-                  <em class="lx-accent">Not another desktop app.</em>
+                  <em class="lx-accent">A layer for the work you kept.</em>
                 </h3>
                 <p class="org-alt__text">
-                  Excire Foto, Peakto, and Mylio are capable desktop organizers
-                  —but each one asks something of you: a new catalog to import
-                  into, a Mac-only environment, or a monthly subscription.
-                  Photoreka asks for none of it.
+                  Excire Foto, Peakto, and Mylio are capable organizers built
+                  for everything you've ever shot: import it all, keyword it,
+                  find it again—Excire and Peakto even add an aesthetic score to
+                  help you pick. Photoreka works one step later, on the photos
+                  you kept, and reads them as a body of work: how they relate,
+                  what they say together, and which ones carry it.
                 </p>
                 <p class="org-alt__note">
                   Deciding between tools?
@@ -228,30 +230,33 @@
                 <li>
                   <span class="lx-tick" aria-hidden="true" />
                   <span
-                    ><strong>Cloud-based, runs in the browser</strong> on
-                    Windows, Mac, and Linux — unlike Peakto (Mac-only)</span
+                    ><strong>Built for the photos you kept</strong>: a curated
+                    body of work of up to 50,000 photos, not every frame on your
+                    drives</span
                   >
                 </li>
                 <li>
                   <span class="lx-tick" aria-hidden="true" />
                   <span
-                    ><strong>Pay per analyzed batch</strong>, not per month —
-                    your organized catalog stays organized</span
+                    ><strong>8 artistic criteria</strong>, from storytelling
+                    and originality to message and humor—not one global
+                    score</span
                   >
                 </li>
                 <li>
                   <span class="lx-tick" aria-hidden="true" />
                   <span
-                    >Goes beyond organizing into <strong>curation</strong>:
-                    quality scoring, portfolio sequencing, and an AI assistant
-                    for your catalog</span
+                    >Reads the collection, not just the frame:
+                    <strong>patterns, gaps, sequences</strong>, and an AI
+                    assistant that talks about your work</span
                   >
                 </li>
                 <li>
                   <span class="lx-tick" aria-hidden="true" />
                   <span
-                    >No query length limit on search — unlike CLIP-based tools
-                    like Excire (~77-token cap)</span
+                    ><strong>Runs in the browser</strong> on Windows, Mac, and
+                    Linux, paid per analyzed batch—no new catalog, no
+                    subscription</span
                   >
                 </li>
               </ul>
@@ -405,7 +410,7 @@ const steps = [
   {
     title: "Curate from an organized base",
     description:
-      'Once organized, the real work starts: cull the weak frames, surface hidden gems, and build sequenced selections with the <a href="/photography_portfolio_builder/">Portfolio Builder</a>—for exhibitions, photobooks, or client delivery.',
+      'Once organized, the real work starts: find the frames that carry the work, surface hidden gems, and build sequenced selections with the <a href="/photography_portfolio_builder/">Portfolio Builder</a>—for exhibitions, photobooks, or client delivery.',
     html: true,
   },
 ];
@@ -431,7 +436,7 @@ const features = [
     icon: markRaw(BarChartOutline),
     title: "Quality Scoring & Ranking",
     description:
-      "9+ scoring dimensions—aesthetics, composition, narrative, originality—rank your entire catalog so your strongest work surfaces automatically.",
+      "8 artistic criteria—from aesthetics and composition to storytelling and originality—rank your catalog so your strongest work surfaces automatically.",
     color: "#f59e0b",
     link: "/photo_scoring/",
   },
@@ -439,7 +444,7 @@ const features = [
     icon: markRaw(GitNetworkOutline),
     title: "2D/3D Visual Maps",
     description:
-      "See your whole archive as a navigable space where similar photos cluster together. Spot themes, gaps, and stylistic shifts no grid can reveal.",
+      "See your body of work as a navigable space where similar photos cluster together. Spot themes, gaps, and stylistic shifts no grid can reveal.",
     color: "#2563eb",
   },
   {
@@ -473,9 +478,9 @@ const views = [
       label: "Photoreka — 3D Atlas",
       ratio: "16 / 9",
     },
-    title: "Your entire archive,",
+    title: "Your body of work,",
     accent: "in one image",
-    text: "Every photo you own takes its place on a single map, in 2D or in 3D, clustered by what the images actually are—composition, color, subject, mood—not by the folder they landed in. Dense continents are the work you keep returning to. The dark space between them is the work you haven't made yet.",
+    text: "Every photo you kept takes its place on a single map, in 2D or in 3D, clustered by what the images actually are—composition, color, subject, mood—not by the folder they landed in. Dense continents are the work you keep returning to. The dark space between them is the work you haven't made yet.",
     points: [
       "Fly through thousands of photos in real-time 3D, or read them on a flat, zoomable 2D map",
       "Clusters come from visual embeddings projected with UMAP, so neighbors really look alike",
@@ -567,12 +572,12 @@ const faqs = [
   {
     question: "How is Photoreka different from Excire Foto or Peakto?",
     answer:
-      "Excire Foto and Peakto are desktop apps (Peakto is Mac-only, subscription-based). Photoreka runs in the browser on any OS, is paid per analyzed photo batch instead of a subscription, and goes beyond organization into curation: multi-dimensional quality scoring, three-mode semantic search with no query length limit, portfolio sequencing, and an AI assistant for your catalog.",
+      "Excire Foto and Peakto are organizers built for everything you've shot: they import, keyword and find your whole library, and both add an aesthetic score to help you pick the best frames. Photoreka works one step later, on the body of work you kept—up to 50,000 photos. Instead of one global score it rates each photo on 8 artistic criteria, reads the collection as a whole (patterns, gaps, style reports, an AI assistant for your catalog) and helps you sequence portfolios. It also runs in the browser on any OS (Peakto is Mac-only, subscription-based) and is paid per analyzed batch instead of a subscription.",
   },
   {
     question: "Does Photoreka replace Lightroom?",
     answer:
-      "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI quality scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
+      "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI artistic scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
   },
   {
     question: "What is the 3D Atlas and how are photos placed on it?",
@@ -598,7 +603,7 @@ const faqs = [
   {
     question: "How many photos can I organize with Photoreka?",
     answer:
-      "The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Photoreka is built for a curated body of work rather than a raw dump of every file ever captured—duplicate detection is built in to help you get there.",
+      "Up to 50,000 photos—and that limit is deliberate. Photoreka is built for the photos you kept, not every photo you shot: the selects that survive your first pass, across projects and years. Every photo is analyzed in the context of the rest of your catalog, so a focused body of work gives clearer clusters and more meaningful scores and reports. Duplicate detection is built in for the stragglers.",
   },
   {
     question: "What happens to my photos and who can see them?",

@@ -7,8 +7,8 @@
           <em class="lx-accent">from anywhere</em>
         </template>
         <p>
-          Import from Lightroom Classic, Google Photos, Google Drive, Dropbox,
-          or local files and start curating right away. A
+          Bring your keepers from Lightroom Classic, Google Photos, Google
+          Drive, Dropbox, or local files and start curating right away. A
           <NuxtLink to="/ai_photo_organizer"
             >cloud-based AI photo organizer</NuxtLink
           >
@@ -83,7 +83,7 @@ const sources = [
     ],
     name: "Google Photos & Drive",
     description:
-      "Sync your entire Google Photos library with one click, or pick the photos you want straight from your Google Drive.",
+      "Pick the photos and albums you want from Google Photos, or straight from your Google Drive.",
     brand: "#4285f4",
     comingSoon: false,
   },
@@ -93,7 +93,7 @@ const sources = [
     ],
     name: "Lightroom Classic",
     description:
-      "Connect directly with your Lightroom Classic catalog through our official plugin.",
+      "Send your picks or a whole collection from Lightroom Classic with our official plugin.",
     brand: "#31a8ff",
     to: "/lightroom_search_plugin/",
     linkLabel: "Explore the plugin",

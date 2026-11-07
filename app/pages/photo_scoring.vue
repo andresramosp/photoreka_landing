@@ -10,16 +10,16 @@
             <em class="lx-accent">surface your best work</em>
           </template>
           <p>
-            Your archive has thousands of images—your portfolio needs twenty.
-            Photoreka scores every photo in your catalog across
+            Your body of work has thousands of keepers—your portfolio needs
+            twenty. Photoreka scores every photo in your catalog on
             <strong
-              >aesthetics, composition, narrative strength, originality, visual
-              wit</strong
+              >aesthetics, composition, narrative strength, originality,
+              message</strong
             >, and more—giving you an objective lens on your own work.
           </p>
           <p>
-            For commercial work—product, stock, or fashion—two extra dimensions
-            activate: <strong>subject clarity</strong> and
+            For commercial work—product, stock, or fashion—the commercial
+            profile swaps in <strong>subject clarity</strong> and
             <strong>commercial intent</strong>.
           </p>
           <template #actions>
@@ -48,14 +48,14 @@
             <div class="sc-dims__side">
               <SectionIntro eyebrow="Scoring dimensions" flush>
                 <template #title>
-                  9+ AI photo
+                  8 AI photo
                   <em class="lx-accent">scoring dimensions</em>
                 </template>
                 <p>
-                  Each photo receives a detailed quality profile across multiple
-                  independent criteria—so you can rank and filter by exactly
-                  what matters for your project. Commercial mode activates two
-                  additional product-, stock-, and fashion-specific scores.
+                  Each photo receives a quality profile across 8 independent
+                  criteria, scored 1–10—so you can rank and filter by exactly
+                  what matters for your project. The commercial profile swaps
+                  two of them for product-, stock-, and fashion-specific scores.
                 </p>
               </SectionIntro>
               <div v-reveal="{ variant: 'scale', delay: 120 }">
@@ -101,11 +101,12 @@
             <SectionIntro eyebrow="Features" align="center">
               <template #title>
                 Quality ranking built for
-                <em class="lx-accent">serious catalogs</em>
+                <em class="lx-accent">bodies of work</em>
               </template>
               <p>
                 A multi-dimensional scoring engine for photographers who care
-                about nuance—not just pixel-level sharpness metrics.
+                about nuance. It doesn't measure sharpness or noise—that's the
+                first pass's job. It measures what a photo says.
               </p>
             </SectionIntro>
             <PageGrid :items="features" :columns="3" />
@@ -127,7 +128,7 @@
             <em class="lx-accent">deserve to be found.</em>
           </template>
           <p>
-            Let Photoreka score your entire catalog and surface the work that
+            Let Photoreka score the photos you kept and surface the work that
             defines you as a photographer. No guesswork, no second-guessing.
           </p>
           <template #actions>
@@ -168,6 +169,7 @@ import {
   ScanOutline,
   ExtensionPuzzleOutline,
   PersonOutline,
+  ChatbubbleEllipsesOutline,
 } from "@vicons/ionicons5";
 import Trophy20Regular from "@vicons/fluent/es/Trophy20Regular.js";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
@@ -250,6 +252,13 @@ const dimensions = [
     color: "#f59e0b",
   },
   {
+    icon: markRaw(ChatbubbleEllipsesOutline),
+    title: "Message",
+    description:
+      "The idea behind the image: what the photo says about its subject or the world, beyond what it shows. Does it leave the viewer with a thought?",
+    color: "#e11d48",
+  },
+  {
     icon: markRaw(ExtensionPuzzleOutline),
     title: "Visual Games",
     description:
@@ -264,25 +273,25 @@ const dimensions = [
     color: "#06b6d4",
   },
   {
+    icon: markRaw(PersonOutline),
+    title: "Candidness",
+    description:
+      "Authenticity and spontaneity of the moment. Unposed, genuine expressions and interactions that feel true to life—the opposite of staged or constructed imagery.",
+    color: "#34d399",
+  },
+  {
     icon: markRaw(ScanOutline),
     title: "Subject Clarity",
     description:
-      "How clearly and unambiguously the main subject stands out from the background. Especially relevant for product, stock, and fashion photography where instant subject identification is critical.",
+      "Commercial profile, in place of Visual Games. How clearly and unambiguously the main subject stands out from the background—critical for product, stock, and fashion work.",
     color: "#f97316",
   },
   {
     icon: markRaw(BriefcaseOutline),
     title: "Commercial Intent",
     description:
-      "Suitability for commercial applications: product advertising, stock libraries, fashion editorials. Evaluates background cleanliness, subject isolation, lighting quality for commercial use, and overall production value.",
+      "Commercial profile, in place of Message. Suitability for product advertising, stock libraries and fashion editorials: background cleanliness, subject isolation, lighting for commercial use, and production value.",
     color: "#a78bfa",
-  },
-  {
-    icon: markRaw(PersonOutline),
-    title: "Candidness",
-    description:
-      "Authenticity and spontaneity of the moment. Unposed, genuine expressions and interactions that feel true to life—the opposite of staged or constructed imagery.",
-    color: "#34d399",
   },
 ];
 
@@ -296,12 +305,12 @@ const steps = [
   {
     title: "Multi-dimensional scores are computed",
     description:
-      "Each embedding is evaluated across 6+ independent quality dimensions by specialized scoring models. The result is a detailed quality profile—not a single pass/fail number.",
+      "Each photo is scored 1–10 on 8 independent artistic criteria, weighted by your profile. The result is a detailed quality profile—not a single pass/fail number.",
   },
   {
     title: "Rankings surface your best work",
     description:
-      "Sort your entire catalog by any dimension or by a combined overall score. Your strongest photos rise to the top automatically. Filters let you narrow by date, source, or semantic content.",
+      "Sort your whole body of work by any criterion or by the overall rating. Your strongest photos rise to the top automatically. Filters let you narrow by date, source, or semantic content.",
   },
   {
     title: "Scores feed into every tool",
@@ -343,9 +352,9 @@ const features = [
   },
   {
     icon: markRaw(ImagesOutline),
-    title: "Batch Any Catalog Size",
+    title: "Made for Bodies of Work, Not Memory Cards",
     description:
-      "From 100 photos to 20,000+. Scoring runs in the background and results persist—sort and filter anytime without reprocessing.",
+      "Score the keepers of years of shooting—up to 50,000 photos. Each photo is read against the rest of your work, so originality and patterns mean something. Results persist—sort and filter anytime.",
     color: "#ec4899",
   },
   {
@@ -367,7 +376,7 @@ const faqs = [
   {
     question: "Is this just a sharpness detector?",
     answer:
-      "No. Technical sharpness is only one of 6+ dimensions. A soft, atmospheric portrait can score very high on aesthetics, narrative, and originality while scoring lower on technical sharpness. The system evaluates what makes a photo compelling, not just what makes it technically correct.",
+      "No—it doesn't measure sharpness at all. Focus, blur and blinks belong to the first pass, which you run on each shoot by hand or with a tool like Aftershoot, Imagen or Lightroom's Assisted Culling. Photoreka scores the photos you kept on 8 artistic criteria, so a soft, atmospheric portrait can score very high on aesthetics, narrative and originality. The system evaluates what makes a photo compelling, not whether it's technically correct.",
   },
   {
     question: "How are the scoring models trained?",
@@ -377,7 +386,7 @@ const faqs = [
   {
     question: "Can I sort by a single dimension?",
     answer:
-      "Yes. You can sort and filter by any individual dimension (aesthetics, composition, narrative strength, originality, visual wit, or technical quality) or by the combined overall score. This lets you tailor rankings to each specific project.",
+      "Yes. You can sort and filter by any individual criterion (aesthetics, composition, narrative strength, originality, message, humor, visual games, or candidness) or by the overall rating. This lets you tailor rankings to each specific project.",
   },
   {
     question: "Do scores change over time?",
@@ -392,7 +401,7 @@ const faqs = [
   {
     question: "How does commercial scoring work?",
     answer:
-      "When Photoreka detects commercial photography (product, stock, fashion) in your catalog—or when you flag it manually—two additional dimensions are activated: Subject Clarity, which measures how cleanly the main subject stands out from its environment, and Commercial Intent, which evaluates overall production value and suitability for advertising, stock libraries, or editorial use. These scores help you quickly identify your most licensable or pitch-ready images.",
+      "Choose the Commercial Photography profile and two of the eight criteria are swapped for commercial ones: Subject Clarity, which measures how cleanly the main subject stands out from its environment, and Commercial Intent, which evaluates overall production value and suitability for advertising, stock libraries, or editorial use. They replace Visual Games and Message, so every photo still gets 8 scores. These help you quickly identify your most licensable or pitch-ready images.",
   },
 ];
 

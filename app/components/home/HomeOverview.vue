@@ -8,7 +8,7 @@
           Your catalog, understood <em class="lx-accent">as a whole</em>
         </template>
         <p>
-          Photoreka reads your <strong>entire library</strong> at once and
+          Photoreka reads your <strong>body of work</strong> at once and
           learns how your photos relate, surfacing the <strong>themes</strong>,
           <strong>patterns</strong> and <strong>connections</strong> that
           folders and grids keep hidden.

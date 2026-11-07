@@ -74,8 +74,8 @@
             From Lightroom to <em class="lx-accent">3D exploration</em>
           </template>
           <p>
-            Launch the 3D Atlas directly from Lightroom Classic to see your
-            entire catalog as a stunning navigable universe. Your photos are
+            Launch the 3D Atlas directly from Lightroom Classic to see the work
+            you've analyzed as a stunning navigable universe. Your photos are
             automatically positioned in 3D space based on visual similarity,
             creating clusters that reveal hidden patterns and connections you
             never knew existed. Navigate your work contextually, narratively, or
@@ -186,7 +186,7 @@ const features = [
     icon: markRaw(ChatbubblesOutline),
     title: "Natural Language Search",
     description:
-      "Search your entire Lightroom catalog using everyday language. Find 'photos of sunset over water' or 'portraits with warm lighting' instantly. No more endless scrolling or complex keyword tagging.",
+      "Search the photos you've analyzed from your Lightroom catalog using everyday language. Find 'photos of sunset over water' or 'portraits with warm lighting' instantly. No more endless scrolling or complex keyword tagging.",
     color: "#8b5cf6",
   },
   {
@@ -200,14 +200,14 @@ const features = [
     icon: markRaw(SpeedometerOutline),
     title: "AI-Powered Analysis",
     description:
-      "Automatically analyze your photos to understand content, composition, mood, and style. The AI learns your photographic patterns and helps you discover hidden gems in your archive.",
+      "Select your picks or a whole collection in Lightroom and send them for analysis: content, composition, mood, style and 8 artistic criteria. Photoreka learns your photographic patterns and helps you discover hidden gems in the work you kept.",
     color: "#22c55e",
   },
   {
     icon: markRaw(ShareSocialOutline),
     title: "One-Click Transfer",
     description:
-      "Send photos from Lightroom to Photoreka with a single click. Create sequences, explore in 3D, or use advanced curation tools without re-importing your images.",
+      "Send selected photos from Lightroom to Photoreka with a single click. Create sequences, explore in 3D, or use advanced curation tools without re-importing your images.",
     color: "#f59e0b",
   },
   {
@@ -303,7 +303,7 @@ const faqs = [
   {
     question: "What kind of photo catalog is Photoreka designed for?",
     answer:
-      "Photoreka is built for photographers who want to work with a curated body of work—not a raw dump of every file ever captured. Think of it as a studio, not a warehouse. The sweet spot is a catalog of up to 20,000 photos; up to 50,000 is workable but we recommend keeping it focused. Because analysis runs in the cloud and the tools are built around curation—sequences, semantic search, visual clusters, scores—they work best when your archive already has a baseline of intentionality: duplicates removed, clearly failed shots discarded. There is duplicate detection built in, but the value of every feature increases the more curated your starting point is.",
+      "Photoreka is built for the photos you kept, not every photo you shot: a curated body of work of up to 50,000 photos. Think of it as a studio, not a warehouse. In Lightroom that usually means your flagged picks, your rated selects or a few key collections, not your whole import history. Lightroom's Assisted Culling or a culler like Aftershoot handles the first pass (blur, blinks, duplicates); Photoreka works on what survives it: search by mood and reference, artistic scoring, clusters and sequences. Every photo is read in the context of the rest of your catalog, so the analysis goes deeper when the starting point already has intention.",
   },
 ];
 

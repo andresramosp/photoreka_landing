@@ -5,8 +5,8 @@
         <div class="footer-column">
           <AppLogo layout="horizontal" :with-claim="true" size="small" />
           <p class="footer-description">
-            The AI curation layer for your photo archive. Search, score, explore
-            in 3D, and build portfolios with AI—on top of the storage you
+            The AI curation layer for your photo archive. Score, search, explore
+            in 3D and sequence your body of work—on top of the storage you
             already use.
           </p>
         </div>

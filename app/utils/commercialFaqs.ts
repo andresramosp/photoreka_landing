@@ -9,7 +9,7 @@ export const COMMERCIAL_FAQS = [
   {
     question: "What is commercial scoring and how is it different?",
     answer:
-      "On top of the standard artistic dimensions (aesthetics, composition, narrative, originality), commercial mode activates two extra scores: subject clarity — how clean and readable the main subject is — and commercial intent — how usable a frame is for a brand, catalog, or campaign. That means a technically sharp packshot ranks above a moody frame that would never pass a client review.",
+      "Every photo is scored 1–10 on 8 criteria. Commercial mode keeps aesthetics, composition, storytelling and originality, and swaps two of the artistic criteria (message and visual games) for subject clarity — how clean and readable the main subject is — and commercial intent — how usable a frame is for a brand, catalog, or campaign. That means a clean, clearly readable packshot ranks above a moody frame that would never pass a client review.",
   },
   {
     question: "Can Photoreka pick the best product photos from a shoot?",
@@ -24,7 +24,7 @@ export const COMMERCIAL_FAQS = [
   {
     question: "Can it handle a full wedding or a large stock library?",
     answer:
-      "Yes. Photoreka is built to take a few thousand frames from a wedding or campaign and surface your strongest selects, with near-duplicate detection to cut the over-shot setups. The sweet spot is a curated body of work up to about 20,000 photos, with up to 50,000 workable.",
+      "Yes, once the first pass is done. Filter the shoot with your usual tool (Aftershoot, Imagen or Lightroom's Assisted Culling take care of blur, blinks and duplicates), then bring the keepers: Photoreka ranks them by commercial intent and storytelling, helps you sequence the gallery, and catches the near-duplicates that slipped through. A stock library works too — up to 50,000 photos of the curated work you actually sell from.",
   },
   {
     question: "Does Photoreka retouch, generate, or alter my images?",

@@ -377,7 +377,7 @@ const features = [
     icon: markRaw(TrendingUpOutline),
     title: "Artistic Evolution",
     description:
-      "Track how your photography has changed over time. The assistant can map your stylistic development, highlight turning points, and tell you whether your technique is improving.",
+      "Track how your photography has changed over time. The assistant can map your stylistic development, highlight turning points, and tell you whether your work is getting stronger.",
     color: "#a855f7",
   },
   {
@@ -429,7 +429,7 @@ const faqs = [
   {
     question: "Can the AI find my best photos automatically?",
     answer:
-      "Yes. Just ask it to find your best photos and it ranks your strongest shots across your entire library—by composition, expression, and technical quality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+      "Yes. Just ask it to find your best photos and it ranks your strongest shots across your catalog—by aesthetics, composition, storytelling, and originality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
   },
   {
     question: "Can it critique my portfolio like an editor would?",
@@ -464,7 +464,7 @@ const faqs = [
   {
     question: "How many photos does it need to give useful answers?",
     answer:
-      "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio critique) become richer as your archive grows. There's no upper limit—it works well with 10,000+ images.",
+      "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio critique) become richer as your body of work grows, up to 50,000 photos. It works best on a coherent body of work rather than an unculled dump: questions about style and evolution need intention, not noise.",
   },
   {
     question: "Can I use it to prepare for a competition or exhibition?",

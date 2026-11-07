@@ -92,10 +92,10 @@ const tools = [
     group: "Select & Score",
     icon: markRaw(Trophy20Regular),
     title: "Rankings & Scores",
-    lead: "Score your photos across multiple dimensions and rank your catalog.",
+    lead: "Score your photos on 8 artistic criteria and rank your body of work.",
     bullets: [
-      "Score aesthetics, composition, narrative and originality",
-      "Commercial mode adds product-specific scores",
+      "Score aesthetics, composition, storytelling and originality",
+      "A commercial profile scores subject clarity and commercial intent",
       "Surface your strongest work automatically",
     ],
     images: [

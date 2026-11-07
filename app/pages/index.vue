@@ -13,6 +13,7 @@
         <HomeNav @login="goToAuth('login')" />
         <HomeHero @signup="goToAuth('signup')" />
 
+        <HomeWorkflow />
         <HomeOverview />
         <HomeSources />
         <HomeFeatures />

@@ -61,6 +61,364 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "culling-is-not-editing",
+    title:
+      "Culling Is Not Editing: Why Your Body of Work Needs a Different Kind of AI",
+    excerpt:
+      "AI culling tools are brilliant at one job: getting a shoot from thousands of frames to the keepers. Then a different job begins — deciding which photographs matter and in what order. Why those are two jobs, why they need different tools, and why Photoreka is built mainly for the second one.",
+    description:
+      "Culling vs editing in photography: what AI culling tools like Aftershoot, Narrative Select, FilterPixel, Imagen, Excire and Lightroom Assisted Culling do, what changes when the unit is a body of work, and why Photoreka is built for the final cull and the edit, on up to 50,000 photos.",
+    keywords:
+      "culling vs editing, photo culling vs selecting, photography editing process, what to do after culling, after culling photos, ai culling, ai photo culling, aftershoot alternative, narrative select alternative, photo selection software for photographers, body of work photography, ai photo curation, photo editing selection, how to edit a photography project",
+    category: "Curation Philosophy",
+    tags: ["Photo Curation", "AI Culling", "Photo Editing", "Body of Work"],
+    coverImage: "/blog/culling_vs_editing.png",
+    publishedAt: "2026-11-05",
+    readingMinutes: 9,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Photographers use two words almost interchangeably: <strong>culling</strong> and <strong>editing</strong>. In a picture editor's vocabulary they mean different things. Culling is throwing away what failed. Editing — <em>the edit</em> — is choosing the photographs that carry a piece of work and deciding the order they're seen in. Software has become extraordinary at the first job. The second one is still mostly done by hand, late at night, by photographers scrolling through years of keepers and trusting their memory.",
+      },
+      {
+        type: "p",
+        html: "We make <a href='/ai_photo_organizer/'>Photoreka</a>, so read this as an argument from one side. It explains where we think the line between the two jobs falls, what the best culling tools do on their side of it, and why we built Photoreka mainly for the other side — including why it's designed for bodies of work of up to 50,000 photos rather than for every frame you've ever shot. Details about other products come from their own sites and from our comparisons, checked in November 2026.",
+      },
+      {
+        type: "h2",
+        text: "Two Jobs, Two Moments",
+        id: "two-jobs",
+      },
+      {
+        type: "p",
+        html: "<strong>Culling</strong> happens right after the shoot. Its unit is the shoot itself: everything on the card. Its question is <em>can I use this frame?</em>, and its criteria are mostly local and technical — focus, open eyes, exposure, near-duplicates, the best frame of each burst. The output is a set of keepers, and for client work, a gallery.",
+      },
+      {
+        type: "p",
+        html: "<strong>Editing</strong> happens later, often much later. Its unit is a body of work: a project, a series, a year, sometimes a career. Its question is <em>which of these deserve to be seen, and how do they work together?</em> Its criteria are about meaning and relationships — what a photograph says, whether it's original against everything else you've made, how it reads next to the photograph before it. The output is a portfolio, a photobook, an exhibition, a contest entry.",
+      },
+      {
+        type: "list",
+        items: [
+          "Culling — input: everything you shot. Question: is this frame usable? Judged against: the other frames of the same moment. Output: keepers.",
+          "Editing — input: the keepers, usually from many shoots. Question: which photographs matter, and in what order? Judged against: the rest of your work. Output: a series, a portfolio, a book, a show.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Culling asks whether a frame can be used. Editing asks whether a photograph deserves to be seen — and what it says next to the others.",
+      },
+      {
+        type: "h2",
+        text: "What Culling Tools Do — and Do Well",
+        id: "what-culling-tools-do",
+      },
+      {
+        type: "p",
+        html: "The culling category is mature, and the leading tools are genuinely good. <strong>Aftershoot</strong> flags blurry frames, closed eyes and blown exposures, groups duplicates and surfaces the frames where every face looks its best, all locally on your computer. <strong>Narrative Select</strong> groups a shoot into scenes, shows face close-ups, checks eyes and focus, and its AI First Pass ranks each frame within its scene with a reason. <strong>FilterPixel</strong> goes furthest on ranking: its DeepCull mode judges frames by the logic of the shoot — expressions, peak action, emotional impact — and explains each pick. <strong>Imagen</strong> catches blinks, groups similar images, flags focus and exposure problems and can cull to an exact number. And <strong>Lightroom</strong>'s own Assisted Culling now scores subject and eye focus and flags exposure across a batch.",
+      },
+      {
+        type: "p",
+        html: "It would be wrong to say these tools only look at pixels. Excire's best-shot selection weighs aesthetics alongside sharpness and expressions, and Excire Search adds aesthetic ratings; Peakto computes an aesthetic score that blends aesthetics, composition and technique; FilterPixel reasons about emotional impact. What they share is the unit. Each of them is built to answer <em>which is the best frame of this moment, this sequence, this shoot?</em> — a score per frame that helps you cut. We compared them in detail in <a href='/blog/best-ai-culling-software/'>the best AI culling software in 2026</a>.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "If you shoot volume, use one",
+        html: "Wedding, event, sports and session photographers should be using a dedicated culler, and nothing in this article argues otherwise. The point is narrower: those tools finish exactly where a different problem begins.",
+      },
+      {
+        type: "h2",
+        text: "What Changes When the Unit Is the Body of Work",
+        id: "body-of-work",
+      },
+      {
+        type: "p",
+        html: "Once the technical failures are gone, every frame left is usable — and that is precisely when the hard decisions start. A whole set of questions simply doesn't exist at the level of one frame or one burst:",
+      },
+      {
+        type: "list",
+        items: [
+          "Narrative: whether a photograph says something rather than just showing something — and whether two photographs are saying the same thing.",
+          "Originality against yourself: a frame can be fresh in general and still be the fortieth version of a picture you keep taking.",
+          "Sequence: an opener, pairs that talk to each other, a rhythm, an ending. The same twenty photographs in a different order are a different piece of work.",
+          "Coherence: visual, chromatic or narrative — whatever makes twenty photographs read as one body of work instead of a pile of good pictures.",
+          "Patterns and gaps: what you keep returning to, what you've never photographed, how your eye has changed over the years.",
+        ],
+      },
+      {
+        type: "p",
+        html: "None of these can be judged by looking at a single image. They need the whole set in view at once, and they need that set to be intentional. Three hundred near-identical frames of the same ceremony would dominate every pattern in an archive; blinks and missed focus would pollute every ranking. That's why editing comes after culling — whoever, or whatever, does each one.",
+      },
+      {
+        type: "h2",
+        text: "Where Photoreka Sits",
+        id: "where-photoreka-sits",
+      },
+      {
+        type: "p",
+        html: "We built Photoreka mainly for the second job, because when we looked for a tool built around it we couldn't find one: the AI products we tried were culling assistants, organizers, or raters that judge one photo at a time. Photoreka doesn't check focus or look for blinks. It assumes the technical first pass is done, works on what you kept, and flags the near-duplicates that slipped through it.",
+      },
+      {
+        type: "p",
+        html: "<strong>It judges each photograph on separate criteria.</strong> Every photo is <a href='/photo_scoring/'>scored</a> from 1 to 10 on eight artistic criteria — aesthetic quality, composition, storytelling, originality, message, humor, visual games and spontaneity — kept separate, so a quiet documentary frame and a graphic street photo can each rank where they belong. Your profile (street, documentary, landscape, commercial and others) shifts how they're weighted, and the commercial profile swaps in subject clarity and commercial intent.",
+      },
+      {
+        type: "p",
+        html: "<strong>It runs the second pass for you.</strong> <a href='/ai_photo_culling/'>Photoreka's AI culling</a> ranks your keepers by those criteria instead of sorting them into keep and reject. <a href='/ai_photo_picks/'>Photoreka Picks</a> does the same on any folder of up to 5,000 photos without an account, and writes a short critique of every frame, the way an editor would in a portfolio review.",
+      },
+      {
+        type: "p",
+        html: "<strong>It works on the set as a whole.</strong> The <a href='/photography_portfolio_builder/'>portfolio builder</a> selects and sequences 10–40 images under a coherence mode you choose, from visual to narrative. The <a href='/ai_photo_storyboard/'>storyboard canvas</a> lets you arrange a sequence by hand with an assistant that sees the board. <a href='/photo_chat/'>ChatLab</a> answers questions no single photo can — what dominates your work, where you repeat yourself, how you've changed — with criteria adapted to your profile. And the <a href='/ai_photo_organizer/#atlas'>2D/3D Atlas</a> and style reports show the patterns and gaps of everything you kept.",
+      },
+      {
+        type: "h2",
+        text: "Why Up to 50,000 Photos",
+        id: "why-50000-photos",
+      },
+      {
+        type: "p",
+        html: "Photoreka is built for bodies of work of up to 50,000 photos. That number is a design decision, not an engineering apology, and there are three reasons behind it:",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "It's the scale of a body of work. Fifty thousand keepers is, for most photographers, many years of selected work — far more than a portfolio, a book or even a long project will ever draw on. It isn't the scale of every frame you've ever shot, and it isn't meant to be.",
+          "Whole-set tools need an intentional set. The map of your catalog, the pattern reports, the rankings and the portfolio builder read your photos together. Noise doesn't just waste time there: bursts, blinks and test shots change the answer.",
+          "Depth costs something per photo. Eight criteria, rich descriptions, embeddings for three search modes: that's far more analysis per frame than a keep-or-reject decision. It's why Photoreka is paid once per photo analyzed, with no subscription — and why it makes sense to spend that analysis on the photographs you decided to keep.",
+        ],
+      },
+      {
+        type: "p",
+        html: "So if your archive is bigger than that, the order is simple: run the technical first pass outside it — with Aftershoot, Narrative Select, Excire, Lightroom's Assisted Culling or by hand — and bring the keepers to Photoreka. Most of what you shot was never meant to be edited; the photographs that were deserve more attention than a technical filter can give them.",
+      },
+      {
+        type: "h2",
+        text: "A Workflow That Uses Both",
+        id: "workflow",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Shoot.",
+          "Filter the shoot, by hand or with a tool built for it: technical failures out, the best frame of each burst kept. For client work, deliver from here.",
+          "Bring the keepers — a project, a year, or the selects of a whole career — into Photoreka, from Lightroom Classic, Google Photos, Google Drive, Dropbox or local folders.",
+          "Finish the cull there, then score, search and explore them as one body of work: what's strongest, what repeats, what's missing.",
+          "Edit: choose the photographs that carry the work, and put them in order.",
+          "Send it out: a portfolio, a photobook, an exhibition, a contest entry.",
+        ],
+      },
+      {
+        type: "p",
+        html: "If you'd rather do the edit by hand, the method still applies. We describe the choosing in <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos from hundreds of shots</a> and the ordering in <a href='/blog/how-to-sequence-photos/'>how to sequence photos for a series, a photobook or a portfolio</a>.",
+      },
+      {
+        type: "cta",
+        eyebrow: "See it on a real body of work",
+        title: "Try Photoreka's demo — nothing to install",
+        text: "Artistic scores, the 3D Atlas, ChatLab and the portfolio builder on a real, already-culled archive, straight from the browser.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+      {
+        type: "p",
+        html: "Culling tools judge frames. Editing reads a body of work. The first job made photographers faster; the second is the one that decides whether the work goes anywhere — and it's the one we built Photoreka to help with. Culling is the floor. <strong>Curation is the point.</strong>",
+      },
+    ],
+  },
+  {
+    slug: "how-to-sequence-photos",
+    title:
+      "How to Sequence Photos: A Practical Method for Series, Photobooks and Portfolios",
+    excerpt:
+      "Two photographers can choose the same twenty photographs and make two different pieces of work. The difference is the order. A step-by-step method to sequence a photo series, a photobook or a portfolio: openers and closers, pairs, rhythm, coherence, and how to test it.",
+    description:
+      "A practical guide to photo sequencing: how to order photographs for a series, a photobook, a portfolio or a contest entry — choosing the opener and the closer, building pairs, pacing and rhythm, visual vs narrative coherence, and testing the sequence.",
+    keywords:
+      "photo sequencing, how to sequence photos, sequencing photographs, how to sequence a photo series, photobook sequencing, photo book sequencing, portfolio sequencing, how to order photos in a portfolio, photo series order, photography editing and sequencing, photo storyboard, ai portfolio builder",
+    category: "Photography Tips",
+    tags: ["Photo Sequencing", "Photobook", "Portfolio", "Photo Editing"],
+    coverImage: "/blog/photo_sequencing.png",
+    publishedAt: "2026-11-05",
+    readingMinutes: 8,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Two photographers can choose exactly the same twenty photographs and end up with two different pieces of work. The difference is the order. <strong>Sequencing</strong> is the part of editing where photographs start talking to each other: an image changes meaning depending on what comes before it and what follows. A strong picture in the wrong place goes quiet; an ordinary one in the right place can carry a whole series.",
+      },
+      {
+        type: "p",
+        html: "This is a method you can use with small prints on a table, a Lightroom collection or any tool you like. It assumes you've already chosen your candidates — if not, start with <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos</a> — and at the end we show where software genuinely helps.",
+      },
+      {
+        type: "h2",
+        text: "Before You Start: Know What the Set Is For",
+        id: "what-the-set-is-for",
+      },
+      {
+        type: "p",
+        html: "A sequence is only right in relation to how it will be seen. The same photographs need a different order on a wall, in a book and in a ten-second portfolio review:",
+      },
+      {
+        type: "list",
+        items: [
+          "A series or project (8–20 images): one argument, made image by image. Every photograph has to earn its place in that argument.",
+          "A photobook: dozens of images, read two at a time across spreads, with room to breathe. Pacing matters as much as content.",
+          "A portfolio (10–20 images): range inside one coherent voice. Curators and clients decide fast, so the first three images do most of the work.",
+          "A contest series (often 5–10 images): judged as a whole and quickly. Repetition is punished.",
+          "An exhibition wall: read in space, in no guaranteed order. Neighbours matter more than the line from first to last.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Then write one sentence describing what the set is about. If you can't, the problem is the selection, not the order — no sequence will rescue a set that doesn't know what it's saying.",
+      },
+      {
+        type: "h2",
+        text: "Step 1: Make Every Photo Visible at Once",
+        id: "see-everything",
+      },
+      {
+        type: "p",
+        html: "Sequencing is about relationships, and you can't see relationships one image at a time. Print the candidates small and at the same size, and spread them on a table or the floor — or use a digital canvas where every photo stays visible and can be moved freely. Avoid filmstrips and fixed grids at this stage: they already suggest an order, usually the one you shot in, before you've chosen one.",
+      },
+      {
+        type: "h2",
+        text: "Step 2: Group Before You Order",
+        id: "group-before-order",
+      },
+      {
+        type: "p",
+        html: "Sort the photographs into loose piles by what connects them: subject, light, colour, mood, place, gesture, scale. Don't force it; let the piles form. Two things become visible. Big piles show what you keep doing, and usually what the work is really about. Orphans — images that belong to no pile — are either the most surprising pictures in the set or the first ones to cut.",
+      },
+      {
+        type: "h2",
+        text: "Step 3: Choose the Opener and the Closer",
+        id: "opener-and-closer",
+      },
+      {
+        type: "p",
+        html: "The <strong>opener</strong> sets the tone and makes a promise. It doesn't have to be your best photograph; it has to tell the viewer how to read the rest. Many editors deliberately avoid opening with the strongest image, so the sequence has somewhere to climb. In a portfolio, though, where attention is short, a strong opener is non-negotiable.",
+      },
+      {
+        type: "p",
+        html: "The <strong>closer</strong> should feel like an ending: a resolution, an open question, or a quieter image that lets the work settle. A useful test is whether the last photograph changes how you remember the first. If it doesn't, you've stopped rather than finished.",
+      },
+      {
+        type: "h2",
+        text: "Step 4: Build Pairs",
+        id: "build-pairs",
+      },
+      {
+        type: "p",
+        html: "In a book, photographs are seen two at a time; in a portfolio or a slideshow, one after the other. Either way, the basic unit of a sequence is the <strong>pair</strong>: what happens in the viewer's head between one image and the next. Pairs tend to work in four ways:",
+      },
+      {
+        type: "list",
+        items: [
+          "Rhyme: a shape, a gesture or a colour that repeats across two different scenes.",
+          "Contrast: crowded and empty, near and far, light and dark, loud and quiet.",
+          "Continuation: the second image seems to pick up where the first one left off.",
+          "Tension: two photographs that don't obviously belong together, so the viewer has to work out why they're side by side.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Avoid pairs that say the same thing in the same way. Two photographs with the same idea don't reinforce each other; they cancel each other out. When that happens, keep the stronger one and let the other go — it may belong in a different sequence.",
+      },
+      {
+        type: "h2",
+        text: "Step 5: Work the Rhythm",
+        id: "rhythm",
+      },
+      {
+        type: "p",
+        html: "Read the sequence as music. Vary scale (wide, medium, close), density (busy and empty frames), tone (bright and dark) and energy. Five similar images in a row read as a stall; a sequence that never repeats anything reads as a scrapbook. Think in phrases: a few images that develop one idea, a pause, then the next idea. In a photobook, a single image on a spread or a blank page works as punctuation.",
+      },
+      {
+        type: "h2",
+        text: "Step 6: Choose Your Kind of Coherence",
+        id: "coherence",
+      },
+      {
+        type: "p",
+        html: "Something has to hold the sequence together, and it's worth naming what, because each choice changes the order:",
+      },
+      {
+        type: "list",
+        items: [
+          "Visual coherence: similar framing, composition or treatment, so the set looks like one body of work.",
+          "Chromatic coherence: a palette that carries through, or shifts on purpose as the sequence moves.",
+          "Narrative coherence: a story or an argument that develops. Chronology is the simplest version, and rarely the best one.",
+          "Conceptual coherence: images linked by an idea rather than by look, place or time.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Visual coherence makes a set <em>look</em> unified; narrative coherence makes it <em>say</em> something. Strong sequences usually lean firmly on one and let the other vary, which is what keeps them from being either monotonous or random.",
+      },
+      {
+        type: "h2",
+        text: "Step 7: Test It Cold",
+        id: "test-it",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Leave the sequence alone for a day or two, then go through it at the speed a stranger would.",
+          "Read it backwards. Weak transitions become obvious when the order is unfamiliar.",
+          "Remove each image in turn. If the sequence loses nothing, the image goes.",
+          "Show it to someone without explaining it and ask what it's about. If their answer is far from your one-sentence description, the order isn't doing its job yet.",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "Four common traps",
+        html: "<strong>Chronology by default:</strong> the order you shot in is rarely the order that reads best. <strong>Front-loading:</strong> all the strongest images in the first half, so the second half sags. <strong>Rhymes that become a trick:</strong> one visual echo is a discovery; five in a row are a gimmick. <strong>Protecting a favourite:</strong> keeping a photograph you love that the sequence doesn't need.",
+      },
+      {
+        type: "h2",
+        text: "Where Software Helps",
+        id: "where-software-helps",
+      },
+      {
+        type: "p",
+        html: "Sequencing is judgment, and no software should make the final call. But two steps are slow by hand: finding the right candidates across years of work, and trying many orders quickly. That's where Photoreka helps, on the photographs you've already kept — it's built for <a href='/blog/culling-is-not-editing/'>the edit after the first pass</a>, not for the first pass itself.",
+      },
+      {
+        type: "p",
+        html: "<a href='/photography_portfolio_builder/'>Photoreka's portfolio builder</a> selects and sequences 10–40 images from your catalog under the coherence mode you choose — from visual to narrative — after scoring every candidate on eight artistic criteria, so you start from a reasoned draft instead of an empty table. <a href='/ai_photo_storyboard/'>The storyboard canvas</a> is the digital version of the table itself: an infinite canvas where you arrange photos by hand, let Photoreka cluster them by narrative, colour or score, drop an image to surface visually similar ones, and ask an assistant that sees the board what's missing.",
+      },
+      {
+        type: "image",
+        alt: "Photoreka's storyboard canvas with photos arranged freely on the board and a chat panel suggesting photos that share their mood and subject",
+        caption:
+          "Laying out candidates on Photoreka's storyboard canvas, with an assistant that sees the board and suggests what could join it.",
+        src: "/canvas/hero_3.webp",
+      },
+      {
+        type: "cta",
+        eyebrow: "Try it on a real catalog",
+        title: "Build a sequenced portfolio from a real archive",
+        text: "The demo includes the portfolio builder and the storyboard canvas on a real body of work. Nothing to install.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+      {
+        type: "p",
+        html: "A selection tells the viewer what you saw. A sequence tells them what you think about it. Spend as long on the order as you spent on the choosing — and if the set is headed for a competition, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing photos for a photo contest</a> covers how juries read a series.",
+      },
+    ],
+  },
+  {
     slug: "best-ai-photo-rater",
     title:
       "AI Photo Raters Compared: The Best Ways to Rate and Rank Your Photos in 2026",
@@ -197,7 +555,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "<strong>Limits, honestly:</strong> Picks doesn't judge faces or profile pictures, and it isn't a client-delivery culling tool. It accepts JPEG, PNG and WebP, so RAW files need exporting first. The jury doesn't know a contest's theme or rules, so the final call against a brief is yours. And it's built for one-off batches: if you want scores kept on your whole catalog permanently, that's Photoreka's <a href='/photo_scoring/'>Photo Scoring</a>, part of a full account.",
+        html: "<strong>Limits, honestly:</strong> Picks doesn't judge faces or profile pictures, and it isn't a client-delivery culling tool. It accepts JPEG, PNG and WebP, so RAW files need exporting first. The jury doesn't know a contest's theme or rules, so the final call against a brief is yours. And it's built for one-off batches: if you want scores kept on your body of work permanently, that's Photoreka's <a href='/photo_scoring/'>Photo Scoring</a>, part of a full account.",
       },
       {
         type: "h2",
@@ -220,7 +578,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Whatever you use, treat the ranking as a shortlist, not a verdict. The AI's job is to get you from 2,000 frames to 50 worth looking at closely. Choosing the final 12 — and the order they're seen in — is still editing, and editing is yours. We wrote more about that last step in <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos from hundreds of shots</a>.",
+        html: "Whatever you use, treat the ranking as a shortlist, not a verdict. The AI's job is to get you from 2,000 frames to 50 worth looking at closely. Choosing the final 12 — and the order they're seen in — is still editing, and editing is yours. We wrote more about that last step in <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos from hundreds of shots</a>, about <a href='/blog/how-to-sequence-photos/'>how to sequence the final set</a>, and about why <a href='/blog/culling-is-not-editing/'>culling is not editing</a>.",
       },
       {
         type: "h2",
@@ -267,6 +625,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Comparisons", "AI Culling", "Aftershoot", "Narrative Select", "Photo Selection"],
     coverImage: "/blog/ai_culling_software.png",
     publishedAt: "2026-11-03",
+    updatedAt: "2026-11-05",
     readingMinutes: 9,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -277,7 +636,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This is an honest comparison of the four tools that lead the category, plus where Photoreka fits — and where it doesn't. We'll say it up front: <strong>Photoreka is not a wedding culler.</strong> It doesn't flag closed eyes, and if your job is delivering a gallery by Thursday you should pick one of the first four. What it does is the other half of culling: deciding which of your good photos are actually your best. Features and prices below were checked on each vendor's own site at the time of writing (November 2026); they change often, so confirm before you buy.",
+        html: "This is an honest comparison of the four tools that lead the category, plus where Photoreka fits in the same workflow. Photoreka sits, on purpose, <strong>after</strong> the first pass. It doesn't look for closed eyes or missed focus, because the four tools below already do that well — if your job is delivering a gallery by Thursday, pick one of them. Photoreka starts where they stop, with the frames you kept, and answers the other question: which of your good photos are actually your best, and how they work together. We explain that split in <a href='/blog/culling-is-not-editing/'>culling is not editing</a>. Features and prices below were checked on each vendor's own site at the time of writing (November 2026); they change often, so confirm before you buy.",
       },
       {
         type: "callout",
@@ -394,7 +753,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here's the honest positioning. Photoreka doesn't detect blinks or check every face for focus, and its quick tool doesn't read RAW files. If your Monday problem is turning 4,000 wedding frames into a 600-image gallery, the four tools above are built for that and we aren't. Photoreka works on a different question: <strong>out of photographs that are all usable, which ones are actually your best?</strong> That's the question behind a portfolio, a contest entry, a photobook, a print sale or a year-end review — and it's the one keep/reject culling was never designed to answer.",
+        html: "Here's where Photoreka sits. It doesn't detect blinks or check every face for focus, and its quick tool doesn't read RAW files — by design, because that's the first pass and the four tools above own it. If your Monday problem is turning 4,000 wedding frames into a 600-image gallery, use one of them. Photoreka works on the second pass, and on a different question: <strong>out of photographs that are all usable, which ones are actually your best?</strong> That's the question behind a portfolio, a contest entry, a photobook, a print sale or a year-end review — and it's the one keep/reject culling was never designed to answer.",
       },
       {
         type: "h3",
@@ -403,7 +762,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "<a href='/ai_photo_picks/'>Photoreka Picks</a> is the closest thing we make to a culling pass. Drop up to 5,000 photos in the browser and an AI jury scores every frame on eight artistic criteria — aesthetics, composition, storytelling, originality, message, humor, visual games and spontaneity — writes a one- or two-sentence critique for each, and ranks the set. Switch between juries (overall, street, documentary, landscape, portrait, travel, fine art, plus award juries that only keep photos above a high bar) and the ranking reorders itself. A few hundred photos take a few minutes; 5,000 take under half an hour.",
+        html: "<a href='/ai_photo_picks/'>Photoreka Picks</a> is the quickest way to run that second pass. Drop up to 5,000 photos in the browser and an AI jury scores every frame on eight artistic criteria — aesthetics, composition, storytelling, originality, message, humor, visual games and spontaneity — writes a one- or two-sentence critique for each, and ranks the set. Switch between juries (overall, street, documentary, landscape, portrait, travel, fine art, plus award juries that only keep photos above a high bar) and the ranking reorders itself. A few hundred photos take a few minutes; 5,000 take under half an hour.",
       },
       {
         type: "list",
@@ -418,16 +777,16 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "h3",
-        text: "Photoreka: Scoring a Whole Catalog",
+        text: "Photoreka: Scoring a Whole Body of Work",
         id: "photoreka-catalog",
       },
       {
         type: "p",
-        html: "The full Photoreka app does the same kind of judgment permanently, across your whole archive. Every photo is scored on separate dimensions — aesthetics, composition, narrative strength, originality and more (see <a href='/photo_scoring/'>photo scoring</a>) — so you can sort a catalog by what matters for the project at hand, and combine scores with <a href='/ai_photo_search/'>natural-language search</a>: 'my strongest black-and-white portraits from last summer'. Near-duplicate detection flags over-shot sequences. It runs in the browser on Windows, Mac and Linux, connects to Lightroom Classic through an official plugin as well as Google Photos, Google Drive, Dropbox and local files, analyzes roughly 1,000 photos an hour from compressed previews, and is paid once per batch of photos analyzed, with no subscription.",
+        html: "The full Photoreka app does the same kind of judgment permanently, across a body of work of up to 50,000 photos. Every photo is scored from 1 to 10 on eight separate artistic criteria — aesthetic quality, composition, storytelling, originality, message, humor, visual games and spontaneity (see <a href='/photo_scoring/'>photo scoring</a>) — so you can sort a catalog by what matters for the project at hand, and combine scores with <a href='/ai_photo_search/'>natural-language search</a>: 'my strongest black-and-white portraits from last summer'. Near-duplicate detection flags over-shot sequences. It runs in the browser on Windows, Mac and Linux, connects to Lightroom Classic through an official plugin as well as Google Photos, Google Drive, Dropbox and local files, analyzes roughly 1,000 photos an hour from compressed previews, and is paid once per batch of photos analyzed, with no subscription.",
       },
       {
         type: "p",
-        html: "<strong>Limits, stated plainly:</strong> no blink or eye detection, no per-face focus checks, no video and no editing; Picks groups only exact copies, not bursts; and analysis happens in the cloud, so you need a connection. Photoreka is a second pass after the technical cull, or a first pass on work that has already been culled once.",
+        html: "<strong>What it deliberately leaves out:</strong> blink and eye detection, per-face focus checks, video and editing. That's first-pass territory, and the dedicated cullers do it better. Picks groups only exact copies, not bursts, and analysis happens in the cloud, so you need a connection. The app is sized for the same reason: up to 50,000 photos, because the rankings, the map of your catalog, the pattern reports and the portfolio builder all work across the whole set, and they only mean something when that set is already intentional. Photoreka does the passes that come after the technical one — the reasoning is in <a href='/blog/culling-is-not-editing/'>culling is not editing</a>.",
       },
       {
         type: "quote",
@@ -455,7 +814,7 @@ export const blogPosts: BlogPost[] = [
           "Choose FilterPixel if: you want genre-aware ranking with a stated reason for every frame, and don't mind a cloud step on the previews.",
           "Choose Imagen if: you already edit with Imagen and want culling in the same Lightroom pipeline.",
           "Choose Photoreka Picks if: you have a folder of photos that are all usable and need to know which are strongest — for a portfolio, a contest or a book — without an account or a subscription.",
-          "Choose Photoreka if: the problem isn't one shoot but a whole archive, and you want artistic scores you can search, filter and revisit over time.",
+          "Choose Photoreka if: the problem isn't one shoot but a body of work you've already culled — years of keepers — and you want artistic scores you can search, filter and revisit over time.",
           "Use both if: a dedicated culler handles the technical pass on client work, and Photoreka handles the curatorial pass on your own.",
         ],
       },
@@ -487,6 +846,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Comparisons", "AI Photo Organizer", "Photo Curation", "Photo Management"],
     coverImage: "/blog/ai_photo_organizers.png",
     publishedAt: "2026-11-03",
+    updatedAt: "2026-11-05",
     readingMinutes: 11,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -535,7 +895,7 @@ export const blogPosts: BlogPost[] = [
           "Google Photos: the most convenient everyday search and the Ask Photos assistant, if you're happy to upload everything to Google.",
           "digiKam: a free, open-source, offline catalog for Windows, Mac and Linux with faces, auto-tags and a technical quality scanner.",
           "Immich and PhotoPrism: self-hosted, open-source libraries with semantic search and faces, for people willing to run a server.",
-          "Photoreka: a browser-based layer on top of the storage you already have, built for search by description and artistic scoring rather than storage.",
+          "Photoreka: a browser-based layer on top of the storage you already have, built for the photos you kept — search by description, artistic scoring and sequencing for a body of work of up to 50,000 photos.",
         ],
       },
       {
@@ -668,11 +1028,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "What it adds is <strong>finding and judging</strong>. <a href='/ai_photo_search/'>Search</a> works against the image itself, in three modes (Broad, Adaptive and Precise) with no query length limit. Every photo gets <a href='/photo_scoring/'>scores</a> across 9+ dimensions — aesthetics, composition, narrative strength, originality and more — kept separate, so you can rank the same catalog differently for a gallery submission than for a client pitch. You also get automatic tags, near-duplicate detection, a 2D/3D map that groups the whole library by visual similarity, and a world map that uses AI to estimate where photos without GPS were taken.",
+        html: "What it adds is <strong>finding and judging</strong>. <a href='/ai_photo_search/'>Search</a> works against the image itself, in three modes (Broad, Adaptive and Precise) with no query length limit. Every photo is <a href='/photo_scoring/'>scored</a> from 1 to 10 on eight artistic criteria — aesthetic quality, composition, storytelling, originality and more — kept separate, so you can rank the same catalog differently for a gallery submission than for a client pitch. You also get automatic tags, near-duplicate detection, a 2D/3D map that groups the whole library by visual similarity, and a world map that uses AI to estimate where photos without GPS were taken.",
       },
       {
         type: "p",
-        html: "<strong>Limits:</strong> no video, no face recognition or people management, and the analysis happens in the cloud, so it isn't for anyone who needs everything offline. It's built for a curated body of work — the sweet spot is up to 20,000 photos, with 50,000 workable — not for every phone snapshot you own. <strong>Pricing:</strong> no subscription; you pay once per batch of photos analyzed. At the time of writing (November 2026), 500 photos cost €9.90, 2,500 cost €36 and 10,000 cost €89, and new accounts get 100 photos and 500 credits free. If you only want an AI jury to rank one folder, <a href='/ai_photo_picks/'>Photoreka Picks</a> does that without an account.",
+        html: "<strong>What it isn't:</strong> a backup, a video library or a people manager — there's no face recognition, and the analysis happens in the cloud, so it isn't for anyone who needs everything offline. It's sized on purpose for a body of work of up to 50,000 photos: the frames you kept, not every snapshot you took. That's what lets it judge, map and sequence the set as a whole instead of just indexing it; we explain the choice in <a href='/blog/culling-is-not-editing/'>culling is not editing</a>. <strong>Pricing:</strong> no subscription; you pay once per batch of photos analyzed. At the time of writing (November 2026), 500 photos cost €9.90, 2,500 cost €36 and 10,000 cost €89, and new accounts get 100 photos and 500 credits free. If you only want an AI jury to rank one folder, <a href='/ai_photo_picks/'>Photoreka Picks</a> does that without an account.",
       },
       {
         type: "p",
@@ -702,7 +1062,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Plenty of photographers end up with two: one tool that <em>keeps</em> the archive and one that helps them <em>judge</em> it. That isn't indecision — those really are different jobs, and the tools that try to do both usually do one of them better.",
+        html: "Plenty of photographers end up with two: one tool that <em>keeps</em> the archive and one that helps them <em>judge</em> it. That isn't indecision — those really are different jobs, done at different moments: the keeper holds everything you shot, the judge works on what you decided to keep. The tools that try to do both usually do one of them better.",
       },
       {
         type: "cta",
@@ -731,6 +1091,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Comparisons", "Excire", "Lightroom Classic", "AI Photo Search"],
     coverImage: "/blog/excire_vs_photoreka.png",
     publishedAt: "2026-11-03",
+    updatedAt: "2026-11-05",
     readingMinutes: 9,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -847,7 +1208,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Excire's culling, aesthetic ratings and face-sharpness checks are designed to get you from a full card to a clean selection quickly — and Lightroom Classic's own Assisted Culling now covers part of that ground too. Photoreka's <a href='/photo_scoring/'>scoring</a> answers a different question. It scores every photo across separate artistic dimensions — aesthetics, composition, narrative strength, originality, visual games, humor and candidness, plus subject clarity and commercial intent in commercial mode — and lets you sort by any one of them. A motion-blurred street frame with real energy can rank high on narrative while failing a sharpness check, which is how editors actually choose. Both tools detect duplicates.",
+        html: "Excire's culling, aesthetic ratings and face-sharpness checks are designed to get you from a full card to a clean selection quickly — and Lightroom Classic's own Assisted Culling now covers part of that ground too. Photoreka's <a href='/photo_scoring/'>scoring</a> answers a different question. It scores every photo from 1 to 10 on eight separate artistic criteria — aesthetic quality, composition, storytelling, originality, message, humor, visual games and spontaneity, with subject clarity and commercial intent taking two of those places in the commercial profile — and lets you sort by any one of them. It doesn't check sharpness at all: a motion-blurred street frame with real energy can rank high on storytelling while it would fail a culler's focus check, which is how editors actually choose. Both tools detect duplicates.",
       },
       {
         type: "h3",
@@ -869,7 +1230,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "One more honest note, on scale. Photoreka is designed for a curated body of work rather than every frame you've ever shot: up to around 20,000 photos is the sweet spot, and 50,000 is workable. If your catalog holds a decade of unculled weddings, cull first — with Excire, Lightroom's Assisted Culling or by hand — and bring the keepers to Photoreka.",
+        html: "The two also work at different moments. Excire's culling is built for the shoot, before anything has been kept. Photoreka is built for what comes after: a body of work of up to 50,000 photos, the scale at which a map of your catalog, a ranking or a sequence still says something about you rather than about your memory card. So if your catalog holds a decade of unculled weddings, the order is simple: run a first pass — with Excire, Lightroom's Assisted Culling or by hand — then bring the keepers to Photoreka. We explain why we built it that way in <a href='/blog/culling-is-not-editing/'>culling is not editing</a>.",
       },
       {
         type: "h3",
@@ -922,6 +1283,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: "/blog/photoreka_vs_photoprism.png",
     // coverPlaceholder: true,
     publishedAt: "2026-08-21",
+    updatedAt: "2026-11-05",
     readingMinutes: 8,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -1007,7 +1369,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "PhotoPrism's 1–5 score exists to decide what deserves to be <em>in</em> your library. Photoreka's <a href='/photo_scoring/'>scoring</a> exists to decide what deserves to be <em>seen</em>, and keeps the dimensions separate rather than collapsing them into one number: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. That separation is the point — the same catalog ranks differently for a gallery submission than for a stock pitch, and a single global score can't express that.",
+        html: "PhotoPrism's 1–5 score exists to decide what deserves to be <em>in</em> your library. Photoreka's <a href='/photo_scoring/'>scoring</a> exists to decide what deserves to be <em>seen</em>, and keeps eight criteria separate rather than collapsing them into one number: aesthetic quality, composition, storytelling, originality, message, humor, visual games and spontaneity, with subject clarity and commercial intent swapped in for commercial work. That separation is the point — the same catalog ranks differently for a gallery submission than for a stock pitch, and a single global score can't express that.",
       },
       {
         type: "h3",
@@ -1034,7 +1396,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Most photographers evaluating these tools are carrying one of two very different worries. The first is <em>I don't trust anyone else with my archive</em> — that's a custody problem, and PhotoPrism is a great answer to it. The second is <em>I have forty thousand photographs and no idea which ones matter</em> — that's a judgment problem, and no amount of self-hosting touches it. A perfectly private, perfectly backed-up, perfectly labeled library where you still can't tell which twenty frames are your best work is a solved storage problem sitting on top of an unsolved curation problem.",
+        html: "Most photographers evaluating these tools are carrying one of two very different worries. The first is <em>I don't trust anyone else with my archive</em> — that's a custody problem, and PhotoPrism is a great answer to it. The second is <em>I have forty thousand photographs and no idea which ones matter</em> — that's a judgment problem, and no amount of self-hosting touches it. A perfectly private, perfectly backed-up, perfectly labeled library where you still can't tell which twenty frames are your best work is a solved storage problem sitting on top of an unsolved curation problem. That second worry is the one Photoreka was built for, and forty thousand photographs is close to the scale it's designed around: a body of work of up to 50,000 photos, the frames you kept rather than every file you own. We explain that choice in <a href='/blog/culling-is-not-editing/'>culling is not editing</a>.",
       },
       {
         type: "list",
@@ -1073,6 +1435,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: "/blog/photoreka_vs_digikam.png",
     // coverPlaceholder: true,
     publishedAt: "2026-08-21",
+    updatedAt: "2026-11-05",
     readingMinutes: 8,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -1158,7 +1521,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This is the sharpest contrast between the two tools. digiKam's Image Quality Scanner assigns pick labels based on measurable defects — blurry, noisy, badly exposed, over-compressed. That's genuinely useful for a first culling pass. Photoreka's <a href='/photo_scoring/'>scoring</a> asks an entirely different question, and keeps the dimensions separate: aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work. A technically flawless photograph can score badly, and a slightly soft one can score brilliantly — which is exactly how editors actually choose.",
+        html: "This is the sharpest contrast between the two tools. digiKam's Image Quality Scanner assigns pick labels based on measurable defects — blurry, noisy, badly exposed, over-compressed. That's genuinely useful for a first culling pass. Photoreka's <a href='/photo_scoring/'>scoring</a> asks an entirely different question, and keeps eight criteria separate: aesthetic quality, composition, storytelling, originality, message, humor, visual games and spontaneity, with subject clarity and commercial intent swapped in for commercial work. It doesn't measure blur or noise at all. A technically flawless photograph can score badly, and a slightly soft one can score brilliantly — which is exactly how editors actually choose.",
       },
       {
         type: "h3",
@@ -1185,7 +1548,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "The most honest conclusion we can offer is that many photographers shouldn't be choosing at all. digiKam is a great <em>system of record</em>: it owns the files, the tags, the faces, the backups, the metadata that has to survive the next twenty years. Photoreka is a <em>thinking layer</em>: point it at those same photos to find what you can't put into keywords, score a body of work across artistic dimensions, and build a sequence out of it. Neither one moves your originals. Neither one asks you to migrate anything.",
+        html: "The most honest conclusion we can offer is that many photographers shouldn't be choosing at all. digiKam is a great <em>system of record</em>: it owns the files, the tags, the faces, the backups, the metadata that has to survive the next twenty years. Photoreka is a <em>thinking layer</em>: point it at the photographs you've decided to keep — digiKam's Quality Scanner is a perfectly good <a href='/blog/culling-is-not-editing/'>first, technical pass</a> for getting there — to find what you can't put into keywords, score a body of work across artistic dimensions, and build a sequence out of it. Neither one moves your originals. Neither one asks you to migrate anything.",
       },
       {
         type: "list",
@@ -1223,6 +1586,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Comparisons", "Peakto", "AI Photo Organizer", "Photo Curation"],
     coverImage: "/blog/photoreka_vs_peakto.png",
     publishedAt: "2026-07-10",
+    updatedAt: "2026-11-05",
     readingMinutes: 7,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -1298,7 +1662,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Peakto computes an aesthetic score that blends aesthetics, composition, and technique into a global number used by its Panorama view. Photoreka's <a href='/photo_scoring/'>scoring</a> keeps the dimensions separate — aesthetics, composition, narrative strength, originality, visual games, humor, candidness, plus subject clarity and commercial intent for commercial work — so you can rank the same catalog differently for a gallery submission than for a stock pitch.",
+        html: "Peakto computes an aesthetic score that blends aesthetics, composition, and technique into a global number used by its Panorama view. Photoreka's <a href='/photo_scoring/'>scoring</a> keeps eight criteria separate — aesthetic quality, composition, storytelling, originality, message, humor, visual games and spontaneity, with subject clarity and commercial intent swapped in for commercial work — so you can rank the same catalog differently for a gallery submission than for a stock pitch. Peakto's score helps you pick the better frame; Photoreka's criteria are built for judging a <a href='/blog/culling-is-not-editing/'>body of work rather than a single frame</a>.",
       },
       {
         type: "h3",
@@ -1472,11 +1836,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Seeing the shape of an archive is the destination for some photographers and the starting point for others. Once a region of the map reveals itself — a cluster of images that share a mood, a light, a subject — it becomes raw material: the start of a sequence, a portfolio section, or an exhibition wall, built from photographs that belong together because a space said so, not because a filename happened to put them in the same export folder.",
+        html: "Seeing the shape of an archive is the destination for some photographers and the starting point for others. Once a region of the map reveals itself — a cluster of images that share a mood, a light, a subject — it becomes raw material: the start of a <a href='/blog/how-to-sequence-photos/'>sequence</a>, a portfolio section, or an exhibition wall, built from photographs that belong together because a space said so, not because a filename happened to put them in the same export folder.",
       },
       {
         type: "p",
-        html: "A folder can only tell you where you put something. A grid can only show you what's next in line. Neither was ever built to answer the question that actually matters once an archive gets large enough to outgrow memory: not 'where is this photo,' but <strong>'what does all of this, together, actually look like — and what does it say about the work?'</strong> That's not a retrieval problem anymore. It's a map.",
+        html: "A folder can only tell you where you put something. A grid can only show you what's next in line. Neither was ever built to answer the question that actually matters once an archive gets large enough to outgrow memory: not 'where is this photo,' but <strong>'what does all of this, together, actually look like — and what does it say about the work?'</strong> That's not a retrieval problem anymore. It's an <a href='/blog/culling-is-not-editing/'>editing problem</a>, and it starts with a map.",
       },
     ],
   },
@@ -1638,7 +2002,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "The core idea is easy to state: your style is not contained in any single photo. It is an <strong>emergent property of the collection</strong>—it lives in what you keep repeating without realizing it, in how your palette has changed over three years, in the distance between what you think you photograph and what you actually photograph. None of that is visible from the local perspective of traditional tools: one photo, one folder, one search at a time.",
+        html: "The core idea is easy to state: your style is not contained in any single photo. It is an <strong>emergent property of the collection</strong>—it lives in what you keep repeating without realizing it, in how your palette has changed over three years, in the distance between what you think you photograph and what you actually photograph. None of that is visible from the local perspective of traditional tools: one photo, one folder, one search at a time. It's also why ChatLab works best on a body of work rather than on a raw dump of every frame: a collection only has a style once someone has chosen what belongs in it — the argument we make in <a href='/blog/culling-is-not-editing/'>culling is not editing</a>.",
       },
       {
         type: "p",
@@ -1889,7 +2253,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "If the contest accepts series, judge the set as a whole. A series is only as strong as its weakest image, and juries notice repetition fast: two photos that make the same point weaken each other. Look for consistency of tone and treatment, a sequence that builds, and a final image that closes the story. When in doubt, a tight series of five beats a loose series of ten.",
+        html: "If the contest accepts series, judge the set as a whole. A series is only as strong as its weakest image, and juries notice repetition fast: two photos that make the same point weaken each other. Look for consistency of tone and treatment, a <a href='/blog/how-to-sequence-photos/'>sequence that builds</a>, and a final image that closes the story. When in doubt, a tight series of five beats a loose series of ten.",
       },
       {
         type: "h2",
@@ -1944,6 +2308,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Photo Selection", "Photo Culling", "Portfolio", "Picks"],
     coverImage: "/blog/pick_best_photos.png",
     publishedAt: "2026-10-09",
+    updatedAt: "2026-11-05",
     readingMinutes: 6,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -1959,7 +2324,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "The most common mistake is trying to do two jobs at once. <strong>Culling</strong> is removing what failed: missed focus, motion blur, closed eyes, bad exposure, and the twenty near-identical frames of the same burst. <strong>Selecting</strong> is choosing what is genuinely good among what remains. Culling is fast and mostly technical; selecting is slow and mostly artistic. Mixing them makes both worse: you agonise over obvious rejects and rush the decisions that matter.",
+        html: "The most common mistake is trying to do two jobs at once. <strong>Culling</strong> is removing what failed: missed focus, motion blur, closed eyes, bad exposure, and the twenty near-identical frames of the same burst. <strong>Selecting</strong> is choosing what is genuinely good among what remains. Culling is fast and mostly technical; selecting is slow and mostly artistic — it's what picture editors simply call editing, and <a href='/blog/culling-is-not-editing/'>it isn't the same job as culling</a>. Mixing them makes both worse: you agonise over obvious rejects and rush the decisions that matter.",
       },
       {
         type: "h2",
@@ -1968,7 +2333,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Go through everything once, quickly, with one rule: reject only what is clearly broken or redundant. Use a single flag or a one-star rating and do not stop to compare. For bursts and sequences, keep the best one or two frames of each moment and drop the rest. Expect to remove half of the shoot or more. If you work in a catalog such as Lightroom, this is also where <a href='/ai_photo_culling/'>AI culling tools</a> save the most time, because technical defects are exactly what software detects well.",
+        html: "Go through everything once, quickly, with one rule: reject only what is clearly broken or redundant. Use a single flag or a one-star rating and do not stop to compare. For bursts and sequences, keep the best one or two frames of each moment and drop the rest. Expect to remove half of the shoot or more. If you work in a catalog such as Lightroom, this is also where <a href='/blog/best-ai-culling-software/'>AI culling tools</a> — Aftershoot, Narrative Select or Lightroom's own Assisted Culling — save the most time, because technical defects are exactly what software detects well.",
       },
       {
         type: "h2",
@@ -2064,7 +2429,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Use it as a second opinion, not a verdict. The value is not that the AI is always right, but that it looks at every frame with the same eye, never gets tired at photo 600, and has no memory of how cold it was when you took the shot. If you want the same scoring permanently across your whole catalog, that is what <a href='/photo_scoring/'>Photoreka's Photo Scoring</a> does inside an account.",
+        html: "Use it as a second opinion, not a verdict. The value is not that the AI is always right, but that it looks at every frame with the same eye, never gets tired at photo 600, and has no memory of how cold it was when you took the shot. If you want the same second pass permanently across your body of work, that is what <a href='/ai_photo_culling/'>Photoreka's AI culling</a> and <a href='/photo_scoring/'>Photo Scoring</a> do inside an account, on up to 50,000 of the photos you kept. And once you have your final set, <a href='/blog/how-to-sequence-photos/'>putting it in order</a> is the last step of the edit.",
       },
       {
         type: "cta",

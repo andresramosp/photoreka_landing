@@ -540,9 +540,9 @@ const generatorTraits = ref([
 const photorekaTraits = ref([
   "Every frame is a real photograph from your own catalog",
   "The output is a finished edit — printable, publishable, sendable",
-  "Reads a library of thousands and remembers what you forgot you had",
+  "Reads the body of work you kept and remembers what you forgot you had",
   "Consistency is judged across your real work, by score and by look",
-  "Built for post-production: making sense of what you already shot",
+  "Built for the photos you kept: sequence, rhythm, and the gaps in what you already shot",
 ]);
 
 // ─── The three levels ──────────────────────────────────────

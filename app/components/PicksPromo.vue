@@ -7,21 +7,21 @@
     <div v-if="immersive" class="lx-container">
       <SectionIntro :eyebrow="eyebrow" align="center">
         <template #title>
-          Or just rank your entire catalog,
+          Or rank up to 5,000 photos,
           <em class="lx-accent">no sign-up</em>
         </template>
         <p>
-          Skip the setup: drop your photos and let an AI jury score, critique and rank every
-          frame to surface your best shots.
+          Skip the setup: drop a batch of your keepers and let an AI jury score, critique and
+          rank every frame to surface your best shots.
         </p>
       </SectionIntro>
     </div>
     <div v-else class="section-container">
       <div class="section-header" :class="{ visible }">
-        <h2 class="section-title">Or just rank your entire catalog, no sign-up</h2>
+        <h2 class="section-title">Or rank up to 5,000 photos, no sign-up</h2>
         <p class="section-subtitle">
-          Skip the setup: drop your photos and let an AI jury score, critique and rank every
-          frame to surface your best shots.
+          Skip the setup: drop a batch of your keepers and let an AI jury score, critique and
+          rank every frame to surface your best shots.
         </p>
       </div>
     </div>

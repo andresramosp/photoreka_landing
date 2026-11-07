@@ -107,8 +107,20 @@
 
     <url>
         <loc>https://www.photoreka.com/blog/</loc>
-        <lastmod>2026-10-09</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/blog/culling-is-not-editing/</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.photoreka.com/blog/how-to-sequence-photos/</loc>
+        <lastmod>2026-11-05</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
@@ -119,7 +131,7 @@
     </url>
     <url>
         <loc>https://www.photoreka.com/blog/how-to-pick-your-best-photos/</loc>
-        <lastmod>2026-10-09</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -131,37 +143,37 @@
     </url>
     <url>
         <loc>https://www.photoreka.com/blog/best-ai-culling-software/</loc>
-        <lastmod>2026-11-03</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.photoreka.com/blog/best-ai-photo-organizer/</loc>
-        <lastmod>2026-11-03</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.photoreka.com/blog/excire-search-vs-photoreka/</loc>
-        <lastmod>2026-11-03</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.photoreka.com/blog/photoprism-vs-photoreka/</loc>
-        <lastmod>2026-08-21</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.photoreka.com/blog/digikam-vs-photoreka/</loc>
-        <lastmod>2026-08-21</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.photoreka.com/blog/peakto-alternative-windows/</loc>
-        <lastmod>2026-07-10</lastmod>
+        <lastmod>2026-11-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

@@ -25,8 +25,8 @@
               <strong>assemble</strong> client-ready decks in minutes.
             </span>
             <span>
-              From a single <strong>campaign</strong> to your entire
-              <strong>stock library</strong>.
+              From the selects of a <strong>campaign</strong> to the
+              <strong>stock library</strong> you sell from.
             </span>
           </p>
           <template #actions>
@@ -376,7 +376,7 @@ const genres = ref([
     icon: markRaw(HeartOutline),
     name: "Wedding",
     description:
-      "Turn a 3,000-frame wedding into a tight, emotional gallery — first selects done before the couple even asks.",
+      "After the first pass, turn the keepers into a tight, sequenced gallery — and an album that tells the day in order.",
     tags: ["Gallery", "Album", "Delivery"],
     color: "#22c55e",
   },
@@ -391,7 +391,7 @@ const features = ref([
       "Score every frame for commercial intent and subject clarity, alongside aesthetics and composition.",
     lead: "Score every frame the way a client would — then rank the set automatically.",
     bullets: [
-      "Adds subject clarity and commercial intent scores",
+      "Swaps in subject clarity and commercial intent scores",
       "Rank a full shoot by what's actually sellable",
       "Surface the packshot or hero frame without hunting",
     ],

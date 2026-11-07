@@ -47,7 +47,7 @@ export const seoConfig = {
     home: {
       title: "Photoreka | AI Photo Curation & Organizer for Photographers",
       description:
-        "AI photo curation and organizer for photographers. Search your library by description, score and rank your best shots, and explore your catalog in 3D.",
+        "AI photo curation for the photos you kept. Score your body of work on 8 artistic criteria, find patterns, search by description and build sequenced portfolios.",
       keywords:
         "AI photo curation app, curate photos with AI, AI photo organizer, photo organizer online, organize photos with AI, AI Photo management online, AI photo culling, photo scoring and ranking app, AI photography portfolio builder, photography style analysis, understand my photography style, curate photography portfolio, AI photo search app, natural language photo search, find any photo by describing it, semantic photo search, Excire alternative, photo organizer app for photographers, photo library organizer, photo catalog organizer, smart photo organizer, photo curation software, photo curation platform, 3D photo catalog, AI photography tools, AI photo assistant, photography workflow tool, curate and organize photos, photo management app for photographers, AI photo curation for commercial photographers, commercial photo scoring, commercial intent scoring, subject clarity scoring, product photography curation, fashion photo selection AI, wedding photo culling AI, client-ready photo selection, stock photo library organizer",
       ogImage: "/home/dashboard.jpg",
@@ -60,7 +60,7 @@ export const seoConfig = {
           name: "Photoreka",
           url: "https://www.photoreka.com",
           description:
-            "AI-powered photo curation and organizer app. Search your library by natural language, score and rank your best shots, discover patterns across your archive, explore your catalog in 3D, and build portfolios with AI.",
+            "AI photo curation app for photographers' bodies of work: the photos kept after culling, up to 50,000 per catalog. Score photos on 8 artistic criteria, search by natural language, discover patterns across your work, explore your catalog in 3D, and build sequenced portfolios with AI.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Windows, macOS, Linux (web browser)",
           audience: {
@@ -96,10 +96,11 @@ export const seoConfig = {
           },
           featureList: [
             "AI-powered photo curation and organization",
+            "Built for curated bodies of work of up to 50,000 photos",
             "Natural language photo search",
             "3D photo catalog exploration",
-            "AI photo scoring and ranking",
-            "Commercial scoring: subject clarity and commercial intent",
+            "AI photo scoring on 8 artistic criteria",
+            "Commercial profile: subject clarity and commercial intent",
             "Portfolio builder with AI curation",
             "Photo style and pattern reports",
             "AI photo chat assistant",
@@ -119,7 +120,23 @@ export const seoConfig = {
               name: "What is Photoreka and who is it for?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Photoreka is an AI-powered app to curate and organize your photos. Upload a specific project, a curated selection, or a significant portion of your archive—then search in natural language, score and rank your images, find patterns across your work, and explore your catalog in 3D. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
+                text: "Photoreka is an AI app to curate the photos you kept. A first pass, by hand or with a tool like Aftershoot, gets you from a full memory card to your keepers; Photoreka finishes the cull and curates them—a project, a series or years of selects, up to 50,000 photos. Score them on 8 artistic criteria, search them in natural language, find the patterns across your work, explore them in 3D and turn them into sequenced portfolios. Built for street, documentary, artistic, portrait, landscape, and commercial photographers who take their work seriously.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How is Photoreka different from Aftershoot, Imagen or Excire?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "They're built for large volumes of photos. Aftershoot, Imagen, Narrative Select, FilterPixel and Lightroom's Assisted Culling spot the shots that failed—blinks, blur, missed focus—and suggest the strongest frame of each moment. Libraries like Excire, Peakto or Mylio keep everything you shot and find it by keyword, and some add an aesthetic score per photo. Photoreka works on more carefully curated catalogs—the photos you kept—which is what lets it go a level higher: curation and editorial judgment. It scores each photo on 8 artistic criteria—storytelling, originality, message and more—reads it against the rest of your work, and helps you see patterns, build sequences and critique the whole. Many photographers use both: one of them for the first pass, Photoreka for the final cull and the edit.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Why up to 50,000 photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Because Photoreka is built for bodies of work, not memory cards. Every photo is read against all the others: originality is measured within your own catalog, and clusters, patterns and gaps emerge from the whole set. Bursts, blinks and near-duplicates would only drown that signal. Up to 50,000 photos leaves room for years of selects—bring the keepers of every shoot, a long-term project or a client archive, and Photoreka shows you what they say together.",
               },
             },
             {
@@ -151,7 +168,7 @@ export const seoConfig = {
               name: "Does Photoreka work for commercial and product photography?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Alongside the artistic dimensions, commercial mode activates two extra scores: subject clarity—how cleanly the main subject reads—and commercial intent—how usable a frame is for a brand, catalog, or campaign. Commercial photographers use it to search an archive from a client brief, rank a shoot by what's actually sellable, and assemble a client-ready selection, across product, fashion, architecture, lifestyle, and wedding work. A separate commercial demo runs on its own catalog.",
+                text: "Yes. The commercial profile swaps two of the 8 criteria for subject clarity—how cleanly the main subject reads—and commercial intent—how usable a frame is for a brand, catalog, or campaign. Commercial photographers use it to search an archive from a client brief, rank their selects by what's actually sellable, and assemble a client-ready selection, across product, fashion, architecture, lifestyle, and wedding work. A separate commercial demo runs on its own catalog.",
               },
             },
             {
@@ -176,14 +193,6 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Photoreka only stores a reduced version of your images on secure servers for analysis. Your photos are not shared with anyone and you retain 100% of the rights to your work. Analysis uses proprietary and third-party services under agreements that prevent retaining or reusing your photos.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What kind of photo catalog works best with Photoreka?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Photoreka is built for photographers who want to work with a curated body of work, not a raw dump of every file ever captured. The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Because the AI tools are built around curation, they work best when your archive already has a baseline of intentionality.",
               },
             },
           ],
@@ -334,7 +343,7 @@ export const seoConfig = {
             "ChatLab: LLM vision layer for iterative conversational refinement",
             "Search by mood, style, and emotion",
             "Semantic image understanding",
-            "Works with 100,000+ photos",
+            "Built for curated bodies of work of up to 50,000 photos",
             "Cross-source search (Lightroom, Google Photos, Dropbox)",
           ],
         },
@@ -411,7 +420,7 @@ export const seoConfig = {
               name: "What kind of photo catalog is Photoreka designed for?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Photoreka is built for photographers who want to work with a curated body of work, not a raw dump of every file ever captured. The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Duplicate detection is built in, but the value of every feature increases the more curated your starting point is.",
+                text: "Photoreka is built for the photos you kept, not every photo you shot: a curated body of work of up to 50,000 photos. Culling tools like Aftershoot, Imagen or Lightroom's Assisted Culling handle the first pass, rejecting blur, blinks and duplicates across thousands of raw frames. Photoreka works on what survives it: searching by mood, narrative and reference, scoring, clustering and sequencing a body of work. Every photo is read in the context of the rest of your catalog, so the analysis goes deeper when the starting point already has intention.",
               },
             },
           ],
@@ -470,7 +479,7 @@ export const seoConfig = {
         featureList: [
           "Natural language search",
           "3D catalog exploration and navigation",
-          "View entire catalog as navigable 3D universe",
+          "View your analyzed body of work as a navigable 3D universe",
           "Visual similarity clustering in 3D space",
           "Culling photos with AI",
           "Direct catalog sync",
@@ -519,7 +528,7 @@ export const seoConfig = {
           },
           mainEntityOfPage: "https://www.photoreka.com/photo_chat/",
           featureList: [
-            "Natural language search across your entire photo library",
+            "Natural language search across your body of work",
             "AI-powered portfolio critique and artistic analysis",
             "Photography improvement and progression tracking over time",
             "Intelligent photo curation and sequence building",
@@ -540,7 +549,7 @@ export const seoConfig = {
               name: "Can the AI find my best photos automatically?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Just ask it to find your best photos and it ranks your strongest shots across your entire library—by composition, expression, and technical quality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+                text: "Yes. Just ask it to find your best photos and it ranks your strongest shots across your catalog—by aesthetics, composition, storytelling, and originality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
               },
             },
             {
@@ -588,7 +597,7 @@ export const seoConfig = {
               name: "How many photos does it need to give useful answers?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio critique) become richer as your archive grows. There's no upper limit—it works well with 10,000+ images.",
+                text: "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio critique) become richer as your body of work grows, up to 50,000 photos. It works best on a coherent body of work rather than an unculled dump: questions about style and evolution need intention, not noise.",
               },
             },
             {
@@ -824,11 +833,11 @@ export const seoConfig = {
     },
 
     ai_photo_culling: {
-      title: "AI Photo Culling for Your Whole Catalog | Photoreka",
+      title: "AI Photo Culling for Your Body of Work | Photoreka",
       description:
-        "Stop spending hours culling photos manually. Photoreka's AI photo culling ranks every image by aesthetics, composition, sharpness, and narrative strength—so you instantly see your strongest shots. Not binary keep/reject: multi-dimensional scoring that respects your style. Works with Lightroom Classic, Google Photos, and local files.",
+        "AI photo culling beyond the first pass: once blinks and blur are filtered out, Photoreka flags near-duplicates and ranks the photos you kept on 8 artistic criteria.",
       keywords:
-        "AI photo culling, photo culling software, photo culling app, AI cull photos, auto select best photos, fast photo culling, smart photo culling, automated photo culling, best photo culling tool, AI photo selector, batch photo culling, photo culling workflow, aftershoot alternative, narrative select alternative, professional photo culling, lightroom culling, AI photo organizer, cull photos with AI",
+        "AI photo culling, photo culling software, photo culling app, AI cull photos, auto select best photos, fast photo culling, smart photo culling, automated photo culling, best photo culling tool, AI photo selector, second pass photo culling, photo culling workflow, aftershoot alternative, narrative select alternative, professional photo culling, lightroom culling, AI photo organizer, cull photos with AI",
       ogImage: "/logos/marca/vertical-claim-light.png",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -838,7 +847,7 @@ export const seoConfig = {
           "@type": "WebApplication",
           name: "Photoreka AI Photo Culling",
           description:
-            "AI-powered photo culling app that ranks your images across multiple quality dimensions instead of binary keep/reject. Find your best photos instantly.",
+            "AI photo culling for the second pass: scores the photos you kept on 8 artistic criteria and ranks each one against the rest of your body of work, instead of binary keep/reject.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
           url: "https://www.photoreka.com/ai_photo_culling/",
@@ -854,12 +863,12 @@ export const seoConfig = {
             url: "https://www.photoreka.com",
           },
           featureList: [
-            "Multi-dimensional photo scoring",
+            "Scoring on 8 artistic criteria",
             "Aesthetic quality ranking",
             "Composition analysis",
-            "Narrative strength scoring",
-            "Batch processing of thousands of photos",
-            "Works with Lightroom Classic",
+            "Storytelling and originality scoring",
+            "Built for bodies of work of up to 50,000 photos",
+            "Works with Lightroom Classic picks and collections",
           ],
         },
         {
@@ -886,7 +895,7 @@ export const seoConfig = {
     photo_scoring: {
       title: "AI Photo Scoring — Score Your Entire Catalog | Photoreka",
       description:
-        "Score every photo in your catalog across 9+ quality dimensions: aesthetics, composition, narrative strength, originality, candidness, and more. Surface your strongest work from an archive of thousands, track your artistic progress over time, and separate keepers from noise. Commercial mode adds two extra dimensions—subject clarity and commercial intent—for product, stock, and fashion work. Built for photographers with serious catalogs—works with Lightroom Classic, Google Photos, and local libraries.",
+        "Score every photo in your body of work on 8 artistic criteria: aesthetics, composition, narrative strength, originality, message and more. Surface your strongest work from thousands of keepers and track your progress over time. The commercial profile swaps in subject clarity and commercial intent for product, stock and fashion work.",
       keywords:
         "AI photo scoring, photo scoring software, score entire photo catalog, rank photo library AI, find best photos in large catalog, photo aesthetic score, aesthetic scoring photography, AI photo ranking, photo quality assessment, image aesthetic assessment, photo composition analyzer, photo selection AI for photographers, automatically surface best photos, photo ranking software, photo aesthetic analysis, AI photography critique tool, photo quality metrics, photography quality score, score photos lightroom catalog, track photography progress over time, photo scoring for photographers, curate large photo archive, commercial photo scoring, commercial intent scoring, subject clarity scoring, product photography scoring, packshot selection AI, stock photography scoring, fashion editorial photo selection, score photos for client delivery, find most licensable photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
@@ -898,7 +907,7 @@ export const seoConfig = {
           "@type": "WebApplication",
           name: "Photoreka AI Photo Scoring",
           description:
-            "AI photo scoring and ranking for large photo catalogs. Scores every photo across 9+ quality dimensions—aesthetics, composition, narrative, originality, and more—to automatically surface a photographer's strongest work from an archive of thousands.",
+            "AI photo scoring and ranking for bodies of work of up to 50,000 photos. Scores every photo on 8 artistic criteria—aesthetics, composition, narrative, originality, and more—to surface a photographer's strongest work from thousands of keepers.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
           url: "https://www.photoreka.com/photo_scoring/",
@@ -914,14 +923,14 @@ export const seoConfig = {
             url: "https://www.photoreka.com",
           },
           featureList: [
-            "9+ dimensional AI photo scoring",
+            "AI photo scoring on 8 artistic criteria",
             "Aesthetic quality assessment and ranking",
             "Composition analysis",
             "Narrative strength rating",
-            "Originality scoring",
-            "Visual wit, humor, and candidness detection",
-            "Commercial subject clarity and intent scoring",
-            "Batch scoring of entire photo catalogs",
+            "Originality and message scoring",
+            "Visual games, humor, and candidness detection",
+            "Commercial profile with subject clarity and commercial intent",
+            "Scoring for bodies of work of up to 50,000 photos",
             "Automatic best photo surfacing from thousands",
             "Sort and filter by any individual quality dimension",
             "Track artistic progress over time with score history",
@@ -945,7 +954,7 @@ export const seoConfig = {
             name: "Is this just a sharpness detector?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. Technical sharpness is only one of 6+ dimensions. A soft, atmospheric portrait can score very high on aesthetics, narrative, and originality while scoring lower on technical sharpness. The system evaluates what makes a photo compelling, not just what makes it technically correct.",
+              text: "No—it doesn't measure sharpness at all. Focus, blur and blinks belong to the first pass, which you run on each shoot by hand or with a tool like Aftershoot, Imagen or Lightroom's Assisted Culling. Photoreka scores the photos you kept on 8 artistic criteria, so a soft, atmospheric portrait can score very high on aesthetics, narrative and originality. The system evaluates what makes a photo compelling, not whether it's technically correct.",
             },
           },
           {
@@ -961,7 +970,7 @@ export const seoConfig = {
             name: "Can I sort by a single dimension?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. You can sort and filter by any individual dimension (aesthetics, composition, narrative strength, originality, visual wit, or technical quality) or by the combined overall score. This lets you tailor rankings to each specific project.",
+              text: "Yes. You can sort and filter by any individual criterion (aesthetics, composition, narrative strength, originality, message, humor, visual games, or candidness) or by the overall rating. This lets you tailor rankings to each specific project.",
             },
           },
           {
@@ -985,7 +994,7 @@ export const seoConfig = {
             name: "How does commercial scoring work?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "When Photoreka detects commercial photography (product, stock, fashion) in your catalog—or when you flag it manually—two additional dimensions are activated: Subject Clarity, which measures how cleanly the main subject stands out from its environment, and Commercial Intent, which evaluates overall production value and suitability for advertising, stock libraries, or editorial use. These scores help you quickly identify your most licensable or pitch-ready images.",
+              text: "Choose the Commercial Photography profile and two of the eight criteria are swapped for commercial ones: Subject Clarity, which measures how cleanly the main subject stands out from its environment, and Commercial Intent, which evaluates overall production value and suitability for advertising, stock libraries, or editorial use. They replace Visual Games and Message, so every photo still gets 8 scores. These help you quickly identify your most licensable or pitch-ready images.",
             },
           },
           ],
@@ -1381,7 +1390,7 @@ export const seoConfig = {
             "No file migration, no new catalog, no subscription",
             "Automatic AI analysis: tags, scores, embeddings",
             "Natural language semantic search",
-            "Quality scoring across 9+ dimensions",
+            "Artistic scoring across 8 criteria",
             "2D/3D visual similarity maps of the whole library",
             "Interactive tag map of your photo vocabulary, with dynamic search",
             "Quality, evolution, style and pattern reports",
@@ -1416,7 +1425,7 @@ export const seoConfig = {
               name: "How is Photoreka different from Excire Foto or Peakto?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Excire Foto and Peakto are desktop apps (Peakto is Mac-only, subscription-based). Photoreka runs in the browser on any OS, is paid per analyzed photo batch instead of a subscription, and goes beyond organization into curation: multi-dimensional quality scoring, three-mode semantic search with no query length limit, portfolio sequencing, and an AI assistant for your catalog.",
+                text: "Excire Foto and Peakto are organizers built for everything you've shot: they import, keyword and find your whole library, and both add an aesthetic score to help you pick the best frames. Photoreka works one step later, on the body of work you kept, up to 50,000 photos. Instead of one global score it rates each photo on 8 artistic criteria, reads the collection as a whole (patterns, gaps, style reports, an AI assistant for your catalog) and helps you sequence portfolios. It also runs in the browser on any OS (Peakto is Mac-only, subscription-based) and is paid per analyzed batch instead of a subscription.",
               },
             },
             {
@@ -1424,7 +1433,7 @@ export const seoConfig = {
               name: "How many photos can I organize with Photoreka?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "The sweet spot is a catalog of up to 20,000 photos, with up to 50,000 tested and workable. Photoreka is built for a curated body of work rather than a raw dump of every file ever captured—duplicate detection is built in to help you get there.",
+                text: "Up to 50,000 photos, and that limit is deliberate. Photoreka is built for the photos you kept, not every photo you shot: the selects that survive your first pass, across projects and years. Every photo is analyzed in the context of the rest of your catalog, so a focused body of work gives clearer clusters and more meaningful scores and reports. Duplicate detection is built in for the stragglers.",
               },
             },
             {
@@ -1432,7 +1441,7 @@ export const seoConfig = {
               name: "Does Photoreka replace Lightroom?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI quality scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
+                text: "No—it complements it. Lightroom remains your editor and catalog of record. Photoreka adds what Lightroom doesn't have: natural language search, AI artistic scoring, style reports, and visual maps of your whole archive. The Lightroom Classic plugin keeps both in sync.",
               },
             },
             {

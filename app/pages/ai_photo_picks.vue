@@ -28,7 +28,7 @@
           Try it free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos
         </LxButton>
         <LxButton variant="ghost" :href="PICKS_APP_URL" target="_blank" @click="trackApp('hero')">
-          Rank my whole collection
+          Rank my selection
         </LxButton>
       </template>
       <template #note>
@@ -124,7 +124,7 @@
       <div class="lx-container">
         <SectionIntro eyebrow="How it works">
           <template #title>
-            From a messy folder to <em class="lx-accent">your best photos.</em>
+            From your selects to <em class="lx-accent">your best photos.</em>
           </template>
         </SectionIntro>
         <PageSteps :steps="steps" />
@@ -227,7 +227,7 @@
     <!-- ── Final CTA ───────────────────────────────────────────────── -->
     <PageCta>
       <template #title>
-        Your best photo is already <em class="lx-accent">in that folder.</em>
+        Your best photo is already <em class="lx-accent">among your keepers.</em>
       </template>
       <p>Let the jury find it.</p>
       <template #actions>
@@ -235,7 +235,7 @@
           Try it free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos
         </LxButton>
         <LxButton variant="ghost" :href="PICKS_APP_URL" target="_blank" @click="trackApp('final')">
-          Rank my whole collection
+          Rank my selection
         </LxButton>
       </template>
     </PageCta>
@@ -309,7 +309,7 @@ const priceExamples = [100, 500, 2000, 5000];
 const steps = [
   {
     title: "Drop your photos",
-    description: `Pick up to ${formatCount(PICKS_MAX_PHOTOS)} photos or a whole folder. They are resized in your browser and start uploading while you check out.`,
+    description: `Pick up to ${formatCount(PICKS_MAX_PHOTOS)} of your keepers, or a whole folder of selects. They are resized in your browser and start uploading while you check out.`,
   },
   {
     title: "Pay only for what you upload",
