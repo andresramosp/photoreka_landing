@@ -1,6 +1,7 @@
 // Google Analytics 4 Configuration and Utilities for Nuxt 4 SSR
 
 import { useRuntimeConfig } from "nuxt/app";
+import { consentSignals, readConsentChoice } from "~/utils/consent";
 
 declare global {
   interface Window {
@@ -59,6 +60,9 @@ export function initGA(): void {
   window.gtag = function () {
     window.dataLayer.push(arguments);
   };
+
+  // Must precede "config"; the banner sends the "update" once the visitor chooses.
+  window.gtag("consent", "default", consentSignals(readConsentChoice()));
 
   window.gtag("js", new Date());
   window.gtag("config", measurementId, {

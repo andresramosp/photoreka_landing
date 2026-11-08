@@ -97,6 +97,13 @@
           <NuxtLink to="/privacy" class="footer-link"
             >Privacy &amp; Image Policy</NuxtLink
           >
+          <button
+            type="button"
+            class="footer-link footer-link--button"
+            @click="openSettings"
+          >
+            Cookie settings
+          </button>
         </div>
       </div>
 
@@ -115,6 +122,8 @@
 <script setup>
 import { LogoInstagram, MailOutline } from "@vicons/ionicons5";
 import AppLogo from "~/components/AppLogo.vue";
+
+const { openSettings } = useCookieConsent();
 </script>
 
 <style scoped>
@@ -193,6 +202,14 @@ import AppLogo from "~/components/AppLogo.vue";
 .footer-link:hover {
   color: var(--lx-text);
   transform: translateX(3px);
+}
+
+.footer-link--button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  text-align: left;
 }
 
 .footer-social {

@@ -3,6 +3,7 @@
     <n-message-provider>
       <NuxtPage />
       <FooterLanding />
+      <CookieConsent />
     </n-message-provider>
   </n-config-provider>
 </template>
