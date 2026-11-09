@@ -2442,6 +2442,523 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "how-to-add-gps-location-to-photos",
+    title:
+      "How to Add GPS Location to Photos Already Taken (Even Without a GPS Camera)",
+    excerpt:
+      "Your camera never recorded where you were, and now your archive is a map with no pins. Four ways to geotag photos after the fact — a GPS track, a map and your memory, a visual search, or AI that reads the place from the picture — and how to choose between them.",
+    description:
+      "How to add GPS coordinates to photos already taken: match a GPX track in Lightroom Classic or exiftool, place photos on a map by hand, or use AI visual geolocation when you have no track at all. Includes scanned slides, RAW files and privacy tips.",
+    keywords:
+      "how to add gps location to photos, add gps to photos already taken, how to geotag photos already taken, geotag photos without gps, add location to old photos, add gps data to photos, add gps coordinates to photos in bulk, geotag photos lightroom classic, lightroom tracklog gpx, exiftool geotag gpx, geotag scanned slides, add location to scanned photos, geotag dslr photos without gps, ai photo geolocation, bulk exif gps editor",
+    category: "Photography Tips",
+    tags: ["Geotagging", "EXIF GPS", "Lightroom Classic", "Geo Recovery"],
+    coverImage: "/blog/geotag_photos.webp",
+    publishedAt: "2026-11-09",
+    readingMinutes: 8,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Most cameras ever sold never recorded where a photo was taken. If you shot with a DSLR, a mirrorless body without a phone link, or film you later scanned, your archive probably holds thousands of photos with a date and no place. That gap matters more than it seems: location is how most people remember a trip, how catalogs build their map view, and one of the fastest ways to find a photo years later. <strong>You can add it afterwards.</strong> The right method depends on what you still have: a GPS track, your memory, or only the photos themselves.",
+      },
+      {
+        type: "h2",
+        text: "What Geotagging Actually Writes",
+        id: "what-geotagging-writes",
+      },
+      {
+        type: "p",
+        html: "Geotagging means writing GPS coordinates — latitude, longitude and, optionally, altitude — into the EXIF metadata of the image file. Once they are there, every EXIF-aware app (Lightroom, Capture One, Apple Photos, Google Photos, Windows Explorer) can show the photo on a map, and the location travels with the file wherever you copy it.",
+      },
+      {
+        type: "p",
+        html: "One trap is worth knowing before you start: <strong>some apps store the location only in their own catalog, not in the file.</strong> Lightroom Classic, for example, keeps metadata changes in its catalog until you save metadata to the file or turn on automatic XMP writing, and for proprietary RAW formats it writes an XMP sidecar next to the original instead of touching it. If you want the location to survive a change of software, make sure it ends up in the file or in its sidecar.",
+      },
+      {
+        type: "h2",
+        text: "Choose a Method by What You Still Have",
+        id: "choose-a-method",
+      },
+      {
+        type: "list",
+        items: [
+          "A GPS track from your phone, a watch or a logger, recorded while you were shooting: match it to the photos by time. It is the most precise method.",
+          "Your memory of where each set was taken: place the photos on a map by hand, or write the coordinates in bulk.",
+          "One mystery photo of a known landmark: a visual search will usually name the place in seconds.",
+          "Nothing but the photos, and far too many to place by hand: AI visual geolocation reads the place from the image itself.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Method 1: Match a GPS Track to Your Photos",
+        id: "gps-track",
+      },
+      {
+        type: "p",
+        html: "If a GPS logger was running while you shot — a tracking app on your phone, a sports watch, a dedicated logger — you already know where every photo was taken. That information simply lives in a separate file, usually a GPX. Geotagging software compares each photo's capture time with the track and gives the photo the position you were at in that moment.",
+      },
+      {
+        type: "p",
+        html: "In <strong>Lightroom Classic</strong>, open the Map module, load the GPX file with Map → Tracklog → Load Tracklog, select the photos and choose Auto-Tag Selected Photos. On the command line, <a href='https://exiftool.org/geotag.html' target='_blank' rel='noopener'>exiftool</a> does the same for a whole folder with <code>exiftool -geotag track.gpx ./photos</code>. digiKam's Geolocation Editor and HoudahGeo on the Mac offer the same matching with a map preview.",
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "Check the camera clock first",
+        html: "Track matching only works if the camera clock and the track agree, and camera clocks drift or stay on home time when you travel. The classic trick: at the start of a trip, photograph your phone's clock with the camera. The difference between the time shown on screen and the time recorded in that photo is the offset to enter in Lightroom (Map → Tracklog → Set Time Zone Offset) or in exiftool before matching.",
+      },
+      {
+        type: "h2",
+        text: "Method 2: Place Photos on a Map by Hand",
+        id: "map-by-hand",
+      },
+      {
+        type: "p",
+        html: "If you remember where you were, a map is enough. In Lightroom Classic's Map module you can drag a selection of photos onto the map, or search for a place, right-click it and add its coordinates to the selected photos. digiKam, Mylio and Apple Photos have similar tools. When a whole folder was shot in one place, exiftool writes the coordinates in a single line, for example <code>exiftool -GPSLatitude=40.4168 -GPSLatitudeRef=N -GPSLongitude=3.7038 -GPSLongitudeRef=W ./madrid</code>.",
+      },
+      {
+        type: "p",
+        html: "This works well for a trip you remember day by day. It stops working at scale: placing ten years of travel folder by folder is a weekend you will never find, and memory fails exactly where you need it most — which of the three villages on that road was this one?",
+      },
+      {
+        type: "h2",
+        text: "Method 3: One Mystery Photo? Try a Visual Search",
+        id: "visual-search",
+      },
+      {
+        type: "p",
+        html: "For a single photo of something recognisable — a cathedral, a bridge, a famous viewpoint — a visual search such as Google Lens often names the place in seconds. It is free and perfect for the odd mystery shot. It is not a geotagging workflow, though: it works one image at a time, it names a landmark instead of writing coordinates into your file, and it has little to say about a street, a beach or a mountain road that isn't famous.",
+      },
+      {
+        type: "h2",
+        text: "Method 4: No Track, No Memory: AI Visual Geolocation",
+        id: "ai-geolocation",
+      },
+      {
+        type: "p",
+        html: "The hardest case is also the most common one: an archive with no track and a fading memory. Years of DSLR travel, an inherited collection, a box of scanned slides. Here the only source of location is the photograph itself. AI visual geolocation reads the same clues a well-travelled person would: architecture and building materials, street signs and the script they are written in, road markings, vegetation, the shape of the landscape, the quality of the light.",
+      },
+      {
+        type: "p",
+        html: "Honest expectations matter, because this is inference, not measurement:",
+      },
+      {
+        type: "list",
+        items: [
+          "Precision is usually city or district level. A recognisable landmark can place a photo on a specific square or street, but that is the exception. City level is enough for a map of your archive, for search and for captions, though not for finding the exact spot where the tripod stood.",
+          "Outdoor photos with context work best: streets, buildings, landscapes and signage, in wide or medium framing and in daylight.",
+          "Portraits, interiors, studio, macro and abstract shots carry little geographic information and usually can't be placed.",
+          "A good tool says 'unknown' instead of guessing. A wrong pin is worse than no pin, because you will trust it later.",
+          "You should review and correct every placement on a map before anything is written into your files.",
+        ],
+      },
+      {
+        type: "p",
+        html: "On a large batch this is where AI earns its place. A person can place a hundred photos in an evening; a model goes through thousands, and you only fix the pins that look wrong.",
+      },
+      {
+        type: "image",
+        alt: "World map showing clusters of photo thumbnails placed across Europe, Africa, Asia and Australia by AI visual geolocation",
+        caption:
+          "A travel archive with no GPS data, placed on the world map by AI visual geolocation.",
+        src: "/ai_geoinference/1.webp",
+      },
+      {
+        type: "h2",
+        text: "Scanned Slides and Negatives",
+        id: "scanned-film",
+      },
+      {
+        type: "p",
+        html: "Film scans are a special case, because the file carries the date of the scan, not the day you took the photo. That rules out track matching even if you had a track. Your options are the box label and your memory, a map by hand, or visual geolocation, which doesn't care when the scan was made. If you also want to fix the capture date (in Lightroom Classic, Metadata → Edit Capture Time), do it in the same session, so the archive ends up both dated and placed.",
+      },
+      {
+        type: "h2",
+        text: "Geotag Your Photos with Photoreka",
+        id: "photoreka",
+      },
+      {
+        type: "p",
+        html: "Photoreka has two tools for this, depending on whether you want a one-off job or locations inside your catalog.",
+      },
+      {
+        type: "p",
+        html: "<a href='/ai_geo_recovery/'>Geo Recovery</a> is the one-off option, with no account. You drop a batch of JPEG, PNG or WebP files into the browser; your originals stay on your device and only small thumbnails are sent for analysis. The AI places every photo it can locate on a map, marks the rest as unknown, and lets you move any pin or search for the right place by name. When you download, you get your original files back with the GPS coordinates written into their EXIF. It costs €0.012 per photo, VAT included, with a €2.40 minimum per batch, paid once. If you aren't sure your photos are suitable, you can test up to 10 of them for free first. RAW files aren't supported yet; for those, use the track or map methods above, or geotag the JPEGs you export.",
+      },
+      {
+        type: "p",
+        html: "If you already use Photoreka, <a href='/ai_geo_inference/'>AI Geo-Inference</a> does the same job inside your catalog. It places photos without GPS on your world map, shows a free forecast of how many are likely to be located before you spend any credits, and works on photos synced from Lightroom Classic. It enriches your catalog rather than rewriting your files.",
+      },
+      {
+        type: "image",
+        alt: "Adjust location dialog on a city map, showing a street portrait, the place the AI inferred and a search box to choose a different location",
+        caption:
+          "Every placement can be corrected: search for the right place by name and your choice replaces the AI's guess.",
+        src: "/ai_geoinference/5.webp",
+      },
+      {
+        type: "callout",
+        variant: "warning",
+        title: "Location works both ways",
+        html: "Coordinates are useful in your archive and risky in public. A photo shared with GPS in its EXIF can reveal where you live, or where a nest or a quiet spot is. Many platforms strip location on upload, but a file sent by email or shared from a cloud folder keeps it. When you export for the web, remove it: in Lightroom Classic, tick Remove Location Info in the Metadata section of the Export dialog.",
+      },
+      {
+        type: "cta",
+        eyebrow: "Geotag photos already taken",
+        title: "Put your archive back on the map",
+        text: "Test up to 10 photos for free, then geotag the whole batch: review every pin and download your originals with GPS in their EXIF. No account, no subscription.",
+        buttonLabel: "Try Geo Recovery",
+        action: "link",
+        href: "/ai_geo_recovery/",
+      },
+    ],
+  },
+  {
+    slug: "how-to-find-your-photography-style",
+    title:
+      "How to Find Your Photography Style (It's Already in Your Archive)",
+    excerpt:
+      "Every guide gives the same advice: look back at your work and notice what you repeat. Almost none explains how to do that with 20,000 photos. A practical method to find, describe and develop your photography style from the photos you've already taken.",
+    description:
+      "A practical method to find your photography style: audit what you already shoot, break style into subject, light, colour, composition and mood, put it into words for a bio or portfolio, and develop it on purpose.",
+    keywords:
+      "how to find your photography style, find your photography style, photography style, how to describe your photography style, develop your photography style, what is my photography style, personal photography style, how to find your style in photography, photographic voice, signature photography style, photography style examples, understand my photography style, photography style analysis, ai photography style analysis",
+    category: "Photography Tips",
+    tags: ["Photography Style", "Body of Work", "ChatLab", "Reports"],
+    coverImage: "/blog/photography_style.webp",
+    publishedAt: "2026-11-09",
+    readingMinutes: 8,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "Style is what people recognise in your photos before they read your name. Most advice on finding it comes down to one instruction: look back at your work and notice what you keep doing. It's good advice, but it assumes you can actually see your work. With a few hundred photos you can. With twenty thousand spread across folders, drives and years, you see your last shoot and a handful of favourites, and the pattern stays invisible. <strong>Your style already exists; the hard part is seeing it.</strong>",
+      },
+      {
+        type: "h2",
+        text: "Style Is What You Repeat, Not What You Admire",
+        id: "style-is-repetition",
+      },
+      {
+        type: "p",
+        html: "There are two lists in every photographer's head. One is the work you admire: the photographers you follow, the books on your shelf. The other is the work you actually make. Style lives in the second list. It is the sum of the decisions you take without thinking — where you stand, when you press the shutter, what you leave out of the frame — repeated across hundreds of photos.",
+      },
+      {
+        type: "p",
+        html: "That is why style is found rather than chosen. Your influences tell you where you'd like to go; your archive tells you where you are. The two rarely match, and the gap between them is useful information, not a failure.",
+      },
+      {
+        type: "h2",
+        text: "The Five Layers of a Style",
+        id: "five-layers",
+      },
+      {
+        type: "p",
+        html: "“Style” is too vague to analyse in one go. Break it into layers and look at each one separately:",
+      },
+      {
+        type: "list",
+        items: [
+          "Subject: what you point the camera at — people, streets, landscapes, details — and, just as telling, what you never photograph.",
+          "Light: hard or soft, golden hour or midday, backlight, night, flash.",
+          "Colour and tone: your palette, warm or cold, saturated or muted, colour or black and white, high or low contrast.",
+          "Composition: how close you stand, how much empty space you leave, symmetry or tension, a centred subject or one pushed to the edge, a single layer or several.",
+          "Moment and mood: the decisive instant or stillness; humour, melancholy, tension, intimacy.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Editing sits on top of all five, but it is the thinnest layer. A preset can give a set of photos a common look; it can't give them a common way of seeing. If your photos only look alike after the preset, the style is in the preset, not in you.",
+      },
+      {
+        type: "h2",
+        text: "Step 1: Audit What You Actually Shoot",
+        id: "audit",
+      },
+      {
+        type: "p",
+        html: "Start from the photos you kept over the last two or three years, not from everything on the card: rejects are noise. Pick thirty to fifty favourites by instinct, without thinking too hard, and lay them out together — a grid in your catalog, a contact sheet, prints on a table. Then go layer by layer and write down what dominates.",
+      },
+      {
+        type: "p",
+        html: "Count instead of judging. “Twelve of forty are backlit” or “almost nothing is shot closer than three metres” is far more useful than “I like moody light”. Numbers expose habits you would never describe on your own.",
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "Borrow a stranger's eyes",
+        html: "Show twenty of those photos to someone who doesn't know your work and ask them to describe the set in three words. The words they repeat are how your work reads from the outside — which is exactly what a style is.",
+      },
+      {
+        type: "h2",
+        text: "Step 2: Look Across Years, Not Across One Shoot",
+        id: "across-years",
+      },
+      {
+        type: "p",
+        html: "A single trip always has a look, because the place imposes it. Style is what survives a change of place and subject: the same distance, the same light, the same palette in Lisbon and in your own neighbourhood. Compare shoots from different years and different genres, and keep only what appears in all of them.",
+      },
+      {
+        type: "p",
+        html: "Do the same across time. Put a year from your early work next to the last twelve months. What did you drop? What appeared and stayed? Style is not fixed, and seeing its direction is often more useful than seeing where it stands today.",
+      },
+      {
+        type: "h2",
+        text: "Step 3: Put Your Style into Words",
+        id: "describe-your-style",
+      },
+      {
+        type: "p",
+        html: "Sooner or later you need a sentence: for a bio, an artist statement, a portfolio introduction, a client brief or a contest entry. A simple structure works: <strong>subject + light or colour + composition + mood</strong>. For example:",
+      },
+      {
+        type: "list",
+        items: [
+          "“Quiet urban scenes in soft, low light, framed from a distance with plenty of empty space.”",
+          "“Close, warm, candid portraits of people at work, in available light.”",
+          "“Graphic black-and-white street photography built on hard shadows and layered frames.”",
+        ],
+      },
+      {
+        type: "p",
+        html: "Avoid a genre label on its own (“I'm a street photographer”) and adjectives that describe everyone (“authentic”, “unique”, “timeless”). The test for a good description: could a stranger pick your photos out of a pile using only your sentence?",
+      },
+      {
+        type: "h2",
+        text: "Step 4: Develop It on Purpose",
+        id: "develop",
+      },
+      {
+        type: "list",
+        items: [
+          "Edit tighter. Style becomes visible when you stop showing the photos that don't belong.",
+          "Shoot a project with a constraint: one lens, one neighbourhood, one season. Constraints force you to repeat decisions, and repetition is what a style is made of.",
+          "Build series, not single images. A series reveals consistency, or the lack of it, faster than anything else.",
+          "Look at the gaps. What you never shoot is information too. Try it on purpose once and see whether it belongs.",
+          "Repeat the audit every year and compare the two descriptions.",
+        ],
+      },
+      {
+        type: "p",
+        html: "For the first and third points, our guides on <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos</a> and <a href='/blog/how-to-sequence-photos/'>how to sequence photos</a> cover the method step by step.",
+      },
+      {
+        type: "h2",
+        text: "Common Traps",
+        id: "common-traps",
+      },
+      {
+        type: "list",
+        items: [
+          "Confusing a preset with a style.",
+          "Copying a photographer you admire instead of finding what you genuinely share with them.",
+          "Forcing consistency too early: style needs volume before it shows.",
+          "Judging only from your latest shoot, which reflects the place more than you.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Seeing a Whole Archive at Once",
+        id: "whole-archive",
+      },
+      {
+        type: "p",
+        html: "The audit above works with fifty photos. It breaks with twenty thousand, which is exactly where a long-term style shows. This is where software can help — not by telling you what your style should be, but by showing what you already do across everything you kept.",
+      },
+      {
+        type: "p",
+        html: "Photoreka analyses every photo you keep — subject, light, colour, composition and mood, plus eight artistic scores — and gives you several ways to look at the result.",
+      },
+      {
+        type: "p",
+        html: "The <a href='/blog/catalog-3d-universe-not-a-grid/'>2D/3D Atlas</a> places your whole catalog on one map, grouped by what the images actually look like: the dense regions are the work you keep returning to, and the empty space is the work you haven't made yet.",
+      },
+      {
+        type: "image",
+        alt: "2D Atlas of a photo catalog with clusters of thumbnails on a dark map and a side panel listing detected patterns such as People On Pathways and Red Rock Canyons",
+        caption:
+          "The Atlas groups a catalog by visual and stylistic similarity and names the patterns it finds.",
+        src: "/report/2.webp",
+      },
+      {
+        type: "p",
+        html: "Reports summarise your dominant colour profiles, moods and recurring motifs, your strengths and gaps across the scoring criteria, and how your scores evolved month by month. They also name the narrative and contextual patterns that run through your work, each with example photos.",
+      },
+      {
+        type: "image",
+        alt: "Report showing narrative patterns such as Marketplace Narratives and Metropolitan Pathways, each with a written description and example photos",
+        caption:
+          "Narrative and contextual patterns detected across a collection: the recurring themes, written out with examples.",
+        src: "/report/3.webp",
+      },
+      {
+        type: "p",
+        html: "And you can simply ask. <a href='/photo_chat/'>ChatLab</a> answers questions such as “Which collection best represents my style?”, “How has my style changed since 2022?” or “What's my most common lighting?” with your own photos as evidence. On the <a href='/ai_photo_storyboard/'>storyboard canvas</a>, an assistant that sees the board describes what holds a set of photos together — a useful first draft of the sentence from step 3.",
+      },
+      {
+        type: "image",
+        alt: "Storyboard canvas with street portraits laid out on a board and a chat panel describing the set as an exploration of urban experience that balances intimate portraiture with layered compositions",
+        caption:
+          "Asked about a board of portraits, the assistant puts its common thread into words and suggests photos from the archive that fit it.",
+        src: "/canvas/chatlab.webp",
+      },
+      {
+        type: "p",
+        html: "Treat it as the stranger from step 1, but one who has looked at every photo instead of twenty. The sentence that describes your style is still yours to write. It works best on a curated body of work: first insights appear from around a hundred photos, and patterns over time become meaningful with a few hundred spread across years.",
+      },
+      {
+        type: "cta",
+        eyebrow: "See your style from the outside",
+        title: "Explore a real photographer's catalog",
+        text: "The demo includes the Atlas, a style report and ChatLab on a real, already-curated archive. Nothing to install.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+    ],
+  },
+  {
+    slug: "white-border-instagram-photos",
+    title:
+      "How to Add White Borders to Instagram Photos — in Bulk and Without Cropping",
+    excerpt:
+      "You framed a landscape in 3:2 and Instagram wants to cut the sides off. A white border keeps the whole photo and makes every post in a carousel the same shape. Which canvas size to pick, the ways to add borders, and how to frame a whole batch at once for free.",
+    description:
+      "How to post full photos on Instagram without cropping: why photographers add white borders, which aspect ratio to use (4:5, 3:4, 1:1, 9:16), how to handle mixed carousels, and how to add borders to many photos at once for free.",
+    keywords:
+      "white border instagram, add white border to photos for instagram, how to post full photo on instagram without cropping, instagram border, white frame instagram photo, add border to multiple photos at once, batch add white border to photos, bulk photo border free, instagram 4:5 border, instagram 3:4 photo, instagram carousel different sizes, post landscape photo on instagram without cropping, white border app alternative, free photo framer online",
+    category: "Photography Tips",
+    tags: ["Instagram", "White Borders", "Free Framer", "Batch Editing"],
+    coverImage: "/blog/instagram_white_borders.webp",
+    publishedAt: "2026-11-09",
+    readingMinutes: 6,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "You composed a landscape in 3:2, every centimetre of it on purpose, and Instagram offers to cut off the sides. The white border is the photographers' answer: place the whole photo on a canvas of the shape Instagram likes, fill the rest with white, and nothing gets cropped. It is simple, it looks deliberate — and done one photo at a time it eats an evening. <strong>Here is how to choose the canvas and frame a whole batch in one go.</strong>",
+      },
+      {
+        type: "h2",
+        text: "Why Photographers Add White Borders",
+        id: "why-white-borders",
+      },
+      {
+        type: "list",
+        items: [
+          "No cropping. The audience sees the photo as you framed it, not Instagram's guess at the important part.",
+          "Mixed carousels stay intact. Instagram gives every slide of a carousel the shape of the first one. Put verticals and horizontals on the same canvas and none of them loses its edges.",
+          "A consistent feed. Every post has the same shape and the same margin, which reads like a gallery wall instead of a pile of crops.",
+          "Breathing room. The white separates the photo from the posts around it, so the eye stays on the image for a moment longer.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Pick the Right Canvas Shape",
+        id: "aspect-ratio",
+      },
+      {
+        type: "p",
+        html: "The border is defined by the canvas, not by the photo. Choose the canvas shape first and keep it for the whole post:",
+      },
+      {
+        type: "list",
+        items: [
+          "4:5 (portrait): the classic tall feed format and the safest default. It takes much more vertical space in the feed than a square or a horizontal post.",
+          "3:4 (vertical): the same shape as the thumbnails on your profile grid, so the grid shows the whole post, border included, instead of trimming it.",
+          "1:1 (square): the original Instagram format. It takes the least space in the feed but gives the most uniform, old-school grid.",
+          "9:16 (story): for stories, where an unframed horizontal photo looks lost in the middle of the screen.",
+        ],
+      },
+      {
+        type: "p",
+        html: "A horizontal photo on a vertical canvas will always have more white above and below than on the sides; that is the trade-off for not cropping. What makes it look intentional is a <strong>consistent margin</strong>: the same thin border on the sides of every photo, whatever its orientation.",
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "One canvas per carousel",
+        html: "Decide the canvas before you frame, and frame every photo of the carousel with the same ratio and the same margin. Mixing a 4:5 border with an unframed square makes the second slide look like a mistake.",
+      },
+      {
+        type: "h2",
+        text: "Ways to Add the Border",
+        id: "ways-to-add-borders",
+      },
+      {
+        type: "h3",
+        text: "Phone apps",
+        id: "phone-apps",
+      },
+      {
+        type: "p",
+        html: "Apps such as White Border or Whitagram are quick for a single photo straight from the camera roll. For batches they are less generous: free versions usually cap how many photos you can frame at once, show ads or ask for a purchase to unlock batch export. Fine for one post a week, tedious for a trip.",
+      },
+      {
+        type: "h3",
+        text: "Photoshop or Lightroom",
+        id: "photoshop-lightroom",
+      },
+      {
+        type: "p",
+        html: "In Photoshop you can record an action that enlarges the canvas and run it with File → Automate → Batch. It works, but the canvas you need depends on each photo's shape, so one action rarely fits both verticals and horizontals. Lightroom Classic has no border option in its export dialog; you need an export plugin such as LR/Mogrify, or the Print module's Print to JPEG workaround, one layout at a time.",
+      },
+      {
+        type: "h3",
+        text: "A free batch tool in the browser",
+        id: "batch-tool",
+      },
+      {
+        type: "p",
+        html: "<a href='/framer/'>Free Framer</a> is the tool we built for exactly this job. You drop as many photos as you like, choose a canvas — Instagram presets for 1:1, 3:4, 4:5 and 9:16, plus classic, cinema and print ratios — set the margin and the frame colour, and download everything as a ZIP. There is no account, no watermark and no batch limit, and the photos are processed in your browser instead of being uploaded to a server.",
+      },
+      {
+        type: "image",
+        alt: "Free Framer interface with a grid of canvas presets for Instagram, Facebook, X and LinkedIn, a preview of a photo with a white border, a margin slider and frame colour swatches",
+        caption:
+          "Free Framer: choose a canvas preset, set the margin and colour, and every selected photo gets the same frame.",
+        src: "/home/free_framer.webp",
+      },
+      {
+        type: "h2",
+        text: "Step by Step with Free Framer",
+        id: "step-by-step",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Open Free Framer and drop the photos for the post — or a whole month of posts.",
+          "Choose the Instagram preset: 4:5 or 3:4 for the feed, 9:16 for stories.",
+          "Set the margin, and check one horizontal and one vertical photo in the preview before going further.",
+          "Pick the frame colour: white for a gallery look, black for night and moody work, or grey, warm grey, cream or beige.",
+          "Download all the framed photos as a ZIP and post them.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Before You Post: Choose the Photos",
+        id: "choose-the-photos",
+      },
+      {
+        type: "p",
+        html: "A border makes a photo look finished; it doesn't make it better. The decision that matters more is which photos earn a post, and in what order the slides of a carousel should go. Our guides on <a href='/blog/how-to-pick-your-best-photos/'>how to pick your best photos</a> and <a href='/blog/how-to-sequence-photos/'>how to sequence photos</a> cover both. If you want a second opinion before posting, <a href='/ai_photo_picks/'>Photoreka Picks</a> ranks your photos with an AI jury and explains each score in a short critique, and the first 10 photos are free.",
+      },
+      {
+        type: "cta",
+        eyebrow: "Frame a whole batch",
+        title: "White borders for every photo, in one go",
+        text: "Instagram presets, any number of photos, one ZIP. Free, no account, no watermark.",
+        buttonLabel: "Open Free Framer",
+        action: "link",
+        href: "/framer/",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
