@@ -15,9 +15,9 @@
         <span class="lx-nav__pill" :style="pillStyle" aria-hidden="true" />
         <a
           v-for="link in links"
-          :key="link.target"
-          :ref="(el) => (linkEls[link.target] = el)"
-          :href="`#${link.target}`"
+          :key="link.to || link.target"
+          :ref="(el) => link.target && (linkEls[link.target] = el)"
+          :href="link.to || `#${link.target}`"
           class="lx-nav__link"
           :class="{ 'is-active': active === link.target }"
           @click.prevent="go(link)"
@@ -37,7 +37,10 @@
 // hero, it condenses into a glass pill once the page scrolls, and a sliding
 // highlight follows the section currently in view.
 const props = defineProps({
-  /** [{ label, target }] — target is the id of a section on the page. */
+  /**
+   * [{ label, target }] — target is the id of a section on the page.
+   * [{ label, to }] — to is a route; it opens that page instead of scrolling.
+   */
   links: { type: Array, default: () => [] },
   /** Extra offset applied when scrolling to a section. */
   offset: { type: Number, default: -24 },
@@ -68,6 +71,11 @@ const placePill = () => {
 watch(active, () => nextTick(placePill));
 
 const go = (link) => {
+  if (link.to) {
+    emit("navigate", link.to);
+    navigateTo(link.to);
+    return;
+  }
   emit("navigate", link.target);
   scrollTo(`#${link.target}`, props.offset);
 };
@@ -98,6 +106,7 @@ onMounted(() => {
     { rootMargin: "-42% 0px -52% 0px" },
   );
   for (const link of props.links) {
+    if (!link.target) continue;
     const section = document.getElementById(link.target);
     if (section) spy.observe(section);
   }

@@ -215,7 +215,10 @@
           </template>
           <p>
             What photographers usually want to know about chatting with their
-            photo library
+            photo library. Coming from Google Photos? Read
+            <NuxtLink to="/blog/ask-photos-vs-photoreka-chatlab/"
+              >how Ask Photos and ChatLab compare</NuxtLink
+            >.
           </p>
         </FaqSection>
 
@@ -456,6 +459,11 @@ const faqs = [
     question: "How is this different from just searching my photos?",
     answer:
       "Search finds photos that match a description. The assistant reasons about your catalog as a whole: it can evaluate your work, spot patterns across thousands of images, build curated sequences, and give you personalized feedback—answers that no search bar can provide.",
+  },
+  {
+    question: "Is this like Ask Photos in Google Photos?",
+    answer:
+      "They share the idea of chatting with a photo library, but they answer different questions. Ask Photos is Google's Gemini-powered conversational search inside the Google Photos app: it finds moments in your backed-up camera roll, chats about one photo and can edit it on request. ChatLab works on a photographer's curated catalog of up to 50,000 photos, each already scored on eight artistic criteria and indexed by meaning, and it answers editorial questions: which frames are strongest, what you keep repeating, how your style has changed and in what order a sequence should go. Many photographers use both: Google Photos for the camera roll, Photoreka for the body of work.",
   },
   {
     question: "Does it actually look at my photos, or just the metadata?",

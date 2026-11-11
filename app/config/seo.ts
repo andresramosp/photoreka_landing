@@ -501,7 +501,7 @@ export const seoConfig = {
       description:
         "AI photo assistant for photographers. Chat with your photo library to get an honest portfolio review, see how your style has evolved and build sequences.",
       keywords:
-        "chatgpt for my photos, chat with my photo library, AI photo assistant, find my best photos, organize photos with AI, AI photo critique, photo portfolio critique AI, AI photography feedback, AI photo curation, ask AI about my photos, photo library AI chat, conversational photo search, photo catalog AI assistant, photography improvement tracker AI, discover photo patterns AI, AI photo curator, AI assistant for photographers",
+        "chatgpt for my photos, chat with my photo library, chat with your photos, ask photos alternative, AI photo assistant, find my best photos, organize photos with AI, AI photo critique, photo portfolio critique AI, AI photography feedback, AI photo curation, ask AI about my photos, photo library AI chat, conversational photo search, photo catalog AI assistant, photography improvement tracker AI, discover photo patterns AI, AI photo curator, AI assistant for photographers",
       ogImage: "/home/dashboard.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -566,6 +566,14 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Search finds photos that match a description. The assistant reasons about your catalog as a whole: it can evaluate your work, spot patterns across thousands of images, build curated sequences, and give you personalized feedback—answers that no search bar can provide.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is this like Ask Photos in Google Photos?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "They share the idea of chatting with a photo library, but they answer different questions. Ask Photos is Google's Gemini-powered conversational search inside the Google Photos app: it finds moments in your backed-up camera roll, chats about one photo and can edit it on request. ChatLab works on a photographer's curated catalog of up to 50,000 photos, each already scored on eight artistic criteria and indexed by meaning, and it answers editorial questions: which frames are strongest, what you keep repeating, how your style has changed and in what order a sequence should go. Many photographers use both: Google Photos for the camera roll, Photoreka for the body of work.",
               },
             },
             {

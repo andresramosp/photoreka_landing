@@ -34,12 +34,15 @@ const links = [
   { label: "Picks", target: "picks" },
   { label: "Pricing", target: "pricing" },
   { label: "FAQ", target: "faq" },
+  { label: "Blog", to: "/blog/" },
 ];
 
 // Pricing conserva su evento de siempre.
 const onNavigate = (target) => {
   if (target === "pricing") {
     trackUserAction("navigate_to_pricing", "landing_page_premium");
+  } else if (target === "/blog/") {
+    trackUserAction("navigate_to_blog", "landing_page_premium");
   } else {
     trackUserAction("navigate_to_section", "landing_page_premium", target);
   }
