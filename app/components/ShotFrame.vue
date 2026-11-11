@@ -14,11 +14,13 @@
           :src="video"
           :poster="poster || undefined"
           muted
-          loop
+          :loop="!startAt"
           playsinline
           preload="metadata"
           :aria-label="alt || undefined"
+          @loadedmetadata="seekToStart"
           @loadeddata="applyPlaybackRate"
+          @ended="restartFromStart"
         />
         <img
           v-else-if="src"
@@ -41,6 +43,8 @@ const props = defineProps({
   video: { type: String, default: "" },
   poster: { type: String, default: "" },
   playbackRate: { type: Number, default: 1 },
+  /** Second the video starts and loops back to. */
+  startAt: { type: Number, default: 0 },
   /** Small caption in the window bar, e.g. "Photoreka — Search". */
   label: { type: String, default: "" },
   chrome: { type: Boolean, default: true },
@@ -67,6 +71,16 @@ let observer = null;
 
 const applyPlaybackRate = () => {
   if (videoRef.value) videoRef.value.playbackRate = props.playbackRate;
+};
+
+const seekToStart = () => {
+  if (videoRef.value && props.startAt) videoRef.value.currentTime = props.startAt;
+};
+
+// Native loop always rewinds to 0, so a custom start loops by hand.
+const restartFromStart = () => {
+  seekToStart();
+  videoRef.value?.play?.().catch(() => {});
 };
 
 // Videos only play while on screen, which keeps long pages light.

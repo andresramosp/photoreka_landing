@@ -31,9 +31,26 @@
             >
           </template>
           <template #visual>
-            <ShotFrame label="Photoreka — ChatLab" ratio="16 / 11">
-              <FeatureCarousel :images="heroImages" fit="contain" />
-            </ShotFrame>
+            <!-- Each frame only plays while visible, so the hidden one never
+                 starts. -->
+            <ShotFrame
+              class="chat-hero-video--desktop"
+              video="/videos/canvas_chatlab_desktop.mp4"
+              alt="Photoreka ChatLab answering questions about a photo library"
+              label="Photoreka — ChatLab"
+              ratio="16 / 9"
+              :playback-rate="1.8"
+              :start-at="3"
+            />
+            <ShotFrame
+              class="chat-hero-video--mobile"
+              video="/videos/canvas_chatlab_mobile.mp4"
+              alt="Photoreka ChatLab answering questions about a photo library"
+              label="Photoreka — ChatLab"
+              ratio="4 / 5"
+              :playback-rate="1.7"
+              :start-at="3"
+            />
           </template>
         </PageHero>
 
@@ -97,13 +114,9 @@
                 v-reveal="{ variant: 'scale', delay: 120 }"
                 class="chat-examples__shot"
               >
-                <ShotFrame
-                  src="/chatlab/conversacion.webp"
-                  alt="A ChatLab conversation: the assistant picks the strongest photo of a series and explains why, with the photos it compared"
-                  label="Photoreka — ChatLab"
-                  ratio="16 / 10"
-                  focus="50% 0%"
-                />
+                <ShotFrame label="Photoreka — ChatLab" ratio="16 / 11">
+                  <FeatureCarousel :images="exampleImages" fit="contain" />
+                </ShotFrame>
               </div>
             </div>
           </div>
@@ -275,7 +288,11 @@ const showRequestDialog = ref(false);
 
 const activeExample = ref(0);
 
-const heroImages = [
+const exampleImages = [
+  {
+    src: "/chatlab/dashboard_empty.webp",
+    alt: "Photoreka home with the 'Chat with your library' assistant ready for a question, next to the user's recent portfolios and series",
+  },
   {
     src: "/chatlab/dashboard.webp",
     alt: "Photoreka ChatLab building a portfolio step by step: it picks an Urban Reflections theme, explains each of the first five photos and suggests next actions",
@@ -283,11 +300,6 @@ const heroImages = [
   {
     src: "/canvas/chatlab_2_estrecho.webp",
     alt: "Photoreka Canvas Chat reading a board of street portraits and suggesting new photos from the library that keep the same mood",
-  },
-
-  {
-    src: "/chatlab/dashboard_empty.webp",
-    alt: "Photoreka home with the 'Chat with your library' assistant ready for a question, next to the user's recent portfolios and series",
   },
 ];
 
@@ -568,6 +580,20 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.chat-hero-video--mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .chat-hero-video--desktop {
+    display: none;
+  }
+
+  .chat-hero-video--mobile {
+    display: block;
+  }
+}
+
 /* ── Prompt examples ───────────────────────────────────────── */
 /* ── Examples: tabs on the left, a real conversation on the right ── */
 .chat-examples {

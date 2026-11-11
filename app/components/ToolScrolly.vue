@@ -47,10 +47,12 @@
                   :src="tool.video"
                   :poster="tool.image || undefined"
                   muted
-                  loop
+                  :loop="!tool.videoStart"
                   playsinline
                   preload="metadata"
                   :aria-label="tool.title"
+                  @loadedmetadata="prepareVideo($event.target)"
+                  @ended="replayVideo($event.target)"
                 />
                 <FeatureCarousel
                   v-else
@@ -150,9 +152,11 @@
                   :src="tool.video"
                   :poster="tool.image || undefined"
                   muted
-                  loop
+                  :loop="!tool.videoStart"
                   playsinline
                   preload="metadata"
+                  @loadedmetadata="prepareVideo($event.target)"
+                  @ended="replayVideo($event.target)"
                 />
                 <FeatureCarousel
                   v-else
@@ -250,6 +254,20 @@ const onScroll = () => {
   if (!frame) frame = requestAnimationFrame(updateActive);
 };
 
+const videoTool = (video) => props.tools[Number(video.dataset.tool)] || {};
+
+const prepareVideo = (video) => {
+  const tool = videoTool(video);
+  video.defaultPlaybackRate = video.playbackRate = tool.videoRate || 1;
+  if (tool.videoStart) video.currentTime = tool.videoStart;
+};
+
+// Native loop always rewinds to 0, so a custom start loops by hand.
+const replayVideo = (video) => {
+  video.currentTime = videoTool(video).videoStart || 0;
+  video.play?.().catch(() => {});
+};
+
 // Only the active tool's video plays, and only while the section is on
 // screen and its frame is rendered (stage on desktop, step on phones).
 const syncVideos = (restart = false) => {
@@ -259,7 +277,7 @@ const syncVideos = (restart = false) => {
       Number(video.dataset.tool) === active.value &&
       video.offsetParent !== null;
     if (shouldPlay) {
-      if (restart) video.currentTime = 0;
+      if (restart) video.currentTime = videoTool(video).videoStart || 0;
       video.play?.().catch(() => {});
     } else {
       video.pause?.();

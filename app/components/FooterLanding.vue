@@ -48,7 +48,7 @@
             >Style Analysis Reports</NuxtLink
           >
           <NuxtLink to="/photo_chat" class="footer-link"
-            >AI Photo Assistant</NuxtLink
+            >AI Photo Chat</NuxtLink
           >
           <NuxtLink to="/commercial_photography" class="footer-link"
             >Commercial Photography</NuxtLink

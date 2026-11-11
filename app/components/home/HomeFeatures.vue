@@ -61,6 +61,35 @@ const tools = [
     ],
   },
   {
+    group: "Select & Score",
+    icon: markRaw(ChatbubblesOutline),
+    title: "Photo Chat Assistant",
+    lead: "Talk to your archive and get ranked picks, critique, and catalog insights.",
+    bullets: [
+      "Ask plain-language questions about your whole library",
+      "Get portfolio critique and quality-ranked selections",
+      "Track your evolution and discover recurring patterns",
+    ],
+    // images: [
+    //   "/chatlab/dashboard.webp",
+    //   "/chatlab/dashboard_empty.webp",
+    //   "/canvas/chatlab_2_estrecho.webp",
+    // ],
+    video: "/videos/canvas_chatlab_desktop.mp4",
+    videoRate: 1.8,
+    videoStart: 6,
+    color: "#8b5cf6",
+    link: "/photo_chat/",
+    demoLinks: [
+      { label: "Try demo", link: "/demo/chat-lab" },
+      {
+        label: "Commercial demo",
+        link: "/demo-commercial/chat-lab",
+        commercial: true,
+      },
+    ],
+  },
+  {
     group: "Find & Organize",
     icon: markRaw(SearchOutline),
     title: "AI Photo Search",
@@ -70,6 +99,7 @@ const tools = [
       "Type what you remember and Photoreka finds it — no tagging, no folders. <strong>Broad</strong> to explore, <strong>Adaptive</strong> for cultural references, <strong>Precise</strong> for exact conditions.",
     video: "/videos/Search.mp4",
     image: "/home/search_results.webp",
+    videoRate: 1.5,
     color: "#2563eb",
     link: "/ai_photo_search/",
     demoLinks: [
@@ -88,6 +118,7 @@ const tools = [
   //   color: "#a78bfa",
   //   link: "/ai_photo_organizer/#tag-map",
   // },
+
   {
     group: "Select & Score",
     icon: markRaw(Trophy20Regular),
@@ -110,33 +141,7 @@ const tools = [
       { label: "Commercial demo", link: "/demo-commercial/", commercial: true },
     ],
   },
-  {
-    group: "Select & Score",
-    icon: markRaw(ChatbubblesOutline),
-    title: "Photo Chat Assistant",
-    lead: "Talk to your archive and get ranked picks, critique, and catalog insights.",
-    bullets: [
-      "Ask plain-language questions about your whole library",
-      "Get portfolio critique and quality-ranked selections",
-      "Track your evolution and discover recurring patterns",
-    ],
-    images: [
-      "/chatlab/dashboard.webp",
-      "/chatlab/dashboard_empty.webp",
-      "/canvas/chatlab_2_estrecho.webp",
-    ],
 
-    color: "#8b5cf6",
-    link: "/photo_chat/",
-    demoLinks: [
-      { label: "Try demo", link: "/demo/chat-lab" },
-      {
-        label: "Commercial demo",
-        link: "/demo-commercial/chat-lab",
-        commercial: true,
-      },
-    ],
-  },
   {
     group: "Select & Score",
     icon: markRaw(BarChartOutline),

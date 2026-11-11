@@ -361,7 +361,7 @@
                 </span>
                 <span>
                   <NuxtLink to="/photo_chat" class="lx-inline-link"
-                    >AI Photo Assistant</NuxtLink
+                    >AI Photo Chat</NuxtLink
                   >
                   — the same conversation without a board: critique your
                   portfolio, track how your work has changed, ask anything about
