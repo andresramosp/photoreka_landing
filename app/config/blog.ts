@@ -61,6 +61,230 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "can-ai-review-a-photography-portfolio",
+    title:
+      "Can AI Review a Photography Portfolio? What It Sees and What It Misses",
+    excerpt:
+      "Photographers are pasting their work into chatbots and asking for a portfolio review. An honest look at what AI can judge from a few uploaded frames, where it falls short, how to brief it well, and what changes when the AI can read your whole body of work.",
+    description:
+      "Can AI review a photography portfolio? What chatbots judge well, where they fall short, prompts that work, and how an AI assistant reviews a whole archive.",
+    keywords:
+      "ai portfolio review, ai photography portfolio review, can ai review my photography portfolio, chatgpt portfolio review photography, ai photography feedback, photography portfolio review online, ai photo assistant, ai portfolio critique, portfolio review prompts",
+    category: "Photography Tips",
+    tags: ["Portfolio Review", "AI Photo Assistant", "ChatLab", "Body of Work"],
+    coverImage: "/blog/ai_portfolio_review.png",
+    publishedAt: "2026-11-11",
+    readingMinutes: 7,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "A portfolio review used to mean a table at a festival, twenty minutes on the clock, and a stranger turning your prints over one by one. It was expensive, hard to book and occasionally brutal. So it is no surprise that photographers have started doing the obvious thing: pasting their photos into a chatbot and typing <em>review my portfolio</em>.",
+      },
+      {
+        type: "p",
+        html: "Does it work? Partly. AI can now look at photographs and say sensible things about them. But <strong>a portfolio review is not twenty photo critiques in a row</strong>, and that difference decides whether what you get back is useful or just pleasant to read.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "The short answer",
+        html: "AI is already good at critiquing a single frame, and decent at comparing a handful. A real portfolio review judges the set: what the photos say together, what is repeated, what is missing and in what order they should go. An AI can only do that if it sees the whole set and, ideally, the archive the set was chosen from.",
+      },
+      {
+        type: "h2",
+        text: "What a Portfolio Review Actually Reviews",
+        id: "what-a-review-reviews",
+      },
+      {
+        type: "p",
+        html: "A human reviewer rarely spends the session telling you that a horizon is tilted. They look at the set and ask different questions:",
+      },
+      {
+        type: "list",
+        items: [
+          "Coherence: do these photos belong to the same photographer, or to five different ones?",
+          "Voice: what do you keep returning to — a subject, a distance, a kind of light?",
+          "The edit: which frames are carrying the set, and which are only there because you like them?",
+          "Gaps: what is missing that the project needs?",
+          "Sequence: which photo opens, which closes, and does the order build anything?",
+        ],
+      },
+      {
+        type: "p",
+        html: "This is editing in the picture editor's sense, and <a href='/blog/culling-is-not-editing/'>it is a different job from culling</a> or from rating photos one at a time. Twenty individually strong photos can still add up to a weak portfolio.",
+      },
+      {
+        type: "image",
+        alt: "Two panels comparing a single-photo critique with a portfolio review: above, one photograph with notes on composition, light and a weakness; below, six photographs from the same series with notes on what recurs, the palette, what is missing and the order",
+        caption:
+          "A photo critique judges one frame. A portfolio review reads what the frames say together.",
+        src: "/blog/portfolio_review_frame_vs_set.webp",
+      },
+      {
+        type: "h2",
+        text: "What a General Chatbot Does Well",
+        id: "what-chatbots-do-well",
+      },
+      {
+        type: "p",
+        html: "General assistants such as ChatGPT, Gemini or Claude accept images, and they are genuinely useful for some things:",
+      },
+      {
+        type: "list",
+        items: [
+          "Describing how a frame is built: lines, balance, where the eye lands.",
+          "Putting words to something you felt but could not name, which is half of what a critique is for.",
+          "Comparing two or three versions of the same picture and arguing for one.",
+          "Drafting the text around the work: an artist statement, captions, a project description.",
+          "Being available at two in the morning, with no ego involved.",
+        ],
+      },
+      {
+        type: "p",
+        html: "If nobody has ever looked at your photographs critically, this alone is worth doing.",
+      },
+      {
+        type: "h2",
+        text: "Where It Falls Short",
+        id: "where-it-falls-short",
+      },
+      {
+        type: "p",
+        html: "The limits are not about intelligence. They are about what the assistant can see and what it has to compare against.",
+      },
+      {
+        type: "p",
+        html: "<strong>It only sees what you upload.</strong> A chat takes a limited number of images at a time, so you end up showing ten or twenty frames. That is already your own edit, and the review cannot question choices you made before the conversation started.",
+      },
+      {
+        type: "p",
+        html: "<strong>It has no archive to compare against.</strong> It cannot tell whether that backlit silhouette is a one-off or your fortieth, whether your work was stronger two years ago, or which better frame you left in the folder.",
+      },
+      {
+        type: "p",
+        html: "<strong>It tends to be kind.</strong> In our experience, chat assistants lean towards encouragement unless you explicitly ask for the opposite. Praise is pleasant and teaches you little.",
+      },
+      {
+        type: "p",
+        html: "<strong>It is not consistent.</strong> Ask the same question twice and you may get a different favourite. There is no fixed yardstick behind the answer, so small differences between photos are mostly noise.",
+      },
+      {
+        type: "p",
+        html: "<strong>It drifts back to single frames.</strong> Unless you insist, the answer is a list of comments photo by photo: a critique, not a review.",
+      },
+      {
+        type: "h2",
+        text: "How to Get a Useful Review from Any AI",
+        id: "prompts-that-work",
+      },
+      {
+        type: "p",
+        html: "Several of these limits can be softened with a better brief. Treat the assistant like a reviewer who knows nothing about you:",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Say what the set is for: a gallery submission, a client-facing website, a book dummy, a grant. A portfolio is only good or bad for a purpose.",
+          "State your intent in two sentences, then ask whether the photos deliver it.",
+          "Ask for the three weakest frames and why, before any praise.",
+          "Ask what is repeated and what is missing, not what is good.",
+          "Ask for an opening image, a closing image and one pairing, with reasons.",
+          "Ask it to argue against its own selection. The second answer is usually the more honest one.",
+          "Run the same prompt twice and trust what both answers agree on.",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "A prompt to copy",
+        html: "“These 15 photographs are my edit for [purpose]. My intent is [two sentences]. Do not comment on the photos one by one. Tell me what the set says as a whole, which three frames weaken it and why, what is missing, and which image should open and which should close.”",
+      },
+      {
+        type: "h2",
+        text: "What Changes When the AI Can See the Whole Archive",
+        id: "whole-archive",
+      },
+      {
+        type: "p",
+        html: "The deeper fix is not a better prompt but a different setup: an assistant that already knows your body of work before you ask. That is what an <a href='/photo_chat/'>AI photo assistant</a> built on top of a photo library does. In Photoreka it is called ChatLab. Every photo in your catalog has already been scored from 1 to 10 on eight artistic criteria (aesthetic quality, composition, storytelling, originality, message, humor, visual games and spontaneity) and indexed so it can be found by description. The conversation starts from there, not from an upload button.",
+      },
+      {
+        type: "p",
+        html: "That changes which questions can be answered at all:",
+      },
+      {
+        type: "list",
+        items: [
+          "“What are my strengths and weaknesses as a photographer?”",
+          "“How has my style changed since 2022?”",
+          "“What subjects do I photograph the most?”",
+          "“Pick my strongest images for an exhibition and tell me why each one is there.”",
+          "“Build a narrative sequence from my Venice trip.”",
+        ],
+      },
+      {
+        type: "p",
+        html: "The answer comes back as text plus an ordered set of your own photos, so every claim points at evidence you can open. And because the selection is made from the whole catalog, it can bring back frames you would never have uploaded to a chat, simply because you had forgotten them.",
+      },
+      {
+        type: "image",
+        alt: "Photoreka ChatLab building a portfolio step by step: the assistant proposes an Urban Reflections theme, explains why each of the first five photos opens the sequence and suggests next actions",
+        caption:
+          "ChatLab choosing a theme from a real catalog and explaining why each of the first five photos earns its place.",
+        src: "/chatlab/dashboard.webp",
+      },
+      {
+        type: "p",
+        html: "It has limits too, and they are worth knowing. It works on a body of work of up to 50,000 photos, and it gives better answers on an archive that has already had its first pass than on an unfiltered dump of everything you ever shot. It remembers the conversation within a session, not across sessions. And art is subjective: the scores are a consistent yardstick, not the truth. If you want to know how it works under the hood, we wrote about it in <a href='/blog/chatlab-a-conversation-with-your-entire-archive/'>ChatLab: a conversation with your entire photo archive</a>.",
+      },
+      {
+        type: "h2",
+        text: "What AI Still Can't Replace",
+        id: "what-ai-cant-replace",
+      },
+      {
+        type: "p",
+        html: "A human reviewer brings things no model has. They know which galleries are tired of which subjects, what an editor commissioned last year, what the jury of a particular grant responds to. They can ask why you made the work and watch you answer. And they can be moved by your photographs, which is the whole point of showing them.",
+      },
+      {
+        type: "p",
+        html: "The sensible way to use AI is before that meeting, not instead of it. Arrive with a tighter edit, a considered sequence and one clear sentence about what the work is. Twenty minutes with a good reviewer go a lot further when you are not spending fifteen of them discovering that half the set is the same picture.",
+      },
+      {
+        type: "h2",
+        text: "A 30-Minute AI Portfolio Review",
+        id: "thirty-minute-review",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Decide what the portfolio is for and write your intent in two sentences.",
+          "Pull a long list of 30 to 40 candidates from the whole archive, not only from the last year.",
+          "Ask what the long list has in common and what is repeated.",
+          "Cut to 15 to 20. Ask for the three weakest frames and remove at least one.",
+          "Ask for an opener, a closer and the order in between, then rearrange it yourself.",
+          "Sleep on it, and show the result to a person.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Step three is the same exercise we describe in <a href='/blog/how-to-find-your-photography-style/'>how to find your photography style</a>, and step five has its own guide: <a href='/blog/how-to-sequence-photos/'>how to sequence photos</a>. If what you need is a verdict on individual frames rather than on the set, <a href='/ai_photo_picks/'>Photoreka Picks</a> scores each photo on the same eight criteria and writes a short critique of every one.",
+      },
+      {
+        type: "cta",
+        eyebrow: "Try it on a real body of work",
+        title: "Ask ChatLab to review a real portfolio",
+        text: "The demo runs ChatLab on a real, already-curated archive: ask for strengths and weaknesses, a selection for an exhibition or a sequence. Nothing to install.",
+        buttonLabel: "Try the Demo",
+        action: "demo",
+      },
+    ],
+  },
+  {
     slug: "culling-is-not-editing",
     title:
       "Culling Is Not Editing: Why Your Body of Work Needs a Different Kind of AI",
