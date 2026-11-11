@@ -4,18 +4,19 @@
       <div class="lx-page lx-numbered">
         <PageNav source="photo_chat_page" :links="navLinks" />
 
-        <PageHero eyebrow="AI Photo Assistant · Find · Organize · Critique">
+        <PageHero eyebrow="AI Photo Assistant · ChatLab">
           <template #title>
-            Find your best photos by
-            <em class="lx-accent">chatting with your library</em>
+            Chat with your photo library:
+            <em class="lx-accent">an AI assistant for your body of work</em>
           </template>
           <p>
-            Photoreka is like
-            <strong>ChatGPT for your photo library</strong>—ask it to find your
-            best shots, organize your catalog, or critique your portfolio,
-            combining AI curation with
-            <NuxtLink to="/ai_photo_search">library search</NuxtLink>, all in
-            plain language.
+            Photoreka's ChatLab is like
+            <strong>ChatGPT for your photo library</strong>: ask it to review
+            your portfolio, trace how your style has changed, or build a
+            sequence for an exhibition. It reasons across your whole body of
+            work, up to 50,000 photos, and uses
+            <NuxtLink to="/ai_photo_search/">AI photo search</NuxtLink> to find
+            the frames it talks about.
           </p>
           <template #actions>
             <LxButton icon="external" @click="goToApp">
@@ -58,14 +59,16 @@
           <div class="lx-container">
             <SectionIntro eyebrow="What you can ask" align="center">
               <template #title>
-                Ask AI to find, organize,
-                <em class="lx-accent">and critique your photos</em>
+                Ask about your work:
+                <em class="lx-accent"
+                  >portfolio review, evolution and sequences</em
+                >
               </template>
               <p>
-                This is more than AI photo search. The assistant uses AI to
-                organize your full catalog and responds with your best photos,
-                curated selections, honest photography critique, and tracking of
-                your improvement over time—in whatever language you write.
+                This is more than AI photo search. The assistant reads your
+                whole body of work and answers with curated selections, an
+                honest portfolio review, and a view of how your photography has
+                changed over time—in whatever language you write.
               </p>
             </SectionIntro>
             <div class="chat-examples">
@@ -143,7 +146,8 @@
           <div class="lx-container">
             <SectionIntro eyebrow="How it works">
               <template #title>
-                How it <em class="lx-accent">works</em>
+                How the AI photo assistant
+                <em class="lx-accent">answers</em>
               </template>
               <p>
                 An AI photo assistant and photo catalog search engine working
@@ -210,8 +214,8 @@
             Frequently asked <em class="lx-accent">questions</em>
           </template>
           <p>
-            What photographers usually want to know about AI photo chat and
-            photo library search
+            What photographers usually want to know about chatting with their
+            photo library
           </p>
         </FaqSection>
 
@@ -221,8 +225,8 @@
             <em class="lx-accent">your photo catalog</em>
           </template>
           <p>
-            Search your photo library, ask for critique, and build curated
-            selections from the same AI assistant.
+            Search your photo library, ask for a portfolio review, and build
+            curated selections from the same AI assistant.
           </p>
           <template #actions>
             <LxButton icon="external" @click="goToApp">
@@ -314,7 +318,7 @@ const navLinks = [
 // Conversation example groups
 const conversationExamples = [
   {
-    title: "Portfolio critique",
+    title: "Portfolio review",
     icon: markRaw(BookOutline),
     queries: [
       "What are my strengths and weaknesses as a photographer?",
@@ -380,7 +384,7 @@ const steps = [
 const features = [
   {
     icon: markRaw(BookOutline),
-    title: "Portfolio Critique",
+    title: "AI Portfolio Review",
     description:
       "Ask for an honest evaluation of your work. The assistant analyzes your full catalog to identify recurring strengths, blind spots, and patterns you may not have noticed yourself.",
     color: "#8b5cf6",
@@ -439,19 +443,14 @@ const features = [
 // FAQs
 const faqs = [
   {
-    question: "Can the AI find my best photos automatically?",
+    question: "What is an AI photo assistant?",
     answer:
-      "Yes. Just ask it to find your best photos and it ranks your strongest shots across your catalog—by aesthetics, composition, storytelling, and originality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+      "An AI photo assistant is a chat interface on top of your own photo library. In Photoreka it is called ChatLab: you ask a question in plain language and it answers with text plus a ranked, intentionally ordered set of your photos. It can search, review a portfolio, describe how your style has changed and build sequences, working on a body of work of up to 50,000 photos.",
   },
   {
-    question: "Can it critique my portfolio like an editor would?",
+    question: "Can it review my portfolio like an editor would?",
     answer:
-      "Yes. Ask it to review a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
-  },
-  {
-    question: "Can it help me organize my photo library with AI?",
-    answer:
-      "Absolutely. Beyond chat, Photoreka uses AI to understand and organize your catalog so you can group, filter, and curate by subject, style, lighting, or quality—without manual tagging. The assistant works on top of that organized library to answer your questions.",
+      "Yes. Ask it to review a shoot or your whole portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and it is not generic advice. Art is subjective, so the assistant is clear about what it is measuring and how.",
   },
   {
     question: "How is this different from just searching my photos?",
@@ -464,24 +463,29 @@ const faqs = [
       "Both. For most questions it combines metadata with visual embeddings (AI representations of each photo's content and style). When you ask about specific images, it also processes the actual photos directly, enabling true visual understanding of composition, mood, and lighting.",
   },
   {
-    question: "Can it really critique my photography objectively?",
+    question: "Can it help me organize my photo library with AI?",
     answer:
-      "It gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, stylistic evolution. It's not flattery and it's not generic advice. That said, art is subjective, and the assistant is clear about what it's measuring and how.",
-  },
-  {
-    question: "What languages does it support?",
-    answer:
-      "The assistant responds in the language you write in. Spanish, English, French, Portuguese, German, Italian, and most major languages are fully supported. Just write naturally.",
+      "Absolutely. Beyond chat, Photoreka uses AI to understand and organize your catalog so you can group, filter, and curate by subject, style, lighting, or quality—without manual tagging. The assistant works on top of that organized library to answer your questions.",
   },
   {
     question: "How many photos does it need to give useful answers?",
     answer:
-      "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio critique) become richer as your body of work grows, up to 50,000 photos. It works best on a coherent body of work rather than an unculled dump: questions about style and evolution need intention, not noise.",
+      "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio review) become richer as your body of work grows, up to 50,000 photos. It works best on a coherent body of work rather than an unculled dump: questions about style and evolution need intention, not noise.",
   },
   {
     question: "Can I use it to prepare for a competition or exhibition?",
     answer:
       "Yes, that's one of its strongest use cases. You can ask for a ranked selection of your best work, a thematically coherent sequence, or a specific number of images that tell a story—the assistant will select and order them with curatorial intent.",
+  },
+  {
+    question: "Can the AI find my best photos automatically?",
+    answer:
+      "Yes. Just ask it to find your best photos and it ranks your strongest shots across your catalog—by aesthetics, composition, storytelling, and originality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+  },
+  {
+    question: "What languages does it support?",
+    answer:
+      "The assistant responds in the language you write in. Spanish, English, French, Portuguese, German, Italian, and most major languages are fully supported. Just write naturally.",
   },
   {
     question: "Does it remember previous conversations?",

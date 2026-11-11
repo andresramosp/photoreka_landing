@@ -625,7 +625,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Comparisons", "AI Culling", "Aftershoot", "Narrative Select", "Photo Selection"],
     coverImage: "/blog/ai_culling_software.png",
     publishedAt: "2026-11-03",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     readingMinutes: 9,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -642,7 +642,7 @@ export const blogPosts: BlogPost[] = [
         type: "callout",
         variant: "info",
         title: "The short version",
-        html: "Shooting weddings and events and want a fast, offline cull? <strong>Aftershoot</strong> or <strong>Narrative Select</strong>. Want genre-aware ranking with a reason for every frame? <strong>FilterPixel</strong>. Already editing with Imagen? Its <strong>culling add-on</strong> is the easy choice. Choosing your strongest images for a portfolio, a contest or a book rather than delivering a gallery? That's where <a href='/ai_photo_picks/'>Photoreka Picks</a> and <a href='/ai_photo_culling/'>Photoreka</a> come in.",
+        html: "Shooting weddings and events and want a fast, offline cull? <strong>Aftershoot</strong> or <strong>Narrative Select</strong>. Want genre-aware ranking with a reason for every frame? <strong>FilterPixel</strong>. Already editing with Imagen? Its <strong>culling add-on</strong> is the easy choice. Choosing your strongest images for a portfolio, a contest or a book rather than delivering a gallery? That's where <a href='/ai_photo_picks/'>Photoreka Picks</a> and <a href='/ai_photo_culling/'>Photoreka's AI photo culling</a> come in.",
       },
       {
         type: "h2",
@@ -846,7 +846,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Comparisons", "AI Photo Organizer", "Photo Curation", "Photo Management"],
     coverImage: "/blog/ai_photo_organizers.png",
     publishedAt: "2026-11-03",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     readingMinutes: 11,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -857,7 +857,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "This guide compares the tools we think a working photographer should consider in 2026, for what they actually do today. One disclosure up front: we make <a href='/ai_photo_organizer/'>Photoreka</a>, which is on the list. We've tried to describe every tool — ours included — by its real strengths and its real limits, and we checked competitor details against their official sites at the time of writing (November 2026). Prices and features move fast, so confirm before you buy.",
+        html: "This guide compares the tools we think a working photographer should consider in 2026, for what they actually do today. One disclosure up front: we make Photoreka, an <a href='/ai_photo_organizer/'>AI photo organizer</a> that is on the list. We've tried to describe every tool — ours included — by its real strengths and its real limits, and we checked competitor details against their official sites at the time of writing (November 2026). Prices and features move fast, so confirm before you buy.",
       },
       {
         type: "h2",
@@ -1217,7 +1217,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here the two products stop overlapping. From Lightroom Classic you can launch Photoreka's <a href='/ai_photo_organizer/#atlas'>3D Atlas</a>, which places your whole catalog in a navigable space clustered by visual similarity — the fastest way we know to see what you actually photograph, as opposed to what you think you photograph. On the web platform the same analysis feeds a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences a set under visual and narrative constraints, and a <a href='/photo_chat/'>conversational assistant</a> for reviewing a body of work. Excire has no equivalent to these, and isn't trying to.",
+        html: "Here the two products stop overlapping. From Lightroom Classic you can launch Photoreka's <a href='/ai_photo_organizer/#atlas'>3D Atlas</a>, which places your whole catalog in a navigable space clustered by visual similarity — the fastest way we know to see what you actually photograph, as opposed to what you think you photograph. On the web platform the same analysis feeds a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences a set under visual and narrative constraints, and an <a href='/photo_chat/'>AI photo assistant</a> for reviewing a body of work. Excire has no equivalent to these, and isn't trying to.",
       },
       {
         type: "h3",
@@ -1378,7 +1378,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here the two products stop overlapping entirely. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/ai_photo_organizer/#reports'>style and pattern reports</a>, and a <a href='/ai_photo_organizer/#atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space rather than an infinite scroll. PhotoPrism has no equivalent, and shouldn't be criticized for it — a library server's job ends where the editing decisions begin.",
+        html: "Here the two products stop overlapping entirely. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), an <a href='/photo_chat/'>AI photo assistant</a> that can critique your portfolio and track how your work evolves, <a href='/ai_photo_organizer/#reports'>style and pattern reports</a>, and a <a href='/ai_photo_organizer/#atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space rather than an infinite scroll. PhotoPrism has no equivalent, and shouldn't be criticized for it — a library server's job ends where the editing decisions begin.",
       },
       {
         type: "h3",
@@ -1530,7 +1530,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Here the two products stop overlapping altogether. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), a <a href='/photo_chat/'>conversational assistant</a> that can critique your portfolio and track how your work evolves, <a href='/ai_photo_organizer/#reports'>style and pattern reports</a>, and a <a href='/ai_photo_organizer/#atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space instead of a scrolling grid. digiKam has no equivalent to any of these, because none of them were ever part of what a DAM is for.",
+        html: "Here the two products stop overlapping altogether. Photoreka includes a <a href='/photography_portfolio_builder/'>portfolio builder</a> that selects and sequences 10–40 images under coherence constraints (visual, chromatic, narrative), an <a href='/photo_chat/'>AI photo assistant</a> that can critique your portfolio and track how your work evolves, <a href='/ai_photo_organizer/#reports'>style and pattern reports</a>, and a <a href='/ai_photo_organizer/#atlas'>2D/3D atlas</a> that renders your entire archive as a navigable space instead of a scrolling grid. digiKam has no equivalent to any of these, because none of them were ever part of what a DAM is for.",
       },
       {
         type: "h3",

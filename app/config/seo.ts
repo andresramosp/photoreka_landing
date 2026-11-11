@@ -497,9 +497,9 @@ export const seoConfig = {
     },
 
     photo_chat: {
-      title: "ChatGPT for Your Photo Library — AI Assistant | Photoreka",
+      title: "AI Photo Assistant: Chat With Your Photo Library | Photoreka",
       description:
-        "Chat with your photo catalog to find your strongest work, get honest portfolio critique, and track your progress over time. Like ChatGPT for your photo library—built for photographers with serious archives.",
+        "AI photo assistant for photographers. Chat with your photo library to get an honest portfolio review, see how your style has evolved and build sequences.",
       keywords:
         "chatgpt for my photos, chat with my photo library, AI photo assistant, find my best photos, organize photos with AI, AI photo critique, photo portfolio critique AI, AI photography feedback, AI photo curation, ask AI about my photos, photo library AI chat, conversational photo search, photo catalog AI assistant, photography improvement tracker AI, discover photo patterns AI, AI photo curator, AI assistant for photographers",
       ogImage: "/home/dashboard.jpg",
@@ -511,7 +511,7 @@ export const seoConfig = {
           "@type": "WebApplication",
           name: "Photoreka AI Photo Assistant",
           description:
-            "AI photo assistant for photographers. Ask anything about your photo library—search your catalog, get portfolio critique, discover patterns, track artistic improvement, and build curated selections in natural language.",
+            "AI photo assistant for photographers. Ask anything about your photo library—search your catalog, get a portfolio review, discover patterns, track artistic improvement, and build curated selections in natural language.",
           applicationCategory: "PhotographyApplication",
           operatingSystem: "Web",
           url: "https://www.photoreka.com/photo_chat/",
@@ -529,7 +529,7 @@ export const seoConfig = {
           mainEntityOfPage: "https://www.photoreka.com/photo_chat/",
           featureList: [
             "Natural language search across your body of work",
-            "AI-powered portfolio critique and artistic analysis",
+            "Portfolio review grounded in your own archive",
             "Photography improvement and progression tracking over time",
             "Intelligent photo curation and sequence building",
             "Photo catalog statistics: subjects, lighting, color patterns",
@@ -546,26 +546,18 @@ export const seoConfig = {
           mainEntity: [
             {
               "@type": "Question",
-              name: "Can the AI find my best photos automatically?",
+              name: "What is an AI photo assistant?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Just ask it to find your best photos and it ranks your strongest shots across your catalog—by aesthetics, composition, storytelling, and originality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+                text: "An AI photo assistant is a chat interface on top of your own photo library. In Photoreka it is called ChatLab: you ask a question in plain language and it answers with text plus a ranked, intentionally ordered set of your photos. It can search, review a portfolio, describe how your style has changed and build sequences, working on a body of work of up to 50,000 photos.",
               },
             },
             {
               "@type": "Question",
-              name: "Can it critique my portfolio like an editor would?",
+              name: "Can it review my portfolio like an editor would?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Ask it to review a shoot or critique your portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and clear about what it is measuring.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Can it help me organize my photo library with AI?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Absolutely. Beyond chat, Photoreka uses AI to understand and organize your catalog so you can group, filter, and curate by subject, style, lighting, or quality—without manual tagging. The assistant works on top of that organized library to answer your questions.",
+                text: "Yes. Ask it to review a shoot or your whole portfolio and it gives evidence-based feedback grounded in your actual catalog—composition patterns, aesthetic scores, lighting consistency, and stylistic evolution. It is honest, not flattering, and it is not generic advice. Art is subjective, so the assistant is clear about what it is measuring and how.",
               },
             },
             {
@@ -586,10 +578,10 @@ export const seoConfig = {
             },
             {
               "@type": "Question",
-              name: "What languages does it support?",
+              name: "Can it help me organize my photo library with AI?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "The assistant responds in the language you write in. Spanish, English, French, Portuguese, German, Italian, and most major languages are fully supported. Just write naturally.",
+                text: "Absolutely. Beyond chat, Photoreka uses AI to understand and organize your catalog so you can group, filter, and curate by subject, style, lighting, or quality—without manual tagging. The assistant works on top of that organized library to answer your questions.",
               },
             },
             {
@@ -597,7 +589,7 @@ export const seoConfig = {
               name: "How many photos does it need to give useful answers?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio critique) become richer as your body of work grows, up to 50,000 photos. It works best on a coherent body of work rather than an unculled dump: questions about style and evolution need intention, not noise.",
+                text: "You'll start seeing useful insights from around 50–100 photos. Catalog-level questions (evolution, statistics, portfolio review) become richer as your body of work grows, up to 50,000 photos. It works best on a coherent body of work rather than an unculled dump: questions about style and evolution need intention, not noise.",
               },
             },
             {
@@ -606,6 +598,30 @@ export const seoConfig = {
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Yes, that's one of its strongest use cases. You can ask for a ranked selection of your best work, a thematically coherent sequence, or a specific number of images that tell a story—the assistant will select and order them with curatorial intent.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can the AI find my best photos automatically?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Just ask it to find your best photos and it ranks your strongest shots across your catalog—by aesthetics, composition, storytelling, and originality—then explains why each one stands out. It is one of the fastest ways to surface portfolio-worthy images you may have overlooked.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What languages does it support?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "The assistant responds in the language you write in. Spanish, English, French, Portuguese, German, Italian, and most major languages are fully supported. Just write naturally.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does it remember previous conversations?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Within a session, the assistant remembers the recent conversation so you can ask follow-up questions naturally. Long-term memory across sessions is on the roadmap.",
               },
             },
             {
@@ -833,7 +849,7 @@ export const seoConfig = {
     },
 
     ai_photo_culling: {
-      title: "AI Photo Culling for Your Body of Work | Photoreka",
+      title: "AI Photo Culling Software for Your Body of Work | Photoreka",
       description:
         "AI photo culling beyond the first pass: once blinks and blur are filtered out, Photoreka flags near-duplicates and ranks the photos you kept on 8 artistic criteria.",
       keywords:
