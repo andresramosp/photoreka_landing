@@ -6,8 +6,8 @@ export const PICKS_APP_URL = "https://app.photoreka.com/picks";
 export const PICKS_TRIAL_URL = `${PICKS_APP_URL}?trial=1`;
 
 // VAT included; the API is the source of truth for the charge.
-export const PICKS_PRICE_PER_PHOTO_EUR = 0.012;
-export const PICKS_MIN_CHARGE_EUR = 2.4;
+export const PICKS_PRICE_PER_PHOTO_EUR = 0.013;
+export const PICKS_MIN_CHARGE_EUR = 2.9;
 export const PICKS_FREE_TRIAL_PHOTOS = 10;
 export const PICKS_MAX_PHOTOS = 5000;
 export const PICKS_RETENTION_DAYS = 30;

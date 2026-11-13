@@ -3,7 +3,7 @@
  * Edita este archivo para cambiar meta tags, Open Graph, y Twitter Cards
  */
 
-import { PICKS_FAQS } from "../utils/picksShowcase";
+import { PICKS_FAQS, PICKS_PRICE_PER_PHOTO_EUR } from "../utils/picksShowcase";
 import { COMMERCIAL_FAQS } from "../utils/commercialFaqs";
 import { IMAGE_LIBRARY_FAQS } from "../utils/imageLibraryFaqs";
 
@@ -1049,7 +1049,7 @@ export const seoConfig = {
             "@type": "Offer",
             availability: "https://schema.org/InStock",
             priceCurrency: "EUR",
-            price: "0.012",
+            price: String(PICKS_PRICE_PER_PHOTO_EUR),
           },
           creator: {
             "@type": "Organization",

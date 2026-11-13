@@ -290,7 +290,7 @@ const navLinks = [
 ];
 
 const formatCount = (n) => new Intl.NumberFormat("en-US").format(n);
-// Up to three decimals: the per-photo price is €0.012.
+// Up to three decimals: the per-photo price is a fraction of a cent.
 const formatEur = (n) =>
   new Intl.NumberFormat("en-IE", {
     style: "currency",

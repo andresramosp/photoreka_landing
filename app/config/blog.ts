@@ -987,7 +987,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "The practical details: no account and no subscription; €0.012 per photo, VAT included, paid once per order with a €2.40 minimum — so 500 photos cost €6 and 5,000 cost €60. Only an 800-pixel thumbnail of each photo is sent for judging; your full-resolution files stay on your device. A private link to your ranking reaches your inbox, and thumbnails and results are deleted after 30 days and never used to train AI models. You can <a href='https://app.photoreka.com/picks?trial=1' target='_blank' rel='noopener'>try it free with 10 of your own photos</a>, critiques included, with no card and no account.",
+        html: "The practical details: no account and no subscription; €0.013 per photo, VAT included, paid once per order with a €2.90 minimum — so 500 photos cost €6.50 and 5,000 cost €65. Only an 800-pixel thumbnail of each photo is sent for judging; your full-resolution files stay on your device. A private link to your ranking reaches your inbox, and thumbnails and results are deleted after 30 days and never used to train AI models. You can <a href='https://app.photoreka.com/picks?trial=1' target='_blank' rel='noopener'>try it free with 10 of your own photos</a>, critiques included, with no card and no account.",
       },
       {
         type: "p",
@@ -1203,7 +1203,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "list",
         items: [
-          "No account and no subscription: €0.012 per photo, VAT included, with a €2.40 minimum per order.",
+          "No account and no subscription: €0.013 per photo, VAT included, with a €2.90 minimum per order.",
           "A free trial with 10 of your own photos, critiques included, no card.",
           "Only an 800-pixel thumbnail of each photo is sent; your full-resolution originals stay on your device.",
           "Identical copies are grouped and judged once; the ranking can be exported as CSV.",
