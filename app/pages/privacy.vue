@@ -2,7 +2,7 @@
   <div class="lx-page">
     <PageNav source="privacy_page" />
 
-    <PageLegal eyebrow="Legal" updated="November 7, 2026">
+    <PageLegal eyebrow="Legal" updated="November 14, 2026">
       <template #title>Privacy &amp; <em class="lx-accent">Image Policy</em></template>
 
       <section>
@@ -44,6 +44,11 @@
           <li>
             <strong>Usage data:</strong> interaction logs, feature usage, and
             session information to improve the Platform.
+          </li>
+          <li>
+            <strong>Assistant conversations:</strong> the messages you
+            exchange with the Photoreka assistant, which are stored with your
+            account.
           </li>
           <li>
             <strong>Device information:</strong> browser type, operating
@@ -170,6 +175,11 @@
           <li>
             Communicate with you about your account, updates, and support
             inquiries.
+          </li>
+          <li>
+            Review conversations with the assistant, mainly those asking for
+            help with the Platform, so our team can provide support, correct
+            errors, and improve its answers.
           </li>
           <li>
             Monitor and analyze usage patterns to improve user experience.
