@@ -2,7 +2,7 @@
   <div class="lx-page">
     <PageNav source="privacy_page" />
 
-    <PageLegal eyebrow="Legal" updated="November 14, 2026">
+    <PageLegal eyebrow="Legal" updated="November 16, 2026">
       <template #title>Privacy &amp; <em class="lx-accent">Image Policy</em></template>
 
       <section>
@@ -34,7 +34,12 @@
           <li>
             <strong>Images:</strong> photographs you upload to the Platform
             for analysis and curation, including photos you choose to import
-            from Google Photos or Google Drive.
+            from Google Photos, Google Drive, or Instagram.
+          </li>
+          <li>
+            <strong>Instagram account data:</strong> if you connect an
+            Instagram professional account, the posts of that account and
+            their statistics — see the <em>Instagram Data</em> section below.
           </li>
           <li>
             <strong>Image metadata:</strong> EXIF data, camera settings,
@@ -372,8 +377,117 @@
         </p>
       </section>
 
+      <section id="instagram">
+        <h2>10. Instagram Data</h2>
+        <p>
+          Photoreka lets you connect an Instagram professional account
+          (Business or Creator), so you can import the photos you have posted
+          and ask the Photoreka assistant about your account. Connecting is
+          optional and happens through Meta's own login window. This section
+          describes how we handle data obtained through the Instagram Platform.
+        </p>
+        <p>
+          <strong>What we access.</strong> We request only the following
+          permissions, both read-only:
+        </p>
+        <ul>
+          <li>
+            <strong>instagram_basic</strong> — the account's username, follower
+            and post counts, and its posts: images, captions, publication dates,
+            links, and like and comment counts.
+          </li>
+          <li>
+            <strong>instagram_manage_insights</strong> — statistics of those
+            posts: reach, saves, shares, and views.
+          </li>
+        </ul>
+        <p>
+          Photoreka cannot publish, edit, or delete posts, read or write
+          comments or direct messages, or access any account other than the one
+          you connect.
+        </p>
+        <p>
+          <strong>How we use it.</strong> Instagram data is used only to
+          provide features you request:
+        </p>
+        <ul>
+          <li>
+            <strong>Importing photos:</strong> the photos you select are
+            imported and treated exactly like images you upload directly, as
+            described in the sections above. Their publication date and link
+            are kept with them.
+          </li>
+          <li>
+            <strong>Assistant answers:</strong> the assistant reads your posts
+            and their statistics to answer your questions about your account,
+            such as which posts performed best or which photos of your catalog
+            would fit next to them. To do so, images of your posts may be sent
+            to the AI providers described in the Image Processing with AI
+            section, under the same terms.
+          </li>
+          <li>
+            <strong>Recognising published photos:</strong> we compare a visual
+            fingerprint of each post image with the photos in your catalog, to
+            know which of your photos are already published.
+          </li>
+        </ul>
+        <p>
+          <strong>What we store.</strong> While your account is connected we
+          keep: the access token, encrypted; a list of up to your 1,000 most
+          recent posts with their captions, dates, links, and statistics,
+          refreshed periodically; and, for each post image, a visual
+          fingerprint and its link to the matching photo in your catalog, if
+          any. Post images themselves are not stored, except the photos you
+          import.
+        </p>
+        <p>
+          <strong>How we share it.</strong> Instagram data is never sold, used
+          for advertising, or shared with third parties beyond the
+          infrastructure and AI providers strictly necessary to provide these
+          features, under the data processing terms described above. It is
+          never used to train AI models. Our use of this data follows the
+          <a
+            href="https://developers.facebook.com/terms/"
+            target="_blank"
+            rel="noopener"
+            >Meta Platform Terms</a
+          >.
+        </p>
+        <p id="instagram-data-deletion">
+          <strong>How to delete your Instagram data.</strong> You can remove
+          the Instagram data Photoreka holds at any time, in any of these ways:
+        </p>
+        <ul>
+          <li>
+            <strong>Disconnect in Photoreka:</strong> go to
+            <em>Settings &gt; Connections &gt; Instagram</em> and click
+            <em>Disconnect</em>. The access token, the list of posts, their
+            statistics, fingerprints, and links are deleted immediately.
+          </li>
+          <li>
+            <strong>Remove Photoreka from Instagram:</strong> in the Instagram
+            app or website, go to
+            <em>Settings &gt; Website permissions &gt; Apps and websites</em>
+            and remove Photoreka. Access ends at once, and the data above is
+            deleted the next time Photoreka tries to read the account.
+          </li>
+          <li>
+            <strong>Ask us:</strong> write to
+            <a href="mailto:hello@photoreka.com">hello@photoreka.com</a> from
+            the email of your Photoreka account, and we will delete it within 30
+            days.
+          </li>
+        </ul>
+        <p>
+          Photos you imported from Instagram are part of your catalog and stay
+          there after you disconnect, until you delete them as any other photo.
+          Deleting your Photoreka account removes everything, as described in
+          the Data Retention and Deletion section.
+        </p>
+      </section>
+
       <section>
-        <h2>10. Sensitive and Personal Images Disclaimer</h2>
+        <h2>11. Sensitive and Personal Images Disclaimer</h2>
         <p>
           Photoreka is intended solely for the management and analysis of
           artistic or documentary photographic bodies of work suitable for
@@ -399,7 +513,7 @@
       </section>
 
       <section>
-        <h2>11. Cookies and Analytics</h2>
+        <h2>12. Cookies and Analytics</h2>
         <ul>
           <li>
             Photoreka uses essential cookies required for the Platform to
@@ -418,7 +532,7 @@
       </section>
 
       <section>
-        <h2>12. Your Rights (GDPR / CCPA)</h2>
+        <h2>13. Your Rights (GDPR / CCPA)</h2>
         <p>
           Depending on your jurisdiction, you may have the following rights
           regarding your personal data:
@@ -461,7 +575,7 @@
       </section>
 
       <section>
-        <h2>13. Data Security</h2>
+        <h2>14. Data Security</h2>
         <ul>
           <li>
             All data is encrypted in transit using TLS and at rest using
@@ -494,7 +608,7 @@
       </section> -->
 
       <section>
-        <h2>14. Changes to This Policy</h2>
+        <h2>15. Changes to This Policy</h2>
         <p>
           We may update this Privacy &amp; Image Policy from time to time.
           Material changes will be communicated via the Platform or email.
@@ -504,7 +618,7 @@
       </section>
 
       <section>
-        <h2>15. Contact</h2>
+        <h2>16. Contact</h2>
         <p>
           If you have any questions about this Privacy &amp; Image Policy or
           wish to exercise your data rights, please contact us at
