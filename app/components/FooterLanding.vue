@@ -44,6 +44,9 @@
           <NuxtLink to="/ai_photo_picks/" class="footer-link"
             >Picks: AI Photo Ranker</NuxtLink
           >
+          <NuxtLink to="/photo-contests/" class="footer-link"
+            >Photo Contests</NuxtLink
+          >
           <NuxtLink to="/ai_photo_organizer/#reports" class="footer-link"
             >Style Analysis Reports</NuxtLink
           >

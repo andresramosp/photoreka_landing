@@ -2,3 +2,4 @@ User-Agent: *
 Allow: /
 Host: https://www.photoreka.com
 Sitemap: https://www.photoreka.com/sitemap.xml
+Sitemap: https://www.photoreka.com/sitemap-contests.xml

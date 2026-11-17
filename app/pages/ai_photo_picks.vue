@@ -81,6 +81,12 @@
         <div v-reveal="120">
           <PicksJuryDemo />
         </div>
+        <p v-reveal="200" class="pkl-contests">
+          Entering a competition? Each contest in our calendar has its own jury.
+          <NuxtLink to="/photo-contests/" class="lx-inline-link">
+            See the photo contests open now →
+          </NuxtLink>
+        </p>
       </div>
     </section>
 
@@ -528,6 +534,13 @@ function trackApp(where) {
   -webkit-line-clamp: 3;
   line-clamp: 3;
   overflow: hidden;
+}
+
+.pkl-contests {
+  margin-top: clamp(28px, 3vw, 44px);
+  text-align: center;
+  font-size: var(--lx-fs-sm);
+  color: var(--lx-text-2);
 }
 
 /* ── Critique ───────────────────────────────────────────────────── */

@@ -1026,6 +1026,17 @@ export const seoConfig = {
       ],
     },
 
+    photo_contests: {
+      title: "Photo Contests: Deadlines, Fees & Free Entry | Photoreka",
+      description:
+        "Photo contests open now and coming up: deadlines, entry fees, prizes and rules for the main photography competitions, each checked on the official site.",
+      keywords:
+        "photo contests, photo contests 2026, photo contests 2027, photography competitions, photography competitions 2027, photography contests, photo competitions open now, free photo contests, free entry photo contests, photo contest deadlines, photography awards deadlines, street photography contests, landscape photography competitions, portrait photography competitions, documentary photography awards, travel photography competitions, fine art photography awards, international photo contests",
+      ogImage: "/picks/og-picks.jpg",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+    },
+
     ai_photo_picks: {
       title: "AI Photo Rating & Critique: Rank Your Best Photos | Photoreka",
       description:

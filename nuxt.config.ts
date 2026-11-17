@@ -2,6 +2,30 @@ import AutoImport from "unplugin-auto-import/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 
+const mainApiBaseUrl =
+  import.meta.env.VITE_MAIN_API_BASE_URL || "http://localhost:3333";
+
+// The contest pages are built from the API. Without it the build stops here,
+// so the host keeps serving the previous deploy instead of empty pages.
+async function fetchContestSlugs(): Promise<string[]> {
+  const url = `${mainApiBaseUrl}/api/contests`;
+  let slugs: string[] = [];
+  try {
+    const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const body = (await response.json()) as { contests?: { slug: string }[] };
+    slugs = (body.contests ?? []).map((contest) => contest.slug);
+  } catch (error) {
+    throw new Error(
+      `[photo-contests] Could not read ${url}: ${(error as Error).message}. Build aborted.`,
+    );
+  }
+  if (!slugs.length) {
+    throw new Error(`[photo-contests] ${url} returned no contests. Build aborted.`);
+  }
+  return slugs;
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -14,8 +38,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      mainApiBaseUrl:
-        import.meta.env.VITE_MAIN_API_BASE_URL || "http://localhost:3333",
+      mainApiBaseUrl,
       gaMeasurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || "G-WK7N5SVNVD",
       appUrl: import.meta.env.VITE_APP_URL || "https://app.photoreka.com",
       siteUrl: import.meta.env.VITE_SITE_URL || "https://www.photoreka.com",
@@ -148,6 +171,15 @@ export default defineNuxtConfig({
     "/commercial_photography": { prerender: true },
     "/ai_image_library_search": { prerender: true },
     "/framer": { prerender: true },
+    "/photo-contests": { prerender: true },
+  },
+
+  hooks: {
+    async "prerender:routes"(ctx) {
+      for (const slug of await fetchContestSlugs()) {
+        ctx.routes.add(`/photo-contests/${slug}`);
+      }
+    },
   },
 
   nitro: {
@@ -177,6 +209,8 @@ export default defineNuxtConfig({
         "/commercial_photography",
         "/ai_image_library_search",
         "/framer",
+        "/photo-contests",
+        "/sitemap-contests.xml",
       ],
     },
   },
