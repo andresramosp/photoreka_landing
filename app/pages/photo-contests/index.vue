@@ -20,7 +20,7 @@
     <section v-if="featured.length" id="featured" class="pcl-block">
       <div class="lx-container">
         <ContestSectionHead title="Featured contests" />
-        <div class="pcl-grid" :class="{ 'is-capped': !showAllFeatured }">
+        <div class="pcl-grid pcl-grid--featured" :class="gridClass(visibleFeatured.length)">
           <ContestPhotoCard
             v-for="contest in visibleFeatured"
             :key="contest.slug"
@@ -47,7 +47,7 @@
           Deadlines in the next {{ CLOSING_SOON_DAYS }} days. Confirm the exact
           cut-off time on the official site.
         </ContestSectionHead>
-        <div class="pcl-grid" :class="closingGridClass">
+        <div class="pcl-grid" :class="gridClass(closingSoon.length)">
           <ContestPhotoCard
             v-for="contest in closingSoon"
             :key="contest.slug"
@@ -224,21 +224,33 @@ const statusOf = (contest) => contestStatus(contest, today.value);
 const isLive = (contest) => ["open", "upcoming"].includes(statusOf(contest));
 const byDeadline = (a, b) => a.facts.deadline.localeCompare(b.facts.deadline);
 
-// Featured contests taking entries now or soon, the next date first. Before
-// any date is confirmed, the featured list itself fills the grid.
+// Featured contests taking entries now or soon, the next date first. A last
+// row left short is completed with other contests taking entries (those with
+// an image first), or trimmed when there are not enough. Before any date is
+// confirmed, the featured list itself fills the grid.
+const FEATURED_PER_ROW = 3;
+const byNextDate = (a, b) =>
+  (a.facts.deadline ?? contestKeyDate(a, today.value)).localeCompare(
+    b.facts.deadline ?? contestKeyDate(b, today.value),
+  );
+
 const featured = computed(() => {
   const picked = contests.value.filter((c) => c.featured);
-  const live = picked
-    .filter(isLive)
-    .sort((a, b) =>
-      (a.facts.deadline ?? contestKeyDate(a, today.value)).localeCompare(
-        b.facts.deadline ?? contestKeyDate(b, today.value),
-      ),
-    );
-  return live.length
-    ? live
-    : picked.slice().sort((a, b) => a.name.localeCompare(b.name));
+  const live = picked.filter(isLive).sort(byNextDate);
+  if (!live.length) return fullRows(picked.slice().sort((a, b) => a.name.localeCompare(b.name)));
+
+  const others = contests.value.filter((c) => !c.featured && isLive(c)).sort(byNextDate);
+  const fillers = [...others.filter((c) => c.imageUrl), ...others.filter((c) => !c.imageUrl)];
+  const missing = (FEATURED_PER_ROW - (live.length % FEATURED_PER_ROW)) % FEATURED_PER_ROW;
+  return fullRows([...live, ...fillers.slice(0, missing)]);
 });
+
+// One or two cards have their own layouts; from three on, only complete rows.
+function fullRows(list) {
+  if (list.length < FEATURED_PER_ROW) return list;
+  return list.slice(0, list.length - (list.length % FEATURED_PER_ROW));
+}
+
 const visibleFeatured = computed(() =>
   showAllFeatured.value
     ? featured.value
@@ -250,11 +262,10 @@ const closingSoon = computed(() =>
 );
 
 // Two or four cards read better as pairs than as a row of three with a gap.
-const closingGridClass = computed(() => {
-  const count = closingSoon.value.length;
+function gridClass(count) {
   if (count === 1) return "pcl-grid--one";
   return count === 2 || count === 4 ? "pcl-grid--two" : "";
-});
+}
 
 const filtered = computed(() =>
   contests.value.filter((c) => matchesContestFilter(c, filter)),
@@ -478,14 +489,16 @@ function trackPicks(where) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* An even grid while capped: no orphan card on the last row. */
-  .pcl-grid.is-capped > :nth-child(9) {
-    display: none;
-  }
-
   .pcl-finder__top.has-overview,
   .pcl-facts {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Two columns: an odd featured card would sit alone on the last row. */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .pcl-grid--featured > :last-child:nth-child(odd):not(:first-child) {
+    display: none;
   }
 }
 
