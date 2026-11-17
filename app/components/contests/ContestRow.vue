@@ -33,7 +33,7 @@
         target="_blank"
         @click="trackPicks"
       >
-        Pick your entries
+        Rank my photos
       </LxButton>
     </div>
   </article>

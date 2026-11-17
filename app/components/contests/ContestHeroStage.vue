@@ -13,7 +13,7 @@
         <div class="pc-hero__actions">
           <a href="#calendar" class="pc-hero__btn">Find a contest</a>
           <a :href="PICKS_TRIAL_URL" target="_blank" rel="noopener" class="pc-hero__btn" @click="trackTrial">
-            Choose your entries
+            Rank my photos
           </a>
         </div>
       </div>

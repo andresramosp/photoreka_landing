@@ -3,7 +3,7 @@
     <template #nav-actions>
       <NuxtLink to="/photo-contests/" class="lx-link pc-nav-back">All photo contests</NuxtLink>
       <LxButton size="sm" icon="external" :href="picksUrl" target="_blank" @click="trackPicks('nav')">
-        Pick your entries
+        Rank my photos
       </LxButton>
     </template>
 
@@ -36,7 +36,7 @@
           </ul>
           <div class="lx-actions">
             <LxButton icon="external" :href="picksUrl" target="_blank" @click="trackPicks('hero')">
-              Pick your entries
+              Rank my photos
             </LxButton>
             <LxButton variant="ghost" icon="down" href="#reminder">Remind me</LxButton>
           </div>
@@ -189,7 +189,7 @@ const picksUrl = computed(() => picksContestUrl(config.public.appUrl, slug));
 
 const navLinks = [
   { label: "Details", target: "details" },
-  { label: "Jury", target: "jury" },
+  { label: "Rank photos", target: "jury" },
   { label: "Reminder", target: "reminder" },
 ];
 

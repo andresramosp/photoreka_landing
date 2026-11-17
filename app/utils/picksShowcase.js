@@ -177,7 +177,7 @@ export const SHOWCASE_JURIES = [
   },
 ];
 
-function weightedScore(scores, weights) {
+export function weightedScore(scores, weights) {
   let sum = 0;
   let used = 0;
   for (const [key, weight] of Object.entries(weights)) {

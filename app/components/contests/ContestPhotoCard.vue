@@ -10,10 +10,10 @@
         :href="picksUrl"
         target="_blank"
         rel="noopener noreferrer"
-        :aria-label="`Pick your entries for ${contest.name} with Photoreka Picks`"
+        :aria-label="`Rank your photos for ${contest.name} with Photoreka Picks`"
         @click="trackPicks"
       >
-        Pick your entries
+        Rank my photos
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
       </a>
     </header>
