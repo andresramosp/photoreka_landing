@@ -850,7 +850,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "A selection tells the viewer what you saw. A sequence tells them what you think about it. Spend as long on the order as you spent on the choosing — and if the set is headed for a competition, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing photos for a photo contest</a> covers how juries read a series.",
+        html: "A selection tells the viewer what you saw. A sequence tells them what you think about it. Spend as long on the order as you spent on the choosing — and if the set is headed for a competition, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing photos for a photo contest</a> covers how juries read a series, and the <a href='/photo-contests/'>photo contest calendar</a> shows which competitions accept one.",
       },
     ],
   },
@@ -983,7 +983,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Then you rank. The <strong>Overall</strong> jury weighs aesthetics, composition, storytelling and originality; <strong>street, documentary, landscape, portrait, travel and fine art</strong> juries weigh them their own way and only rank the photos of their genre; <strong>award juries</strong> keep only the photos above a high bar. Identical copies are grouped and judged once, so duplicates don't crowd your top picks, and you can export the whole ranking as CSV.",
+        html: "Then you rank. The <strong>Overall</strong> jury weighs aesthetics, composition, storytelling and originality; <strong>street, documentary, landscape, portrait, travel and fine art</strong> juries weigh them their own way and only rank the photos of their genre; <strong>award juries</strong> keep only the photos above a high bar, and every competition in our <a href='/photo-contests/'>photo contest calendar</a> has a jury of its own. Identical copies are grouped and judged once, so duplicates don't crowd your top picks, and you can export the whole ranking as CSV.",
       },
       {
         type: "p",
@@ -1043,7 +1043,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "One last thought. The reason 'rate my photo' returns such a mess of results is that people rarely want a rating for its own sake. They want to make a decision: which picture goes on the profile, which frames go to the client, which twelve go into the portfolio or the competition. Pick the tool built for your decision, and the number starts to mean something. If that decision is a contest, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing which photos to enter in a photography contest</a> is a good next read.",
+        html: "One last thought. The reason 'rate my photo' returns such a mess of results is that people rarely want a rating for its own sake. They want to make a decision: which picture goes on the profile, which frames go to the client, which twelve go into the portfolio or the competition. Pick the tool built for your decision, and the number starts to mean something. If that decision is a contest, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing which photos to enter in a photography contest</a> is a good next read, and our <a href='/photo-contests/'>photo contest calendar</a> lists the competitions open now.",
       },
     ],
   },
@@ -1078,7 +1078,7 @@ export const blogPosts: BlogPost[] = [
         type: "callout",
         variant: "info",
         title: "The short version",
-        html: "Shooting weddings and events and want a fast, offline cull? <strong>Aftershoot</strong> or <strong>Narrative Select</strong>. Want genre-aware ranking with a reason for every frame? <strong>FilterPixel</strong>. Already editing with Imagen? Its <strong>culling add-on</strong> is the easy choice. Choosing your strongest images for a portfolio, a contest or a book rather than delivering a gallery? That's where <a href='/ai_photo_picks/'>Photoreka Picks</a> and <a href='/ai_photo_culling/'>Photoreka's AI photo culling</a> come in.",
+        html: "Shooting weddings and events and want a fast, offline cull? <strong>Aftershoot</strong> or <strong>Narrative Select</strong>. Want genre-aware ranking with a reason for every frame? <strong>FilterPixel</strong>. Already editing with Imagen? Its <strong>culling add-on</strong> is the easy choice. Choosing your strongest images for a portfolio, a <a href='/photo-contests/'>photo contest</a> or a book rather than delivering a gallery? That's where <a href='/ai_photo_picks/'>Photoreka Picks</a> and <a href='/ai_photo_culling/'>Photoreka's AI photo culling</a> come in.",
       },
       {
         type: "h2",
@@ -2587,7 +2587,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Choosing well is a separate skill from shooting well, and it can be learned. This is the process we recommend, from reading the brief to sending the file.",
+        html: "Choosing well is a separate skill from shooting well, and it can be learned. This is the process we recommend, from reading the brief to sending the file. If you have not picked a competition yet, our <a href='/photo-contests/'>photo contest calendar</a> lists the ones open now, with their deadlines, entry fees and prizes.",
       },
       {
         type: "h2",
@@ -2671,7 +2671,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Then weigh those scores for the category. A street jury will forgive some noise for a perfect gesture; a landscape jury will not forgive blown highlights for a nice composition. The same photo can be a finalist in one category and an early cut in another, which is why it is worth checking where each candidate is strongest before deciding where to enter it.",
+        html: "Then weigh those scores for the category. The jury of a <a href='/photo-contests/street/'>street photography contest</a> will forgive some noise for a perfect gesture; the jury of a <a href='/photo-contests/landscape/'>landscape photography contest</a> will not forgive blown highlights for a nice composition. The same photo can be a finalist in one category and an early cut in another, which is why it is worth checking where each candidate is strongest before deciding where to enter it.",
       },
       {
         type: "h2",
@@ -2714,7 +2714,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "AI will not choose your entry for you, and it shouldn't: it does not know the theme, the jury, or what you are trying to say. Where it is genuinely useful is in the two slowest steps: <strong>going through the whole archive</strong> to build the long list, and giving you a <strong>consistent second opinion</strong> on each candidate. <a href='/ai_photo_picks/'>Photoreka Picks</a> does exactly that: you drop up to 5,000 photos, an AI jury scores every frame on eight artistic criteria and writes a short critique for each one, and you can rank the results through genre juries such as street or documentary, or through award juries that only keep photos above a high bar.",
+        html: "AI will not choose your entry for you, and it shouldn't: it does not know the theme, the jury, or what you are trying to say. Where it is genuinely useful is in the two slowest steps: <strong>going through the whole archive</strong> to build the long list, and giving you a <strong>consistent second opinion</strong> on each candidate. <a href='/ai_photo_picks/'>Photoreka Picks</a> does exactly that: you drop up to 5,000 photos, an AI jury scores every frame on eight artistic criteria and writes a short critique for each one, and you can rank the results through genre juries such as street or documentary, or through award juries that only keep photos above a high bar. Every competition in our <a href='/photo-contests/'>photo contest calendar</a> also has its own jury, weighted towards the kind of work that contest tends to reward.",
       },
       {
         type: "cta",
@@ -2838,7 +2838,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Competitions are a special case, because the brief and the jury matter as much as the photo. We cover it in detail in <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>how to choose which photos to enter in a photo contest</a>.",
+        html: "Competitions are a special case, because the brief and the jury matter as much as the photo. We cover it in detail in <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>how to choose which photos to enter in a photo contest</a>, and list the <a href='/photo-contests/'>photo contests open now</a> with their deadlines and entry fees.",
       },
       {
         type: "h2",

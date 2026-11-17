@@ -18,7 +18,10 @@
             <nav class="pcd-crumbs" aria-label="Breadcrumb">
               <NuxtLink to="/photo-contests/">Photo contests</NuxtLink>
               <span aria-hidden="true">/</span>
-              <ContestGenreChip :genre="contest.genre" />
+              <NuxtLink v-if="genreCategory" :to="contestCategoryPath(genreCategory.slug)">
+                <ContestGenreChip :genre="contest.genre" />
+              </NuxtLink>
+              <ContestGenreChip v-else :genre="contest.genre" />
             </nav>
             <h1 class="lx-title pcd-cover__title">
               {{ contest.name }}
@@ -87,6 +90,12 @@
           />
         </div>
         <p class="pcd-all">
+          <NuxtLink v-if="genreCategory" :to="contestCategoryPath(genreCategory.slug)" class="lx-link">
+            All {{ genreCategory.name.toLowerCase() }}
+          </NuxtLink>
+          <NuxtLink v-if="contest.facts?.isFree" :to="contestCategoryPath('free')" class="lx-link">
+            Free photo contests
+          </NuxtLink>
           <NuxtLink to="/photo-contests/" class="lx-link">See every photo contest</NuxtLink>
         </p>
       </div>
@@ -121,6 +130,7 @@ import {
   formatContestDate,
   picksContestUrl,
 } from "~/utils/contests";
+import { contestCategoryForGenre, contestCategoryPath } from "~/utils/contestCategories";
 import { trackUserAction } from "~/utils/analytics";
 import { seoConfig } from "~/config/seo";
 
@@ -137,6 +147,7 @@ if (!contest.value) {
 
 const facts = computed(() => contest.value.facts);
 const genreLabel = computed(() => contestGenre(contest.value.genre).label.toLowerCase());
+const genreCategory = computed(() => contestCategoryForGenre(contest.value.genre));
 
 // "2027" is shown beside the name unless the name already carries it.
 const edition = computed(() => {
@@ -196,10 +207,13 @@ useSEO(undefined, {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: seoConfig.siteUrl },
-        { "@type": "ListItem", position: 2, name: "Photo contests", item: `${seoConfig.siteUrl}/photo-contests/` },
-        { "@type": "ListItem", position: 3, name: c.name, item: pageUrl },
-      ],
+        { name: "Home", item: seoConfig.siteUrl },
+        { name: "Photo contests", item: `${seoConfig.siteUrl}/photo-contests/` },
+        ...(genreCategory.value
+          ? [{ name: genreCategory.value.name, item: `${seoConfig.siteUrl}${contestCategoryPath(genreCategory.value.slug)}` }]
+          : []),
+        { name: c.name, item: pageUrl },
+      ].map((crumb, i) => ({ "@type": "ListItem", position: i + 1, ...crumb })),
     },
   ],
 });
@@ -331,6 +345,9 @@ function trackPicks(where) {
 }
 
 .pcd-all {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2rem;
   margin-top: clamp(24px, 3vw, 40px);
 }
 

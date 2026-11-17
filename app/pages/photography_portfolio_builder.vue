@@ -46,8 +46,11 @@
                 <em class="lx-accent">many outputs</em>
               </template>
               <p>
-                Whether you're preparing for a gallery, a competition, a client
-                delivery, or a photobook—the same intelligent pipeline adapts to
+                Whether you're preparing for a gallery, a
+                <NuxtLink to="/photo-contests/" class="lx-inline-link"
+                  >photo competition</NuxtLink
+                >, a client delivery, or a photobook—the same intelligent
+                pipeline adapts to
                 your goal and automatically selects your strongest photos.
               </p>
             </SectionIntro>

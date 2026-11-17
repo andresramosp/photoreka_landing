@@ -45,7 +45,16 @@
 
           <p class="lx-flow__title">{{ stage.title }}</p>
           <p class="lx-flow__meta">{{ stage.meta }}</p>
-          <p class="lx-flow__text">{{ stage.text }}</p>
+          <p class="lx-flow__text">
+            <template v-if="stage.link">
+              {{ stage.text.split(stage.link.label)[0]
+              }}<NuxtLink :to="stage.link.to" class="lx-inline-link">{{
+                stage.link.label
+              }}</NuxtLink
+              >{{ stage.text.split(stage.link.label)[1] }}
+            </template>
+            <template v-else>{{ stage.text }}</template>
+          </p>
 
           <ul
             v-if="stage.tools"
@@ -179,6 +188,8 @@ const stages = [
     title: "The showcase",
     meta: "The few that matter",
     text: "A portfolio, a photobook, an exhibition, a contest entry or a client selection—chosen, and in order.",
+    // The words of the text that link out.
+    link: { label: "contest entry", to: "/photo-contests/" },
     strip: "final",
     toolsLabel: "Where photographers publish their work",
     tools: [

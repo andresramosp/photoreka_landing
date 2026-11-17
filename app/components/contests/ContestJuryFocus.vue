@@ -43,7 +43,11 @@
       <p class="pc-jury__note">
         The weights are our reading of the work this competition has rewarded. Real juries change
         every edition, so take the ranking as orientation, not a prediction, and check your
-        shortlist against the contest's brief.
+        shortlist against the contest's brief. Our guide on
+        <NuxtLink to="/blog/how-to-choose-photos-for-a-photo-contest/" class="lx-inline-link">
+          how to choose photos for a contest</NuxtLink
+        >
+        covers the rest.
       </p>
     </div>
 

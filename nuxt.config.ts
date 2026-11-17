@@ -1,29 +1,45 @@
 import AutoImport from "unplugin-auto-import/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
+import {
+  CONTEST_CATEGORIES,
+  contestsInCategory,
+} from "./app/utils/contestCategories";
 
 const mainApiBaseUrl =
   import.meta.env.VITE_MAIN_API_BASE_URL || "http://localhost:3333";
 
 // The contest pages are built from the API. Without it the build stops here,
 // so the host keeps serving the previous deploy instead of empty pages.
+// Returns the last segment of every page under /photo-contests/: one per
+// contest, plus the categories (free, each genre) that have contests.
 async function fetchContestSlugs(): Promise<string[]> {
   const url = `${mainApiBaseUrl}/api/contests`;
-  let slugs: string[] = [];
+  type Listed = {
+    slug: string;
+    genre: string;
+    facts?: { isFree?: boolean | null } | null;
+  };
+  let contests: Listed[] = [];
   try {
     const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const body = (await response.json()) as { contests?: { slug: string }[] };
-    slugs = (body.contests ?? []).map((contest) => contest.slug);
+    const body = (await response.json()) as { contests?: Listed[] };
+    contests = body.contests ?? [];
   } catch (error) {
     throw new Error(
       `[photo-contests] Could not read ${url}: ${(error as Error).message}. Build aborted.`,
     );
   }
-  if (!slugs.length) {
+  if (!contests.length) {
     throw new Error(`[photo-contests] ${url} returned no contests. Build aborted.`);
   }
-  return slugs;
+  return [
+    ...CONTEST_CATEGORIES.filter(
+      (category) => contestsInCategory(contests, category).length,
+    ).map((category) => category.slug),
+    ...contests.map((contest) => contest.slug),
+  ];
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config

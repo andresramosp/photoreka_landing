@@ -1,14 +1,18 @@
 <template>
-  <section id="hero" class="pc-hero">
+  <section id="hero" class="pc-hero" :class="{ 'pc-hero--compact': compact }">
     <div class="pc-hero__frame">
       <ContestImage v-if="cover" :contest="cover.contest" ratio="auto" eager alt="" class="pc-hero__image" />
       <span class="pc-hero__veil" aria-hidden="true" />
 
       <div class="pc-hero__copy">
-        <h1 class="pc-hero__title">Photo contests {{ season }}: open now and coming up</h1>
+        <slot name="crumbs" />
+        <h1 class="pc-hero__title">{{ title || `Photo contests ${season}: open now and coming up` }}</h1>
         <p class="pc-hero__lead">
-          Deadlines, entry fees and prizes of {{ contests.length }} leading photography competitions,
-          read on each contest's own site.
+          <template v-if="lead">{{ lead }}</template>
+          <template v-else>
+            Deadlines, entry fees and prizes of {{ contests.length }} leading photography competitions,
+            read on each contest's own site.
+          </template>
         </p>
         <div class="pc-hero__actions">
           <LxButton variant="ghost" icon="down" href="#calendar" class="pc-hero__find">Find a contest</LxButton>
@@ -37,8 +41,14 @@ import { PICKS_FREE_TRIAL_PHOTOS, PICKS_TRIAL_URL } from "~/utils/picksShowcase"
 import { trackUserAction } from "~/utils/analytics";
 
 const props = defineProps({
+  /** The contests the page is about: one of them lends the cover photo. */
   contests: { type: Array, required: true },
   today: { type: String, required: true },
+  /** Category pages bring their own heading and lead. */
+  title: { type: String, default: "" },
+  lead: { type: String, default: "" },
+  /** A shorter stage, so the list below starts higher. */
+  compact: { type: Boolean, default: false },
 });
 
 const statusOf = (contest) => contestStatus(contest, props.today);
@@ -46,8 +56,8 @@ const year = Number(props.today.slice(0, 4));
 const season = `${year}–${year + 1}`;
 
 // The contest chosen in the admin lends its photo. Without one: the open contest
-// closing first, then the next to open, then a featured one, skipping contests
-// without an approved image when possible.
+// closing first, then the next to open, then a featured one, then any other,
+// skipping contests without an approved image when possible.
 const cover = computed(() => {
   const chosen = props.contests.find((c) => c.hero && c.imageUrl);
   if (chosen) return { contest: chosen, when: whenLabel(chosen) };
@@ -57,7 +67,7 @@ const cover = computed(() => {
   const upcoming = props.contests
     .filter((c) => statusOf(c) === "upcoming")
     .sort((a, b) => a.facts.opensAt.localeCompare(b.facts.opensAt));
-  const ordered = [...open, ...upcoming, ...props.contests.filter((c) => c.featured)];
+  const ordered = [...open, ...upcoming, ...props.contests.filter((c) => c.featured), ...props.contests];
   const contest = ordered.find((c) => c.imageUrl) ?? ordered[0];
   return contest ? { contest, when: whenLabel(contest) } : null;
 });
@@ -94,6 +104,10 @@ function trackTrial() {
   overflow: hidden;
   isolation: isolate;
   background: #111;
+}
+
+.pc-hero--compact .pc-hero__frame {
+  min-height: clamp(420px, 58svh, 600px);
 }
 
 .pc-hero__image,

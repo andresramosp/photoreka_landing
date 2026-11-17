@@ -484,6 +484,7 @@ const faqs = [
     question: "Can I use it to prepare for a competition or exhibition?",
     answer:
       "Yes, that's one of its strongest use cases. You can ask for a ranked selection of your best work, a thematically coherent sequence, or a specific number of images that tell a story—the assistant will select and order them with curatorial intent.",
+    link: { to: "/photo-contests/", label: "See the photo contests open now" },
   },
   {
     question: "Can the AI find my best photos automatically?",

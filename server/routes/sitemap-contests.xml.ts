@@ -1,8 +1,19 @@
+import {
+  CONTEST_CATEGORIES,
+  contestCategoryPath,
+  contestsInCategory,
+} from "../../app/utils/contestCategories";
+
 // Prerendered at build time: the contest URLs come from the API, like the pages.
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const { contests } = await $fetch<{
-    contests: { slug: string; checkedAt: string | null }[];
+    contests: {
+      slug: string;
+      checkedAt: string | null;
+      genre: string;
+      facts?: { isFree?: boolean | null } | null;
+    }[];
   }>("/api/contests", { baseURL: config.public.mainApiBaseUrl });
 
   const site = String(config.public.siteUrl).replace(/\/$/, "");
@@ -13,6 +24,9 @@ export default defineEventHandler(async (event) => {
 
   const urls = [
     entry("/photo-contests/", today, "0.9"),
+    ...CONTEST_CATEGORIES.filter((category) => contestsInCategory(contests, category).length > 0).map(
+      (category) => entry(contestCategoryPath(category.slug), today, "0.8"),
+    ),
     ...contests.map((contest) =>
       entry(`/photo-contests/${contest.slug}/`, contest.checkedAt?.slice(0, 10) ?? today, "0.7"),
     ),

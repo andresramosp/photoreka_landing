@@ -19,7 +19,7 @@
     <!-- ── Featured ────────────────────────────────────────────────── -->
     <section v-if="featured.length" id="featured" class="pcl-block">
       <div class="lx-container">
-        <ContestSectionHead title="Featured contests" />
+        <ContestSectionHead title="Featured photo contests" />
         <div class="pcl-grid pcl-grid--featured" :class="gridClass(visibleFeatured.length)">
           <ContestPhotoCard
             v-for="contest in visibleFeatured"
@@ -43,7 +43,7 @@
     <!-- ── Closing soon ────────────────────────────────────────────── -->
     <section v-if="closingSoon.length" id="closing-soon" class="pcl-block">
       <div class="lx-container">
-        <ContestSectionHead title="Closing soon" :count="closingSoon.length">
+        <ContestSectionHead title="Photo contests closing soon" :count="closingSoon.length">
           Deadlines in the next {{ CLOSING_SOON_DAYS }} days. Confirm the exact
           cut-off time on the official site.
         </ContestSectionHead>
@@ -63,7 +63,7 @@
     <!-- ── Calendar ────────────────────────────────────────────────── -->
     <section id="calendar" class="pcl-block">
       <div class="lx-container">
-        <ContestSectionHead title="Contest Finder">
+        <ContestSectionHead :title="`Photo contest calendar ${season}`">
           Open contests are listed by deadline, upcoming ones by the day entries
           open.
         </ContestSectionHead>
@@ -151,6 +151,16 @@
       </div>
     </section>
 
+    <!-- ── By genre ────────────────────────────────────────────────── -->
+    <section id="by-genre" class="pcl-block">
+      <div class="lx-container">
+        <ContestSectionHead title="Photo contests by genre">
+          Each genre has its own page, and so do the contests that are free to enter.
+        </ContestSectionHead>
+        <ContestCategoryLinks :contests="contests" :today="today" />
+      </div>
+    </section>
+
     <!-- ── About the data ──────────────────────────────────────────── -->
     <section id="about" class="pcl-block pcl-about">
       <div class="lx-container">
@@ -195,6 +205,7 @@ import ContestDotCalendar from "~/components/contests/ContestDotCalendar.vue";
 import ContestFilters from "~/components/contests/ContestFilters.vue";
 import ContestTimeline from "~/components/contests/ContestTimeline.vue";
 import ContestCompactList from "~/components/contests/ContestCompactList.vue";
+import ContestCategoryLinks from "~/components/contests/ContestCategoryLinks.vue";
 import ContestDisclaimer from "~/components/contests/ContestDisclaimer.vue";
 import ContestSectionHead from "~/components/contests/ContestSectionHead.vue";
 import {
@@ -307,6 +318,7 @@ const navLinks = computed(() => [
     ? [{ label: "Closing soon", target: "closing-soon" }]
     : []),
   { label: "Calendar", target: "calendar" },
+  { label: "By genre", target: "by-genre" },
   { label: "About", target: "about" },
 ]);
 
@@ -327,6 +339,7 @@ const principles = [
 
 // The years in the title follow the calendar, so the page never names a past season.
 const year = Number(today.value.slice(0, 4));
+const season = `${year}–${year + 1}`;
 const listed = contests.value
   .slice()
   .sort((a, b) => a.name.localeCompare(b.name));

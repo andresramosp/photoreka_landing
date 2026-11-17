@@ -104,7 +104,10 @@
           <p>
             Your best photos are already among your keepers. Let Photoreka
             surface them—scored, ranked, and ready for your next portfolio, book
-            or contest.
+            or
+            <NuxtLink to="/photo-contests/" class="lx-inline-link"
+              >photo contest</NuxtLink
+            >.
           </p>
           <template #actions>
             <LxButton icon="play" @click="goToDemo">Try the Demo</LxButton>
