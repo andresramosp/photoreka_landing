@@ -1,5 +1,5 @@
 <template>
-  <div class="pc-panel pc-cal">
+  <div class="pc-cal" :class="bare ? 'pc-cal--bare' : 'pc-panel'">
     <p class="pc-kicker pc-cal__kicker">Deadlines in the next twelve months</p>
     <ol class="pc-cal__months">
       <li v-for="month in months" :key="month.key" class="pc-cal__month" :class="{ 'is-now': month.isNow }">
@@ -39,6 +39,8 @@ import {
 const props = defineProps({
   contests: { type: Array, required: true },
   today: { type: String, required: true },
+  /** Inside another panel: no card of its own. */
+  bare: { type: Boolean, default: false },
 });
 
 // One dot per deadline still ahead, whether entries are open or about to open.
@@ -78,8 +80,12 @@ const legend = computed(() =>
   overflow: hidden;
 }
 
+.pc-cal--bare {
+  padding: 0;
+}
+
 /* A thread of brand light along the top edge. */
-.pc-cal::before {
+.pc-panel.pc-cal::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;

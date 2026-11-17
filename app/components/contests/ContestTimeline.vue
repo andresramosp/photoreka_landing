@@ -3,8 +3,7 @@
     <section v-for="group in groups" :key="group.key" class="pc-month">
       <header class="pc-month__head">
         <h3 class="pc-month__name">
-          {{ group.month }}
-          <span class="pc-month__year">{{ group.year }}</span>
+          {{ group.month }} <span class="pc-month__year">{{ group.year }}</span>
         </h3>
         <p class="pc-month__count">
           {{ group.items.length }} {{ group.items.length === 1 ? "date" : "dates" }}
@@ -46,13 +45,13 @@ const groups = computed(() => {
 <style scoped>
 .pc-timeline {
   display: grid;
-  gap: clamp(40px, 5vw, 72px);
+  gap: clamp(28px, 3vw, 44px);
 }
 
 .pc-month {
   display: grid;
-  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 48px);
+  grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 36px);
   align-items: start;
 }
 
@@ -61,28 +60,27 @@ const groups = computed(() => {
   position: sticky;
   top: calc(var(--lx-nav-h) + 40px);
   display: grid;
-  gap: 0.6rem;
-  padding-top: clamp(18px, 2vw, 26px);
+  gap: 0.25rem;
+  padding-top: clamp(16px, 1.8vw, 22px);
 }
 
 .pc-month__name {
-  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  margin: 0;
+  font-size: 1.6rem;
   font-style: italic;
-  font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: -0.035em;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--lx-text);
 }
 
 .pc-month__year {
-  display: block;
-  margin-top: 0.5rem;
   font-family: var(--lx-font-sans);
-  font-size: var(--lx-fs-eyebrow);
+  font-size: 0.95rem;
   font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--pc-gold-ink);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--lx-text-3);
 }
 
 .pc-month__count {
@@ -109,9 +107,5 @@ const groups = computed(() => {
     padding-bottom: 0.75rem;
   }
 
-  .pc-month__year {
-    display: inline;
-    margin-left: 0.6rem;
-  }
 }
 </style>

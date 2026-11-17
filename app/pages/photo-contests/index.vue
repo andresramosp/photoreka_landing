@@ -10,7 +10,8 @@
     <section v-if="failed" class="pcl-block">
       <div class="lx-container">
         <p class="pcl-empty">
-          The contest calendar could not be loaded right now. Please try again in a few minutes.
+          The contest calendar could not be loaded right now. Please try again
+          in a few minutes.
         </p>
       </div>
     </section>
@@ -28,7 +29,10 @@
             source="featured"
           />
         </div>
-        <p v-if="featured.length > FEATURED_CAP && !showAllFeatured" class="pcl-more">
+        <p
+          v-if="featured.length > FEATURED_CAP && !showAllFeatured"
+          class="pcl-more"
+        >
           <LxButton variant="ghost" icon="down" @click="showAllFeatured = true">
             Show {{ featured.length - FEATURED_CAP }} more
           </LxButton>
@@ -40,8 +44,8 @@
     <section v-if="closingSoon.length" id="closing-soon" class="pcl-block">
       <div class="lx-container">
         <ContestSectionHead title="Closing soon" :count="closingSoon.length">
-          Deadlines in the next {{ CLOSING_SOON_DAYS }} days. Confirm the exact cut-off time on the
-          official site.
+          Deadlines in the next {{ CLOSING_SOON_DAYS }} days. Confirm the exact
+          cut-off time on the official site.
         </ContestSectionHead>
         <div class="pcl-grid" :class="closingGridClass">
           <ContestPhotoCard
@@ -59,35 +63,74 @@
     <!-- ── Calendar ────────────────────────────────────────────────── -->
     <section id="calendar" class="pcl-block">
       <div class="lx-container">
-        <div class="pcl-calendar-head" :class="{ 'has-panel': hasDeadlines }">
-          <div>
-            <ContestSectionHead title="Calendar">
-              Open contests are listed by deadline, upcoming ones by the day entries open.
-            </ContestSectionHead>
+        <ContestSectionHead title="Contest Finder">
+          Open contests are listed by deadline, upcoming ones by the day entries
+          open.
+        </ContestSectionHead>
+
+        <div class="pc-panel pcl-finder">
+          <div
+            class="pcl-finder__top"
+            :class="{ 'has-overview': hasDeadlines }"
+          >
             <ContestFilters v-model="filter" :available="availableGenres" />
+            <ContestDotCalendar
+              v-if="hasDeadlines"
+              :contests="contests"
+              :today="today"
+              bare
+            />
           </div>
-          <ContestDotCalendar v-if="hasDeadlines" :contests="contests" :today="today" />
+
+          <div class="pcl-finder__results">
+            <p class="pcl-result" aria-live="polite">
+              <strong
+                >{{ timeline.length }}
+                {{ timeline.length === 1 ? "contest" : "contests" }}</strong
+              >
+              <span>open or opening</span>
+              <span v-if="filtering"
+                >{{ timeline.length === 1 ? "matches" : "match" }} your
+                filters</span
+              >
+              <button
+                v-if="filtering"
+                type="button"
+                class="lx-link pcl-clear"
+                @click="clearFilters"
+              >
+                Clear filters
+              </button>
+            </p>
+
+            <Transition name="pcl-swap" mode="out-in">
+              <ContestTimeline
+                v-if="timeline.length"
+                :key="resultsKey"
+                :contests="timeline"
+                :today="today"
+              />
+              <p v-else-if="filtering" key="no-match" class="pcl-empty">
+                No open or upcoming contest matches these filters. Try another
+                genre or clear the filters.
+              </p>
+              <p v-else key="no-dates" class="pcl-empty">
+                No contest has confirmed dates right now. The ones on our list
+                are below.
+              </p>
+            </Transition>
+          </div>
         </div>
-
-        <p v-if="timeline.length || filtering" class="pcl-result" aria-live="polite">
-          {{ timeline.length }} {{ timeline.length === 1 ? "contest" : "contests" }} open or opening
-          <template v-if="filtering"> {{ timeline.length === 1 ? "matches" : "match" }} your filters</template>
-        </p>
-
-        <ContestTimeline v-if="timeline.length" :contests="timeline" :today="today" />
-        <p v-else-if="filtering" class="pcl-empty">
-          No open or upcoming contest matches these filters. Try another genre or clear the filters.
-        </p>
-        <p v-else class="pcl-empty">
-          No contest has confirmed dates right now. The ones on our list are below.
-        </p>
       </div>
     </section>
 
     <!-- ── Closed ──────────────────────────────────────────────────── -->
     <section v-if="closed.length" id="closed" class="pcl-block">
       <div class="lx-container">
-        <ContestSectionHead title="Closed until the next edition" :count="closed.length">
+        <ContestSectionHead
+          title="Closed until the next edition"
+          :count="closed.length"
+        >
           Open a contest to get an email the day entries reopen.
         </ContestSectionHead>
         <ContestCompactList :contests="closed" kind="closed" />
@@ -97,8 +140,12 @@
     <!-- ── Dates to be confirmed ───────────────────────────────────── -->
     <section v-if="unconfirmed.length" id="to-be-confirmed" class="pcl-block">
       <div class="lx-container">
-        <ContestSectionHead title="Dates to be confirmed" :count="unconfirmed.length">
-          Nothing is listed until it is confirmed on the contest's official site.
+        <ContestSectionHead
+          title="Dates to be confirmed"
+          :count="unconfirmed.length"
+        >
+          Nothing is listed until it is confirmed on the contest's official
+          site.
         </ContestSectionHead>
         <ContestCompactList :contests="unconfirmed" kind="unconfirmed" />
       </div>
@@ -115,13 +162,24 @@
           </div>
         </dl>
         <p class="pcl-picks">
-          Not sure which photos to enter? Photoreka Picks ranks your photos with a jury weighted
-          for the contest you choose. Try it free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos, no
-          account needed:
-          <a :href="PICKS_TRIAL_URL" target="_blank" rel="noopener" class="lx-inline-link" @click="trackPicks('about_trial')">
-            try Picks free</a>, or read
-          <NuxtLink to="/blog/how-to-choose-photos-for-a-photo-contest/" class="lx-inline-link">
-            how to choose photos for a contest</NuxtLink>.
+          Not sure which photos to enter? Photoreka Picks ranks your photos with
+          a jury weighted for the contest you choose. Try it free with
+          {{ PICKS_FREE_TRIAL_PHOTOS }} photos, no account needed:
+          <a
+            :href="PICKS_TRIAL_URL"
+            target="_blank"
+            rel="noopener"
+            class="lx-inline-link"
+            @click="trackPicks('about_trial')"
+          >
+            try Picks free</a
+          >, or read
+          <NuxtLink
+            to="/blog/how-to-choose-photos-for-a-photo-contest/"
+            class="lx-inline-link"
+          >
+            how to choose photos for a contest</NuxtLink
+          >.
         </p>
         <ContestDisclaimer />
       </div>
@@ -148,7 +206,10 @@ import {
   isClosingSoon,
   matchesContestFilter,
 } from "~/utils/contests";
-import { PICKS_FREE_TRIAL_PHOTOS, PICKS_TRIAL_URL } from "~/utils/picksShowcase";
+import {
+  PICKS_FREE_TRIAL_PHOTOS,
+  PICKS_TRIAL_URL,
+} from "~/utils/picksShowcase";
 import { trackUserAction } from "~/utils/analytics";
 import { seoConfig } from "~/config/seo";
 
@@ -174,10 +235,14 @@ const featured = computed(() => {
         b.facts.deadline ?? contestKeyDate(b, today.value),
       ),
     );
-  return live.length ? live : picked.slice().sort((a, b) => a.name.localeCompare(b.name));
+  return live.length
+    ? live
+    : picked.slice().sort((a, b) => a.name.localeCompare(b.name));
 });
 const visibleFeatured = computed(() =>
-  showAllFeatured.value ? featured.value : featured.value.slice(0, FEATURED_CAP),
+  showAllFeatured.value
+    ? featured.value
+    : featured.value.slice(0, FEATURED_CAP),
 );
 
 const closingSoon = computed(() =>
@@ -191,12 +256,24 @@ const closingGridClass = computed(() => {
   return count === 2 || count === 4 ? "pcl-grid--two" : "";
 });
 
-const filtered = computed(() => contests.value.filter((c) => matchesContestFilter(c, filter)));
-const filtering = computed(() => filtered.value.length !== contests.value.length);
+const filtered = computed(() =>
+  contests.value.filter((c) => matchesContestFilter(c, filter)),
+);
+const filtering = computed(
+  () => filtered.value.length !== contests.value.length,
+);
 
 const timeline = computed(() => filtered.value.filter(isLive));
+// The results fade out and in only when the list itself changes.
+const resultsKey = computed(() => timeline.value.map((c) => c.slug).join());
+
+function clearFilters() {
+  Object.assign(filter, emptyContestFilter());
+}
 const closed = computed(() =>
-  filtered.value.filter((c) => statusOf(c) === "closed").sort((a, b) => byDeadline(b, a)),
+  filtered.value
+    .filter((c) => statusOf(c) === "closed")
+    .sort((a, b) => byDeadline(b, a)),
 );
 const unconfirmed = computed(() =>
   filtered.value
@@ -205,13 +282,19 @@ const unconfirmed = computed(() =>
 );
 
 const hasDeadlines = computed(() =>
-  contests.value.some((c) => c.facts?.deadline && c.facts.deadline >= today.value),
+  contests.value.some(
+    (c) => c.facts?.deadline && c.facts.deadline >= today.value,
+  ),
 );
-const availableGenres = computed(() => [...new Set(contests.value.map((c) => c.genre))]);
+const availableGenres = computed(() => [
+  ...new Set(contests.value.map((c) => c.genre)),
+]);
 
 const navLinks = computed(() => [
   ...(featured.value.length ? [{ label: "Featured", target: "featured" }] : []),
-  ...(closingSoon.value.length ? [{ label: "Closing soon", target: "closing-soon" }] : []),
+  ...(closingSoon.value.length
+    ? [{ label: "Closing soon", target: "closing-soon" }]
+    : []),
   { label: "Calendar", target: "calendar" },
   { label: "About", target: "about" },
 ]);
@@ -233,7 +316,9 @@ const principles = [
 
 // The years in the title follow the calendar, so the page never names a past season.
 const year = Number(today.value.slice(0, 4));
-const listed = contests.value.slice().sort((a, b) => a.name.localeCompare(b.name));
+const listed = contests.value
+  .slice()
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 useSEO("photo_contests", {
   title: `Photo Contests ${year} & ${year + 1}: Deadlines, Fees & Free Entry | Photoreka`,
@@ -283,21 +368,71 @@ function trackPicks(where) {
   margin-top: clamp(24px, 3vw, 40px);
 }
 
-.pcl-calendar-head {
+/* clip, not hidden: a scroll container would stop the month names from sticking. */
+.pcl-finder {
+  overflow: clip;
+}
+
+.pcl-finder__top {
   display: grid;
   gap: clamp(24px, 3vw, 48px);
   align-items: start;
-  margin-bottom: clamp(24px, 3vw, 40px);
+  padding: clamp(20px, 2.6vw, 36px);
+  background: var(--lx-surface-2);
+  border-bottom: 1px solid var(--lx-line-2);
 }
 
-.pcl-calendar-head.has-panel {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+.pcl-finder__top.has-overview {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+
+.pcl-finder__results {
+  padding: clamp(20px, 2.6vw, 36px);
 }
 
 .pcl-result {
-  margin: 0 0 clamp(20px, 2.4vw, 32px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.4rem;
+  margin: 0 0 clamp(8px, 1vw, 14px);
   font-size: var(--lx-fs-sm);
-  color: var(--lx-text-3);
+  color: var(--lx-text-2);
+}
+
+.pcl-result strong {
+  color: var(--lx-text);
+}
+
+.pcl-clear {
+  margin-left: 0.8rem;
+  font-size: var(--lx-fs-sm);
+}
+
+.pcl-swap-enter-active {
+  transition:
+    opacity 0.35s var(--lx-ease),
+    transform 0.35s var(--lx-ease);
+}
+
+.pcl-swap-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.pcl-swap-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.pcl-swap-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pcl-swap-enter-active,
+  .pcl-swap-leave-active {
+    transition: none;
+  }
 }
 
 .pcl-empty {
@@ -348,7 +483,7 @@ function trackPicks(where) {
     display: none;
   }
 
-  .pcl-calendar-head.has-panel,
+  .pcl-finder__top.has-overview,
   .pcl-facts {
     grid-template-columns: 1fr;
   }

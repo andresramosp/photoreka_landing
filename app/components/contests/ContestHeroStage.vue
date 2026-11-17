@@ -11,10 +11,14 @@
           read on each contest's own site.
         </p>
         <div class="pc-hero__actions">
-          <a href="#calendar" class="pc-hero__btn">Find a contest</a>
-          <a :href="PICKS_TRIAL_URL" target="_blank" rel="noopener" class="pc-hero__btn" @click="trackTrial">
-            Rank my photos
-          </a>
+          <LxButton variant="ghost" icon="down" href="#calendar" class="pc-hero__find">Find a contest</LxButton>
+          <span class="pc-hero__picks">
+            <span class="pc-hero__picks-free">Free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos</span>
+            <LxButton icon="external" :href="PICKS_TRIAL_URL" target="_blank" class="pc-hero__rank" @click="trackTrial">
+              <img src="/logos/marca/icon-light.webp" alt="" width="22" height="22" class="pc-hero__rank-logo" />
+              Rank my photos
+            </LxButton>
+          </span>
         </div>
       </div>
 
@@ -28,7 +32,7 @@
 <script setup>
 import ContestImage from "./ContestImage.vue";
 import { contestPath, contestStatus, daysLeft, daysToOpening } from "~/utils/contests";
-import { PICKS_TRIAL_URL } from "~/utils/picksShowcase";
+import { PICKS_FREE_TRIAL_PHOTOS, PICKS_TRIAL_URL } from "~/utils/picksShowcase";
 import { trackUserAction } from "~/utils/analytics";
 
 const props = defineProps({
@@ -142,33 +146,105 @@ function trackTrial() {
 .pc-hero__actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
-  margin-top: 0.6rem;
+  margin-top: 1.4rem;
 }
 
-.pc-hero__btn {
-  padding: 0.95rem 1.9rem;
-  border: 2px solid #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+/* Glass pill over the photo, lighter than the Picks call but just as alive. */
+.pc-hero__find {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.16);
   color: #fff;
-  text-decoration: none;
-  transition:
-    background 0.25s ease,
-    color 0.25s ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 12px 30px -14px rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  backdrop-filter: blur(12px) saturate(1.3);
 }
 
-.pc-hero__btn:hover,
-.pc-hero__btn:focus-visible {
+.pc-hero__find:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.26);
+  transform: translateY(-2px);
+}
+
+.pc-hero__find :deep(.lx-btn__icon) {
   background: #fff;
   color: #111;
 }
 
-.pc-hero__btn:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 3px;
+/* The Picks call: a white pill inside a slowly turning ring of gold light. */
+.pc-hero__picks {
+  position: relative;
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 999px;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.pc-hero__picks::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--pc-ring, 0deg), #f7cf72, #e3a12b 25%, rgba(255, 255, 255, 0.25) 50%, #c27512 75%, #f7cf72);
+  box-shadow: 0 0 28px -4px rgba(227, 161, 43, 0.75);
+  animation: pc-ring 6s linear infinite;
+}
+
+@property --pc-ring {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes pc-ring {
+  to {
+    --pc-ring: 360deg;
+  }
+}
+
+.pc-hero__rank {
+  background: #fff;
+  color: #111;
+  box-shadow: none;
+}
+
+.pc-hero__rank:hover {
+  box-shadow: 0 18px 40px -16px rgba(227, 161, 43, 0.8);
+}
+
+.pc-hero__rank :deep(.lx-btn__label) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.pc-hero__rank-logo {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.pc-hero__picks-free {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 8px);
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-hero__picks::before {
+    animation: none;
+  }
 }
 
 .pc-hero__credit {
@@ -205,9 +281,16 @@ function trackTrial() {
     width: 100%;
   }
 
-  .pc-hero__btn {
-    flex: 1 1 auto;
-    text-align: center;
+  .pc-hero__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 40px;
+  }
+
+  .pc-hero__picks,
+  .pc-hero__actions :deep(.lx-btn) {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 </style>

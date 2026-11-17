@@ -21,6 +21,9 @@ const { themeMode } = useTheme();
 const mounted = ref(false);
 const siteDark = computed(() => mounted.value && themeMode.value === "dark");
 
+// The page scrollbar belongs to <html>, which keeps the site theme: it is told this page is light.
+useHead({ htmlAttrs: { class: "pc-light-page" } });
+
 const smoothScroll = useSmoothScroll();
 
 onMounted(() => {
@@ -48,6 +51,18 @@ onBeforeUnmount(() => smoothScroll.disable());
   --lx-accent-grad: linear-gradient(100deg, #c27512 0%, #9a5f06 100%);
   --lx-glow-1: rgba(227, 161, 43, 0.1);
   --lx-glow-2: rgba(227, 161, 43, 0.05);
+}
+
+html.pc-light-page {
+  scrollbar-color: rgba(13, 13, 16, 0.3) transparent;
+}
+
+html.pc-light-page::-webkit-scrollbar-thumb {
+  background: rgba(13, 13, 16, 0.3);
+}
+
+html.pc-light-page::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 13, 16, 0.45);
 }
 
 .pc .lx-btn--primary .lx-btn__icon {

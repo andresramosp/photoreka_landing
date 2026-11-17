@@ -1,6 +1,11 @@
 <template>
   <dl class="pc-facts">
-    <div v-for="fact in rows" :key="fact.label" class="pc-facts__item" :class="{ 'is-wide': fact.wide }">
+    <div
+      v-for="fact in rows"
+      :key="fact.label"
+      class="pc-facts__item"
+      :class="{ 'is-wide': fact.wide, 'is-lead': fact.lead }"
+    >
       <dt class="pc-kicker">{{ fact.label }}</dt>
       <dd v-if="fact.chips" class="pc-facts__chips">
         <span v-for="chip in fact.chips" :key="chip">{{ chip }}</span>
@@ -23,6 +28,7 @@ const CADENCE = { annual: "Every year", biennial: "Every two years", monthly: "M
 const rows = computed(() => {
   const f = props.contest.facts;
   const out = [];
+  if (f?.prizes) out.push({ label: "What you can win", value: f.prizes, wide: true, lead: true });
   if (f?.entryFee || f?.isFree) {
     out.push({ label: "Entry fee", value: f.isFree ? f.entryFee || "Free entry" : f.entryFee, free: f.isFree });
   }
@@ -34,7 +40,6 @@ const rows = computed(() => {
     out.push({ label: "Images per entry", value: `Up to ${f.maxImages}` });
   }
   out.push({ label: "Held", value: CADENCE[props.contest.cadence] ?? "" });
-  if (f?.prizes) out.push({ label: "Prizes", value: f.prizes, wide: true });
   if (f?.categories?.length) out.push({ label: "Categories", chips: f.categories, wide: true });
   if (f?.eligibility) out.push({ label: "Who can enter", value: f.eligibility, wide: true });
   return out;
@@ -44,11 +49,9 @@ const rows = computed(() => {
 <style scoped>
 .pc-facts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(28px, 3vw, 44px) clamp(20px, 2.4vw, 40px);
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: clamp(24px, 2.6vw, 36px) clamp(20px, 2.4vw, 40px);
   margin: 0;
-  padding-top: clamp(24px, 3vw, 40px);
-  border-top: 1px solid var(--lx-line-2);
 }
 
 .pc-facts__item {
@@ -84,6 +87,21 @@ const rows = computed(() => {
   color: var(--lx-text-2);
 }
 
+/* The prizes open the sheet, in the display face. */
+.pc-facts__item.is-lead {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.pc-facts__item.is-lead dd {
+  font-family: var(--lx-font-display);
+  font-size: clamp(1.3rem, 1.9vw, 1.7rem);
+  font-weight: 360;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--lx-text);
+}
+
 .pc-facts dd.is-free {
   color: var(--lx-ok);
 }
@@ -103,9 +121,4 @@ const rows = computed(() => {
   color: var(--lx-text);
 }
 
-@media (max-width: 860px) {
-  .pc-facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
 </style>

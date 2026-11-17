@@ -12,65 +12,52 @@
       <div class="pcd-cover__frame">
         <ContestImage :contest="contest" ratio="auto" eager class="pcd-cover__image" />
         <span class="pcd-cover__veil" aria-hidden="true" />
-        <div class="pcd-cover__copy">
-          <nav class="pcd-crumbs" aria-label="Breadcrumb">
-            <NuxtLink to="/photo-contests/">Photo contests</NuxtLink>
-            <span aria-hidden="true">/</span>
-            <ContestGenreChip :genre="contest.genre" />
-          </nav>
-          <h1 class="lx-title pcd-cover__title">
-            {{ contest.name }}
-            <em v-if="edition" class="lx-accent">{{ edition }}</em>
-          </h1>
-          <p class="pcd-cover__tagline">{{ contest.tagline }}</p>
-        </div>
-      </div>
-
-      <div class="pcd-cover__below">
-        <div class="pcd-cover__keys">
-          <ul v-if="keyFacts.length" class="pcd-keys">
-            <li v-for="key in keyFacts" :key="key.label">
-              <span class="pc-kicker">{{ key.label }}</span>
-              <strong :class="{ 'is-free': key.free }">{{ key.value }}</strong>
-            </li>
-          </ul>
-          <div class="lx-actions">
-            <LxButton icon="external" :href="picksUrl" target="_blank" @click="trackPicks('hero')">
-              Rank my photos
-            </LxButton>
-            <LxButton variant="ghost" icon="down" href="#reminder">Remind me</LxButton>
+        <div class="pcd-cover__inner">
+          <div class="pcd-cover__copy">
+            <nav class="pcd-crumbs" aria-label="Breadcrumb">
+              <NuxtLink to="/photo-contests/">Photo contests</NuxtLink>
+              <span aria-hidden="true">/</span>
+              <ContestGenreChip :genre="contest.genre" />
+            </nav>
+            <h1 class="lx-title pcd-cover__title">
+              {{ contest.name }}
+              <em v-if="edition" class="lx-accent">{{ edition }}</em>
+            </h1>
+            <p class="pcd-cover__tagline">{{ contest.tagline }}</p>
           </div>
-        </div>
-        <div class="pcd-cover__panel">
-          <ContestCountdown :contest="contest" :today="today" />
         </div>
       </div>
     </section>
 
-    <!-- ── Facts ───────────────────────────────────────────────────── -->
-    <section id="details" class="lx-section lx-section--tight">
-      <div class="lx-container">
-        <ContestSectionHead title="Fees, prizes and rules">
-          <template v-if="contest.facts">
-            As published on the official site<template v-if="contest.checkedAt">, last checked on
-            {{ formatCheckedAt(contest.checkedAt) }}</template>. Anything the contest has not
-            published is left out.
-          </template>
-          <template v-else>
-            The dates and rules of the next edition are not confirmed yet. They will appear here
-            once they are published on the official site.
-          </template>
-        </ContestSectionHead>
-        <ContestFactGrid :contest="contest" />
-        <p class="pcd-source">
-          Source:
-          <a :href="contest.url" target="_blank" rel="noopener noreferrer" class="lx-inline-link">{{ sourceHost }}</a>
-        </p>
+    <!-- ── Facts, with the countdown riding up over the cover ──────── -->
+    <section id="details" class="pcd-main">
+      <div class="lx-container pcd-main__grid">
+        <div class="pcd-main__facts">
+          <ContestSectionHead title="Fees, prizes and rules">
+            <template v-if="contest.facts">
+              As published on the official site<template v-if="contest.checkedAt">, last checked on
+              {{ formatCheckedAt(contest.checkedAt) }}</template>. Anything the contest has not
+              published is left out.
+            </template>
+            <template v-else>
+              The dates and rules of the next edition are not confirmed yet. They will appear here
+              once they are published on the official site.
+            </template>
+          </ContestSectionHead>
+          <ContestFactGrid :contest="contest" />
+          <p class="pcd-source">
+            Source:
+            <a :href="contest.url" target="_blank" rel="noopener noreferrer" class="lx-inline-link">{{ sourceHost }}</a>
+          </p>
+        </div>
+        <aside class="pcd-main__panel">
+          <ContestCountdown :contest="contest" :today="today" />
+        </aside>
       </div>
     </section>
 
     <!-- ── Jury ────────────────────────────────────────────────────── -->
-    <section id="jury" class="lx-section">
+    <section id="jury" class="lx-section lx-section--tight">
       <div class="lx-container">
         <ContestJuryFocus :contest="contest" />
       </div>
@@ -125,7 +112,6 @@ import ContestDisclaimer from "~/components/contests/ContestDisclaimer.vue";
 import ContestSectionHead from "~/components/contests/ContestSectionHead.vue";
 import {
   contestFeeLabel,
-  contestFormatLabel,
   contestGenre,
   contestPath,
   contestStatus,
@@ -154,17 +140,6 @@ const genreLabel = computed(() => contestGenre(contest.value.genre).label.toLowe
 const edition = computed(() => {
   const value = facts.value?.edition;
   return value && !contest.value.name.includes(value) ? value : "";
-});
-
-const keyFacts = computed(() => {
-  const f = facts.value;
-  if (!f) return [];
-  const out = [];
-  if (f.deadline) out.push({ label: "Deadline", value: formatContestDate(f.deadline) });
-  const fee = contestFeeLabel(f);
-  if (fee) out.push({ label: "Entry fee", value: fee, free: f.isFree });
-  if (f.accepts) out.push({ label: "Format", value: contestFormatLabel(f.accepts) });
-  return out;
 });
 
 const sourceHost = computed(() => {
@@ -270,12 +245,19 @@ function trackPicks(where) {
     linear-gradient(180deg, rgba(5, 5, 8, 0.6), rgba(5, 5, 8, 0) 24%);
 }
 
+/* Same edges as the sections below, although the photo is wider. */
+.pcd-cover__inner {
+  width: 100%;
+  max-width: calc(var(--lx-container) + 2 * var(--lx-gutter));
+  margin-inline: auto;
+  padding: clamp(24px, 4vw, 64px) var(--lx-gutter);
+}
+
 .pcd-cover__copy {
   display: grid;
   gap: 1.2rem;
   justify-items: start;
   width: min(100%, 58%);
-  padding: clamp(24px, 4vw, 64px);
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
 }
 
@@ -316,54 +298,22 @@ function trackPicks(where) {
   color: rgba(255, 255, 255, 0.86);
 }
 
-.pcd-cover__below {
+.pcd-main__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
-  gap: clamp(24px, 4vw, 64px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: clamp(32px, 5vw, 80px);
   align-items: start;
-  padding-inline: clamp(12px, 2.6vw, 64px);
 }
 
-.pcd-cover__keys {
-  display: grid;
-  gap: 1.8rem;
-  justify-items: start;
+.pcd-main__facts {
   padding-top: clamp(28px, 3.4vw, 48px);
 }
 
 /* The countdown rides up over the cover's lower right corner. */
-.pcd-cover__panel {
+.pcd-main__panel {
   position: relative;
   z-index: 1;
-  margin-top: clamp(-300px, -22vw, -180px);
-}
-
-.pcd-keys {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem clamp(24px, 3vw, 48px);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pcd-keys li {
-  display: grid;
-  gap: 0.55rem;
-  max-width: 22em;
-}
-
-.pcd-keys strong {
-  font-family: var(--lx-font-display);
-  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-  font-weight: 360;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--lx-text);
-}
-
-.pcd-keys strong.is-free {
-  color: var(--lx-ok);
+  margin-top: clamp(-260px, -20vw, -160px);
 }
 
 .pcd-related {
@@ -395,20 +345,20 @@ function trackPicks(where) {
     width: 100%;
   }
 
-  .pcd-cover__below {
+  .pcd-main__grid {
     grid-template-columns: 1fr;
   }
 
-  .pcd-cover__copy {
+  .pcd-cover__inner {
     padding-bottom: 44px;
   }
 
-  .pcd-cover__panel {
+  .pcd-main__panel {
     order: -1;
     margin-top: -20px;
   }
 
-  .pcd-cover__keys {
+  .pcd-main__facts {
     padding-top: 0;
   }
 

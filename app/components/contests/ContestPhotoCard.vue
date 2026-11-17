@@ -203,7 +203,7 @@ function trackPicks() {
 .pc-card__num {
   font-size: clamp(4.4rem, 6.4vw, 6rem);
   font-style: italic;
-  padding-right: 0.08em;
+  padding-right: 0.16em;
   filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.5));
 }
 

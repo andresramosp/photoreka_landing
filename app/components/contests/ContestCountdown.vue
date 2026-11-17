@@ -131,8 +131,8 @@ function trackEnter() {
 <style scoped>
 .pc-count {
   display: grid;
-  gap: 1.4rem;
-  padding: clamp(24px, 3vw, 44px);
+  gap: 1rem;
+  padding: clamp(20px, 2.4vw, 32px);
   overflow: hidden;
   background:
     radial-gradient(110% 80% at 100% 0%, color-mix(in srgb, var(--c) 14%, transparent), transparent 60%),
@@ -179,17 +179,17 @@ function trackEnter() {
 }
 
 .pc-count__num {
-  font-size: clamp(6rem, 12vw, 11rem);
+  font-size: clamp(4.5rem, 8vw, 7rem);
   font-style: italic;
-  padding-right: 0.06em;
+  padding-right: 0.2em;
   color: var(--lx-text);
 }
 
 .pc-count__word {
-  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-size: clamp(2.6rem, 4.6vw, 4rem);
   font-style: italic;
   line-height: 1.05;
-  padding-right: 0.06em;
+  padding-right: 0.2em;
   color: var(--lx-text);
 }
 
@@ -217,7 +217,7 @@ function trackEnter() {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.2rem 1rem;
-  padding: 0.8rem 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid var(--lx-line);
   font-size: var(--lx-fs-sm);
   color: var(--lx-text-2);

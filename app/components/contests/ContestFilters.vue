@@ -1,68 +1,77 @@
 <template>
   <div class="pc-filters" role="search" aria-label="Filter contests">
-    <div class="pc-filters__genres" role="group" aria-label="Genre">
-      <button
-        type="button"
-        class="pc-pill"
-        :class="{ 'is-active': model.genre === 'all' }"
-        :aria-pressed="model.genre === 'all'"
-        @click="model.genre = 'all'"
-      >
-        All genres
-      </button>
-      <button
-        v-for="genre in genres"
-        :key="genre.key"
-        type="button"
-        class="pc-pill"
-        :class="{ 'is-active': model.genre === genre.key }"
-        :style="{ '--c': genre.color }"
-        :aria-pressed="model.genre === genre.key"
-        @click="model.genre = model.genre === genre.key ? 'all' : genre.key"
-      >
-        <i aria-hidden="true" />{{ genre.label }}
-      </button>
+    <div class="pc-filters__group">
+      <p id="pc-filter-genre" class="pc-filters__label">Genre</p>
+      <div class="pc-filters__pills" role="group" aria-labelledby="pc-filter-genre">
+        <button
+          type="button"
+          class="pc-pill"
+          :class="{ 'is-active': model.genre === 'all' }"
+          :aria-pressed="model.genre === 'all'"
+          @click="model.genre = 'all'"
+        >
+          All genres
+        </button>
+        <button
+          v-for="genre in genres"
+          :key="genre.key"
+          type="button"
+          class="pc-pill"
+          :class="{ 'is-active': model.genre === genre.key }"
+          :style="{ '--c': genre.color }"
+          :aria-pressed="model.genre === genre.key"
+          @click="model.genre = model.genre === genre.key ? 'all' : genre.key"
+        >
+          <i aria-hidden="true" />{{ genre.label }}
+        </button>
+      </div>
     </div>
 
     <div class="pc-filters__row">
-      <button
-        type="button"
-        class="pc-pill pc-pill--toggle"
-        :class="{ 'is-active': model.free }"
-        :aria-pressed="model.free"
-        @click="model.free = !model.free"
-      >
-        Free entry
-      </button>
-      <div class="pc-seg" role="group" aria-label="Format">
+      <div class="pc-filters__group">
+        <p class="pc-filters__label">Entry fee</p>
         <button
-          v-for="option in formats"
-          :key="option.key"
           type="button"
-          :class="{ 'is-active': model.format === option.key }"
-          :aria-pressed="model.format === option.key"
-          @click="model.format = option.key"
+          class="pc-pill pc-pill--toggle"
+          :class="{ 'is-active': model.free }"
+          :aria-pressed="model.free"
+          @click="model.free = !model.free"
         >
-          {{ option.label }}
+          Free entry only
         </button>
       </div>
-      <label class="pc-search">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="6.5" />
-          <path d="m16 16 4.5 4.5" />
-        </svg>
-        <span class="pc-search__label">Search contests by name</span>
-        <input v-model="model.query" type="search" placeholder="Search by name" autocomplete="off" />
-      </label>
-      <button v-if="dirty" type="button" class="lx-link pc-filters__clear" @click="clear">
-        Clear filters
-      </button>
+      <div class="pc-filters__group">
+        <p id="pc-filter-format" class="pc-filters__label">Format</p>
+        <div class="pc-seg" role="group" aria-labelledby="pc-filter-format">
+          <button
+            v-for="option in formats"
+            :key="option.key"
+            type="button"
+            :class="{ 'is-active': model.format === option.key }"
+            :aria-pressed="model.format === option.key"
+            @click="model.format = option.key"
+          >
+            {{ option.label }}
+          </button>
+        </div>
+      </div>
+      <div class="pc-filters__group pc-filters__group--grow">
+        <p class="pc-filters__label">Name</p>
+        <label class="pc-search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" />
+            <path d="m16 16 4.5 4.5" />
+          </svg>
+          <span class="pc-search__label">Search contests by name</span>
+          <input v-model="model.query" type="search" placeholder="Search by name" autocomplete="off" />
+        </label>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { CONTEST_GENRES, emptyContestFilter } from "~/utils/contests";
+import { CONTEST_GENRES } from "~/utils/contests";
 
 const props = defineProps({
   /** Genres that have at least one contest. */
@@ -81,31 +90,43 @@ const formats = [
   { key: "series", label: "Series" },
 ];
 
-const dirty = computed(
-  () =>
-    model.value.genre !== "all" ||
-    model.value.free ||
-    model.value.format !== "any" ||
-    model.value.query.trim() !== "",
-);
-
-function clear() {
-  Object.assign(model.value, emptyContestFilter());
-}
 </script>
 
 <style scoped>
 .pc-filters {
   display: grid;
-  gap: 0.9rem;
+  gap: 1.2rem;
 }
 
-.pc-filters__genres,
+.pc-filters__group {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.pc-filters__group--grow {
+  flex: 1 1 240px;
+}
+
+.pc-filters__label {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lx-text-3);
+}
+
+.pc-filters__pills,
 .pc-filters__row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
+}
+
+.pc-filters__row {
+  gap: 1.2rem 1.6rem;
 }
 
 .pc-pill {
@@ -179,9 +200,7 @@ function clear() {
 
 .pc-search {
   position: relative;
-  flex: 1 1 220px;
-  max-width: 340px;
-  margin-left: auto;
+  display: block;
 }
 
 .pc-search svg {
@@ -232,12 +251,8 @@ function clear() {
   outline-offset: 2px;
 }
 
-.pc-filters__clear {
-  font-size: var(--lx-fs-sm);
-}
-
 @media (max-width: 640px) {
-  .pc-filters__genres {
+  .pc-filters__pills {
     flex-wrap: nowrap;
     margin-inline: calc(-1 * var(--lx-gutter));
     padding-inline: var(--lx-gutter);
@@ -245,10 +260,8 @@ function clear() {
     scrollbar-width: none;
   }
 
-  .pc-search {
+  .pc-filters__group--grow {
     flex-basis: 100%;
-    max-width: none;
-    margin-left: 0;
   }
 }
 </style>
