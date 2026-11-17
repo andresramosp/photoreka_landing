@@ -3,6 +3,7 @@
     <template #nav-actions>
       <NuxtLink to="/photo-contests/" class="lx-link pc-nav-back">All photo contests</NuxtLink>
       <LxButton size="sm" icon="external" :href="picksUrl" target="_blank" @click="trackPicks('nav')">
+        <ContestPicksMark dark :size="22" />
         Rank my photos
       </LxButton>
     </template>
@@ -109,6 +110,7 @@ import ContestReminder from "~/components/contests/ContestReminder.vue";
 import ContestPhotoCard from "~/components/contests/ContestPhotoCard.vue";
 import ContestImage from "~/components/contests/ContestImage.vue";
 import ContestDisclaimer from "~/components/contests/ContestDisclaimer.vue";
+import ContestPicksMark from "~/components/contests/ContestPicksMark.vue";
 import ContestSectionHead from "~/components/contests/ContestSectionHead.vue";
 import {
   contestFeeLabel,

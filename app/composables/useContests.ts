@@ -1,31 +1,36 @@
 import type { Contest, ContestsResponse } from "~/utils/contests";
 import { todayIso } from "~/utils/contests";
 
+/** The contests as the last build saw them, on the static host. */
+const SNAPSHOT_PATH = "/contests-data.json";
+
 /**
  * Contests from the API: baked into the prerendered page at build time, then
- * refreshed in the browser. `today` starts as the build day, so server and
- * client render the same markup, and moves to the visitor's day once mounted.
+ * refreshed in the browser. A client-side navigation starts from the build's
+ * static copy instead of waiting for the API. `today` starts as the build day,
+ * so server and client render the same markup, and moves to the visitor's day
+ * once mounted.
  */
 export async function useContests() {
   const config = useRuntimeConfig();
   const today = useState("contests-today", () => todayIso());
-  // After a client-side navigation the data below is already fresh.
-  const prerendered = Boolean(useNuxtApp().isHydrating);
 
-  const load = () =>
+  const fromApi = () =>
     $fetch<ContestsResponse>("/api/contests", {
       baseURL: config.public.mainApiBaseUrl,
     });
 
+  const load = () =>
+    import.meta.server ? fromApi() : $fetch<ContestsResponse>(SNAPSHOT_PATH).catch(fromApi);
+
   // Registered before the await below, while the component instance is still current.
   onMounted(async () => {
     today.value = todayIso();
-    if (!prerendered) return;
     try {
-      const fresh = await load();
+      const fresh = await fromApi();
       if (fresh?.contests?.length) data.value = fresh;
     } catch {
-      // The prerendered data stays on screen.
+      // The build's data stays on screen.
     }
   });
 

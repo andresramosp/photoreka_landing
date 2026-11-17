@@ -28,6 +28,7 @@
 
       <div class="lx-actions">
         <LxButton icon="external" :href="picksUrl" target="_blank" @click="track('picks')">
+          <ContestPicksMark dark :size="24" />
           Rank my photos for this contest
         </LxButton>
         <LxButton variant="ghost" icon="external" :href="trialUrl" target="_blank" @click="track('trial')">
@@ -54,6 +55,7 @@
 
 <script setup>
 import ContestPicksPreview from "./ContestPicksPreview.vue";
+import ContestPicksMark from "./ContestPicksMark.vue";
 import { contestGenre, contestJuryFocus, picksContestUrl } from "~/utils/contests";
 import {
   PICKS_FREE_TRIAL_PHOTOS,

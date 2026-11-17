@@ -211,6 +211,7 @@ export default defineNuxtConfig({
         "/framer",
         "/photo-contests",
         "/sitemap-contests.xml",
+        "/contests-data.json",
       ],
     },
   },

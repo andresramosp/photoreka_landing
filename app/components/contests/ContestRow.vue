@@ -33,6 +33,7 @@
         target="_blank"
         @click="trackPicks"
       >
+        <ContestPicksMark :size="18" />
         Rank my photos
       </LxButton>
     </div>
@@ -42,6 +43,7 @@
 <script setup>
 import ContestGenreChip from "./ContestGenreChip.vue";
 import ContestImage from "./ContestImage.vue";
+import ContestPicksMark from "./ContestPicksMark.vue";
 import {
   contestFeeLabel,
   contestGenre,

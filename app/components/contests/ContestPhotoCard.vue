@@ -13,6 +13,7 @@
         :aria-label="`Rank your photos for ${contest.name} with Photoreka Picks`"
         @click="trackPicks"
       >
+        <ContestPicksMark dark :size="20" />
         Rank my photos
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
       </a>
@@ -52,6 +53,7 @@
 import { TicketOutline, TimeOutline, TrophyOutline } from "@vicons/ionicons5";
 import ContestGenreChip from "./ContestGenreChip.vue";
 import ContestImage from "./ContestImage.vue";
+import ContestPicksMark from "./ContestPicksMark.vue";
 import {
   contestFeeLabel,
   contestPath,

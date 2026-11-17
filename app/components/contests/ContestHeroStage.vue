@@ -15,7 +15,7 @@
           <span class="pc-hero__picks">
             <span class="pc-hero__picks-free">Free with {{ PICKS_FREE_TRIAL_PHOTOS }} photos</span>
             <LxButton icon="external" :href="PICKS_TRIAL_URL" target="_blank" class="pc-hero__rank" @click="trackTrial">
-              <img src="/logos/marca/icon-light.webp" alt="" width="22" height="22" class="pc-hero__rank-logo" />
+              <ContestPicksMark :size="22" />
               Rank my photos
             </LxButton>
           </span>
@@ -31,6 +31,7 @@
 
 <script setup>
 import ContestImage from "./ContestImage.vue";
+import ContestPicksMark from "./ContestPicksMark.vue";
 import { contestPath, contestStatus, daysLeft, daysToOpening } from "~/utils/contests";
 import { PICKS_FREE_TRIAL_PHOTOS, PICKS_TRIAL_URL } from "~/utils/picksShowcase";
 import { trackUserAction } from "~/utils/analytics";
@@ -215,18 +216,6 @@ function trackTrial() {
 
 .pc-hero__rank:hover {
   box-shadow: 0 18px 40px -16px rgba(227, 161, 43, 0.8);
-}
-
-.pc-hero__rank :deep(.lx-btn__label) {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.pc-hero__rank-logo {
-  display: block;
-  width: 22px;
-  height: 22px;
 }
 
 .pc-hero__picks-free {
