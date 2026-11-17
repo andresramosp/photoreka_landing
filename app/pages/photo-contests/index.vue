@@ -399,9 +399,9 @@ function trackPicks(where) {
 
 .pcl-finder__top {
   display: grid;
-  gap: clamp(24px, 3vw, 48px);
+  gap: clamp(18px, 2vw, 28px) clamp(24px, 3vw, 44px);
   align-items: start;
-  padding: clamp(20px, 2.6vw, 36px);
+  padding: clamp(20px, 2.2vw, 30px);
   background: var(--lx-surface-2);
   border-bottom: 1px solid var(--lx-line-2);
 }
@@ -411,7 +411,7 @@ function trackPicks(where) {
 }
 
 .pcl-finder__results {
-  padding: clamp(20px, 2.6vw, 36px);
+  padding: clamp(20px, 2.2vw, 30px);
 }
 
 .pcl-result {

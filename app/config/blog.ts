@@ -1114,7 +1114,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "<strong>Limits:</strong> it's built around the high-volume shoot — weddings, events, sessions. It decides what's usable and helps you choose among similar frames, but it doesn't try to judge a photograph's artistic weight across a whole body of work. Local processing also means your computer does the work; Aftershoot lists 8 GB of RAM as the minimum. <strong>Best for:</strong> wedding and event photographers who want offline culling and editing in one subscription.",
+        html: "<strong>Limits:</strong> it's built around the high-volume shoot — weddings, events, sessions. It decides what's usable and helps you choose among similar frames, but it doesn't try to judge a photograph's artistic weight across a whole body of work. Local processing also means your computer does the work; Aftershoot lists 8 GB of RAM as the minimum. <strong>Best for:</strong> wedding and event photographers who want offline culling and editing in one subscription. For the full plan breakdown, see <a href='/blog/aftershoot-pricing-alternatives/'>Aftershoot pricing and alternatives</a>.",
       },
       {
         type: "h2",
@@ -1266,6 +1266,237 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         html: "One last note on what culling is for. The tools in this article are extraordinary at removing the frames you'd never show, and every photographer who shoots volume should use one. That's the floor. The harder decision comes after — which ten photographs from a year of shooting actually say something — and no amount of blink detection makes it for you. <strong>Rejecting is a filter. Choosing is the work.</strong>",
+      },
+    ],
+  },
+  {
+    slug: "aftershoot-pricing-alternatives",
+    title:
+      "Aftershoot Pricing in 2026: What Each Plan Costs, and the Alternatives Worth a Look",
+    excerpt:
+      "Aftershoot replaced its old tiers with modular plans in 2026, and half the reviews online still quote the wrong numbers. What each plan costs today, what that works out to per shoot, when it's clearly worth it — and which alternatives make sense when it isn't.",
+    description:
+      "Aftershoot pricing in 2026 explained: Select, Edit, Retouch and Complete plans, monthly vs yearly cost, free trial and fine print, plus the real cost per shoot. Compared with Narrative Select, FilterPixel, Imagen, Lightroom Classic Assisted Culling and pay-per-photo alternatives.",
+    keywords:
+      "aftershoot pricing, aftershoot price, aftershoot cost, aftershoot plans, aftershoot review, is aftershoot worth it, aftershoot free trial, aftershoot alternative, aftershoot alternatives, aftershoot vs narrative select, aftershoot vs imagen, aftershoot vs filterpixel, aftershoot select price, ai culling software price, photo culling software without subscription",
+    category: "Comparisons",
+    tags: ["Comparisons", "Aftershoot", "AI Culling", "Pricing"],
+    coverImage: "/blog/aftershoot_pricing_alternatives.png",
+    publishedAt: "2026-11-17",
+    readingMinutes: 9,
+    author: { name: "Photoreka Team", role: "Product" },
+    toc: true,
+    content: [
+      {
+        type: "p",
+        html: "If you searched for <strong>Aftershoot's price</strong>, you probably found three different answers. There's a reason: on May 28, 2026 Aftershoot retired its old Selects, Essentials, Pro and Max tiers and replaced them with modular plans. You now pay for the tools you use — culling, editing, retouching — one by one or bundled, and a lot of reviews still quote the old numbers.",
+      },
+      {
+        type: "p",
+        html: "This article lays out what Aftershoot costs today, what that works out to per shoot, when it's clearly worth the money, and which alternatives make sense when it isn't — including the ones that don't charge monthly at all. Prices were checked on each vendor's own site in November 2026. They change often, and November is promotion season, so confirm before you buy. One disclosure: we make Photoreka, which appears further down. It is not a replacement for Aftershoot's first-pass cull, and we say exactly where it fits.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "The short version",
+        html: "Aftershoot's AI culling plan, <strong>Select</strong>, costs <strong>$10 a month billed yearly ($120)</strong> or $15 month to month, with unlimited photos. Culling, editing and retouching together cost <strong>$45 a month billed yearly ($540)</strong> as Complete. The trial is 30 days with no card. If you shoot most weekends, that's hard to beat. If you shoot a handful of times a year, or what you need is to choose your strongest photos rather than clear out the failed ones, read on.",
+      },
+      {
+        type: "h2",
+        text: "Aftershoot Pricing in 2026",
+        id: "aftershoot-pricing",
+      },
+      {
+        type: "p",
+        html: "Aftershoot is now three modules. <strong>Select</strong> is the AI culling most people know it for. <strong>Edit</strong> applies AI profiles that learn your editing style. <strong>Retouch</strong> handles skin, blemishes and stray hairs. You can buy any one, any pair, or all three.",
+      },
+      {
+        type: "list",
+        items: [
+          "Select (AI culling): $10 a month billed yearly ($120 a year), or $15 billed monthly.",
+          "Retouch: $20 a month billed yearly ($240 a year), or $25 billed monthly.",
+          "Edit: $30 a month billed yearly ($360 a year), or $35 billed monthly.",
+          "Select + Retouch: $30 a month billed yearly ($360 a year), or $40 billed monthly.",
+          "Select + Edit: $40 a month billed yearly ($480 a year), or $50 billed monthly.",
+          "Edit + Retouch: $50 a month billed yearly ($600 a year), or $60 billed monthly.",
+          "Complete (all three): $45 a month billed yearly ($540 a year), or $55 billed monthly. Aftershoot puts this at 25% less than buying the modules separately.",
+        ],
+      },
+      {
+        type: "p",
+        html: "Every plan is <strong>unlimited</strong>: no credits, no per-photo charges and no cap on shoots. Client galleries are a separate product, with a free Starter tier (10 GB of photos) and paid tiers at $15 and $30 a month billed yearly for 500 GB and unlimited storage.",
+      },
+      {
+        type: "h3",
+        text: "What the Price Table Doesn't Tell You",
+        id: "aftershoot-fine-print",
+      },
+      {
+        type: "list",
+        items: [
+          "The free trial lasts 30 days, gives full access and asks for no credit card.",
+          "You can pause a subscription once a year for up to three months, which helps if your season has a quiet stretch.",
+          "Cancelling Select loses nothing. Cancelling Edit or Retouch deletes your custom AI profiles when the plan ends, unless you pay $4 a month to keep them.",
+          "It runs locally on Windows and macOS and works offline. That means your computer does the work: Aftershoot lists 8 GB of RAM as the minimum and warns that previews and retouching may be unreliable on Intel integrated graphics or with less than 2 GB of video memory.",
+          "Selections go to Lightroom Classic, Lightroom, Capture One, Photoshop, Photo Mechanic and Bridge.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "What Aftershoot Really Costs Per Shoot",
+        id: "aftershoot-cost-per-shoot",
+      },
+      {
+        type: "p",
+        html: "A flat fee has no price per shoot until you divide it by your calendar. Taking Select on the yearly plan, at $120:",
+      },
+      {
+        type: "list",
+        items: [
+          "40 weddings a year: $3 a shoot.",
+          "12 shoots a year: $10 a shoot.",
+          "4 shoots a year: $30 a shoot on the yearly plan — or $15 a shoot if you pay monthly and only in the months you work.",
+        ],
+      },
+      {
+        type: "p",
+        html: "The same sum for Complete, at $540 a year, gives $13.50 a wedding at 40 weddings and $45 a shoot at 12. For a working wedding photographer, that is one of the cheapest lines in the business — set it against the evenings it gives back. The price only starts to hurt in two cases: <strong>low volume</strong>, where a yearly plan sits idle most of the time, and <strong>unused modules</strong>, where you pay for editing or retouching you still do by hand. So buy the module, not the bundle, until you know you'll use the rest.",
+      },
+      {
+        type: "h2",
+        text: "Is Aftershoot Worth It?",
+        id: "is-aftershoot-worth-it",
+      },
+      {
+        type: "p",
+        html: "For high-volume delivery work — weddings, events, sessions — yes, and comfortably. It reads RAW files, flags closed eyes and missed focus, groups duplicates, lets you cull down to a target number, and does all of it offline with no meter running. We compare its features against the rest of the category in <a href='/blog/best-ai-culling-software/'>the best AI culling software</a>. It is a weaker fit in four situations:",
+      },
+      {
+        type: "list",
+        items: [
+          "You shoot a few times a year, so a subscription spends most months unused.",
+          "You already pay for Lightroom Classic, whose own Assisted Culling now covers the basics.",
+          "Your computer is older. Local AI is free of upload time but not of hardware requirements.",
+          "Your problem isn't removing bad frames but choosing among good ones — for a portfolio, a contest or a book. Aftershoot picks the best frame of a moment, not the strongest photographs of a year.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Aftershoot Alternatives, by How They Charge",
+        id: "aftershoot-alternatives",
+      },
+      {
+        type: "p",
+        html: "The alternatives differ less in what they detect than in how they bill. That's the useful way to compare them if price is what brought you here.",
+      },
+      {
+        type: "h3",
+        text: "Lightroom Classic Assisted Culling: Already Paid For",
+        id: "lightroom-classic-assisted-culling",
+      },
+      {
+        type: "p",
+        html: "Adobe added <strong>Assisted Culling</strong> to Lightroom Classic, and it left early access in mid-2026. It's included in the Lightroom subscription at no extra charge, runs inside the catalog you already use, and filters a shoot by subject focus, eye focus and open eyes. <strong>Limits:</strong> it's a set of filters rather than a full culling workflow, and it is built around faces — photographers on Adobe's own forums report it does little for subjects that aren't people. <strong>Best for:</strong> portrait and event photographers already in Lightroom Classic who want a first pass without another bill.",
+      },
+      {
+        type: "h3",
+        text: "Narrative Select: The Closest Like-for-Like",
+        id: "narrative-select",
+      },
+      {
+        type: "p",
+        html: "<strong>Narrative Select</strong> matches Aftershoot's entry price almost to the dollar: Lite is $15 a month, or $10 a month billed yearly. Standard is $29 ($20 billed yearly), Premium $59 ($40) and Ultra $79 ($60). Every plan includes unlimited projects and images; the tiers differ in features, seats and AI presets, and new accounts get a free trial of Ultra with no credit card. Its philosophy is that the AI assists and you decide, with scene grouping and face close-ups to speed up your own judgment. <strong>Limits:</strong> check which assessments your tier includes before comparing it with Aftershoot's Select, and note that some features arrive on Mac first. <strong>Best for:</strong> photographers who want to keep the final call, especially on a Mac.",
+      },
+      {
+        type: "h3",
+        text: "FilterPixel: A Subscription With a Yearly Allowance",
+        id: "filterpixel",
+      },
+      {
+        type: "p",
+        html: "<strong>FilterPixel</strong> sits between a flat fee and metered use. Every plan has unlimited basic culling, plus a yearly allowance of <strong>DeepCull</strong> shoots, its genre-aware ranking mode: 20 on Standard, 70 on Pro and 140 on Studio, each covering up to 5,500 photos. Extra shoots are $7.99 each and don't expire. When we checked in November 2026 its pricing page showed Standard at $90 for the year, while FilterPixel's own guides list $14.99 a month billed yearly, so treat the lower figure as a possible promotion. You can try three DeepCull shoots free without a card. <strong>Limits:</strong> DeepCull analyses previews in the cloud, and a busy season can outrun the allowance. <strong>Best for:</strong> photographers with a predictable number of shoots who want a reason attached to every pick.",
+      },
+      {
+        type: "h3",
+        text: "Imagen: Culling as an Add-On",
+        id: "imagen",
+      },
+      {
+        type: "p",
+        html: "<strong>Imagen</strong> sells culling as a flat add-on with unlimited use: $12 a month billed yearly ($144), or $18 billed monthly. The catch is the word add-on — you need an Imagen editing plan underneath it. Pay-as-you-go editing starts at $0.05 a photo with a $7 monthly base fee, which the culling add-on covers, and culling is included in the Limitless plan at $129 a month billed yearly. Every account gets two culling projects free. <strong>Limits:</strong> it's cloud-based, so it needs a connection, and it makes most sense inside Imagen's editing pipeline. <strong>Best for:</strong> photographers who already edit with Imagen.",
+      },
+      {
+        type: "h3",
+        text: "Photoreka Picks: Pay Per Photo, for a Different Job",
+        id: "photoreka-picks",
+      },
+      {
+        type: "p",
+        html: "Here is where we fit, and where we don't. <a href='/ai_photo_picks/'>Photoreka Picks</a> does not detect blinks, check focus face by face or read RAW files. It is not a first-pass culler and won't replace Aftershoot on a wedding. It does the pass that comes after: you drop in photos that are all usable, and an AI jury scores each one on eight artistic criteria, writes a short critique and ranks the set. That's the question behind a portfolio, a <a href='/photo-contests/'>contest entry</a> or a book — the one we separate from culling in <a href='/blog/culling-is-not-editing/'>culling is not editing</a>.",
+      },
+      {
+        type: "list",
+        items: [
+          "No account and no subscription: €0.013 per photo, VAT included, with a €2.90 minimum per order.",
+          "A free trial with 10 of your own photos, critiques included, no card.",
+          "Only an 800-pixel thumbnail of each photo is sent; your full-resolution originals stay on your device.",
+          "Thumbnails and results are deleted after 30 days and never used to train AI models.",
+          "JPEG, PNG and WebP only, up to 5,000 photos per order.",
+        ],
+      },
+      {
+        type: "p",
+        html: "The arithmetic shows both the fit and the limit. Ranking 300 keepers costs €3.90; 1,000 cost €13; and a month in which you rank nothing costs nothing. Run it the other way and 4,000 unculled wedding frames would cost €52, for a job Picks isn't built to do. <strong>Per-photo pricing suits the shortlist, not the card dump.</strong> If the shortlist is a whole body of work rather than one folder, the full Photoreka app does the same scoring across a catalog and is also paid once per batch of photos, with no subscription — see <a href='/ai_photo_culling/'>AI photo culling for your keepers</a>.",
+      },
+      {
+        type: "h2",
+        text: "Flat Fee, Allowance or Per Photo: Which Model Fits You",
+        id: "pricing-models",
+      },
+      {
+        type: "list",
+        items: [
+          "Unlimited flat fee (Aftershoot, Narrative Select, Imagen's add-on): the cost per shoot falls with every job, so it rewards volume and punishes idle months.",
+          "Subscription with an allowance (FilterPixel): cheaper if your year fits inside the allowance, with a known price for each shoot beyond it.",
+          "Included in software you already pay for (Lightroom Classic): no new cost, fewer features.",
+          "Per photo with no subscription (Photoreka Picks): right for occasional use and small, already-selected sets; wrong for bulk rejection.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "A subscription is a bet on your own calendar. Before comparing features, count how many times last year you would actually have opened the app.",
+      },
+      {
+        type: "h2",
+        text: "How to Choose",
+        id: "how-to-choose",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose Aftershoot Select if: you shoot weddings or events regularly and want unlimited, offline culling for about the price of a streaming service.",
+          "Choose Aftershoot Complete if: you'd use AI editing and retouching on most jobs too. Otherwise start with the module you need.",
+          "Pay Aftershoot monthly, or use its yearly pause, if: your work is seasonal.",
+          "Choose Lightroom Classic's Assisted Culling if: you already subscribe to Lightroom, shoot mostly people, and want a basic first pass at no extra cost.",
+          "Choose Narrative Select if: you want the AI to assist rather than decide, at a similar entry price.",
+          "Choose FilterPixel if: you shoot a predictable number of jobs a year and value a stated reason for each pick.",
+          "Choose Imagen if: you already edit with Imagen.",
+          "Choose Photoreka Picks if: the culling is done and the open question is which of your good photos are the best — and you'd rather pay a few euros once than add a subscription.",
+          "Use both if: a culler handles the technical pass on client work and Picks handles the selection for your portfolio or a contest.",
+        ],
+      },
+      {
+        type: "cta",
+        eyebrow: "No subscription to cancel",
+        title: "Rank 10 photos free with Photoreka Picks",
+        text: "Eight artistic criteria, a written critique for every frame and a ranking by jury. No account, no card.",
+        buttonLabel: "Try it free with 10 photos",
+        action: "link",
+        href: "https://app.photoreka.com/picks?trial=1",
+      },
+      {
+        type: "p",
+        html: "One last note. Aftershoot's new pricing is fairer than the old tiers: you can finally pay for culling alone, and at $10 a month it's a small price for anyone who shoots every week. The question worth asking isn't whether it's cheap, but whether its job is the one you need done. <strong>Pay monthly for the work you do every week. Pay per use for the decisions you make a few times a year.</strong>",
       },
     ],
   },

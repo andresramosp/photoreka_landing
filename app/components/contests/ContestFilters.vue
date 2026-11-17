@@ -2,27 +2,53 @@
   <div class="pc-filters" role="search" aria-label="Filter contests">
     <div class="pc-filters__group">
       <p id="pc-filter-genre" class="pc-filters__label">Genre</p>
-      <div class="pc-filters__pills" role="group" aria-labelledby="pc-filter-genre">
+      <div class="pc-scroller" :class="{ 'can-back': canBack, 'can-forward': canForward }">
         <button
           type="button"
-          class="pc-pill"
-          :class="{ 'is-active': model.genre === 'all' }"
-          :aria-pressed="model.genre === 'all'"
-          @click="model.genre = 'all'"
+          class="pc-scroller__arrow pc-scroller__arrow--back"
+          aria-label="Scroll genres left"
+          tabindex="-1"
+          @click="scrollPills(-1)"
         >
-          All genres
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6" /></svg>
         </button>
-        <button
-          v-for="genre in genres"
-          :key="genre.key"
-          type="button"
-          class="pc-pill"
-          :class="{ 'is-active': model.genre === genre.key }"
-          :style="{ '--c': genre.color }"
-          :aria-pressed="model.genre === genre.key"
-          @click="model.genre = model.genre === genre.key ? 'all' : genre.key"
+        <div
+          ref="pills"
+          class="pc-filters__pills"
+          role="group"
+          aria-labelledby="pc-filter-genre"
+          @scroll.passive="updateArrows"
         >
-          <i aria-hidden="true" />{{ genre.label }}
+          <button
+            type="button"
+            class="pc-pill"
+            :class="{ 'is-active': model.genre === 'all' }"
+            :aria-pressed="model.genre === 'all'"
+            @click="model.genre = 'all'; centerPill($event)"
+          >
+            All genres
+          </button>
+          <button
+            v-for="genre in genres"
+            :key="genre.key"
+            type="button"
+            class="pc-pill"
+            :class="{ 'is-active': model.genre === genre.key }"
+            :style="{ '--c': genre.color }"
+            :aria-pressed="model.genre === genre.key"
+            @click="model.genre = model.genre === genre.key ? 'all' : genre.key; centerPill($event)"
+          >
+            <i aria-hidden="true" />{{ genre.label }}
+          </button>
+        </div>
+        <button
+          type="button"
+          class="pc-scroller__arrow pc-scroller__arrow--forward"
+          aria-label="Scroll genres right"
+          tabindex="-1"
+          @click="scrollPills(1)"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" /></svg>
         </button>
       </div>
     </div>
@@ -90,18 +116,57 @@ const formats = [
   { key: "series", label: "Series" },
 ];
 
+const pills = ref(null);
+const canBack = ref(false);
+const canForward = ref(false);
+
+function updateArrows() {
+  const el = pills.value;
+  if (!el) return;
+  canBack.value = el.scrollLeft > 2;
+  canForward.value = el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
+}
+
+// scrollIntoView would also scroll the page, so only the row is moved.
+function centerPill(event) {
+  const row = pills.value.getBoundingClientRect();
+  const pill = event.currentTarget.getBoundingClientRect();
+  const offset = pill.left + pill.width / 2 - (row.left + row.width / 2);
+  pills.value.scrollBy({ left: offset, behavior: "smooth" });
+}
+
+function scrollPills(direction) {
+  const el = pills.value;
+  el.scrollBy({ left: direction * el.clientWidth * 0.7, behavior: "smooth" });
+}
+
+// The pills are watched too: a late web font widens them without resizing the row.
+let observer;
+function observePills() {
+  observer.disconnect();
+  observer.observe(pills.value);
+  for (const pill of pills.value.children) observer.observe(pill);
+}
+onMounted(() => {
+  observer = new ResizeObserver(updateArrows);
+  observePills();
+});
+onBeforeUnmount(() => observer?.disconnect());
+watch(genres, () => nextTick(observePills));
 </script>
 
 <style scoped>
 .pc-filters {
   display: grid;
-  gap: 1.2rem;
+  gap: 0.9rem;
+  min-width: 0;
 }
 
 .pc-filters__group {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.4rem;
   align-content: start;
+  min-width: 0;
 }
 
 .pc-filters__group--grow {
@@ -117,24 +182,102 @@ const formats = [
   color: var(--lx-text-3);
 }
 
-.pc-filters__pills,
 .pc-filters__row {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.9rem 1.2rem;
 }
 
-.pc-filters__row {
-  gap: 1.2rem 1.6rem;
+.pc-scroller {
+  --fade-back: 0px;
+  --fade-forward: 0px;
+  position: relative;
+  min-width: 0;
+}
+
+.pc-scroller.can-back {
+  --fade-back: 56px;
+}
+
+.pc-scroller.can-forward {
+  --fade-forward: 56px;
+}
+
+/* The padding keeps focus rings inside the scroll box, which would clip them. */
+.pc-filters__pills {
+  display: flex;
+  gap: 0.45rem;
+  margin: -3px;
+  padding: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-padding-inline: 48px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 var(--fade-back),
+    #000 calc(100% - var(--fade-forward)),
+    transparent 100%
+  );
+}
+
+.pc-filters__pills::-webkit-scrollbar {
+  display: none;
+}
+
+.pc-scroller__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--lx-line-2);
+  background: var(--pc-panel);
+  color: var(--lx-text);
+  box-shadow: var(--lx-shadow-md);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: opacity 0.25s ease;
+}
+
+.pc-scroller__arrow--back {
+  left: 0;
+}
+
+.pc-scroller__arrow--forward {
+  right: 0;
+}
+
+.can-back .pc-scroller__arrow--back,
+.can-forward .pc-scroller__arrow--forward {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pc-scroller__arrow svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .pc-pill {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.5rem;
-  height: 40px;
-  padding: 0 1rem;
+  height: 36px;
+  padding: 0 0.95rem;
   border-radius: 999px;
   border: 1px solid var(--lx-line-2);
   background: var(--pc-tint);
@@ -179,7 +322,7 @@ const formats = [
 }
 
 .pc-seg button {
-  height: 32px;
+  height: 28px;
   padding: 0 0.9rem;
   border: 0;
   border-radius: 999px;
@@ -226,7 +369,7 @@ const formats = [
 
 .pc-search input {
   width: 100%;
-  height: 40px;
+  height: 36px;
   padding: 0 1rem 0 2.5rem;
   border-radius: 999px;
   border: 1px solid var(--lx-line-2);
@@ -251,15 +394,14 @@ const formats = [
   outline-offset: 2px;
 }
 
-@media (max-width: 640px) {
-  .pc-filters__pills {
-    flex-wrap: nowrap;
-    margin-inline: calc(-1 * var(--lx-gutter));
-    padding-inline: var(--lx-gutter);
-    overflow-x: auto;
-    scrollbar-width: none;
+/* On touch screens a swipe scrolls the row, so the arrows would only cover pills. */
+@media (hover: none) {
+  .pc-scroller__arrow {
+    display: none;
   }
+}
 
+@media (max-width: 640px) {
   .pc-filters__group--grow {
     flex-basis: 100%;
   }

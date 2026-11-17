@@ -18,7 +18,7 @@
       </li>
     </ol>
 
-    <ul class="pc-cal__legend">
+    <ul v-if="!bare" class="pc-cal__legend">
       <li v-for="genre in legend" :key="genre.key" :style="{ '--c': genre.color }">
         <i aria-hidden="true" />{{ genre.label }}
       </li>
@@ -119,6 +119,14 @@ const legend = computed(() =>
   border-radius: 12px;
   background: linear-gradient(180deg, transparent, var(--pc-tint));
   border-bottom: 1px solid var(--lx-line-2);
+}
+
+.pc-cal--bare .pc-cal__months {
+  margin-top: 0.6rem;
+}
+
+.pc-cal--bare .pc-cal__dots {
+  height: clamp(110px, 10vw, 150px);
 }
 
 .pc-cal__month.is-now .pc-cal__dots {

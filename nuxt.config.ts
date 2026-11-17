@@ -171,6 +171,7 @@ export default defineNuxtConfig({
     "/blog/how-to-pick-your-best-photos": { prerender: true },
     "/blog/best-ai-photo-rater": { prerender: true },
     "/blog/best-ai-culling-software": { prerender: true },
+    "/blog/aftershoot-pricing-alternatives": { prerender: true },
     "/blog/best-ai-photo-organizer": { prerender: true },
     "/blog/excire-search-vs-photoreka": { prerender: true },
     "/ai_photo_organizer": { prerender: true },
