@@ -27,6 +27,15 @@ export interface ContestFacts {
   nextOpening: string | null;
 }
 
+/** Written from the official site and approved in the admin. */
+export interface ContestDescription {
+  /** One sentence, for search results. */
+  summary: string;
+  about: string;
+  rewards: string | null;
+  audience: string | null;
+}
+
 export interface Contest {
   slug: string;
   juryId: string;
@@ -43,6 +52,8 @@ export interface Contest {
   /** Chosen in the admin to open the contests page. */
   hero: boolean;
   facts: ContestFacts | null;
+  /** Null until one is approved: the page then shows only the facts. */
+  description: ContestDescription | null;
   checkedAt: string | null;
 }
 

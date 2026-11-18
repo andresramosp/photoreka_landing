@@ -37,6 +37,7 @@
     <section id="details" class="pcd-main">
       <div class="lx-container pcd-main__grid">
         <div class="pcd-main__facts">
+          <ContestAbout v-if="contest.description" :contest="contest" />
           <ContestSectionHead title="Fees, prizes and rules">
             <template v-if="contest.facts">
               As published on the official site<template v-if="contest.checkedAt">, last checked on
@@ -111,6 +112,7 @@
 
 <script setup>
 import ContestsShell from "~/components/contests/ContestsShell.vue";
+import ContestAbout from "~/components/contests/ContestAbout.vue";
 import ContestGenreChip from "~/components/contests/ContestGenreChip.vue";
 import ContestCountdown from "~/components/contests/ContestCountdown.vue";
 import ContestFactGrid from "~/components/contests/ContestFactGrid.vue";
@@ -187,13 +189,17 @@ const f = c.facts;
 const fullName = f?.edition && !c.name.includes(f.edition) ? `${c.name} ${f.edition}` : c.name;
 const pageUrl = `${seoConfig.siteUrl}${contestPath(c.slug)}`;
 
-const descriptionParts = [];
-if (f?.deadline) descriptionParts.push(`Deadline: ${formatContestDate(f.deadline)}.`);
-if (contestFeeLabel(f)) descriptionParts.push(`Entry fee: ${contestFeeLabel(f)}.`);
-if (f?.prizes) descriptionParts.push(`Prizes: ${f.prizes}.`);
-const description = f
+// What a searcher asks first; an approved description opens with its own sentence.
+const keyParts = [];
+if (f?.deadline) keyParts.push(`Deadline: ${formatContestDate(f.deadline)}.`);
+if (contestFeeLabel(f)) keyParts.push(`Entry fee: ${contestFeeLabel(f)}.`);
+const descriptionParts = f?.prizes ? [...keyParts, `Prizes: ${f.prizes}.`] : keyParts;
+const factsDescription = f
   ? `${fullName}: ${descriptionParts.join(" ")} Checked on the official site${c.checkedAt ? ` on ${formatCheckedAt(c.checkedAt)}` : ""}.`
   : `${c.name}: the dates of the next edition are not confirmed yet. Get an email when entries open.`;
+const description = c.description
+  ? [c.description.summary, ...keyParts].join(" ")
+  : factsDescription;
 
 useSEO(undefined, {
   title: `${fullName}: Deadline, Entry Fee & Prizes | Photoreka`,
