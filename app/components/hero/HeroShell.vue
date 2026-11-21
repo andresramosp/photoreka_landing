@@ -10,9 +10,11 @@
    --hero-bottom on this root and lays out its own content inside. */
 .lx-hero {
   position: relative;
+  /* Kept in its own variable: postcss-calc can't parse a clamp() with var()
+     inside a var() fallback inside calc() (see ui-zoom/). */
+  --hero-top-default: clamp(152px, 22svh, 230px);
   padding-top: calc(
-    var(--announcement-height, 0px) +
-      var(--hero-top, clamp(152px, 22svh, 230px))
+    var(--announcement-height, 0px) + var(--hero-top, var(--hero-top-default))
   );
   padding-bottom: var(--hero-bottom, clamp(16px, 3vw, 40px));
   transition: padding-top 0.35s ease;
