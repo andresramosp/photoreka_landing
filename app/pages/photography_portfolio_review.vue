@@ -9,15 +9,16 @@
     </template>
 
     <div class="lx-numbered cql">
-      <PageHero eyebrow="Photography portfolio review · Checked by a curator">
+      <PageHero :eyebrow="`Eight-section PDF report · Written in ${CRITIQUE_LANGUAGES.length} languages`">
         <template #title>
-          A portfolio review <em class="lx-accent">written for your photographs.</em>
+          Your portfolio review, <em class="lx-accent">without the waiting list or the fee.</em>
         </template>
         <p>
           Send {{ CRITIQUE_MIN_PHOTOS }} to {{ CRITIQUE_MAX_PHOTOS }} photographs and receive a
-          written report: what works in your strongest images, where the set starts to repeat
-          itself and what to photograph next. Written by our AI following curatorial criteria,
-          and reviewed by a curator before it reaches you.
+          <strong>professional-level written report</strong>. Our AI is trained to read
+          photographs with <strong>curatorial criteria</strong>, and a
+          <strong>human expert reviews every report</strong>: the depth of a traditional
+          portfolio review, <strong>faster and for a fraction of the price</strong>.
         </p>
         <template #actions>
           <LxButton icon="external" :href="CRITIQUE_APP_URL" target="_blank" @click="trackOrder('hero')">
@@ -35,11 +36,11 @@
             </li>
             <li>
               <n-icon size="15"><TimeOutline /></n-icon>
-              Delivered within {{ CRITIQUE_DELIVERY_HOURS }} hours
+              Delivered in under {{ CRITIQUE_DELIVERY_HOURS }} hours
             </li>
             <li>
               <n-icon size="15"><CardOutline /></n-icon>
-              {{ formatEur(CRITIQUE_PRICE_EUR) }}, VAT included
+              {{ formatEur(CRITIQUE_PRICE_EUR) }}{{ CRITIQUE_BETA ? " beta price" : "" }}, VAT included
             </li>
           </ul>
         </template>
@@ -59,18 +60,37 @@
       </PageHero>
 
       <!-- ── What is inside ──────────────────────────────────────────── -->
-      <section id="report" class="lx-section">
+      <section id="report" class="lx-section cql-report">
         <div class="lx-container">
           <SectionIntro eyebrow="The report" align="center">
             <template #title>
-              Seven sections, <em class="lx-accent">one reading of your work.</em>
+              Eight sections, <em class="lx-accent">one reading of your work.</em>
             </template>
             <p>
-              Not a score and not a list of tips. A report that looks at each photograph on its
-              own and then at what the set says about the person behind the camera.
+              Critique reads your photographs the way a <strong>curator</strong> reads a
+              portfolio: one frame at a time, then as a <strong>body of work</strong>. You receive
+              a written report on what your strongest images achieve, where the set starts to
+              repeat itself and <strong>what to photograph next</strong>.
             </p>
+            <template #actions>
+              <ul class="cql-genres" aria-label="Genres a report covers">
+                <li
+                  v-for="genre in CRITIQUE_GENRES"
+                  :key="genre.key"
+                  class="cql-genre"
+                  :style="{ '--c': genre.color }"
+                >
+                  <i aria-hidden="true" />{{ genre.label }}
+                </li>
+              </ul>
+            </template>
           </SectionIntro>
-          <PageGrid :items="sections" :columns="3" />
+          <CritiqueSectionsBento
+            :sections="sections"
+            :pages="CRITIQUE_SAMPLE_PAGES"
+            :pdf="CRITIQUE_SAMPLE_PDF"
+            @open="trackSample('bento')"
+          />
         </div>
       </section>
 
@@ -80,7 +100,7 @@
           <div v-reveal="{ variant: 'scale' }" class="cql-excerpt__photo">
             <ShotFrame
               :src="CRITIQUE_EXCERPT.photo"
-              alt="Street photograph of a woman on the phone at a jewellery stall, with its critique"
+              alt="Street photograph of two women in red headscarves and batik tops, one close in the foreground and one walking behind her past a green shutter"
               ratio="auto"
               bare
             />
@@ -88,7 +108,7 @@
           <div class="cql-excerpt__copy">
             <SectionIntro eyebrow="Photo critique, frame by frame" size="md" flush>
               <template #title>
-                First what the photograph is. <em class="lx-accent">Then why it works.</em>
+                What works. What doesn’t.<em class="lx-accent"> No AI sycophancy.</em>  
               </template>
             </SectionIntro>
             <div v-reveal="160" class="cql-quote">
@@ -99,72 +119,118 @@
               <h3>What could have been better?</h3>
               <p>{{ CRITIQUE_EXCERPT.improve }}</p>
             </div>
-            <p class="cql-fineprint">
-              Word for word from the sample report below. When a photograph works, the report
-              says so and leaves it there.
-            </p>
+            <!-- <p class="cql-fineprint">
+              The first reading is word for word from the sample report below, where this
+              photograph was picked out of the pictures the author sent only as context.
+            </p> -->
           </div>
         </div>
       </section>
 
       <!-- ── Sample report ───────────────────────────────────────────── -->
-      <section id="sample" class="lx-section">
-        <div class="lx-container">
-          <SectionIntro eyebrow="Sample report" align="center">
-            <template #title>
-              Read one <em class="lx-accent">from cover to roadmap.</em>
-            </template>
-            <p>
-              A complete report on 25 street photographs, page by page.
-            </p>
-            <template #actions>
-              <LxButton
-                variant="ghost"
-                icon="down"
-                :href="CRITIQUE_SAMPLE_PDF"
-                target="_blank"
-                @click="trackSample('pdf')"
-              >
-                Download the sample PDF
-              </LxButton>
-            </template>
-          </SectionIntro>
-          <div v-reveal="120">
-            <CritiqueSampleViewer :pages="CRITIQUE_SAMPLE_PAGES" @turn="onTurn" />
-          </div>
-        </div>
+      <section id="sample" class="lx-section cql-sample">
+        <CritiqueSheetsReel :pages="sampleSheets" @open="trackSample('reel')">
+          <template #head>
+            <SectionIntro eyebrow="Sample report" align="center" size="md">
+              <template #title>
+                Read one <em class="lx-accent">from cover to roadmap.</em>
+              </template>
+              <p>
+                A complete report on 24 photographs, plus 50 more sent as
+                context.
+              </p>
+              <template #actions>
+                <LxButton
+                  variant="ghost"
+                  icon="down"
+                  :href="CRITIQUE_SAMPLE_PDF"
+                  target="_blank"
+                  @click="trackSample('pdf')"
+                >
+                  Download the sample PDF
+                </LxButton>
+              </template>
+            </SectionIntro>
+          </template>
+        </CritiqueSheetsReel>
       </section>
 
       <!-- ── How it works ────────────────────────────────────────────── -->
+      <!-- Two hands on one page: the AI writes in ink, the curator only adds in
+           gold. Nothing is struck out, because nothing needs to be. -->
       <section id="how-it-works" class="lx-section">
         <div class="lx-container">
-          <SectionIntro eyebrow="How it works">
-            <template #title>
-              From your selection to <em class="lx-accent">a report in your inbox.</em>
-            </template>
-          </SectionIntro>
-          <PageSteps :steps="steps" />
-        </div>
-      </section>
+          <div class="cql-duet">
+            <div class="cql-duet__copy">
+              <SectionIntro eyebrow="How it works" flush>
+                <template #title>
+                  Two readers, <em class="lx-accent">one report.</em>
+                </template>
+                <p>
+                  The AI writes the whole report. Then a curator reads it next to your
+                  photographs, <strong>not to fix it but to take it further</strong>.
+                </p>
+              </SectionIntro>
 
-      <!-- ── Method ──────────────────────────────────────────────────── -->
-      <section class="lx-section lx-section--tight">
-        <div class="lx-container">
-          <div v-reveal class="lx-card cql-note">
-            <span class="cql-note__icon" aria-hidden="true">
-              <n-icon size="26"><EyeOutline /></n-icon>
-            </span>
-            <div>
-              <h2 class="lx-title lx-title--md">Written by AI, checked by a curator.</h2>
-              <p class="lx-lead">
-                The report says so on its first page. Each photograph is read on its own, three
-                critical readings of the set are weighed against each other, and every sentence
-                is held against the photograph it talks about. The figures are counted, never
-                estimated. Then a curator reads the whole report next to your images before it
-                is sent. It is a reasoned opinion, not a verdict.
-              </p>
+              <div class="cql-roles">
+                <div v-for="(role, i) in roles" :key="role.key" v-reveal="i * 120" class="cql-role">
+                  <p class="cql-role__tag" :class="`cql-role__tag--${role.key}`">
+                    <span class="cql-role__dot" aria-hidden="true" />
+                    {{ role.who }} <span class="cql-role__verb">· {{ role.verb }}</span>
+                  </p>
+                  <p class="cql-role__lead">{{ role.lead }}</p>
+                  <ul class="cql-role__list">
+                    <li v-for="item in role.items" :key="item">{{ item }}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
+
+            <figure v-reveal="{ variant: 'scale' }" class="cql-ms">
+              <div class="cql-ms__head">
+                <span><b>03</b> Other images</span>
+                <span>Draft · under review</span>
+              </div>
+              <img
+                class="cql-ms__photo"
+                :src="CRITIQUE_EXCERPT.photo"
+                alt=""
+                width="1100"
+                height="733"
+                loading="lazy"
+              />
+              <p class="cql-ms__text">
+                <template v-for="line in manuscript" :key="line">
+                  <span class="cql-ms__line">{{ line }}</span><span
+                    class="cql-ms__check"
+                    title="Checked against the photograph"
+                  ><n-icon size="13"><CheckmarkOutline /></n-icon></span>{{ " " }}
+                </template>
+                <ins class="cql-ms__ins">
+                  <span class="cql-ms__caret" aria-hidden="true">‸</span>
+                  {{ CURATOR_NOTE }}
+                </ins>
+              </p>
+              <figcaption class="cql-ms__legend">
+                <span><i class="cql-ms__swatch cql-ms__swatch--ai" />Written by the AI</span>
+                <span><i class="cql-ms__swatch cql-ms__swatch--curator" />Checked and added by the curator</span>
+              </figcaption>
+            </figure>
           </div>
+
+          <ol class="cql-rail">
+            <li
+              v-for="(stop, i) in timeline"
+              :key="stop.when"
+              v-reveal="i * 90"
+              class="cql-rail__stop"
+              :class="{ 'is-curator': stop.curator }"
+            >
+              <span class="cql-rail__dot" aria-hidden="true" />
+              <p class="cql-rail__when">{{ stop.when }}</p>
+              <p class="cql-rail__what">{{ stop.what }}</p>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -173,24 +239,63 @@
         <div class="lx-container">
           <SectionIntro eyebrow="Pricing" align="center">
             <template #title>
-              One report, <em class="lx-accent">one payment.</em>
+              Reviewed by hand, <em class="lx-accent">at the instant price.</em>
             </template>
+            <p v-if="CRITIQUE_BETA">
+              We are in beta, and we would rather read every portfolio ourselves before it
+              reaches you. Until Instant launches, <strong>every report is reviewed by a curator
+              for the price of an automatic one</strong>.
+            </p>
           </SectionIntro>
-          <div v-reveal class="lx-card cql-price">
-            <div class="cql-price__main">
-              <p class="cql-price__figure">
+
+          <div class="cql-tiers">
+            <!-- What is sold today. -->
+            <div v-reveal class="lx-card cql-tier cql-tier--live">
+              <p v-if="CRITIQUE_BETA" class="cql-tier__badge">Beta offer</p>
+              <h3 class="cql-tier__name">{{ CRITIQUE_TIERS.curated.name }}</h3>
+              <p class="cql-tier__meta">
+                AI report enriched by a curator · in under {{ CRITIQUE_DELIVERY_HOURS }} hours
+              </p>
+              <p class="cql-tier__figure">
+                <s v-if="CRITIQUE_BETA">{{ formatEur(CRITIQUE_TIERS.curated.priceEur) }}</s>
                 {{ formatEur(CRITIQUE_PRICE_EUR) }}<span> per report</span>
               </p>
-              <p class="cql-price__sub">VAT included. No account, no subscription.</p>
+              <p class="cql-tier__sub">VAT included. No account, no subscription.</p>
+              <ul class="lx-list cql-tier__list">
+                <li v-for="item in included" :key="item">
+                  <span class="lx-tick" aria-hidden="true" />{{ item }}
+                </li>
+              </ul>
               <LxButton icon="external" block :href="CRITIQUE_APP_URL" target="_blank" @click="trackOrder('pricing')">
                 Get my portfolio review
               </LxButton>
             </div>
-            <ul class="lx-list cql-price__list">
-              <li v-for="item in included" :key="item">
-                <span class="lx-tick" aria-hidden="true" />{{ item }}
-              </li>
-            </ul>
+
+            <!-- What comes after the beta: shown, not sold. -->
+            <div
+              v-reveal="120"
+              class="lx-card cql-tier"
+              :class="{ 'is-soon': !CRITIQUE_TIERS.instant.available }"
+              :aria-disabled="!CRITIQUE_TIERS.instant.available"
+            >
+              <p v-if="!CRITIQUE_TIERS.instant.available" class="cql-tier__badge cql-tier__badge--soon">
+                Coming after the beta
+              </p>
+              <h3 class="cql-tier__name">{{ CRITIQUE_TIERS.instant.name }}</h3>
+              <p class="cql-tier__meta">AI report, as it is written · in minutes</p>
+              <p class="cql-tier__figure">
+                {{ formatEur(CRITIQUE_TIERS.instant.priceEur) }}<span> per report</span>
+              </p>
+              <p class="cql-tier__sub">VAT included. No account, no subscription.</p>
+              <ul class="lx-list cql-tier__list">
+                <li v-for="item in instantIncluded" :key="item">
+                  <span class="lx-tick" aria-hidden="true" />{{ item }}
+                </li>
+              </ul>
+              <p class="cql-tier__soon">
+                Not available yet. Order now and you get the curated report at this price.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -236,7 +341,7 @@
           You know your photographs. <em class="lx-accent">Find out what they say together.</em>
         </template>
         <p>
-          {{ CRITIQUE_MIN_PHOTOS }} to {{ CRITIQUE_MAX_PHOTOS }} photographs, one report, within
+          {{ CRITIQUE_MIN_PHOTOS }} to {{ CRITIQUE_MAX_PHOTOS }} photographs, one report, in under
           {{ CRITIQUE_DELIVERY_HOURS }} hours.
         </p>
         <template #actions>
@@ -253,34 +358,32 @@
 </template>
 
 <script setup>
-import { markRaw } from "vue";
 import {
-  AlbumsOutline,
   CardOutline,
-  CompassOutline,
-  EyeOutline,
-  FlagOutline,
+  CheckmarkOutline,
   LockClosedOutline,
   PersonRemoveOutline,
-  RemoveCircleOutline,
-  RepeatOutline,
-  RibbonOutline,
-  StarOutline,
   TimeOutline,
 } from "@vicons/ionicons5";
+import CritiqueSectionsBento from "~/components/critique/CritiqueSectionsBento.vue";
+import CritiqueSheetsReel from "~/components/critique/CritiqueSheetsReel.vue";
 import {
   CRITIQUE_APP_URL,
+  CRITIQUE_BETA,
   CRITIQUE_DELIVERY_HOURS,
   CRITIQUE_EXCERPT,
   CRITIQUE_FAQS,
+  CRITIQUE_GENRES,
   CRITIQUE_LANGUAGES,
   CRITIQUE_MAX_CONTEXT_PHOTOS,
   CRITIQUE_MAX_PHOTOS,
   CRITIQUE_MIN_PHOTOS,
   CRITIQUE_PRICE_EUR,
   CRITIQUE_RETENTION_DAYS,
+  CRITIQUE_SAMPLE_LABELS,
   CRITIQUE_SAMPLE_PAGES,
   CRITIQUE_SAMPLE_PDF,
+  CRITIQUE_TIERS,
 } from "~/utils/critiqueShowcase";
 import { trackUserAction } from "~/utils/analytics";
 
@@ -302,89 +405,151 @@ const formatEur = (n) =>
   }).format(n);
 
 // The cover, a featured critique and a growth area: the three faces of a report.
-const heroPages = [CRITIQUE_SAMPLE_PAGES[10], CRITIQUE_SAMPLE_PAGES[3], CRITIQUE_SAMPLE_PAGES[0]];
+const heroPages = [CRITIQUE_SAMPLE_PAGES[11], CRITIQUE_SAMPLE_PAGES[5], CRITIQUE_SAMPLE_PAGES[0]];
 
-const gold = "var(--pc-gold-ink)";
+// Each section with the page of the sample it opens and the region of that page
+// its tile shows ([x, y, width, height] as fractions of the page). The sizes
+// close a 4 × 4 block: two big tiles, then a wide one and two small per row.
 const sections = [
   {
-    icon: markRaw(CompassOutline),
     title: "Portfolio overview",
     description:
       "Where your work stands: its genre and manner, the devices it returns to and what it gives up to get what it gets.",
-    color: gold,
+    page: 1,
+    focus: [0.065, 0.355, 0.87, 0.52],
+    size: "big",
   },
   {
-    icon: markRaw(StarOutline),
     title: "Featured photographs",
     description:
       "Your strongest images critiqued one by one: what works, what could have been better and, where it helps, a tighter framing.",
-    color: gold,
+    page: 4,
+    focus: [0.065, 0.05, 0.87, 0.64],
+    size: "big",
   },
   {
-    icon: markRaw(RemoveCircleOutline),
     title: "Set-aside images",
     description:
       "The photographs that hold the set back, each with what it was after and why that is not enough.",
-    color: gold,
+    page: 8,
+    focus: [0.065, 0.175, 0.87, 0.6],
   },
   {
-    icon: markRaw(RibbonOutline),
+    title: "Style profile",
+    description:
+      "What repeats across the set, counted photo by photo: the devices that carry your pictures, where the camera stands and how close.",
+    page: 9,
+    focus: [0.065, 0.195, 0.87, 0.59],
+    size: "wide",
+  },
+  {
     title: "Your strengths",
     description:
       "Traits of you as an author, not of a single frame, each backed by the photographs that show it.",
-    color: gold,
+    page: 10,
+    focus: [0.065, 0.115, 0.87, 0.58],
   },
   {
-    icon: markRaw(RepeatOutline),
     title: "Areas for growth",
     description:
       "The habits that give your work coherence and could harden into a formula, with exact counts and your own photos as examples.",
-    color: gold,
+    page: 12,
+    focus: [0.065, 0.075, 0.87, 0.38],
+    size: "wide",
   },
   {
-    icon: markRaw(AlbumsOutline),
     title: "Proposed projects",
     description:
       "Series your material already points to: which photographs fit today and what is still to be photographed.",
-    color: gold,
+    page: 13,
+    focus: [0.065, 0.2, 0.87, 0.28],
   },
   {
-    icon: markRaw(FlagOutline),
     title: "Roadmap",
     description:
       "Where to start, concrete steps from your next outing to the coming months, and open contests your strongest photographs suit.",
-    color: gold,
+    page: 14,
+    focus: [0.065, 0.27, 0.87, 0.37],
   },
 ];
 
-const steps = [
+// Each sheet opens the sample PDF at its page, in a new tab.
+const sampleSheets = CRITIQUE_SAMPLE_PAGES.map((src, index) => ({
+  src,
+  label: CRITIQUE_SAMPLE_LABELS[index],
+  href: `${CRITIQUE_SAMPLE_PDF}#page=${index + 1}`,
+}));
+
+// How it works: who does what, then when each part happens.
+const roles = [
   {
-    title: "Choose your photographs",
-    description: `The ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} you would put in a portfolio today. Add up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context if you like: they show your habits and may hold an image worth rescuing.`,
+    key: "ai",
+    who: "The AI",
+    verb: "writes",
+    lead: "Trained on editorial guidelines, it does the slow, exhaustive reading in minutes.",
+    items: [
+      "Describes and assesses every frame on its own",
+      "Reads the set three ways: editorial, narrative and formal",
+      "Ties every sentence to the photograph it talks about",
+      "Counts every figure, never estimates",
+    ],
   },
   {
-    title: "Pick a language and pay once",
-    description: `${formatEur(CRITIQUE_PRICE_EUR)}, VAT included, no account. Your report is written in ${CRITIQUE_LANGUAGES.slice(0, -1).join(", ")} or ${CRITIQUE_LANGUAGES.at(-1)}.`,
-  },
-  {
-    title: "A curator reviews it",
-    description:
-      "The report is written within minutes, then read by a curator against your photographs before it is sent.",
-  },
-  {
-    title: "Receive your report as a PDF",
-    description: `Within ${CRITIQUE_DELIVERY_HOURS} hours it lands in your inbox as a PDF, with a private link to download it again.`,
+    key: "curator",
+    who: "The curator",
+    verb: "enriches",
+    lead: "Reads the finished report next to your photographs and adds what only experience gives.",
+    items: [
+      "A fine check of each statement against its image",
+      "References to photographers and books that speak to your work",
+      "Nuance where your context or intent matters",
+      "A last word on your projects and roadmap",
+    ],
   },
 ];
 
-const included = [
+// The sample critique as the AI wrote it, one checked sentence at a time.
+const manuscript = CRITIQUE_EXCERPT.works.split(/(?<=\.)\s+/);
+
+// Illustrative: the kind of note a curator adds. It is not in the sample report.
+const CURATOR_NOTE =
+  "Alex Webb builds whole frames on this kind of layered echo; his Istanbul book is worth an evening next to this set.";
+
+const timeline = [
+  {
+    when: "Today",
+    what: `You send ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs, up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context, choose one of ${CRITIQUE_LANGUAGES.length} languages and pay ${formatEur(CRITIQUE_PRICE_EUR)} once.`,
+  },
+  {
+    when: "Minutes later",
+    what: "The AI has read every frame and written the full report.",
+  },
+  {
+    when: `Under ${CRITIQUE_DELIVERY_HOURS} hours`,
+    what: "The curator has checked it against your photographs and enriched it.",
+    curator: true,
+  },
+  {
+    when: "In your inbox",
+    what: "A print-ready PDF, with a private link to download it again.",
+  },
+];
+
+const reportIncluded = [
   `${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs reviewed`,
   `Up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context`,
   "About a third of them critiqued at length",
-  "Reviewed by a curator before delivery",
   "A print-ready PDF report",
   `In ${CRITIQUE_LANGUAGES.length} languages, your choice`,
 ];
+
+const included = [
+  ...reportIncluded.slice(0, 3),
+  "Checked and enriched by a curator",
+  ...reportIncluded.slice(3),
+];
+
+const instantIncluded = [...reportIncluded.slice(0, 3), "Delivered in minutes", ...reportIncluded.slice(3)];
 
 const faqs = CRITIQUE_FAQS.map((faq) => ({
   question: faq.q,
@@ -399,23 +564,16 @@ function trackOrder(where) {
 function trackSample(where) {
   trackUserAction("open_critique_sample", `portfolio_review_${where}`);
 }
-
-// One event per visitor is enough to know the sample is being read.
-let turned = false;
-function onTurn() {
-  if (turned) return;
-  turned = true;
-  trackSample("viewer");
-}
 </script>
 
 <style scoped>
 /* ── Hero ───────────────────────────────────────────────────────── */
 
+/* One line: the three facts read as a single strip. */
 .cql-trust {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
+  flex-wrap: nowrap;
+  gap: 0.5rem 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -427,13 +585,21 @@ function onTurn() {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  white-space: nowrap;
+}
+
+/* A phone has no room for the strip. */
+@media (max-width: 560px) {
+  .cql-trust {
+    flex-wrap: wrap;
+  }
 }
 
 /* Three pages of a real report, fanned like prints on a table. */
 .cql-sheets {
   position: relative;
   width: min(100%, 560px);
-  aspect-ratio: 1 / 1.02;
+  aspect-ratio: 1 / 0.94;
   margin: 0 auto;
 }
 
@@ -472,6 +638,63 @@ function onTurn() {
 
 .cql-sheets:hover .cql-sheet--1 {
   transform: rotate(9deg) translateX(4%);
+}
+
+/* A tighter rhythm than the product pages: two section paddings meet between
+   blocks, and at the default size they add up to a blank band. Child
+   components (FAQ, final CTA) inherit it through the variable. */
+.cql {
+  --lx-section-y: clamp(56px, 6vw, 92px);
+}
+
+/* ── The report ─────────────────────────────────────────────────── */
+
+/* The hero already closes with its own bottom space. */
+.cql-report {
+  padding-top: calc(var(--lx-section-y) * 0.4);
+}
+
+/* Genre pills: the look of the contest filters (ContestFilters.vue), but static. */
+.cql-genres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cql-genre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 36px;
+  padding: 0 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--lx-line-2);
+  background: var(--pc-tint);
+  color: var(--lx-text-2);
+  font: 600 0.84rem var(--lx-font-sans);
+  white-space: nowrap;
+}
+
+.cql-genre i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+/* ── Sample: the reel of pages ──────────────────────────────────── */
+
+/* Pinned, the reel already keeps the nav's height clear above its heading
+   and fills the screen below it: the section's own paddings would only add
+   blank bands. */
+@media (min-width: 761px) {
+  .cql-sample {
+    padding-block: 0;
+  }
 }
 
 /* ── One critique ───────────────────────────────────────────────── */
@@ -536,29 +759,383 @@ function onTurn() {
   max-width: 70ch;
 }
 
-/* ── Pricing ────────────────────────────────────────────────────── */
+/* ── How it works: two readers ──────────────────────────────────── */
 
-.cql-price {
+.cql-duet {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(24px, 5vw, 72px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: clamp(32px, 6vw, 96px);
   align-items: center;
-  max-width: 920px;
-  margin: 0 auto;
-  padding: clamp(28px, 4vw, 56px);
 }
 
-.cql-price__figure {
+.cql-roles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 36px);
+  margin-top: clamp(28px, 4vw, 44px);
+}
+
+.cql-role {
+  padding-top: 18px;
+  border-top: 1px solid var(--lx-line-2);
+}
+
+.cql-role__tag {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.7rem;
+  font-family: var(--lx-font-display);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.cql-role__verb {
+  font-style: italic;
+  color: var(--lx-text-3);
+}
+
+.cql-role__dot {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--lx-text);
+}
+
+.cql-role__tag--curator .cql-role__dot {
+  background: var(--pc-gold);
+}
+
+.cql-role__tag--curator .cql-role__verb {
+  color: var(--pc-gold-ink);
+}
+
+.cql-role__lead {
+  margin: 0 0 0.9rem;
+  color: var(--lx-text-2);
+  line-height: 1.6;
+}
+
+.cql-role__list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--lx-fs-sm);
+  line-height: 1.5;
+}
+
+.cql-role__list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.cql-role__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 1px;
+  background: var(--lx-text-3);
+}
+
+/* A page of the report on the desk, mid-review. */
+.cql-ms {
+  margin: 0;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: 3px;
+  background: #fff;
+  color: #141418;
+  box-shadow:
+    0 50px 100px -56px rgba(24, 24, 48, 0.6),
+    0 0 0 1px var(--lx-line);
+  transform: rotate(1.2deg);
+}
+
+.cql-ms__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(20, 20, 24, 0.7);
+  font-size: var(--lx-fs-xs);
+  color: rgba(20, 20, 24, 0.55);
+}
+
+.cql-ms__head span:first-child {
+  color: #141418;
+  font-weight: 500;
+}
+
+.cql-ms__head b {
+  margin-right: 0.4rem;
+  font-weight: 400;
+  color: #3346c8;
+}
+
+.cql-ms__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.cql-ms__text {
+  margin: 0;
+  font-family: var(--lx-font-display);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.65;
+}
+
+.cql-ms__check {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+  border-radius: 50%;
+  vertical-align: 0.15em;
+  background: rgba(227, 161, 43, 0.18);
+  color: var(--pc-gold-ink);
+}
+
+/* The curator's addition: an insertion, never a correction. */
+.cql-ms__ins {
+  display: block;
+  position: relative;
+  margin-top: 14px;
+  padding: 12px 14px 12px 18px;
+  border-left: 2px solid var(--pc-gold);
+  background: rgba(227, 161, 43, 0.1);
+  font-style: italic;
+  text-decoration: none;
+  color: var(--pc-gold-ink);
+}
+
+.cql-ms__caret {
+  position: absolute;
+  left: -9px;
+  top: -6px;
+  font-style: normal;
+  font-size: 1.3rem;
+  color: var(--pc-gold);
+}
+
+.cql-ms__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  margin-top: 18px;
+  font-size: var(--lx-fs-xs);
+  color: rgba(20, 20, 24, 0.55);
+}
+
+.cql-ms__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cql-ms__swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #141418;
+}
+
+.cql-ms__swatch--curator {
+  background: var(--pc-gold);
+}
+
+/* When each part happens: one line, read left to right. */
+.cql-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 40px);
+  margin: clamp(56px, 7vw, 96px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cql-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5px;
+  height: 1px;
+  background: var(--lx-line-3);
+}
+
+.cql-rail__stop {
+  position: relative;
+  padding-top: 30px;
+}
+
+.cql-rail__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--lx-bg);
+  border: 1.5px solid var(--lx-text);
+}
+
+.cql-rail__stop.is-curator .cql-rail__dot {
+  border-color: var(--pc-gold);
+  background: var(--pc-gold);
+  box-shadow: 0 0 0 5px rgba(227, 161, 43, 0.18);
+}
+
+.cql-rail__when {
+  margin: 0 0 0.4rem;
+  font-family: var(--lx-font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.cql-rail__stop.is-curator .cql-rail__when {
+  color: var(--pc-gold-ink);
+}
+
+.cql-rail__what {
+  margin: 0;
+  font-size: var(--lx-fs-sm);
+  line-height: 1.55;
+  color: var(--lx-text-2);
+}
+
+@media (max-width: 1000px) {
+  .cql-duet {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cql-ms {
+    max-width: 560px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .cql-roles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The line turns vertical: stops read top to bottom. */
+  .cql-rail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+
+  .cql-rail::before {
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .cql-rail__stop {
+    padding: 0 0 0 32px;
+  }
+}
+
+/* ── Pricing ────────────────────────────────────────────────────── */
+
+/* Two tiers side by side: the one sold today, and the one after the beta. */
+.cql-tiers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.cql-tier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 3.5vw, 44px);
+}
+
+.cql-tier--live {
+  border-color: color-mix(in srgb, var(--pc-gold) 55%, transparent);
+  box-shadow: 0 30px 70px -40px rgba(227, 161, 43, 0.55);
+}
+
+/* Shown, not sold: lighter, dashed, no button. */
+.cql-tier.is-soon {
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.cql-tier.is-soon > :not(.cql-tier__badge):not(.cql-tier__soon) {
+  opacity: 0.55;
+}
+
+.cql-tier__badge {
+  align-self: flex-start;
+  margin: 0 0 1.1rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--pc-gold);
+  color: #1a1408;
+  font-size: var(--lx-fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cql-tier__badge--soon {
+  background: transparent;
+  border: 1px solid var(--lx-line-3);
+  color: var(--lx-text-2);
+}
+
+.cql-tier__name {
+  margin: 0;
+  font-family: var(--lx-font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.cql-tier__meta {
+  margin: 0.4rem 0 1.4rem;
+  font-size: var(--lx-fs-sm);
+  color: var(--lx-text-2);
+}
+
+.cql-tier__figure {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 0.6rem;
   margin: 0;
   font-family: var(--lx-font-display);
   font-weight: 300;
-  font-size: clamp(3.4rem, 7vw, 5rem);
+  font-size: clamp(3rem, 5.5vw, 4.2rem);
   letter-spacing: -0.04em;
   line-height: 1;
 }
 
-.cql-price__figure span {
-  margin-left: 0.4rem;
+.cql-tier__figure s {
+  font-size: 0.5em;
+  color: var(--lx-text-3);
+  text-decoration-thickness: 2px;
+}
+
+.cql-tier__figure span {
   font-family: var(--lx-font-sans);
   font-size: 1rem;
   font-weight: 500;
@@ -566,28 +1143,41 @@ function onTurn() {
   color: var(--lx-text-3);
 }
 
-.cql-price__sub {
-  margin: 0.9rem 0 1.6rem;
+.cql-tier__sub {
+  margin: 0.8rem 0 1.5rem;
+  font-size: var(--lx-fs-sm);
   color: var(--lx-text-2);
 }
 
-.cql-price__list {
+.cql-tier__list {
   display: grid;
-  gap: 0.8rem;
-  margin: 0;
+  gap: 0.7rem;
+  margin: 0 0 1.8rem;
   padding: 0;
   list-style: none;
 }
 
-.cql-price__list li {
+.cql-tier__list li {
   display: flex;
   align-items: center;
   gap: 0.7rem;
 }
 
+/* The button and the "not yet" note sit at the bottom of their card. */
+.cql-tier > :last-child {
+  margin-top: auto;
+}
+
+.cql-tier__soon {
+  margin-bottom: 0;
+  font-size: var(--lx-fs-sm);
+  line-height: 1.55;
+  color: var(--lx-text-2);
+}
+
 @media (max-width: 900px) {
   .cql-excerpt,
-  .cql-price {
+  .cql-tiers {
     grid-template-columns: minmax(0, 1fr);
   }
 }

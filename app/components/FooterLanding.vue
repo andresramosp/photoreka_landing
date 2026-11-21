@@ -22,6 +22,9 @@
           <NuxtLink to="/ai_image_library_search" class="footer-link"
             >Image Library Search</NuxtLink
           >
+          <NuxtLink to="/photo_chat" class="footer-link"
+            >AI Photo Chat</NuxtLink
+          >
           <NuxtLink to="/ai_photo_organizer/#tag-map" class="footer-link"
             >Photo Tag Cloud</NuxtLink
           >
@@ -50,12 +53,6 @@
           <NuxtLink to="/photo-contests/" class="footer-link"
             >Photo Contests</NuxtLink
           >
-          <NuxtLink to="/ai_photo_organizer/#reports" class="footer-link"
-            >Style Analysis Reports</NuxtLink
-          >
-          <NuxtLink to="/photo_chat" class="footer-link"
-            >AI Photo Chat</NuxtLink
-          >
           <NuxtLink to="/commercial_photography" class="footer-link"
             >Commercial Photography</NuxtLink
           >
@@ -68,6 +65,9 @@
           >
           <NuxtLink to="/photography_portfolio_builder" class="footer-link"
             >Portfolio Builder</NuxtLink
+          >
+          <NuxtLink to="/ai_photo_organizer/#reports" class="footer-link"
+            >Style Analysis Reports</NuxtLink
           >
           <NuxtLink to="/ai_geo_inference" class="footer-link"
             >AI Geo Inference</NuxtLink

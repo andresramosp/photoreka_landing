@@ -75,6 +75,9 @@ function go(index) {
   current.value = next;
   emit("turn", next + 1);
 }
+
+// The page around the viewer can open it at a given page.
+defineExpose({ go });
 </script>
 
 <style scoped>

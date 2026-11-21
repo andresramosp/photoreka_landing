@@ -1093,7 +1093,7 @@ export const seoConfig = {
     photography_portfolio_review: {
       title: "Photography Portfolio Review Online: Written Critique | Photoreka",
       description:
-        "Send 20 to 30 photographs and receive a written portfolio review: a critique of your strongest images, your strengths, areas for growth and projects. Checked by a curator. No account.",
+        "Send 20 to 30 photographs and get a professional-level portfolio review. AI analysis checked by a curator: faster and cheaper than any traditional review.",
       keywords:
         "photography portfolio review, portfolio review photography, online portfolio review, photo portfolio review, photography portfolio critique, portfolio critique, photo critique, photography critique, ai portfolio review, ai photo critique, street photography portfolio review, photography feedback, written photo critique, portfolio review for photographers, photography mentoring alternative",
       ogImage: "/critique/og-critique.jpg",

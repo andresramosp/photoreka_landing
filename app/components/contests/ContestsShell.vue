@@ -53,8 +53,16 @@ onBeforeUnmount(() => smoothScroll.disable());
   --lx-glow-2: rgba(227, 161, 43, 0.05);
 }
 
+/* The scrollbar track is transparent, so it shows the canvas, which takes the body
+   background: on a dark site that is near black, and the dark thumb disappears on it.
+   The canvas gets the light page background (--lx-bg of the light theme). */
 html.pc-light-page {
+  color-scheme: light;
   scrollbar-color: rgba(13, 13, 16, 0.3) transparent;
+}
+
+html.pc-light-page body {
+  background-color: #f6f5f1;
 }
 
 html.pc-light-page::-webkit-scrollbar-thumb {
