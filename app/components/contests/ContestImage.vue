@@ -51,8 +51,15 @@ watch(
 </script>
 
 <style scoped>
-.pc-img {
+/* Zero specificity on purpose: the parent often places the image itself
+   (.pc-hero__image, .pc-card__image and .pcd-cover__image are absolute). With a
+   plain class both rules weigh the same and the winner depends on the order the
+   CSS chunks load in, which changes between builds. */
+:where(.pc-img) {
   position: relative;
+}
+
+.pc-img {
   width: 100%;
   overflow: hidden;
   container-type: inline-size;
