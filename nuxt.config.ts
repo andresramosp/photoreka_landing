@@ -1,6 +1,7 @@
 import AutoImport from "unplugin-auto-import/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
+import { UI_ZOOM_SCRIPT, uiZoomUnits } from "./ui-zoom/vite-plugin";
 import {
   CONTEST_CATEGORIES,
   contestsInCategory,
@@ -120,6 +121,8 @@ export default defineNuxtConfig({
         },
       ],
       script: [
+        // Large screens: scale the UI up the way browser zoom would (see ui-zoom/).
+        { innerHTML: UI_ZOOM_SCRIPT, tagPosition: "head", tagPriority: "critical" },
         // Enables the hidden-until-revealed states of the lx landing system
         // before first paint; skipped for reduced motion, and without JS the
         // content simply renders visible.
@@ -237,6 +240,7 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [
+      ...uiZoomUnits(),
       AutoImport({
         imports: [
           {
