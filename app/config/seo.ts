@@ -4,6 +4,7 @@
  */
 
 import { PICKS_FAQS, PICKS_PRICE_PER_PHOTO_EUR } from "../utils/picksShowcase";
+import { CRITIQUE_FAQS, CRITIQUE_PRICE_EUR } from "../utils/critiqueShowcase";
 import { COMMERCIAL_FAQS } from "../utils/commercialFaqs";
 import { IMAGE_LIBRARY_FAQS } from "../utils/imageLibraryFaqs";
 
@@ -1081,6 +1082,48 @@ export const seoConfig = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: PICKS_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        },
+      ],
+    },
+
+    photography_portfolio_review: {
+      title: "Photography Portfolio Review Online: Written Critique | Photoreka",
+      description:
+        "Send 20 to 30 photographs and receive a written portfolio review: a critique of your strongest images, your strengths, areas for growth and projects. Checked by a curator. No account.",
+      keywords:
+        "photography portfolio review, portfolio review photography, online portfolio review, photo portfolio review, photography portfolio critique, portfolio critique, photo critique, photography critique, ai portfolio review, ai photo critique, street photography portfolio review, photography feedback, written photo critique, portfolio review for photographers, photography mentoring alternative",
+      ogImage: "/critique/og-critique.jpg",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Photoreka Critique",
+          serviceType: "Photography portfolio review",
+          description:
+            "A written photography portfolio review: an overview of the work, a critique of the strongest photographs, strengths, areas for growth, proposed projects and a roadmap. Written by an AI system following curatorial criteria and reviewed by a curator. No account required, one payment per report.",
+          url: "https://www.photoreka.com/photography_portfolio_review/",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            priceCurrency: "EUR",
+            price: String(CRITIQUE_PRICE_EUR),
+          },
+          provider: {
+            "@type": "Organization",
+            name: "Photoreka",
+            url: "https://www.photoreka.com",
+          },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: CRITIQUE_FAQS.map((faq) => ({
             "@type": "Question",
             name: faq.q,
             acceptedAnswer: { "@type": "Answer", text: faq.a },
