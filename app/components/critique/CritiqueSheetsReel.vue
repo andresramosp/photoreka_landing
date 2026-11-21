@@ -105,8 +105,9 @@ function setZoom(index) {
   if (zoomed.value === index) return;
   zoomed.value = index;
   if (index >= 0) {
-    const card = cards.value[index];
-    zoomScale = Math.min(2, (window.innerHeight - navOffset() - 24) / card.offsetHeight);
+    // The sheet alone (its label hides while zoomed) fills the height under the nav.
+    const sheet = cards.value[index].querySelector(".csr__sheet");
+    zoomScale = Math.min(2.3, (window.innerHeight - navOffset() - 16) / sheet.offsetHeight);
   }
   schedule();
 }
@@ -177,8 +178,11 @@ function navShift() {
   if (!card || !track.value) return 0;
   const nav = navOffset();
   const target = nav + (window.innerHeight - nav) / 2;
-  const current = track.value.getBoundingClientRect().top + card.offsetTop + card.offsetHeight / 2;
-  return Math.round(target - current);
+  const centre = track.value.getBoundingClientRect().top + card.offsetTop + card.offsetHeight / 2;
+  // The card scales about its centre; the sheet sits half a label below it.
+  const sheet = card.querySelector(".csr__sheet");
+  const below = (card.offsetHeight - sheet.offsetHeight) / 2;
+  return Math.round(target - centre - below * zoomScale);
 }
 
 const schedule = () => {
@@ -228,6 +232,12 @@ watch(() => props.pages.length, () => nextTick(relayout));
 <style scoped>
 .csr__head {
   width: 100%;
+}
+
+/* The section heading's own bottom margin would sit between the button and the pages:
+   the stage's padding is the only gap here. */
+.csr__head :deep(.lx-intro) {
+  margin-bottom: 0;
 }
 
 .csr__track {
@@ -303,9 +313,17 @@ watch(() => props.pages.length, () => nextTick(relayout));
 
 .csr--pinned .csr__stage {
   display: flex;
-  align-items: center;
+  /* Right under the heading: the room left over goes above the foot, not above the pages. */
+  align-items: flex-start;
+  padding-top: clamp(28px, 5vh, 56px);
   min-width: 0;
   min-height: 0;
+  /* The pages read this height (cqh) to shrink only when it is too short for them. */
+  container-type: size;
+  /* Being a size container makes the stage its own layer: lifted above the foot, so a
+     zoomed page covers the progress bar instead of passing under it. */
+  position: relative;
+  z-index: 2;
 }
 
 .csr--pinned .csr__track {
@@ -313,7 +331,10 @@ watch(() => props.pages.length, () => nextTick(relayout));
 }
 
 .csr--pinned .csr__card {
-  width: clamp(160px, min(20vw, 28vh), 290px);
+  /* As large as the stage allows (cqh): the page is 1.41 times as tall as wide, under
+     a label and the stage's top padding, and the centred one grows by 10 %; what is
+     left keeps it clear of the foot. */
+  width: clamp(140px, min(22vw, calc(67cqh - 40px)), 400px);
   transition: transform 0.3s ease-out;
 }
 
@@ -342,7 +363,7 @@ watch(() => props.pages.length, () => nextTick(relayout));
   justify-content: center;
   align-items: center;
   gap: 18px;
-  padding-block: 12px 4vh;
+  padding-block: 20px 4vh;
   font-size: var(--lx-fs-xs);
   color: var(--lx-text-3);
   font-variant-numeric: tabular-nums;

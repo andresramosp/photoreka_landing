@@ -147,7 +147,10 @@
                   target="_blank"
                   @click="trackSample('pdf')"
                 >
-                  Download the sample PDF
+                  <span class="cql-pdf-label">
+                    <AppLogo layout="icon" :height="22" class="cql-pdf-logo" />
+                    Download the sample PDF
+                  </span>
                 </LxButton>
               </template>
             </SectionIntro>
@@ -538,8 +541,6 @@ const timeline = [
 const reportIncluded = [
   `${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs reviewed`,
   `Up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context`,
-  "About a third of them critiqued at length",
-  "A print-ready PDF report",
   `In ${CRITIQUE_LANGUAGES.length} languages, your choice`,
 ];
 
@@ -687,6 +688,17 @@ function trackSample(where) {
 }
 
 /* ── Sample: the reel of pages ──────────────────────────────────── */
+
+/* The Photoreka mark before the label: the PDF is one of ours. */
+.cql-pdf-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cql-pdf-logo {
+  opacity: 1;
+}
 
 /* Pinned, the reel already keeps the nav's height clear above its heading
    and fills the screen below it: the section's own paddings would only add

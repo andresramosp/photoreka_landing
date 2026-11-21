@@ -20,7 +20,7 @@ export const CRITIQUE_TIERS = {
     available: INSTANT_ENABLED,
   },
   curated: {
-    name: "Curated",
+    name: "Reviewed",
     priceEur: envPrice(import.meta.env.VITE_CRITIQUE_CURATED_PRICE_EUR, 39),
     available: true,
   },
