@@ -174,7 +174,7 @@ export const CRITIQUE_FAQS = [
   }] : []),
   {
     q: "Who is it for?",
-    a: `Photographers building a body of work with an artistic or documentary intent: ${genreList} photography, from personal projects to long-term series, in colour or black and white. A portfolio can mix genres: each photograph is read on its own terms, and then the report looks at what holds the set together. It is not designed for commercial or client work (product, fashion, advertising, weddings) or for everyday snapshots: the report judges authorship, and those photographs are made for other reasons.`,
+    a: `Photographers building a body of work with an artistic or documentary intent: ${genreList} photography, from personal projects to long-term series, in colour or black and white. A portfolio can mix genres: each photograph is read on its own terms, and then the report looks at what holds the set together. It is not designed for commercial or client work (product, fashion, advertising, weddings) or for everyday snapshots: the report judges authorship, and those photographs are made for other reasons. Before you pay, a quick look at your photos tells you if some of them fall outside what the report is built for.`,
   },
   {
     q: "In which languages can I get it?",
