@@ -668,12 +668,12 @@ const compareRows = [
     label: "Reads your photos as a body of work",
     cells: {
       apps: ["no", "One photo at a time"],
-      chatbot: ["partly", "Drifts back to single frames"],
+      chatbot: ["partly", "Drifts to single frames"],
       critique: [
         "yes",
-        `${CRITIQUE_MIN_PHOTOS}–${CRITIQUE_MAX_PHOTOS} photos, plus up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} as context`,
+        `${CRITIQUE_MIN_PHOTOS}–${CRITIQUE_MAX_PHOTOS} photos + ${CRITIQUE_MAX_CONTEXT_PHOTOS} as context`,
       ],
-      human: ["yes", "Within the time of a session"],
+      human: ["yes", "Within one session"],
     },
   },
   {
@@ -682,7 +682,7 @@ const compareRows = [
       apps: ["partly", "A low score, not an edit"],
       chatbot: ["partly", "Tends to praise"],
       critique: ["yes", "Each set-aside image, with why"],
-      human: ["yes", "Usually the first thing said"],
+      human: ["yes", "Usually said first"],
     },
   },
   {
@@ -690,7 +690,7 @@ const compareRows = [
     cells: {
       apps: ["no", "Not across photos"],
       chatbot: ["no", "Estimates, does not count"],
-      critique: ["yes", "A style profile, counted photo by photo"],
+      critique: ["yes", "Counted, photo by photo"],
       human: ["partly", "By eye"],
     },
   },
@@ -699,7 +699,7 @@ const compareRows = [
     cells: {
       apps: ["no", "Tips per photo"],
       chatbot: ["partly", "If you ask the right way"],
-      critique: ["yes", "Projects, a roadmap and contests that suit you"],
+      critique: ["yes", "Projects, roadmap and contests"],
       human: ["partly", "Depends on the reviewer"],
     },
   },
@@ -708,7 +708,7 @@ const compareRows = [
     cells: {
       apps: ["yes", "Fixed scores"],
       chatbot: ["no", "Ask twice, get two answers"],
-      critique: ["yes", "Curatorial criteria, every report"],
+      critique: ["yes", "Curatorial criteria, always"],
       human: ["partly", "One reviewer's taste"],
     },
   },
@@ -727,7 +727,7 @@ const compareRows = [
       apps: ["info", "Instantly"],
       chatbot: ["info", "Instantly"],
       critique: ["info", CRITIQUE_BETA ? `In under ${CRITIQUE_DELIVERY_HOURS} hours` : "In minutes"],
-      human: ["info", "When there is a slot, often weeks"],
+      human: ["info", "Weeks, when a slot opens"],
     },
   },
   {
@@ -1272,7 +1272,6 @@ function trackSample(where) {
 .cql-compare-scroll {
   overflow-x: auto;
   margin: 0 auto;
-  max-width: 1040px;
   border: 1px solid var(--lx-line);
   border-radius: 14px;
   background: var(--lx-bg);
@@ -1280,7 +1279,6 @@ function trackSample(where) {
 
 .cql-compare {
   width: 100%;
-  min-width: 760px;
   border-collapse: collapse;
   font-size: var(--lx-fs-sm);
   line-height: 1.45;
@@ -1289,10 +1287,13 @@ function trackSample(where) {
 
 .cql-compare th,
 .cql-compare td {
-  padding: 14px 16px;
+  padding: 14px;
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid var(--lx-line);
+  /* Every cell on one line: the table reads as a grid. Below the container
+     width it scrolls sideways, row labels pinned. */
+  white-space: nowrap;
 }
 
 .cql-compare tbody tr:last-child th,
