@@ -2,7 +2,7 @@
   <!-- Light like the contest pages: a report is read on paper. -->
   <ContestsShell :links="navLinks">
     <template #nav-actions>
-      <NuxtLink to="/" class="lx-link pc-nav-back">Back to Photoreka</NuxtLink>
+      <!-- <NuxtLink to="/" class="lx-link pc-nav-back">Back to Photoreka</NuxtLink> -->
       <LxButton size="sm" :href="CRITIQUE_APP_URL" target="_blank" @click="trackOrder('nav')">
         Get my review
       </LxButton>
