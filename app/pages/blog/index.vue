@@ -19,6 +19,10 @@
           </div>
         </HeroShell>
 
+        <div class="lx-container blog-promo">
+          <CritiquePromo source="blog_index" />
+        </div>
+
         <section class="lx-section blog-list">
           <div class="lx-container">
             <BlogCard
@@ -46,6 +50,7 @@
 <script setup>
 import HeroShell from "~/components/hero/HeroShell.vue";
 import BlogCard from "~/components/blog/BlogCard.vue";
+import CritiquePromo from "~/components/critique/CritiquePromo.vue";
 import { getAllPosts } from "~/config/blog";
 import { seoConfig } from "~/config/seo";
 
@@ -127,6 +132,10 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.blog-promo {
+  margin-bottom: calc(var(--lx-section-y) * -0.5);
+}
+
 .blog-hero {
   --hero-top: clamp(136px, 18svh, 184px);
   --hero-bottom: 0px;

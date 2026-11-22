@@ -56,6 +56,8 @@ export interface BlogPost {
   author: BlogAuthor;
   toc?: boolean;
   hidden?: boolean;
+  /** A product banner shown right under the cover. */
+  promo?: "critique";
   content: BlogBlock[];
 }
 
@@ -290,6 +292,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 7,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
+    promo: "critique",
     content: [
       {
         type: "p",
@@ -303,7 +306,7 @@ export const blogPosts: BlogPost[] = [
         type: "callout",
         variant: "info",
         title: "The short answer",
-        html: "AI is already good at critiquing a single frame, and decent at comparing a handful. A real portfolio review judges the set: what the photos say together, what is repeated, what is missing and in what order they should go. An AI can only do that if it sees the whole set and, ideally, the archive the set was chosen from.",
+        html: "AI is already good at critiquing a single frame, and decent at comparing a handful. A real portfolio review judges the set: what the photos say together, what is repeated, what is missing and in what order they should go. An AI can only do that if it sees the whole set and, ideally, the archive the set was chosen from. That is what Photoreka Critique, our <a href='/photography_portfolio_review/'>AI photography portfolio review</a>, does with 20 to 30 photographs.",
       },
       {
         type: "h2",
@@ -528,6 +531,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 9,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
+    promo: "critique",
     content: [
       {
         type: "p",
@@ -698,6 +702,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 8,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
+    promo: "critique",
     content: [
       {
         type: "p",
@@ -890,6 +895,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 9,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
+    promo: "critique",
     content: [
       {
         type: "p",
@@ -2831,6 +2837,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 7,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
+    promo: "critique",
     content: [
       {
         type: "p",
@@ -2999,6 +3006,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 6,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
+    promo: "critique",
     content: [
       {
         type: "p",
@@ -3320,6 +3328,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 8,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
+    promo: "critique",
     content: [
       {
         type: "p",

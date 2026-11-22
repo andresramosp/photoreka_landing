@@ -216,6 +216,15 @@
     </section>
 
     <!-- ── FAQ ─────────────────────────────────────────────────────── -->
+    <!-- Critique, as the next step after this product: the link to the portfolio review. -->
+    <CritiqueSection
+      source="ai_photo_picks"
+      eyebrow="After Picks"
+      title="Picks finds your best photos."
+      accent="Critique tells you what they say together."
+      lead="Picks judges every frame on its own. Critique takes the 20 to 30 photos you keep and reads them as a body of work: what works, what repeats and what to photograph next."
+    />
+
     <FaqSection :faqs="faqs">
       <template #title>
         Ranking your photos, <em class="lx-accent">answered.</em>
@@ -276,6 +285,7 @@ import {
   rankShowcase,
 } from "~/utils/picksShowcase";
 import { trackUserAction } from "~/utils/analytics";
+import CritiqueSection from "~/components/critique/CritiqueSection.vue";
 
 useSEO("ai_photo_picks");
 

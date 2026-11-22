@@ -54,6 +54,13 @@
         </div>
 
         <div
+          v-if="post.promo === 'critique'"
+          class="lx-container article-cover-wrap article-promo"
+        >
+          <CritiquePromo :source="`blog_${post.slug}`" />
+        </div>
+
+        <div
           class="lx-container article-layout"
           :class="{ 'has-toc': post.toc && toc.length }"
         >
@@ -144,6 +151,7 @@ import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
 import HeroShell from "~/components/hero/HeroShell.vue";
 import BlogCard from "~/components/blog/BlogCard.vue";
 import BlogProse from "~/components/blog/BlogProse.vue";
+import CritiquePromo from "~/components/critique/CritiquePromo.vue";
 import { getPostBySlug, getRelatedPosts, formatBlogDate } from "~/config/blog";
 import { seoConfig } from "~/config/seo";
 import { trackUserAction } from "~/utils/analytics";
@@ -408,6 +416,10 @@ onBeforeUnmount(() => {
 /* Cover */
 .article-cover-wrap {
   max-width: calc(1140px + 2 * var(--lx-gutter));
+}
+
+.article-promo {
+  margin-top: clamp(28px, 4vw, 48px);
 }
 
 .article-cover {

@@ -2,10 +2,24 @@
   <ContestsShell :links="navLinks">
     <template #nav-actions>
       <NuxtLink to="/" class="lx-link pc-nav-back">Back to Photoreka</NuxtLink>
+      <NuxtLink to="/photography_portfolio_review/" class="lx-link pc-nav-back">Portfolio review</NuxtLink>
       <LxButton size="sm" to="/ai_photo_picks/">About Picks</LxButton>
     </template>
 
     <ContestHeroStage :contests="contests" :today="today" />
+
+    <!-- ── Critique: a reading of the portfolio before entering ───── -->
+    <section class="pcl-block pcl-promo">
+      <div class="lx-container">
+        <CritiquePromo
+          source="contests"
+          eyebrow="Before you enter · Photoreka Critique"
+            title="Find out what your photos say"
+            accent="before a jury does."
+            text="An AI photography portfolio review of your 20 to 30 best photos: which frames hold the set back, what your work says as a whole and up to five contests your strongest photographs suit."
+        />
+      </div>
+    </section>
 
     <section v-if="failed" class="pcl-block">
       <div class="lx-container">
@@ -199,6 +213,7 @@
 
 <script setup>
 import ContestsShell from "~/components/contests/ContestsShell.vue";
+import CritiquePromo from "~/components/critique/CritiquePromo.vue";
 import ContestHeroStage from "~/components/contests/ContestHeroStage.vue";
 import ContestPhotoCard from "~/components/contests/ContestPhotoCard.vue";
 import ContestDotCalendar from "~/components/contests/ContestDotCalendar.vue";
@@ -370,6 +385,11 @@ function trackPicks(where) {
 <style scoped>
 .pcl-block {
   padding-block: clamp(36px, 4.5vw, 64px);
+}
+
+/* The banner sits between the hero and the first block: half the gap. */
+.pcl-promo {
+  padding-bottom: 0;
 }
 
 .pcl-grid {

@@ -17,9 +17,20 @@
         <HomeOverview />
         <HomeSources />
         <HomeFeatures />
-        <PicksPromo id="picks" source="home" immersive media-first />
-        <!-- <HomeLightroom @signup="goToAuth('signup')" /> -->
+        <!-- Pricing closes the Photoreka app itself, before Picks and Critique:
+             those are paid on their own, and their prices are not these. -->
         <HomePricing @signup="goToAuth('signup')" />
+        <PicksPromo id="picks" source="home" immersive media-first />
+        <!-- Critique continues Picks, low on the page: the announcement bar
+             already announces it above the header. -->
+        <CritiqueSection
+          source="home"
+          continues
+          title="Found your best shots?"
+          accent="Find out what they say together."
+          lead="Picks judges every frame on its own. Critique takes the 20 to 30 you keep and reads them as a body of work: what works, what repeats and what to photograph next."
+        />
+        <!-- <HomeLightroom @signup="goToAuth('signup')" /> -->
         <HomeFaq @signup="goToAuth('signup')" />
       </div>
 
@@ -30,6 +41,7 @@
 
 <script setup>
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
+import CritiqueSection from "~/components/critique/CritiqueSection.vue";
 import { trackUserAction } from "~/utils/analytics";
 
 // SEO Configuration
@@ -84,3 +96,4 @@ onBeforeUnmount(() => {
   smoothScroll.disable();
 });
 </script>
+

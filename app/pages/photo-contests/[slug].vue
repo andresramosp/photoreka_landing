@@ -2,6 +2,7 @@
   <ContestsShell :links="navLinks">
     <template #nav-actions>
       <NuxtLink to="/photo-contests/" class="lx-link pc-nav-back">All photo contests</NuxtLink>
+      <NuxtLink to="/photography_portfolio_review/" class="lx-link pc-nav-back">Portfolio review</NuxtLink>
       <LxButton size="sm" icon="external" :href="picksUrl" target="_blank" @click="trackPicks('nav')">
         <ContestPicksMark dark :size="22" />
         Rank my photos
@@ -57,7 +58,30 @@
         </div>
         <aside class="pcd-main__panel">
           <ContestCountdown :contest="contest" :today="today" />
+          <!-- Under the deadline, where the decision to enter is made. -->
+          <CritiquePromo
+            variant="card"
+            class="pcd-promo"
+            :source="`contest_${contest.slug}`"
+            eyebrow="Before you enter"
+            title="Get your portfolio reviewed"
+            accent="before the jury sees it."
+            text="An AI photography portfolio review of your 20 to 30 best photos, with the contests they suit."
+          />
         </aside>
+      </div>
+    </section>
+
+    <!-- On a phone the panel opens the page: the banner waits under the facts. -->
+    <section class="lx-section lx-section--tight pcd-promo-wide">
+      <div class="lx-container">
+        <CritiquePromo
+          :source="`contest_${contest.slug}`"
+          eyebrow="Before you enter · Photoreka Critique"
+            title="Find out what your photos say"
+            accent="before a jury does."
+            text="An AI photography portfolio review of your 20 to 30 best photos: which frames hold the set back, what your work says as a whole and up to five contests your strongest photographs suit."
+        />
       </div>
     </section>
 
@@ -112,6 +136,7 @@
 
 <script setup>
 import ContestsShell from "~/components/contests/ContestsShell.vue";
+import CritiquePromo from "~/components/critique/CritiquePromo.vue";
 import ContestAbout from "~/components/contests/ContestAbout.vue";
 import ContestGenreChip from "~/components/contests/ContestGenreChip.vue";
 import ContestCountdown from "~/components/contests/ContestCountdown.vue";
@@ -338,6 +363,14 @@ function trackPicks(where) {
   margin-top: clamp(-260px, -20vw, -160px);
 }
 
+.pcd-promo {
+  margin-top: 20px;
+}
+
+.pcd-promo-wide {
+  display: none;
+}
+
 .pcd-related {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -381,6 +414,14 @@ function trackPicks(where) {
   .pcd-main__panel {
     order: -1;
     margin-top: -20px;
+  }
+
+  .pcd-promo {
+    display: none;
+  }
+
+  .pcd-promo-wide {
+    display: block;
   }
 
   .pcd-main__facts {

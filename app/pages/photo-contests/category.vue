@@ -2,6 +2,7 @@
   <ContestsShell :links="navLinks">
     <template #nav-actions>
       <NuxtLink to="/photo-contests/" class="lx-link pc-nav-back">All photo contests</NuxtLink>
+      <NuxtLink to="/photography_portfolio_review/" class="lx-link pc-nav-back">Portfolio review</NuxtLink>
       <LxButton size="sm" to="/ai_photo_picks/">About Picks</LxButton>
     </template>
 
@@ -33,6 +34,19 @@
             </NuxtLink>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ── Critique: a reading of the portfolio before entering ───── -->
+    <section class="pcc-block pcc-promo">
+      <div class="lx-container">
+        <CritiquePromo
+          :source="`contests_${category.slug}`"
+          eyebrow="Before you enter · Photoreka Critique"
+            title="Find out what your photos say"
+            accent="before a jury does."
+            text="An AI photography portfolio review of your 20 to 30 best photos: which frames hold the set back, what your work says as a whole and up to five contests your strongest photographs suit."
+        />
       </div>
     </section>
 
@@ -129,6 +143,7 @@
 
 <script setup>
 import ContestsShell from "~/components/contests/ContestsShell.vue";
+import CritiquePromo from "~/components/critique/CritiquePromo.vue";
 import ContestHeroStage from "~/components/contests/ContestHeroStage.vue";
 import ContestTimeline from "~/components/contests/ContestTimeline.vue";
 import ContestCompactList from "~/components/contests/ContestCompactList.vue";
@@ -338,6 +353,10 @@ function trackPicks() {
 
 .pcc-block {
   padding-block: clamp(36px, 4.5vw, 64px);
+}
+
+.pcc-promo {
+  padding-bottom: 0;
 }
 
 .pcc-panel {

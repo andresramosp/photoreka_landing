@@ -89,6 +89,15 @@
 
         <PicksPromo id="picks" source="ai_photo_culling" immersive />
 
+        <!-- Critique continues Picks: one ranks frames, the other reads the set. -->
+        <CritiqueSection
+          source="ai_photo_culling"
+          continues
+          title="Culled down to your keepers?"
+          accent="Find out what they say together."
+          lead="Culling gets a shoot to its best frames. Critique takes the 20 to 30 photos you keep and reads them as a body of work: what works, what repeats and what to photograph next."
+        />
+
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
             Frequently asked <em class="lx-accent">questions</em>
@@ -141,6 +150,7 @@ import {
   SearchOutline,
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
+import CritiqueSection from "~/components/critique/CritiqueSection.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO

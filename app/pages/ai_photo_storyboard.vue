@@ -410,6 +410,15 @@
           </div>
         </section>
 
+        <!-- Critique, as the next step after this product: the link to the portfolio review. -->
+        <CritiqueSection
+          source="ai_photo_storyboard"
+          eyebrow="Before you sequence"
+          title="Know what your set says"
+          accent="before you put it in order."
+          lead="Critique reads your 20 to 30 strongest photographs as a body of work: which ones carry the set, which ones hold it back and where it starts to repeat."
+        />
+
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
             Frequently asked <em class="lx-accent">questions</em>
@@ -487,6 +496,7 @@ import {
   StarOutline,
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
+import CritiqueSection from "~/components/critique/CritiqueSection.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO

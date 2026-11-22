@@ -31,6 +31,7 @@
           label="Photoreka — Canvas"
           ratio="16 / 9"
           :playback-rate="1.35"
+          :start-at="2.5"
         />
         <ShotFrame
           class="overview-video--mobile"
@@ -39,6 +40,7 @@
           label="Photoreka — Canvas"
           ratio="4 / 5"
           :playback-rate="1.35"
+          :start-at="2.5"
         />
       </div>
     </div>

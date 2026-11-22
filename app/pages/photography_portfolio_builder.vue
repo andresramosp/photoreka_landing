@@ -131,6 +131,15 @@
           </template>
         </MediaSplitSection>
 
+        <!-- Critique, as the next step after this product: the link to the portfolio review. -->
+        <CritiqueSection
+          source="photography_portfolio_builder"
+          eyebrow="Before you send it"
+          title="Built your portfolio?"
+          accent="Have it read before anyone else does."
+          lead="A portfolio is judged as a set. Critique reads your 20 to 30 strongest photographs together and tells you which ones hold it back, where it starts to repeat and what is still missing."
+        />
+
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
             Frequently asked <em class="lx-accent">questions</em>
@@ -186,6 +195,7 @@ import {
 } from "@vicons/ionicons5";
 import Trophy20Regular from "@vicons/fluent/es/Trophy20Regular.js";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
+import CritiqueSection from "~/components/critique/CritiqueSection.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO

@@ -9,7 +9,15 @@
     <div class="announcement-content">
       <strong>{{ announcement.label }}</strong>
       <span>{{ announcement.message }}</span>
-      <button class="announcement-link" @click="emit('signup')">
+      <NuxtLink
+        v-if="announcement.to"
+        :to="announcement.to"
+        class="announcement-link"
+        @click="trackUserAction('navigate_to_critique_landing', 'home_announcement')"
+      >
+        {{ announcement.cta }} →
+      </NuxtLink>
+      <button v-else class="announcement-link" @click="emit('signup')">
         {{ announcement.cta }}
       </button>
     </div>
@@ -27,15 +35,19 @@
 <script setup>
 // Emite `height`: el alto que el nav y el hero reservan para la barra. Vale 0
 // si está desactivada, cerrada u oculta por scroll, para que suban con transición.
+import { trackUserAction } from "~/utils/analytics";
+
 const emit = defineEmits(["signup", "height"]);
 
+// With `to`, the CTA is an internal link; without it, it opens the sign-up.
 const announcement = {
-  enabled: false,
+  enabled: true,
   dismissible: true,
-  label: "EARLY ACCESS",
+  label: "NEW",
   message:
-    "Free starter photo package and usage credits are available for new photographers.",
-  cta: "Try for Free",
+    "Critique: an AI review of your photography portfolio.",
+  cta: "Get your portfolio reviewed",
+  to: "/photography_portfolio_review/",
 };
 
 const SCROLL_DELTA = 8;

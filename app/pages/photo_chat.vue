@@ -209,6 +209,15 @@
           </div>
         </section>
 
+        <!-- Critique, as the next step after this product: the link to the portfolio review. -->
+        <CritiqueSection
+          source="photo_chat"
+          eyebrow="Also from Photoreka"
+          title="Rather have it in writing?"
+          accent="Get a portfolio review, no account needed."
+          lead="ChatLab answers questions about your whole archive. Critique takes the 20 to 30 photos you would show today and returns a written report on them as a body of work: what works, what repeats and what to photograph next."
+        />
+
         <FaqSection :faqs="faqs" @toggle="onFaqToggle">
           <template #title>
             Frequently asked <em class="lx-accent">questions</em>
@@ -271,6 +280,7 @@ import {
   BarChartOutline,
 } from "@vicons/ionicons5";
 import RequestAccessDialog from "~/components/RequestAccessDialog.vue";
+import CritiqueSection from "~/components/critique/CritiqueSection.vue";
 import { trackEvent, trackUserAction } from "~/utils/analytics";
 
 // SEO

@@ -31,8 +31,8 @@ const links = [
   { label: "Overview", target: "overview" },
   { label: "Sources", target: "sources" },
   { label: "Tools", target: "features" },
-  { label: "Picks", target: "picks" },
   { label: "Pricing", target: "pricing" },
+  { label: "Picks", target: "picks" },
   { label: "FAQ", target: "faq" },
   { label: "Blog", to: "/blog/" },
 ];
