@@ -4,7 +4,15 @@
  */
 
 import { PICKS_FAQS, PICKS_PRICE_PER_PHOTO_EUR } from "../utils/picksShowcase";
-import { CRITIQUE_FAQS, CRITIQUE_PRICE_EUR } from "../utils/critiqueShowcase";
+import {
+  CRITIQUE_BETA,
+  CRITIQUE_FAQS,
+  CRITIQUE_LANGUAGES,
+  CRITIQUE_MAX_PHOTOS,
+  CRITIQUE_MIN_PHOTOS,
+  CRITIQUE_PRICE_EUR,
+  CRITIQUE_TIERS,
+} from "../utils/critiqueShowcase";
 import { COMMERCIAL_FAQS } from "../utils/commercialFaqs";
 import { IMAGE_LIBRARY_FAQS } from "../utils/imageLibraryFaqs";
 
@@ -1090,12 +1098,14 @@ export const seoConfig = {
       ],
     },
 
+    // Head term "photography portfolio review" (the SERP is human reviewers at
+    // €50–€500), plus the category we can own: "AI portfolio review". "Photo
+    // critique" / "rate my photo" stay with /ai_photo_picks/ (single frames).
     photography_portfolio_review: {
-      title: "Photography Portfolio Review Online: Written Critique | Photoreka",
-      description:
-        "Send 20 to 30 photographs and get a professional-level portfolio review. AI analysis checked by a curator: faster and cheaper than any traditional review.",
+      title: "AI Photography Portfolio Review & Critique | Photoreka",
+      description: `Send ${CRITIQUE_MIN_PHOTOS}–${CRITIQUE_MAX_PHOTOS} photographs and get a written AI portfolio review: your best frames critiqued, your style, strengths, projects and a roadmap. ${CRITIQUE_BETA ? `€${CRITIQUE_PRICE_EUR}` : `In minutes, from €${CRITIQUE_TIERS.instant.priceEur}`}, no account.`,
       keywords:
-        "photography portfolio review, portfolio review photography, online portfolio review, photo portfolio review, photography portfolio critique, portfolio critique, photo critique, photography critique, ai portfolio review, ai photo critique, street photography portfolio review, photography feedback, written photo critique, portfolio review for photographers, photography mentoring alternative",
+        "photography portfolio review, ai photography portfolio review, ai portfolio review, portfolio review photography, online photography portfolio review, photo portfolio review, photography portfolio critique, portfolio critique, photography portfolio feedback, ai photography feedback, photography critique, photography critique service, written photography critique, body of work critique, photo series feedback, can ai review my photography portfolio, chatgpt portfolio review alternative, street photography portfolio review, documentary photography portfolio review, fine art photography portfolio review, portfolio review before photo contest, photography mentoring alternative",
       ogImage: "/critique/og-critique.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",
@@ -1104,16 +1114,29 @@ export const seoConfig = {
           "@context": "https://schema.org",
           "@type": "Service",
           name: "Photoreka Critique",
-          serviceType: "Photography portfolio review",
-          description:
-            "A written photography portfolio review: an overview of the work, a critique of the strongest photographs, strengths, areas for growth, proposed projects and a roadmap. Written by an AI system following curatorial criteria and reviewed by a curator. No account required, one payment per report.",
+          alternateName: "AI Photography Portfolio Review",
+          serviceType: "AI photography portfolio review",
+          description: `A written photography portfolio review of ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs, read as a body of work: an overview, a critique of the strongest photographs, the images that hold the set back, a style profile, strengths, areas for growth, proposed projects and a roadmap. Written by an AI system trained on curatorial criteria${CRITIQUE_BETA ? " and, during the beta, reviewed by a curator" : ""}. PDF report in ${CRITIQUE_LANGUAGES.length} languages. No account required, one payment per report.`,
           url: "https://www.photoreka.com/photography_portfolio_review/",
-          offers: {
+          image: "https://www.photoreka.com/critique/og-critique.jpg",
+          audience: { "@type": "Audience", audienceType: "Photographers" },
+          serviceOutput: {
+            "@type": "CreativeWork",
+            name: "Portfolio review report (PDF)",
+          },
+          offers: (CRITIQUE_BETA
+            ? [{ name: `${CRITIQUE_TIERS.curated.name} (beta price)`, price: CRITIQUE_PRICE_EUR }]
+            : [
+                { name: CRITIQUE_TIERS.instant.name, price: CRITIQUE_TIERS.instant.priceEur },
+                { name: CRITIQUE_TIERS.curated.name, price: CRITIQUE_TIERS.curated.priceEur },
+              ]
+          ).map((offer) => ({
             "@type": "Offer",
+            name: offer.name,
             availability: "https://schema.org/InStock",
             priceCurrency: "EUR",
-            price: String(CRITIQUE_PRICE_EUR),
-          },
+            price: String(offer.price),
+          })),
           provider: {
             "@type": "Organization",
             name: "Photoreka",

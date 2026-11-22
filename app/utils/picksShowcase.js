@@ -49,7 +49,8 @@ export const PICKS_FAQS = [
   },
   {
     q: "Is the AI photo critique like a real photography critique?",
-    a: "It follows the same logic as a portfolio review: one or two sentences naming what makes each frame work and what holds it back, from composition and light to timing and storytelling, plus a rating on eight criteria. It's a fast first opinion on hundreds of photos, not a replacement for a mentor; use it to find the frames that deserve one.",
+    a: "It follows the same logic as a portfolio review: one or two sentences naming what makes each frame work and what holds it back, from composition and light to timing and storytelling, plus a rating on eight criteria. It's a fast first opinion on hundreds of photos, not a replacement for a mentor; use it to find the frames that deserve one. Once you have your 20 to 30, Photoreka Critique reads them as a body of work and writes a full portfolio review.",
+    link: { to: "/photography_portfolio_review/", label: "About the AI portfolio review" },
   },
   {
     q: "How is Picks different from other AI photo raters?",

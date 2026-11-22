@@ -11,14 +11,14 @@
     <div class="lx-numbered cql">
       <PageHero :eyebrow="`Eight-section PDF report · Written in ${CRITIQUE_LANGUAGES.length} languages`">
         <template #title>
-          Your portfolio review, <em class="lx-accent">without the waiting list or the fee.</em>
+          AI photography portfolio review, <em class="lx-accent">without the waiting list or the fee.</em>
         </template>
         <p>
           Send {{ CRITIQUE_MIN_PHOTOS }} to {{ CRITIQUE_MAX_PHOTOS }} photographs and receive a
-          <strong>professional-level written report</strong>. Our AI is trained to read
-          photographs with <strong>curatorial criteria</strong>, and a
-          <strong>human expert reviews every report</strong>: the depth of a traditional
-          portfolio review, <strong>faster and for a fraction of the price</strong>.
+          <strong>written review of your work as a whole</strong>. Our AI reads photographs with
+          <strong>curatorial criteria</strong>: it critiques your strongest frames, names the ones
+          that hold the set back and tells you <strong>what to photograph next</strong>. The depth
+          of a traditional portfolio review, <strong>faster and for a fraction of the price</strong>.
         </p>
         <template #actions>
           <LxButton icon="external" :href="CRITIQUE_APP_URL" target="_blank" @click="trackOrder('hero')">
@@ -36,7 +36,7 @@
             </li>
             <li>
               <n-icon size="15"><TimeOutline /></n-icon>
-              Delivered in under {{ CRITIQUE_DELIVERY_HOURS }} hours
+              {{ CRITIQUE_BETA ? `Delivered in ${CRITIQUE_DEFAULT_DELIVERY}` : "Ready in minutes" }}
             </li>
             <li>
               <n-icon size="15"><CardOutline /></n-icon>
@@ -73,16 +73,21 @@
               repeat itself and <strong>what to photograph next</strong>.
             </p>
             <template #actions>
-              <ul class="cql-genres" aria-label="Genres a report covers">
-                <li
-                  v-for="genre in CRITIQUE_GENRES"
-                  :key="genre.key"
-                  class="cql-genre"
-                  :style="{ '--c': genre.color }"
-                >
-                  <i aria-hidden="true" />{{ genre.label }}
-                </li>
-              </ul>
+              <!-- Who it is for, next to the genres: where a reader checks
+                   whether it covers what they do. -->
+              <div class="cql-audience">
+                <ul class="cql-genres" aria-label="Genres a report covers">
+                  <li
+                    v-for="genre in CRITIQUE_GENRES"
+                    :key="genre.key"
+                    class="cql-genre"
+                    :style="{ '--c': genre.color }"
+                  >
+                    <i aria-hidden="true" />{{ genre.label }}
+                  </li>
+                </ul>
+                <p class="cql-fineprint">{{ CRITIQUE_AUDIENCE }}</p>
+              </div>
             </template>
           </SectionIntro>
           <CritiqueSectionsBento
@@ -94,84 +99,24 @@
         </div>
       </section>
 
-      <!-- ── One critique ────────────────────────────────────────────── -->
-      <section id="critique" class="lx-section">
-        <div class="lx-container cql-excerpt">
-          <div v-reveal="{ variant: 'scale' }" class="cql-excerpt__photo">
-            <ShotFrame
-              :src="CRITIQUE_EXCERPT.photo"
-              alt="Street photograph of two women in red headscarves and batik tops, one close in the foreground and one walking behind her past a green shutter"
-              ratio="auto"
-              bare
-            />
-          </div>
-          <div class="cql-excerpt__copy">
-            <SectionIntro eyebrow="Photo critique, frame by frame" size="md" flush>
-              <template #title>
-                What works. What doesn’t.<em class="lx-accent"> No AI sycophancy.</em>  
-              </template>
-            </SectionIntro>
-            <div v-reveal="160" class="cql-quote">
-              <h3>What works?</h3>
-              <p>{{ CRITIQUE_EXCERPT.works }}</p>
-            </div>
-            <div v-reveal="240" class="cql-quote">
-              <h3>What could have been better?</h3>
-              <p>{{ CRITIQUE_EXCERPT.improve }}</p>
-            </div>
-            <!-- <p class="cql-fineprint">
-              The first reading is word for word from the sample report below, where this
-              photograph was picked out of the pictures the author sent only as context.
-            </p> -->
-          </div>
-        </div>
-      </section>
-
-      <!-- ── Sample report ───────────────────────────────────────────── -->
-      <section id="sample" class="lx-section cql-sample">
-        <CritiqueSheetsReel :pages="sampleSheets" @open="trackSample('reel')">
-          <template #head>
-            <SectionIntro eyebrow="Sample report" align="center" size="md">
-              <template #title>
-                Read one <em class="lx-accent">from cover to roadmap.</em>
-              </template>
-              <p>
-                A complete report on 24 photographs, plus 50 more sent as
-                context.
-              </p>
-              <template #actions>
-                <LxButton
-                  variant="ghost"
-                  icon="down"
-                  :href="CRITIQUE_SAMPLE_PDF"
-                  target="_blank"
-                  @click="trackSample('pdf')"
-                >
-                  <span class="cql-pdf-label">
-                    <AppLogo layout="icon" :height="22" class="cql-pdf-logo" />
-                    Download the sample PDF
-                  </span>
-                </LxButton>
-              </template>
-            </SectionIntro>
-          </template>
-        </CritiqueSheetsReel>
-      </section>
-
       <!-- ── How it works ────────────────────────────────────────────── -->
-      <!-- Two hands on one page: the AI writes in ink, the curator only adds in
-           gold. Nothing is struck out, because nothing needs to be. -->
+      <!-- Right after what the report holds: who writes it is the first doubt
+           about a new kind of review. The AI writes in ink; in a Reviewed report
+           the curator only adds in gold. Nothing is struck out. -->
       <section id="how-it-works" class="lx-section">
         <div class="lx-container">
           <div class="cql-duet">
             <div class="cql-duet__copy">
               <SectionIntro eyebrow="How it works" flush>
                 <template #title>
-                  Two readers, <em class="lx-accent">one report.</em>
+                  The AI does the reading. <em class="lx-accent">A curator answers for it.</em>
                 </template>
                 <p>
-                  The AI writes the whole report. Then a curator reads it next to your
-                  photographs, <strong>not to fix it but to take it further</strong>.
+                  Our AI writes the complete report on its own: every frame, the set as a whole,
+                  the roadmap. That is an Instant report. In a Reviewed report, a curator then
+                  reads it next to your photographs, <strong>adds what only experience gives and
+                  signs it off</strong>.<template v-if="CRITIQUE_BETA"> During the beta, every
+                  report is Reviewed.</template>
                 </p>
               </SectionIntro>
 
@@ -192,11 +137,11 @@
             <figure v-reveal="{ variant: 'scale' }" class="cql-ms">
               <div class="cql-ms__head">
                 <span><b>03</b> Other images</span>
-                <span>Draft · under review</span>
+                <span>Reviewed report · curator's pass</span>
               </div>
               <img
                 class="cql-ms__photo"
-                :src="CRITIQUE_EXCERPT.photo"
+                :src="CRITIQUE_MANUSCRIPT.photo"
                 alt=""
                 width="1100"
                 height="733"
@@ -206,7 +151,7 @@
                 <template v-for="line in manuscript" :key="line">
                   <span class="cql-ms__line">{{ line }}</span><span
                     class="cql-ms__check"
-                    title="Checked against the photograph"
+                    title="Confirmed against the photograph"
                   ><n-icon size="13"><CheckmarkOutline /></n-icon></span>{{ " " }}
                 </template>
                 <ins class="cql-ms__ins">
@@ -216,7 +161,7 @@
               </p>
               <figcaption class="cql-ms__legend">
                 <span><i class="cql-ms__swatch cql-ms__swatch--ai" />Written by the AI</span>
-                <span><i class="cql-ms__swatch cql-ms__swatch--curator" />Checked and added by the curator</span>
+                <span><i class="cql-ms__swatch cql-ms__swatch--curator" />Added by the curator</span>
               </figcaption>
             </figure>
           </div>
@@ -237,27 +182,100 @@
         </div>
       </section>
 
+      <!-- ── One critique ────────────────────────────────────────────── -->
+      <section id="critique" class="lx-section">
+        <div class="lx-container cql-excerpt">
+          <div v-reveal="{ variant: 'scale' }" class="cql-excerpt__photo">
+            <ShotFrame
+              :src="CRITIQUE_EXCERPT.photo"
+              :alt="CRITIQUE_EXCERPT.alt"
+              ratio="auto"
+              bare
+            />
+          </div>
+          <div class="cql-excerpt__copy">
+            <SectionIntro eyebrow="Photo critique, frame by frame" size="md" flush>
+              <template #title>
+                What works. What doesn’t.<em class="lx-accent"> No AI sycophancy.</em>  
+              </template>
+            </SectionIntro>
+            <div v-reveal="160" class="cql-quote">
+              <h3>What works?</h3>
+              <p>{{ CRITIQUE_EXCERPT.works }}</p>
+            </div>
+            <div v-reveal="240" class="cql-quote">
+              <h3>What could have been better?</h3>
+              <p>{{ CRITIQUE_EXCERPT.improve }}</p>
+            </div>
+            <p class="cql-fineprint">
+              Word for word from the sample report below, as the AI wrote it; the first
+              reading is shortened.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Sample report ───────────────────────────────────────────── -->
+      <section id="sample" class="lx-section cql-sample">
+        <CritiqueSheetsReel :pages="sampleSheets" @open="trackSample('reel')">
+          <template #head>
+            <SectionIntro eyebrow="Sample report" align="center" size="md">
+              <template #title>
+                Read one <em class="lx-accent">from cover to roadmap.</em>
+              </template>
+              <p>
+                A complete report on 24 photographs, plus 50 more sent as context,
+                <strong>exactly as our AI wrote it</strong>.
+              </p>
+              <template #actions>
+                <LxButton
+                  variant="ghost"
+                  icon="down"
+                  :href="CRITIQUE_SAMPLE_PDF"
+                  target="_blank"
+                  @click="trackSample('pdf')"
+                >
+                  <span class="cql-pdf-label">
+                    <AppLogo layout="icon" :height="22" class="cql-pdf-logo" />
+                    Download the sample PDF
+                  </span>
+                </LxButton>
+              </template>
+            </SectionIntro>
+          </template>
+        </CritiqueSheetsReel>
+      </section>
+
       <!-- ── Pricing ─────────────────────────────────────────────────── -->
       <section id="pricing" class="lx-section">
         <div class="lx-container">
           <SectionIntro eyebrow="Pricing" align="center">
-            <template #title>
-              Reviewed by hand, <em class="lx-accent">at the instant price.</em>
+            <template v-if="CRITIQUE_BETA" #title>
+              Signed off by a curator, <em class="lx-accent">at the Instant price.</em>
+            </template>
+            <template v-else #title>
+              One report. <em class="lx-accent">A curator if you want one.</em>
             </template>
             <p v-if="CRITIQUE_BETA">
-              We are in beta, and we would rather read every portfolio ourselves before it
-              reaches you. Until Instant launches, <strong>every report is reviewed by a curator
-              for the price of an automatic one</strong>.
+              We are in beta, and during it a curator reads every report before it reaches you:
+              it is how we keep raising the bar. Until Instant launches, <strong>you get a
+              Reviewed report for the Instant price</strong>.
+            </p>
+            <p v-else>
+              Instant is the full report as our AI writes it. Reviewed adds a curator who checks
+              it against your photographs, enriches it and <strong>answers for it</strong>.
             </p>
           </SectionIntro>
 
-          <div class="cql-tiers">
-            <!-- What is sold today. -->
-            <div v-reveal class="lx-card cql-tier cql-tier--live">
+          <!-- During the beta Reviewed is the one sold; after it, Instant is the
+               default and Reviewed the upgrade, so it goes first. -->
+          <div class="cql-tiers" :class="{ 'cql-tiers--instant-first': !CRITIQUE_BETA }">
+            <div v-reveal class="lx-card cql-tier" :class="{ 'cql-tier--live': CRITIQUE_BETA }">
               <p v-if="CRITIQUE_BETA" class="cql-tier__badge">Beta offer</p>
               <h3 class="cql-tier__name">{{ CRITIQUE_TIERS.curated.name }}</h3>
               <p class="cql-tier__meta">
-                AI report enriched by a curator · in under {{ CRITIQUE_DELIVERY_HOURS }} hours
+                The full AI report, reviewed and signed off by a curator · in under
+                {{ CRITIQUE_DELIVERY_HOURS }} hours
               </p>
               <p class="cql-tier__figure">
                 <s v-if="CRITIQUE_BETA">{{ formatEur(CRITIQUE_TIERS.curated.priceEur) }}</s>
@@ -274,18 +292,21 @@
               </LxButton>
             </div>
 
-            <!-- What comes after the beta: shown, not sold. -->
+            <!-- During the beta: shown, not sold. -->
             <div
               v-reveal="120"
-              class="lx-card cql-tier"
-              :class="{ 'is-soon': !CRITIQUE_TIERS.instant.available }"
+              class="lx-card cql-tier cql-tier--instant"
+              :class="{
+                'is-soon': !CRITIQUE_TIERS.instant.available,
+                'cql-tier--live': CRITIQUE_TIERS.instant.available,
+              }"
               :aria-disabled="!CRITIQUE_TIERS.instant.available"
             >
               <p v-if="!CRITIQUE_TIERS.instant.available" class="cql-tier__badge cql-tier__badge--soon">
                 Coming after the beta
               </p>
               <h3 class="cql-tier__name">{{ CRITIQUE_TIERS.instant.name }}</h3>
-              <p class="cql-tier__meta">AI report, as it is written · in minutes</p>
+              <p class="cql-tier__meta">The full AI report · in minutes</p>
               <p class="cql-tier__figure">
                 {{ formatEur(CRITIQUE_TIERS.instant.priceEur) }}<span> per report</span>
               </p>
@@ -295,9 +316,19 @@
                   <span class="lx-tick" aria-hidden="true" />{{ item }}
                 </li>
               </ul>
-              <p class="cql-tier__soon">
-                Not available yet. Order now and you get the curated report at this price.
+              <p v-if="!CRITIQUE_TIERS.instant.available" class="cql-tier__soon">
+                Not available yet. Order now and you get the Reviewed report at this price.
               </p>
+              <LxButton
+                v-else
+                icon="external"
+                block
+                :href="CRITIQUE_APP_URL"
+                target="_blank"
+                @click="trackOrder('pricing_instant')"
+              >
+                Get my portfolio review
+              </LxButton>
             </div>
           </div>
         </div>
@@ -314,9 +345,9 @@
               <h2 class="lx-title lx-title--md">Your photographs stay yours.</h2>
               <p class="lx-lead">
                 They are resized in your browser before they are uploaded and used only to write
-                your report. They are never made public and never used to train any model. Your
-                photographs and your report are kept for {{ CRITIQUE_RETENTION_DAYS }} days,
-                behind a private link that only you receive.
+                your report. They are never made public and never used to train any model.
+                {{ CRITIQUE_WHO_SEES }} Your photographs and your report are kept for
+                {{ CRITIQUE_RETENTION_DAYS }} days, behind a private link that only you receive.
               </p>
             </div>
           </div>
@@ -344,8 +375,8 @@
           You know your photographs. <em class="lx-accent">Find out what they say together.</em>
         </template>
         <p>
-          {{ CRITIQUE_MIN_PHOTOS }} to {{ CRITIQUE_MAX_PHOTOS }} photographs, one report, in under
-          {{ CRITIQUE_DELIVERY_HOURS }} hours.
+          {{ CRITIQUE_MIN_PHOTOS }} to {{ CRITIQUE_MAX_PHOTOS }} photographs, one report, in
+          {{ CRITIQUE_DEFAULT_DELIVERY }}.
         </p>
         <template #actions>
           <LxButton icon="external" :href="CRITIQUE_APP_URL" target="_blank" @click="trackOrder('final')">
@@ -372,12 +403,15 @@ import CritiqueSectionsBento from "~/components/critique/CritiqueSectionsBento.v
 import CritiqueSheetsReel from "~/components/critique/CritiqueSheetsReel.vue";
 import {
   CRITIQUE_APP_URL,
+  CRITIQUE_AUDIENCE,
   CRITIQUE_BETA,
+  CRITIQUE_DEFAULT_DELIVERY,
   CRITIQUE_DELIVERY_HOURS,
   CRITIQUE_EXCERPT,
   CRITIQUE_FAQS,
   CRITIQUE_GENRES,
   CRITIQUE_LANGUAGES,
+  CRITIQUE_MANUSCRIPT,
   CRITIQUE_MAX_CONTEXT_PHOTOS,
   CRITIQUE_MAX_PHOTOS,
   CRITIQUE_MIN_PHOTOS,
@@ -387,6 +421,7 @@ import {
   CRITIQUE_SAMPLE_PAGES,
   CRITIQUE_SAMPLE_PDF,
   CRITIQUE_TIERS,
+  CRITIQUE_WHO_SEES,
 } from "~/utils/critiqueShowcase";
 import { trackUserAction } from "~/utils/analytics";
 
@@ -394,8 +429,8 @@ useSEO("photography_portfolio_review");
 
 const navLinks = [
   { label: "The report", target: "report" },
-  { label: "Sample", target: "sample" },
   { label: "How it works", target: "how-it-works" },
+  { label: "Sample", target: "sample" },
   { label: "Pricing", target: "pricing" },
   { label: "FAQ", target: "faq" },
 ];
@@ -470,7 +505,7 @@ const sections = [
   {
     title: "Roadmap",
     description:
-      "Where to start, concrete steps from your next outing to the coming months, and open contests your strongest photographs suit.",
+      "Where to start, concrete steps from your next outing to the coming months, and up to five contests your strongest photographs suit, the open ones marked.",
     page: 14,
     focus: [0.065, 0.27, 0.87, 0.37],
   },
@@ -483,15 +518,16 @@ const sampleSheets = CRITIQUE_SAMPLE_PAGES.map((src, index) => ({
   href: `${CRITIQUE_SAMPLE_PDF}#page=${index + 1}`,
 }));
 
-// How it works: who does what, then when each part happens.
+// How it works: who does what, then when each part happens. The AI writes the
+// whole report; the curator is the accountability on top, not a fix.
 const roles = [
   {
     key: "ai",
     who: "The AI",
-    verb: "writes",
-    lead: "Trained on editorial guidelines, it does the slow, exhaustive reading in minutes.",
+    verb: "writes the whole report",
+    lead: "Trained on curatorial criteria, it does the slow, exhaustive reading a human reviewer rarely has time for.",
     items: [
-      "Describes and assesses every frame on its own",
+      "Assesses every frame, and says which ones to drop",
       "Reads the set three ways: editorial, narrative and formal",
       "Ties every sentence to the photograph it talks about",
       "Counts every figure, never estimates",
@@ -499,20 +535,20 @@ const roles = [
   },
   {
     key: "curator",
-    who: "The curator",
-    verb: "enriches",
-    lead: "Reads the finished report next to your photographs and adds what only experience gives.",
+    who: CRITIQUE_BETA ? "The curator" : "The curator, in Reviewed",
+    verb: "signs off",
+    lead: "Reads the finished report next to your photographs and takes responsibility for it.",
     items: [
-      "A fine check of each statement against its image",
+      "Confirms each statement against its photograph",
       "References to photographers and books that speak to your work",
       "Nuance where your context or intent matters",
-      "A last word on your projects and roadmap",
+      "A last word on your projects and roadmap, and the sign-off",
     ],
   },
 ];
 
-// The sample critique as the AI wrote it, one checked sentence at a time.
-const manuscript = CRITIQUE_EXCERPT.works.split(/(?<=\.)\s+/);
+// A reading from the sample report as the AI wrote it, one sentence at a time.
+const manuscript = CRITIQUE_MANUSCRIPT.text.split(/(?<=\.)\s+/);
 
 // Illustrative: the kind of note a curator adds. It is not in the sample report.
 const CURATOR_NOTE =
@@ -521,15 +557,23 @@ const CURATOR_NOTE =
 const timeline = [
   {
     when: "Today",
-    what: `You send ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs, up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context, choose one of ${CRITIQUE_LANGUAGES.length} languages and pay ${formatEur(CRITIQUE_PRICE_EUR)} once.`,
+    what: `You send the ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs you would show today, up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context, choose one of ${CRITIQUE_LANGUAGES.length} languages and pay ${
+      CRITIQUE_BETA
+        ? `${formatEur(CRITIQUE_PRICE_EUR)} once`
+        : `once, from ${formatEur(CRITIQUE_TIERS.instant.priceEur)}`
+    }.`,
   },
   {
     when: "Minutes later",
-    what: "The AI has read every frame and written the full report.",
+    what: CRITIQUE_BETA
+      ? "The AI has read every frame and written the full report."
+      : "The AI has read every frame and written the full report. An Instant report is on its way to you.",
   },
   {
-    when: `Under ${CRITIQUE_DELIVERY_HOURS} hours`,
-    what: "The curator has checked it against your photographs and enriched it.",
+    when: CRITIQUE_BETA
+      ? `Under ${CRITIQUE_DELIVERY_HOURS} hours`
+      : `Reviewed · under ${CRITIQUE_DELIVERY_HOURS} hours`,
+    what: "A curator checks it against your photographs, adds their notes and signs it off.",
     curator: true,
   },
   {
@@ -544,13 +588,9 @@ const reportIncluded = [
   `In ${CRITIQUE_LANGUAGES.length} languages, your choice`,
 ];
 
-const included = [
-  ...reportIncluded.slice(0, 3),
-  "Checked and enriched by a curator",
-  ...reportIncluded.slice(3),
-];
+const included = [...reportIncluded, "Reviewed and signed off by a curator"];
 
-const instantIncluded = [...reportIncluded.slice(0, 3), "Delivered in minutes", ...reportIncluded.slice(3)];
+const instantIncluded = [...reportIncluded, "Same eight sections, same depth"];
 
 const faqs = CRITIQUE_FAQS.map((faq) => ({
   question: faq.q,
@@ -656,6 +696,17 @@ function trackSample(where) {
 }
 
 /* Genre pills: the look of the contest filters (ContestFilters.vue), but static. */
+.cql-audience {
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+}
+
+.cql-audience .cql-fineprint {
+  max-width: 52ch;
+  text-align: center;
+}
+
 .cql-genres {
   display: flex;
   flex-wrap: wrap;
@@ -1082,6 +1133,11 @@ function trackSample(where) {
 .cql-tier--live {
   border-color: color-mix(in srgb, var(--pc-gold) 55%, transparent);
   box-shadow: 0 30px 70px -40px rgba(227, 161, 43, 0.55);
+}
+
+/* After the beta, Instant is the default and Reviewed the upgrade. */
+.cql-tiers--instant-first .cql-tier--instant {
+  order: -1;
 }
 
 /* Shown, not sold: lighter, dashed, no button. */

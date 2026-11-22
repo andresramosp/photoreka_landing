@@ -281,11 +281,12 @@ export const blogPosts: BlogPost[] = [
     description:
       "Can AI review a photography portfolio? What chatbots judge well, where they fall short, prompts that work, and how an AI assistant reviews a whole archive.",
     keywords:
-      "ai portfolio review, ai photography portfolio review, can ai review my photography portfolio, chatgpt portfolio review photography, ai photography feedback, photography portfolio review online, ai photo assistant, ai portfolio critique, portfolio review prompts",
+      "can ai review my photography portfolio, can ai critique photography, chatgpt portfolio review photography, chatgpt photo critique prompt, portfolio review prompts, ai photography feedback, what ai can judge in photography, ai photo assistant",
     category: "Photography Tips",
     tags: ["Portfolio Review", "AI Photo Assistant", "ChatLab", "Body of Work"],
     coverImage: "/blog/ai_portfolio_review.png",
     publishedAt: "2026-11-11",
+    updatedAt: "2026-11-22",
     readingMinutes: 7,
     author: { name: "Photoreka Team", role: "Product" },
     toc: true,
@@ -454,6 +455,19 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "h2",
+        text: "A Written Review of a Finished Selection",
+        id: "written-review",
+      },
+      {
+        type: "p",
+        html: "Sometimes the question is narrower: <em>here are the twenty-five photographs I would show today; what do they say?</em> That is what Photoreka Critique, our <a href='/photography_portfolio_review/'>AI photography portfolio review</a>, is for. You send 20 to 30 photographs, plus up to 100 more as context, and get a written report back: an overview of the work, a critique of the strongest frames, the images that hold the set back, a style profile counted photo by photo, your strengths, the habits that could turn into a formula, projects your material already points to and a roadmap.",
+      },
+      {
+        type: "p",
+        html: "It is built around the limits above. It reads the set rather than going frame by frame, counts what repeats instead of describing it, applies the same criteria every time and is written to say what does not work, not to please. The AI writes the whole report; if you want a person to answer for it, a curator can review it and sign it off. No account, one payment per report.",
+      },
+      {
+        type: "h2",
         text: "What AI Still Can't Replace",
         id: "what-ai-cant-replace",
       },
@@ -488,11 +502,12 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "cta",
-        eyebrow: "Try it on a real body of work",
-        title: "Ask ChatLab to review a real portfolio",
-        text: "The demo runs ChatLab on a real, already-curated archive: ask for strengths and weaknesses, a selection for an exhibition or a sequence. Nothing to install.",
-        buttonLabel: "Try the Demo",
-        action: "demo",
+        eyebrow: "Get your own portfolio reviewed",
+        title: "An AI portfolio review of your 20 to 30 best photographs",
+        text: "A written report on your work as a whole: your strongest frames, what holds the set back, your style counted photo by photo and a roadmap. No account, no subscription.",
+        buttonLabel: "Discover Critique",
+        action: "link",
+        href: "/photography_portfolio_review/",
       },
     ],
   },
@@ -815,6 +830,10 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
+        type: "p",
+        html: "If no one is at hand for that last test, an <a href='/photography_portfolio_review/'>AI photography portfolio review</a> gives you a written outside reading of the selection: what the set says as a whole, where it starts to repeat itself and which images hold it back.",
+      },
+      {
         type: "callout",
         variant: "tip",
         title: "Four common traps",
@@ -1030,6 +1049,7 @@ export const blogPosts: BlogPost[] = [
           "Choose a general chatbot if: you want a written second opinion on two or three images and don't need them ranked on a consistent scale.",
           "Choose Aftershoot, Narrative Select or another culling tool if: you shoot weddings, events or sessions for clients and need a deliverable set fast.",
           "Choose Photoreka Picks if: you're a photographer choosing your own best work — a portfolio, a contest entry, the best of a trip or a year — and want artistic criteria, a critique for every frame and more than one jury's point of view.",
+          "Choose Photoreka Critique if: you've already chosen your 20 to 30 photographs and want them read as a body of work — a written AI portfolio review, not a score per frame.",
         ],
       },
       {
@@ -1043,7 +1063,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "One last thought. The reason 'rate my photo' returns such a mess of results is that people rarely want a rating for its own sake. They want to make a decision: which picture goes on the profile, which frames go to the client, which twelve go into the portfolio or the competition. Pick the tool built for your decision, and the number starts to mean something. If that decision is a contest, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing which photos to enter in a photography contest</a> is a good next read, and our <a href='/photo-contests/'>photo contest calendar</a> lists the competitions open now.",
+        html: "One last thought. The reason 'rate my photo' returns such a mess of results is that people rarely want a rating for its own sake. They want to make a decision: which picture goes on the profile, which frames go to the client, which twelve go into the portfolio or the competition. Pick the tool built for your decision, and the number starts to mean something. If that decision is a contest, our guide to <a href='/blog/how-to-choose-photos-for-a-photo-contest/'>choosing which photos to enter in a photography contest</a> is a good next read, and our <a href='/photo-contests/'>photo contest calendar</a> lists the competitions open now. If it is a portfolio, and the twenty or thirty photos are already chosen, what you need is no longer a rating but an <a href='/photography_portfolio_review/'>AI photography portfolio review</a> of the set.",
       },
     ],
   },
@@ -2920,7 +2940,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "If the contest accepts series, judge the set as a whole. A series is only as strong as its weakest image, and juries notice repetition fast: two photos that make the same point weaken each other. Look for consistency of tone and treatment, a <a href='/blog/how-to-sequence-photos/'>sequence that builds</a>, and a final image that closes the story. When in doubt, a tight series of five beats a loose series of ten.",
+        html: "If the contest accepts series, judge the set as a whole. A series is only as strong as its weakest image, and juries notice repetition fast: two photos that make the same point weaken each other. Look for consistency of tone and treatment, a <a href='/blog/how-to-sequence-photos/'>sequence that builds</a>, and a final image that closes the story. When in doubt, a tight series of five beats a loose series of ten. If you want an outside reading of the whole body of work before you cut it down, an <a href='/photography_portfolio_review/'>AI photography portfolio review</a> names what repeats across the set, which images hold it back and which contests your strongest photographs suit, open now or in their next edition.",
       },
       {
         type: "h2",
@@ -3476,6 +3496,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "p",
         html: "Treat it as the stranger from step 1, but one who has looked at every photo instead of twenty. The sentence that describes your style is still yours to write. It works best on a curated body of work: first insights appear from around a hundred photos, and patterns over time become meaningful with a few hundred spread across years.",
+      },
+      {
+        type: "p",
+        html: "If you would rather have that outside reading written down, an <a href='/photography_portfolio_review/'>AI photography portfolio review</a> does it for 20 to 30 photographs: the report includes a style profile counted photo by photo — the devices that carry your pictures, where the camera stands and how close — next to your strengths as an author and the habits that could harden into a formula.",
       },
       {
         type: "cta",

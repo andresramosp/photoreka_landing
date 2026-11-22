@@ -3,6 +3,7 @@
 // and the limits; keep them in sync if the product changes.
 
 import { CONTEST_GENRES } from "./contests";
+import { PICKS_MAX_PHOTOS } from "./picksShowcase";
 
 export const CRITIQUE_APP_URL = "https://app.photoreka.com/critique";
 
@@ -32,8 +33,18 @@ export const CRITIQUE_PRICE_EUR = CRITIQUE_BETA
 export const CRITIQUE_MIN_PHOTOS = 20;
 export const CRITIQUE_MAX_PHOTOS = 30;
 export const CRITIQUE_MAX_CONTEXT_PHOTOS = 100;
+/** How long a Reviewed report takes: the curator's pass. Instant takes minutes. */
 export const CRITIQUE_DELIVERY_HOURS = 12;
 export const CRITIQUE_RETENTION_DAYS = 30;
+
+/**
+ * When the report a buyer gets by default arrives. During the beta every report
+ * is Reviewed, so it is the curator's delay; after it, Instant is the default.
+ * Reads after "in" or "delivered in": "under 12 hours" / "minutes".
+ */
+export const CRITIQUE_DEFAULT_DELIVERY = CRITIQUE_BETA
+  ? `under ${CRITIQUE_DELIVERY_HOURS} hours`
+  : "minutes";
 
 /** The languages a report can be written in, each named in itself. */
 export const CRITIQUE_LANGUAGES = [
@@ -72,15 +83,23 @@ export const CRITIQUE_SAMPLE_LABELS = [
   "Roadmap",
 ];
 
-// One critique of a photograph from that report. "works" is word for word the
-// report's reading ("Other images", page 8); the report gives that section no
-// "could have been better", so "improve" was written for the landing.
+// One critique of a photograph from the sample report, which is pure AI output
+// (Featured photographs 03/08, page 5). "improve" is word for word; "works" keeps
+// the first three of its five sentences, word for word, to fit the layout.
 export const CRITIQUE_EXCERPT = {
-  photo: "/critique/excerpt.webp",
+  photo: "/critique/excerpt-kolkata.webp",
+  alt: "A woman in an orange sari leans over a man resting on a bed in a Kolkata home, both with raised hands, while a pot boils over open flames in the foreground in front of a blue cupboard drawn with hearts",
   works:
-    "The cropped red scarf in the foreground makes the woman behind seem briefly like a smaller echo. Her sideways glance sends the eye back across the green shutter, turning the repetition of scarves and patterned tops into a relationship across depth.",
+    "Human closeness and the heat of cooking seem to share a single domestic rhythm. The flames beneath the foreground pot catch the eye first; the orange garment carries their warmth back to the figure leaning over the reclining person. Their raised hands bring the encounter into focus.",
   improve:
-    "The right third adds little: the stickered pole and the dark arcade behind it pull the eye away from the exchange between the two scarves. A step to the left, or a tighter frame, would have kept attention moving between the two women and let the green shutter carry the whole background.",
+    "The flames register more immediately than the small exchange at left. Slightly less brightness in the fire might give the hands and forward lean greater initial weight; as it stands, the emotional centre requires a sustained look.",
+};
+
+// The "how it works" manuscript: another reading from the same report, word for
+// word ("Other images", page 8), with an illustrative curator's addition.
+export const CRITIQUE_MANUSCRIPT = {
+  photo: "/critique/excerpt.webp",
+  text: "The cropped red scarf in the foreground makes the woman behind seem briefly like a smaller echo. Her sideways glance sends the eye back across the green shutter, turning the repetition of scarves and patterned tops into a relationship across depth.",
 };
 
 // The genres a report reads, as the API classifies each photo (CARD_GENRES in
@@ -99,6 +118,19 @@ export const CRITIQUE_GENRES = [
 
 const eur = (n) => `€${n}`;
 
+/**
+ * Who a report is for: authors with an artistic or documentary intent. Commercial
+ * work is not read on its own terms yet (the API has no commercial reading), and
+ * personal snapshots are left out because the report judges authorship.
+ */
+export const CRITIQUE_AUDIENCE =
+  "Made for photographers building a body of work with an artistic or documentary intent. Not built for commercial or client work, or for everyday snapshots.";
+
+/** Who looks at the photographs before the report is sent, by tier. */
+export const CRITIQUE_WHO_SEES = CRITIQUE_BETA
+  ? "During the beta, the curator who reviews your report sees them."
+  : "An Instant report is sent without anyone looking at your photographs; in a Reviewed report, the curator who reviews it does.";
+
 const genreNames =CRITIQUE_GENRES.map((g) => g.label.toLowerCase());
 const genreList = `${genreNames.slice(0, -1).join(", ")} and ${genreNames.at(-1)}`;
 
@@ -106,28 +138,43 @@ const genreList = `${genreNames.slice(0, -1).join(", ")} and ${genreNames.at(-1)
 export const CRITIQUE_FAQS = [
   {
     q: "Who writes the report?",
-    a: "An AI system writes it, following curatorial criteria, and a curator reads it against your photographs before it is sent to you. Every statement about a photo is also checked against that photo, and the figures in the report are counted, not estimated. It is a reasoned opinion, not a verdict.",
+    a: `Our AI writes the whole report, following curatorial criteria: it ties every statement to the photograph it talks about and counts every figure instead of estimating it. In a Reviewed report, a curator also reads it against your photographs, adds their notes and signs it off before it reaches you.${CRITIQUE_BETA ? " During the beta, every report is Reviewed." : ""} Either way, it is a reasoned opinion, not a verdict.`,
+  },
+  {
+    q: "Is an Instant report as good as a Reviewed one?",
+    a: "It is the same report: the reading, the critiques, the counts and the roadmap are written by the AI in both. A curator adds references to photographers and books, nuance where your context or intent matters, and a person who answers for the result. Choose Reviewed when that accountability matters to you, for example before a grant, a book or a gallery submission.",
+  },
+  {
+    q: "Why not just ask ChatGPT to review my portfolio?",
+    a: `A general chatbot tends to comment one photo at a time, and to praise. Critique reads your ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs as a body of work: it counts what repeats across the set, names the images that hold it back and ties every statement to a photograph, always with the same criteria.`,
+    link: {
+      to: "/blog/can-ai-review-a-photography-portfolio/",
+      label: "What AI can and can't judge in a portfolio",
+    },
   },
   {
     q: "What do I receive?",
-    a: `A written portfolio review, delivered as a PDF: an overview of your work, a critique of your strongest photographs one by one, the images that hold the set back, a profile of your style counted photo by photo, your strengths as an author, the habits that could turn into a formula, projects your material already points to, and a roadmap with concrete steps for the coming months and open contests worth entering.`,
+    a: `A written portfolio review, delivered as a PDF: an overview of your work, a critique of your strongest photographs one by one, the images that hold the set back, a profile of your style counted photo by photo, your strengths as an author, the habits that could turn into a formula, projects your material already points to, and a roadmap with concrete steps for the coming months and up to five contests worth entering, with the ones open now marked.`,
   },
   {
     q: "How long does it take?",
-    a: `The report is written within minutes of your payment and then reviewed by a curator. You receive it in under ${CRITIQUE_DELIVERY_HOURS} hours, at the email you pay with.`,
+    a: CRITIQUE_BETA
+      ? `The report is written within minutes of your payment. During the beta a curator reviews every report, so it reaches you in under ${CRITIQUE_DELIVERY_HOURS} hours, at the email you pay with.`
+      : `An Instant report is ready within minutes of your payment. A Reviewed report reaches you in under ${CRITIQUE_DELIVERY_HOURS} hours, once a curator has signed it off. Both arrive at the email you pay with.`,
   },
   {
     q: "Which photographs should I send?",
-    a: `The ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} you would put in a portfolio today. You can add up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context: they are not critiqued one by one, but they show your habits and may hold a photograph worth rescuing.`,
+    a: `Your portfolio: the ${CRITIQUE_MIN_PHOTOS} to ${CRITIQUE_MAX_PHOTOS} photographs you would show today, not a random batch. The report reads your selection as a statement of who you are as a photographer, so every choice counts. You can add up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} more as context: they are not critiqued one by one, but they show your habits and may hold a photograph worth rescuing. Not sure which ones are your best? Photoreka Picks ranks up to ${PICKS_MAX_PHOTOS.toLocaleString("en-US")} photos to find them.`,
+    link: { to: "/ai_photo_picks/", label: "Find your best photos with Picks" },
   },
   // Only while the beta lasts.
   ...(CRITIQUE_BETA ? [{
-    q: "Why does a person review every report?",
-    a: `Because we are in beta. The AI writes the whole report on its own, but while we keep refining it we would rather read every portfolio ourselves before it reaches you. So for now you get a curator-reviewed report for the price of an automatic one: ${eur(CRITIQUE_TIERS.instant.priceEur)} instead of ${eur(CRITIQUE_TIERS.curated.priceEur)}. After the beta, Instant reports will arrive in minutes at ${eur(CRITIQUE_TIERS.instant.priceEur)}, and reviewed ones will cost ${eur(CRITIQUE_TIERS.curated.priceEur)}.`,
+    q: "Why does a curator review every report during the beta?",
+    a: `The AI writes the whole report on its own; reading every one ourselves while we refine it is how we keep raising the bar. You get the curator's pass as a bonus: a Reviewed report for ${eur(CRITIQUE_TIERS.instant.priceEur)} instead of ${eur(CRITIQUE_TIERS.curated.priceEur)}. After the beta, Instant reports will arrive in minutes at ${eur(CRITIQUE_TIERS.instant.priceEur)}, and Reviewed ones will cost ${eur(CRITIQUE_TIERS.curated.priceEur)}.`,
   }] : []),
   {
-    q: "Which kinds of photography does it review?",
-    a: `${genreList[0].toUpperCase()}${genreList.slice(1)} photography, in colour or black and white. A portfolio can mix genres: each photograph is read on its own terms, and then the report looks at what holds the set together.`,
+    q: "Who is it for?",
+    a: `Photographers building a body of work with an artistic or documentary intent: ${genreList} photography, from personal projects to long-term series, in colour or black and white. A portfolio can mix genres: each photograph is read on its own terms, and then the report looks at what holds the set together. It is not designed for commercial or client work (product, fashion, advertising, weddings) or for everyday snapshots: the report judges authorship, and those photographs are made for other reasons.`,
   },
   {
     q: "In which languages can I get it?",
@@ -139,7 +186,7 @@ export const CRITIQUE_FAQS = [
   },
   {
     q: "What happens to my photographs?",
-    a: `They are resized in your browser before they are uploaded, used only to write your report, never made public and never used to train any model. Your photographs and your report are kept for ${CRITIQUE_RETENTION_DAYS} days.`,
+    a: `They are resized in your browser before they are uploaded, used only to write your report, never made public and never used to train any model. ${CRITIQUE_WHO_SEES} Your photographs and your report are kept for ${CRITIQUE_RETENTION_DAYS} days.`,
   },
   {
     q: "How is it different from Photoreka Picks?",

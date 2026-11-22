@@ -48,7 +48,7 @@
             >Picks: AI Photo Ranker</NuxtLink
           >
           <NuxtLink to="/photography_portfolio_review/" class="footer-link"
-            >Critique: Portfolio Review</NuxtLink
+            >Critique: AI Portfolio Review</NuxtLink
           >
           <NuxtLink to="/photo-contests/" class="footer-link"
             >Photo Contests</NuxtLink

@@ -218,6 +218,9 @@
             photo library. Coming from Google Photos? Read
             <NuxtLink to="/blog/ask-photos-vs-photoreka-chatlab/"
               >how Ask Photos and ChatLab compare</NuxtLink
+            >. Want a written review of a finished selection, without an account? Get an
+            <NuxtLink to="/photography_portfolio_review/"
+              >AI photography portfolio review</NuxtLink
             >.
           </p>
         </FaqSection>
