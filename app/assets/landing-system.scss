@@ -1034,8 +1034,10 @@ html.lx-motion [data-split]:not(.is-split) {
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  padding: 0 0.08em 0.14em 0;
-  margin: 0 -0.08em -0.14em 0;
+  /* Generous bleed so italic descenders (g, y, f) and left overhangs are not
+     clipped by the reveal mask. Negative margins keep the layout unchanged. */
+  padding: 0.06em 0.12em 0.32em 0.16em;
+  margin: -0.06em -0.12em -0.32em -0.16em;
 }
 
 .lx-w > span {
@@ -1068,7 +1070,10 @@ html.lx-motion .is-split.is-in .lx-w > span {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  padding-right: 0.05em;
+  /* background-clip: text only paints inside the box: extend it so glyph
+     parts outside the line box (descenders, italic overhang) get the gradient. */
+  padding: 0.06em 0.08em 0.3em 0.14em;
+  margin: -0.06em -0.08em -0.3em -0.14em;
 }
 
 @media (prefers-reduced-motion: reduce) {
