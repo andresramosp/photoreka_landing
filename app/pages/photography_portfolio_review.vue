@@ -246,6 +246,63 @@
         </CritiqueSheetsReel>
       </section>
 
+      <!-- ── Compared ────────────────────────────────────────────────── -->
+      <!-- Kinds of feedback, never named products: what each gives a photographer. -->
+      <section id="compare" class="lx-section">
+        <div class="lx-container">
+          <SectionIntro eyebrow="Compared" align="center">
+            <template #title>
+              Not a score per photo. <em class="lx-accent">A reading of your work.</em>
+            </template>
+            <p>
+              What each kind of feedback gives you, side by side. Photo critique apps judge one
+              frame at a time; a portfolio review reads what the frames say together.
+            </p>
+          </SectionIntro>
+
+          <div v-reveal class="cql-compare-scroll">
+            <table class="cql-compare">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="sr-only">What you get</span></th>
+                  <th
+                    v-for="column in compareColumns"
+                    :key="column.key"
+                    scope="col"
+                    :class="{ 'is-ours': column.ours }"
+                  >
+                    {{ column.label }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in compareRows" :key="row.label">
+                  <th scope="row">{{ row.label }}</th>
+                  <td
+                    v-for="column in compareColumns"
+                    :key="column.key"
+                    :class="[`is-${row.cells[column.key][0]}`, { 'is-ours': column.ours }]"
+                  >
+                    <span v-if="row.cells[column.key][0] !== 'info'" class="cql-compare__mark">
+                      <n-icon size="15">
+                        <CheckmarkOutline v-if="row.cells[column.key][0] === 'yes'" />
+                        <RemoveOutline v-else-if="row.cells[column.key][0] === 'partly'" />
+                        <CloseOutline v-else />
+                      </n-icon>
+                      <span class="sr-only">{{ markLabels[row.cells[column.key][0]] }}</span>
+                    </span>
+                    {{ row.cells[column.key][1] }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="cql-fineprint cql-compare__note">
+            Typical of each kind of service; individual offers vary.
+          </p>
+        </div>
+      </section>
+
       <!-- ── Pricing ─────────────────────────────────────────────────── -->
       <section id="pricing" class="lx-section">
         <div class="lx-container">
@@ -395,8 +452,10 @@
 import {
   CardOutline,
   CheckmarkOutline,
+  CloseOutline,
   LockClosedOutline,
   PersonRemoveOutline,
+  RemoveOutline,
   TimeOutline,
 } from "@vicons/ionicons5";
 import CritiqueSectionsBento from "~/components/critique/CritiqueSectionsBento.vue";
@@ -431,6 +490,7 @@ const navLinks = [
   { label: "The report", target: "report" },
   { label: "How it works", target: "how-it-works" },
   { label: "Sample", target: "sample" },
+  { label: "Compare", target: "compare" },
   { label: "Pricing", target: "pricing" },
   { label: "FAQ", target: "faq" },
 ];
@@ -591,6 +651,100 @@ const reportIncluded = [
 const included = [...reportIncluded, "Reviewed and signed off by a curator"];
 
 const instantIncluded = [...reportIncluded, "Same eight sections, same depth"];
+
+// Compared: kinds of feedback, never named products. Each cell is [mark, words]; "info"
+// cells carry no mark, only a fact.
+const compareColumns = [
+  { key: "apps", label: "Photo critique apps" },
+  { key: "chatbot", label: "A general chatbot" },
+  { key: "critique", label: "Photoreka Critique", ours: true },
+  { key: "human", label: "A traditional review" },
+];
+
+const markLabels = { yes: "Yes:", partly: "Partly:", no: "No:" };
+
+const compareRows = [
+  {
+    label: "Reads your photos as a body of work",
+    cells: {
+      apps: ["no", "One photo at a time"],
+      chatbot: ["partly", "Drifts back to single frames"],
+      critique: [
+        "yes",
+        `${CRITIQUE_MIN_PHOTOS}–${CRITIQUE_MAX_PHOTOS} photos, plus up to ${CRITIQUE_MAX_CONTEXT_PHOTOS} as context`,
+      ],
+      human: ["yes", "Within the time of a session"],
+    },
+  },
+  {
+    label: "Says which photos to leave out",
+    cells: {
+      apps: ["partly", "A low score, not an edit"],
+      chatbot: ["partly", "Tends to praise"],
+      critique: ["yes", "Each set-aside image, with why"],
+      human: ["yes", "Usually the first thing said"],
+    },
+  },
+  {
+    label: "Counts what repeats in your work",
+    cells: {
+      apps: ["no", "Not across photos"],
+      chatbot: ["no", "Estimates, does not count"],
+      critique: ["yes", "A style profile, counted photo by photo"],
+      human: ["partly", "By eye"],
+    },
+  },
+  {
+    label: "Proposes projects and next steps",
+    cells: {
+      apps: ["no", "Tips per photo"],
+      chatbot: ["partly", "If you ask the right way"],
+      critique: ["yes", "Projects, a roadmap and contests that suit you"],
+      human: ["partly", "Depends on the reviewer"],
+    },
+  },
+  {
+    label: "Same criteria every time",
+    cells: {
+      apps: ["yes", "Fixed scores"],
+      chatbot: ["no", "Ask twice, get two answers"],
+      critique: ["yes", "Curatorial criteria, every report"],
+      human: ["partly", "One reviewer's taste"],
+    },
+  },
+  {
+    label: "What you keep",
+    cells: {
+      apps: ["info", "Scores in an app"],
+      chatbot: ["info", "A chat"],
+      critique: ["info", `A print-ready PDF, in ${CRITIQUE_LANGUAGES.length} languages`],
+      human: ["info", "Your own notes"],
+    },
+  },
+  {
+    label: "How soon",
+    cells: {
+      apps: ["info", "Instantly"],
+      chatbot: ["info", "Instantly"],
+      critique: ["info", CRITIQUE_BETA ? `In under ${CRITIQUE_DELIVERY_HOURS} hours` : "In minutes"],
+      human: ["info", "When there is a slot, often weeks"],
+    },
+  },
+  {
+    label: "Price",
+    cells: {
+      apps: ["info", "Free to a few euros"],
+      chatbot: ["info", "Free or a subscription"],
+      critique: [
+        "info",
+        CRITIQUE_BETA
+          ? `${formatEur(CRITIQUE_PRICE_EUR)}, once`
+          : `From ${formatEur(CRITIQUE_TIERS.instant.priceEur)}, once`,
+      ],
+      human: ["info", "€150 and up"],
+    },
+  },
+];
 
 const faqs = CRITIQUE_FAQS.map((faq) => ({
   question: faq.q,
@@ -1110,6 +1264,98 @@ function trackSample(where) {
   .cql-rail__stop {
     padding: 0 0 0 32px;
   }
+}
+
+/* ── Compared ───────────────────────────────────────────────────── */
+
+/* A phone scrolls the table sideways; the row labels stay in view. */
+.cql-compare-scroll {
+  overflow-x: auto;
+  margin: 0 auto;
+  max-width: 1040px;
+  border: 1px solid var(--lx-line);
+  border-radius: 14px;
+  background: var(--lx-bg);
+}
+
+.cql-compare {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: var(--lx-fs-sm);
+  line-height: 1.45;
+  color: var(--lx-text-2);
+}
+
+.cql-compare th,
+.cql-compare td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--lx-line);
+}
+
+.cql-compare tbody tr:last-child th,
+.cql-compare tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.cql-compare thead th {
+  font-family: var(--lx-font-sans);
+  font-size: var(--lx-fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lx-text-3);
+}
+
+.cql-compare tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: 22%;
+  background: var(--lx-bg);
+  font-weight: 600;
+  color: var(--lx-text);
+}
+
+/* Our column, lit like the live price tier. */
+.cql-compare .is-ours {
+  background: color-mix(in srgb, var(--pc-gold) 9%, var(--lx-bg));
+  color: var(--lx-text);
+}
+
+.cql-compare thead .is-ours {
+  color: var(--pc-gold-ink);
+}
+
+.cql-compare__mark {
+  display: inline-flex;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+
+.cql-compare .is-yes .cql-compare__mark {
+  color: var(--pc-gold-ink);
+}
+
+.cql-compare .is-partly .cql-compare__mark,
+.cql-compare .is-no .cql-compare__mark {
+  color: var(--lx-text-3);
+}
+
+.cql-compare__note {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 /* ── Pricing ────────────────────────────────────────────────────── */
