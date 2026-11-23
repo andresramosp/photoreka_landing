@@ -32,7 +32,7 @@ export const CRITIQUE_PRICE_EUR = CRITIQUE_BETA
   : CRITIQUE_TIERS.curated.priceEur;
 export const CRITIQUE_MIN_PHOTOS = 20;
 export const CRITIQUE_MAX_PHOTOS = 30;
-export const CRITIQUE_MAX_CONTEXT_PHOTOS = 100;
+export const CRITIQUE_MAX_CONTEXT_PHOTOS = 50;
 /** How long a Reviewed report takes: the curator's pass. Instant takes minutes. */
 export const CRITIQUE_DELIVERY_HOURS = 12;
 export const CRITIQUE_RETENTION_DAYS = 30;

@@ -463,7 +463,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        html: "Sometimes the question is narrower: <em>here are the twenty-five photographs I would show today; what do they say?</em> That is what Photoreka Critique, our <a href='/photography_portfolio_review/'>AI photography portfolio review</a>, is for. You send 20 to 30 photographs, plus up to 100 more as context, and get a written report back: an overview of the work, a critique of the strongest frames, the images that hold the set back, a style profile counted photo by photo, your strengths, the habits that could turn into a formula, projects your material already points to and a roadmap.",
+        html: "Sometimes the question is narrower: <em>here are the twenty-five photographs I would show today; what do they say?</em> That is what Photoreka Critique, our <a href='/photography_portfolio_review/'>AI photography portfolio review</a>, is for. You send 20 to 30 photographs, plus up to 50 more as context, and get a written report back: an overview of the work, a critique of the strongest frames, the images that hold the set back, a style profile counted photo by photo, your strengths, the habits that could turn into a formula, projects your material already points to and a roadmap.",
       },
       {
         type: "p",
