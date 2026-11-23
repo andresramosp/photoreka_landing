@@ -58,11 +58,15 @@ export const CRITIQUE_LANGUAGES = [
 
 // A real report, page by page, and the same report as the PDF a buyer downloads.
 // The PDF has 18 pages; the last one only holds the note on contest dates, so the
-// reel stops at 17.
-export const CRITIQUE_SAMPLE_PDF = "/critique/photoreka-critique-sample.pdf";
+// reel stops at 17. The files keep their names when the sample changes, so the URLs
+// carry its version: bump it whenever the PDF or its pages are replaced, or browsers
+// and the CDN keep serving the old ones.
+const CRITIQUE_SAMPLE_VERSION = "2026-11-23";
+export const CRITIQUE_SAMPLE_PDF = `/critique/photoreka-critique-sample.pdf?v=${CRITIQUE_SAMPLE_VERSION}`;
 export const CRITIQUE_SAMPLE_PAGES = Array.from(
   { length: 17 },
-  (_, index) => `/critique/sample/${String(index + 1).padStart(2, "0")}.webp`,
+  (_, index) =>
+    `/critique/sample/${String(index + 1).padStart(2, "0")}.webp?v=${CRITIQUE_SAMPLE_VERSION}`,
 );
 
 /** The section each page of the sample belongs to, in page order. */
