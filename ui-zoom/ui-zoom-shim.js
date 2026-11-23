@@ -1,5 +1,5 @@
 /*
- * UI zoom for large screens (2K, 4K…).
+ * UI zoom for large screens (2K, 4K…), and 90% on laptop widths.
  *
  * On wide monitors the UI looks small and leaves big margins. This script adds the zoom CSS
  * (`html { zoom: z }` depending on the window size, see vite-plugin.ts) and makes the page see the

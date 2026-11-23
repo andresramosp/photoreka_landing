@@ -1,4 +1,5 @@
 // UI zoom for large screens (2K, 4K…): the interface scales up the way browser zoom would.
+// On laptop widths it scales down to 90% instead (see SHRINK below).
 //
 // Each step z applies when the window is at least 1760·z × 920·z CSS px, so the visible
 // area never drops below ~1760×920 (a Full HD laptop). A 2K monitor (2560×1440) gets 125 %;
@@ -14,10 +15,19 @@ import type { Plugin } from "vite";
 
 const STEPS = [1.25, 1.5, 1.75, 2];
 
-const UI_ZOOM_CSS = STEPS.map(
-  (z) =>
-    `@media screen and (min-width:${1760 * z}px) and (min-height:${920 * z}px){html{zoom:${z};--ui-zoom:${z}}}`,
-).join("");
+// Laptops go the other way: below the 1760 px reference (1366–1536 px wide, e.g.
+// 1920×1200 at 125% Windows scaling) the full-size UI feels oversized, and
+// browser zoom at 90% is what looks right. Desktop pointers only, so tablets in
+// landscape keep their full-size touch targets. Shrinking is always safe for our
+// own breakpoints: media queries see the real width, the page gets more room.
+const SHRINK = { zoom: 0.9, minWidth: 1280, maxWidth: 1759.98 };
+
+const UI_ZOOM_CSS =
+  `@media screen and (min-width:${SHRINK.minWidth}px) and (max-width:${SHRINK.maxWidth}px) and (hover:hover) and (pointer:fine){html{zoom:${SHRINK.zoom};--ui-zoom:${SHRINK.zoom}}}` +
+  STEPS.map(
+    (z) =>
+      `@media screen and (min-width:${1760 * z}px) and (min-height:${920 * z}px){html{zoom:${z};--ui-zoom:${z}}}`,
+  ).join("");
 
 /** Inline script for <head>, ahead of any other script. It adds the zoom CSS itself. */
 export const UI_ZOOM_SCRIPT = readFileSync(

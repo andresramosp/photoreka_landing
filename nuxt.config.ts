@@ -121,7 +121,7 @@ export default defineNuxtConfig({
         },
       ],
       script: [
-        // Large screens: scale the UI up the way browser zoom would (see ui-zoom/).
+        // Scale the UI the way browser zoom would: up on large screens, to 90% on laptops (see ui-zoom/).
         { innerHTML: UI_ZOOM_SCRIPT, tagPosition: "head", tagPriority: "critical" },
         // Enables the hidden-until-revealed states of the lx landing system
         // before first paint; skipped for reduced motion, and without JS the
