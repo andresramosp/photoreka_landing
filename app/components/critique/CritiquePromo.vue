@@ -49,8 +49,8 @@
 import {
   CRITIQUE_MAX_PHOTOS,
   CRITIQUE_MIN_PHOTOS,
+  CRITIQUE_HERO_PAGES,
   CRITIQUE_PRICE_EUR,
-  CRITIQUE_SAMPLE_PAGES,
 } from "~/utils/critiqueShowcase";
 import { trackUserAction } from "~/utils/analytics";
 
@@ -75,7 +75,7 @@ const props = defineProps({
 const defaultText = `A written report on your work as a whole: your strongest frames, the ones that hold the set back, your style counted photo by photo and what to photograph next. €${CRITIQUE_PRICE_EUR}, no account.`;
 
 // The cover, a featured critique and a growth area, as on the landing hero.
-const pages = [CRITIQUE_SAMPLE_PAGES[11], CRITIQUE_SAMPLE_PAGES[5], CRITIQUE_SAMPLE_PAGES[0]];
+const pages = CRITIQUE_HERO_PAGES;
 
 function track(where) {
   trackUserAction("navigate_to_critique_landing", `${props.source}_critique_promo_${where}`);

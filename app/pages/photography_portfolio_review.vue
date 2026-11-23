@@ -224,7 +224,8 @@
                 Read one <em class="lx-accent">from cover to roadmap.</em>
               </template>
               <p>
-                A complete report on 24 photographs, plus 50 more sent as context,
+                A complete report on {{ CRITIQUE_SAMPLE_PHOTOS }} photographs, plus
+                {{ CRITIQUE_SAMPLE_CONTEXT_PHOTOS }} more sent as context,
                 <strong>exactly as our AI wrote it</strong>.
               </p>
               <template #actions>
@@ -469,6 +470,7 @@ import {
   CRITIQUE_EXCERPT,
   CRITIQUE_FAQS,
   CRITIQUE_GENRES,
+  CRITIQUE_HERO_PAGES,
   CRITIQUE_LANGUAGES,
   CRITIQUE_MANUSCRIPT,
   CRITIQUE_MAX_CONTEXT_PHOTOS,
@@ -476,9 +478,11 @@ import {
   CRITIQUE_MIN_PHOTOS,
   CRITIQUE_PRICE_EUR,
   CRITIQUE_RETENTION_DAYS,
+  CRITIQUE_SAMPLE_CONTEXT_PHOTOS,
   CRITIQUE_SAMPLE_LABELS,
   CRITIQUE_SAMPLE_PAGES,
   CRITIQUE_SAMPLE_PDF,
+  CRITIQUE_SAMPLE_PHOTOS,
   CRITIQUE_TIERS,
   CRITIQUE_WHO_SEES,
 } from "~/utils/critiqueShowcase";
@@ -502,8 +506,7 @@ const formatEur = (n) =>
     maximumFractionDigits: 0,
   }).format(n);
 
-// The cover, a featured critique and a growth area: the three faces of a report.
-const heroPages = [CRITIQUE_SAMPLE_PAGES[11], CRITIQUE_SAMPLE_PAGES[5], CRITIQUE_SAMPLE_PAGES[0]];
+const heroPages = CRITIQUE_HERO_PAGES;
 
 // Each section with the page of the sample it opens and the region of that page
 // its tile shows ([x, y, width, height] as fractions of the page). The sizes
@@ -514,7 +517,7 @@ const sections = [
     description:
       "Where your work stands: its genre and manner, the devices it returns to and what it gives up to get what it gets.",
     page: 1,
-    focus: [0.065, 0.355, 0.87, 0.52],
+    focus: [0.065, 0.37, 0.87, 0.53],
     size: "big",
   },
   {
@@ -529,45 +532,45 @@ const sections = [
     title: "Set-aside images",
     description:
       "The photographs that hold the set back, each with what it was after and why that is not enough.",
-    page: 8,
-    focus: [0.065, 0.175, 0.87, 0.6],
+    page: 9,
+    focus: [0.065, 0.17, 0.87, 0.6],
   },
   {
     title: "Style profile",
     description:
       "What repeats across the set, counted photo by photo: the devices that carry your pictures, where the camera stands and how close.",
-    page: 9,
-    focus: [0.065, 0.195, 0.87, 0.59],
+    page: 10,
+    focus: [0.065, 0.195, 0.87, 0.63],
     size: "wide",
   },
   {
     title: "Your strengths",
     description:
       "Traits of you as an author, not of a single frame, each backed by the photographs that show it.",
-    page: 10,
-    focus: [0.065, 0.115, 0.87, 0.58],
+    page: 11,
+    focus: [0.065, 0.115, 0.87, 0.48],
   },
   {
     title: "Areas for growth",
     description:
       "The habits that give your work coherence and could harden into a formula, with exact counts and your own photos as examples.",
     page: 12,
-    focus: [0.065, 0.075, 0.87, 0.38],
+    focus: [0.065, 0.315, 0.87, 0.415],
     size: "wide",
   },
   {
     title: "Proposed projects",
     description:
       "Series your material already points to: which photographs fit today and what is still to be photographed.",
-    page: 13,
+    page: 14,
     focus: [0.065, 0.2, 0.87, 0.28],
   },
   {
     title: "Roadmap",
     description:
       "Where to start, concrete steps from your next outing to the coming months, and up to five contests your strongest photographs suit, the open ones marked.",
-    page: 14,
-    focus: [0.065, 0.27, 0.87, 0.37],
+    page: 15,
+    focus: [0.065, 0.27, 0.87, 0.33],
   },
 ];
 

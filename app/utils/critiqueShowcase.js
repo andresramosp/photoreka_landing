@@ -57,9 +57,11 @@ export const CRITIQUE_LANGUAGES = [
 ];
 
 // A real report, page by page, and the same report as the PDF a buyer downloads.
+// The PDF has 18 pages; the last one only holds the note on contest dates, so the
+// reel stops at 17.
 export const CRITIQUE_SAMPLE_PDF = "/critique/photoreka-critique-sample.pdf";
 export const CRITIQUE_SAMPLE_PAGES = Array.from(
-  { length: 16 },
+  { length: 17 },
   (_, index) => `/critique/sample/${String(index + 1).padStart(2, "0")}.webp`,
 );
 
@@ -67,6 +69,7 @@ export const CRITIQUE_SAMPLE_PAGES = Array.from(
 export const CRITIQUE_SAMPLE_LABELS = [
   "Cover",
   "Portfolio overview",
+  "Featured photographs",
   "Featured photographs",
   "Featured photographs",
   "Featured photographs",
@@ -83,23 +86,35 @@ export const CRITIQUE_SAMPLE_LABELS = [
   "Roadmap",
 ];
 
+/** What the sample report was written on: the photos reviewed and those sent as context. */
+export const CRITIQUE_SAMPLE_PHOTOS = 23;
+export const CRITIQUE_SAMPLE_CONTEXT_PHOTOS = 11;
+
+/**
+ * The three faces of a report, back to front: a growth area (page 13), a featured
+ * critique (page 6) and the cover on top. Shared by the landing hero and the promo;
+ * the web app keeps its own copies of the same pages (photoreka_web/src/assets/critique).
+ */
+export const CRITIQUE_HERO_PAGES = [12, 5, 0].map((index) => CRITIQUE_SAMPLE_PAGES[index]);
+
 // One critique of a photograph from the sample report, which is pure AI output
-// (Featured photographs 03/08, page 5). "improve" is word for word; "works" keeps
-// the first three of its five sentences, word for word, to fit the layout.
+// (Featured photographs 02/08, page 4). "improve" is word for word; "works" keeps
+// three of its four sentences, word for word (it drops the second, which only reads
+// against the rest of the portfolio), to fit the layout.
 export const CRITIQUE_EXCERPT = {
   photo: "/critique/excerpt-kolkata.webp",
   alt: "A woman in an orange sari leans over a man resting on a bed in a Kolkata home, both with raised hands, while a pot boils over open flames in the foreground in front of a blue cupboard drawn with hearts",
   works:
-    "Human closeness and the heat of cooking seem to share a single domestic rhythm. The flames beneath the foreground pot catch the eye first; the orange garment carries their warmth back to the figure leaning over the reclining person. Their raised hands bring the encounter into focus.",
+    "The photograph gives a private exchange the physical immediacy of the fire beside it. The leaning bodies and raised hands concentrate attention at the bed; orange fabric echoes the foreground flames, binding people and hearth across the room. Hearts drawn on the blue cupboard lend the encounter a suggestion of tenderness without establishing the nature of the relationship.",
   improve:
-    "The flames register more immediately than the small exchange at left. Slightly less brightness in the fire might give the hands and forward lean greater initial weight; as it stands, the emotional centre requires a sustained look.",
+    "The closeness of the bodies gives the exchange its intensity, but the shadowed overlap around the reclining person’s face and the raised hands makes the precise gesture somewhat difficult to distinguish.",
 };
 
 // The "how it works" manuscript: another reading from the same report, word for
-// word ("Other images", page 8), with an illustrative curator's addition.
+// word ("Other images" 01/03, page 9), with an illustrative curator's addition.
 export const CRITIQUE_MANUSCRIPT = {
   photo: "/critique/excerpt.webp",
-  text: "The cropped red scarf in the foreground makes the woman behind seem briefly like a smaller echo. Her sideways glance sends the eye back across the green shutter, turning the repetition of scarves and patterned tops into a relationship across depth.",
+  text: "The close foreground figure interrupts the frame with a red headscarf and patterned top, echoed by the woman farther back. The difference in scale makes the resemblance uncanny, while the farther woman’s sideways glance gives the near-double a fleeting human connection.",
 };
 
 // The genres a report reads, as the API classifies each photo (CARD_GENRES in
