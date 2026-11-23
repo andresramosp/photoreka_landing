@@ -20,10 +20,13 @@ const STEPS = [1.25, 1.5, 1.75, 2];
 // browser zoom at 90% is what looks right. Desktop pointers only, so tablets in
 // landscape keep their full-size touch targets. Shrinking is always safe for our
 // own breakpoints: media queries see the real width, the page gets more room.
+// --ui-zoom-shrink (1 here, unset elsewhere) lets a component take back part of
+// the reduction where 90% reads too small, e.g. long-form text:
+//   font-size: calc(14px + var(--ui-zoom-shrink, 0) * 1px);
 const SHRINK = { zoom: 0.9, minWidth: 1280, maxWidth: 1759.98 };
 
 const UI_ZOOM_CSS =
-  `@media screen and (min-width:${SHRINK.minWidth}px) and (max-width:${SHRINK.maxWidth}px) and (hover:hover) and (pointer:fine){html{zoom:${SHRINK.zoom};--ui-zoom:${SHRINK.zoom}}}` +
+  `@media screen and (min-width:${SHRINK.minWidth}px) and (max-width:${SHRINK.maxWidth}px) and (hover:hover) and (pointer:fine){html{zoom:${SHRINK.zoom};--ui-zoom:${SHRINK.zoom};--ui-zoom-shrink:1}}` +
   STEPS.map(
     (z) =>
       `@media screen and (min-width:${1760 * z}px) and (min-height:${920 * z}px){html{zoom:${z};--ui-zoom:${z}}}`,
