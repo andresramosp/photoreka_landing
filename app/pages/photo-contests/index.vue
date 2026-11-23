@@ -1,7 +1,7 @@
 <template>
   <ContestsShell :links="navLinks">
     <template #nav-actions>
-      <NuxtLink to="/" class="lx-link pc-nav-back">Back to Photoreka</NuxtLink>
+      <!-- <NuxtLink to="/" class="lx-link pc-nav-back">Back to Photoreka</NuxtLink> -->
       <NuxtLink to="/photography_portfolio_review/" class="lx-link pc-nav-back">Portfolio review</NuxtLink>
       <LxButton size="sm" to="/ai_photo_picks/">About Picks</LxButton>
     </template>
