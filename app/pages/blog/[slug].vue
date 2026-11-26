@@ -170,7 +170,7 @@ const postImage = post.coverImage
 const dateModified = post.updatedAt || post.publishedAt;
 
 useSEO(undefined, {
-  title: `${post.title} | Photoreka`,
+  title: `${post.seoTitle || post.title} | Photoreka`,
   description: post.description,
   keywords: post.keywords,
   ogImage: post.coverImage,

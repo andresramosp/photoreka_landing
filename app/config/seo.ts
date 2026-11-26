@@ -313,7 +313,7 @@ export const seoConfig = {
     },
 
     ai_photo_search: {
-      title: "AI Photo Search: Find Any Photo by Describing It | Photoreka",
+      title: "AI Image Finder: Search Your Photos by Description | Photoreka",
       description:
         "AI photo search and image finder for your own library. Describe any shot and find it across Lightroom, Google Photos, Dropbox or local files. No tagging, no keywords.",
       keywords:
@@ -506,9 +506,9 @@ export const seoConfig = {
     },
 
     photo_chat: {
-      title: "AI Photo Assistant: Chat With Your Photo Library | Photoreka",
+      title: "Photo Chat: Ask AI About Your Photos and Library | Photoreka",
       description:
-        "AI photo assistant for photographers. Chat with your photo library to get an honest portfolio review, see how your style has evolved and build sequences.",
+        "Ask AI about your photos: get an honest portfolio review, see how your style has evolved or build a sequence. A photo chat that reads your whole library.",
       keywords:
         "chatgpt for my photos, chat with my photo library, chat with your photos, ask photos alternative, AI photo assistant, find my best photos, organize photos with AI, AI photo critique, photo portfolio critique AI, AI photography feedback, AI photo curation, ask AI about my photos, photo library AI chat, conversational photo search, photo catalog AI assistant, photography improvement tracker AI, discover photo patterns AI, AI photo curator, AI assistant for photographers",
       ogImage: "/home/dashboard.jpg",
@@ -926,9 +926,9 @@ export const seoConfig = {
     },
 
     photo_scoring: {
-      title: "AI Photo Scoring — Score Your Entire Catalog | Photoreka",
+      title: "AI Photo Scoring & Image Ranker for Your Catalog | Photoreka",
       description:
-        "Score every photo in your body of work on 8 artistic criteria: aesthetics, composition, narrative strength, originality, message and more. Surface your strongest work from thousands of keepers and track your progress over time. The commercial profile swaps in subject clarity and commercial intent for product, stock and fashion work.",
+        "Score and rank every photo in your catalog on 8 artistic criteria, from composition to originality, and surface your strongest work among thousands of keepers.",
       keywords:
         "AI photo scoring, photo scoring software, score entire photo catalog, rank photo library AI, find best photos in large catalog, photo aesthetic score, aesthetic scoring photography, AI photo ranking, photo quality assessment, image aesthetic assessment, photo composition analyzer, photo selection AI for photographers, automatically surface best photos, photo ranking software, photo aesthetic analysis, AI photography critique tool, photo quality metrics, photography quality score, score photos lightroom catalog, track photography progress over time, photo scoring for photographers, curate large photo archive, commercial photo scoring, commercial intent scoring, subject clarity scoring, product photography scoring, packshot selection AI, stock photography scoring, fashion editorial photo selection, score photos for client delivery, find most licensable photos",
       ogImage: "/logos/marca/vertical-claim-light.png",
@@ -1047,9 +1047,9 @@ export const seoConfig = {
     },
 
     ai_photo_picks: {
-      title: "AI Photo Rating & Critique: Rank Your Best Photos | Photoreka",
+      title: "AI Photo Rater & Photo Ranker: Rank Your Best Photos | Photoreka",
       description:
-        "AI photo rating and critique: an AI jury rates up to 5,000 photos on eight artistic criteria, writes a critique of each one and ranks them. No account. 10 photos free.",
+        "AI photo rater and photo ranker: an AI jury rates up to 5,000 photos on eight artistic criteria, critiques each one and ranks your best. No account. 10 photos free.",
       keywords:
         "photo critique, photography critique, ai photo critique, photo rating, photo rater, ai photo rater, rate my photo, rate my photos, photo rating, ai photo rating, image rating ai, photo ranker, ai photo ranker, photo ranking, ai photo picker, find my best photos, find my best photos ai, pick best photos ai, best photo selector, ai photo ranking, rank photos with ai, ai photo critique, photo critique online, rate my photos ai, ai photo selection, choose best photos for portfolio, choose photos for photo contest, photography competition shortlist, street photography critique, ai photo scoring online, rank photos online no account",
       ogImage: "/picks/og-picks.jpg",

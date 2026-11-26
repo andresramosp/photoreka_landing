@@ -4,7 +4,7 @@
       <div class="lx-page lx-numbered">
         <PageNav source="photo_scoring_page" :links="navLinks" />
 
-        <PageHero eyebrow="AI Photo Scoring & Quality Ranking">
+        <PageHero eyebrow="AI Photo Scoring & Image Ranking">
           <template #title>
             Score your entire catalog,
             <em class="lx-accent">surface your best work</em>

@@ -14,7 +14,7 @@
       </template>
     </LandingNav>
 
-    <PageHero eyebrow="AI photo rating & critique · No account needed">
+    <PageHero eyebrow="AI photo rater & ranker · No account needed">
       <template #title>
         Find your <em class="lx-accent">best photos</em> with AI.
       </template>

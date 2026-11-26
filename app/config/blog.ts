@@ -43,6 +43,8 @@ export type BlogBlock =
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Shorter title for the search result; the article keeps `title` as its heading. */
+  seoTitle?: string;
   excerpt: string;
   description: string;
   keywords?: string;
@@ -882,10 +884,11 @@ export const blogPosts: BlogPost[] = [
     slug: "best-ai-photo-rater",
     title:
       "AI Photo Raters Compared: The Best Ways to Rate and Rank Your Photos in 2026",
+    seoTitle: "Rate My Photo With AI: The Best AI Photo Raters (2026)",
     excerpt:
       "Type 'rate my photo' into a search engine and you get dating-profile graders, camera-roll apps, wedding-culling software and research papers. They answer three very different questions. An honest guide to which AI photo rater or photo ranker fits yours.",
     description:
-      "An honest comparison of AI photo raters and rankers: Photofeeler, rate-my-photo.com, Better Camera, SpectraSort, chatbots, AI culling tools and Photoreka Picks — and which question each one actually answers.",
+      "Want AI to rate your photos? Photofeeler, chatbots, culling tools and Photoreka Picks compared: which one rates a profile pic, a shoot or a portfolio.",
     keywords:
       "ai photo rater, photo ranker, ai photo ranker, rate my photo, rate my photo ai, rate my picture, photo rating, photo rating app, image ranker, image rater, ai to choose best photos, pick the best photo, best photo picker ai, ai photo critique, photofeeler alternative, aftershoot alternative, narrative select alternative, rank photos with ai",
     category: "Comparisons",
@@ -1077,10 +1080,11 @@ export const blogPosts: BlogPost[] = [
     slug: "best-ai-culling-software",
     title:
       "Best AI Culling Software in 2026: Aftershoot, Narrative Select, FilterPixel, Imagen and Photoreka Compared",
+    seoTitle: "Best AI Culling Software 2026: Aftershoot vs Narrative Select",
     excerpt:
       "AI culling has turned an evening of rejecting frames into a coffee break. An honest look at Aftershoot, Narrative Select, FilterPixel and Imagen — what each does best, where each stops — and where Photoreka fits, which is not where you might expect.",
     description:
-      "An honest comparison of the best AI photo culling software in 2026: Aftershoot, Narrative Select, FilterPixel, Imagen and Photoreka. Blink and focus detection, duplicate grouping, local vs cloud processing, Lightroom integration, pricing models, and which tool fits which kind of photographer.",
+      "Aftershoot vs Narrative Select vs FilterPixel vs Imagen in 2026: blink and focus detection, duplicates, local or cloud, Lightroom and pricing, compared.",
     keywords:
       "ai culling, ai culling software, best ai photo culling software, ai photo culling, best photo culling software 2026, aftershoot alternative, narrative select alternative, filterpixel alternative, imagen culling alternative, aftershoot vs narrative select, photo culling app, wedding photo culling software, ai photo selection, choose best photos ai, photo ranker",
     category: "Comparisons",
@@ -3141,10 +3145,11 @@ export const blogPosts: BlogPost[] = [
     slug: "how-to-add-gps-location-to-photos",
     title:
       "How to Add GPS Location to Photos Already Taken (Even Without a GPS Camera)",
+    seoTitle: "How to Geotag Photos Already Taken (Add GPS Location)",
     excerpt:
       "Your camera never recorded where you were, and now your archive is a map with no pins. Four ways to geotag photos after the fact — a GPS track, a map and your memory, a visual search, or AI that reads the place from the picture — and how to choose between them.",
     description:
-      "How to add GPS coordinates to photos already taken: match a GPX track in Lightroom Classic or exiftool, place photos on a map by hand, or use AI visual geolocation when you have no track at all. Includes scanned slides, RAW files and privacy tips.",
+      "How to geotag photos already taken: match a GPX track in Lightroom or exiftool, pin photos on a map by hand, or let AI find the place when you have no track.",
     keywords:
       "how to add gps location to photos, add gps to photos already taken, how to geotag photos already taken, geotag photos without gps, add location to old photos, add gps data to photos, add gps coordinates to photos in bulk, geotag photos lightroom classic, lightroom tracklog gpx, exiftool geotag gpx, geotag scanned slides, add location to scanned photos, geotag dslr photos without gps, ai photo geolocation, bulk exif gps editor",
     category: "Photography Tips",
